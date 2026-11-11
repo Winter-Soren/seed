@@ -5,3 +5,4 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | Run | Status | Start | Plastic | Gens | Pop×worlds | σ/lr | Cfg overrides | Start fitness | Final fitness | Final frozen | Final acc 1st→2nd | Commit |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|
 | 20261112-020840_E101-smoke | finished | blank | yes | 3/3 | 8×2 | 0.1/0.1 |  | 0.56 | 1.88 | 2.31 | 0.57 → 0.51 | a8ed352 |
+| 20261112-021242_E102-benchmark | finished | blank | yes | 10/10 | 128×8 | 0.1/0.1 |  | -0.00 | 0.47 | 0.00 | 0.51 → 0.51 | 8545333 |

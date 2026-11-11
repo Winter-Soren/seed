@@ -130,3 +130,58 @@ Entries E000–E007 come from the Claude design session, before this repo existe
 - **Decision:** Commit the run, table, and appended record together, then execute the preregistered E102 benchmark. Measure full wall time including evaluation before scheduling longer work.
 - **Scheduling limitation found during review:** `--resume` loads the original generation target, so a run created for 50 generations cannot be extended to 200 by passing a new target on resume. If E102 projects a 200-generation run above 3 hours, add and test a graceful checkpoint-boundary stop before scheduling it; do not assume the current runner already supports that split.
 - **Interpretation limitation:** The frozen lesion tests reliance on synaptic plasticity. It does not eliminate every possible form of adaptation through recurrent state.
+
+## E103–E105 · 2026-11-12 · Preregistered core comparisons
+- **Scheduling condition:** Start only after E102's measured throughput projects a 200-generation run, including evaluation, below 3 hours. Otherwise implement and test graceful checkpoint-boundary stopping before scheduling the same scientific settings in bounded segments. One low-priority compute job at a time; checkpoint every 10 generations. Complete E100 references before judging these comparisons.
+- **Shared protocol:** Default world/brain configuration, population 128, 8 training worlds, 200 generations, evolution seeds 0/1/2, and unchanged EVAL v1 (128 worlds, evaluation seed 123). Commit this preregistration and source before launching. Preserve every run and record full scores and gaps from summaries; no tuning on evaluation worlds.
+
+### E103 · A: can blank-start evolution discover learning?
+- **Hypothesis:** Evolution from a blank start produces within-life learning that relies on synaptic plasticity in at least 2 of 3 evolution seeds.
+- **Exact commands (PowerShell, repository root):**
+  ```powershell
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E103-A-blank-s0 --start blank --generations 200 --seed 0
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E103-A-blank-s1 --start blank --generations 200 --seed 1
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E103-A-blank-s2 --start blank --generations 200 --seed 2
+  ```
+- **Gate:** In at least 2 of 3 seeds, final-learning second-minus-first-half accuracy is strictly greater than 0.03 **and** frozen fitness is clearly below learning fitness, preserving HANDOFF's criterion. Report each full learning-minus-frozen gap. HANDOFF supplies no numerical lesion cutoff; a tiny positive gap alone does not establish a clear effect. Qualify ambiguous effects without inventing statistical significance or advancing the roadmap from an ambiguous gate. If fewer than 2 seeds meet both requirements, the gate is not established.
+- **Result:** Pending. If the gate fails, follow HANDOFF's one-change-at-a-time sequence, beginning with more training worlds; preregister any subsequent experiment separately.
+
+### E104 · B: can evolution improve the biology prior?
+- **Hypothesis:** Gentle ES improves on the E100 biology-prior learning fitness in at least 2 of 3 evolution seeds.
+- **Exact commands (PowerShell, repository root):**
+  ```powershell
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E104-B-bio-s0 --start biology --sigma 0.05 --lr 0.02 --generations 200 --seed 0
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E104-B-bio-s1 --start biology --sigma 0.05 --lr 0.02 --generations 200 --seed 1
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E104-B-bio-s2 --start biology --sigma 0.05 --lr 0.02 --generations 200 --seed 2
+  ```
+- **Gate:** Final-learning fitness strictly exceeds the E100 biology-prior learning fitness under EVAL v1 in at least 2 of 3 seeds. Otherwise this gate fails. Record per-seed differences, within-life accuracy, and lesion gaps; do not describe a merely preserved prior as improved.
+- **Result:** Pending.
+
+### E105 · C: evolution with synaptic plasticity disabled
+- **Hypothesis:** The no-plasticity evolutionary control provides a baseline below the learning performance of A and B; A versus C is the matched intervention comparison.
+- **Exact commands (PowerShell, repository root):**
+  ```powershell
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E105-C-noplastic-s0 --start blank --no-plastic --generations 200 --seed 0
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E105-C-noplastic-s1 --start blank --no-plastic --generations 200 --seed 1
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E105-C-noplastic-s2 --start blank --no-plastic --generations 200 --seed 2
+  ```
+- **Comparison:** C's actual control performance is `final_frozen`; compare it with A/B `final_learning` by paired evolution seed and report all differences. Verify A/C starting-genome hashes match for each paired seed, along with settings other than the plasticity switch. C's `final_learning` re-enables plasticity and is diagnostic only.
+- **Interpretation:** This is a baseline, not a separate roadmap gate. Positive A-minus-C differences support the proposed plasticity advantage; zero or negative differences count against it and must be reported. B versus C also changes the starting prior and ES hyperparameters, so it cannot isolate plasticity's causal effect. Do not convert this comparison into an unsupported significance claim.
+- **Result:** Pending. After each completed experiment, regenerate the results table, append its results and interpretation, and commit/push the run artifacts with the record. Gate decisions require the planned three seeds and explicit treatment of uncertainty.
+
+## E103–E105 scheduling amendment and resource checkpoint · 2026-11-12
+- **Amendment to the preceding core commands:** Append `--max-train-seconds 7200` to each of the nine initial E103/E104/E105 commands. If a run pauses before generation 200, resume that same folder with `.\.venv\Scripts\python.exe scripts/run_experiment.py --resume <run-folder> --max-train-seconds 7200`. The saved target remains 200; this changes scheduling only, not scientific settings or EVAL v1.
+- **Implementation verification:** The runner worker reports four passing tests, including a real tiny ES with a mocked world evaluator split into 2 + 1 + 2 generations, whose final optimizer state, RNG state, and training metrics match uninterrupted execution exactly. The coordinator reviewed the change; it is not yet committed. Commit it before using the new option. E102 continues under its original `8545333` code.
+- **Limit:** The 7,200-second training budget excludes setup and evaluation and may overrun by one generation. Monitor full wall time separately to preserve the under-3-hour per-process limit; this option alone is not a hard wall-time guarantee.
+- **Resource snapshot:** C: 6.94 GiB free, down from the recent 10.46 GiB reading. The pagefile allocation was 8,618 MiB, but there is no causal baseline establishing what changed it; do not attribute the free-space drop to the pagefile. The active benchmark had about 3.25 GiB private memory and 2.69 GiB resident memory. E102 had reached generation 7 of 10; final results remain pending.
+- **Decision and process lesson:** Launch no additional heavy work until free-space stability and headroom are checked. Resource measurements must govern scheduling alongside runtime estimates; distinguish observed disk/RAM readings from unverified explanations. Record the completed benchmark at its next meaningful checkpoint.
+
+## E102 result · 2026-11-12 · Full-settings benchmark passed
+- **Evidence:** `runs/20261112-021242_E102-benchmark/summary.json` reports `finished`, generation 10, `train_minutes` 8.62, and 128 evaluation worlds. Process exit 0; finite metrics. Configuration records clean commit `8545333525ab26bb02740304d9f621fbfaf2dccd`, population 128, 8 training worlds, seed 0, default configuration, and CPU execution.
+- **Numbers copied from the summary:** Start-learning fitness -0.00390625; first-half accuracy 0.5008518099784851; second-half accuracy 0.49779558181762695. Final-learning fitness 0.46875; first-half accuracy 0.513361930847168; second-half accuracy 0.513504147529602; survival 0.4296875; eaten 8950. Final-frozen fitness 0.001953125; first-half accuracy 0.4885801374912262; second-half accuracy 0.5247443914413452; survival 0.36328125; eaten 7699. Final genome hash `18091312a2ae9523`.
+- **Measured timing:** Supervisor launch-to-exit wall time 561.9480759 seconds. Generation times sum to 517.023 seconds. First generation 71.261 seconds; generations 2–10 mean 49.5291111111 seconds, median 45.286 seconds, maximum 66.965 seconds. Full wall time minus summed generation times is about 44.925 seconds of aggregate setup, evaluation, and other overhead; it is not a separate direct evaluation measurement.
+- **Projection and decision:** First-generation time plus 199 times the subsequent-generation mean projects 2.7576539 hours of training for 200 generations, plus overhead. This short benchmark cannot guarantee stable long-run throughput. Use the amended 7,200-second training segments for headroom, retaining the 200-generation target and monitoring full wall time. End-of-run storage readings were stable at C: 6.94 GiB and D: 46.36 GiB free; recheck before each heavy run.
+- **Interpretation:** Operational pass: full settings completed well below 3 hours with finite metrics. This single-seed 10-generation timing run does not establish that evolution discovers learning; it is not the preregistered 200-generation A comparison.
+- **Runner verification:** `.\.venv\Scripts\python.exe -m unittest discover -s tests -v` passed four tests in 6.908 seconds, as verified by the coordinator. The bounded/resumed equivalence check uses a synthetic fitness fixture with real tiny ES, not a research world or scientific result. No engine or EVAL v1 changes were made; commit the runner and tests before using the new limit option.
+- **Recording and next step:** Regenerated `results/RESULTS.md` with UTF-8 enabled and checked both finished rows against their summaries and source commits. Commit/push E102 artifacts, records, and the verified scheduling change, then execute the preregistered E100 references before judging core comparisons.
+- **Additional verification:** The coordinator confirmed checkpoint generation 10 and exact equality between its mean genome and `genome_final.npy`. Final-learning accuracy gain is 0.000142216682434, which does not show a meaningful within-life learning signal in this short benchmark. The git worker subsequently committed the runner/tests separately as `67659fd`; E102's source remains `8545333`.
