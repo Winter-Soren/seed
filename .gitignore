@@ -1,0 +1,10 @@
+__pycache__/
+*.pyc
+.venv/
+*.tmp
+*.tmp.npz
+.ipynb_checkpoints/
+.DS_Store
+# large media from notebooks or visualisations
+*.mp4
+*.gif
