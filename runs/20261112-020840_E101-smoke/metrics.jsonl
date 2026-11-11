@@ -1,0 +1,3 @@
+{"gen": 0, "fit_mean": 0.5, "fit_best": 4.625, "fit_std": 2.2325713634490967, "acc_first": 0.5173454284667969, "acc_second": 0.5133531093597412, "survived": 0.4375, "seconds": 32.662}
+{"gen": 1, "fit_mean": 0.15625, "fit_best": 2.75, "fit_std": 1.2179484367370605, "acc_first": 0.49699699878692627, "acc_second": 0.5257353186607361, "survived": 0.421875, "seconds": 1.718}
+{"gen": 2, "fit_mean": -0.640625, "fit_best": 2.25, "fit_std": 1.7212339639663696, "acc_first": 0.4592476487159729, "acc_second": 0.525581419467926, "survived": 0.3125, "seconds": 1.551}
