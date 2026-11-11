@@ -1,6 +1,7 @@
 __pycache__/
 *.pyc
 .venv/
+.tmp/
 *.tmp
 *.tmp.npz
 .ipynb_checkpoints/
