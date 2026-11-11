@@ -239,3 +239,7 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   .\.venv\Scripts\python.exe scripts/run_experiment.py --resume runs/20261112-023245_E103-A-blank-s0 --max-train-seconds 7200
   ```
   Preserve the hypothesis, seed, target, configuration, and EVAL v1 protocol. Recheck disk/memory guards before resuming; no new experiment or scientific claim is introduced by the continuation.
+
+## E103 A seed 0 resume · 2026-11-12
+- Segment 2 launched at 04:35:40.686 Asia/Calcutta; stdout confirms resume from generation 167 and the recorded resume source is clean `55a459b`. Target 200 and training limit 7,200 seconds are unchanged. Launcher PID 34092, supervising session 28759; output `.tmp/E103-A-blank-s0-segment2.stdout`/`.stderr`.
+- Prelaunch snapshot: C: 6.91 GiB and D: 46.36 GiB free; free physical memory 9,299,848 KiB and free virtual memory 6,621,280 KiB. Retain 45-second disk checks, C:/D: minimums 5/10 GiB, and the 10,500-second full-wall guard. No new result; next research-record update is due at final completion or an intervening stop.
