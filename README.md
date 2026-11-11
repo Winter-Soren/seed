@@ -4,6 +4,8 @@ An experiment in AI that is never trained with labels. Tiny genomes (155 numbers
 
 **Status (v0, 12 Nov 2026):** The biology prior learns within a lifetime under EVAL v1 (128 worlds, evaluation seed 123): food-choice accuracy rises from **56.86% to 67.39%**, with fitness **5.12890625**, falling to **0** when synaptic plasticity is disabled. Three random starting genomes score -0.00390625, 0.4140625, and 0.23046875. These are zero-generation reference measurements; repeated biology runs are deterministic duplicates, not independent trials. Whether evolution discovers learning from a blank start or improves the biology prior remains open. See [results](results/RESULTS.md) and the [lab notebook](experiments/LOG.md).
 
+Aggregate accuracy does not separate individual learning from survival or encounter selection; the lesion supports useful plasticity without isolating those mechanisms.
+
 ## Run it
 From a checkout on D:, use PowerShell to keep the environment and installation temporary files off C:.
 
