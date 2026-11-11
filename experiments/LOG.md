@@ -185,3 +185,35 @@ Entries E000–E007 come from the Claude design session, before this repo existe
 - **Runner verification:** `.\.venv\Scripts\python.exe -m unittest discover -s tests -v` passed four tests in 6.908 seconds, as verified by the coordinator. The bounded/resumed equivalence check uses a synthetic fitness fixture with real tiny ES, not a research world or scientific result. No engine or EVAL v1 changes were made; commit the runner and tests before using the new limit option.
 - **Recording and next step:** Regenerated `results/RESULTS.md` with UTF-8 enabled and checked both finished rows against their summaries and source commits. Commit/push E102 artifacts, records, and the verified scheduling change, then execute the preregistered E100 references before judging core comparisons.
 - **Additional verification:** The coordinator confirmed checkpoint generation 10 and exact equality between its mean genome and `genome_final.npy`. Final-learning accuracy gain is 0.000142216682434, which does not show a meaningful within-life learning signal in this short benchmark. The git worker subsequently committed the runner/tests separately as `67659fd`; E102's source remains `8545333`.
+
+## E100 result · 2026-11-12 · EVAL v1 references measured
+- **Evidence:** All six preregistered runs finished with exit 0, zero generations, 128 evaluation worlds, finite metrics, and clean source commit `b4f467d4f0c490e8ba82a8a7cbecdb8001d16493`. The coordinator verified checkpoint `t=0`, exact equality of start/final/checkpoint mean arrays and hashes, and `start_learning == final_learning` in every run. EVAL v1 remains fixed at seed 123; no evolution occurred.
+- **Learning results:** Fitness, accuracies, survival, and eaten counts below are copied from each `summary.json`. Accuracy gain is second minus first; lesion gap is learning fitness minus frozen fitness.
+
+| Reference | Learning fitness | Accuracy first | Accuracy second | Accuracy gain | Lesion gap | Survival | Eaten |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| Blank seed 0 | -0.00390625 | 0.5008518099784851 | 0.49779558181762695 | -0.0030562281608581543 | -0.048828125 | 0.3828125 | 7778 |
+| Blank seed 1 | 0.4140625 | 0.5018976926803589 | 0.5329878926277161 | 0.031090199947357178 | 0.369140625 | 0.38671875 | 8428 |
+| Blank seed 2 | 0.23046875 | 0.5063009858131409 | 0.5091709494590759 | 0.0028699636459350586 | 0.185546875 | 0.388671875 | 8122 |
+| Biology seed 0 | 5.12890625 | 0.5685573816299438 | 0.6739441156387329 | 0.10538673400878906 | 5.12890625 | 0.6015625 | 11618 |
+| Biology seed 1 | 5.12890625 | 0.5685573816299438 | 0.6739441156387329 | 0.10538673400878906 | 5.12890625 | 0.6015625 | 11618 |
+| Biology seed 2 | 5.12890625 | 0.5685573816299438 | 0.6739441156387329 | 0.10538673400878906 | 5.12890625 | 0.6015625 | 11618 |
+
+| Frozen reference (identical across listed seeds) | Fitness | Accuracy first | Accuracy second | Survival | Eaten |
+|---|---:|---:|---:|---:|---:|
+| Blank seeds 0/1/2 | 0.044921875 | 0.49962562322616577 | 0.5053170323371887 | 0.37109375 | 7881 |
+| Biology seeds 0/1/2 | 0.0 | 0.49433672428131104 | 0.5116646885871887 | 0.376953125 | 7738 |
+
+| Run folder | Start/final genome hash | Launch-to-exit seconds |
+|---|---|---:|
+| `20261112-022439_E100-blank-s0` | `9a761b031011f9ee` | 34.786622 |
+| `20261112-022514_E100-blank-s1` | `47c2bad05aa97822` | 34.4837528 |
+| `20261112-022552_E100-blank-s2` | `03202e865b4a4255` | 50.2148786 |
+| `20261112-022641_E100-biology-s0` | `72caddf0cdd93943` | 48.0871014 |
+| `20261112-022728_E100-biology-s1` | `72caddf0cdd93943` | 46.5430618 |
+| `20261112-022814_E100-biology-s2` | `72caddf0cdd93943` | 43.590344 |
+
+- **Interpretation:** The reference reproduction hypothesis passes: the biology prior gains about 10.54 percentage points in within-life food-choice accuracy and loses 5.12890625 fitness when synaptic plasticity is disabled. Its three runs have the same genome and scores, so they are deterministic repeatability checks, not three independent scientific trials. Blank genomes have three distinct hashes; their identical frozen scores are expected because seed-dependent initial Hebbian-rule variation is disabled by the lesion. This measures available starting behavior, not evolution's ability to discover or improve learning.
+- **Recording:** Regenerated and checked all eight rows in `results/RESULTS.md`; updated README from pilot numbers to these 128-world references. Per-run storage guards were C: at least 5 GiB and D: at least 10 GiB before launch, with one `BelowNormal` compute job at a time and temporary files on D:.
+- **Decision:** Commit/push the six runs and records, and mark the EVAL v1 reference milestone. Next run the preregistered E103 A seed 0, preserving its 200-generation target with 7,200-second training segments. E103's three-seed gate remains untested; no roadmap advancement is authorized by this reference measurement alone.
+- **Core resource guard:** Final reference storage was C: 6.95 GiB and D: 46.36 GiB free. Check the 5/10 GiB C:/D: guards before every invocation and monitor roughly every 45 seconds while running. If either falls below its guard, terminate only the owned run process tree to protect the laptop, preserve its checkpoint and all artifacts, and append an incident record without editing history. An emergency stop can lose progress since the last 10-generation checkpoint; use the normal graceful 7,200-second stop when resources remain healthy.
