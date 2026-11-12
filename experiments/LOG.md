@@ -326,3 +326,7 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   ```powershell
   .\.venv\Scripts\python.exe scripts/run_experiment.py --resume runs/20261112-102755_E103-A-blank-s2 --max-train-seconds 7200
   ```
+
+## E103 A seed 2 continuation · 2026-11-12
+- Segment 2 resumed at 12:31:23.0679343 Asia/Calcutta, launcher PID 33960, supervising session 92965, from clean `1a7c4e3fb8b4896030b73737ae9dea631bf3500c`; private push verified. Config resume at 12:31:25.803986 records `dirty=false`, `replayed_generations=0`. Stdout confirms generation 167, stderr empty, and the coordinator verified the original 34,156-byte metric prefix still matches SHA-256 `3e92da1159c2b1028cc8901ec7200f0d4c9537931ef534a0cef145d72700988c`.
+- Same run folder and target 200; training limit 7,200 seconds, low priority, D: temporary files, 10-second C:/D: floor checks 5/10 GiB, wall limit 10,500 seconds. Startup free space C: 10.66 GiB/D: 46.36 GiB. Console `.tmp/E103-A-blank-s2-segment2.stdout`/`.stderr`. Goal active; final A2 evaluation and full A gate pending. Next record at outcome.
