@@ -313,3 +313,7 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   .\.venv\Scripts\python.exe scripts/run_experiment.py --name E103-A-blank-s2 --start blank --generations 200 --seed 2 --max-train-seconds 7200
   ```
   Keep existing resource guards and EVAL v1. No new hypothesis or tuning follows from these results.
+
+## E103 A seed 2 launch · 2026-11-12
+- A1 result commit `62376af` was pushed and verified private. A2 launched at 10:27:52.2149612 Asia/Calcutta, PID 45600, supervising session 24812; folder `runs/20261112-102755_E103-A-blank-s2` records clean source `62376af0b74f7d788d8033ce8582972a47a8fa9d`. The coordinator verified its starting array exactly matches E100 blank seed 2, hash `03202e865b4a4255`, and the preregistered blank/seed-2/200-generation/population-128/8-world settings with plasticity enabled and 128 evaluation worlds.
+- Training limit 7,200 seconds, checkpoint every 10 generations, one `BelowNormal` job, temporary files on D:. Startup free space C: 10.67 GiB and D: 46.36 GiB; retain 10-second guard polling, C:/D: floors 5/10 GiB, 10,500-second wall limit, and verified owned-handle `.Kill($true)` termination. Output `.tmp/E103-A-blank-s2-segment1.stdout`/`.stderr`; initial stderr empty. Goal active, A2 running, full A gate pending; next record at a meaningful checkpoint or outcome.
