@@ -1,0 +1,178 @@
+{
+  "purpose": "User-authorized historical author and committer attribution correction",
+  "date": "2026-11-12",
+  "verified_github_account": {
+    "login": "Winter-Soren",
+    "id": 81645360,
+    "noreply_email": "81645360+Winter-Soren@users.noreply.github.com"
+  },
+  "scope": "Correct the 19 Seed Research commits; preserve all other identities, trees, messages, timestamps, and parent topology.",
+  "old_main_tip": "0409c4d8596d348c8f0fb9e8ae40ff87ff7fc719",
+  "corrected_history_tip": "a603987033902e36b6660ca780bf479de740e7a4",
+  "corrected_authors": 19,
+  "corrected_committers": 19,
+  "verified_commits": 21,
+  "historical_references": "Past lab entries and run configurations retain original source hashes. Each old hash below maps to a corrected commit with the identical tree.",
+  "backup": {
+    "repository_relative_path": ".tmp/author-repair-20261112-0409c4d/pre-rewrite.bundle",
+    "sha256": "fb7d985b802a7d1d185d7fcd4d30739f42f5f184d2b8ad6a7bc542367f6a2dd5",
+    "scope": "Complete original refs and reachable history; local only."
+  },
+  "tags": [
+    {
+      "name": "v0.1-evalv1",
+      "old": "71126a6bacefaeef84cca226896030aa59fc8b72",
+      "new": "672046a6edffe0e4d467d7a197c4347b8f85ac72",
+      "kind": "lightweight"
+    }
+  ],
+  "commits": [
+    {
+      "old": "6ce1e56cd76fbd0fa8ff3e6d87f37c17191b3e4e",
+      "new": "6ce1e56cd76fbd0fa8ff3e6d87f37c17191b3e4e",
+      "tree": "6b5f01c5d20ad053d361c577b9f7e23779d30e33",
+      "author_corrected": false,
+      "committer_corrected": false
+    },
+    {
+      "old": "a8ed3521182663a6a9c713e1d9042cdfcaa47e59",
+      "new": "423fb96de03a16cdaedcb9588b9fadf8a0709ecf",
+      "tree": "75af8126b6b98d4785a9980fced5a31960ffe4b8",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "8545333525ab26bb02740304d9f621fbfaf2dccd",
+      "new": "19e5f29f39f06a52cd59baf5432107e7998e65c1",
+      "tree": "28440bd23f318449ef38c1ee0169d9ccd40d4d96",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "67659fdfec2e1ac9cbe7897410fd15d4c8fd65ca",
+      "new": "e69e13ee5d5fe0bcafe5929352eb884ef8907e57",
+      "tree": "7728f5fac23b17aefb4813ae0f3bfec4ac9c338a",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "b4f467d4f0c490e8ba82a8a7cbecdb8001d16493",
+      "new": "27fffdbc5d733ced683ef37f607b4f1913153928",
+      "tree": "d16ec45c92d14d8661a1e25089d8dde1bc380247",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "71126a6bacefaeef84cca226896030aa59fc8b72",
+      "new": "672046a6edffe0e4d467d7a197c4347b8f85ac72",
+      "tree": "c489402705013aa86e5947c8f0755bdc4c455e0f",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "6d09be6629baeb68b33f256e71b2b572e34cd7a9",
+      "new": "44f9623f4849677d77e9ad5e02829212e9e92524",
+      "tree": "48da6f8fe754b5e3e336ae7512b9f1ac3a5ed198",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "6b0b0a891aef409b10bdbe60092328a24894382b",
+      "new": "792b498edae7793e8a47f79337bd8a293f1c71a9",
+      "tree": "c405f0ebaf68653ae19a79dd2b225999ad253bec",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+      "new": "bd99db59d2ccc4e6894737c34885a4904c0514a4",
+      "tree": "4df0a64613c63039cf78915282c6839499befbca",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "af902a24dfbd9280ff50ab0a299ff2b9ae10cc5a",
+      "new": "cd11135558677e1688f38c268073c9832b45202e",
+      "tree": "d1ecdcaf1ab54c5ba0ad70e4a30ce87b3813e5fe",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+      "new": "9dfcdbdd9d9e0538ca6c7868b2abcdb1d330074c",
+      "tree": "8545f3e82f8192cac7512430dc03efb9b291a751",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "4988b901e3e5fab3a2534b369aa81ab294cbdd30",
+      "new": "a02d384c4eec9e873f8da3a2988251d216048271",
+      "tree": "bc44d7cd59b74b5fd30702d8072e398692078aca",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "18202a7a9692a4a3eceab8e7e4688fbbfae2faef",
+      "new": "8f1fe48a2453138a5640d41906f2df67c2427270",
+      "tree": "4e810a499a93db61349ed42e5b3432816950293c",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "bbc9d7368f209e179abd558aec5f3420ea389eb5",
+      "new": "9e4e981b642ec51deae1b98403150affe94c496f",
+      "tree": "d5c82d714d1b2ad1aac3a7e66a8b32915158e3ff",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+      "new": "8fbd9c87324eb49d4c0055a98e3e53f87812ca80",
+      "tree": "0ae7afea7a654204a6ea8475d1e5de2531b3c854",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "1a89aebbf28a98e68aab5ee20d158c98b46b73d0",
+      "new": "5ae4fcbe6f975f81af72eb00a066adeda9644c2b",
+      "tree": "2d8cd6e4559c7a4fe7ce1a9570bbee62471732a4",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+      "new": "9d56387ee7d8a7ef711474c176ceecdd9f2a7e5f",
+      "tree": "87cd3723fa1a4b7303238472ce9ceae5e38b3002",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "be62e059cc87818938a9eb80aabb6f2155517687",
+      "new": "9d3eb551f64512560171893d489ccf7b8242dbcd",
+      "tree": "ed47d07e8e573d0de804411071f6fc61c1e6ae1f",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+      "new": "fa013b8de9f0a2546f098f383a678344c433cfac",
+      "tree": "0d88c656c765a32c1a73cac31dd16f4c166df11a",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "cf7039ad24f8715083c05844202dc1b584056615",
+      "new": "609c326bf7734f68ac24ccbdc563da1205833c16",
+      "tree": "9d1cfd248beb239e5b9894a46d8698458f364ff8",
+      "author_corrected": true,
+      "committer_corrected": true
+    },
+    {
+      "old": "0409c4d8596d348c8f0fb9e8ae40ff87ff7fc719",
+      "new": "a603987033902e36b6660ca780bf479de740e7a4",
+      "tree": "f11600e2813b9d24b1d07fd1991b6ed7b2e87dc6",
+      "author_corrected": false,
+      "committer_corrected": false
+    }
+  ]
+}
