@@ -366,3 +366,8 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   .\.venv\Scripts\python.exe scripts/run_experiment.py --name E104-B-bio-s0 --start biology --sigma 0.05 --lr 0.02 --generations 200 --seed 0 --max-train-seconds 7200
   ```
   B's preregistered baseline remains E100 biology learning fitness 5.12890625; final fitness must strictly exceed it in at least 2 of 3 evolution seeds. Preserve EVAL v1, low priority, one compute job, D: temporary files, and the existing storage/wall-time safeguards.
+
+## E104 B seed 0 launch · 2026-11-12
+- A's 3/3 gate result was committed and pushed as `51bdac9`, with milestone `v0.1-a-evalv1`; GitHub author and committer attribution to `Winter-Soren` verified. B0 launched at 13:19:43.8480236 Asia/Calcutta, launcher PID 37460, supervising session 97097; folder `runs/20261112-131946_E104-B-bio-s0` records clean source `51bdac97c7ee65cc5e6bd7249d78a6bd0152ff9f`.
+- The coordinator verified biology start, seed 0, target 200, sigma 0.05, learning rate 0.02, population 128 × 8 worlds, evaluation 128 worlds, plasticity enabled, and no configuration overrides. Starting genome exactly matches E100 biology seed 0, hash `72caddf0cdd93943`. B's baseline remains 5.12890625; complete all three evolution seeds before deciding its gate.
+- Training limit 7,200 seconds, checkpoint every 10 generations, `BelowNormal`, D: temporary files; 10-second guard polling with C:/D: floors 5/10 GiB and 10,500-second wall limit. Startup free space C: 10.59/373.67 GiB and D: 46.36/100 GiB. Console `.tmp/E104-B-bio-s0-segment1.stdout`/`.stderr`, initial stderr empty. B0 running; B1/B2 and C remain. Next record at outcome.
