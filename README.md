@@ -85,7 +85,7 @@ Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-02
 
 *All 600 recorded population means are shown without smoothing. These are fitness values of perturbed training genomes on changing training worlds, not fixed-genome learning trajectories or final EVAL v1 scores.*
 
-The [figure data](results/figures/a-figure-data.json) links each series to its run artifacts. Rebuild both figures from the repository root with `.\.venv\Scripts\python.exe tools/build_readme_figures.py`; the [generator](tools/build_readme_figures.py) validates its inputs before plotting.
+The [figure data](results/figures/a-figure-data.json) links each series to its run artifacts and records source hashes with line endings normalized to LF. Rebuild both figures from the repository root with `.\.venv\Scripts\python.exe tools/build_readme_figures.py`; the [generator](tools/build_readme_figures.py) validates its inputs before plotting.
 
 | Stage | Question | Status |
 |---|---|---|

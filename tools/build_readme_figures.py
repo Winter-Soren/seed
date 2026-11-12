@@ -62,7 +62,7 @@ def load_data():
         runs.append({
             "evolution_seed": seed,
             "run": path.relative_to(ROOT).as_posix(),
-            "source_sha256": {name: hashlib.sha256(data).hexdigest()
+            "source_sha256": {name: hashlib.sha256(data.replace(b"\r\n", b"\n")).hexdigest()
                               for name, data in raw.items()},
             "fitness_enabled": enabled["fitness"],
             "fitness_frozen": frozen["fitness"],
@@ -73,6 +73,7 @@ def load_data():
         })
     return {
         "experiment": "E103 A: blank-start evolution",
+        "source_sha256_normalization": "Replace CRLF with LF in source text bytes; all other bytes are unchanged.",
         "evaluation": {"protocol": "EVAL v1", "worlds": 128, "seed": 123},
         "training": {"population": 128, "worlds_per_generation": 8,
                      "generations": list(range(1, 201)),
@@ -211,7 +212,7 @@ def main():
     plot_evaluation(data)
     plot_training(data)
     (OUT / "a-figure-data.json").write_text(
-        json.dumps(data, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+        json.dumps(data, indent=2, allow_nan=False) + "\n", encoding="utf-8", newline="\n")
     print("Validated 3 completed E103 A runs and all 600 training records.")
     for path in sorted(OUT.glob("a-*")):
         print(f"{path.relative_to(ROOT).as_posix()}: {path.stat().st_size:,} bytes")

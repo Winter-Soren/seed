@@ -1,5 +1,6 @@
 {
   "experiment": "E103 A: blank-start evolution",
+  "source_sha256_normalization": "Replace CRLF with LF in source text bytes; all other bytes are unchanged.",
   "evaluation": {
     "protocol": "EVAL v1",
     "worlds": 128,
@@ -218,9 +219,9 @@
       "evolution_seed": 0,
       "run": "runs/20261112-023245_E103-A-blank-s0",
       "source_sha256": {
-        "config.json": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
-        "summary.json": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
-        "metrics.jsonl": "144432fd64ff96999d0b2f68819ff1b255fe5b4f3daed0da7732e8042741e8dc"
+        "config.json": "25760b759a4d901c33047048e5cc3cecf668a07eb5d7cb746fd34b08c53c78d0",
+        "summary.json": "0fde3bb0a23cff0a424a571becbec2719aa460db27314fa49af1e6821ac4feff",
+        "metrics.jsonl": "069bc0803af289af9a9fd866b93ba1b8a7528c99c0de57328800e245476b0b1f"
       },
       "fitness_enabled": 16.591796875,
       "fitness_frozen": 0.2890625,
@@ -434,9 +435,9 @@
       "evolution_seed": 1,
       "run": "runs/20261112-050319_E103-A-blank-s1",
       "source_sha256": {
-        "config.json": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
-        "summary.json": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
-        "metrics.jsonl": "2f7448bf39233701c3701b391102670c0850e6790a32c296440606495a99c5cc"
+        "config.json": "3dc8211e14bc7ab6084e76f47c7b09246e4bd7d94024819877f214151b4b619e",
+        "summary.json": "68038ab1d92fa5d0f8f3402cee876c4c786e4779ec37b977e406a0e9ae346898",
+        "metrics.jsonl": "37c5d65005f7c5a33e3becd62e32db5615eb0ffa1566a1b4516f091d6affb579"
       },
       "fitness_enabled": 15.376953125,
       "fitness_frozen": 0.09375,
@@ -650,9 +651,9 @@
       "evolution_seed": 2,
       "run": "runs/20261112-102755_E103-A-blank-s2",
       "source_sha256": {
-        "config.json": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
-        "summary.json": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
-        "metrics.jsonl": "d45a2a8eab669ebbf1bba877bcadf832da8b8ec85e452b4b62a68802240a7dd1"
+        "config.json": "51921368d7c032eb6e0f953f3e1c61d1db9bf2545eb3f7aa7942a47882bf3af8",
+        "summary.json": "f62dd9b3658fb9153aa933f4054675c18a681b71890758336f51f94036c1273f",
+        "metrics.jsonl": "bab52f2d6ecad59046f6545ef7ef0ed989f58ea08872663fb75dd9f129b567ad"
       },
       "fitness_enabled": 14.8671875,
       "fitness_frozen": -0.103515625,
