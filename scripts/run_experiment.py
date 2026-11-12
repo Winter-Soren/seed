@@ -145,16 +145,49 @@ def main():
     else:
         mean = start_genome(args["start"], c)
         state = es_init(c, mean, args["seed"])
-        config["start_genome_hash"] = genome_hash(state["mu"])
-        np.save(run_dir / "genome_start.npy", np.asarray(state["mu"]))
+        if not a.resume:
+            config["start_genome_hash"] = genome_hash(state["mu"])
+            np.save(run_dir / "genome_start.npy", np.asarray(state["mu"]))
+        elif genome_hash(state["mu"]) != config["start_genome_hash"]:
+            raise SystemExit("Cannot recover without checkpoint: starting genome mismatch")
+
+    status, t0 = "running", time.monotonic()
+    metrics_path = run_dir / "metrics.jsonl"
+    metrics_text = metrics_path.read_text() if metrics_path.exists() else ""
+    if metrics_text and not metrics_text.endswith("\n"):
+        raise SystemExit("Cannot resume: metrics end with an incomplete record")
+    try:
+        history = [json.loads(line) for line in metrics_text.splitlines()]
+    except json.JSONDecodeError as error:
+        raise SystemExit(f"Cannot resume: invalid metrics JSON: {error}") from error
+    if any(not isinstance(row, dict) or type(row.get("gen")) is not int or row["gen"] != i
+           for i, row in enumerate(history)):
+        raise SystemExit("Cannot resume: metrics generations must be contiguous from zero")
+    if not 0 <= state["t"] <= len(history) <= args["generations"]:
+        raise SystemExit("Cannot resume: checkpoint generation, metrics count, and target are inconsistent")
+
+    checkpoint_generation = state["t"]
+    # Verify the entire flushed tail before advancing the checkpoint or touching existing records.
+    for previous in history[checkpoint_generation:]:
+        if a.max_train_seconds is not None and time.monotonic() - t0 >= a.max_train_seconds:
+            raise SystemExit("Training limit reached during metrics recovery; existing artifacts unchanged")
+        recovered, row = es_step(state, evaluate, args["pop"], args["worlds"], args["sigma"], args["lr"])
+        if {k: v for k, v in previous.items() if k != "seconds"} != row:
+            raise SystemExit(f"Cannot resume: metric mismatch at generation {previous['gen']}; existing artifacts unchanged")
+        state = recovered
+    if a.resume:
+        config["resumes"][-1]["replayed_generations"] = state["t"] - checkpoint_generation
     write_json(run_dir / "config.json", config)
 
     summary_path = run_dir / "summary.json"
-    status, t0 = "running", time.monotonic()
     write_json(summary_path, dict(status=status, generation=state["t"]))
     try:
-        with open(run_dir / "metrics.jsonl", "a") as mf:
+        with open(metrics_path, "a") as mf:
             while state["t"] < args["generations"]:
+                if a.max_train_seconds is not None and time.monotonic() - t0 >= a.max_train_seconds:
+                    status = "interrupted"
+                    print("training time limit reached; checkpointing, resume with --resume", run_dir)
+                    break
                 g0 = time.monotonic()
                 state, row = es_step(state, evaluate, args["pop"], args["worlds"], args["sigma"], args["lr"])
                 row["seconds"] = round(time.monotonic() - g0, 3)
@@ -163,11 +196,6 @@ def main():
                     print(format_row(row) + f" | {row['seconds']:.1f}s/gen", flush=True)
                 if state["t"] % args["checkpoint_every"] == 0:
                     save_checkpoint(run_dir, state)
-                if (a.max_train_seconds is not None and state["t"] < args["generations"]
-                        and time.monotonic() - t0 >= a.max_train_seconds):
-                    status = "interrupted"
-                    print("training time limit reached; checkpointing, resume with --resume", run_dir)
-                    break
         if state["t"] >= args["generations"]:
             status = "finished"
     except KeyboardInterrupt:

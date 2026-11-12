@@ -21,6 +21,7 @@ class RunnerSchedulingTests(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.now = 0.0
         self.real_step = runner.es_step
+        self.crash_at = None
 
     def evaluate(self, population, world_keys, development_keys):
         p, worlds = len(population), len(world_keys)
@@ -29,6 +30,8 @@ class RunnerSchedulingTests(unittest.TestCase):
                     counts=np.ones((p, worlds, 2, 2)), survived=np.full((p, worlds), 0.5))
 
     def step(self, *args):
+        if args[0]["t"] == self.crash_at:
+            raise RuntimeError("simulated hard stop")
         result = self.real_step(*args)
         self.now += 2.0
         return result
@@ -50,6 +53,79 @@ class RunnerSchedulingTests(unittest.TestCase):
 
     def read_json(self, directory, name):
         return json.loads((directory / name).read_text())
+
+    def crash_run(self, name, crash_at=4):
+        self.crash_at = crash_at
+        try:
+            with self.assertRaisesRegex(RuntimeError, "simulated hard stop"):
+                self.invoke("--name", name, "--generations", "7", "--pop", "4", "--worlds", "2",
+                            "--checkpoint-every", "3")
+        finally:
+            self.crash_at = None
+        return self.run_dir(name)
+
+    def test_hard_stop_replays_verified_tail_without_duplicate_rows(self):
+        self.invoke("--name", "whole", "--generations", "7", "--pop", "4", "--worlds", "2")
+        whole = self.run_dir("whole")
+        for checkpoint, tail in ((0, 1), (3, 1), (3, 2)):
+            with self.subTest(checkpoint=checkpoint, tail=tail):
+                directory = self.crash_run(f"crash-{checkpoint}-{tail}", crash_at=checkpoint + tail)
+                if checkpoint:
+                    self.assertEqual(runner.load_checkpoint(directory)["t"], checkpoint)
+                else:
+                    self.assertFalse((directory / "checkpoint.npz").exists())
+                path = directory / "metrics.jsonl"
+                rows = [json.loads(line) for line in path.read_text().splitlines()]
+                for row in rows[checkpoint:]:
+                    row["seconds"] = 999.0
+                path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+                original = (directory / "metrics.jsonl").read_bytes()
+                self.invoke("--resume", str(directory))
+                metrics = (directory / "metrics.jsonl").read_bytes()
+                self.assertTrue(metrics.startswith(original))
+                without_timing = lambda data: [{k: v for k, v in json.loads(line).items() if k != "seconds"}
+                                                for line in data.splitlines()]
+                self.assertEqual(without_timing(metrics), without_timing((whole / "metrics.jsonl").read_bytes()))
+                for key, value in runner.load_checkpoint(whole).items():
+                    np.testing.assert_array_equal(value, runner.load_checkpoint(directory)[key], err_msg=key)
+                resume = self.read_json(directory, "config.json")["resumes"][-1]
+                self.assertEqual(resume["replayed_generations"], tail)
+
+    def test_replay_mismatch_does_not_modify_any_existing_artifact(self):
+        directory = self.crash_run("mismatch", crash_at=5)
+        path = directory / "metrics.jsonl"
+        rows = [json.loads(line) for line in path.read_text().splitlines()]
+        rows[-1]["fit_mean"] += 1.0
+        path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+        before = {p.name: p.read_bytes() for p in directory.iterdir()}
+        with self.assertRaisesRegex(SystemExit, "metric mismatch.*4"):
+            self.invoke("--resume", str(directory))
+        self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+
+    def test_invalid_metric_history_is_rejected_before_writing(self):
+        directory = self.crash_run("invalid-history")
+        path = directory / "metrics.jsonl"
+        rows = path.read_text().splitlines()
+        for invalid in ("\n".join(rows[:2]) + "\n", "\n".join(rows + [rows[-1]]) + "\n",
+                        "\n".join(rows[:-1] + ["{"]) + "\n", "\n".join(rows)):
+            with self.subTest(invalid=invalid):
+                path.write_text(invalid)
+                before = {p.name: p.read_bytes() for p in directory.iterdir()}
+                with self.assertRaisesRegex(SystemExit, "metrics"):
+                    self.invoke("--resume", str(directory))
+                self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+
+    def test_recovery_limit_preserves_unverified_tail(self):
+        directory = self.crash_run("recovery-limit", crash_at=5)
+        before = {p.name: p.read_bytes() for p in directory.iterdir()}
+        with self.assertRaisesRegex(SystemExit, "limit.*recovery"):
+            self.invoke("--resume", str(directory), "--max-train-seconds", "1")
+        self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+        self.invoke("--resume", str(directory), "--max-train-seconds", "4")
+        summary = self.read_json(directory, "summary.json")
+        self.assertEqual((summary["status"], summary["generation"]), ("interrupted", 5))
+        self.assertEqual((directory / "metrics.jsonl").read_bytes(), before["metrics.jsonl"])
+        self.assertEqual(runner.load_checkpoint(directory)["t"], 5)
 
     def test_bounded_resume_matches_uninterrupted_state_and_metrics(self):
         self.invoke("--name", "whole", "--generations", "5", "--pop", "4", "--worlds", "2")
