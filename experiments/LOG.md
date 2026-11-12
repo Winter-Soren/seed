@@ -335,3 +335,34 @@ Entries E000–E007 come from the Claude design session, before this repo existe
 - The owner noticed commits attributed to `@seed`. Repository review verified the authenticated GitHub account and private repository owner are `Winter-Soren`; incorrect per-command author overrides affected 19 commits. This was commit metadata, not use of the wrong authenticated account.
 - Repo-local author name and privacy-preserving GitHub noreply identity are now set for verified `Winter-Soren`; effective author and committer values were checked. Future commits must use that verified local identity without the old per-command overrides. The next documentation commit will be checked through GitHub's API for both author and committer attribution to `Winter-Soren`.
 - Existing history is not rewritten, and experiment source-commit references remain unchanged. No experiment artifacts or protocol were changed for this correction.
+
+## Authorized historical attribution repair · 2026-11-12
+- The owner subsequently authorized repairing historical commit authorship. The metadata-only repair is complete: local and private-remote `main` are `f73f336ae4c838d05cdbdb3383af097baaa8a1fe`. GitHub verified author and committer attribution to `Winter-Soren` for all 19 repaired commits and the audit tip (20/20).
+- The committed mapping is `experiments/COMMIT_ATTRIBUTION_MAP_20261112.json`. Verification covered 21 mapped historical commits: trees, messages, timestamps, and topology unchanged; the signed root was preserved. Original history remains locally under `refs/provenance/pre-author-repair-20261112` and in a verified ignored bundle. No past LOG entry or run configuration was edited; original source hashes remain the audit references.
+- For active A2, recorded initial `62376af0b74f7d788d8033ce8582972a47a8fa9d` maps to `9d56387ee7d8a7ef711474c176ceecdd9f2a7e5f`, and recorded resume `1a7c4e3fb8b4896030b73737ae9dea631bf3500c` maps to `fa013b8de9f0a2546f098f383a678344c433cfac`, with identical trees. Future commits use the verified repo-local owner identity without overrides. README now links the map and research evidence; AGENTS adds ongoing verified-result README updates and verified-identity guidance. A2 remains running pending final evaluation; no gate decision is recorded here.
+
+## E103 A seed 2 result and full gate decision · 2026-11-12 · PASS in 3 of 3 seeds
+- **Evidence:** `runs/20261112-102755_E103-A-blank-s2/summary.json` reports `finished`, generation 200, 128 evaluation worlds, and hash `17191e72299b25cc`. The coordinator verified 200 contiguous finite metric rows 0–199, finite checkpoint `t=200`, exact checkpoint-mean/final-genome equality and hash, exact starting evaluation match to E100 blank seed 2, and unchanged original 34,156-byte metric prefix. Recorded initial and resume commits were clean, with zero replayed generations; their unchanged-tree mappings are recorded above. Independent review confirmed all three A results, unchanged experimental settings, and EVAL v1 seed 123.
+
+| A2 evaluation | Fitness | Accuracy first | Accuracy second | Survival | Eaten |
+|---|---:|---:|---:|---:|---:|
+| Final learning | 14.8671875 | 0.6937439441680908 | 0.8225241303443909 | 0.849609375 | 15094 |
+| Final frozen | -0.103515625 | 0.4872659146785736 | 0.516306459903717 | 0.36328125 | 7885 |
+| Start learning | 0.23046875 | 0.5063009858131409 | 0.5091709494590759 | 0.388671875 | 8122 |
+
+- **Preregistered gate:** At least 2 of 3 evolution seeds must have final-learning accuracy gain strictly greater than 0.03 and clearly lower frozen fitness. All three satisfy both conditions; the observed lesion gaps are large rather than borderline. No numerical cutoff or evaluation protocol was changed after seeing results.
+
+| Evolution seed | Accuracy gain | Learning-minus-frozen fitness | Per-seed decision |
+|---|---:|---:|---|
+| 0 | 0.13528215885162354 | 16.302734375 | Pass |
+| 1 | 0.14218151569366455 | 15.283203125 | Pass |
+| 2 | 0.12878018617630005 | 14.970703125 | Pass |
+
+- **Interpretation:** E103 A passes in 3/3 seeds: blank-start evolution reached the preregistered learning criterion, with a substantial fitness benefit from enabled plasticity under fixed EVAL v1. This is a replicated result in the toy domain, not proof of general intelligence. Pooled eating-event accuracy can reflect survival/encounter selection, and the lesion jointly disables Hebbian and predictor updates while leaving recurrent state and energy feedback. It does not isolate individual hidden-rule inference. The matched independently evolved no-plasticity comparison C is still pending; do not claim its outcome.
+- **Timing:** A2 continuation exited 0 after 2,180.0340983 seconds, ending 13:07:43.1038774 Asia/Calcutta. Combined A2 process wall time is 9,426.8830626 seconds, excluding the between-segment pause; retained training metric times total 9,361.847 seconds. Final `train_minutes=35.33` covers only the continuation segment. Session 92965 and monitor 155 are terminal; authoritative CIM found zero experiment processes.
+- **Resources:** C: 10.58/373.67 GiB and D: 46.36/100 GiB free; free physical/virtual memory about 10.17/7.75 GiB. No run artifacts were manually edited for this result record. Regenerated and checked eleven finished results rows, completed README's three-seed table and limitations, and retained the reviewed AGENTS guidance additions.
+- **Decision:** Commit/push the completed A2 run and coherent research records using the verified owner identity, then mark the new milestone `v0.1-a-evalv1`. Keep the original B/C comparison queue; no roadmap expansion before those core comparisons. Next run:
+  ```powershell
+  .\.venv\Scripts\python.exe scripts/run_experiment.py --name E104-B-bio-s0 --start biology --sigma 0.05 --lr 0.02 --generations 200 --seed 0 --max-train-seconds 7200
+  ```
+  B's preregistered baseline remains E100 biology learning fitness 5.12890625; final fitness must strictly exceed it in at least 2 of 3 evolution seeds. Preserve EVAL v1, low priority, one compute job, D: temporary files, and the existing storage/wall-time safeguards.

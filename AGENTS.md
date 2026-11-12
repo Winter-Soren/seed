@@ -7,8 +7,8 @@ Start by reading `HANDOFF.md` (context and next steps) and `experiments/LOG.md` 
 1. **Pre-register.** Before running, add a LOG entry with an ID (E101, E102…), the hypothesis, the exact command, and what result would count as pass and as fail.
 2. **Commit code first.** `scripts/run_experiment.py` refuses to run from uncommitted code. Every run records its git commit, so any result can be traced to the exact code. Use `--allow-dirty` only for throwaway debugging, and say so in the LOG.
 3. **Run** only through `scripts/run_experiment.py`, with 3 seeds for any claim.
-4. **Record.** Run `python scripts/summarize.py`, then complete the LOG entry: the result (numbers copied from `summary.json`), the interpretation, and the decision taken next.
-5. **Commit and push** the run folders, `results/RESULTS.md` and the LOG together. Commit message format: `E1xx: <one-line result>`.
+4. **Record.** Run `python scripts/summarize.py`, then complete the LOG entry: the result (numbers copied from `summary.json`), the interpretation, and the decision taken next. After verified scientific results or gate decisions, update `README.md` with the results, interpretation, limitations, and next experiments. Operational fixes alone are not breakthroughs.
+5. **Commit and push** the run folders, `results/RESULTS.md`, `README.md` and the LOG together. Commit message format: `E1xx: <one-line result>`.
 
 ## Integrity rules
 
@@ -17,6 +17,7 @@ Start by reading `HANDOFF.md` (context and next steps) and `experiments/LOG.md` 
 - Never tune on the evaluation worlds (EVAL v1: `test_genome`, seed 123, 128 worlds). Don't change the protocol without versioning it (see HANDOFF §2).
 - Report what happened, not what was hoped. If a gate fails, say so plainly.
 - Tag milestones: `git tag v0.1-evalv1` and so on, after each gate decision.
+- **Use verified commit identity.** Use the owner's verified GitHub account and its privacy-preserving noreply identity from repo-local Git config. Never invent generic author overrides. After identity changes, push a scoped commit and verify GitHub's author and committer attribution match that account.
 
 ## Compute and safety limits (it's the owner's laptop)
 
