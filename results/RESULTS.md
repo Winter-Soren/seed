@@ -13,3 +13,4 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261112-022728_E100-biology-s1 | finished | biology | yes | 0/0 | 128×8 | 0.1/0.1 |  | 5.13 | 5.13 | 0.00 | 0.57 → 0.67 | b4f467d |
 | 20261112-022814_E100-biology-s2 | finished | biology | yes | 0/0 | 128×8 | 0.1/0.1 |  | 5.13 | 5.13 | 0.00 | 0.57 → 0.67 | b4f467d |
 | 20261112-023245_E103-A-blank-s0 | finished | blank | yes | 200/200 | 128×8 | 0.1/0.1 |  | -0.00 | 16.59 | 0.29 | 0.70 → 0.84 | 71126a6 |
+| 20261112-050319_E103-A-blank-s1 | finished | blank | yes | 200/200 | 128×8 | 0.1/0.1 |  | 0.41 | 15.38 | 0.09 | 0.69 → 0.83 | e0befc6 |

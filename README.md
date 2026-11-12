@@ -2,7 +2,7 @@
 
 An experiment in AI that is never trained with labels. Tiny genomes (155 numbers) hold *rules* for growing a brain. Each brain learns on its own during its life through local, dopamine-like plasticity. Evolution keeps the genomes whose brains learn fastest in worlds they have never seen.
 
-**Status (v0, 12 Nov 2026):** The first blank-start evolution seed meets the preregistered learning criterion after 200 generations under EVAL v1 (128 worlds, evaluation seed 123). Food-choice accuracy rises from **70.49% to 84.02%** within life; fitness is **16.591796875**, falling to **0.2890625** with plasticity disabled. **The three-seed gate is still pending:** seeds 1 and 2 must finish before a replicated conclusion. See [results](results/RESULTS.md) and the [lab notebook](experiments/LOG.md).
+**Status (v0, 12 Nov 2026):** Both completed blank-start evolution seeds meet the preregistered learning criterion after 200 generations under EVAL v1 (128 worlds, evaluation seed 123). Seed 0 improves food-choice accuracy **70.49% → 84.02%**, with fitness **16.59** versus frozen **0.29**; seed 1 improves **68.76% → 82.98%**, with fitness **15.38** versus frozen **0.09**. **The full three-seed gate remains pending seed 2.** See [results](results/RESULTS.md) and the [lab notebook](experiments/LOG.md).
 
 The zero-generation biology reference scores 5.12890625 fitness, frozen 0, with accuracy 56.86% → 67.39%. Its three runs are deterministic duplicates, not independent trials. Evolution from the biology prior and the matched no-plasticity evolutionary control remain untested.
 
