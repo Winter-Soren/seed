@@ -1,58 +1,129 @@
 # Seed
 
-An experiment in AI that is never trained with labels. Tiny genomes (155 numbers) hold *rules* for growing a brain. Each brain learns on its own during its life through local, dopamine-like plasticity. Evolution keeps the genomes whose brains learn fastest in worlds they have never seen.
+**Evolve the rules. Grow a brain. Learn during a life.**
 
-## Research progress
+Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Verified milestone, 12 Nov 2026: experiment A passes in 3 of 3 evolution seeds.** After 200 generations from a blank start, all three genomes exceed the preregistered within-life accuracy gain and lose most of their fitness when plasticity is disabled. The gate required at least 2 of 3 seeds.
+**Latest verified milestone · 12 Nov 2026:** evolution from a blank start passed the preregistered learning criterion in **3 of 3 seeds** after 200 generations. Food-choice accuracy rose by **12.88–14.22 percentage points** between the first and second halves of life, and fitness fell sharply when plasticity was disabled. [See the evidence](#what-the-experiments-show).
 
-Results use **EVAL v1**: 128 worlds, evaluation seed 123. Fitness is food minus poison per agent; accuracy measures food choices among eating events. Frozen means the same genome evaluated with plasticity disabled.
+![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
-| A evolution seed | Learning fitness | Frozen fitness | Accuracy first → second | Gain (percentage points) |
-|---|---:|---:|---|---:|
-| 0 | 16.59 | 0.29 | 70.49% → 84.02% | +13.53 |
-| 1 | 15.38 | 0.09 | 68.76% → 82.98% | +14.22 |
-| 2 | 14.87 | -0.10 | 69.37% → 82.25% | +12.88 |
+*Final genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. Independently evolved nonplastic controls remain pending.*
 
-The fitness lesion gaps are **16.30**, **15.28**, and **14.97**. All three seeds exceed the required accuracy gain of 3 percentage points and show a large fitness benefit from enabled plasticity. Evolution from a blank start has reached this project's first replicated learning criterion.
+## Three loops, one experiment
 
-The unevolved biology reference scores **5.13**, frozen **0.00**, with accuracy **56.86% → 67.39%**. Its three evaluations repeat the same genome and worlds, so they are repeatability checks, not independent trials. The random starting genomes score **-0.004**, **0.414**, and **0.230**.
+| Loop | What happens |
+|---|---|
+| **Evolution · across generations** | Evolution strategies search for genomes whose agents eat more food than poison. |
+| **Development · at birth** | Each genome grows a brain from wiring rules; related agents share a genome but have different random wiring. |
+| **Learning · during life** | Local Hebbian and prediction updates change the brain using its experience, including energy change and prediction error. |
 
-**Limits:** this is a small grid-world task. Pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together while preserving recurrent state and energy feedback. It supports useful plasticity here, not isolated proof of hidden-rule inference or general intelligence. Superiority over an independently evolved no-plasticity control remains untested.
+The current world is a 16 × 16 wrapping grid. Four related agents live for up to 300 steps, seeing only a local patch. Each world has a hidden rule assigning its two object types to food or poison. This makes a compact test bed for studying the interaction of evolution, development and plasticity.
 
-**Next comparisons:** run the preregistered biology-start experiment B and matched no-plasticity evolutionary control C. B tests whether gentle evolution improves the biology reference; C tests the matched evolutionary comparison with plasticity disabled. Both remain pending, with settings and evaluation worlds fixed. Complete these core comparisons before expanding the roadmap.
+## Try a small run
 
-Values here are rounded. Exact values are in the [seed 0 summary](runs/20261112-023245_E103-A-blank-s0/summary.json), [seed 1 summary](runs/20261112-050319_E103-A-blank-s1/summary.json), [seed 2 summary](runs/20261112-102755_E103-A-blank-s2/summary.json), and [lab notebook](experiments/LOG.md); the generated [results table](results/RESULTS.md) indexes all runs. Update this section after verified results and gate decisions.
+Open a terminal in the root of your local Seed checkout; cloning this private repository requires access. Start with a clean Git checkout and no other Seed job running. The verified environment is **Python 3.12 with JAX on CPU, on Windows**. The macOS/Linux commands are provided for setup but have not been exercised here.
 
-**Provenance:** the [commit mapping](experiments/COMMIT_ATTRIBUTION_MAP_20261112.json) connects recorded source hashes to commits with corrected authorship. Historical run records retain their original hashes; the authorship repair does not change experiment contents.
-
-## Run it
-From a checkout on D:, use PowerShell to keep the environment and installation temporary files off C:.
+**Windows · PowerShell**
 
 ```powershell
-New-Item -ItemType Directory -Force .tmp | Out-Null
-$env:TEMP = $env:TMP = (Resolve-Path .tmp).Path
-$env:PYTHONUTF8 = '1'
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements.txt
 .\.venv\Scripts\python.exe scripts/run_experiment.py --name smoke --quick
 .\.venv\Scripts\python.exe scripts/summarize.py
 ```
 
-The `--quick` smoke run is an integration check only, not research evidence.
+**macOS or Linux**
 
-Preregister research runs in `experiments/LOG.md` and commit before launching. Run one long job at low priority, check free space on both drives, and preserve all run folders. The laptop benchmark averaged about 49.5 seconds per generation after the first; 200 generations need bounded sessions for headroom:
+```bash
+python3 -m venv .venv
+.venv/bin/python -m pip install --no-cache-dir -r requirements.txt
+.venv/bin/python scripts/run_experiment.py --name smoke --quick
+.venv/bin/python scripts/summarize.py
+```
+
+<details>
+<summary>Owner's Windows laptop: keep setup temporary files on D:</summary>
+
+Use a checkout on D: and run these PowerShell commands before setup:
+
+```powershell
+New-Item -ItemType Directory -Force .tmp | Out-Null
+$env:TEMP = $env:TMP = (Resolve-Path .tmp).Path
+$env:PYTHONUTF8 = '1'
+```
+
+</details>
+
+Open the new folder under `runs/`: `config.json` records the settings and source commit, `metrics.jsonl` records training progress, and `summary.json` contains the final learning and frozen evaluations. The generated [results table](results/RESULTS.md) gives an overview of recorded runs.
+
+The `--quick` smoke run is an **integration check only**, not research evidence. To explore the completed research without running compute, start with the [A seed 0 summary](runs/20261112-023245_E103-A-blank-s0/summary.json) and the results below. A [Colab notebook](notebooks/Seed_v0.ipynb) is also available; its runtime is not benchmarked here.
+
+## What the experiments show
+
+**Experiment A: can evolution discover useful plasticity from a blank start? — PASS, 3/3 seeds.**
+
+Each seed evolved for 200 generations. Final genomes were evaluated with **EVAL v1: 128 worlds, evaluation seed 123**. Fitness is food minus poison per agent. Accuracy is the fraction of eating events that consume food, pooled across agents. “Frozen” evaluates the same genome with plasticity disabled.
+
+| A evolution seed | Learning fitness | Frozen fitness | Accuracy first → second half | Gain (percentage points) |
+|---|---:|---:|---|---:|
+| 0 | 16.59 | 0.29 | 70.49% → 84.02% | +13.53 |
+| 1 | 15.38 | 0.09 | 68.76% → 82.98% | +14.22 |
+| 2 | 14.87 | -0.10 | 69.37% → 82.25% | +12.88 |
+
+The gate required a within-life accuracy gain **strictly above 3 percentage points** and clearly lower frozen fitness in at least 2 of 3 evolution seeds. All three passed. Their learning-minus-frozen fitness gaps are **16.30**, **15.28**, and **14.97**. This is the project's first replicated learning milestone, tagged `v0.1-a-evalv1`.
+
+For context, the unevolved **biology prior**—a hand-set genome—scores **5.13** fitness, frozen **0.00**, with accuracy **56.86% → 67.39%**. Its three evaluations repeat the same genome and worlds, so they check repeatability rather than provide independent trials. The three random starting genomes score **-0.004**, **0.414**, and **0.230**.
+
+**What this establishes:** evolved genomes benefit substantially from enabled plasticity in this toy domain. **What remains open:** pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together, while preserving recurrent state and energy feedback. It does not isolate hidden-rule inference by individual agents or establish general intelligence. Comparison with independently evolved nonplastic agents is still pending.
+
+Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-023245_E103-A-blank-s0/summary.json), [seed 1](runs/20261112-050319_E103-A-blank-s1/summary.json), and [seed 2](runs/20261112-102755_E103-A-blank-s2/summary.json) summaries; hypotheses, checks and decisions are in the [lab notebook](experiments/LOG.md).
+
+## Progress and next milestones
+
+![Raw population-mean training fitness across all 200 generations for each of the three A evolution seeds.](results/figures/a-training-progress.svg)
+
+*All 600 recorded population means are shown without smoothing. These are fitness values of perturbed training genomes on changing training worlds, not fixed-genome learning trajectories or final EVAL v1 scores.*
+
+The [figure data](results/figures/a-figure-data.json) links each series to its run artifacts. Rebuild both figures from the repository root with `.\.venv\Scripts\python.exe tools/build_readme_figures.py`; the [generator](tools/build_readme_figures.py) validates its inputs before plotting.
+
+| Stage | Question | Status |
+|---|---|---|
+| **E100 · References** | How do random genomes and the biology prior behave under EVAL v1? | Measured; starting points recorded. |
+| **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
+| **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 in progress; seeds 1/2 pending. No final result yet. |
+| **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | All three seeds pending. |
+
+The queue is **B0 → C0 → C1 → C2 → B1 → B2**. C is the next direct test of the plasticity comparison: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+
+Complete these core comparisons before selecting the next research direction. Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities. Evaluation settings and worlds stay fixed.
+
+## Reproduce a research run
+
+Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
+
+The laptop benchmark averaged about **49.5 seconds per generation** after the first. Use bounded sessions for a 200-generation run:
 
 ```powershell
 .\.venv\Scripts\python.exe scripts/run_experiment.py --name A-blank --start blank --generations 200 --seed 0 --max-train-seconds 7200
 .\.venv\Scripts\python.exe scripts/run_experiment.py --resume 'runs/<run-folder>' --max-train-seconds 7200
 ```
 
-Resume only an unfinished run; its original generation target is retained. The training limit excludes setup/evaluation and can overrun by one generation, so monitor full wall time to stay below 3 hours. Scientific comparisons require evolution seeds 0, 1, and 2. The session's launch guards require at least 5 GiB free on C: and 10 GiB on D:.
+For macOS/Linux, use `.venv/bin/python` in place of `.\.venv\Scripts\python.exe` in these commands and the figure rebuild command.
 
-In Colab, open `notebooks/Seed_v0.ipynb`, set the runtime to T4 GPU, then Run all.
+Resume only an unfinished run; its original generation target is retained. The training limit excludes setup/evaluation and can overrun by one generation. Run one long job at low priority and monitor full wall time to keep each invocation below **3 hours**. Disk and memory supervision is separate from the runner's training limit; use the current safeguards recorded in the [lab notebook](experiments/LOG.md).
 
-## Where things are
-- `HANDOFF.md`: full context and plan for agents continuing the work
-- `AGENTS.md`: research and integrity rules
-- `seed/seed.py`: the whole engine (JAX)
+A0 took **144.61 minutes** and A2 **157.11 minutes** of combined process wall time, excluding pauses between segments. A1's full wall time is unknown because its first process ended abnormally. A resumed run's final `train_minutes` covers its last segment, not the full experiment.
+
+## Explore the project
+
+| Path | Contents |
+|---|---|
+| [seed/seed.py](seed/seed.py) | JAX engine: world, brain development, plasticity, evolution and evaluation. |
+| [scripts/run_experiment.py](scripts/run_experiment.py) | Tracked, resumable experiment runner. |
+| [results/RESULTS.md](results/RESULTS.md) | Generated index of recorded runs. |
+| [experiments/LOG.md](experiments/LOG.md) | Append-only hypotheses, results, incidents and decisions. |
+| [HANDOFF.md](HANDOFF.md) | Original design and roadmap; use the current lab notebook for subsequent results and decisions. |
+| [AGENTS.md](AGENTS.md) | Research, integrity and resource rules. |
+
+**Provenance:** the [commit mapping](experiments/COMMIT_ATTRIBUTION_MAP_20261112.json) connects recorded source hashes to commits with corrected authorship. Historical run records retain their original hashes; the authorship repair does not change experiment contents. The repository remains private.
