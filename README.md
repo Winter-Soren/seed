@@ -30,7 +30,7 @@ Open a terminal in the root of your local Seed checkout; cloning this private re
 python -m venv .venv
 .\.venv\Scripts\python.exe -m pip install --no-cache-dir -r requirements.txt
 .\.venv\Scripts\python.exe scripts/run_experiment.py --name smoke --quick
-.\.venv\Scripts\python.exe scripts/summarize.py
+.\.venv\Scripts\python.exe -X utf8 scripts/summarize.py
 ```
 
 **macOS or Linux**
@@ -79,6 +79,10 @@ For context, the unevolved **biology prior**—a hand-set genome—scores **5.13
 
 Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-023245_E103-A-blank-s0/summary.json), [seed 1](runs/20261112-050319_E103-A-blank-s1/summary.json), and [seed 2](runs/20261112-102755_E103-A-blank-s2/summary.json) summaries; hypotheses, checks and decisions are in the [lab notebook](experiments/LOG.md).
 
+**Experiment B: can gentle evolution improve the biology prior? — one successful seed; full gate pending.**
+
+After 200 generations, B seed 0 reached **15.90** learning fitness versus the prior's **5.13**, an improvement of **10.77**. Frozen fitness was **-0.05**, a learning-minus-frozen gap of **15.95**. Pooled food-choice accuracy rose **68.57% → 83.53%** (**+14.96 percentage points**). This seed exceeds B's preregistered reference; the full gate requires success in at least 2 of 3 seeds and awaits B1/B2. Exact measurements are in the [B seed 0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json).
+
 ## Progress and next milestones
 
 ![Raw population-mean training fitness across all 200 generations for each of the three A evolution seeds.](results/figures/a-training-progress.svg)
@@ -91,10 +95,10 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 |---|---|---|
 | **E100 · References** | How do random genomes and the biology prior behave under EVAL v1? | Measured; starting points recorded. |
 | **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
-| **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 in progress; seeds 1/2 pending. No final result yet. |
+| **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
 | **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | All three seeds pending. |
 
-The queue is **B0 → C0 → C1 → C2 → B1 → B2**. C is the next direct test of the plasticity comparison: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+The remaining queue is **C0 → C1 → C2 → B1 → B2**. C is the next direct test of the plasticity comparison: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
 
 Complete these core comparisons before selecting the next research direction. Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities. Evaluation settings and worlds stay fixed.
 
