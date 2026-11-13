@@ -8,7 +8,7 @@ Can evolution discover rules that let a new brain learn from experience? Seed ex
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
-*Final genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. Independently evolved nonplastic controls remain pending.*
+*Final genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. The first independently evolved nonplastic control is complete; two seeds remain.*
 
 ## Three loops, one experiment
 
@@ -88,13 +88,25 @@ The gate required a within-life accuracy gain **strictly above 3 percentage poin
 
 For context, the unevolved **biology prior**—a hand-set genome—scores **5.13** fitness, frozen **0.00**, with accuracy **56.86% → 67.39%**. Its three evaluations repeat the same genome and worlds, so they check repeatability rather than provide independent trials. The three random starting genomes score **-0.004**, **0.414**, and **0.230**.
 
-**What this establishes:** evolved genomes benefit substantially from enabled plasticity in this toy domain. **What remains open:** pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together, while preserving recurrent state and energy feedback. It does not isolate hidden-rule inference by individual agents or establish general intelligence. Comparison with independently evolved nonplastic agents is still pending.
+**What this establishes:** evolved genomes benefit substantially from enabled plasticity in this toy domain. **What remains open:** pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together, while preserving recurrent state and energy feedback. It does not isolate hidden-rule inference by individual agents or establish general intelligence. The three-seed comparison with independently evolved nonplastic agents remains incomplete.
 
 Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-023245_E103-A-blank-s0/summary.json), [seed 1](runs/20261112-050319_E103-A-blank-s1/summary.json), and [seed 2](runs/20261112-102755_E103-A-blank-s2/summary.json) summaries; hypotheses, checks and decisions are in the [lab notebook](experiments/LOG.md).
 
 **Experiment B: can gentle evolution improve the biology prior? — one successful seed; full gate pending.**
 
 After 200 generations, B seed 0 reached **15.90** learning fitness versus the prior's **5.13**, an improvement of **10.77**. Frozen fitness was **-0.05**, a learning-minus-frozen gap of **15.95**. Pooled food-choice accuracy rose **68.57% → 83.53%** (**+14.96 percentage points**). This seed exceeds B's preregistered reference; the full gate requires success in at least 2 of 3 seeds and awaits B1/B2. Exact measurements are in the [B seed 0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json).
+
+**Experiment C: how does plastic evolution compare with a matched nonplastic control? — seed 0 complete; two seeds pending.**
+
+Both seed 0 runs completed 200 generations from the same starting genome, with matched settings except the plasticity switch, and were evaluated under EVAL v1.
+
+| Evolution seed | A learning fitness | C nonplastic fitness (`final_frozen`) | A − C |
+|---|---:|---:|---:|
+| 0 | 16.59 | 0.49 | +16.11 |
+
+This first pair supports a plasticity advantage in this seed; C1/C2 are needed before a replicated conclusion. C's `final_learning=0.0625` re-enables updates and is diagnostic only. Exact measurements are in the [C seed 0 summary](runs/20261112-224133_E105-C-noplastic-s0/summary.json).
+
+C0's frozen accuracy still rose **50.42% → 53.99%** (**+3.57 percentage points**), despite both synaptic update mechanisms being disabled. This exceeds the 3-point accuracy threshold and shows why accuracy gain alone cannot establish synaptic learning. Recurrent state and energy feedback remain active, and pooled scores can reflect survival or encounter selection.
 
 ## Progress and next milestones
 
@@ -109,9 +121,9 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 | **E100 · References** | How do random genomes and the biology prior behave under EVAL v1? | Measured; starting points recorded. |
 | **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
 | **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
-| **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | All three seeds pending. |
+| **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Seed 0 favors A; seeds 1/2 pending. |
 
-The remaining queue is **C0 → C1 → C2 → B1 → B2**. C is the next direct test of the plasticity comparison: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+The remaining queue is **C1 → C2 → B1 → B2**. C1/C2 will test whether the first paired result repeats: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
 
 Complete these core comparisons before selecting the next research direction. Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities. Evaluation settings and worlds stay fixed.
 
