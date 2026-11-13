@@ -468,3 +468,9 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   ```powershell
   .\.venv\Scripts\python.exe scripts/run_experiment.py --name E105-C-noplastic-s1 --start blank --no-plastic --generations 200 --seed 1 --max-train-seconds 7200
   ```
+
+## E105 C seed 1 launch · 2026-11-14
+- C0's completed result was pushed as `9e7427018f4d9c4aa051e32dd21310070b6da750`; private remote and GitHub author/committer `Winter-Soren` verified. C1 started at 00:31:33.6903146 Asia/Calcutta, launcher PID 15560 (parent PID 23096) and child PID 43892; CIM verified both experiment processes as `BelowNormal`. Supervising session 3401 is live. Folder `runs/20261114-003141_E105-C-noplastic-s1` records creation at 00:31:41.666170 and clean source `9e7427018f4d9c4aa051e32dd21310070b6da750`.
+- **Matched control verified:** Blank start, seed 1, `no_plastic=true`, target 200, population 128, eight training worlds, sigma/lr 0.1/0.1, EVAL v1 128 worlds, default configuration with no overrides. The coordinator verified A1-matched scientific settings except the plasticity switch and exact starting-genome equality/hash `47c2bad05aa97822`.
+- **Resources and supervision:** Startup C:/D: 22.11/46.34 GiB free, physical/available commit 8.85/13.59 GiB. TEMP/TMP on D:, PYTHONUTF8 enabled, training budget 7,200 seconds, checkpoint every 10 generations, full-wall limit 10,500 seconds. Startup disk/physical/commit requirements 10/8/10 GiB and runtime C:/D:/commit floors 5/10/3 GiB remain unchanged. Output `.tmp/E105-C-noplastic-s1-segment1.stdout`/`.stderr`; stderr empty at verification.
+- **Current state:** Goal active, C1 running; no C1 result claimed. Finish C1, then C2 → B1 → B2. Compare C1 `final_frozen` with paired A1 `final_learning`; re-enabled C1 `final_learning` remains diagnostic only. Commit only LOG/TASK_STATE, excluding live C1 and result/source files, then hold writes until outcome.
