@@ -504,3 +504,9 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   ```powershell
   .\.venv\Scripts\python.exe scripts/run_experiment.py --name E105-C-noplastic-s2 --start blank --no-plastic --generations 200 --seed 2 --max-train-seconds 7200
   ```
+
+## E105 C seed 2 launch · 2026-11-14
+- C1's completed result was pushed as `e2ca461891490d5e186dbf468278149fe451bf3d`; private remote and GitHub author/committer `Winter-Soren` verified. C2 started at 03:16:05.6389348 Asia/Calcutta, launcher PID 34416 (parent PID 48548) and child PID 48180, both verified `BelowNormal`; supervising session 20707 is live. Folder `runs/20261114-031608_E105-C-noplastic-s2` records creation at 03:16:08.504634 and clean source `e2ca461891490d5e186dbf468278149fe451bf3d`.
+- **Matched control verified:** Blank start, seed 2, `no_plastic=true`, target 200, population 128, eight training worlds, sigma/lr 0.1/0.1, EVAL v1 128 worlds, no configuration overrides. The coordinator verified A2-matched scientific settings except plasticity and exact starting-genome equality/hash `03202e865b4a4255`.
+- **Resources and supervision:** Startup C:/D: 22.13/46.34 GiB, physical/available commit 9.41/14.41 GiB. At 64 seconds, physical/available commit was 6.68/11.13 GiB; runtime available commit remained above 3 GiB. TEMP/TMP on D:, PYTHONUTF8 enabled, budget 7,200 seconds, checkpoint 10, full-wall limit 10,500 seconds. All startup and runtime guards remain unchanged. Output `.tmp/E105-C-noplastic-s2-segment1.stdout`/`.stderr`; stderr empty at verification.
+- **Current state:** Goal active, C2 running; no C2 result claimed. Finish C2, then planned B1/B2. EVAL v2 approval and thesis deadline/artifact questions remain pending. C2 `final_frozen` is the control score against A2 `final_learning`; re-enabled C2 `final_learning` is diagnostic only. Commit LOG/TASK_STATE only, excluding live artifacts and result/source files, then hold writes until outcome.
