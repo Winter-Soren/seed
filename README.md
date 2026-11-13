@@ -18,6 +18,19 @@ Can evolution discover rules that let a new brain learn from experience? Seed ex
 | **Development · at birth** | Each genome grows a brain from wiring rules; related agents share a genome but have different random wiring. |
 | **Learning · during life** | Local Hebbian and prediction updates change the brain using its experience, including energy change and prediction error. |
 
+```mermaid
+flowchart TD
+    G["Evolution: sample perturbed genomes"] --> D["Development: grow fresh brains"]
+    D --> L["Lifetime: recurrent activity, actions and energy feedback"]
+    L --> U["Local Hebbian and predictor weight updates<br/>Disabled in control C"]
+    U -->|next step| L
+    L -->|end of life| F["Fitness: food minus poison eaten<br/>Averaged over agents and worlds"]
+    F --> E["ES: rank fitness and update the genome mean"]
+    E -->|next generation| G
+```
+
+Evolution changes the genome between generations; lifetime weight changes are not inherited. **Control C keeps recurrent state and energy feedback active while disabling both local weight updates.** After A's 3/3 result, this control asks whether independently evolved nonplastic agents can match its performance.
+
 The current world is a 16 × 16 wrapping grid. Four related agents live for up to 300 steps, seeing only a local patch. Each world has a hidden rule assigning its two object types to food or poison. This makes a compact test bed for studying the interaction of evolution, development and plasticity.
 
 ## Try a small run
