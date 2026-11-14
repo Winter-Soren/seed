@@ -1,0 +1,47 @@
+{
+  "source_commit": "a0cb4a767c95c9d564859f880ac7a260c55753e7",
+  "jax_version": "0.12.0.1",
+  "cfg": {
+    "G": 5,
+    "M": 2,
+    "T": 12,
+    "R": 1,
+    "n_items": 4,
+    "H": 6,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "genome_seed": 17,
+  "mod": [
+    1.0,
+    0.3,
+    0.1
+  ],
+  "world_seed": 11,
+  "development_seed": 29,
+  "rule": 1,
+  "evaluation_worlds": 4,
+  "evaluation_seed": 123,
+  "evaluations": {
+    "both": {
+      "fitness": 0.5,
+      "acc_first": 0.5714285969734192,
+      "acc_second": 0.625,
+      "survived": 0.875,
+      "eaten": 22
+    },
+    "frozen": {
+      "fitness": 0.25,
+      "acc_first": 0.5714285969734192,
+      "acc_second": 0.5,
+      "survived": 0.875,
+      "eaten": 22
+    }
+  },
+  "engine_sha256": "44157c109b7539e48882f01b4ac158e6b5357ea948a54abafd944aaaf8284c43"
+}

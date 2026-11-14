@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     rows = []
+    diagnostics = []
     for d in sorted((ROOT / "runs").glob("*/")):
         cfg_p, sum_p = d / "config.json", d / "summary.json"
         if not cfg_p.exists():
@@ -18,6 +19,20 @@ def main():
         cfg = json.loads(cfg_p.read_text())
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
+        if a.get("eval_protocol", "v1") == "v2":
+            ev = s.get("evaluations", {})
+            b, h, f = (ev.get(k, {}).get("fitness") for k in ("both", "hebbian_only", "frozen"))
+            differences = [b - h, h - f] if None not in (b, h, f) else [None, None]
+            ratio = (h - f) / (b - f) if None not in (b, h, f) and b > f else None
+            number = lambda value: "" if value is None else f"{value:.6f}"
+            diagnostics.append("| " + " | ".join([
+                d.name, s.get("status", ""), a["start"],
+                *map(number, (b, h, f, *differences)), "undefined" if ratio is None else number(ratio),
+                str(s.get("eval_seed", cfg.get("eval_seed", ""))),
+                str(s.get("eval_worlds", cfg.get("eval_worlds", ""))),
+                (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else ""),
+            ]) + " |")
+            continue
         fl, ff, sl = s.get("final_learning"), s.get("final_frozen"), s.get("start_learning")
         f = lambda r, k, p=2: f"{r[k]:.{p}f}" if r else ""
         acc = lambda r: f"{r['acc_first']:.2f} → {r['acc_second']:.2f}" if r else ""
@@ -36,9 +51,17 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if diagnostics:
+        out += ["## EVAL v2 diagnostics", "",
+                "Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables "
+                "predictor updates; Frozen disables both. Differences are signed fitness changes. "
+                "Retained benefit = (Hebbian-only − Frozen) / (Both − Frozen), defined only when Both > Frozen.", "",
+                "| Run | Status | Source genome | Both | Hebbian-only | Frozen | Both − Hebbian-only | "
+                "Hebbian-only − Frozen | Retained benefit | Eval seed | Eval worlds | Commit |",
+                "|---" * 12 + "|", *diagnostics, ""]
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
-    print(f"wrote results/RESULTS.md with {len(rows)} runs")
+    print(f"wrote results/RESULTS.md with {len(rows) + len(diagnostics)} runs")
 
 
 if __name__ == "__main__":

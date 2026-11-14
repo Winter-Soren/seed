@@ -16,7 +16,7 @@ Examples
   python scripts/run_experiment.py --resume runs/20261112-101500_A-blank --max-train-seconds 7200
   python scripts/run_experiment.py --name dense --cfg n_items=32 --cfg decay=0.002
 """
-import argparse, datetime, hashlib, json, math, os, platform, subprocess, sys, time
+import argparse, datetime, hashlib, io, json, math, os, platform, subprocess, sys, time
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -66,6 +66,29 @@ def start_genome(spec, c):
     raise SystemExit("--start must be blank, biology or file:<path.npy>")
 
 
+def validate_eval_protocol(args, cfg_overrides):
+    protocol = args.get("eval_protocol", "v1")
+    if protocol not in ("v1", "v2"):
+        raise SystemExit(f"Unknown evaluation protocol: {protocol!r}")
+    if protocol == "v2" and (args["generations"] != 0 or not args["start"].startswith("file:")
+                             or args["eval_worlds"] != 128 or cfg_overrides
+                             or args.get("quick") or args["no_plastic"]):
+        raise SystemExit("EVAL v2 requires a saved file: genome, zero generations, 128 evaluation worlds, "
+                         "default Cfg, and no --quick or --no-plastic")
+    return protocol
+
+
+def diagnostic_genome(data, c):
+    mean = np.load(io.BytesIO(data), allow_pickle=False)
+    if (not isinstance(mean, np.ndarray) or mean.shape != (genome_size(c),)
+            or not np.issubdtype(mean.dtype, np.floating)):
+        raise SystemExit("EVAL v2 requires a flat floating-point genome of the expected size")
+    mean = np.asarray(mean, dtype=np.float32)
+    if not np.isfinite(mean).all():
+        raise SystemExit("EVAL v2 requires a finite genome")
+    return mean
+
+
 def save_checkpoint(run_dir, state):
     tmp = run_dir / "checkpoint.tmp.npz"
     with open(tmp, "wb") as f:
@@ -98,6 +121,8 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--no-plastic", action="store_true", help="evolve with all plasticity disabled (control)")
     ap.add_argument("--eval-worlds", type=int, default=128)
+    ap.add_argument("--eval-protocol", choices=("v1", "v2"), default=None,
+                    help="v1 (default), or the v2 saved-genome Both/Hebbian-only/Frozen diagnostic")
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
                     help="per-invocation training limit; stop after a complete generation and checkpoint "
@@ -119,23 +144,40 @@ def main():
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
         args = config["args"]
+        if a.eval_protocol is not None and a.eval_protocol != args.get("eval_protocol", "v1"):
+            raise SystemExit("Cannot change evaluation protocol on resume")
+        protocol = validate_eval_protocol(args, config["cfg_overrides"])
         config.setdefault("resumes", []).append(dict(at=datetime.datetime.now().isoformat(), git=git,
                                                      max_train_seconds=a.max_train_seconds))
     else:
         args = vars(a).copy()
+        args["eval_protocol"] = a.eval_protocol or "v1"
         if a.quick:
             args.update(generations=3, pop=8, worlds=2, eval_worlds=4, checkpoint_every=1)
+        overrides = parse_cfg(a.cfg)
+        protocol = validate_eval_protocol(args, overrides)
+        if protocol == "v2":
+            source_bytes = Path(args["start"][5:]).read_bytes()
+            file_mean = diagnostic_genome(source_bytes, Cfg())
         stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
         run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
         run_dir.mkdir(parents=True, exist_ok=False)
-        config = dict(args=args, cfg_overrides=parse_cfg(a.cfg), git=git,
+        config = dict(args=args, cfg_overrides=overrides, git=git,
                       created=datetime.datetime.now().isoformat(),
                       machine=dict(platform=platform.platform(), python=sys.version.split()[0],
                                    jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+        if protocol == "v2":
+            config.update(eval_protocol="v2", eval_seed=123, eval_worlds=128,
+                          source_genome_sha256=hashlib.sha256(source_bytes).hexdigest())
 
     c = Cfg(**config["cfg_overrides"])
     config["cfg"] = c._asdict()
     config["genome_size"] = genome_size(c)
+    if protocol == "v2" and a.resume:
+        source_bytes = (run_dir / "genome_start.npy").read_bytes()
+        if hashlib.sha256(source_bytes).hexdigest() != config.get("source_genome_sha256"):
+            raise SystemExit("Cannot resume EVAL v2: saved source genome SHA-256 mismatch")
+        file_mean = diagnostic_genome(source_bytes, c)
     plastic = not args["no_plastic"]
     evaluate, _ = make_evaluator(c, args["worlds"], plastic)
 
@@ -143,13 +185,19 @@ def main():
         state = load_checkpoint(run_dir)
         print(f"resuming {run_dir.name} at generation {state['t']}")
     else:
-        mean = start_genome(args["start"], c)
+        mean = file_mean if protocol == "v2" else start_genome(args["start"], c)
         state = es_init(c, mean, args["seed"])
         if not a.resume:
             config["start_genome_hash"] = genome_hash(state["mu"])
-            np.save(run_dir / "genome_start.npy", np.asarray(state["mu"]))
+            if protocol == "v2":
+                (run_dir / "genome_start.npy").write_bytes(source_bytes)
+            else:
+                np.save(run_dir / "genome_start.npy", np.asarray(state["mu"]))
         elif genome_hash(state["mu"]) != config["start_genome_hash"]:
             raise SystemExit("Cannot recover without checkpoint: starting genome mismatch")
+    if protocol == "v2" and (genome_hash(file_mean) != config["start_genome_hash"]
+                             or not np.array_equal(np.asarray(state["mu"]), file_mean)):
+        raise SystemExit("Cannot resume EVAL v2: checkpoint differs from saved source genome")
 
     status, t0 = "running", time.monotonic()
     metrics_path = run_dir / "metrics.jsonl"
@@ -208,13 +256,24 @@ def main():
     if status == "finished":
         np.save(run_dir / "genome_final.npy", np.asarray(state["mu"]))
         n = args["eval_worlds"]
-        start = jnp.asarray(np.load(run_dir / "genome_start.npy"))
         summary["eval_worlds"] = n
-        summary["final_learning"] = test_genome(state["mu"], c, n_worlds=n, plastic=True)
-        summary["final_frozen"] = test_genome(state["mu"], c, n_worlds=n, plastic=False)
-        summary["start_learning"] = test_genome(start, c, n_worlds=n, plastic=True)
-        for k in ("final_learning", "final_frozen", "start_learning"):
-            r = summary[k]
+        if protocol == "v2":
+            summary.update(eval_protocol="v2", eval_seed=123, evaluations={})
+            for name, hebbian, predictor in (("both", True, True), ("hebbian_only", True, False),
+                                             ("frozen", False, False)):
+                result = test_genome(state["mu"], c, n_worlds=n, seed=123,
+                                     plastic=hebbian, predictor_plastic=predictor)
+                if not all(math.isfinite(value) for value in result.values()):
+                    raise ValueError(f"Nonfinite EVAL v2 result in {name}")
+                summary["evaluations"][name] = result
+            evaluations = summary["evaluations"]
+        else:
+            start = jnp.asarray(np.load(run_dir / "genome_start.npy"))
+            summary["final_learning"] = test_genome(state["mu"], c, n_worlds=n, plastic=True)
+            summary["final_frozen"] = test_genome(state["mu"], c, n_worlds=n, plastic=False)
+            summary["start_learning"] = test_genome(start, c, n_worlds=n, plastic=True)
+            evaluations = {k: summary[k] for k in ("final_learning", "final_frozen", "start_learning")}
+        for k, r in evaluations.items():
             print(f"{k:15s} fitness {r['fitness']:6.2f} | acc {r['acc_first']:.2f} -> {r['acc_second']:.2f}")
     write_json(summary_path, summary)
     print("run folder:", run_dir)
