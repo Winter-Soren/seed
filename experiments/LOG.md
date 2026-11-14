@@ -1324,3 +1324,46 @@ Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has 
   seven-genome/128-world/seed8211 panel remains unexecuted pending owner approval under
   AGENTS.md's requirement to ask before changing the evaluation protocol. This is a
   concrete reviewable decision, not evidence of adaptation or a need to repeat E108.
+
+## E108-R-F · 2026-11-15 · Owner-approved REVERSAL v1 final registration
+
+- **Direct owner approval:** Oversight reports the human answered exactly “Approve
+  REVERSAL v1” to the full seven-genome/four-condition/128-world seed8211,T300/flip150
+  question in chat01a1cc51-9df7-7683-b657-a8fc74b2be90. This supersedes pending-approval
+  notes above. This registration is prospective; no final8211 world has run yet.
+- **Fixed protocol:** Default Cfg, saved A0/A1/A2 + blank0/1/2 + one unique biology
+  prior; noflip/flip at150 crossed with Both-learning/Frozen. Matched world, development
+  and action keys; no reset/announcement; both local learning rules jointly enabled or
+  disabled; structural mode off. Recovery uses complete25-step windows, >=5 encounters,
+  >=70% food choices and survival through window end. Preserve every null/censored,
+  zero, negative and mixed result, all per-agent/encounter/survival data and source bytes.
+- **Preregistered hypothesis/falsifiers unchanged:** For each A genome, enabled updates
+  improve post-flip fitness over frozen and last-window food accuracy exceeds first
+  window accuracy; both must hold in >=2/3 A seeds, with >=5 pooled encounters in those
+  windows. Insufficient observations are unestablished. Report all signed differences,
+  per-agent window-hit/censor results and references without tuning or a new gate.
+- **Compute release:** A0 is the full resource benchmark, not a smoke. Main E109 worker
+  37928 continues; one peer evaluation only. Recheck startup C/D>=10GiB, physical>=8GiB,
+  available commit>=10GiB; runtime C/D/availablecommit floors5/10/5GiB, BelowNormal,
+  owned-process stop only, D:temp and existing1200s per-panel guard cap. If A0's actual
+  cost/integrity fits these guards, proceed with all remaining six in the exact order
+  below without another owner or release question, using resource checks rather than
+  scores. No new population job. Preserve failures and all old artifacts.
+- **Exact approved commands:**
+
+```powershell
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A0 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A1 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A2 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank0 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022439_E100-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank1 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022514_E100-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank2 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022552_E100-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-biology --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022641_E100-biology-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+```
+
+- **Source and publication:** Tested code is unchanged from the accepted66+16 review;
+  published-main74f4ba8 was merged only for research-history reconciliation. No test or
+  smoke loop is repeated. Pin a stable software-ready tip for main's PR/review/merge,
+  keep pushes main-owned and origin push-disabled, then record live PID/guard/source,
+  actual A0 cost and all final outcomes. Commit complete artifacts/RESULTS/README/LOG
+  with verified local identity; never force-push or delete branch/tag history.

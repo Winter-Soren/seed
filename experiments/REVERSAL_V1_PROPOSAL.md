@@ -1,8 +1,10 @@
-# REVERSAL v1: changing-world panel ready for review
+# REVERSAL v1: approved changing-world panel
 
-Software prototype and tiny direct fixtures are authorized. **Final scientific panels
-are not authorized yet.** No final seed8211 world has been evaluated. E108 is complete
-and pinned separately at9766538; its conditions and artifacts remain unchanged.
+Owner approval received 2026-11-15: **“Approve REVERSAL v1”** to the concrete seven-genome,
+four-condition,128-world seed8211,T300/flip150 panel. The final scientific panel is now
+authorized, with A0 first as the resource benchmark and the remaining six released
+sequentially on resource/integrity checks. No final seed8211 world had been evaluated
+when this approval was registered. E108 remains complete and pinned at9766538.
 
 ## Fixed intervention and comparisons
 
@@ -63,7 +65,7 @@ still reflects encounter/survival selection; frozen brains retain recurrent stat
 energy feedback. No significance, new-task transfer, SOTA, sleep benefit, structural
 benefit or AGI claim is proposed. This measurement definition itself needs owner review.
 
-## Exact final commands (pending protocol approval and compute slot)
+## Exact final commands (approved 2026-11-15)
 
 Run sequentially through the committed runner, starting with A0 as a resource benchmark.
 The input genomes are the immutable E100/E103 artifacts; record their full file SHA-256

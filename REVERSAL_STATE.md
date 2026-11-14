@@ -43,9 +43,17 @@ no_complete_window, with no fabricated hit. Source/start/final bytes unchanged.
 Final read-only audit also verified all7 original E108 manifests and inherited LOG
 prefix. Evidence experiments/E108_R_FINAL_AUDIT.json. RESULTS rebuilt with37 runs.
 
-All authorized prototype work is complete. Commit final evidence/records, report tip
-to main for push/PR/review/merge (push stays disabled here). No scientific reversal
-panel; proposed T300/flip150/128worlds/7genomes/seed8211 remains unexecuted pending
-owner protocol approval. No further experiments or original-run edits are needed.
-Development seed8210; final8211 stays untouched pending owner protocol approval.
-No tuning on EVAL123 or BROADERfinal8109. E107 merge/testing remains with main.
+Software complete;66 integrated/16 review tests accepted. Published-main74f4ba8 merged
+as1d419c6 for E109/provenance records only; controller/runner/tests unchanged from4569062.
+Owner approved REVERSALv1 directly in oversight on2026-11-15. All seven final panels
+are authorized: A0 resource benchmark then A1,A2,blank0,blank1,blank2,biology sequentially
+based only on resource/integrity checks, without tuning or repeat approval. Exact
+registration/commands appended in LOG. Final seed is exactly8211 (development8210).
+
+Next: commit prospective approval, pin lab/reversal-software-ready for main-owned
+push/PR/review/merge, then run full A0 from clean source. Main E109worker37928 stayslive.
+One peer eval at a time; startup C/D10GiB,physical8/commit10GiB; runtime C5/D10/commit5,
+BelowNormal,D:temp,owned-tree stop,1200s cap. Report livePID/source and measured cost.
+If first full panel succeeds under guards, execute all six remaining registered commands.
+Preserve all null/censor/negative/mixed results and input bytes; no old run edits.
+Push remains DISABLED here; no final8211 world has run at this registration checkpoint.
