@@ -534,3 +534,54 @@ Entries E000–E007 come from the Claude design session, before this repo existe
   .\.venv\Scripts\python.exe scripts/run_experiment.py --resume runs/20261114-031608_E105-C-noplastic-s2 --max-train-seconds 7200
   ```
 - **Approval update:** The owner explicitly answered “Approve EVAL v2 diagnostic” to the proposed comparison of Both/Hebbian-only/Frozen on saved evolved A0/A1/A2 plus existing references, after C controls, without new evolution or changed worlds. EVAL v1 stays intact and B1/B2 remain planned. This supersedes earlier pending-approval notes; it is authorization, not a result or completed preregistration. Exact commands, implementation checks, and the diagnostic hypothesis will be registered before execution. Goal active; complete C2 first.
+
+
+## E105 C seed 2 segment 3 recovery verified · 2026-11-14
+- Segment 3 started at 22:17:23.7912407 Asia/Calcutta, launcher PID 9412 (parent 25988), child 26612, both verified `BelowNormal`; supervisor 65252 is live. Config resume at 22:17:30.964829 records clean source `77788fb9fef3089753feba7e811236bdb162b4a5`, `replayed_generations=8`. That preservation commit is pushed to private `Winter-Soren/seed` with owner author/committer attribution verified. Previous supervisor 51854/monitor g18:85 remain stale; segment-2 exit/end/full-wall timing is still unavailable.
+- **Replay and preservation:** The coordinator verified eight-row replay before new writes, 179 contiguous rows 0–178, and both unchanged metric prefixes: 36,318 bytes at SHA-256 `69ddecab6437e1338dfcca4ca5393533f375fe8cf0ae525c60f7f5de55c57bda`, and the original 32,216 bytes at `9a77bc5440b5868684739c10031b398beee36c90440fe09fd30dc65679159643`. Unique outputs `.tmp/E105-C-noplastic-s2-segment3.stdout`/`.stderr`; stderr empty, prior outputs preserved. Target 200 and all scientific settings unchanged; no final C2 evaluation yet.
+- **Resources and next action:** Startup C:/D: 14.60/46.34 GiB, physical/available commit 12.22/13.84 GiB; elapsed-444-second snapshot C:/D: 14.59/46.34 GiB, physical/available commit 9.72/10.70 GiB. Same D: temporary files, training budget 7,200 seconds, full-wall 10,500 seconds, checkpoint 10, and existing disk/memory guards. Monitor C2 to completion, then implement/test/commit the approved E106 panel below, execute all seven panels, and retain planned B1/B2. Publish only LOG/STATE now; exclude live run artifacts and other workers' files.
+- **Further owner direction recorded:** The coordinator verified the owner's request to pursue a measured state-of-the-art target and activity-dependent connection growth/pruning among existing neurons. Structural design is read-only in parallel; preserve the 155-number genome, default EVAL v1 compatibility, and run integrity, require fair weight-only controls, and preregister after review. No engine changes before C2/E106 are safe, no benefit claim, and no new-world protocol implicitly authorized. Oversight owns figures and `results/RESEARCH.md`.
+
+## E106 · 2026-11-14 · EVAL v2: separate predictor and Hebbian contributions
+
+- **Authorization and timing:** The owner explicitly approved EVAL v2 after the C controls: evaluate fixed saved A0/A1/A2 and existing references under Both, Hebbian-only, and Frozen, without new evolution or changed worlds. Complete and verify C2 first. EVAL v1 remains intact; B1/B2 remain planned. This is a diagnostic extension, not a roadmap gate.
+- **Question and hypotheses:** With each saved genome and its evaluation randomness held fixed, does adding predictor learning to Hebbian learning improve fitness, and does Hebbian learning without predictor learning improve fitness over frozen synapses? For each genome, `Both - Hebbian-only > 0` supports a positive predictor contribution conditional on Hebbian learning; zero or negative differences count against that positive contribution. `Hebbian-only - Frozen > 0` supports a positive Hebbian contribution with predictor learning disabled; zero or negative differences count against it. These are observed contributions in this architecture and toy domain, not universal necessity claims.
+- **Fixed panel:** Seven saved genomes: three independently evolved A genomes, three unique blank references, and one unique biology reference. Each run has zero evolutionary generations, default `Cfg`, 128 evaluation worlds, and evaluation seed 123. CLI seeds 0/1/2 record input provenance and do not change the fixed evaluation seed. All three conditions use matched world, development, and action random keys. Do not tune genomes, conditions, thresholds, or worlds from these results.
+- **Conditions and outputs:** Both uses `plastic=True, predictor=True`; Hebbian-only uses `plastic=True, predictor=False`; Frozen uses `plastic=False, predictor=False`. Each condition records all five existing metrics: fitness, first-half accuracy, second-half accuracy, survival, and eaten count. New config records the source file and its full binary SHA-256; summary explicitly identifies EVAL v2 and the condition labels. Old EVAL v1 results and run files remain unchanged.
+
+### Exact commands
+
+Run sequentially through the existing runner, after the implementation, validation checks, and this registration are committed from clean source:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-A-s0 --eval-protocol v2 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-A-s1 --eval-protocol v2 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-A-s2 --eval-protocol v2 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-blank-s0 --eval-protocol v2 --start file:runs/20261112-022439_E100-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-blank-s1 --eval-protocol v2 --start file:runs/20261112-022514_E100-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-blank-s2 --eval-protocol v2 --start file:runs/20261112-022552_E100-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E106-v2-biology --eval-protocol v2 --start file:runs/20261112-022641_E100-biology-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+```
+
+### Saved input file hashes
+
+These are SHA-256 hashes of the complete `.npy` files, distinct from the runner's short hash of genome-array bytes. Verified while preparing this registration:
+
+| Input | Source file | Full file SHA-256 |
+|---|---|---|
+| A0 | `runs/20261112-023245_E103-A-blank-s0/genome_final.npy` | `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53` |
+| A1 | `runs/20261112-050319_E103-A-blank-s1/genome_final.npy` | `35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899` |
+| A2 | `runs/20261112-102755_E103-A-blank-s2/genome_final.npy` | `f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6` |
+| Blank 0 | `runs/20261112-022439_E100-blank-s0/genome_final.npy` | `621e5a735e408e487653f7ffc15561be773fbd1053af847ef1bb633fd5243e07` |
+| Blank 1 | `runs/20261112-022514_E100-blank-s1/genome_final.npy` | `3ec510cab0205915614a7df2d3b217eca201972897842592fcef419b215e5d99` |
+| Blank 2 | `runs/20261112-022552_E100-blank-s2/genome_final.npy` | `c62051a478c75f3211645968e5a15bb64bcfcdb8f61c366357020f4cff8294b9` |
+| Biology | `runs/20261112-022641_E100-biology-s0/genome_final.npy` | `f39d8960f182b832e2700d6274e5d838d7a0f410add2b7753b6f259aba732108` |
+
+### Validation, interpretation, and budget
+
+- **Implementation checks before execution:** Preserve default EVAL v1 behavior; test explicit protocol/condition dispatch and labels, independent predictor disabling, and the behavioral invariant that predictor-only with Hebbian updates off matches Frozen. Rebuild the notebook if the engine changes. No diagnostic implementation is applied before C2 completes.
+- **Operational pass:** All seven panels complete with finite metrics; their saved input genomes remain byte-identical; Both and Frozen exactly reproduce all corresponding saved EVAL v1 final-learning and final-frozen metrics. A mismatch or nonfinite result fails validation: preserve the artifacts and halt scientific interpretation until the cause is resolved. Do not silently substitute a tolerance or overwrite previous results to pass this check.
+- **Report:** Publish every per-genome result and both signed fitness differences, including zero, negative, and mixed outcomes. Report the pattern across all three evolved A seeds only after all three are complete, then include all references in the completed seven-panel account. Also report the continuous retained-benefit ratio `(Hebbian-only - Frozen) / (Both - Frozen)` only when the denominator is positive; otherwise mark it undefined. Do not clip ratios, add a post-hoc “most benefit” threshold, invent a new gate, or claim statistical significance from this small fixed panel.
+- **Scientific limits:** This tests predictor learning, not removal of the predictor's static signal or all possible prediction mechanisms. Hebbian-only retains the rest of the architecture, including recurrence, energy feedback, and the modulation pathway. Pooled food-choice accuracy can reflect encounter and survival selection; accuracy gain alone does not establish a learning mechanism. The three biology E100 repeats are the same genome under the same fixed worlds, so only one is included as a reference, not three independent replicates.
+- **Compute:** Use the A0 panel first as the full-size timing benchmark. The seven-panel estimate of 4–6 minutes and conservative 10-minute provisional budget are extrapolations, not measurements. Keep one `BelowNormal` process at a time, D: temporary files, existing disk/memory guards, and the under-three-hour per-process limit; use the measured first panel to assess the remaining runtime. Preserve interrupted or failed folders. No extra evolution, new worlds, delayed-reward or eligibility-trace experiments, or state-of-the-art claim is part of E106.
+- **Result and next decision:** Pending. Summarize the actual panel, update README/LOG/RESULTS with findings and limitations, and commit/push the run folders with those records. Use the observed contribution pattern to choose the next single mechanistic question; any further protocol or goal extension still needs its applicable authorization. B1/B2 remain in the experiment queue.
