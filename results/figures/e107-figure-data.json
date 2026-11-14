@@ -1,0 +1,122 @@
+{
+  "source_sha256_normalization": "Replace CRLF with LF in source text bytes; all other bytes unchanged. Binary hashes use exact file bytes.",
+  "fitness_units": "Food minus poison eaten, averaged per agent",
+  "default_cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "input_scope": "All three saved E103 A genomes; 200 generations of evolution with weight learning and no structural updates. No evolution or tuning in these evaluations.",
+  "experiment": "E107",
+  "protocol": "structural-v1",
+  "worlds": 128,
+  "eval_seed": 123,
+  "eval_seed_basis": "Fixed by Structural v1 preregistration; not stored separately in these summaries.",
+  "structural_rule": {
+    "name": "activity-grow-prune-v1",
+    "interval": 10,
+    "prune_fraction": 0.01,
+    "extra_fanin": 1,
+    "stream_tag": 107,
+    "timing": "after brain tick; previous activity"
+  },
+  "runs": [
+    {
+      "evolution_seed": 0,
+      "run": "runs/20261114-232719_E107-structural-A-s0",
+      "source_commit": "ffc2c0a893d87849b97b69a6e9e7b86e4fd64449",
+      "input_genome": {
+        "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+        "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+      },
+      "source_sha256": {
+        "config.json": "92820ecf2cf6c0521ea49d5c5fa0dcfcbcec841aba7656270e3ebfa07fa9091b",
+        "summary.json": "ac6bc06a253e033029e86a517e128edc85b30749ba09bec5edc1f7cacfcda1c8",
+        "metrics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "checkpoint.npz": "b6336d9f44fe7cccce30cff067b47f4d9691679a1f0be6187e42c625d1d06a48"
+      },
+      "input_run_source_sha256": {
+        "config.json": "25760b759a4d901c33047048e5cc3cecf668a07eb5d7cb746fd34b08c53c78d0",
+        "summary.json": "0fde3bb0a23cff0a424a571becbec2719aa460db27314fa49af1e6821ac4feff"
+      },
+      "fitness": {
+        "Weight-only": 16.591796875,
+        "Weight+structure": 14.0,
+        "Frozen": 0.2890625
+      },
+      "structure_minus_weight_only": -2.591796875
+    },
+    {
+      "evolution_seed": 1,
+      "run": "runs/20261114-232924_E107-structural-A-s1",
+      "source_commit": "ffc2c0a893d87849b97b69a6e9e7b86e4fd64449",
+      "input_genome": {
+        "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+        "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+      },
+      "source_sha256": {
+        "config.json": "d48c4254b353c365c39c31ebbf94c3936dd4491d1b97c3d23737ea2e76d08337",
+        "summary.json": "0007d8e0af57dcd502650a7e81e66edf8581300f4598c0c4e9a8db7a5e70d631",
+        "metrics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+        "genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+        "checkpoint.npz": "1e46d6bb3d06a8dff19465a9983e70c3dac2296414df193a55cd742748543a3d"
+      },
+      "input_run_source_sha256": {
+        "config.json": "3dc8211e14bc7ab6084e76f47c7b09246e4bd7d94024819877f214151b4b619e",
+        "summary.json": "68038ab1d92fa5d0f8f3402cee876c4c786e4779ec37b977e406a0e9ae346898"
+      },
+      "fitness": {
+        "Weight-only": 15.376953125,
+        "Weight+structure": 13.953125,
+        "Frozen": 0.09375
+      },
+      "structure_minus_weight_only": -1.423828125
+    },
+    {
+      "evolution_seed": 2,
+      "run": "runs/20261114-233501_E107-structural-A-s2",
+      "source_commit": "ffc2c0a893d87849b97b69a6e9e7b86e4fd64449",
+      "input_genome": {
+        "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+        "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+      },
+      "source_sha256": {
+        "config.json": "b10bb632e9eb92f659bafb4ef45d947943c751e7c6050ed2139620479d89a71a",
+        "summary.json": "8199b7af7a61f7779854786ec595b4b79d8ebaf9362f80b8dcfbaff0fa39c76f",
+        "metrics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+        "genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+        "checkpoint.npz": "104b3351bae9ac0c2a35228ca02673d4bcdf1378d856bf351953d41885886d12"
+      },
+      "input_run_source_sha256": {
+        "config.json": "51921368d7c032eb6e0f953f3e1c61d1db9bf2545eb3f7aa7942a47882bf3af8",
+        "summary.json": "f62dd9b3658fb9153aa933f4054675c18a681b71890758336f51f94036c1273f"
+      },
+      "fitness": {
+        "Weight-only": 14.8671875,
+        "Weight+structure": 14.359375,
+        "Frozen": -0.103515625
+      },
+      "structure_minus_weight_only": -0.5078125
+    }
+  ]
+}

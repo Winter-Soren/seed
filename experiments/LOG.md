@@ -1367,3 +1367,9 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
   keep pushes main-owned and origin push-disabled, then record live PID/guard/source,
   actual A0 cost and all final outcomes. Commit complete artifacts/RESULTS/README/LOG
   with verified local identity; never force-push or delete branch/tag history.
+
+## E107/E108 visualization validation · 2026-11-15 · Completed results made inspectable
+- Added README figures for the three completed E107 A panels and three completed E108 A panels, with exact-data JSON, source hashes, SVG/PNG outputs and `tools/build_extension_figures.py`. Oversight reviewed the producer and rendered PNGs, validated all six input run folders, and verified byte-identical repeat outputs including a rebuild from a different working directory. Publication copied all seven approved files byte-identically into an isolated worktree and verified their SHA-256 hashes and README links. This visualizes existing results only: E107's tested rule reduced fixed-genome fitness in all three cases; E108's positive gaps concern the registered foraging-parameter family. No experiment was rerun, no run artifact changed, and no new scientific claim was added.
+
+## REVERSAL v1 publication reconciliation · 2026-11-15
+- Reconciled the reversal development/approval tail with the E107/E108 visualization-validation tail, preserving the shared history and both append sections. README and the current proposal now reflect the direct owner approval recorded in E108-R-F and preregistration 016a8e1; final results remain pending. Protocol scope, criteria and commands are unchanged. This is documentation reconciliation only; no experiments, tests or figures were rerun.

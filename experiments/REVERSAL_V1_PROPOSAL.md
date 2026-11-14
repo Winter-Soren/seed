@@ -63,7 +63,7 @@ per-agent window-hit/censor result and reference regardless of the criterion.
 This is a temporal rule-change test within the food/poison task family. Pooled accuracy
 still reflects encounter/survival selection; frozen brains retain recurrent state and
 energy feedback. No significance, new-task transfer, SOTA, sleep benefit, structural
-benefit or AGI claim is proposed. This measurement definition itself needs owner review.
+benefit or AGI claim is proposed. The owner approved this measurement definition on 2026-11-15.
 
 ## Exact final commands (approved 2026-11-15)
 
