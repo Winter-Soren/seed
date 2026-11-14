@@ -4,11 +4,11 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Latest verified milestone · 12 Nov 2026:** evolution from a blank start passed the preregistered learning criterion in **3 of 3 seeds** after 200 generations. Food-choice accuracy rose by **12.88–14.22 percentage points** between the first and second halves of life, and fitness fell sharply when plasticity was disabled. [See the evidence](#what-the-experiments-show).
+**Latest verified result · 14 Nov 2026:** evolution with lifetime plasticity outperformed matched evolution without local weight updates in **all 3 seed pairs** after 200 generations. Learning fitness was **14.87–16.59**, versus **0.12–0.64** for the independently evolved nonplastic controls. [See the evidence and limits](#what-the-experiments-show).
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
-*Final genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. Two independently evolved nonplastic controls are complete; seed 2 remains.*
+*Final A genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. The completed three-seed comparison with independently evolved nonplastic controls is reported below.*
 
 ## Three loops, one experiment
 
@@ -29,7 +29,7 @@ flowchart TD
     E -->|next generation| G
 ```
 
-Evolution changes the genome between generations; lifetime weight changes are not inherited. **Control C keeps recurrent state and energy feedback active while disabling both local weight updates.** After A's 3/3 result, this control asks whether independently evolved nonplastic agents can match its performance.
+Evolution changes the genome between generations; lifetime weight changes are not inherited. **Control C keeps recurrent state and energy feedback active while disabling both local weight updates.** After A's 3/3 result, this control compared independently evolved nonplastic agents with their matched A runs.
 
 The current world is a 16 × 16 wrapping grid. Four related agents live for up to 300 steps, seeing only a local patch. Each world has a hidden rule assigning its two object types to food or poison. This makes a compact test bed for studying the interaction of evolution, development and plasticity.
 
@@ -88,7 +88,7 @@ The gate required a within-life accuracy gain **strictly above 3 percentage poin
 
 For context, the unevolved **biology prior**—a hand-set genome—scores **5.13** fitness, frozen **0.00**, with accuracy **56.86% → 67.39%**. Its three evaluations repeat the same genome and worlds, so they check repeatability rather than provide independent trials. The three random starting genomes score **-0.004**, **0.414**, and **0.230**.
 
-**What this establishes:** evolved genomes benefit substantially from enabled plasticity in this toy domain. **What remains open:** pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together, while preserving recurrent state and energy feedback. It does not isolate hidden-rule inference by individual agents or establish general intelligence. The three-seed comparison with independently evolved nonplastic agents remains incomplete.
+**What this establishes:** evolved genomes benefit substantially from enabled plasticity in this toy domain. **What remains open:** pooled accuracy can rise through survival or encounter selection as well as individual learning. The lesion disables Hebbian and predictor updates together, while preserving recurrent state and energy feedback. It does not isolate hidden-rule inference by individual agents or establish general intelligence. The completed independent-evolution comparison follows below.
 
 Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-023245_E103-A-blank-s0/summary.json), [seed 1](runs/20261112-050319_E103-A-blank-s1/summary.json), and [seed 2](runs/20261112-102755_E103-A-blank-s2/summary.json) summaries; hypotheses, checks and decisions are in the [lab notebook](experiments/LOG.md).
 
@@ -96,18 +96,21 @@ Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-02
 
 After 200 generations, B seed 0 reached **15.90** learning fitness versus the prior's **5.13**, an improvement of **10.77**. Frozen fitness was **-0.05**, a learning-minus-frozen gap of **15.95**. Pooled food-choice accuracy rose **68.57% → 83.53%** (**+14.96 percentage points**). This seed exceeds B's preregistered reference; the full gate requires success in at least 2 of 3 seeds and awaits B1/B2. Exact measurements are in the [B seed 0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json).
 
-**Experiment C: how does plastic evolution compare with a matched nonplastic control? — seeds 0/1 complete; seed 2 pending.**
+**Experiment C: how does plastic evolution compare with a matched nonplastic control? — complete; all 3 seed pairs favor plastic evolution.**
 
-Each completed A/C pair ran for 200 generations from the same starting genome, with matched settings except the plasticity switch, and was evaluated under EVAL v1.
+Each A/C pair ran for 200 generations from the same starting genome, with matched settings except the plasticity switch, and was evaluated under EVAL v1.
 
 | Evolution seed | A learning fitness | C nonplastic fitness (`final_frozen`) | A − C |
 |---|---:|---:|---:|
 | 0 | 16.59 | 0.49 | +16.11 |
 | 1 | 15.38 | 0.12 | +15.25 |
+| 2 | 14.87 | 0.64 | +14.23 |
 
-Both observed pairs favor plastic evolution; the full planned three-seed comparison awaits C2. C's `final_learning` re-enables updates and is diagnostic only: **0.0625** for C0 and **0.169921875** for C1. Exact measurements are in the [C seed 0 summary](runs/20261112-224133_E105-C-noplastic-s0/summary.json) and [C seed 1 summary](runs/20261114-003141_E105-C-noplastic-s1/summary.json).
+All three paired differences favor plastic evolution **within the shared 155-number developmental encoding and matched 200-generation budget**. Comparisons with other static recurrent networks of matched capacity remain untested; this three-seed panel is not a statistical-significance claim or a new roadmap gate.
 
-C0's frozen accuracy still rose **50.42% → 53.99%** (**+3.57 percentage points**), despite both synaptic update mechanisms being disabled. This exceeds the 3-point accuracy threshold and shows why accuracy gain alone cannot establish synaptic learning. Recurrent state and energy feedback remain active, and pooled scores can reflect survival or encounter selection.
+C's `final_learning` re-enables updates and is diagnostic only: **0.0625** for C0, **0.169921875** for C1, and **0.087890625** for C2. Exact measurements are in the [C seed 0 summary](runs/20261112-224133_E105-C-noplastic-s0/summary.json), [C seed 1 summary](runs/20261114-003141_E105-C-noplastic-s1/summary.json), and [C seed 2 summary](runs/20261114-031608_E105-C-noplastic-s2/summary.json).
+
+C0's frozen accuracy still rose **50.42% → 53.99%** (**+3.57 percentage points**), and C2's rose **50.87% → 54.43%** (**+3.56 percentage points**), despite both synaptic update mechanisms being disabled. Both exceed the 3-point accuracy threshold and show why accuracy gain alone cannot establish synaptic learning. Recurrent state and energy feedback remain active, and pooled scores can reflect survival or encounter selection.
 
 C1's frozen accuracy rose **49.74% → 51.94%** (**+2.20 percentage points**); the same interpretation limits apply.
 
@@ -124,11 +127,18 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 | **E100 · References** | How do random genomes and the biology prior behave under EVAL v1? | Measured; starting points recorded. |
 | **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
 | **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
-| **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Seeds 0/1 favor A; seed 2 pending. |
+| **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Complete; all 3 seed pairs favor A within the matched encoding and budget. |
+| **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Approved and preregistered; implementation underway, results pending. |
 
-The remaining queue is **C2 → B1 → B2**. C2 will complete the planned matched comparison: report A's learning fitness minus C's frozen fitness for each seed, retaining mixed outcomes if they occur. B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+The next priorities are **E106's seven diagnostic panels → connection growth/pruning implementation and direct tests → a preregistered comparison with weight-only learning**. **B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
 
-Complete these core comparisons before selecting the next research direction. Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities. Evaluation settings and worlds stay fixed.
+The approved **E106 · EVAL v2** diagnostic will compare Both, Hebbian-only and Frozen conditions on the three saved A genomes, three blank references and one biology reference, without new evolution or changed evaluation worlds. Implementation is underway; results are pending, and EVAL v1 remains unchanged.
+
+A design is ready for the owner's requested activity-dependent connection growth and pruning among existing neurons. Implementation is pending and follows the complete E106 panel. Direct tests must verify rewiring; a fair weight-only comparison must measure any benefit. The work must preserve compatibility with existing 155-number genomes and default EVAL v1 behavior.
+
+Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities.
+
+The [research map](results/RESEARCH.md) compares Seed with related published work and proposes falsifiable next experiments. The results above are project milestones; novelty and competitive state-of-the-art performance remain unestablished.
 
 ## Reproduce a research run
 
