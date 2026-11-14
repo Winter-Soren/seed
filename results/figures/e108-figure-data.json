@@ -1,0 +1,186 @@
+{
+  "source_sha256_normalization": "Replace CRLF with LF in source text bytes; all other bytes unchanged. Binary hashes use exact file bytes.",
+  "fitness_units": "Food minus poison eaten, averaged per agent",
+  "default_cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "input_scope": "All three saved E103 A genomes; 200 generations of evolution with weight learning and no structural updates. No evolution or tuning in these evaluations.",
+  "experiment": "E108",
+  "protocol": "broader-v1",
+  "split": "final",
+  "worlds": 128,
+  "eval_seed": 8109,
+  "conditions": {
+    "control": {},
+    "sparse": {
+      "n_items": 12
+    },
+    "dense": {
+      "n_items": 36
+    },
+    "low-cost": {
+      "decay": 0.0015
+    },
+    "high-cost": {
+      "decay": 0.006
+    }
+  },
+  "runs": [
+    {
+      "evolution_seed": 0,
+      "run": "runs/20261114-231716_E108-final-A0",
+      "source_commit": "a45f51aa6d22010f56214ca73c2830c3019746e8",
+      "input_genome": {
+        "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+        "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+      },
+      "source_sha256": {
+        "config.json": "e50598bf6647c1f47a00a9bf52439314f4cb3ee89cdfbfcc81d550aebc854b09",
+        "summary.json": "b217f13d72d0d1920991dcec0a30b89ced04e9afc092e453a41af3eb2a091190"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+      },
+      "input_run_source_sha256": {
+        "config.json": "25760b759a4d901c33047048e5cc3cecf668a07eb5d7cb746fd34b08c53c78d0",
+        "summary.json": "0fde3bb0a23cff0a424a571becbec2719aa460db27314fa49af1e6821ac4feff"
+      },
+      "conditions": {
+        "control": {
+          "learning_fitness": 14.763671875,
+          "frozen_fitness": 0.314453125,
+          "learning_minus_frozen_fitness": 14.44921875
+        },
+        "sparse": {
+          "learning_fitness": 5.099609375,
+          "frozen_fitness": 0.044921875,
+          "learning_minus_frozen_fitness": 5.0546875
+        },
+        "dense": {
+          "learning_fitness": 18.404296875,
+          "frozen_fitness": 0.470703125,
+          "learning_minus_frozen_fitness": 17.93359375
+        },
+        "low-cost": {
+          "learning_fitness": 14.708984375,
+          "frozen_fitness": 0.1484375,
+          "learning_minus_frozen_fitness": 14.560546875
+        },
+        "high-cost": {
+          "learning_fitness": 13.13671875,
+          "frozen_fitness": 0.43359375,
+          "learning_minus_frozen_fitness": 12.703125
+        }
+      }
+    },
+    {
+      "evolution_seed": 1,
+      "run": "runs/20261114-232930_E108-final-A1",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_genome": {
+        "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+        "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+      },
+      "source_sha256": {
+        "config.json": "b32a206067648dfbe869d560004997fcb7a3744f15a08319cf17b1e438de26aa",
+        "summary.json": "12854779b0c69639c8c831a434125242a55de598c14cabfefb95b1bc9cd2b968"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+        "genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+      },
+      "input_run_source_sha256": {
+        "config.json": "3dc8211e14bc7ab6084e76f47c7b09246e4bd7d94024819877f214151b4b619e",
+        "summary.json": "68038ab1d92fa5d0f8f3402cee876c4c786e4779ec37b977e406a0e9ae346898"
+      },
+      "conditions": {
+        "control": {
+          "learning_fitness": 15.453125,
+          "frozen_fitness": 0.05859375,
+          "learning_minus_frozen_fitness": 15.39453125
+        },
+        "sparse": {
+          "learning_fitness": 5.869140625,
+          "frozen_fitness": 0.17578125,
+          "learning_minus_frozen_fitness": 5.693359375
+        },
+        "dense": {
+          "learning_fitness": 20.962890625,
+          "frozen_fitness": -0.12890625,
+          "learning_minus_frozen_fitness": 21.091796875
+        },
+        "low-cost": {
+          "learning_fitness": 15.3203125,
+          "frozen_fitness": -0.078125,
+          "learning_minus_frozen_fitness": 15.3984375
+        },
+        "high-cost": {
+          "learning_fitness": 14.953125,
+          "frozen_fitness": -0.064453125,
+          "learning_minus_frozen_fitness": 15.017578125
+        }
+      }
+    },
+    {
+      "evolution_seed": 2,
+      "run": "runs/20261114-233434_E108-final-A2",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_genome": {
+        "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+        "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+      },
+      "source_sha256": {
+        "config.json": "764d950663488377b637aa2e2c2edafdd878a5cdd17dac5f439f1da8b2723f96",
+        "summary.json": "cb6e23b9afed0b970e259d4628cbb58e25fb207c33d6a8fe88aeb3df053a9a53"
+      },
+      "binary_source_sha256": {
+        "genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+        "genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+      },
+      "input_run_source_sha256": {
+        "config.json": "51921368d7c032eb6e0f953f3e1c61d1db9bf2545eb3f7aa7942a47882bf3af8",
+        "summary.json": "f62dd9b3658fb9153aa933f4054675c18a681b71890758336f51f94036c1273f"
+      },
+      "conditions": {
+        "control": {
+          "learning_fitness": 14.857421875,
+          "frozen_fitness": -0.443359375,
+          "learning_minus_frozen_fitness": 15.30078125
+        },
+        "sparse": {
+          "learning_fitness": 4.853515625,
+          "frozen_fitness": 0.392578125,
+          "learning_minus_frozen_fitness": 4.4609375
+        },
+        "dense": {
+          "learning_fitness": 18.2265625,
+          "frozen_fitness": -0.00390625,
+          "learning_minus_frozen_fitness": 18.23046875
+        },
+        "low-cost": {
+          "learning_fitness": 15.013671875,
+          "frozen_fitness": -0.47265625,
+          "learning_minus_frozen_fitness": 15.486328125
+        },
+        "high-cost": {
+          "learning_fitness": 13.44921875,
+          "frozen_fitness": 0.0625,
+          "learning_minus_frozen_fitness": 13.38671875
+        }
+      }
+    }
+  ]
+}
