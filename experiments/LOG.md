@@ -765,3 +765,24 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
   five final condition rows), updated README with this limited result, and preserve all
   artifacts together. Coordinator must review the cost before releasing remaining six
   full panels. No extra scientific run is started yet; no gate/tag or full-suite claim.
+
+## E108 remaining six panels released · 2026-11-14
+
+- The coordinator independently verified A0's source/byte hashes, exact shifts,
+  final split, finite metrics and measured cost, then released every remaining
+  preregistered command: A1 -> A2 -> blank0 -> blank1 -> blank2 -> biology, sequentially
+  in this lab. No intermediate conversational approval/review is required. Structural
+  A0 may run in parallel in its separate lab; never stop another job.
+- Conditions, source files, final seed 8109, 128 balanced worlds, default Cfg, metrics,
+  hypotheses and falsifiers remain exactly as preregistered. No tuning follows A0.
+- A single bounded scheduling process will launch the six original runner commands,
+  with fresh preflight for every child (C/D >=10 GiB, physical >=8 GiB, available
+  commit >=10 GiB). Retain BelowNormal, D: temp files, runtime C/D/commit floors
+  5/10/5 GiB and the existing stricter 1200-second per-panel cap. Stop only the owned
+  tree on guard failure, preserve all artifacts, and halt the queue for diagnosis.
+- Validate each finished panel's clean source, split/count/seed, five conditions,
+  finite metrics and all three source/start/final file hashes before proceeding.
+  Complete A1/A2 before judging retention; complete all four references before the
+  final account. Keep push disabled. Commit this release before launch, then record
+  all raw scores, signed condition differences and actual costs without changing
+  protocol, claiming new-task transfer, or declaring a new roadmap milestone.
