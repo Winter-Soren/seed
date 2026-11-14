@@ -152,9 +152,12 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic"))
-def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None):
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "flip_step", "diagnostics"))
+def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
+            flip_step=None, diagnostics=False):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
+    if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
+        raise ValueError("flip_step must be an integer strictly inside the lifetime")
     V, D, O, n, K = dims(c)
     types = neuron_types(c)
     hebb = g["hebb"][types[:, None], types[None, :]]
@@ -187,8 +190,13 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         pos = (s["pos"] + MOVES[act] * alive[:, None].astype(jnp.int32)) % c.G
         item = s["grid"][pos[:, 0], pos[:, 1]]
         eat = (alive > 0) & (item > 0)
-        is_food = eat & (item == food_t)
-        is_pois = eat & (item == poison_t)
+        if flip_step is None:
+            current_food, current_poison = food_t, poison_t
+        else:
+            current_rule = jnp.where(s["t"] >= flip_step, 1 - rule, rule)
+            current_food, current_poison = 1 + current_rule, 2 - current_rule
+        is_food = eat & (item == current_food)
+        is_pois = eat & (item == current_poison)
         e_new = s["energy"] - c.decay * alive + c.gain * is_food - c.gain * is_pois
         e_new = jnp.clip(e_new, 0.0, c.e_max)
         denergy = (e_new - s["energy"]) * alive
@@ -203,6 +211,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         out = dict(surprise=jnp.mean(surprise))
         if record:
             out.update(grid=grid, pos=pos, alive=alive_new, sig=sig, energy=e_new)
+        if diagnostics:
+            out.update(food=is_food, poison=is_pois, alive_before=alive, alive_after=alive_new)
         return ns, out
 
     s, traj = jax.lax.scan(step, carry, None, length=c.T)
@@ -213,6 +223,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
                surprise_last=traj["surprise"][c.T // 2:].mean())
     if record:
         res["traj"] = traj
+    if diagnostics:
+        res["events"] = {key: traj[key] for key in ("food", "poison", "alive_before", "alive_after")}
     return res
 
 

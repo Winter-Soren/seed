@@ -160,6 +160,12 @@ The [research map](results/RESEARCH.md) compares Seed with related published wor
 
 ## Reproduce a research run
 
+An isolated [REVERSAL v1 prototype](experiments/REVERSAL_V1_PROPOSAL.md) adds an
+optional unannounced mid-life food-rule change and per-agent recovery accounting.
+Direct software fixtures verify inversion, unchanged defaults and explicit censoring;
+the new scientific protocol still needs approval. No reversal adaptation result is
+claimed. EVAL v1/v2 and the default world remain unchanged.
+
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 
 The laptop benchmark averaged about **49.5 seconds per generation** after the first. Use bounded sessions for a 200-generation run:

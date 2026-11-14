@@ -652,3 +652,70 @@ The remaining metrics below accompany the fitness values above; all numbers are 
 - **Timing and scheduling:** A0 started 23:07:02.7081792 Asia/Calcutta and exited 0 after **35.7830262 seconds**, ending 23:07:38.4943748 (supervisor 78447 terminal). A1/A2/blank0/blank1/blank2 exited 0 after **35.9475528 / 38.3606862 / 48.539918 / 59.5275137 / 81.835345 seconds**, verified by batch supervisor 11367. The batch stopped before creating a biology folder when authorized E108 peer compute was detected; this was scheduling, not a scientific failure. After the peer finished, biology started 23:16:37.7531355 and exited 0 after **39.1793714 seconds**, ending 23:17:16.9365250 (supervisor 57503 terminal). Summed process wall time is **339.1734133 seconds (5.65 minutes)**; first-start to final-end elapsed is **614.2283458 seconds (10.24 minutes)** including checks, approval gaps, and peer waiting. All summary `train_minutes=0` values exclude evaluation. One E106 process ran at a time; owner-authorized peer labs coordinate separately under unchanged resource guards.
 - **Measured-memory limitation:** `.tmp/E106-memory-samples.jsonl` sampled two workers; maximum observed private memory was **1.14145 GiB**, observed working-set peak **0.5839 GiB**. This is incomplete sampling, not a complete peak measurement for all panels or for A0. Do not use it to claim a proven maximum memory requirement.
 - **Record and next decision:** Regenerated **22 finished runs** in RESULTS, including seven complete v2 rows and the undefined blank-0 ratio. Main implementation and C2 result are already pushed under verified owner attribution to the private repository; publish these seven run folders with README/RESULTS/LOG/STATE coherently next. Keep **Both updates enabled** for the structural comparison, making activity-dependent connection growth/pruning the intervention against a fair weight-only/static-capacity control. E107's isolated lab owns that implementation; do not spawn a duplicate main structural worker. Owner-approved E108 broader-v1 work proceeds independently under its own protocol. Main B1/B2 remain planned. Goal active; no structural benefit is claimed by E106.
+
+## E108-R-D · 2026-11-14 · Reversal prototype development registration
+
+- E108's complete seven-genome result is pinned at `9766538` on lab/e108-complete.
+  This separate nested worktree forks current integrated E106 main `18818de` and
+  preserves its predictor_plastic switch. E107 integration is later; do not overwrite
+  its controller APIs. The owner/coordinator authorized changing-world implementation
+  and direct fixtures, not new scientific final-world evaluation.
+- **Operational hypothesis:** An optional unannounced hidden-rule flip leaves default
+  rollouts exact, reverses food/poison classification at the declared tick, and allows
+  auditable per-agent pre/post/window/recovery, survival and encounter accounting.
+- **Baseline and regression command:**
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v`.
+  Run the current tests first, then after implementation. Existing compatibility
+  fixtures are development-sized deterministic checks, not default EVAL v1 worlds or
+  tuning. New inversion fixtures use a one-cell synthetic repeated-item world and
+  tiny brains; a diagnostic flag retains only compact food/poison/alive events.
+- **Planned tracked smoke**, after committed implementation and registration:
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-R-D-smoke --eval-protocol reversal-v1 --condition-split development --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 1 --cfg G=3 --cfg M=1 --cfg T=12 --cfg R=0 --cfg H=3 --cfg n_items=1 --seed 0`.
+  Compare no-flip/flip-at-half-life with learning/frozen under matched keys. Development
+  seed8210 only. Proposed final seed8211 and full T300/flip150 panels stay untouched
+  until a concrete versioned protocol is approved and compute coordinated.
+- **Pass:** Existing legacy/v2 fixtures remain exact; direct tests prove pre-flip
+  identity, exact classification inversion, deterministic replay, predictor switch
+  preservation, count consistency and honest unrecovered/dead/no-encounter cases.
+  Runner smoke completes with valid compact metrics, explicit labels, unchanged
+  source/copy genome bytes and clean recorded source. Rebuild notebook if engine changes.
+- **Fail:** Any compatibility/count/label/provenance failure, fabricated zero accuracy
+  for no encounters, hidden announcement, or resource/timeout stop. Preserve failures;
+  fix the cause on development fixtures without changing EVAL/BROADER final worlds.
+- Use the existing environment, BelowNormal and authoritative owned-process guard;
+  <=300 s per software fixture invocation, >=5 GiB available-commit runtime floor,
+  D: temp files. No new training, datasets, dependencies, final-world science, learning
+  benefit claim, or SOTA assertion is authorized by this development registration.
+
+## E108-R-D implementation and direct-test checkpoint
+
+- Baseline: all18 existing tests passed in16.387s (guard wall22.8719441s; sampled max
+  private1038553088/resident433291264 bytes). Optional flip/event paths were then added
+  without changing default rollout or predictor_plastic semantics.
+- Full check: all29 tests passed in154.009s (guard wall168.9926365s; sampled max private
+  1257246720/resident604180480 bytes). Direct fixtures prove exact fixed-item food/poison
+  inversion at the requested tick, identical pre-flip trajectories, deterministic
+  enabled replay, diagnostics preserving old metrics, and unchanged EVALv1/v2 fixtures.
+- Accounting tests cover per-agent window hits, nullable empty accuracy, five censor
+  reasons, survival through window end, partial last windows and impossible dead-agent
+  encounters. A high pooled accuracy is not substituted for individual recovery.
+- A final small validation change gives invalid reversal sources the correct protocol
+  label (default v2 messages remain intact) and rejects nonfinite Cfg values. Rerun the
+  focused runner checks, then commit before the registered development smoke. The
+  notebook was regenerated from the changed engine; no notebook experiments were run.
+- `experiments/REVERSAL_V1_PROPOSAL.md` fixes concrete final conditions, metrics,
+  falsifiers and seven supported commands for owner review. No final8211 worlds or
+  scientific reversal panel have run; E108 remains pinned separately and untouched.
+
+## E108-R-D final validation before tracked smoke
+
+- After the protocol-label/finite-Cfg changes, all19 focused runner tests passed in
+  3.666s, guard wall12.2792777s, sampled private728973312/resident114155520 bytes.
+  The full29-test run above covered the unchanged engine/accounting paths; the new
+  runner case confirms the correct reversal source-error label before artifacts exist.
+- `git diff --check` passed and all seven proposed final source paths resolve. The
+  notebook was rebuilt, without running notebook cells. Source and old protocol tests
+  retain E106 semantics. The proposal is concrete; final8211 worlds remain untouched.
+- Commit this code and development registration, then execute only the originally
+  registered E108-R-D-smoke command under the short owned-process guard. It tests
+  pipeline correctness, not adaptation or the proposed three-seed scientific hypothesis.

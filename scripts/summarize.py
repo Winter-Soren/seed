@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     rows = []
     diagnostics = []
+    reversals = []
     for d in sorted((ROOT / "runs").glob("*/")):
         cfg_p, sum_p = d / "config.json", d / "summary.json"
         if not cfg_p.exists():
@@ -19,6 +20,16 @@ def main():
         cfg = json.loads(cfg_p.read_text())
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
+        if a.get("eval_protocol") == "reversal-v1":
+            for label, row in s.get("evaluations", {"pending": {}}).items():
+                metric = row.get("metrics", {})
+                reversals.append("| " + " | ".join([
+                    d.name, s.get("status", ""), a["condition_split"], str(cfg["eval_seed"]),
+                    str(a["eval_worlds"]), label, str(metric.get("post_fitness", "")),
+                    str(metric.get("recovered_agents", "")), str(metric.get("agents_at_risk", "")),
+                    (cfg.get("git", {}).get("commit") or "")[:7],
+                ]) + " |")
+            continue
         if a.get("eval_protocol", "v1") == "v2":
             ev = s.get("evaluations", {})
             b, h, f = (ev.get(k, {}).get("fitness") for k in ("both", "hebbian_only", "frozen"))
@@ -59,6 +70,13 @@ def main():
                 "| Run | Status | Source genome | Both | Hebbian-only | Frozen | Both − Hebbian-only | "
                 "Hebbian-only − Frozen | Retained benefit | Eval seed | Eval worlds | Commit |",
                 "|---" * 12 + "|", *diagnostics, ""]
+    if reversals:
+        out += ["## REVERSAL v1 prototype", "",
+                "Development rows are software checks, not adaptation results. Window hits use "
+                "25-step windows, >=5 encounters, >=70% food choices and survival through window end; "
+                "all censored agents and full counts remain in summary.json.", "",
+                "| Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |",
+                "|---" * 10 + "|", *reversals, ""]
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
     print(f"wrote results/RESULTS.md with {len(rows) + len(diagnostics)} runs")
