@@ -102,7 +102,7 @@ Development rows are operational checks, not scientific generalization results. 
 
 ## REVERSAL v1 prototype
 
-Development rows are software checks, not adaptation results. Window hits use 25-step windows, >=5 encounters, >=70% food choices and survival through window end; all censored agents and full counts remain in summary.json.
+Development rows are software checks, not adaptation results. Window hits use complete 25-step windows, >=5 encounters, >=70% food choices and survival through window end; all censored agents and full counts remain in summary.json.
 
 | Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |
 |---|---|---|---|---|---|---|---|---|---|
@@ -110,3 +110,7 @@ Development rows are software checks, not adaptation results. Window hits use 25
 | 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 5028e19 |
 | 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 5028e19 |
 | 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 5028e19 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 04e3005 |

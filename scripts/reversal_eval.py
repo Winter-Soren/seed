@@ -55,7 +55,7 @@ def summarize_events(events, boundary):
     windows = []
     for start in range(boundary, steps, WINDOW):
         stop = min(start+WINDOW, steps)
-        windows.append(dict(start=start, stop=stop,
+        windows.append(dict(start=start, stop=stop, complete=stop-start == WINDOW,
                             **counts(food[:, start:stop], poison[:, start:stop]),
                             survived=int(after[:, stop-1].sum())))
     agents = []
@@ -67,6 +67,8 @@ def summarize_events(events, boundary):
             latency, eligible = None, False
             if at_risk:
                 for window in windows:
+                    if not window["complete"]:
+                        continue
                     sample = counts(f[window["start"]:window["stop"]], p[window["start"]:window["stop"]])
                     if sample["food"] + sample["poison"] >= MIN_ENCOUNTERS:
                         eligible = True
@@ -76,6 +78,7 @@ def summarize_events(events, boundary):
             reason = (None if latency is not None else "dead_at_boundary" if not at_risk else
                       "died_before_window_hit" if not after[world, -1, agent] else
                       "no_post_encounters" if post["food"]+post["poison"] == 0 else
+                      "no_complete_window" if not any(w["complete"] for w in windows) else
                       "criterion_not_met" if eligible else "insufficient_window_encounters")
             agents.append(dict(world=world, agent=agent, initial_rule=world % 2,
                                pre=counts(f[:boundary], p[:boundary]), post=post,

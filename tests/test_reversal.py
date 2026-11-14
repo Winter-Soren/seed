@@ -17,6 +17,20 @@ from scripts import reversal_eval as panel, run_experiment as runner, summarize
 
 
 class ReversalEngineTests(unittest.TestCase):
+    def test_weight_only_learning_has_exact_unannounced_preboundary_prefix(self):
+        c = seed.Cfg(G=4, M=1, T=22, R=0, H=3, n_items=8)
+        g = seed.biology_prior(c)
+        args = (g, jax.random.PRNGKey(8210), jax.random.PRNGKey(23), 0, c)
+        control = seed.rollout(*args, plastic=True, predictor_plastic=True, structural=False,
+                               record=True, diagnostics=True)
+        flipped = seed.rollout(*args, plastic=True, predictor_plastic=True, structural=False,
+                               flip_step=11, record=True, diagnostics=True)
+        self.assertGreater(float(control["counts"][0].sum()), 0.)
+        for key in control["traj"]:
+            np.testing.assert_array_equal(control["traj"][key][:11], flipped["traj"][key][:11], err_msg=key)
+        np.testing.assert_array_equal(control["traj"]["pos"][11], flipped["traj"]["pos"][11])
+        np.testing.assert_array_equal(control["counts"][0], flipped["counts"][0])
+
     def test_fixed_item_inverts_exactly_without_announcing_flip(self):
         c = seed.Cfg(G=1, M=1, T=6, R=0, H=3, n_items=0, e0=10., e_max=20., decay=0.)
         g = seed.init_genome(c, jax.random.PRNGKey(17))
@@ -117,12 +131,38 @@ class RecoveryAccountingTests(unittest.TestCase):
         self.assertLess(result["post_windows"][0]["accuracy"], panel.ACCURACY)
         json.dumps(result, allow_nan=False)
 
-    def test_partial_last_window_uses_actual_end_time(self):
+    def test_partial_last_window_retains_counts_but_never_counts_as_recovery(self):
         events = self.events(steps=60, agents=1)
         events["food"][0, 55:60, 0] = True
         result = panel.summarize_events(events, 30)
-        self.assertEqual(result["agents"][0]["window_hit_latency"], 30)
+        self.assertIsNone(result["agents"][0]["window_hit_latency"])
+        self.assertEqual(result["agents"][0]["censor_reason"], "insufficient_window_encounters")
+        self.assertFalse(result["post_windows"][-1]["complete"])
+        self.assertEqual(result["post_windows"][-1]["food"], 5)
         self.assertEqual(result["post_windows"][-1]["stop"], 60)
+
+    def test_exact_seventy_percent_and_minimum_encounter_boundaries(self):
+        events = self.events(agents=3)
+        events["food"][0, 50:57, 0] = True
+        events["poison"][0, 57:60, 0] = True
+        events["food"][0, 50:59, 1] = True
+        events["poison"][0, 59:63, 1] = True
+        events["food"][0, 50:54, 2] = True
+        result = panel.summarize_events(events, 50)
+        self.assertEqual(result["agents"][0]["post"]["accuracy"], 0.7)
+        self.assertEqual(result["agents"][0]["window_hit_latency"], 25)
+        self.assertLess(result["agents"][1]["post"]["accuracy"], 0.7)
+        self.assertIsNone(result["agents"][1]["window_hit_latency"])
+        self.assertEqual(result["agents"][1]["censor_reason"], "criterion_not_met")
+        self.assertIsNone(result["agents"][2]["window_hit_latency"])
+        self.assertEqual(result["agents"][2]["censor_reason"], "insufficient_window_encounters")
+
+    def test_short_lifetime_has_explicit_no_complete_window_censor(self):
+        events = self.events(steps=12, agents=1)
+        events["food"][0, 6:12, 0] = True
+        result = panel.summarize_events(events, 6)
+        self.assertEqual(result["agents"][0]["censor_reason"], "no_complete_window")
+        self.assertEqual(result["recovered_agents"], 0)
 
     def test_zero_at_risk_is_undefined_and_never_fake_recovery(self):
         events = self.events()

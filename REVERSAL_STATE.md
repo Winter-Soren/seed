@@ -13,7 +13,7 @@ measurement module; explicit tracked runner dispatch; small regression/direct te
 notebook rebuild; exact proposed protocol/commands. No training or new dependencies.
 
 Implemented optional flip_step/diagnostics keywords; event-only compact traces;
-per-agent/window accounting and five honest censor reasons; explicit reversal-v1
+per-agent/window accounting and honest censor reasons; explicit reversal-v1
 runner dispatch with provenance/failure preservation; separate summary rows. Notebook
 rebuilt. Proposal fixes T300/flip150, matched four conditions and seven final commands.
 
@@ -30,8 +30,14 @@ Merged1362bc1 into feature, retaining all source commits and both LOG tails. Res
 runner/summary dispatches for v1,v2,structural-v1,broader-v1,reversal-v1. All66 integrated
 tests passed123.321s, guard131.2972547s, sampled private1811308544 bytes; new combined
 structural/reversal test proves prefix identity, recruitment and frozen no-op.
-Next: commit merge/source, run registered E108-R-D-integrated-smoke, compare all metrics
-and source/copy bytes to prior smoke, commit evidence and report clean tip for main's
-push/PR/review/merge. No scientific reversal panel; final8211 still untouched.
+Merge committed04e3005. Integrated smoke runs/20261115-002947_E108-R-D-integrated-smoke
+passed14.1606371s and every metric exactly matched original smoke; source/copies fixed.
+Independent review fixed partial-window eligibility: only full25-step windows qualify;
+partials keep counts/complete=false; no complete window is a separate censor reason.
+Added direct weight-only learning prefix and exact70%/min5 threshold cases. All16
+focused review tests passed107.841s; controller code unchanged since66-test suite.
+Next: commit review/source plus old integrated-smoke evidence, run registered reviewed
+tiny fixture, verify unchanged physical outcomes and new explicit censor flags, commit
+and report final clean tip for main's push/PR/review/merge. Final8211 still untouched.
 Development seed8210; final8211 stays untouched pending owner protocol approval.
 No tuning on EVAL123 or BROADERfinal8109. E107 merge/testing remains with main.

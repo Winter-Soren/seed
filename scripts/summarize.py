@@ -116,7 +116,7 @@ def main():
     if reversals:
         out += ["## REVERSAL v1 prototype", "",
                 "Development rows are software checks, not adaptation results. Window hits use "
-                "25-step windows, >=5 encounters, >=70% food choices and survival through window end; "
+                "complete 25-step windows, >=5 encounters, >=70% food choices and survival through window end; "
                 "all censored agents and full counts remain in summary.json.", "",
                 "| Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |",
                 "|---" * 10 + "|", *reversals, ""]

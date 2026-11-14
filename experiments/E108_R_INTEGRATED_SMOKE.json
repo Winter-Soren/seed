@@ -1,0 +1,21 @@
+{
+  "label": "E108-R-D-integrated-smoke",
+  "sampledMaxPrivateBytes": 930656256,
+  "samples": [
+    {
+      "seconds": 6.4414916,
+      "availableCommitBytes": 15490342912,
+      "residentBytes": 165613568,
+      "privateBytes": 761839616
+    },
+    {
+      "seconds": 11.9791243,
+      "availableCommitBytes": 14652227584,
+      "residentBytes": 356491264,
+      "privateBytes": 930656256
+    }
+  ],
+  "wallSeconds": 14.1606371,
+  "sampledMaxResidentBytes": 356491264,
+  "exitCode": 0
+}

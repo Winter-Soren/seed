@@ -1215,3 +1215,44 @@ Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has 
 - Commit the merge/source before the registered integrated tiny smoke. Its metrics and
   genome bytes must match the existing development fixture; preserve both artifacts.
   No final-world reversal panel or completed scientific experiment is repeated.
+
+## E108-R-D independent review follow-up registration
+
+- The integrated smoke `runs/20261115-002947_E108-R-D-integrated-smoke` finished from
+  clean04e3005; all four full metric records exactly match the original smoke. Guard
+  exit0, wall14.1606371s, sampled private930656256/resident356491264 bytes. Evidence:
+  experiments/E108_R_INTEGRATED_SMOKE.json. All existing run files remain untouched.
+- Independent review confirmed no announcement/reset/RNG leakage and retained the
+  structural-on rejection. It identified that the helper accepted shortened terminal
+  windows as hits despite the declared25-step criterion. Exclude partial windows
+  from recovery, retain their counts with complete=false, and add no_complete_window
+  censoring for development lifetimes with no full window. T300/flip150 has six full
+  windows and is unaffected; no scientific reversal data exists or is being retuned.
+- Add direct ordinary weight-only learning prefix equality with unpatched random
+  worlds and real eating events, plus exact70%-versus-below-threshold and4-versus5
+  encounter boundary tests. Run `python -X utf8 -m unittest discover -s tests -p
+  test_reversal.py -v` through the scoped BelowNormal guard (existing environment).
+- After review checks and a code commit, run the same tiny registered command with
+  only `--name E108-R-D-reviewed-smoke`. The actual food/poison/survival outcomes must
+  remain equal to the previous smoke; new complete/censor labels reflect the reviewed
+  measurement definition. Preserve all three folders. No scientific panels/new final
+  seeds, heavy experiments, or original run-file edits are authorized here.
+
+## E108-R-D review fixes verified
+
+- All16 focused reversal tests passed in107.841s, guard exit0/wall113.6715356s,
+  sampled private1255514112/resident608948224 bytes. Evidence is retained in
+  experiments/E108_R_REVIEW_TESTS.json. The unchanged controller integration had
+  already passed all66 tests; this focused run covers every changed metric path.
+- Direct ordinary weight-only Both-learning rollouts in an unpatched dense random
+  world have real pre-boundary eating and exactly equal full pre-flip trajectories,
+  including the action position at the first flip tick. Exact70% qualifies;9/13
+  does not; four encounters do not meet the five-event minimum. Existing five-event
+  and structural/frozen composition checks remain meaningful and passing.
+- Partial terminal windows now have complete=false and cannot qualify. Lifetimes
+  with no full post window are explicitly censored no_complete_window; no-encounter
+  and mortality reasons remain separate. All T300/flip150 windows are full; this
+  software correction does not change any measured scientific data, and none exists
+  for reversal yet. Previously saved development artifacts remain unchanged.
+- Rebuild RESULTS and commit this verified code with prior integrated-smoke evidence,
+  then run only the newly named reviewed tiny fixture. No final8211 access or tuning.

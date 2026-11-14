@@ -30,13 +30,14 @@ Retain compact per-agent pre/post food/poison counts, nullable accuracies, survi
 the boundary and life end, and recovery-window-hit latency/censor reason. Retain pooled
 counts/accuracy/survival for every non-overlapping 25-step post-boundary window.
 
-A **window hit** is the first such window with >=5 encounters and >=70% food choices,
+A **window hit** is the first complete 25-step window with >=5 encounters and >=70% food choices,
 while the agent is still alive at the window end. Latency is that end minus150.
 This is a declared behavioral recovery proxy, not proof of rule inference or sustained
-learning. Report late performance too. An early hit followed by death remains visible.
+learning. Partial terminal windows retain flagged counts but never count as hits.
+Report late performance too. An early hit followed by death remains visible.
 
 Censor reasons distinguish dead_at_boundary, died_before_window_hit,
-no_post_encounters, insufficient_window_encounters, and criterion_not_met. No encounters
+no_post_encounters, no_complete_window, insufficient_window_encounters, and criterion_not_met. No encounters
 means accuracy=null. Report hit fractions both over all512 agents and over the actual
 agents alive at the boundary, with their counts; the latter denominator can differ
 across learning/frozen, so it is not an isolated causal estimate. Report raw censor
