@@ -1156,3 +1156,238 @@ Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has 
   .\.venv\Scripts\python.exe scripts/run_experiment.py --resume runs/20261115-000000_E109-structural-train-s0 --max-train-seconds 7200
   ```
 - **Integration handoff:** [PR #5](https://github.com/Winter-Soren/seed/pull/5) merged as `4a7fef74e51b1af26621f845a83558efd2182295`, reviewed source `602502aa47a411c09cd531a95114cc15630cf53c`, code unchanged from `a96e43e`, with 66 checks before and 16 after and owner GitHub attribution verified. Root will merge remote code/docs into the checkpoint feature branch, preserving the visualization and launch LOG entries, then integrate completed reversal result history `45ac549`. Those reversal raw results are **not yet verified in this main handoff**; do not promote them to an established scientific result.
+
+
+
+## E108-R-D · 2026-11-14 · Reversal prototype development registration
+
+- E108's complete seven-genome result is pinned at `9766538` on lab/e108-complete.
+  This separate nested worktree forks current integrated E106 main `18818de` and
+  preserves its predictor_plastic switch. E107 integration is later; do not overwrite
+  its controller APIs. The owner/coordinator authorized changing-world implementation
+  and direct fixtures, not new scientific final-world evaluation.
+- **Operational hypothesis:** An optional unannounced hidden-rule flip leaves default
+  rollouts exact, reverses food/poison classification at the declared tick, and allows
+  auditable per-agent pre/post/window/recovery, survival and encounter accounting.
+- **Baseline and regression command:**
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v`.
+  Run the current tests first, then after implementation. Existing compatibility
+  fixtures are development-sized deterministic checks, not default EVAL v1 worlds or
+  tuning. New inversion fixtures use a one-cell synthetic repeated-item world and
+  tiny brains; a diagnostic flag retains only compact food/poison/alive events.
+- **Planned tracked smoke**, after committed implementation and registration:
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-R-D-smoke --eval-protocol reversal-v1 --condition-split development --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 1 --cfg G=3 --cfg M=1 --cfg T=12 --cfg R=0 --cfg H=3 --cfg n_items=1 --seed 0`.
+  Compare no-flip/flip-at-half-life with learning/frozen under matched keys. Development
+  seed8210 only. Proposed final seed8211 and full T300/flip150 panels stay untouched
+  until a concrete versioned protocol is approved and compute coordinated.
+- **Pass:** Existing legacy/v2 fixtures remain exact; direct tests prove pre-flip
+  identity, exact classification inversion, deterministic replay, predictor switch
+  preservation, count consistency and honest unrecovered/dead/no-encounter cases.
+  Runner smoke completes with valid compact metrics, explicit labels, unchanged
+  source/copy genome bytes and clean recorded source. Rebuild notebook if engine changes.
+- **Fail:** Any compatibility/count/label/provenance failure, fabricated zero accuracy
+  for no encounters, hidden announcement, or resource/timeout stop. Preserve failures;
+  fix the cause on development fixtures without changing EVAL/BROADER final worlds.
+- Use the existing environment, BelowNormal and authoritative owned-process guard;
+  <=300 s per software fixture invocation, >=5 GiB available-commit runtime floor,
+  D: temp files. No new training, datasets, dependencies, final-world science, learning
+  benefit claim, or SOTA assertion is authorized by this development registration.
+
+## E108-R-D implementation and direct-test checkpoint
+
+- Baseline: all18 existing tests passed in16.387s (guard wall22.8719441s; sampled max
+  private1038553088/resident433291264 bytes). Optional flip/event paths were then added
+  without changing default rollout or predictor_plastic semantics.
+- Full check: all29 tests passed in154.009s (guard wall168.9926365s; sampled max private
+  1257246720/resident604180480 bytes). Direct fixtures prove exact fixed-item food/poison
+  inversion at the requested tick, identical pre-flip trajectories, deterministic
+  enabled replay, diagnostics preserving old metrics, and unchanged EVALv1/v2 fixtures.
+- Accounting tests cover per-agent window hits, nullable empty accuracy, five censor
+  reasons, survival through window end, partial last windows and impossible dead-agent
+  encounters. A high pooled accuracy is not substituted for individual recovery.
+- A final small validation change gives invalid reversal sources the correct protocol
+  label (default v2 messages remain intact) and rejects nonfinite Cfg values. Rerun the
+  focused runner checks, then commit before the registered development smoke. The
+  notebook was regenerated from the changed engine; no notebook experiments were run.
+- `experiments/REVERSAL_V1_PROPOSAL.md` fixes concrete final conditions, metrics,
+  falsifiers and seven supported commands for owner review. No final8211 worlds or
+  scientific reversal panel have run; E108 remains pinned separately and untouched.
+
+## E108-R-D final validation before tracked smoke
+
+- After the protocol-label/finite-Cfg changes, all19 focused runner tests passed in
+  3.666s, guard wall12.2792777s, sampled private728973312/resident114155520 bytes.
+  The full29-test run above covered the unchanged engine/accounting paths; the new
+  runner case confirms the correct reversal source-error label before artifacts exist.
+- `git diff --check` passed and all seven proposed final source paths resolve. The
+  notebook was rebuilt, without running notebook cells. Source and old protocol tests
+  retain E106 semantics. The proposal is concrete; final8211 worlds remain untouched.
+- Commit this code and development registration, then execute only the originally
+  registered E108-R-D-smoke command under the short owned-process guard. It tests
+  pipeline correctness, not adaptation or the proposed three-seed scientific hypothesis.
+
+## E108-R-D tracked smoke result and integration checkpoint
+
+- `runs/20261115-001744_E108-R-D-smoke` finished from clean source5028e19, development
+  seed8210, one world, T12/flip6, G3/M1/R0/H3/n_items1. All four conditions completed;
+  no final8211 or default scientific-world panel ran. Source/start/final copies retain
+  A0 SHA-256477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53.
+- Post fitness noflip_learning1, noflip_frozen0, flip_learning-1, flip_frozen0;
+  signed plasticity effects +1/no-flip and -1/flip, reversal effect -2/learning and
+  0/frozen. No qualifying window hit occurred. Pre-boundary count/accuracy records
+  match each noflip/flip pair. These tiny scores are operational evidence only.
+- Guard exited0 after21.2369707s, sampled private923238400/resident349753344 bytes.
+  Compact evidence: experiments/E108_R_SMOKE_SUPERVISION.json. Rebuilt RESULTS;
+  explicit development rows remain separate from scientific EVALv1/v2 results.
+- The owner now requires completed research branches to go through PR/review/merge;
+  main coordinates publication. This lab keeps push disabled. Preserve this source
+  commit/run, then merge the latest local main into this feature branch without
+  rewriting history. Resolve optional rollout/runner/summary additions alongside
+  E107/E108; rerun relevant compatibility/direct checks before reporting the final
+  integration-ready tip. Do not rerun completed scientific panels.
+
+## E108-R-D integrated-main validation registration
+
+- Merge current main1362bc1 into the reversal feature without rebasing or rewriting
+  source commits. Preserve both append-only LOG tails, all run artifacts, E106's
+  predictor switch, E107 structural APIs/stats and E108's separate dispatch.
+- Rerun the existing full test command under a fresh `E108-R-integrated-tests` guard.
+  New tiny checks compose structural recruitment with flip11 in T22, compare pre-flip
+  trajectories exactly, validate structural invariants and prove frozen rewiring is
+  still a no-op after reversal. This is software integration, not a benefit claim.
+- After checks and a merge commit, run the same registered tiny command with only
+  the operational name changed to `--name E108-R-D-integrated-smoke`. Exact remaining
+  arguments remain development seed8210, file:A0, generations0, eval-worlds1,
+  G3/M1/T12/R0/H3/n_items1. Compare its full metrics/provenance with the prior smoke;
+  preserve both folders. No scientific panel is repeated and final8211 stays untouched.
+- Retain <=300s software invocation bounds, BelowNormal and the existing resource
+  floors. Main owns push/PR/review/merge; this worktree remains push-disabled.
+
+## E108-R-D integrated test result before smoke
+
+- All66 tests passed in123.321s after merging1362bc1, including original-engine final
+  internal-state equality, E106 mechanism controls, E107 recruitment/deterministic
+  replay, E108 dispatch, reversal inversion/accounting and the new structural/flip
+  composition fixture. Guard exited0 after131.2972547s; sampled private1811308544 and
+  resident1038053376 bytes. Evidence: experiments/E108_R_INTEGRATED_TESTS.json.
+- Only presentation wording/dirty-commit marker reuse changed after that run; physics,
+  validation and metric logic stayed unchanged. `git diff --check` passed. Notebook
+  and RESULTS were rebuilt from combined code, retaining all existing protocol rows.
+- Commit the merge/source before the registered integrated tiny smoke. Its metrics and
+  genome bytes must match the existing development fixture; preserve both artifacts.
+  No final-world reversal panel or completed scientific experiment is repeated.
+
+## E108-R-D independent review follow-up registration
+
+- The integrated smoke `runs/20261115-002947_E108-R-D-integrated-smoke` finished from
+  clean04e3005; all four full metric records exactly match the original smoke. Guard
+  exit0, wall14.1606371s, sampled private930656256/resident356491264 bytes. Evidence:
+  experiments/E108_R_INTEGRATED_SMOKE.json. All existing run files remain untouched.
+- Independent review confirmed no announcement/reset/RNG leakage and retained the
+  structural-on rejection. It identified that the helper accepted shortened terminal
+  windows as hits despite the declared25-step criterion. Exclude partial windows
+  from recovery, retain their counts with complete=false, and add no_complete_window
+  censoring for development lifetimes with no full window. T300/flip150 has six full
+  windows and is unaffected; no scientific reversal data exists or is being retuned.
+- Add direct ordinary weight-only learning prefix equality with unpatched random
+  worlds and real eating events, plus exact70%-versus-below-threshold and4-versus5
+  encounter boundary tests. Run `python -X utf8 -m unittest discover -s tests -p
+  test_reversal.py -v` through the scoped BelowNormal guard (existing environment).
+- After review checks and a code commit, run the same tiny registered command with
+  only `--name E108-R-D-reviewed-smoke`. The actual food/poison/survival outcomes must
+  remain equal to the previous smoke; new complete/censor labels reflect the reviewed
+  measurement definition. Preserve all three folders. No scientific panels/new final
+  seeds, heavy experiments, or original run-file edits are authorized here.
+
+## E108-R-D review fixes verified
+
+- All16 focused reversal tests passed in107.841s, guard exit0/wall113.6715356s,
+  sampled private1255514112/resident608948224 bytes. Evidence is retained in
+  experiments/E108_R_REVIEW_TESTS.json. The unchanged controller integration had
+  already passed all66 tests; this focused run covers every changed metric path.
+- Direct ordinary weight-only Both-learning rollouts in an unpatched dense random
+  world have real pre-boundary eating and exactly equal full pre-flip trajectories,
+  including the action position at the first flip tick. Exact70% qualifies;9/13
+  does not; four encounters do not meet the five-event minimum. Existing five-event
+  and structural/frozen composition checks remain meaningful and passing.
+- Partial terminal windows now have complete=false and cannot qualify. Lifetimes
+  with no full post window are explicitly censored no_complete_window; no-encounter
+  and mortality reasons remain separate. All T300/flip150 windows are full; this
+  software correction does not change any measured scientific data, and none exists
+  for reversal yet. Previously saved development artifacts remain unchanged.
+- Rebuild RESULTS and commit this verified code with prior integrated-smoke evidence,
+  then run only the newly named reviewed tiny fixture. No final8211 access or tuning.
+
+## E108-R-D final reviewed fixture and handoff
+
+- `runs/20261115-003726_E108-R-D-reviewed-smoke` finished from clean sourcea96e43e,
+  development8210, one world, T12/flip6. Guard exited0 after69.1144037s; evaluation
+  time58.0s; sampled max private924090368/resident349691904 bytes. Physical counts,
+  pre/post accuracy, fitness, survival, denominators and zero-hit values exactly match
+  the integrated prior fixture. Each six-step partial window now records complete=false
+  and no_complete_window censoring, correctly excluding it from the recovery proxy.
+- Source/start/final genome files retain full SHA-256477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53.
+  A read-only audit also verified all seven E108 config/summary/genome manifests against
+  their original hashes, the entire inherited LOG prefix, and no prior run modifications.
+  Evidence: experiments/E108_R_FINAL_AUDIT.json and E108_R_REVIEWED_SMOKE.json.
+- Final verification: 66 integrated tests passed before the metric review, then all16
+  focused tests passed after the complete-window fix and added ordinary-learning and
+  exact-threshold fixtures. Controller code did not change during the metric review.
+  Regenerated RESULTS contains37 runs and keeps every protocol/development label separate;
+  README and the concrete scientific proposal reflect the tested measurement definition.
+- Feature branch lab/reversal-prototype preserves5028e19/5542fae, the1362bc1 integration
+  through04e3005 and review commita96e43e. Main coordinates push/PR/review/merge; this lab
+  remains push-disabled. E108 is independently pinned at9766538/lab/e108-complete.
+- Only software/direct fixtures were run for reversal. The proposed final T300/flip150,
+  seven-genome/128-world/seed8211 panel remains unexecuted pending owner approval under
+  AGENTS.md's requirement to ask before changing the evaluation protocol. This is a
+  concrete reviewable decision, not evidence of adaptation or a need to repeat E108.
+
+## E108-R-F · 2026-11-15 · Owner-approved REVERSAL v1 final registration
+
+- **Direct owner approval:** Oversight reports the human answered exactly “Approve
+  REVERSAL v1” to the full seven-genome/four-condition/128-world seed8211,T300/flip150
+  question in chat01a1cc51-9df7-7683-b657-a8fc74b2be90. This supersedes pending-approval
+  notes above. This registration is prospective; no final8211 world has run yet.
+- **Fixed protocol:** Default Cfg, saved A0/A1/A2 + blank0/1/2 + one unique biology
+  prior; noflip/flip at150 crossed with Both-learning/Frozen. Matched world, development
+  and action keys; no reset/announcement; both local learning rules jointly enabled or
+  disabled; structural mode off. Recovery uses complete25-step windows, >=5 encounters,
+  >=70% food choices and survival through window end. Preserve every null/censored,
+  zero, negative and mixed result, all per-agent/encounter/survival data and source bytes.
+- **Preregistered hypothesis/falsifiers unchanged:** For each A genome, enabled updates
+  improve post-flip fitness over frozen and last-window food accuracy exceeds first
+  window accuracy; both must hold in >=2/3 A seeds, with >=5 pooled encounters in those
+  windows. Insufficient observations are unestablished. Report all signed differences,
+  per-agent window-hit/censor results and references without tuning or a new gate.
+- **Compute release:** A0 is the full resource benchmark, not a smoke. Main E109 worker
+  37928 continues; one peer evaluation only. Recheck startup C/D>=10GiB, physical>=8GiB,
+  available commit>=10GiB; runtime C/D/availablecommit floors5/10/5GiB, BelowNormal,
+  owned-process stop only, D:temp and existing1200s per-panel guard cap. If A0's actual
+  cost/integrity fits these guards, proceed with all remaining six in the exact order
+  below without another owner or release question, using resource checks rather than
+  scores. No new population job. Preserve failures and all old artifacts.
+- **Exact approved commands:**
+
+```powershell
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A0 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A1 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-A2 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank0 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022439_E100-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank1 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022514_E100-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-blank2 --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022552_E100-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name reversal-v1-final-biology --eval-protocol reversal-v1 --condition-split final --start file:runs/20261112-022641_E100-biology-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+```
+
+- **Source and publication:** Tested code is unchanged from the accepted66+16 review;
+  published-main74f4ba8 was merged only for research-history reconciliation. No test or
+  smoke loop is repeated. Pin a stable software-ready tip for main's PR/review/merge,
+  keep pushes main-owned and origin push-disabled, then record live PID/guard/source,
+  actual A0 cost and all final outcomes. Commit complete artifacts/RESULTS/README/LOG
+  with verified local identity; never force-push or delete branch/tag history.
+
+## E107/E108 visualization validation · 2026-11-15 · Completed results made inspectable
+- Added README figures for the three completed E107 A panels and three completed E108 A panels, with exact-data JSON, source hashes, SVG/PNG outputs and `tools/build_extension_figures.py`. Oversight reviewed the producer and rendered PNGs, validated all six input run folders, and verified byte-identical repeat outputs including a rebuild from a different working directory. Publication copied all seven approved files byte-identically into an isolated worktree and verified their SHA-256 hashes and README links. This visualizes existing results only: E107's tested rule reduced fixed-genome fitness in all three cases; E108's positive gaps concern the registered foraging-parameter family. No experiment was rerun, no run artifact changed, and no new scientific claim was added.
+
+## REVERSAL v1 publication reconciliation · 2026-11-15
+- Reconciled the reversal development/approval tail with the E107/E108 visualization-validation tail, preserving the shared history and both append sections. README and the current proposal now reflect the direct owner approval recorded in E108-R-F and preregistration 016a8e1; final results remain pending. Protocol scope, criteria and commands are unchanged. This is documentation reconciliation only; no experiments, tests or figures were rerun.

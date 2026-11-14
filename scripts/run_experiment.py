@@ -30,7 +30,7 @@ from jax.flatten_util import ravel_pytree
 from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init, es_step,
                        format_row, test_genome, genome_size)
 from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
-from scripts import broader_eval
+from scripts import broader_eval, reversal_eval
 
 
 def git_info():
@@ -87,14 +87,14 @@ def validate_eval_protocol(args, cfg_overrides):
     return protocol
 
 
-def diagnostic_genome(data, c):
+def diagnostic_genome(data, c, *, protocol="EVAL v2"):
     mean = np.load(io.BytesIO(data), allow_pickle=False)
     if (not isinstance(mean, np.ndarray) or mean.shape != (genome_size(c),)
             or not np.issubdtype(mean.dtype, np.floating)):
-        raise SystemExit("EVAL v2 requires a flat floating-point genome of the expected size")
+        raise SystemExit(f"{protocol} requires a flat floating-point genome of the expected size")
     mean = np.asarray(mean, dtype=np.float32)
     if not np.isfinite(mean).all():
-        raise SystemExit("EVAL v2 requires a finite genome")
+        raise SystemExit(f"{protocol} requires a finite genome")
     return mean
 
 
@@ -161,6 +161,54 @@ def run_broader(a, git):
     print("run folder:", run_dir)
 
 
+def run_reversal(a, git):
+    c = Cfg(**parse_cfg(a.cfg))
+    reversal_eval.validate_request(a, c)
+    source = Path(a.start[5:]).read_bytes()
+    flat = diagnostic_genome(source, c, protocol="REVERSAL v1")
+    source_hash = hashlib.sha256(source).hexdigest()
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    config = dict(args=vars(a).copy(), cfg=c._asdict(), cfg_overrides=parse_cfg(a.cfg), git=git,
+                  created=datetime.datetime.now().isoformat(), eval_protocol=reversal_eval.PROTOCOL,
+                  eval_seed=reversal_eval.SPLIT_SEEDS[a.condition_split], source_genome_sha256=source_hash,
+                  boundary=c.T//2, recovery_window=reversal_eval.WINDOW,
+                  recovery_min_encounters=reversal_eval.MIN_ENCOUNTERS,
+                  recovery_accuracy=reversal_eval.ACCURACY, genome_size=int(flat.size),
+                  machine=dict(platform=platform.platform(), python=sys.version.split()[0],
+                               jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+    write_json(run_dir / "config.json", config)
+    (run_dir / "genome_start.npy").write_bytes(source)
+    summary = dict(status="running", generation=0, eval_protocol=reversal_eval.PROTOCOL,
+                   condition_split=a.condition_split, eval_seed=config["eval_seed"], eval_worlds=a.eval_worlds,
+                   boundary=c.T//2, source_genome_sha256=source_hash, final_genome_hash=genome_hash(flat))
+    write_json(run_dir / "summary.json", summary)
+    started = time.monotonic()
+    try:
+        summary["evaluations"] = reversal_eval.evaluate_conditions(flat, c, a.eval_worlds, a.condition_split)
+        ev = summary["evaluations"]
+        fitness = lambda name: ev[name]["metrics"]["post_fitness"]
+        summary["post_fitness_differences"] = dict(
+            noflip_plasticity=fitness("noflip_learning")-fitness("noflip_frozen"),
+            flip_plasticity=fitness("flip_learning")-fitness("flip_frozen"),
+            reversal_learning=fitness("flip_learning")-fitness("noflip_learning"),
+            reversal_frozen=fitness("flip_frozen")-fitness("noflip_frozen"))
+        json.dumps(summary, allow_nan=False)
+    except BaseException as error:
+        summary.update(status="interrupted" if isinstance(error, KeyboardInterrupt) else "failed",
+                       error=f"{type(error).__name__}: {error}", eval_seconds=time.monotonic()-started)
+        write_json(run_dir / "summary.json", summary)
+        raise
+    summary.update(status="finished", eval_seconds=time.monotonic()-started)
+    (run_dir / "genome_final.npy").write_bytes(source)
+    write_json(run_dir / "summary.json", summary)
+    for name, row in summary["evaluations"].items():
+        metric = row["metrics"]
+        print(f"{name}: post fitness {metric['post_fitness']}, window hits {metric['recovered_agents']}/{metric['agents_at_risk']} at risk")
+    print("run folder:", run_dir)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--name", default="run")
@@ -175,10 +223,10 @@ def main():
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL), default=None,
-                    help="v1 (default), v2 mechanism diagnostic, structural-v1, or broader-v1 parameter shifts")
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL), default=None,
+                    help="v1 (default), v2 mechanism diagnostic, structural-v1, broader-v1, or reversal-v1")
     ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
-                    help="broader-v1 only; final fixes default Cfg and 128 worlds")
+                    help="broader-v1/reversal-v1 only; final fixes default Cfg and 128 worlds")
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
                     help="per-invocation training limit; stop after a complete generation and checkpoint "
@@ -196,16 +244,26 @@ def main():
     if git["dirty"] and not (a.allow_dirty or (a.quick and not a.resume)):
         raise SystemExit("Uncommitted code changes. Commit first (every run must map to a commit), "
                          "or pass --allow-dirty and say why in the experiment log.")
+    if a.eval_protocol == reversal_eval.PROTOCOL:
+        a.condition_split = a.condition_split or "development"
+        a.structural_plasticity = a.structural_plasticity or "off"
+        try:
+            run_reversal(a, git)
+        except ValueError as error:
+            ap.error(str(error))
+        return
     if a.resume:
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
         args = config["args"]
+        if args.get("eval_protocol") == reversal_eval.PROTOCOL:
+            ap.error("reversal-v1 does not resume; preserve the folder and use a new run name")
         if a.eval_protocol is not None and a.eval_protocol != args.get("eval_protocol", "v1"):
             raise SystemExit("Cannot change evaluation protocol on resume")
         if args.get("eval_protocol", "v1") == broader_eval.PROTOCOL:
             ap.error("broader-v1 panels cannot be resumed; preserve this folder and start a new run")
         if a.condition_split is not None:
-            ap.error("--condition-split is only supported by broader-v1")
+            ap.error("--condition-split is only supported by broader-v1 or reversal-v1")
         if a.structural_plasticity is not None and a.structural_plasticity != args.get("structural_plasticity", "off"):
             raise SystemExit("Cannot change structural mode on resume")
         if a.no_plastic and args.get("structural_plasticity", "off") != "off":
@@ -218,7 +276,7 @@ def main():
         args["eval_protocol"] = a.eval_protocol or "v1"
         args["structural_plasticity"] = a.structural_plasticity or "off"
         if a.condition_split is not None and args["eval_protocol"] != broader_eval.PROTOCOL:
-            ap.error("--condition-split is only supported by broader-v1")
+            ap.error("--condition-split is only supported by broader-v1 or reversal-v1")
         if a.quick:
             args.update(generations=3, pop=8, worlds=2, eval_worlds=4, checkpoint_every=1)
         overrides = parse_cfg(a.cfg)

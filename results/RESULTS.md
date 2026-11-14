@@ -101,3 +101,22 @@ Development rows are operational checks, not scientific generalization results. 
 | 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | dense | 8.7305 | 0.1719 | 8.5586 | f11dd90 |
 | 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | low-cost | 5.3770 | -0.1367 | 5.5137 | f11dd90 |
 | 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | high-cost | 3.9785 | 0.1523 | 3.8262 | f11dd90 |
+
+## REVERSAL v1 prototype
+
+Development rows are software checks, not adaptation results. Window hits use complete 25-step windows, >=5 encounters, >=70% food choices and survival through window end; all censored agents and full counts remain in summary.json.
+
+| Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 5028e19 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 04e3005 |
+| 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 04e3005 |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | a96e43e |
