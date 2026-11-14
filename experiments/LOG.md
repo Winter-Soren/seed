@@ -719,3 +719,23 @@ The remaining metrics below accompany the fitness values above; all numbers are 
 - Commit this code and development registration, then execute only the originally
   registered E108-R-D-smoke command under the short owned-process guard. It tests
   pipeline correctness, not adaptation or the proposed three-seed scientific hypothesis.
+
+## E108-R-D tracked smoke result and integration checkpoint
+
+- `runs/20261115-001744_E108-R-D-smoke` finished from clean source5028e19, development
+  seed8210, one world, T12/flip6, G3/M1/R0/H3/n_items1. All four conditions completed;
+  no final8211 or default scientific-world panel ran. Source/start/final copies retain
+  A0 SHA-256477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53.
+- Post fitness noflip_learning1, noflip_frozen0, flip_learning-1, flip_frozen0;
+  signed plasticity effects +1/no-flip and -1/flip, reversal effect -2/learning and
+  0/frozen. No qualifying window hit occurred. Pre-boundary count/accuracy records
+  match each noflip/flip pair. These tiny scores are operational evidence only.
+- Guard exited0 after21.2369707s, sampled private923238400/resident349753344 bytes.
+  Compact evidence: experiments/E108_R_SMOKE_SUPERVISION.json. Rebuilt RESULTS;
+  explicit development rows remain separate from scientific EVALv1/v2 results.
+- The owner now requires completed research branches to go through PR/review/merge;
+  main coordinates publication. This lab keeps push disabled. Preserve this source
+  commit/run, then merge the latest local main into this feature branch without
+  rewriting history. Resolve optional rollout/runner/summary additions alongside
+  E107/E108; rerun relevant compatibility/direct checks before reporting the final
+  integration-ready tip. Do not rerun completed scientific panels.

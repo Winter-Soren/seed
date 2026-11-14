@@ -33,3 +33,14 @@ Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian
 | 20261114-231204_E106-v2-blank-s1 | finished | file:runs/20261112-022514_E100-blank-s1/genome_final.npy | 0.414062 | 0.414062 | 0.044922 | 0.000000 | 0.369141 | 1.000000 | 123 | 128 | f0825ef |
 | 20261114-231313_E106-v2-blank-s2 | finished | file:runs/20261112-022552_E100-blank-s2/genome_final.npy | 0.230469 | 0.230469 | 0.044922 | 0.000000 | 0.185547 | 1.000000 | 123 | 128 | f0825ef |
 | 20261114-231641_E106-v2-biology | finished | file:runs/20261112-022641_E100-biology-s0/genome_final.npy | 5.128906 | 5.128906 | 0.000000 | 0.000000 | 5.128906 | 1.000000 | 123 | 128 | f0825ef |
+
+## REVERSAL v1 prototype
+
+Development rows are software checks, not adaptation results. Window hits use 25-step windows, >=5 encounters, >=70% food choices and survival through window end; all censored agents and full counts remain in summary.json.
+
+| Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 5028e19 |
+| 20261115-001744_E108-R-D-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 5028e19 |

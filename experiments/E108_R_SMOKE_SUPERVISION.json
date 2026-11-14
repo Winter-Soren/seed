@@ -1,0 +1,27 @@
+{
+  "wallSeconds": 21.2369707,
+  "label": "E108-R-D-smoke",
+  "samples": [
+    {
+      "privateBytes": 762036224,
+      "seconds": 10.9267941,
+      "residentBytes": 165298176,
+      "availableCommitBytes": 16682479616
+    },
+    {
+      "privateBytes": 923238400,
+      "seconds": 16.1647845,
+      "residentBytes": 349753344,
+      "availableCommitBytes": 15775166464
+    },
+    {
+      "privateBytes": 0,
+      "seconds": 21.2235094,
+      "residentBytes": 0,
+      "availableCommitBytes": 15835049984
+    }
+  ],
+  "sampledMaxResidentBytes": 349753344,
+  "exitCode": 0,
+  "sampledMaxPrivateBytes": 923238400
+}

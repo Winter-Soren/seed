@@ -23,7 +23,13 @@ private1257246720 bytes. After final input-validation tweaks, focused19 runner c
 passed3.666s. Old v1/v2 fixtures exact; fixed-item inversion and pre-flip identity proven.
 Source fixtures small; no scientific reversal or final8211 world evaluated.
 
-Next: commit code/registration, execute only registered tiny E108-R-D-smoke under
-guard, audit all raw metrics/copies and counts, summarize and commit evidence/results.
+Code committed5028e19. Tracked smoke runs/20261115-001744_E108-R-D-smoke passed from
+clean source, seed8210/T12/flip6/oneworld;21.2369707s guard wall, private923238400 bytes.
+Input/copies unchanged; pre-boundary metrics match; signed post effects +1/-1 and
+learning reversal effect -2; zero qualifying hits (tiny operational fixture only).
+Next: commit these results, merge latest local origin/main (now E107/E108 integrated)
+into this feature branch without history rewriting, resolve API additions preserving
+all three protocols/controllers, then run focused/full checks and an integrated tiny
+smoke under a new name. Main owns push/PR/review/merge under new owner policy.
 Development seed8210; final8211 stays untouched pending owner protocol approval.
 No tuning on EVAL123 or BROADERfinal8109. E107 merge/testing remains with main.
