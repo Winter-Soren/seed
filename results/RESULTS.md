@@ -52,6 +52,7 @@ Same worlds/seed 123; Weight-only retains both local weight-learning rules. Froz
 | 20261114-233501_E107-structural-A-s2 | finished | Weight-only | 14.8671875 | 0.6937439441680908 | 0.8225241303443909 | 0.849609375 | 15094 |  |  |  |  |  | ffc2c0a |
 | 20261114-233501_E107-structural-A-s2 | finished | Weight+structure | 14.359375 | 0.6945882439613342 | 0.797878623008728 | 0.85546875 | 15288 | 421.2890625 | 453.11328125 | 2531.30859375 | 2499.484375 | 2585.30859375 | ffc2c0a |
 | 20261114-233501_E107-structural-A-s2 | finished | Frozen | -0.103515625 | 0.4872659146785736 | 0.516306459903717 | 0.36328125 | 7885 | 0.0 | 0.0 | 2531.30859375 | 2531.30859375 | 2585.30859375 | ffc2c0a |
+| 20261115-000000_E109-structural-train-s0 | interrupted |  |  |  |  |  |  |  |  |  |  |  | 1362bc1 |
 
 ## BROADER v1 (separate parameter-shift protocol)
 
