@@ -114,3 +114,7 @@ Development rows are software checks, not adaptation results. Window hits use co
 | 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | 04e3005 |
 | 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | 04e3005 |
 | 20261115-002947_E108-R-D-integrated-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | 04e3005 |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | noflip_learning | 1.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | a96e43e |
+| 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | a96e43e |

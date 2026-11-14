@@ -1,0 +1,76 @@
+{
+  "args": {
+    "name": "E108-R-D-reviewed-smoke",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "structural_plasticity": "off",
+    "eval_worlds": 1,
+    "eval_protocol": "reversal-v1",
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": [
+      "G=3",
+      "M=1",
+      "T=12",
+      "R=0",
+      "H=3",
+      "n_items=1"
+    ],
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg": {
+    "G": 3,
+    "M": 1,
+    "T": 12,
+    "R": 0,
+    "n_items": 1,
+    "H": 3,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {
+    "G": 3,
+    "M": 1,
+    "T": 12,
+    "R": 0,
+    "H": 3,
+    "n_items": 1
+  },
+  "git": {
+    "commit": "a96e43e3279b5516b6eb67666d8226718c29b44e",
+    "branch": "lab/reversal-prototype",
+    "dirty": false
+  },
+  "created": "2026-11-15T00:37:26.736703",
+  "eval_protocol": "reversal-v1",
+  "eval_seed": 8210,
+  "source_genome_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+  "boundary": 6,
+  "recovery_window": 25,
+  "recovery_min_encounters": 5,
+  "recovery_accuracy": 0.7,
+  "genome_size": 155,
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  }
+}

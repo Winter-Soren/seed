@@ -1256,3 +1256,28 @@ Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has 
   for reversal yet. Previously saved development artifacts remain unchanged.
 - Rebuild RESULTS and commit this verified code with prior integrated-smoke evidence,
   then run only the newly named reviewed tiny fixture. No final8211 access or tuning.
+
+## E108-R-D final reviewed fixture and handoff
+
+- `runs/20261115-003726_E108-R-D-reviewed-smoke` finished from clean sourcea96e43e,
+  development8210, one world, T12/flip6. Guard exited0 after69.1144037s; evaluation
+  time58.0s; sampled max private924090368/resident349691904 bytes. Physical counts,
+  pre/post accuracy, fitness, survival, denominators and zero-hit values exactly match
+  the integrated prior fixture. Each six-step partial window now records complete=false
+  and no_complete_window censoring, correctly excluding it from the recovery proxy.
+- Source/start/final genome files retain full SHA-256477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53.
+  A read-only audit also verified all seven E108 config/summary/genome manifests against
+  their original hashes, the entire inherited LOG prefix, and no prior run modifications.
+  Evidence: experiments/E108_R_FINAL_AUDIT.json and E108_R_REVIEWED_SMOKE.json.
+- Final verification: 66 integrated tests passed before the metric review, then all16
+  focused tests passed after the complete-window fix and added ordinary-learning and
+  exact-threshold fixtures. Controller code did not change during the metric review.
+  Regenerated RESULTS contains37 runs and keeps every protocol/development label separate;
+  README and the concrete scientific proposal reflect the tested measurement definition.
+- Feature branch lab/reversal-prototype preserves5028e19/5542fae, the1362bc1 integration
+  through04e3005 and review commita96e43e. Main coordinates push/PR/review/merge; this lab
+  remains push-disabled. E108 is independently pinned at9766538/lab/e108-complete.
+- Only software/direct fixtures were run for reversal. The proposed final T300/flip150,
+  seven-genome/128-world/seed8211 panel remains unexecuted pending owner approval under
+  AGENTS.md's requirement to ask before changing the evaluation protocol. This is a
+  concrete reviewable decision, not evidence of adaptation or a need to repeat E108.

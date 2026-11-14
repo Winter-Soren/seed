@@ -36,8 +36,16 @@ Independent review fixed partial-window eligibility: only full25-step windows qu
 partials keep counts/complete=false; no complete window is a separate censor reason.
 Added direct weight-only learning prefix and exact70%/min5 threshold cases. All16
 focused review tests passed107.841s; controller code unchanged since66-test suite.
-Next: commit review/source plus old integrated-smoke evidence, run registered reviewed
-tiny fixture, verify unchanged physical outcomes and new explicit censor flags, commit
-and report final clean tip for main's push/PR/review/merge. Final8211 still untouched.
+Review committeda96e43e. Final reviewed smoke runs/20261115-003726_E108-R-D-reviewed-smoke
+passed from clean source;69.1144037s guard wall/58.0s eval/private924090368 bytes.
+Physical outcomes exactly match earlier smoke; partial window is complete=false and
+no_complete_window, with no fabricated hit. Source/start/final bytes unchanged.
+Final read-only audit also verified all7 original E108 manifests and inherited LOG
+prefix. Evidence experiments/E108_R_FINAL_AUDIT.json. RESULTS rebuilt with37 runs.
+
+All authorized prototype work is complete. Commit final evidence/records, report tip
+to main for push/PR/review/merge (push stays disabled here). No scientific reversal
+panel; proposed T300/flip150/128worlds/7genomes/seed8211 remains unexecuted pending
+owner protocol approval. No further experiments or original-run edits are needed.
 Development seed8210; final8211 stays untouched pending owner protocol approval.
 No tuning on EVAL123 or BROADERfinal8109. E107 merge/testing remains with main.
