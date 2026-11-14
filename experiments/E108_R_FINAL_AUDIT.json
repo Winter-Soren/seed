@@ -1,0 +1,15 @@
+{
+  "run": "runs\\20261115-003726_E108-R-D-reviewed-smoke",
+  "source_commit": "a96e43e3279b5516b6eb67666d8226718c29b44e",
+  "genome_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+  "summary_sha256_lf": "b8baf1678421b52a9f9db8372204e71c13b027f7d24123c0d4f0027f471657cb",
+  "physical_metrics_equal_previous": true,
+  "complete_window_and_censor_checks": true,
+  "E108_scientific_manifests_preserved": 7,
+  "historical_log_prefix_preserved": true,
+  "no_prior_run_modifications": true,
+  "wall_seconds": 69.1144037,
+  "eval_seconds": 58.0,
+  "sampled_max_private_bytes": 924090368,
+  "scientific_reversal_run": false
+}

@@ -1,0 +1,276 @@
+{
+  "status": "finished",
+  "generation": 0,
+  "eval_protocol": "reversal-v1",
+  "condition_split": "development",
+  "eval_seed": 8210,
+  "eval_worlds": 1,
+  "boundary": 6,
+  "source_genome_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+  "final_genome_hash": "ee8eaa10a7429cc5",
+  "evaluations": {
+    "noflip_learning": {
+      "flip_step": null,
+      "hebbian": true,
+      "predictor": true,
+      "structural": false,
+      "metrics": {
+        "fitness": 3.0,
+        "eaten": 3,
+        "pre": {
+          "food": 2,
+          "poison": 0,
+          "accuracy": 1.0
+        },
+        "post": {
+          "food": 1,
+          "poison": 0,
+          "accuracy": 1.0
+        },
+        "post_fitness": 1.0,
+        "alive_at_boundary": 1.0,
+        "survived": 1.0,
+        "recovered_agents": 0,
+        "agents_at_risk": 1,
+        "total_agents": 1,
+        "window_hit_fraction_all": 0.0,
+        "window_hit_fraction_at_risk": 0.0,
+        "median_window_hit_latency": null,
+        "censored": {
+          "no_complete_window": 1
+        },
+        "post_windows": [
+          {
+            "start": 6,
+            "stop": 12,
+            "complete": false,
+            "food": 1,
+            "poison": 0,
+            "accuracy": 1.0,
+            "survived": 1
+          }
+        ],
+        "agents": [
+          {
+            "world": 0,
+            "agent": 0,
+            "initial_rule": 0,
+            "pre": {
+              "food": 2,
+              "poison": 0,
+              "accuracy": 1.0
+            },
+            "post": {
+              "food": 1,
+              "poison": 0,
+              "accuracy": 1.0
+            },
+            "alive_at_boundary": true,
+            "survived": true,
+            "window_hit_latency": null,
+            "censor_reason": "no_complete_window"
+          }
+        ]
+      }
+    },
+    "noflip_frozen": {
+      "flip_step": null,
+      "hebbian": false,
+      "predictor": false,
+      "structural": false,
+      "metrics": {
+        "fitness": 2.0,
+        "eaten": 4,
+        "pre": {
+          "food": 2,
+          "poison": 0,
+          "accuracy": 1.0
+        },
+        "post": {
+          "food": 1,
+          "poison": 1,
+          "accuracy": 0.5
+        },
+        "post_fitness": 0.0,
+        "alive_at_boundary": 1.0,
+        "survived": 1.0,
+        "recovered_agents": 0,
+        "agents_at_risk": 1,
+        "total_agents": 1,
+        "window_hit_fraction_all": 0.0,
+        "window_hit_fraction_at_risk": 0.0,
+        "median_window_hit_latency": null,
+        "censored": {
+          "no_complete_window": 1
+        },
+        "post_windows": [
+          {
+            "start": 6,
+            "stop": 12,
+            "complete": false,
+            "food": 1,
+            "poison": 1,
+            "accuracy": 0.5,
+            "survived": 1
+          }
+        ],
+        "agents": [
+          {
+            "world": 0,
+            "agent": 0,
+            "initial_rule": 0,
+            "pre": {
+              "food": 2,
+              "poison": 0,
+              "accuracy": 1.0
+            },
+            "post": {
+              "food": 1,
+              "poison": 1,
+              "accuracy": 0.5
+            },
+            "alive_at_boundary": true,
+            "survived": true,
+            "window_hit_latency": null,
+            "censor_reason": "no_complete_window"
+          }
+        ]
+      }
+    },
+    "flip_learning": {
+      "flip_step": 6,
+      "hebbian": true,
+      "predictor": true,
+      "structural": false,
+      "metrics": {
+        "fitness": 1.0,
+        "eaten": 3,
+        "pre": {
+          "food": 2,
+          "poison": 0,
+          "accuracy": 1.0
+        },
+        "post": {
+          "food": 0,
+          "poison": 1,
+          "accuracy": 0.0
+        },
+        "post_fitness": -1.0,
+        "alive_at_boundary": 1.0,
+        "survived": 1.0,
+        "recovered_agents": 0,
+        "agents_at_risk": 1,
+        "total_agents": 1,
+        "window_hit_fraction_all": 0.0,
+        "window_hit_fraction_at_risk": 0.0,
+        "median_window_hit_latency": null,
+        "censored": {
+          "no_complete_window": 1
+        },
+        "post_windows": [
+          {
+            "start": 6,
+            "stop": 12,
+            "complete": false,
+            "food": 0,
+            "poison": 1,
+            "accuracy": 0.0,
+            "survived": 1
+          }
+        ],
+        "agents": [
+          {
+            "world": 0,
+            "agent": 0,
+            "initial_rule": 0,
+            "pre": {
+              "food": 2,
+              "poison": 0,
+              "accuracy": 1.0
+            },
+            "post": {
+              "food": 0,
+              "poison": 1,
+              "accuracy": 0.0
+            },
+            "alive_at_boundary": true,
+            "survived": true,
+            "window_hit_latency": null,
+            "censor_reason": "no_complete_window"
+          }
+        ]
+      }
+    },
+    "flip_frozen": {
+      "flip_step": 6,
+      "hebbian": false,
+      "predictor": false,
+      "structural": false,
+      "metrics": {
+        "fitness": 2.0,
+        "eaten": 4,
+        "pre": {
+          "food": 2,
+          "poison": 0,
+          "accuracy": 1.0
+        },
+        "post": {
+          "food": 1,
+          "poison": 1,
+          "accuracy": 0.5
+        },
+        "post_fitness": 0.0,
+        "alive_at_boundary": 1.0,
+        "survived": 1.0,
+        "recovered_agents": 0,
+        "agents_at_risk": 1,
+        "total_agents": 1,
+        "window_hit_fraction_all": 0.0,
+        "window_hit_fraction_at_risk": 0.0,
+        "median_window_hit_latency": null,
+        "censored": {
+          "no_complete_window": 1
+        },
+        "post_windows": [
+          {
+            "start": 6,
+            "stop": 12,
+            "complete": false,
+            "food": 1,
+            "poison": 1,
+            "accuracy": 0.5,
+            "survived": 1
+          }
+        ],
+        "agents": [
+          {
+            "world": 0,
+            "agent": 0,
+            "initial_rule": 0,
+            "pre": {
+              "food": 2,
+              "poison": 0,
+              "accuracy": 1.0
+            },
+            "post": {
+              "food": 1,
+              "poison": 1,
+              "accuracy": 0.5
+            },
+            "alive_at_boundary": true,
+            "survived": true,
+            "window_hit_latency": null,
+            "censor_reason": "no_complete_window"
+          }
+        ]
+      }
+    }
+  },
+  "post_fitness_differences": {
+    "noflip_plasticity": 1.0,
+    "flip_plasticity": -1.0,
+    "reversal_learning": -2.0,
+    "reversal_frozen": 0.0
+  },
+  "eval_seconds": 58.0
+}
