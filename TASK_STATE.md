@@ -1,5 +1,16 @@
 # Current continuation state
 
+## Structural lab override (isolated checkout only, 2026-11-14 23:16 IST)
+
+- Owns only `.tmp/parallel-labs/structural`; base `a0cb4a7`, push URL stays `DISABLED`. Main integration/publication remains with the coordinator. Everything below this override is the inherited main-checkout history, not this lab's live process state.
+- Implemented pure `seed/structural.py` and default-off keyword-only engine integration, with independent net growth/pruning, isolated-neuron recruitment, immutable birth caps, independent deterministic RNG, and actual mask-difference diagnostics. Runner exposes explicit `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`; E106's separate predictor switch is not implemented/replaced here.
+- **Verified 31/31 tests**, including unchanged legacy recovery/mismatch assertions, bitwise original-engine disabled compatibility, subsequent-tick recruitment, enabled determinism, and real tiny structural ES split/resume plus flushed-tail crash/replay with exact optimizer/RNG/non-timing row/final-genome equality. Baseline eight runner tests passed before changes. The first combined run's five recovery failures were caused by a generic exception handler advancing crash checkpoints; narrowed to `StructuralValidationError`, original assertions preserved, final suite green.
+- Direct fixture: edge `(post=7, pre=6)` grew with weight `1.0`, net `+1`; current activation `0.0`, next tick `0.7615941762924194`; pruning removed that edge, net `-1`, weight/activation `0.0`. Full suite 83.169 s; supervisor wall 95.0602852 s; minimum available commit 14.722728729 GiB; sampled peak owned-tree private memory 1233.5625 MiB, observed sum of per-process peak working sets 646.16796875 MiB.
+- E107 preregistration is complete in LOG, with an exact one-world benchmark and three queued fixed-A diagnostic commands, hashes, pass/fail and limitations. No scientific experiment or full panel launched yet. Notebook rebuilt, all code cells statically compiled, `git diff --check` clean.
+- **Compute:** coordinator lifted the bounded-fixture launch hold after Oracle stopped. Main owns E106; generalization owns Broader v1. Keep this lab's direct checks BelowNormal and under five minutes, stop only its owned process tree if available commit falls below 5 GiB. Full structural panels/population training still require a coordinator slot. Next: commit implementation/preregistration, then run the registered one-world runner benchmark under the same guard.
+- Earlier fixture guard only measured the venv launcher (about 8.3 MiB), not the JAX child: do not use it as process memory evidence. Updated ignored guard will sample the owned child tree for subsequent checks. Five-minute limit, `BelowNormal`, D: temp, available-commit floor 5 GiB remain.
+
+
 Updated 2026-11-14 (Asia/Calcutta). This mutable handoff records current decisions. Read [AGENTS.md](AGENTS.md), [HANDOFF.md](HANDOFF.md), and the append-only [research history](experiments/LOG.md) for detailed results, incidents, commands, and verification evidence.
 
 ## Goal and authorized scope

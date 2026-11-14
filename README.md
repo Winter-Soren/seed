@@ -149,6 +149,8 @@ A0 took **144.61 minutes** and A2 **157.11 minutes** of combined process wall ti
 
 ## Explore the project
 
+The isolated E107 implementation adds optional lifetime growth/pruning among existing neurons. It is off by default, keeps the 155-value genome, and requires the explicitly labeled diagnostic flags `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`. Its fixed rule allows at most one extra incoming edge per non-sensor row relative to birth; new edges affect the next neural tick. `--no-plastic` conflicts with structural training; the Frozen diagnostic disables both. Capability fixtures do not establish a fitness benefit. See E107 in the lab notebook for the pending measured comparison and its compute-slot condition.
+
 | Path | Contents |
 |---|---|
 | [seed/seed.py](seed/seed.py) | JAX engine: world, brain development, plasticity, evolution and evaluation. |

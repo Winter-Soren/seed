@@ -19,6 +19,8 @@ import jax
 import jax.numpy as jnp
 from jax.flatten_util import ravel_pytree
 
+from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure
+
 
 class Cfg(NamedTuple):
     G: int = 16          # world is G x G (wraps around)
@@ -151,8 +153,8 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c):
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record"))
-def rollout(g, wkey, dkey, rule, c, plastic=True, record=False):
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "structural"))
+def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, structural=False):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     V, D, O, n, K = dims(c)
     types = neuron_types(c)
@@ -167,13 +169,52 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False):
         grid=grid, pos=pos, W=W, x=jnp.zeros((M, n)), Wp=jnp.zeros((M, D, c.H)),
         energy=jnp.full((M,), c.e0), alive=jnp.ones(M), sig=jnp.zeros(M),
         denergy=jnp.zeros(M), counts=jnp.zeros((M, 2, 2)), key=wkey, t=0)
+    if structural:
+        legal = (types[:, None] != 0) & ~jnp.eye(n, dtype=bool)
+        caps = birth_caps(mask, legal)
+        P = jax.nn.sigmoid(g['conn'])[types[:, None], types[None, :]] * legal
+        scale = jnp.exp(g['wscale'])[types[:, None], types[None, :]] / jnp.sqrt(jnp.maximum(P.sum(1, keepdims=True), 1.))
+        structural_keys = jax.vmap(lambda k: jax.random.fold_in(k, STREAM_TAG))(jax.random.split(dkey, M))
+        edges = (mask > 0).sum((1, 2))
+        zeros = jnp.zeros(M, dtype=jnp.int32)
+        carry.update(mask=mask, structure=dict(
+            added=zeros, removed=zeros, initial_edges=edges, final_edges=edges,
+            min_edges=edges, max_edges=edges, edge_cap=caps.sum(1),
+            cap_violations=zeros, illegal_edges=zeros, invalid_weights=zeros,
+            invalid_proposals=zeros + (~jnp.isfinite(scale)).sum(),
+            initial_max_abs_weight=jnp.abs(W).max((1, 2)), max_abs_weight=jnp.zeros(M)))
 
     def step(s, _):
         key, ka, kr = jax.random.split(s["key"], 3)
         obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
         W, x, Wp, surprise = jax.vmap(
             lambda W, x, Wp, o, de, mk: brain_step(W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c)
-        )(s["W"], s["x"], s["Wp"], obs, s["denergy"], mask)
+        )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
+        if structural:
+            # The current neural tick/action is already computed; rewiring affects the next tick.
+            def event(_):
+                draws = jax.vmap(lambda k: jax.random.normal(jax.random.fold_in(k, s['t']), (n,)))(structural_keys)
+                return jax.vmap(lambda w, mk, x0, cap, draw, alive: rewire(
+                    w, mk, x0, legal, cap, scale, draw, wmax=c.wmax, alive=alive > 0, plastic=plastic)
+                )(W, s['mask'], s['x'], caps, draws, s['alive'])
+
+            new_mask = s['mask']
+            delta = dict(added=jnp.zeros(M, jnp.int32), removed=jnp.zeros(M, jnp.int32),
+                         invalid_proposals=jnp.zeros(M, jnp.int32))
+            if plastic:
+                W, new_mask, delta = jax.lax.cond((s['t'] > 0) & (s['t'] % INTERVAL == 0), event,
+                                                 lambda _: (W, new_mask, delta), operand=None)
+            edges = (new_mask > 0).sum((1, 2))
+            stats = dict(s['structure'])
+            for k in delta:
+                stats[k] = stats[k] + delta[k]
+            stats.update(final_edges=edges, min_edges=jnp.minimum(stats['min_edges'], edges),
+                         max_edges=jnp.maximum(stats['max_edges'], edges),
+                         max_abs_weight=jnp.maximum(stats['max_abs_weight'], jnp.abs(W).max((1, 2))))
+            stats['cap_violations'] += ((new_mask > 0).sum(2) > caps).sum(1)
+            stats['illegal_edges'] += ((new_mask > 0) & ~legal).sum((1, 2))
+            stats['invalid_weights'] += ((~jnp.isfinite(W)) | (jnp.abs(W) > c.wmax) |
+                                         ((new_mask == 0) & (W != 0))).sum((1, 2))
         logits = 3.0 * x[:, n - O:n - 1]
         act = jax.random.categorical(ka, logits)
         # efference copy: motor neurons "know" which action was actually taken, so the
@@ -198,6 +239,10 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False):
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
         out = dict(surprise=jnp.mean(surprise))
+        if structural:
+            ns.update(mask=new_mask, structure=stats)
+            if record:
+                out.update(structural_added=delta['added'].sum(), structural_removed=delta['removed'].sum())
         if record:
             out.update(grid=grid, pos=pos, alive=alive_new, sig=sig, energy=e_new)
         return ns, out
@@ -208,20 +253,24 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False):
     res = dict(fitness=fitness, counts=counts.sum(0), survived=s["alive"].mean(),
                surprise_first=traj["surprise"][: c.T // 2].mean(),
                surprise_last=traj["surprise"][c.T // 2:].mean())
+    if structural:
+        res['structure'] = jax.tree.map(jnp.mean, s['structure'])
+        if record:
+            res['structural_state'] = dict(mask=s['mask'], W=s['W'], x=s['x'], row_caps=caps)
     if record:
         res["traj"] = traj
     return res
 
 
 # ----------------------------------------------------------------------------- evolution
-def make_evaluator(c, E, plastic=True):
+def make_evaluator(c, E, plastic=True, *, structural=False):
     """Evaluate a population of flat genomes in E worlds each (half with each rule)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
     rules = jnp.arange(E) % 2
 
     def one(flat, wkeys, dkeys):
         g = unravel(flat)
-        r = jax.vmap(lambda wk, dk, ru: rollout(g, wk, dk, ru, c, plastic))(wkeys, dkeys, rules)
+        r = jax.vmap(lambda wk, dk, ru: rollout(g, wk, dk, ru, c, plastic, structural=structural))(wkeys, dkeys, rules)
         return r
 
     @jax.jit
@@ -258,6 +307,8 @@ def es_step(state, evaluate, pop, E, sigma, lr, l2=0.005):
     dk = jax.random.split(kd, pop // 2 * E).reshape(pop // 2, E, 2)
     dkeys = jnp.concatenate([dk, dk])                         # antithetic twins share development noise
     res = evaluate(popu, wkeys, dkeys)
+    if 'structure' in res:
+        validate_structure(res['structure'])
     fit = res["fitness"].mean(1)
     w = centered_ranks(fit)
     grad = (w[:, None] * eps).sum(0) / (pop * sigma) - l2 * mu
@@ -271,6 +322,8 @@ def es_step(state, evaluate, pop, E, sigma, lr, l2=0.005):
     row = dict(gen=t - 1, fit_mean=float(fit.mean()), fit_best=float(fit.max()),
                fit_std=float(fit.std()), acc_first=float(acc[0]), acc_second=float(acc[1]),
                survived=float(res["survived"].mean()))
+    if 'structure' in res:
+        row['structure'] = {k: float(v.mean()) for k, v in res['structure'].items()}
     return dict(mu=mu, m=m_, v=v_, t=t, key=key), row
 
 
@@ -281,10 +334,10 @@ def format_row(row):
 
 
 def evolve(c, generations=200, pop=128, E=4, sigma=0.1, lr=0.1, seed=0, plastic=True,
-           log_every=10, mean=None):
+           log_every=10, mean=None, *, structural=False):
     """Run ES for a number of generations. Returns (mean genome, unravel, history)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
-    evaluate, _ = make_evaluator(c, E, plastic)
+    evaluate, _ = make_evaluator(c, E, plastic, structural=structural)
     state = es_init(c, mean, seed)
     hist = []
     for gen in range(generations):
@@ -295,15 +348,19 @@ def evolve(c, generations=200, pop=128, E=4, sigma=0.1, lr=0.1, seed=0, plastic=
     return state["mu"], unravel, hist
 
 
-def test_genome(mu, c, n_worlds=64, plastic=True, seed=123):
+def test_genome(mu, c, n_worlds=64, plastic=True, seed=123, *, structural=False):
     """Fresh, unseen worlds. Returns averages over n_worlds (half with each rule)."""
-    evaluate, _ = make_evaluator(c, n_worlds, plastic)
+    evaluate, _ = make_evaluator(c, n_worlds, plastic, structural=structural)
     key = jax.random.PRNGKey(seed)
     kw, kd = jax.random.split(key)
     res = evaluate(mu[None], jax.random.split(kw, n_worlds),
                    jax.random.split(kd, n_worlds)[None])
     cnt = res["counts"].sum((0, 1))
     acc = cnt[:, 0] / jnp.maximum(cnt.sum(1), 1)
-    return dict(fitness=float(res["fitness"].mean()), acc_first=float(acc[0]),
+    result = dict(fitness=float(res["fitness"].mean()), acc_first=float(acc[0]),
                 acc_second=float(acc[1]), survived=float(res["survived"].mean()),
                 eaten=int(cnt.sum()))
+    if structural:
+        validate_structure(res['structure'])
+        result['structure'] = {k: float(v.mean()) for k, v in res['structure'].items()}
+    return result

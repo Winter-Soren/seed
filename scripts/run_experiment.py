@@ -29,6 +29,7 @@ from jax.flatten_util import ravel_pytree
 
 from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init, es_step,
                        format_row, test_genome, genome_size)
+from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
 
 
 def git_info():
@@ -97,6 +98,9 @@ def main():
     ap.add_argument("--lr", type=float, default=0.1)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--no-plastic", action="store_true", help="evolve with all plasticity disabled (control)")
+    ap.add_argument('--structural-plasticity', choices=('off', MODE), default=None,
+                    help='default off; fixed bounded activity-driven growth/pruning')
+    ap.add_argument('--eval-protocol', choices=('v1', 'structural-v1'), default=None)
     ap.add_argument("--eval-worlds", type=int, default=128)
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
@@ -119,10 +123,22 @@ def main():
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
         args = config["args"]
+        if a.structural_plasticity is not None and a.structural_plasticity != args.get('structural_plasticity', 'off'):
+            raise SystemExit('Cannot change structural mode on resume')
+        if a.eval_protocol is not None and a.eval_protocol != args.get('eval_protocol', 'v1'):
+            raise SystemExit('Cannot change evaluation protocol on resume')
+        if a.no_plastic and args.get('structural_plasticity', 'off') != 'off':
+            ap.error('structural training conflicts with --no-plastic on resume')
         config.setdefault("resumes", []).append(dict(at=datetime.datetime.now().isoformat(), git=git,
                                                      max_train_seconds=a.max_train_seconds))
     else:
         args = vars(a).copy()
+        args['structural_plasticity'] = a.structural_plasticity or 'off'
+        args['eval_protocol'] = a.eval_protocol or 'v1'
+        if args['structural_plasticity'] != 'off' and args['no_plastic']:
+            ap.error('structural training conflicts with --no-plastic')
+        if (args['structural_plasticity'] != 'off') != (args['eval_protocol'] == 'structural-v1'):
+            ap.error('structural mode requires --eval-protocol structural-v1 and vice versa')
         if a.quick:
             args.update(generations=3, pop=8, worlds=2, eval_worlds=4, checkpoint_every=1)
         stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
@@ -132,12 +148,19 @@ def main():
                       created=datetime.datetime.now().isoformat(),
                       machine=dict(platform=platform.platform(), python=sys.version.split()[0],
                                    jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+        if args['structural_plasticity'] != 'off':
+            config['structural_rule'] = dict(name=MODE, interval=INTERVAL, prune_fraction=PRUNE_FRACTION,
+                                            extra_fanin=1, stream_tag=STREAM_TAG, timing='after brain tick; previous activity')
+        if args['start'].startswith('file:'):
+            source = Path(args['start'][5:]).resolve()
+            config['input_genome'] = dict(path=str(source), sha256=hashlib.sha256(source.read_bytes()).hexdigest())
 
     c = Cfg(**config["cfg_overrides"])
     config["cfg"] = c._asdict()
     config["genome_size"] = genome_size(c)
     plastic = not args["no_plastic"]
-    evaluate, _ = make_evaluator(c, args["worlds"], plastic)
+    structural = args.get('structural_plasticity', 'off') != 'off'
+    evaluate, _ = make_evaluator(c, args["worlds"], plastic, structural=structural)
 
     if (run_dir / "checkpoint.npz").exists():
         state = load_checkpoint(run_dir)
@@ -201,6 +224,10 @@ def main():
     except KeyboardInterrupt:
         status = "interrupted"
         print("interrupted; checkpoint saved, resume with --resume", run_dir)
+    except StructuralValidationError as error:
+        save_checkpoint(run_dir, state)
+        write_json(summary_path, dict(status='failed', generation=state['t'], error=str(error)))
+        raise
     save_checkpoint(run_dir, state)
 
     summary = dict(status=status, generation=state["t"], train_minutes=round((time.monotonic() - t0) / 60, 2),
@@ -210,11 +237,27 @@ def main():
         n = args["eval_worlds"]
         start = jnp.asarray(np.load(run_dir / "genome_start.npy"))
         summary["eval_worlds"] = n
-        summary["final_learning"] = test_genome(state["mu"], c, n_worlds=n, plastic=True)
-        summary["final_frozen"] = test_genome(state["mu"], c, n_worlds=n, plastic=False)
-        summary["start_learning"] = test_genome(start, c, n_worlds=n, plastic=True)
-        for k in ("final_learning", "final_frozen", "start_learning"):
-            r = summary[k]
+        try:
+            if args.get('eval_protocol', 'v1') == 'structural-v1':
+                summary['eval_protocol'] = 'structural-v1'
+                summary['conditions'], summary['condition_seconds'] = {}, {}
+                for label, kwargs in (('Weight-only', dict(plastic=True)),
+                                      ('Weight+structure', dict(plastic=True, structural=True)),
+                                      ('Frozen', dict(plastic=False, structural=True))):
+                    eval_start = time.perf_counter()
+                    summary['conditions'][label] = test_genome(state['mu'], c, n_worlds=n, **kwargs)
+                    summary['condition_seconds'][label] = round(time.perf_counter() - eval_start, 6)
+                reporting = summary['conditions']
+            else:
+                summary["final_learning"] = test_genome(state["mu"], c, n_worlds=n, plastic=True)
+                summary["final_frozen"] = test_genome(state["mu"], c, n_worlds=n, plastic=False)
+                summary["start_learning"] = test_genome(start, c, n_worlds=n, plastic=True)
+                reporting = {k: summary[k] for k in ('final_learning', 'final_frozen', 'start_learning')}
+        except Exception as error:
+            summary.update(status='failed', error=str(error))
+            write_json(summary_path, summary)
+            raise
+        for k, r in reporting.items():
             print(f"{k:15s} fitness {r['fitness']:6.2f} | acc {r['acc_first']:.2f} -> {r['acc_second']:.2f}")
     write_json(summary_path, summary)
     print("run folder:", run_dir)

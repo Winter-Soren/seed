@@ -3,6 +3,8 @@ import json, sys
 from pathlib import Path
 
 seed_src = open(Path(__file__).resolve().parents[1] / "seed" / "seed.py").read()
+structural_src = (Path(__file__).resolve().parents[1] / 'seed' / 'structural.py').read_text()
+seed_src = seed_src.replace('from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure', structural_src)
 QUICK = "--quick" in sys.argv
 
 cells = []

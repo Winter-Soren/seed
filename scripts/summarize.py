@@ -11,13 +11,30 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     rows = []
+    structural_rows = []
+    n_runs = 0
     for d in sorted((ROOT / "runs").glob("*/")):
         cfg_p, sum_p = d / "config.json", d / "summary.json"
         if not cfg_p.exists():
             continue
+        n_runs += 1
         cfg = json.loads(cfg_p.read_text())
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
+        if a.get('eval_protocol') == 'structural-v1':
+            if not s.get('conditions'):
+                structural_rows.append('| ' + ' | '.join([d.name, s.get('status', ''), *[''] * 11,
+                                                        (cfg.get('git', {}).get('commit') or '')[:7]]) + ' |')
+            for condition, result in s.get('conditions', {}).items():
+                stats = result.get('structure', {})
+                structural_rows.append('| ' + ' | '.join(map(str, [
+                    d.name, s.get('status', ''), condition, result['fitness'], result['acc_first'],
+                    result['acc_second'], result['survived'], result['eaten'],
+                    stats.get('added', ''), stats.get('removed', ''), stats.get('initial_edges', ''),
+                    stats.get('final_edges', ''), stats.get('edge_cap', ''),
+                    (cfg.get('git', {}).get('commit') or '')[:7],
+                ])) + ' |')
+            continue
         fl, ff, sl = s.get("final_learning"), s.get("final_frozen"), s.get("start_learning")
         f = lambda r, k, p=2: f"{r[k]:.{p}f}" if r else ""
         acc = lambda r: f"{r['acc_first']:.2f} → {r['acc_second']:.2f}" if r else ""
@@ -36,9 +53,17 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if structural_rows:
+        out += ['## Structural v1 (separate diagnostic)', '',
+                'Same worlds/seed 123; Weight-only retains both local weight-learning rules. '
+                'Frozen disables weight and structural updates. Edge counts are means per agent; '
+                'turnover is capability evidence, not evidence of a fitness benefit. No EVAL v1 rows changed.', '',
+                '| Run | Status | Condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | '
+                'Added | Removed | Initial edges | Final edges | Edge cap | Commit |', '|---' * 14 + '|',
+                *structural_rows, '']
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
-    print(f"wrote results/RESULTS.md with {len(rows)} runs")
+    print(f"wrote results/RESULTS.md with {n_runs} runs")
 
 
 if __name__ == "__main__":
