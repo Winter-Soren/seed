@@ -19,3 +19,13 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261112-224133_E105-C-noplastic-s0 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | -0.00 | 0.06 | 0.49 | 0.50 → 0.50 | 8b42128 |
 | 20261114-003141_E105-C-noplastic-s1 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.41 | 0.17 | 0.12 | 0.51 → 0.51 | 9e74270 |
 | 20261114-031608_E105-C-noplastic-s2 | running | blank | no | 158/200 | 128×8 | 0.1/0.1 |  |  |  |  |  | e2ca461 |
+
+## Structural v1 (separate diagnostic)
+
+Same worlds/seed 123; Weight-only retains both local weight-learning rules. Frozen disables weight and structural updates. Edge counts are means per agent; turnover is capability evidence, not evidence of a fitness benefit. No EVAL v1 rows changed.
+
+| Run | Status | Condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | Added | Removed | Initial edges | Final edges | Edge cap | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Weight-only | 16.25 | 0.7213114500045776 | 0.8275862336158752 | 0.75 | 119 |  |  |  |  |  | c17e64c |
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Weight+structure | 16.0 | 0.739130437374115 | 0.8039215803146362 | 1.0 | 120 | 609.75 | 662.25 | 3192.25 | 3139.75 | 3246.25 | c17e64c |
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Frozen | 2.25 | 0.5263158082962036 | 0.6060606241226196 | 0.75 | 71 | 0.0 | 0.0 | 3192.25 | 3192.25 | 3246.25 | c17e64c |
