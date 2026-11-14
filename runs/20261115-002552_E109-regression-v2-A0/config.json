@@ -1,0 +1,60 @@
+{
+  "args": {
+    "name": "E109-regression-v2-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "structural_plasticity": "off",
+    "eval_worlds": 128,
+    "eval_protocol": "v2",
+    "condition_split": null,
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg_overrides": {},
+  "git": {
+    "commit": "fa10edcc2284ee76b75e20e1a06c34a75eafe2fa",
+    "branch": "e109-benchmark-checkpoint",
+    "dirty": false
+  },
+  "created": "2026-11-15T00:25:52.463050",
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  },
+  "eval_protocol": "v2",
+  "eval_seed": 123,
+  "eval_worlds": 128,
+  "source_genome_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "genome_size": 155,
+  "start_genome_hash": "ee8eaa10a7429cc5"
+}
