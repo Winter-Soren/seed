@@ -29,7 +29,8 @@ from jax.flatten_util import ravel_pytree
 
 from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init, es_step,
                        format_row, test_genome, genome_size)
-from scripts import reversal_eval
+from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
+from scripts import broader_eval, reversal_eval
 
 
 def git_info():
@@ -69,8 +70,15 @@ def start_genome(spec, c):
 
 def validate_eval_protocol(args, cfg_overrides):
     protocol = args.get("eval_protocol", "v1")
-    if protocol not in ("v1", "v2"):
+    if protocol not in ("v1", "v2", "structural-v1", broader_eval.PROTOCOL):
         raise SystemExit(f"Unknown evaluation protocol: {protocol!r}")
+    structural = args.get("structural_plasticity", "off")
+    if structural not in ("off", MODE):
+        raise SystemExit(f"Unknown structural mode: {structural!r}")
+    if structural != "off" and args["no_plastic"]:
+        raise SystemExit("structural training conflicts with --no-plastic")
+    if (structural != "off") != (protocol == "structural-v1"):
+        raise SystemExit("structural mode requires --eval-protocol structural-v1 and vice versa")
     if protocol == "v2" and (args["generations"] != 0 or not args["start"].startswith("file:")
                              or args["eval_worlds"] != 128 or cfg_overrides
                              or args.get("quick") or args["no_plastic"]):
@@ -108,6 +116,49 @@ def write_json(path, obj):
     tmp = path.with_suffix(".tmp")
     tmp.write_text(json.dumps(obj, indent=2))
     os.replace(tmp, path)
+
+
+def run_broader(a, git):
+    c = Cfg(**parse_cfg(a.cfg))
+    broader_eval.validate_request(a, c)
+    flat, source_bytes, provenance = broader_eval.load_saved_genome(a.start, c)
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    protocol = dict(name=broader_eval.PROTOCOL, split=a.condition_split,
+                    seed=broader_eval.SPLIT_SEEDS[a.condition_split], n_worlds=a.eval_worlds,
+                    rule_counts={"0": (a.eval_worlds + 1) // 2, "1": a.eval_worlds // 2},
+                    conditions=broader_eval.CONDITIONS,
+                    plasticity={"learning": True, "frozen": False})
+    config = dict(args=vars(a).copy(), cfg_overrides=parse_cfg(a.cfg), cfg=c._asdict(), git=git,
+                  created=datetime.datetime.now().isoformat(), eval_protocol=protocol,
+                  input_genome=provenance, start_genome_hash=genome_hash(flat),
+                  genome_size=flat.size,
+                  machine=dict(platform=platform.platform(), python=sys.version.split()[0],
+                               jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+    write_json(run_dir / "config.json", config)
+    (run_dir / "genome_start.npy").write_bytes(source_bytes)
+    summary = dict(status="running", generation=0, eval_protocol=broader_eval.PROTOCOL,
+                   condition_split=a.condition_split, eval_seed=protocol["seed"],
+                   eval_worlds=a.eval_worlds, input_genome=provenance,
+                   final_genome_hash=genome_hash(flat))
+    write_json(run_dir / "summary.json", summary)
+    started = time.monotonic()
+    try:
+        summary["condition_evaluations"] = broader_eval.evaluate_conditions(
+            jnp.asarray(flat), c, a.eval_worlds, a.condition_split)
+    except BaseException as error:
+        summary.update(status="interrupted" if isinstance(error, KeyboardInterrupt) else "failed",
+                       error=f"{type(error).__name__}: {error}", eval_seconds=time.monotonic() - started)
+        write_json(run_dir / "summary.json", summary)
+        raise
+    summary.update(status="finished", eval_seconds=time.monotonic() - started)
+    (run_dir / "genome_final.npy").write_bytes(source_bytes)
+    write_json(run_dir / "summary.json", summary)
+    print(f"{broader_eval.PROTOCOL} {a.condition_split}: {a.eval_worlds} worlds; {summary['eval_seconds']:.3f}s")
+    for label, row in summary["condition_evaluations"].items():
+        print(f"{label:10s} learning {row['learning']['fitness']:.6f} frozen {row['frozen']['fitness']:.6f} gap {row['learning_minus_frozen_fitness']:.6f}")
+    print("run folder:", run_dir)
 
 
 def run_reversal(a, git):
@@ -169,10 +220,13 @@ def main():
     ap.add_argument("--lr", type=float, default=0.1)
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--no-plastic", action="store_true", help="evolve with all plasticity disabled (control)")
+    ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
+                    help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", reversal_eval.PROTOCOL), default=None,
-                    help="v1 (default), or the v2 saved-genome Both/Hebbian-only/Frozen diagnostic")
-    ap.add_argument("--condition-split", choices=tuple(reversal_eval.SPLIT_SEEDS), default="development")
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL), default=None,
+                    help="v1 (default), v2 mechanism diagnostic, structural-v1, broader-v1, or reversal-v1")
+    ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
+                    help="broader-v1/reversal-v1 only; final fixes default Cfg and 128 worlds")
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
                     help="per-invocation training limit; stop after a complete generation and checkpoint "
@@ -191,13 +245,13 @@ def main():
         raise SystemExit("Uncommitted code changes. Commit first (every run must map to a commit), "
                          "or pass --allow-dirty and say why in the experiment log.")
     if a.eval_protocol == reversal_eval.PROTOCOL:
+        a.condition_split = a.condition_split or "development"
+        a.structural_plasticity = a.structural_plasticity or "off"
         try:
             run_reversal(a, git)
         except ValueError as error:
             ap.error(str(error))
         return
-    if a.condition_split != "development":
-        ap.error("--condition-split is only supported by reversal-v1")
     if a.resume:
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
@@ -206,16 +260,35 @@ def main():
             ap.error("reversal-v1 does not resume; preserve the folder and use a new run name")
         if a.eval_protocol is not None and a.eval_protocol != args.get("eval_protocol", "v1"):
             raise SystemExit("Cannot change evaluation protocol on resume")
+        if args.get("eval_protocol", "v1") == broader_eval.PROTOCOL:
+            ap.error("broader-v1 panels cannot be resumed; preserve this folder and start a new run")
+        if a.condition_split is not None:
+            ap.error("--condition-split is only supported by broader-v1 or reversal-v1")
+        if a.structural_plasticity is not None and a.structural_plasticity != args.get("structural_plasticity", "off"):
+            raise SystemExit("Cannot change structural mode on resume")
+        if a.no_plastic and args.get("structural_plasticity", "off") != "off":
+            ap.error("structural training conflicts with --no-plastic on resume")
         protocol = validate_eval_protocol(args, config["cfg_overrides"])
         config.setdefault("resumes", []).append(dict(at=datetime.datetime.now().isoformat(), git=git,
                                                      max_train_seconds=a.max_train_seconds))
     else:
         args = vars(a).copy()
         args["eval_protocol"] = a.eval_protocol or "v1"
+        args["structural_plasticity"] = a.structural_plasticity or "off"
+        if a.condition_split is not None and args["eval_protocol"] != broader_eval.PROTOCOL:
+            ap.error("--condition-split is only supported by broader-v1 or reversal-v1")
         if a.quick:
             args.update(generations=3, pop=8, worlds=2, eval_worlds=4, checkpoint_every=1)
         overrides = parse_cfg(a.cfg)
         protocol = validate_eval_protocol(args, overrides)
+        if protocol == broader_eval.PROTOCOL:
+            a.structural_plasticity = args["structural_plasticity"]
+            a.condition_split = a.condition_split or "development"
+            try:
+                run_broader(a, git)
+            except ValueError as error:
+                ap.error(str(error))
+            return
         if protocol == "v2":
             source_bytes = Path(args["start"][5:]).read_bytes()
             file_mean = diagnostic_genome(source_bytes, Cfg())
@@ -229,6 +302,12 @@ def main():
         if protocol == "v2":
             config.update(eval_protocol="v2", eval_seed=123, eval_worlds=128,
                           source_genome_sha256=hashlib.sha256(source_bytes).hexdigest())
+        if protocol == "structural-v1":
+            config["structural_rule"] = dict(name=MODE, interval=INTERVAL, prune_fraction=PRUNE_FRACTION,
+                                             extra_fanin=1, stream_tag=STREAM_TAG, timing="after brain tick; previous activity")
+            if args["start"].startswith("file:"):
+                source = Path(args["start"][5:]).resolve()
+                config["input_genome"] = dict(path=str(source), sha256=hashlib.sha256(source.read_bytes()).hexdigest())
 
     c = Cfg(**config["cfg_overrides"])
     config["cfg"] = c._asdict()
@@ -239,7 +318,8 @@ def main():
             raise SystemExit("Cannot resume EVAL v2: saved source genome SHA-256 mismatch")
         file_mean = diagnostic_genome(source_bytes, c)
     plastic = not args["no_plastic"]
-    evaluate, _ = make_evaluator(c, args["worlds"], plastic)
+    structural = args.get("structural_plasticity", "off") != "off"
+    evaluate, _ = make_evaluator(c, args["worlds"], plastic, structural=structural)
 
     if (run_dir / "checkpoint.npz").exists():
         state = load_checkpoint(run_dir)
@@ -309,6 +389,10 @@ def main():
     except KeyboardInterrupt:
         status = "interrupted"
         print("interrupted; checkpoint saved, resume with --resume", run_dir)
+    except StructuralValidationError as error:
+        save_checkpoint(run_dir, state)
+        write_json(summary_path, dict(status="failed", generation=state["t"], error=str(error)))
+        raise
     save_checkpoint(run_dir, state)
 
     summary = dict(status=status, generation=state["t"], train_minutes=round((time.monotonic() - t0) / 60, 2),
@@ -327,6 +411,21 @@ def main():
                     raise ValueError(f"Nonfinite EVAL v2 result in {name}")
                 summary["evaluations"][name] = result
             evaluations = summary["evaluations"]
+        elif protocol == "structural-v1":
+            summary["eval_protocol"] = "structural-v1"
+            summary["conditions"], summary["condition_seconds"] = {}, {}
+            try:
+                for label, kwargs in (("Weight-only", dict(plastic=True)),
+                                      ("Weight+structure", dict(plastic=True, structural=True)),
+                                      ("Frozen", dict(plastic=False, structural=True))):
+                    eval_start = time.perf_counter()
+                    summary["conditions"][label] = test_genome(state["mu"], c, n_worlds=n, **kwargs)
+                    summary["condition_seconds"][label] = round(time.perf_counter() - eval_start, 6)
+            except Exception as error:
+                summary.update(status="failed", error=str(error))
+                write_json(summary_path, summary)
+                raise
+            evaluations = summary["conditions"]
         else:
             start = jnp.asarray(np.load(run_dir / "genome_start.npy"))
             summary["final_learning"] = test_genome(state["mu"], c, n_worlds=n, plastic=True)

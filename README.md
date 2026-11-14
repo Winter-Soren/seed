@@ -4,7 +4,7 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Latest verified result · 14 Nov 2026:** adding predictor updates to Hebbian learning raised fitness by **8.09–10.50** in **all 3 saved evolved A genomes**. All seven E106 diagnostic panels completed without new evolution or changed worlds. [See the evidence and limits](#what-the-experiments-show).
+**Latest verified findings · 14 Nov 2026:** the tested connection growth/pruning rule **lowered fitness in all 3 saved A genomes**. Separately, their plasticity advantage stayed positive under **all four registered foraging-parameter shifts in all 3 genomes**. All seven E108 panels are complete. [See the evidence and limits](#what-the-experiments-show).
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
@@ -132,6 +132,34 @@ Retained benefit is `(Hebbian-only − Frozen) / (Both − Frozen)`, defined onl
 
 All four references had **zero predictor fitness contribution**. Blank 0's Hebbian-only-minus-Frozen difference was **−0.048828125**, with **undefined** retained benefit. These cases remain in the [complete seven-panel results](results/RESULTS.md#eval-v2-diagnostics). Exact values, linked summaries, validation and interpretation are in the [lab notebook](experiments/LOG.md). This is a fixed-genome mechanism result, not a significance, general-intelligence or state-of-the-art claim.
 
+**E107: does adding connection growth/pruning help the saved controllers? — negative fitness result in 3/3.**
+
+Both arms retained Hebbian and predictor updates. The same saved A genomes were evaluated with and without the fixed structural rule on 128 worlds, seed 123, without new evolution.
+
+| A seed | Weight-only fitness | Weight + structure fitness | Fitness change |
+|---|---:|---:|---:|
+| 0 | 16.59 | 14.00 | −2.59 |
+| 1 | 15.38 | 13.95 | −1.42 |
+| 2 | 14.87 | 14.36 | −0.51 |
+
+Actual added and pruned edges were recorded, with **zero structural validation errors**; all Weight-only/Frozen metrics exactly reproduced the saved controls. The capability works, but this particular rule hurt brains evolved without it. This does not establish that structural learning generally fails or answer whether evolution can adapt to the rule. The mode remains off by default. Exact measurements and edge ledgers are in the [lab notebook](experiments/LOG.md).
+
+**E108: does useful plasticity survive broader foraging conditions? — all seven panels complete.**
+
+BROADER v1 evaluated the three saved A genomes, three blank references and one biology reference on **128 worlds, final seed 8109**, comparing enabled learning with Frozen. Each shift changes one parameter from its same-seed control. All 15 A learning-minus-Frozen fitness gaps below are positive; each of the four shifts meets the preregistered positive-gap criterion in **3/3 genomes** (required at least 2/3).
+
+| Condition | A0 learning − Frozen | A1 learning − Frozen | A2 learning − Frozen |
+|---|---:|---:|---:|
+| Control | +14.45 | +15.39 | +15.30 |
+| Sparse food/poison: 12 items per type | +5.05 | +5.69 | +4.46 |
+| Dense food/poison: 36 items per type | +17.93 | +21.09 | +18.23 |
+| Low energy cost: decay 0.0015 | +14.56 | +15.40 | +15.49 |
+| High energy cost: decay 0.006 | +12.70 | +15.02 | +13.39 |
+
+The advantage persists, but its absolute size falls to **4.46–5.69** in sparse worlds versus **14.45–15.39** in controls. This is robustness within the same foraging parameter family, not transfer to a new task family or a state-of-the-art result.
+
+The blank-reference gaps were mixed, including negative control gaps for blank 0 (**−0.60**) and blank 2 (**−0.39**), and **−0.75** for blank 0 at low cost. Biology retained a positive gap in all five conditions (**+2.41–+8.56**). The [full results table](results/RESULTS.md) preserves all reference outcomes alongside the evolved genomes.
+
 ## Progress and next milestones
 
 ![Raw population-mean training fitness across all 200 generations for each of the three A evolution seeds.](results/figures/a-training-progress.svg)
@@ -147,12 +175,13 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 | **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
 | **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Complete; all 3 seed pairs favor A within the matched encoding and budget. |
 | **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Seven panels complete; positive predictor contribution in all 3 evolved A genomes. |
-| **E107 · Structural plasticity** | Does connection growth/pruning help beyond weight updates? | Direct tests and one-world benchmark complete in isolated lab; replicated benefit unverified. |
-| **E108 · Broader conditions** | How does adaptation hold beyond the original conditions? | Separate protocol work underway; outcomes await review. |
+| **E107 · Structural plasticity** | Does connection growth/pruning help beyond weight updates? | Rewiring capability verified; adding the rule lowered fitness in all 3 saved A genomes. |
+| **E108 · Broader conditions** | How does adaptation hold beyond the original conditions? | Seven panels complete; all 3 A genomes retain a positive gap in all 4 shifts. |
+| **E109 · Structural evolution** | Can blank-start evolution run feasibly with the unchanged structural rule? | Preregistered; integration checks passed, commit and guarded launch pending. |
 
-The next priorities are **connection growth/pruning tests → a preregistered comparison against weight-only learning**, with **Both updates enabled in both arms** and fair capacity controls. **B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+Next is **E109's full-population resource/timing benchmark** after committing the verified integration, under existing guards: blank start, unchanged structural rule, Both weight updates enabled, **128 candidates × 8 worlds**, an initial **600-second training limit**, and a resumable target of **200 generations**. This tests feasibility, not learning or a three-seed improvement claim; continuation depends on measured timing and memory headroom. The limit is checked between complete generations, so it is not a hard ten-minute wall limit.
 
-E107's isolated lab owns activity-dependent growth and pruning among existing neurons; direct tests must demonstrate actual rewiring before a benefit comparison. E108 investigates broader conditions under its own protocol. Both labs are underway separately from these completed main results. Existing 155-number genomes and default EVAL v1 behavior remain compatibility requirements.
+**B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone. Existing 155-number genomes and default EVAL v1 behavior remain compatibility requirements; any adaptive-placement benefit claim also needs a fair static-capacity control.
 
 Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities.
 

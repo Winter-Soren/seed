@@ -64,6 +64,28 @@ class ReversalEngineTests(unittest.TestCase):
             with self.subTest(boundary=boundary), self.assertRaisesRegex(ValueError, "flip_step"):
                 seed.rollout(g, jax.random.PRNGKey(8210), jax.random.PRNGKey(23), 0, c, flip_step=boundary)
 
+    def test_structural_and_predictor_apis_compose_with_reversal(self):
+        c = seed.Cfg(G=4, M=1, T=22, R=0, H=3, n_items=2)
+        g = seed.init_genome(c, jax.random.PRNGKey(7))
+        g = dict(g, conn=jnp.full_like(g["conn"], -100.))
+        args = (g, jax.random.PRNGKey(3), jax.random.PRNGKey(5), 0, c)
+        control = seed.rollout(*args, structural=True, predictor_plastic=True, record=True, diagnostics=True)
+        flipped = seed.rollout(*args, structural=True, predictor_plastic=True, record=True,
+                               flip_step=11, diagnostics=True)
+        for key in control["traj"]:
+            np.testing.assert_array_equal(control["traj"][key][:11], flipped["traj"][key][:11], err_msg=key)
+        self.assertGreater(float(flipped["traj"]["structural_added"][10]), 0.)
+        for key in ("cap_violations", "illegal_edges", "invalid_weights", "invalid_proposals"):
+            self.assertEqual(float(flipped["structure"][key]), 0.)
+        frozen = seed.rollout(*args, plastic=False, predictor_plastic=False, structural=True,
+                              flip_step=11, diagnostics=True)
+        static = seed.rollout(*args, plastic=False, predictor_plastic=False, flip_step=11, diagnostics=True)
+        for key in ("fitness", "counts", "survived"):
+            np.testing.assert_array_equal(frozen[key], static[key], err_msg=key)
+        for key in static["events"]:
+            np.testing.assert_array_equal(frozen["events"][key], static["events"][key], err_msg=key)
+        self.assertEqual((float(frozen["structure"]["added"]), float(frozen["structure"]["removed"])), (0., 0.))
+
 
 class RecoveryAccountingTests(unittest.TestCase):
     def events(self, steps=100, agents=6):
@@ -176,7 +198,7 @@ class ReversalRunnerTests(unittest.TestCase):
     def test_invalid_modes_fail_before_creating_artifacts(self):
         for extra in (("--generations", "1"), ("--quick",), ("--no-plastic",),
                       ("--cfg", "T=300"), ("--cfg", "n_items=5"), ("--cfg", "e0=nan"), ("--eval-worlds", "128"),
-                      ("--condition-split", "final")):
+                      ("--condition-split", "final"), ("--structural-plasticity", runner.MODE)):
             with self.subTest(extra=extra), self.assertRaises(SystemExit):
                 self.invoke(*extra)
             self.assertFalse((self.root/"runs").exists())

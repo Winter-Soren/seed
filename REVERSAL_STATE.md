@@ -1,13 +1,12 @@
 # Reversal prototype
 
-This nested worktree uses branch lab/reversal-prototype from integrated main18818de.
+This nested worktree uses lab/reversal-prototype, initially main18818de, now merging1362bc1.
 E108 remains pinned at9766538 on lab/e108-complete in the outer checkout, with all
 seven completed runs/provenance. Push remains disabled; no edits outside this lab.
 
 Authorized: executable unannounced food-rule flip prototype and direct software
 fixtures. New scientific protocol/final worlds need owner approval; do not run them.
-Preserve EVAL v1/v2/default world and E106 predictor_plastic API. E107 is not in this
-fetched snapshot; expose only optional rollout keyword arguments for later merge.
+Preserve EVAL v1/v2/default world, E106 predictor_plastic API and E107 structural API.
 
 Scope: optional flip/event diagnostics in rollout; compact per-agent/window/recovery
 measurement module; explicit tracked runner dispatch; small regression/direct tests;
@@ -27,9 +26,12 @@ Code committed5028e19. Tracked smoke runs/20261115-001744_E108-R-D-smoke passed 
 clean source, seed8210/T12/flip6/oneworld;21.2369707s guard wall, private923238400 bytes.
 Input/copies unchanged; pre-boundary metrics match; signed post effects +1/-1 and
 learning reversal effect -2; zero qualifying hits (tiny operational fixture only).
-Next: commit these results, merge latest local origin/main (now E107/E108 integrated)
-into this feature branch without history rewriting, resolve API additions preserving
-all three protocols/controllers, then run focused/full checks and an integrated tiny
-smoke under a new name. Main owns push/PR/review/merge under new owner policy.
+Merged1362bc1 into feature, retaining all source commits and both LOG tails. Resolved
+runner/summary dispatches for v1,v2,structural-v1,broader-v1,reversal-v1. All66 integrated
+tests passed123.321s, guard131.2972547s, sampled private1811308544 bytes; new combined
+structural/reversal test proves prefix identity, recruitment and frozen no-op.
+Next: commit merge/source, run registered E108-R-D-integrated-smoke, compare all metrics
+and source/copy bytes to prior smoke, commit evidence and report clean tip for main's
+push/PR/review/merge. No scientific reversal panel; final8211 still untouched.
 Development seed8210; final8211 stays untouched pending owner protocol approval.
 No tuning on EVAL123 or BROADERfinal8109. E107 merge/testing remains with main.

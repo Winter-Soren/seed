@@ -34,6 +34,72 @@ Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian
 | 20261114-231313_E106-v2-blank-s2 | finished | file:runs/20261112-022552_E100-blank-s2/genome_final.npy | 0.230469 | 0.230469 | 0.044922 | 0.000000 | 0.185547 | 1.000000 | 123 | 128 | f0825ef |
 | 20261114-231641_E106-v2-biology | finished | file:runs/20261112-022641_E100-biology-s0/genome_final.npy | 5.128906 | 5.128906 | 0.000000 | 0.000000 | 5.128906 | 1.000000 | 123 | 128 | f0825ef |
 
+## Structural v1 (separate diagnostic)
+
+Same worlds/seed 123; Weight-only retains both local weight-learning rules. Frozen disables weight and structural updates. Edge counts are means per agent; turnover is capability evidence, not evidence of a fitness benefit. No EVAL v1 rows changed.
+
+| Run | Status | Condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | Added | Removed | Initial edges | Final edges | Edge cap | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Weight-only | 16.25 | 0.7213114500045776 | 0.8275862336158752 | 0.75 | 119 |  |  |  |  |  | c17e64c |
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Weight+structure | 16.0 | 0.739130437374115 | 0.8039215803146362 | 1.0 | 120 | 609.75 | 662.25 | 3192.25 | 3139.75 | 3246.25 | c17e64c |
+| 20261114-231742_E107-benchmark-A0-one-world | finished | Frozen | 2.25 | 0.5263158082962036 | 0.6060606241226196 | 0.75 | 71 | 0.0 | 0.0 | 3192.25 | 3192.25 | 3246.25 | c17e64c |
+| 20261114-232719_E107-structural-A-s0 | finished | Weight-only | 16.591796875 | 0.7049121856689453 | 0.8401943445205688 | 0.880859375 | 15837 |  |  |  |  |  | ffc2c0a |
+| 20261114-232719_E107-structural-A-s0 | finished | Weight+structure | 14.0 | 0.6805352568626404 | 0.8068380951881409 | 0.833984375 | 15064 | 578.33203125 | 619.103515625 | 3199.1953125 | 3158.423828125 | 3253.1953125 | ffc2c0a |
+| 20261114-232719_E107-structural-A-s0 | finished | Frozen | 0.2890625 | 0.4963643252849579 | 0.5343427062034607 | 0.39453125 | 7934 | 0.0 | 0.0 | 3199.1953125 | 3199.1953125 | 3253.1953125 | ffc2c0a |
+| 20261114-232924_E107-structural-A-s1 | finished | Weight-only | 15.376953125 | 0.687602698802948 | 0.8297842144966125 | 0.84765625 | 15609 |  |  |  |  |  | ffc2c0a |
+| 20261114-232924_E107-structural-A-s1 | finished | Weight+structure | 13.953125 | 0.6813045740127563 | 0.7969647645950317 | 0.80859375 | 15372 | 547.388671875 | 592.009765625 | 1968.0546875 | 1923.43359375 | 2022.0546875 | ffc2c0a |
+| 20261114-232924_E107-structural-A-s1 | finished | Frozen | 0.09375 | 0.5005697011947632 | 0.5078710913658142 | 0.3984375 | 7934 | 0.0 | 0.0 | 1968.0546875 | 1968.0546875 | 2022.0546875 | ffc2c0a |
+| 20261114-233501_E107-structural-A-s2 | finished | Weight-only | 14.8671875 | 0.6937439441680908 | 0.8225241303443909 | 0.849609375 | 15094 |  |  |  |  |  | ffc2c0a |
+| 20261114-233501_E107-structural-A-s2 | finished | Weight+structure | 14.359375 | 0.6945882439613342 | 0.797878623008728 | 0.85546875 | 15288 | 421.2890625 | 453.11328125 | 2531.30859375 | 2499.484375 | 2585.30859375 | ffc2c0a |
+| 20261114-233501_E107-structural-A-s2 | finished | Frozen | -0.103515625 | 0.4872659146785736 | 0.516306459903717 | 0.36328125 | 7885 | 0.0 | 0.0 | 2531.30859375 | 2531.30859375 | 2585.30859375 | ffc2c0a |
+
+## BROADER v1 (separate parameter-shift protocol)
+
+Development rows are operational checks, not scientific generalization results. Split/seed/world count are explicit; these are not EVAL v1 seed-123 scores. Full accuracy, survival, encounter counts and condition shifts are in each summary.json.
+
+| Run | Status | Split | Eval seed | Worlds | Condition | Learning | Frozen | Gap | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | control | 11.0000 | -0.2500 | 11.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | sparse | 4.7500 | 0.5000 | 4.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | dense | 26.7500 | 3.5000 | 23.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | low-cost | 8.7500 | 1.2500 | 7.5000 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | high-cost | 8.7500 | -1.7500 | 10.5000 | 21676c5 |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | control | 14.7637 | 0.3145 | 14.4492 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | sparse | 5.0996 | 0.0449 | 5.0547 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | dense | 18.4043 | 0.4707 | 17.9336 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | low-cost | 14.7090 | 0.1484 | 14.5605 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | high-cost | 13.1367 | 0.4336 | 12.7031 | a45f51a |
+| 20261114-232930_E108-final-A1 | finished | final | 8109 | 128 | control | 15.4531 | 0.0586 | 15.3945 | f11dd90 |
+| 20261114-232930_E108-final-A1 | finished | final | 8109 | 128 | sparse | 5.8691 | 0.1758 | 5.6934 | f11dd90 |
+| 20261114-232930_E108-final-A1 | finished | final | 8109 | 128 | dense | 20.9629 | -0.1289 | 21.0918 | f11dd90 |
+| 20261114-232930_E108-final-A1 | finished | final | 8109 | 128 | low-cost | 15.3203 | -0.0781 | 15.3984 | f11dd90 |
+| 20261114-232930_E108-final-A1 | finished | final | 8109 | 128 | high-cost | 14.9531 | -0.0645 | 15.0176 | f11dd90 |
+| 20261114-233434_E108-final-A2 | finished | final | 8109 | 128 | control | 14.8574 | -0.4434 | 15.3008 | f11dd90 |
+| 20261114-233434_E108-final-A2 | finished | final | 8109 | 128 | sparse | 4.8535 | 0.3926 | 4.4609 | f11dd90 |
+| 20261114-233434_E108-final-A2 | finished | final | 8109 | 128 | dense | 18.2266 | -0.0039 | 18.2305 | f11dd90 |
+| 20261114-233434_E108-final-A2 | finished | final | 8109 | 128 | low-cost | 15.0137 | -0.4727 | 15.4863 | f11dd90 |
+| 20261114-233434_E108-final-A2 | finished | final | 8109 | 128 | high-cost | 13.4492 | 0.0625 | 13.3867 | f11dd90 |
+| 20261114-233746_E108-final-blank0 | finished | final | 8109 | 128 | control | -0.3711 | 0.2324 | -0.6035 | f11dd90 |
+| 20261114-233746_E108-final-blank0 | finished | final | 8109 | 128 | sparse | 0.2461 | -0.1602 | 0.4062 | f11dd90 |
+| 20261114-233746_E108-final-blank0 | finished | final | 8109 | 128 | dense | -0.3242 | 0.1680 | -0.4922 | f11dd90 |
+| 20261114-233746_E108-final-blank0 | finished | final | 8109 | 128 | low-cost | -0.5547 | 0.1992 | -0.7539 | f11dd90 |
+| 20261114-233746_E108-final-blank0 | finished | final | 8109 | 128 | high-cost | -0.2031 | 0.1895 | -0.3926 | f11dd90 |
+| 20261114-234036_E108-final-blank1 | finished | final | 8109 | 128 | control | 0.3906 | 0.2324 | 0.1582 | f11dd90 |
+| 20261114-234036_E108-final-blank1 | finished | final | 8109 | 128 | sparse | 0.2402 | -0.1602 | 0.4004 | f11dd90 |
+| 20261114-234036_E108-final-blank1 | finished | final | 8109 | 128 | dense | 0.3828 | 0.1680 | 0.2148 | f11dd90 |
+| 20261114-234036_E108-final-blank1 | finished | final | 8109 | 128 | low-cost | 0.1504 | 0.1992 | -0.0488 | f11dd90 |
+| 20261114-234036_E108-final-blank1 | finished | final | 8109 | 128 | high-cost | 0.4629 | 0.1895 | 0.2734 | f11dd90 |
+| 20261114-234357_E108-final-blank2 | finished | final | 8109 | 128 | control | -0.1543 | 0.2324 | -0.3867 | f11dd90 |
+| 20261114-234357_E108-final-blank2 | finished | final | 8109 | 128 | sparse | 0.0938 | -0.1602 | 0.2539 | f11dd90 |
+| 20261114-234357_E108-final-blank2 | finished | final | 8109 | 128 | dense | 0.3438 | 0.1680 | 0.1758 | f11dd90 |
+| 20261114-234357_E108-final-blank2 | finished | final | 8109 | 128 | low-cost | -0.3027 | 0.1992 | -0.5020 | f11dd90 |
+| 20261114-234357_E108-final-blank2 | finished | final | 8109 | 128 | high-cost | -0.2109 | 0.1895 | -0.4004 | f11dd90 |
+| 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | control | 5.5938 | -0.1855 | 5.7793 | f11dd90 |
+| 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | sparse | 2.3887 | -0.0234 | 2.4121 | f11dd90 |
+| 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | dense | 8.7305 | 0.1719 | 8.5586 | f11dd90 |
+| 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | low-cost | 5.3770 | -0.1367 | 5.5137 | f11dd90 |
+| 20261114-234744_E108-final-biology | finished | final | 8109 | 128 | high-cost | 3.9785 | 0.1523 | 3.8262 | f11dd90 |
+
 ## REVERSAL v1 prototype
 
 Development rows are software checks, not adaptation results. Window hits use 25-step windows, >=5 encounters, >=70% food choices and survival through window end; all censored agents and full counts remain in summary.json.

@@ -17,6 +17,8 @@ WINDOW, MIN_ENCOUNTERS, ACCURACY = 25, 5, 0.7
 
 
 def validate_request(a, c):
+    if getattr(a, "structural_plasticity", "off") not in (None, "off"):
+        raise ValueError("reversal-v1's registered first panel is weight-only; structural mode must be off")
     if any(not math.isfinite(value) for value in c):
         raise ValueError("reversal-v1 configuration values must be finite")
     if a.generations != 0 or not a.start.startswith("file:") or a.resume or a.quick or a.no_plastic:
@@ -117,5 +119,5 @@ def evaluate_conditions(mu, c, n_worlds, split):
         if not np.array_equal(event_counts, raw["counts"]) or not np.array_equal(net, np.asarray(raw["fitness"])*c.M):
             raise ValueError("event counts/fitness differ from rollout")
         results[label] = dict(flip_step=boundary if flip else None, hebbian=plastic,
-                              predictor=plastic, metrics=metrics)
+                              predictor=plastic, structural=False, metrics=metrics)
     return results

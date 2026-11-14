@@ -19,9 +19,10 @@ announcement, new observation channel or changed action interface is provided.
 
 The no-flip controls use the same measurement boundary. Development seed8210 is
 separate; CLI development mode enforces tiny configurations. Legacy/default rollout
-behavior and E106's predictor_plastic API remain intact. E107 is not in this prototype's
-base18818de and needs its ordinary merge/compatibility checks before a combined panel;
-do not replace its controller code. The proposed first reversal panel is weight-only.
+behavior and E106's predictor_plastic API remain intact. The prototype initially forked
+18818de, then merged integrated main1362bc1 to preserve E107's structural controller
+and E108 dispatch. Combined software checks are required; the proposed first reversal
+panel is explicitly weight-only and rejects the structural intervention flag.
 
 ## Measurements fixed before final-world access
 
@@ -52,7 +53,8 @@ and whether last-window food accuracy exceeds first-window food accuracy. The pr
 directional hypothesis requires both in >=2/3 independently evolved A seeds; a window
 with <5 pooled encounters makes its accuracy criterion unestablished. Nonpositive
 fitness differences or nonincreasing first-to-last accuracy in >=2 seeds count against
-the hypothesis; insufficient observations do not become a pass. Report every seed,
+the hypothesis; fewer than two seeds meeting both leaves it unsupported, and insufficient
+observations do not become a pass. Report every seed,
 per-agent window-hit/censor result and reference regardless of the criterion.
 
 This is a temporal rule-change test within the food/poison task family. Pooled accuracy
