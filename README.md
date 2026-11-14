@@ -149,7 +149,7 @@ A0 took **144.61 minutes** and A2 **157.11 minutes** of combined process wall ti
 
 ## Explore the project
 
-The experimental E107 implementation adds optional lifetime growth/pruning among existing neurons. It is off by default, keeps the 155-value genome, and requires the explicitly labeled diagnostic flags `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`. Its fixed rule allows at most one extra incoming edge per non-sensor row relative to birth; new edges affect the next neural tick. `--no-plastic` conflicts with structural training; the Frozen diagnostic disables both. All 31 software tests pass, including isolated-neuron recruitment and exact structural ES checkpoint/replay.
+The experimental E107 implementation adds optional lifetime growth/pruning among existing neurons. It is off by default, keeps the 155-value genome, and requires the explicitly labeled diagnostic flags `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`. Its fixed rule allows at most one extra incoming edge per non-sensor row relative to birth; new edges affect the next neural tick. `--no-plastic` conflicts with structural training; the Frozen diagnostic disables both. All 42 combined software tests pass, including isolated-neuron recruitment, exact structural ES checkpoint/replay, and E106's independent predictor switch and v2 saved-genome diagnostic.
 
 **Measured E107 result: this fixed rule lowers fitness on all three saved evolved genomes.** Each comparison uses the unchanged 128 evaluation worlds/seed 123, with zero evolution. All weight-only/frozen metrics exactly reproduce their EVAL v1 references, all structural validation errors are zero, and frozen turnover is zero.
 

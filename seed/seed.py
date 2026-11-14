@@ -132,13 +132,14 @@ def init_world(key, c):
 
 
 # ----------------------------------------------------------------------------- one brain tick
-def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c):
+def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *, predictor_plastic=None):
     V, D, O, n, K = dims(c)
     h = x[D:D + c.H]
     # prediction loop: the brain predicted this observation last step; learn from the miss
     err = obs - Wp @ h
     surprise = jnp.mean(err ** 2)
-    Wp = jnp.clip(Wp + plastic * plr * jnp.outer(err, h), -c.wmax, c.wmax)
+    pp = plastic if predictor_plastic is None else predictor_plastic
+    Wp = jnp.clip(Wp + pp * plr * jnp.outer(err, h), -c.wmax, c.wmax)
     # neuromodulator ("that mattered"): driven by felt energy change and surprise
     m = jnp.tanh(modw[0] * 10.0 * denergy + modw[1] * 10.0 * surprise + modw[2])
     # three-factor Hebbian update on the activity that produced the last action
@@ -153,14 +154,15 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c):
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "structural"))
-def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, structural=False):
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "structural", "predictor_plastic"))
+def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, structural=False, predictor_plastic=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     V, D, O, n, K = dims(c)
     types = neuron_types(c)
     hebb = g["hebb"][types[:, None], types[None, :]]
     eta, plr = jnp.exp(g["log_eta"]), jnp.exp(g["log_plr"])
     pl = 1.0 if plastic else 0.0
+    pp = pl if predictor_plastic is None else float(predictor_plastic)
     W, mask = jax.vmap(lambda k: develop(g, k, c))(jax.random.split(dkey, c.M))
     grid, pos = init_world(wkey, c)
     food_t, poison_t = 1 + rule, 2 - rule
@@ -188,7 +190,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, structural=Fa
         key, ka, kr = jax.random.split(s["key"], 3)
         obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
         W, x, Wp, surprise = jax.vmap(
-            lambda W, x, Wp, o, de, mk: brain_step(W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c)
+            lambda W, x, Wp, o, de, mk: brain_step(
+                W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp)
         )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
         if structural:
             # The current neural tick/action is already computed; rewiring affects the next tick.
@@ -263,14 +266,15 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, structural=Fa
 
 
 # ----------------------------------------------------------------------------- evolution
-def make_evaluator(c, E, plastic=True, *, structural=False):
+def make_evaluator(c, E, plastic=True, *, structural=False, predictor_plastic=None):
     """Evaluate a population of flat genomes in E worlds each (half with each rule)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
     rules = jnp.arange(E) % 2
 
     def one(flat, wkeys, dkeys):
         g = unravel(flat)
-        r = jax.vmap(lambda wk, dk, ru: rollout(g, wk, dk, ru, c, plastic, structural=structural))(wkeys, dkeys, rules)
+        r = jax.vmap(lambda wk, dk, ru: rollout(
+            g, wk, dk, ru, c, plastic, structural=structural, predictor_plastic=predictor_plastic))(wkeys, dkeys, rules)
         return r
 
     @jax.jit
@@ -348,9 +352,9 @@ def evolve(c, generations=200, pop=128, E=4, sigma=0.1, lr=0.1, seed=0, plastic=
     return state["mu"], unravel, hist
 
 
-def test_genome(mu, c, n_worlds=64, plastic=True, seed=123, *, structural=False):
+def test_genome(mu, c, n_worlds=64, plastic=True, seed=123, *, structural=False, predictor_plastic=None):
     """Fresh, unseen worlds. Returns averages over n_worlds (half with each rule)."""
-    evaluate, _ = make_evaluator(c, n_worlds, plastic, structural=structural)
+    evaluate, _ = make_evaluator(c, n_worlds, plastic, structural=structural, predictor_plastic=predictor_plastic)
     key = jax.random.PRNGKey(seed)
     kw, kd = jax.random.split(key)
     res = evaluate(mu[None], jax.random.split(kw, n_worlds),

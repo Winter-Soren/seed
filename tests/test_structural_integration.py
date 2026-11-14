@@ -122,6 +122,21 @@ class StructuralIntegrationTests(unittest.TestCase):
         with self.assertRaisesRegex(StructuralValidationError, 'invalid_proposals|invalid_weights'):
             engine.test_genome(ravel_pytree(invalid)[0], self.c, n_worlds=1, structural=True)
 
+    def test_predictor_switch_remains_independent_when_structure_is_enabled(self):
+        source = inspect.getsource(engine.rollout).replace('def rollout(', 'def predictor_probe(')
+        source = source.replace('    return res\n', '    res["predictor_weights"] = s["Wp"]\n    return res\n')
+        namespace = dict(engine.__dict__)
+        exec(compile(source, 'predictor_probe.py', 'exec'), namespace)
+        probe = namespace['predictor_probe']
+        g = dict(self.g, conn=jnp.full_like(self.g['conn'], -100.))
+        off = probe(g, *self.keys, 0, self.c, record=True, structural=True, predictor_plastic=False)
+        on = probe(g, *self.keys, 0, self.c, record=True, structural=True, predictor_plastic=True)
+        np.testing.assert_array_equal(off['predictor_weights'], 0.)
+        self.assertTrue(np.any(np.asarray(on['predictor_weights']) != 0))
+        self.assertGreater(float(off['structure']['added']), 0.)
+        self.assert_tree_equal(off['structural_state'], on['structural_state'])
+        self.assert_tree_equal(off['structure'], on['structure'])
+
 
 if __name__ == '__main__':
     unittest.main()
