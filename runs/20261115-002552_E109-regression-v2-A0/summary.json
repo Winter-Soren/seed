@@ -1,0 +1,32 @@
+{
+  "status": "finished",
+  "generation": 0,
+  "train_minutes": 0.0,
+  "final_genome_hash": "ee8eaa10a7429cc5",
+  "eval_worlds": 128,
+  "eval_protocol": "v2",
+  "eval_seed": 123,
+  "evaluations": {
+    "both": {
+      "fitness": 16.591796875,
+      "acc_first": 0.7049121856689453,
+      "acc_second": 0.8401943445205688,
+      "survived": 0.880859375,
+      "eaten": 15837
+    },
+    "hebbian_only": {
+      "fitness": 8.498046875,
+      "acc_first": 0.6584835648536682,
+      "acc_second": 0.6824561357498169,
+      "survived": 0.7421875,
+      "eaten": 12951
+    },
+    "frozen": {
+      "fitness": 0.2890625,
+      "acc_first": 0.4963643252849579,
+      "acc_second": 0.5343427062034607,
+      "survived": 0.39453125,
+      "eaten": 7934
+    }
+  }
+}
