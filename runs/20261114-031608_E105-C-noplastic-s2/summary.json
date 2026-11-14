@@ -1,6 +1,4 @@
 {
-  "status": "interrupted",
-  "generation": 158,
-  "train_minutes": 120.6,
-  "final_genome_hash": "406117e89e9cd0e3"
+  "status": "running",
+  "generation": 158
 }
