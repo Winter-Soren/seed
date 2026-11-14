@@ -1,0 +1,187 @@
+{
+  "protocol": "broader-v1",
+  "split": "final",
+  "seed": 8109,
+  "n_worlds": 128,
+  "conditions": {
+    "control": {},
+    "sparse": {
+      "n_items": 12
+    },
+    "dense": {
+      "n_items": 36
+    },
+    "low-cost": {
+      "decay": 0.0015
+    },
+    "high-cost": {
+      "decay": 0.006
+    }
+  },
+  "runs": [
+    {
+      "genome": "A0",
+      "run": "runs\\20261114-231716_E108-final-A0",
+      "source_commit": "a45f51aa6d22010f56214ca73c2830c3019746e8",
+      "input_file_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+      "config_sha256_lf": "e50598bf6647c1f47a00a9bf52439314f4cb3ee89cdfbfcc81d550aebc854b09",
+      "summary_sha256_lf": "b217f13d72d0d1920991dcec0a30b89ced04e9afc092e453a41af3eb2a091190",
+      "supervision": "experiments\\E108_A0_SUPERVISION.json",
+      "supervision_sha256_lf": "eb7ebc160302673c5531f80811981900569bd38d5cbdf01ad05e5daaed7eac80",
+      "eval_seconds": 163.59399999999732,
+      "wall_seconds": 172.5020589,
+      "sampled_max_private_bytes": 1306451968,
+      "sampled_max_resident_bytes": 729059328,
+      "minimum_sampled_available_commit_bytes": 17480540160
+    },
+    {
+      "genome": "A1",
+      "run": "runs\\20261114-232930_E108-final-A1",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+      "config_sha256_lf": "b32a206067648dfbe869d560004997fcb7a3744f15a08319cf17b1e438de26aa",
+      "summary_sha256_lf": "12854779b0c69639c8c831a434125242a55de598c14cabfefb95b1bc9cd2b968",
+      "supervision": "experiments\\E108_A1_SUPERVISION.json",
+      "supervision_sha256_lf": "2232282690830e26558edc5941345cfb702e72f04cefbaab5251f111a9975d58",
+      "eval_seconds": 298.4850000000006,
+      "wall_seconds": 312.8602448,
+      "sampled_max_private_bytes": 1305378816,
+      "sampled_max_resident_bytes": 728244224,
+      "minimum_sampled_available_commit_bytes": 15016566784
+    },
+    {
+      "genome": "A2",
+      "run": "runs\\20261114-233434_E108-final-A2",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+      "config_sha256_lf": "764d950663488377b637aa2e2c2edafdd878a5cdd17dac5f439f1da8b2723f96",
+      "summary_sha256_lf": "cb6e23b9afed0b970e259d4628cbb58e25fb207c33d6a8fe88aeb3df053a9a53",
+      "supervision": "experiments\\E108_A2_SUPERVISION.json",
+      "supervision_sha256_lf": "dcf46e6512097cb1dfae4a9dacb7b64c6348ec4f8f76f35cb0fef6487b183c14",
+      "eval_seconds": 188.32800000000134,
+      "wall_seconds": 193.2926733,
+      "sampled_max_private_bytes": 1299775488,
+      "sampled_max_resident_bytes": 722669568,
+      "minimum_sampled_available_commit_bytes": 15377420288
+    },
+    {
+      "genome": "blank0",
+      "run": "runs\\20261114-233746_E108-final-blank0",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "621e5a735e408e487653f7ffc15561be773fbd1053af847ef1bb633fd5243e07",
+      "config_sha256_lf": "13102a7f81d50cacc00a084f41273e01bdac636ba373d3b4ef93e81235d02257",
+      "summary_sha256_lf": "88cb919e856542ecc21e74e76b9a5949650bdf99b8b9fc0f97f9d555fad55129",
+      "supervision": "experiments\\E108_blank0_SUPERVISION.json",
+      "supervision_sha256_lf": "deb3f462738eb7d10739b476360c9c00cbe0ef69db8fa2fe40619217a71b79bb",
+      "eval_seconds": 163.14099999999598,
+      "wall_seconds": 167.8701992,
+      "sampled_max_private_bytes": 1314365440,
+      "sampled_max_resident_bytes": 737054720,
+      "minimum_sampled_available_commit_bytes": 15799308288
+    },
+    {
+      "genome": "blank1",
+      "run": "runs\\20261114-234036_E108-final-blank1",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "3ec510cab0205915614a7df2d3b217eca201972897842592fcef419b215e5d99",
+      "config_sha256_lf": "529f9c2e2e14bebc9afdd3650b47787b91d7d92940d2c929ea02cbdaff69be40",
+      "summary_sha256_lf": "324d66cd030746fd037e8270b0e119717b99f51bc0ff35d5d2b225476be761de",
+      "supervision": "experiments\\E108_blank1_SUPERVISION.json",
+      "supervision_sha256_lf": "dd157153c2c355412250bd3ad66021927039b9699b18db278eec252c5cf90421",
+      "eval_seconds": 185.4059999999954,
+      "wall_seconds": 193.9142836,
+      "sampled_max_private_bytes": 1317044224,
+      "sampled_max_resident_bytes": 739749888,
+      "minimum_sampled_available_commit_bytes": 16122281984
+    },
+    {
+      "genome": "blank2",
+      "run": "runs\\20261114-234357_E108-final-blank2",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "c62051a478c75f3211645968e5a15bb64bcfcdb8f61c366357020f4cff8294b9",
+      "config_sha256_lf": "321c6c07586a9741c561db57b390ac1370922a03952c6e8317721dd0682bc65c",
+      "summary_sha256_lf": "efd7af8e3985fdbe644c1ff989e26a9bd93926a29fa25cb88884cdd84cf0a5ae",
+      "supervision": "experiments\\E108_blank2_SUPERVISION.json",
+      "supervision_sha256_lf": "ada1615a839c103b140ce5cb7252e6c1fb7ceb23ae7b5a899fb7f64442c0645b",
+      "eval_seconds": 212.60899999999674,
+      "wall_seconds": 229.4296985,
+      "sampled_max_private_bytes": 1305956352,
+      "sampled_max_resident_bytes": 729378816,
+      "minimum_sampled_available_commit_bytes": 14621708288
+    },
+    {
+      "genome": "biology",
+      "run": "runs\\20261114-234744_E108-final-biology",
+      "source_commit": "f11dd9096d8858b7dcc214778a8338e559c28f29",
+      "input_file_sha256": "f39d8960f182b832e2700d6274e5d838d7a0f410add2b7753b6f259aba732108",
+      "config_sha256_lf": "aab3773c6993c29cc8e2b351d4e4711157d5715561620302bb046101c3933471",
+      "summary_sha256_lf": "c08e73e78e6872f643d582f728fa5cd474f309d567bfe4d4abc5463a65437e37",
+      "supervision": "experiments\\E108_biology_SUPERVISION.json",
+      "supervision_sha256_lf": "cdd2af15ea3eff4ee5953ecf6a01b8d43e7bc0eb8158b9e0ab1bd4fd7fcd30b8",
+      "eval_seconds": 154.42199999999866,
+      "wall_seconds": 166.2975765,
+      "sampled_max_private_bytes": 1308971008,
+      "sampled_max_resident_bytes": 731262976,
+      "minimum_sampled_available_commit_bytes": 14971199488
+    }
+  ],
+  "A_retention": {
+    "control": {
+      "gaps": [
+        14.44921875,
+        15.39453125,
+        15.30078125
+      ],
+      "positive_seeds": 3,
+      "mean_gap": 15.048177083333334
+    },
+    "sparse": {
+      "gaps": [
+        5.0546875,
+        5.693359375,
+        4.4609375
+      ],
+      "positive_seeds": 3,
+      "mean_gap": 5.069661458333333
+    },
+    "dense": {
+      "gaps": [
+        17.93359375,
+        21.091796875,
+        18.23046875
+      ],
+      "positive_seeds": 3,
+      "mean_gap": 19.085286458333332
+    },
+    "low-cost": {
+      "gaps": [
+        14.560546875,
+        15.3984375,
+        15.486328125
+      ],
+      "positive_seeds": 3,
+      "mean_gap": 15.1484375
+    },
+    "high-cost": {
+      "gaps": [
+        12.703125,
+        15.017578125,
+        13.38671875
+      ],
+      "positive_seeds": 3,
+      "mean_gap": 13.702473958333334
+    }
+  },
+  "raw_metrics_checked": 350,
+  "condition_pairs_checked": 35,
+  "checks": [
+    "clean source and exact registered settings",
+    "finite metrics and fraction ranges",
+    "source/start/final genome hashes",
+    "encounter/net-food parity",
+    "exact signed differences",
+    "successful owned-process guards"
+  ],
+  "text_hash_normalization": "Replace CRLF with LF; all other text bytes unchanged",
+  "note": "Private/resident maxima are sampled lower bounds on instantaneous peaks; no statistical significance or new-task transfer claim"
+}

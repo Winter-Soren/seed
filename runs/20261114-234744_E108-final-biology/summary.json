@@ -1,0 +1,144 @@
+{
+  "status": "finished",
+  "generation": 0,
+  "eval_protocol": "broader-v1",
+  "condition_split": "final",
+  "eval_seed": 8109,
+  "eval_worlds": 128,
+  "input_genome": {
+    "path": "runs\\20261112-022641_E100-biology-s0\\genome_final.npy",
+    "sha256": "f39d8960f182b832e2700d6274e5d838d7a0f410add2b7753b6f259aba732108"
+  },
+  "final_genome_hash": "72caddf0cdd93943",
+  "condition_evaluations": {
+    "control": {
+      "cfg_shift": {},
+      "learning": {
+        "fitness": 5.59375,
+        "acc_first": 0.5819056034088135,
+        "acc_second": 0.677898108959198,
+        "survived": 0.634765625,
+        "eaten": 11640
+      },
+      "frozen": {
+        "fitness": -0.185546875,
+        "acc_first": 0.4921395778656006,
+        "acc_second": 0.49744999408721924,
+        "survived": 0.353515625,
+        "eaten": 7765
+      },
+      "learning_minus_frozen_fitness": 5.779296875,
+      "learning_accuracy_gain": 0.09599250555038452,
+      "frozen_accuracy_gain": 0.005310416221618652,
+      "seconds": 39.81300000000192,
+      "learning_fitness_shift": 0.0,
+      "frozen_fitness_shift": 0.0,
+      "learning_advantage_shift": 0.0
+    },
+    "sparse": {
+      "cfg_shift": {
+        "n_items": 12
+      },
+      "learning": {
+        "fitness": 2.388671875,
+        "acc_first": 0.5687500238418579,
+        "acc_second": 0.63564133644104,
+        "survived": 0.619140625,
+        "eaten": 6323
+      },
+      "frozen": {
+        "fitness": -0.0234375,
+        "acc_first": 0.4967362880706787,
+        "acc_second": 0.5023952126502991,
+        "survived": 0.443359375,
+        "eaten": 4734
+      },
+      "learning_minus_frozen_fitness": 2.412109375,
+      "learning_accuracy_gain": 0.06689131259918213,
+      "frozen_accuracy_gain": 0.005658924579620361,
+      "seconds": 28.17199999999866,
+      "learning_fitness_shift": -3.205078125,
+      "frozen_fitness_shift": 0.162109375,
+      "learning_advantage_shift": -3.3671875
+    },
+    "dense": {
+      "cfg_shift": {
+        "n_items": 36
+      },
+      "learning": {
+        "fitness": 8.73046875,
+        "acc_first": 0.5905038118362427,
+        "acc_second": 0.701241135597229,
+        "survived": 0.6171875,
+        "eaten": 16414
+      },
+      "frozen": {
+        "fitness": 0.171875,
+        "acc_first": 0.5019016861915588,
+        "acc_second": 0.5097850561141968,
+        "survived": 0.3515625,
+        "eaten": 10216
+      },
+      "learning_minus_frozen_fitness": 8.55859375,
+      "learning_accuracy_gain": 0.11073732376098633,
+      "frozen_accuracy_gain": 0.00788336992263794,
+      "seconds": 26.125,
+      "learning_fitness_shift": 3.13671875,
+      "frozen_fitness_shift": 0.357421875,
+      "learning_advantage_shift": 2.779296875
+    },
+    "low-cost": {
+      "cfg_shift": {
+        "decay": 0.0015
+      },
+      "learning": {
+        "fitness": 5.376953125,
+        "acc_first": 0.5687323808670044,
+        "acc_second": 0.6759045124053955,
+        "survived": 0.7265625,
+        "eaten": 11925
+      },
+      "frozen": {
+        "fitness": -0.13671875,
+        "acc_first": 0.495280385017395,
+        "acc_second": 0.4968259334564209,
+        "survived": 0.484375,
+        "eaten": 8396
+      },
+      "learning_minus_frozen_fitness": 5.513671875,
+      "learning_accuracy_gain": 0.10717213153839111,
+      "frozen_accuracy_gain": 0.001545548439025879,
+      "seconds": 30.014999999999418,
+      "learning_fitness_shift": -0.216796875,
+      "frozen_fitness_shift": 0.048828125,
+      "learning_advantage_shift": -0.265625
+    },
+    "high-cost": {
+      "cfg_shift": {
+        "decay": 0.006
+      },
+      "learning": {
+        "fitness": 3.978515625,
+        "acc_first": 0.5655149817466736,
+        "acc_second": 0.6760925650596619,
+        "survived": 0.39453125,
+        "eaten": 9637
+      },
+      "frozen": {
+        "fitness": 0.15234375,
+        "acc_first": 0.5051880478858948,
+        "acc_second": 0.5094936490058899,
+        "survived": 0.146484375,
+        "eaten": 6206
+      },
+      "learning_minus_frozen_fitness": 3.826171875,
+      "learning_accuracy_gain": 0.11057758331298828,
+      "frozen_accuracy_gain": 0.004305601119995117,
+      "seconds": 30.265999999995984,
+      "learning_fitness_shift": -1.615234375,
+      "frozen_fitness_shift": 0.337890625,
+      "learning_advantage_shift": -1.953125
+    }
+  },
+  "eval_seconds": 154.42199999999866
+}

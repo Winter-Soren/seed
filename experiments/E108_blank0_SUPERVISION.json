@@ -1,0 +1,183 @@
+{
+  "exitCode": 0,
+  "sampledMaxResidentBytes": 737054720,
+  "label": "E108-final-blank0",
+  "wallSeconds": 167.8701992,
+  "samples": [
+    {
+      "availableCommitBytes": 18415566848,
+      "seconds": 2.5964629,
+      "residentBytes": 165019648,
+      "privateBytes": 761700352
+    },
+    {
+      "availableCommitBytes": 17434722304,
+      "seconds": 7.9212843,
+      "residentBytes": 604672000,
+      "privateBytes": 1184604160
+    },
+    {
+      "availableCommitBytes": 17204092928,
+      "seconds": 13.5548744,
+      "residentBytes": 604684288,
+      "privateBytes": 1184604160
+    },
+    {
+      "availableCommitBytes": 17112440832,
+      "seconds": 19.4849122,
+      "residentBytes": 631422976,
+      "privateBytes": 1211265024
+    },
+    {
+      "availableCommitBytes": 17182265344,
+      "seconds": 25.1895791,
+      "residentBytes": 631422976,
+      "privateBytes": 1211265024
+    },
+    {
+      "availableCommitBytes": 17164189696,
+      "seconds": 30.8154976,
+      "residentBytes": 645398528,
+      "privateBytes": 1228574720
+    },
+    {
+      "availableCommitBytes": 17124286464,
+      "seconds": 36.4355368,
+      "residentBytes": 645398528,
+      "privateBytes": 1228574720
+    },
+    {
+      "availableCommitBytes": 17199656960,
+      "seconds": 42.0050844,
+      "residentBytes": 636395520,
+      "privateBytes": 1213489152
+    },
+    {
+      "availableCommitBytes": 16971931648,
+      "seconds": 47.2592953,
+      "residentBytes": 296607744,
+      "privateBytes": 871575552
+    },
+    {
+      "availableCommitBytes": 16851017728,
+      "seconds": 53.2592574,
+      "residentBytes": 646524928,
+      "privateBytes": 1225211904
+    },
+    {
+      "availableCommitBytes": 16220966912,
+      "seconds": 58.9783129,
+      "residentBytes": 646529024,
+      "privateBytes": 1225216000
+    },
+    {
+      "availableCommitBytes": 16195915776,
+      "seconds": 64.7879396,
+      "residentBytes": 411873280,
+      "privateBytes": 987930624
+    },
+    {
+      "availableCommitBytes": 15799308288,
+      "seconds": 70.9357938,
+      "residentBytes": 726290432,
+      "privateBytes": 1302781952
+    },
+    {
+      "availableCommitBytes": 16884654080,
+      "seconds": 76.9192456,
+      "residentBytes": 726290432,
+      "privateBytes": 1302781952
+    },
+    {
+      "availableCommitBytes": 17084788736,
+      "seconds": 83.6573644,
+      "residentBytes": 411414528,
+      "privateBytes": 987447296
+    },
+    {
+      "availableCommitBytes": 16902733824,
+      "seconds": 89.4324183,
+      "residentBytes": 657481728,
+      "privateBytes": 1238138880
+    },
+    {
+      "availableCommitBytes": 16686788608,
+      "seconds": 95.4101666,
+      "residentBytes": 657498112,
+      "privateBytes": 1238663168
+    },
+    {
+      "availableCommitBytes": 17033842688,
+      "seconds": 102.2311,
+      "residentBytes": 657498112,
+      "privateBytes": 1238663168
+    },
+    {
+      "availableCommitBytes": 17087729664,
+      "seconds": 109.0480981,
+      "residentBytes": 657498112,
+      "privateBytes": 1238663168
+    },
+    {
+      "availableCommitBytes": 17435963392,
+      "seconds": 115.1097591,
+      "residentBytes": 394694656,
+      "privateBytes": 972308480
+    },
+    {
+      "availableCommitBytes": 17435287552,
+      "seconds": 121.532085,
+      "residentBytes": 657276928,
+      "privateBytes": 1233965056
+    },
+    {
+      "availableCommitBytes": 17103319040,
+      "seconds": 127.4140816,
+      "residentBytes": 657264640,
+      "privateBytes": 1233932288
+    },
+    {
+      "availableCommitBytes": 17187057664,
+      "seconds": 133.3870362,
+      "residentBytes": 314413056,
+      "privateBytes": 892264448
+    },
+    {
+      "availableCommitBytes": 17416355840,
+      "seconds": 139.3279357,
+      "residentBytes": 410497024,
+      "privateBytes": 990003200
+    },
+    {
+      "availableCommitBytes": 17108615168,
+      "seconds": 144.9010711,
+      "residentBytes": 655601664,
+      "privateBytes": 1233072128
+    },
+    {
+      "availableCommitBytes": 17185337344,
+      "seconds": 150.5189711,
+      "residentBytes": 315830272,
+      "privateBytes": 884170752
+    },
+    {
+      "availableCommitBytes": 17544757248,
+      "seconds": 156.2608789,
+      "residentBytes": 737050624,
+      "privateBytes": 1314365440
+    },
+    {
+      "availableCommitBytes": 17000230912,
+      "seconds": 162.1291107,
+      "residentBytes": 737054720,
+      "privateBytes": 1314365440
+    },
+    {
+      "availableCommitBytes": 16964030464,
+      "seconds": 167.846223,
+      "residentBytes": 0,
+      "privateBytes": 0
+    }
+  ],
+  "sampledMaxPrivateBytes": 1314365440
+}

@@ -134,14 +134,28 @@ Complete these core comparisons before selecting the next research direction. Co
 
 A separate [BROADER v1 proposal](experiments/E108_BROADER_V1.md) prepares saved-genome
 tests under resource-density and metabolic-cost shifts. Its development fixtures are
-operational checks. The owner approved the protocol; the first final panel (saved A0,
-128 fresh worlds, seed 8109) retains a positive learning-minus-frozen fitness difference
-in all conditions: control 14.449, sparse 5.055, dense 17.934, low-cost 14.561, high-cost
-12.703. Sparse resources reduce the advantage substantially. This is one evolved genome;
-A1/A2 and references await scheduling, so the three-seed hypothesis is unresolved.
-These conditions remain in the same food/poison task family. EVAL v1 is unchanged.
-See the [full A0 summary](runs/20261114-231716_E108-final-A0/summary.json) and appended
-[lab record](experiments/LOG.md) for all metrics, measured cost and limitations.
+operational checks. The approved final panel is complete: all three evolved A genomes
+retain a positive learning-minus-frozen fitness difference under every registered shift
+(128 fresh worlds, seed 8109), satisfying the preregistered retention hypothesis.
+
+| Condition | Mean A fitness advantage | Positive A seeds |
+|---|---:|---:|
+| Control | 15.048 | 3/3 |
+| Sparse (12 items/type) | 5.070 | 3/3 |
+| Dense (36 items/type) | 19.085 | 3/3 |
+| Low cost (0.0015) | 15.148 | 3/3 |
+| High cost (0.006) | 13.702 | 3/3 |
+
+Sparse resources substantially reduce the advantage. All four reference panels are
+also complete: blank genomes show small mixed effects (-0.754 to +0.406); the unique
+biology prior retains positive advantages (2.412 to 8.559). This is parameter robustness
+in the same food/poison task family, not new-task transfer or individual recovery.
+Frozen agents retain recurrent state and energy feedback; enabled updates jointly
+include Hebbian and predictor learning. No statistical-significance claim is made.
+EVAL v1 is unchanged. The seven final panels took 1,436.167 supervised seconds in total,
+excluding waits; largest sampled private memory was 1.227 GiB, not an upper bound on
+instantaneous peaks. See [all scores](results/RESULTS.md), the appended
+[lab record](experiments/LOG.md) and [audit/provenance](experiments/E108_VERIFICATION.json).
 
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 

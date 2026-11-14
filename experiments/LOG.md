@@ -786,3 +786,107 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
   final account. Keep push disabled. Commit this release before launch, then record
   all raw scores, signed condition differences and actual costs without changing
   protocol, claiming new-task transfer, or declaring a new roadmap milestone.
+
+## E108 completed final panel · 2026-11-14 · Retention in 3/3 A seeds
+
+All seven preregistered final panels finished and passed the independent read-only audit. Every panel used final seed 8109, 128 balanced worlds, default Cfg and exactly the five approved conditions. No evolution or tuning occurred. All 350 raw metric values were finite; 35 condition pairs passed exact difference checks and encounter-count consistency. Every input/start/final genome copy retains its registered full file SHA-256.
+
+### Primary three-seed result
+
+| Condition | A0 advantage | A1 advantage | A2 advantage | Positive seeds | Mean advantage |
+|---|---:|---:|---:|---:|---:|
+| control | 14.44921875 | 15.39453125 | 15.30078125 | 3/3 | 15.048177083333334 |
+| sparse | 5.0546875 | 5.693359375 | 4.4609375 | 3/3 | 5.069661458333333 |
+| dense | 17.93359375 | 21.091796875 | 18.23046875 | 3/3 | 19.085286458333332 |
+| low-cost | 14.560546875 | 15.3984375 | 15.486328125 | 3/3 | 15.1484375 |
+| high-cost | 12.703125 | 15.017578125 | 13.38671875 | 3/3 | 13.702473958333334 |
+
+### Every raw fitness and condition difference
+
+Advantage = learning minus frozen; each shift column is condition minus control for the same genome.
+
+| Genome | Condition | Learning | Frozen | Advantage | Learning shift | Frozen shift | Advantage shift |
+|---|---|---:|---:|---:|---:|---:|---:|
+| A0 | control | 14.763671875 | 0.314453125 | 14.44921875 | 0.0 | 0.0 | 0.0 |
+| A0 | sparse | 5.099609375 | 0.044921875 | 5.0546875 | -9.6640625 | -0.26953125 | -9.39453125 |
+| A0 | dense | 18.404296875 | 0.470703125 | 17.93359375 | 3.640625 | 0.15625 | 3.484375 |
+| A0 | low-cost | 14.708984375 | 0.1484375 | 14.560546875 | -0.0546875 | -0.166015625 | 0.111328125 |
+| A0 | high-cost | 13.13671875 | 0.43359375 | 12.703125 | -1.626953125 | 0.119140625 | -1.74609375 |
+| A1 | control | 15.453125 | 0.05859375 | 15.39453125 | 0.0 | 0.0 | 0.0 |
+| A1 | sparse | 5.869140625 | 0.17578125 | 5.693359375 | -9.583984375 | 0.1171875 | -9.701171875 |
+| A1 | dense | 20.962890625 | -0.12890625 | 21.091796875 | 5.509765625 | -0.1875 | 5.697265625 |
+| A1 | low-cost | 15.3203125 | -0.078125 | 15.3984375 | -0.1328125 | -0.13671875 | 0.00390625 |
+| A1 | high-cost | 14.953125 | -0.064453125 | 15.017578125 | -0.5 | -0.123046875 | -0.376953125 |
+| A2 | control | 14.857421875 | -0.443359375 | 15.30078125 | 0.0 | 0.0 | 0.0 |
+| A2 | sparse | 4.853515625 | 0.392578125 | 4.4609375 | -10.00390625 | 0.8359375 | -10.83984375 |
+| A2 | dense | 18.2265625 | -0.00390625 | 18.23046875 | 3.369140625 | 0.439453125 | 2.9296875 |
+| A2 | low-cost | 15.013671875 | -0.47265625 | 15.486328125 | 0.15625 | -0.029296875 | 0.185546875 |
+| A2 | high-cost | 13.44921875 | 0.0625 | 13.38671875 | -1.408203125 | 0.505859375 | -1.9140625 |
+| blank0 | control | -0.37109375 | 0.232421875 | -0.603515625 | 0.0 | 0.0 | 0.0 |
+| blank0 | sparse | 0.24609375 | -0.16015625 | 0.40625 | 0.6171875 | -0.392578125 | 1.009765625 |
+| blank0 | dense | -0.32421875 | 0.16796875 | -0.4921875 | 0.046875 | -0.064453125 | 0.111328125 |
+| blank0 | low-cost | -0.5546875 | 0.19921875 | -0.75390625 | -0.18359375 | -0.033203125 | -0.150390625 |
+| blank0 | high-cost | -0.203125 | 0.189453125 | -0.392578125 | 0.16796875 | -0.04296875 | 0.2109375 |
+| blank1 | control | 0.390625 | 0.232421875 | 0.158203125 | 0.0 | 0.0 | 0.0 |
+| blank1 | sparse | 0.240234375 | -0.16015625 | 0.400390625 | -0.150390625 | -0.392578125 | 0.2421875 |
+| blank1 | dense | 0.3828125 | 0.16796875 | 0.21484375 | -0.0078125 | -0.064453125 | 0.056640625 |
+| blank1 | low-cost | 0.150390625 | 0.19921875 | -0.048828125 | -0.240234375 | -0.033203125 | -0.20703125 |
+| blank1 | high-cost | 0.462890625 | 0.189453125 | 0.2734375 | 0.072265625 | -0.04296875 | 0.115234375 |
+| blank2 | control | -0.154296875 | 0.232421875 | -0.38671875 | 0.0 | 0.0 | 0.0 |
+| blank2 | sparse | 0.09375 | -0.16015625 | 0.25390625 | 0.248046875 | -0.392578125 | 0.640625 |
+| blank2 | dense | 0.34375 | 0.16796875 | 0.17578125 | 0.498046875 | -0.064453125 | 0.5625 |
+| blank2 | low-cost | -0.302734375 | 0.19921875 | -0.501953125 | -0.1484375 | -0.033203125 | -0.115234375 |
+| blank2 | high-cost | -0.2109375 | 0.189453125 | -0.400390625 | -0.056640625 | -0.04296875 | -0.013671875 |
+| biology | control | 5.59375 | -0.185546875 | 5.779296875 | 0.0 | 0.0 | 0.0 |
+| biology | sparse | 2.388671875 | -0.0234375 | 2.412109375 | -3.205078125 | 0.162109375 | -3.3671875 |
+| biology | dense | 8.73046875 | 0.171875 | 8.55859375 | 3.13671875 | 0.357421875 | 2.779296875 |
+| biology | low-cost | 5.376953125 | -0.13671875 | 5.513671875 | -0.216796875 | 0.048828125 | -0.265625 |
+| biology | high-cost | 3.978515625 | 0.15234375 | 3.826171875 | -1.615234375 | 0.337890625 | -1.953125 |
+
+### Provenance and measured cost
+
+| Genome | Run folder | Clean source | Wall seconds | Eval seconds | Sampled max private bytes |
+|---|---|---|---:|---:|---:|
+| A0 | runs\20261114-231716_E108-final-A0 | a45f51aa6d22010f56214ca73c2830c3019746e8 | 172.5020589 | 163.59399999999732 | 1306451968 |
+| A1 | runs\20261114-232930_E108-final-A1 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 312.8602448 | 298.4850000000006 | 1305378816 |
+| A2 | runs\20261114-233434_E108-final-A2 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 193.2926733 | 188.32800000000134 | 1299775488 |
+| blank0 | runs\20261114-233746_E108-final-blank0 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 167.8701992 | 163.14099999999598 | 1314365440 |
+| blank1 | runs\20261114-234036_E108-final-blank1 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 193.9142836 | 185.4059999999954 | 1317044224 |
+| blank2 | runs\20261114-234357_E108-final-blank2 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 229.4296985 | 212.60899999999674 | 1305956352 |
+| biology | runs\20261114-234744_E108-final-biology | f11dd9096d8858b7dcc214778a8338e559c28f29 | 166.2975765 | 154.42199999999866 | 1308971008 |
+
+Total supervised wall time across seven final panels: 1436.1667348 seconds; largest sampled private allocation: 1317044224 bytes. These are measured process totals, excluding waits between panels. Sampled memory is not an instantaneous peak upper bound.
+
+Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has a linked supervision JSON. Full first/second-half accuracy, both survival fractions and encountered-item counts remain in each immutable summary. The initial default-sandbox supervisor attempt failed at read-only CIM before creating a scientific run; its failure record is retained separately. One host-access supervisor then ran all six remaining panels without another approval request.
+
+### E108 interpretation and next decision
+
+- The preregistered retention hypothesis is supported in all four shifts, with positive
+  advantages in 3/3 A seeds per condition (the criterion required >=2/3). This is a
+  completed descriptive three-seed result, not a new roadmap gate or significance test.
+  Sparse resources reduce mean advantage from 15.048177083333334 to 5.069661458333333;
+  dense resources increase it to 19.085286458333332. High cost retains mean advantage
+  13.702473958333334; low cost 15.1484375. Report the raw per-seed differences above.
+- Blank references are mixed near zero (range -0.75390625 to +0.40625), including eight
+  negative advantages among 15 conditions. The unique biology prior retains positive
+  advantage in all five conditions (2.412109375 to 8.55859375). Thus parameter robustness
+  is not unique to evolved A; the prior also retains it, at smaller observed magnitudes.
+- These are shifts within the same task family, fixed saved genomes and jointly
+  enabled/disabled Hebbian/predictor updates. Pooled accuracy, encounter selection,
+  recurrent state and energy feedback limit interpretation. No individual recovery,
+  new-task transfer, SOTA, universal necessity, or AGI claim follows. EVAL v1 worlds
+  were not changed or used for tuning, and BROADER final results caused no tuning.
+- Final audit verified all 350 raw metric values, 35 matched condition pairs, unchanged
+  source/start/final bytes, exact condition differences, clean source commits and all
+  successful guard exits. Regenerated RESULTS has 15 unchanged historical rows plus
+  40 broader rows (five development, 35 final). README now records the completed result.
+  The report formatter initially used a wrong local record key; it was corrected and
+  re-executed read-only, without rerunning or editing any scientific run.
+- Pin and commit the complete E108 artifacts/provenance locally with push disabled
+  before further edits. The coordinator requested an executable food-rule-reversal
+  prototype next, on a separate branch preserving E108: no-flip versus unannounced
+  flip at step150 in T300, matched keys, per-agent/window/recovery and survival/encounter
+  accounting. Software/direct fixtures are authorized; a new scientific protocol needs
+  concrete versioned registration and owner approval before final-world execution.
+
+
