@@ -22,6 +22,7 @@ class RunnerSchedulingTests(unittest.TestCase):
         self.now = 0.0
         self.real_step = runner.es_step
         self.crash_at = None
+        self.validation_failure_at = None
 
     def evaluate(self, population, world_keys, development_keys):
         p, worlds = len(population), len(world_keys)
@@ -30,6 +31,8 @@ class RunnerSchedulingTests(unittest.TestCase):
                     counts=np.ones((p, worlds, 2, 2)), survived=np.full((p, worlds), 0.5))
 
     def step(self, *args):
+        if args[0]['t'] == self.validation_failure_at:
+            raise runner.StructuralValidationError('structural validation failed: invalid_proposals=1')
         if args[0]["t"] == self.crash_at:
             raise RuntimeError("simulated hard stop")
         result = self.real_step(*args)
@@ -40,13 +43,15 @@ class RunnerSchedulingTests(unittest.TestCase):
         result = dict(fitness=1.0, acc_first=0.5, acc_second=0.6, survived=0.5, eaten=10)
         with (patch.object(runner, "ROOT", self.root),
               patch.object(runner, "git_info", return_value=dict(commit="test", branch="test", dirty=dirty)),
-              patch.object(runner, "make_evaluator", return_value=(self.evaluate, None)),
+              patch.object(runner, "make_evaluator", return_value=(self.evaluate, None)) as factory,
               patch.object(runner, "es_step", side_effect=self.step),
-              patch.object(runner, "test_genome", return_value=result),
+              patch.object(runner, "test_genome", return_value=result) as testing,
               patch.object(runner.time, "monotonic", side_effect=lambda: self.now),
               patch.object(runner.sys, "argv", ["run_experiment.py", *args]),
               contextlib.redirect_stdout(io.StringIO()), contextlib.redirect_stderr(io.StringIO())):
             runner.main()
+        self.last_factory_calls = factory.call_args_list
+        self.last_testing_calls = testing.call_args_list
 
     def run_dir(self, name):
         return next((self.root / "runs").glob(f"*_{name}"))
@@ -181,6 +186,76 @@ class RunnerSchedulingTests(unittest.TestCase):
         with self.assertRaisesRegex(SystemExit, "Uncommitted code"):
             self.invoke("--resume", str(directory), dirty=True)
         self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+
+    def test_structural_mode_is_explicitly_labeled_and_dispatched(self):
+        self.invoke('--name', 'structural', '--generations', '0', '--eval-protocol', 'structural-v1',
+                    '--structural-plasticity', 'activity-grow-prune-v1')
+        directory = self.run_dir('structural')
+        config = self.read_json(directory, 'config.json')
+        self.assertEqual(config['structural_rule']['interval'], 10)
+        self.assertEqual(config['args']['structural_plasticity'], 'activity-grow-prune-v1')
+        self.assertTrue(self.last_factory_calls[0].kwargs['structural'])
+        summary = self.read_json(directory, 'summary.json')
+        self.assertEqual(summary['eval_protocol'], 'structural-v1')
+        self.assertEqual(set(summary['conditions']), {'Weight-only', 'Weight+structure', 'Frozen'})
+        self.assertEqual([(c.kwargs['plastic'], c.kwargs.get('structural', False)) for c in self.last_testing_calls],
+                         [(True, False), (True, True), (False, True)])
+
+    def test_structural_resume_uses_saved_mode_and_rejects_overrides_without_writes(self):
+        self.invoke('--name', 'structural', '--generations', '0', '--eval-protocol', 'structural-v1',
+                    '--structural-plasticity', 'activity-grow-prune-v1')
+        directory = self.run_dir('structural')
+        before = {p.name: p.read_bytes() for p in directory.iterdir()}
+        with self.assertRaisesRegex(SystemExit, 'structural.*resume'):
+            self.invoke('--resume', str(directory), '--structural-plasticity', 'off')
+        self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+        with self.assertRaisesRegex(SystemExit, 'protocol.*resume'):
+            self.invoke('--resume', str(directory), '--eval-protocol', 'v1')
+        self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+        self.invoke('--resume', str(directory))
+        self.assertTrue(self.last_factory_calls[0].kwargs['structural'])
+
+    def test_old_config_missing_structural_fields_resumes_as_off(self):
+        self.invoke('--name', 'old', '--generations', '0')
+        directory = self.run_dir('old')
+        config = self.read_json(directory, 'config.json')
+        config['args'].pop('structural_plasticity', None)
+        config['args'].pop('eval_protocol', None)
+        (directory / 'config.json').write_text(json.dumps(config))
+        self.invoke('--resume', str(directory))
+        self.assertFalse(self.last_factory_calls[0].kwargs.get('structural', False))
+
+    def test_structural_contradictions_fail_before_creating_artifacts(self):
+        for args in (['--structural-plasticity', 'activity-grow-prune-v1', '--no-plastic'],
+                     ['--structural-plasticity', 'activity-grow-prune-v1'],
+                     ['--eval-protocol', 'structural-v1'],
+                     ['--eval-protocol', 'v2', '--structural-plasticity', 'activity-grow-prune-v1'],
+                     ['--eval-protocol', 'broader-v1', '--structural-plasticity', 'activity-grow-prune-v1']):
+            with self.subTest(args=args), self.assertRaises(SystemExit):
+                self.invoke(*args)
+        self.assertFalse((self.root / 'runs').exists())
+
+    def test_condition_split_cannot_be_silently_ignored_by_other_protocols(self):
+        for protocol in ('v1', 'v2', 'structural-v1'):
+            with self.subTest(protocol=protocol), self.assertRaises(SystemExit):
+                self.invoke('--eval-protocol', protocol, '--condition-split', 'development')
+        self.assertFalse((self.root / 'runs').exists())
+        self.invoke('--name', 'old', '--generations', '0')
+        directory = self.run_dir('old')
+        before = {p.name: p.read_bytes() for p in directory.iterdir()}
+        with self.assertRaises(SystemExit):
+            self.invoke('--resume', str(directory), '--condition-split', 'final')
+        self.assertEqual(before, {p.name: p.read_bytes() for p in directory.iterdir()})
+
+    def test_structural_validation_failure_is_recorded_without_accepting_invalid_step(self):
+        self.validation_failure_at = 1
+        with self.assertRaisesRegex(runner.StructuralValidationError, 'invalid_proposals'):
+            self.invoke('--name', 'invalid-structure', '--generations', '3')
+        directory = self.run_dir('invalid-structure')
+        summary = self.read_json(directory, 'summary.json')
+        self.assertEqual((summary['status'], summary['generation']), ('failed', 1))
+        self.assertIn('invalid_proposals', summary['error'])
+        self.assertEqual(runner.load_checkpoint(directory)['t'], 1)
 
 
 if __name__ == "__main__":

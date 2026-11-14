@@ -1,0 +1,75 @@
+{
+  "exitCode": 0,
+  "sampledMaxResidentBytes": 399548416,
+  "sampledMaxPrivateBytes": 975536128,
+  "samples": [
+    {
+      "seconds": 4.2463477,
+      "residentBytes": 21688320,
+      "availableCommitBytes": 18387132416,
+      "privateBytes": 6385664
+    },
+    {
+      "seconds": 10.323666,
+      "residentBytes": 108838912,
+      "availableCommitBytes": 17223344128,
+      "privateBytes": 724062208
+    },
+    {
+      "seconds": 16.3869734,
+      "residentBytes": 164880384,
+      "availableCommitBytes": 16632840192,
+      "privateBytes": 761208832
+    },
+    {
+      "seconds": 22.4693339,
+      "residentBytes": 353890304,
+      "availableCommitBytes": 16185044992,
+      "privateBytes": 930570240
+    },
+    {
+      "seconds": 28.9679393,
+      "residentBytes": 360550400,
+      "availableCommitBytes": 15805693952,
+      "privateBytes": 937242624
+    },
+    {
+      "seconds": 35.2311328,
+      "residentBytes": 365563904,
+      "availableCommitBytes": 17964146688,
+      "privateBytes": 943915008
+    },
+    {
+      "seconds": 40.7971323,
+      "residentBytes": 287010816,
+      "availableCommitBytes": 17953513472,
+      "privateBytes": 857018368
+    },
+    {
+      "seconds": 46.2644165,
+      "residentBytes": 387317760,
+      "availableCommitBytes": 18100813824,
+      "privateBytes": 963055616
+    },
+    {
+      "seconds": 52.1459012,
+      "residentBytes": 377860096,
+      "availableCommitBytes": 17911373824,
+      "privateBytes": 954179584
+    },
+    {
+      "seconds": 58.0393865,
+      "residentBytes": 399548416,
+      "availableCommitBytes": 17896275968,
+      "privateBytes": 975536128
+    },
+    {
+      "seconds": 63.5405879,
+      "residentBytes": 298389504,
+      "availableCommitBytes": 17802850304,
+      "privateBytes": 872865792
+    }
+  ],
+  "wallSeconds": 63.8466413,
+  "label": "E108-D-A0-oneworld"
+}

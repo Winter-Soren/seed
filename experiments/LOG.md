@@ -652,3 +652,447 @@ The remaining metrics below accompany the fitness values above; all numbers are 
 - **Timing and scheduling:** A0 started 23:07:02.7081792 Asia/Calcutta and exited 0 after **35.7830262 seconds**, ending 23:07:38.4943748 (supervisor 78447 terminal). A1/A2/blank0/blank1/blank2 exited 0 after **35.9475528 / 38.3606862 / 48.539918 / 59.5275137 / 81.835345 seconds**, verified by batch supervisor 11367. The batch stopped before creating a biology folder when authorized E108 peer compute was detected; this was scheduling, not a scientific failure. After the peer finished, biology started 23:16:37.7531355 and exited 0 after **39.1793714 seconds**, ending 23:17:16.9365250 (supervisor 57503 terminal). Summed process wall time is **339.1734133 seconds (5.65 minutes)**; first-start to final-end elapsed is **614.2283458 seconds (10.24 minutes)** including checks, approval gaps, and peer waiting. All summary `train_minutes=0` values exclude evaluation. One E106 process ran at a time; owner-authorized peer labs coordinate separately under unchanged resource guards.
 - **Measured-memory limitation:** `.tmp/E106-memory-samples.jsonl` sampled two workers; maximum observed private memory was **1.14145 GiB**, observed working-set peak **0.5839 GiB**. This is incomplete sampling, not a complete peak measurement for all panels or for A0. Do not use it to claim a proven maximum memory requirement.
 - **Record and next decision:** Regenerated **22 finished runs** in RESULTS, including seven complete v2 rows and the undefined blank-0 ratio. Main implementation and C2 result are already pushed under verified owner attribution to the private repository; publish these seven run folders with README/RESULTS/LOG/STATE coherently next. Keep **Both updates enabled** for the structural comparison, making activity-dependent connection growth/pruning the intervention against a fair weight-only/static-capacity control. E107's isolated lab owns that implementation; do not spawn a duplicate main structural worker. Owner-approved E108 broader-v1 work proceeds independently under its own protocol. Main B1/B2 remain planned. Goal active; no structural benefit is claimed by E106.
+
+## E107 · 2026-11-14 · Bounded lifetime structural plasticity: capability, benchmark, paired diagnostic
+
+- **Authorization and ownership:** The owner requested implementation and direct measurement of activity-dependent connection addition/pruning among existing neurons. This lab works only in the isolated `.tmp/parallel-labs/structural` checkout based on `a0cb4a7`; its remote push URL remains disabled. Main integration and publication are coordinated separately. E106's predictor switch remains an independent change to combine, not replace. Preserve C2/E106/B1/B2 and all old artifacts. No new neurons, genes, environment/reward changes, evaluation-world tuning, or novelty/biological-fidelity/AGI claim.
+- **Versioned rule, fixed before measurement:** `activity-grow-prune-v1`, default off. Every tenth zero-based step starting at 10 (10..290 for a default life), after the brain tick, use the previous activity to prune at most one inactive edge per row whose absolute weight is at most `0.01*wmax`, weakest then lowest presynaptic index. Independently add at most one previously absent legal edge with the greatest positive absolute coactivity, lowest-index ties, using absolute presynaptic activity for a row empty after pruning. An edge pruned in this event cannot be re-added immediately. Sensors receive no incoming edges; no self-edges. Each row's immutable cap is `min(legal_candidates, birth_degree + 1)`, so net growth is bounded by at most `H+6` edges. New signed weights use the unchanged genome's birth scale and expected birth fan-in, clipped to `wmax`; a `fold_in` stream tag 107 and event index preserve world/action RNG. Exactly zero proposals skip growth; nonfinite proposals/scales cause an explicit validation failure at evaluation/ES boundaries. Frozen and dead agents do not rewire. The current action is already computed, so structure changes affect the next neural tick.
+- **Software acceptance:** Direct fixtures must separately show `+1` edge/nonzero weight, `-1` edge/zero weight, an initially isolated hidden target becoming active only on a later tick, and a changed selected edge when input activity changes. Verify legal masks, fixed caps, weight bounds, deterministic ties, full/empty rows, dead/frozen/disabled/nonevent no-ops, zero/nonfinite proposals, and actual mask-difference counters. Compare disabled current/default rollouts bitwise with base `a0cb4a7`, including trajectories and instrumented internal W/x/Wp/key/mask, preserve positional calls and 155 default parameters, and verify tiny real structural ES split/resume plus flushed-tail crash/replay exactly. Unit fixtures use temporary roots under `.tmp`, not research runs.
+- **Direct software command:** `& 'D:\cool-projects\general-intelligence\.venv\Scripts\python.exe' -X utf8 -m unittest discover -s tests -v` from the isolated lab, under a BelowNormal five-minute supervisor with D: temporary files and a 5-GiB available-commit stop. This is direct software testing, not a scientific claim. Initial baseline: eight runner tests passed. Ten kernel tests and four integration tests passed before the final runner changes. A combined run exposed five legacy recovery failures caused by an overly broad validation exception handler; the handler was narrowed to `StructuralValidationError` without weakening the original recovery assertions. Final full suite and added real-ES check pending the coordinator's brief compute hold. Preserve failed fixture console files in `.tmp`.
+
+### Benchmark command and acceptance (pending compute release)
+
+Run only after code plus this preregistration are committed, with the same bounded resource guard. This is one full-size brain/family in one world, not EVAL v1 or a benefit claim:
+
+```powershell
+& 'D:\cool-projects\general-intelligence\.venv\Scripts\python.exe' -X utf8 scripts/run_experiment.py --name E107-benchmark-A0-one-world --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --pop 2 --worlds 1 --eval-worlds 1 --seed 0 --structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1
+```
+
+- **Operational pass/fail:** Pass only if the three explicitly named conditions finish in under five minutes with finite metrics, zero validation-error counters, fixed caps respected, unchanged input genome bytes, and deterministic saved provenance. A resource-stop, exception, nonfinite metric, cap/edge violation, or changed input fails. Preserve every folder regardless. Record per-condition cold evaluation times and supervisor wall time, sampled owned-process-tree private memory and observed working-set peak. The old fixture supervisor only measured the venv launcher, so its ~8.3-MiB reading is not a JAX memory measurement. One-world scores cannot support scientific conclusions.
+
+### Three fixed evolved genomes: exact queued commands
+
+After the coordinator grants a full-panel slot and the one-world benchmark supports the resource budget, use default Cfg and the unchanged 128 worlds/evaluation seed 123. This is a separately named **Structural v1 diagnostic**, not a modification to EVAL v1. All conditions share world/development/action keys and their birth masks. Weight-only retains both weight-learning rules; Weight+structure additionally enables this rule; Frozen disables all local weight and mask updates. CLI seeds identify the independently evolved input genomes; they do not change evaluation seed 123. No evolution occurs.
+
+```powershell
+& 'D:\cool-projects\general-intelligence\.venv\Scripts\python.exe' -X utf8 scripts/run_experiment.py --name E107-structural-A-s0 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0 --structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1
+& 'D:\cool-projects\general-intelligence\.venv\Scripts\python.exe' -X utf8 scripts/run_experiment.py --name E107-structural-A-s1 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1 --structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1
+& 'D:\cool-projects\general-intelligence\.venv\Scripts\python.exe' -X utf8 scripts/run_experiment.py --name E107-structural-A-s2 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2 --structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1
+```
+
+- **Inputs:** Complete-file SHA-256, fixed before measurement: A0 `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`; A1 `35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899`; A2 `f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6`. These are the same files preregistered in E106; verify before and after execution. The runner records each file's full hash and rule constants.
+- **Operational gate:** Every Weight-only/Frozen metric must exactly match the corresponding saved EVAL v1 final-learning/final-frozen metric (excluding new structural diagnostics). A mismatch halts scientific interpretation; never substitute a tolerance or change the saved reference. All three panels must be finite, complete and validation-clean with preserved inputs. Frozen mask-difference counters must be zero. No roadmap milestone follows from capability counters.
+- **Scientific question:** Does adding the complete bounded structural intervention change fitness on these three independently evolved fixed inputs? Report every signed `Weight+structure - Weight-only` difference, including zero/negative/mixed outcomes, with accuracy, survival, eaten count, additions/removals, initial/final/minimum/maximum edge counts, fixed caps, weight/legality validation, runtime and memory. Positive differences support the combined intervention; zero/negative ones count against it. Do not infer significance from three inputs, tune on these worlds, or claim that turnover alone demonstrates learning. No new numerical threshold or post-hoc gate.
+- **Limits and next decision:** A evolved without structural plasticity; this panel does not show evolution discovers a better structural learner. Extra active capacity is part of the intervention, so a benefit specifically from adaptive placement additionally requires a separately preregistered static capacity control filled to the same immutable row caps at birth. That control, random-turnover comparisons, and structural evolution are not implemented by this first capability change. Prior work already includes lifetime synaptogenesis/pruning (the supplied design cites LNDP); no novelty claim. Record measured outcomes and update README/RESULTS only after verified results; no full panel launched yet. Main integration must preserve E106's independently controlled predictor semantics.
+
+## E107 software capability verification · 2026-11-14
+
+- **Final check:** The registered direct command passed **31/31 tests in 83.169 seconds**, exit 0. Console files `.tmp/20261114-231403-482-all-tests.stdout`/`.stderr` remain preserved in this lab. All eight original runner cases, including flushed-tail replay, refusal on mismatches without writes, and incomplete-history refusal, passed with their meaningful assertions retained. Structural mode/config labels, old-config fallback, resume-override refusal, and recorded validation failure also passed.
+- **Measured capability:** Direct fixture grew `(post=7, pre=6)` from absent to weight **1.0**, net edge count **+1**. Current hidden activation remained **0.0**, next-tick activation **0.7615941762924194**. A separate inactive-weak-edge event removed that connection, net **-1**, leaving weight **0.0** and next activation **0.0**. Changing activity selected a different absent presynaptic edge. Fixed caps, legal masks, sensor/self exclusions, bounds, ties, full/empty rows, zero/nonfinite proposals and no-ops passed. These are controlled software fixtures, not measured fitness improvement.
+- **Compatibility/replay:** Tiny default and explicit-off rollouts matched base `a0cb4a7` bitwise, including recorded worlds/positions/energy/signals and instrumented final W/x/Wp/key/mask; tiny test-genome metrics matched. Default genome remains 155 parameters. Enabled rollouts repeated exactly. A real tiny structural ES (four generations, population two, two tiny worlds, 22-step lives) had exact mu/m/v/t/key, all non-timing metric rows including structural diagnostics, and final genome equality after both a 2+2 split and a flushed-tail crash at generation three replayed from checkpoint two. Full 128-world historical reproduction remains an explicit prerequisite to scientific interpretation, not a claim from these tiny checks.
+- **Measured software-check resources:** BelowNormal, D: temporary files, five-minute wall guard, available-commit stop 5 GiB. Supervisor wall **95.0602852 seconds**, minimum available commit **14.722728729248047 GiB**, sampled peak owned-tree private memory **1233.5625 MiB**, observed sum of per-process peak working sets **646.16796875 MiB**. The latter is not an exact simultaneous resident peak; private-memory sampling can miss between-sample peaks. No guard fired. The coordinator lifted its brief fixture hold after stopping Oracle; no unrelated process was stopped by this lab.
+- **Integrity and next action:** Static compilation and notebook code-cell compilation pass, module is embedded for notebook portability, and `git diff --check` is clean. The earlier expected-red fixture and five-failure runner logs stay preserved under `.tmp`; narrowing the exception catch fixed their cause. Commit implementation plus preregistration before the registered one-world benchmark. Full structural panels and structural evolution remain queued for a coordinated slot; push remains disabled in the lab.
+
+## E107 one-world operational benchmark result · 2026-11-14 · Capability runs; benefit untested
+
+- **Evidence/provenance:** `runs/20261114-231742_E107-benchmark-A0-one-world/summary.json` reports `finished`, generation **0**, `eval_worlds=1`, protocol `structural-v1`, final genome hash **`ee8eaa10a7429cc5`**. Exact registered command ran from clean **`c17e64c5ccc0618faf9005a6dbf895d542c34c15`**, default Cfg (157 neurons, family four, lifetime 300), CPU. No evolution occurred. Source file hash remains **`477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`**; input/start/final/checkpoint-mean arrays exactly equal, checkpoint t=0, metrics empty, genome size 155. All three explicitly named conditions complete and finite. No run artifact edited after the runner.
+
+| One-world condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | Cold evaluation seconds |
+|---|---:|---:|---:|---:|---:|---:|
+| Weight-only | 16.25 | 0.7213114500045776 | 0.8275862336158752 | 0.75 | 119 | 6.180221 |
+| Weight+structure | 16.0 | 0.739130437374115 | 0.8039215803146362 | 1.0 | 120 | 9.899948 |
+| Frozen | 2.25 | 0.5263158082962036 | 0.6060606241226196 | 0.75 | 71 | 8.726071 |
+
+- **Actual structural diagnostics (means per agent, copied from summary):** Added **609.75**, removed **662.25**, initial edges **3192.25**, final **3139.75**, minimum **3139.75**, maximum **3211.25**, fixed global cap **3246.25**. Net change is **-52.5** and exactly equals additions minus removals. Maximum post-tick absolute weight **3.0**; initial maximum absolute weight mean **1.451040506362915** is recorded separately. Cap violations, illegal edges, invalid weights, invalid proposals are all **0.0**. Frozen added/removed **0.0/0.0**, initial/final/min/max **3192.25**, same cap **3246.25**, maximum absolute weight **1.451040506362915**, all validation errors zero. Per-row cap legality is checked on every tick; direct recording exposes row caps without saving full masks per research step.
+- **Operational pass and measured resources:** Exit **0**, supervisor wall **28.7916462 seconds** (under five minutes), minimum available commit **16.291091918945312 GiB**, sampled peak owned-tree private memory **941.81640625 MiB**, observed sum of per-process peak working sets **399.19921875 MiB**. BelowNormal with D: temporary files, 5-GiB available-commit floor; no guard fired. Console `.tmp/20261114-231739-933-E107-benchmark.stdout`/`.stderr` preserved. Memory samples are not exact between-sample or simultaneous resident peaks, and a one-world footprint does not establish full-panel memory or scalable concurrency.
+- **Interpretation:** Structural capability and operational benchmark pass. The signed one-world fitness difference is **-0.25**, not evidence of improvement. This is a single world with four related agents, not EVAL v1, not an independent three-seed scientific comparison, and not a new gate decision. Turnover alone does not show adaptation. No threshold/rule was tuned after these observations. Full 128-world Weight-only/Frozen reproduction and all three preregistered fixed-A comparisons remain pending a coordinator slot; adaptive placement still needs a static-capacity control before a specific benefit claim.
+- **Recording/decision:** Ran the registered UTF-8 `scripts/summarize.py`; 16 run folders indexed, with the structural benchmark in its separate labeled section and the 15 historical rows byte-for-byte unchanged after newline normalization. An assert-based artifact check verified provenance, exact genomes/checkpoint, finite conditions/timing, cap and ledger consistency, zero validation errors and frozen turnover, unchanged source hash, and preserved legacy result prefix. Commit the immutable benchmark folder, generated table, README, LOG and lab state together. Keep the lab push URL disabled; coordinator owns main integration/publication and the next full-panel slot. No lab JAX job remains running.
+
+## E107 full fixed-genome comparison · 2026-11-14 · Structural intervention lowers fitness in 3/3 inputs
+
+- **Execution authorization:** The coordinator assigned the registered full A0 slot after E106 finished and authorized unchanged A1/A2 sequentially once A0 reproduced the references with zero validation errors and resource floors held. This lifted E107's earlier full-panel scheduling condition. Startup floors: C:/D: 10 GiB each, physical 8 GiB, available commit 10 GiB; runtime C:/D:/available-commit floors 5/10/5 GiB. BelowNormal, D: temporary files, one lab panel at a time, guarded 1,200-second maximum. Other lab generalization work could run in parallel; do not interpret these shared-host timings as an isolated speed comparison. No source/rule/protocol tuning between panels.
+- **Provenance:** All three exact preregistered commands finished, generation **0**, 128 worlds, seed 123, default Cfg, clean source **`ffc2c0a893d87849b97b69a6e9e7b86e4fd64449`**, CPU. Run folders: A0 `runs/20261114-232719_E107-structural-A-s0`, A1 `runs/20261114-232924_E107-structural-A-s1`, A2 `runs/20261114-233501_E107-structural-A-s2`. All source files retain their preregistered full SHA-256. Input/start/final/checkpoint-mean arrays exactly equal; checkpoints t=0, metrics files empty, genome size 155. Final genome hashes respectively **`ee8eaa10a7429cc5` / `aca49c2747a994ab` / `17191e72299b25cc`**. Every reported metric below is copied from each summary; signed differences and densities are derived explicitly. No run artifact edited.
+
+| Input | Condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | Cold evaluation seconds |
+|---|---|---:|---:|---:|---:|---:|---:|
+| A0 | Weight-only | 16.591796875 | 0.7049121856689453 | 0.8401943445205688 | 0.880859375 | 15837 | 11.232544 |
+| A0 | Weight+structure | 14.0 | 0.6805352568626404 | 0.8068380951881409 | 0.833984375 | 15064 | 22.740198 |
+| A0 | Frozen | 0.2890625 | 0.4963643252849579 | 0.5343427062034607 | 0.39453125 | 7934 | 15.091076 |
+| A1 | Weight-only | 15.376953125 | 0.687602698802948 | 0.8297842144966125 | 0.84765625 | 15609 | 11.359789 |
+| A1 | Weight+structure | 13.953125 | 0.6813045740127563 | 0.7969647645950317 | 0.80859375 | 15372 | 141.52915 |
+| A1 | Frozen | 0.09375 | 0.5005697011947632 | 0.5078710913658142 | 0.3984375 | 7934 | 85.547724 |
+| A2 | Weight-only | 14.8671875 | 0.6937439441680908 | 0.8225241303443909 | 0.849609375 | 15094 | 26.53224 |
+| A2 | Weight+structure | 14.359375 | 0.6945882439613342 | 0.797878623008728 | 0.85546875 | 15288 | 49.067629 |
+| A2 | Frozen | -0.103515625 | 0.4872659146785736 | 0.516306459903717 | 0.36328125 | 7885 | 28.355373 |
+
+| Input | Signed fitness change | Signed accuracy-first change | Signed accuracy-second change | Signed survival change | Signed eaten change |
+|---|---:|---:|---:|---:|---:|
+| A0 | -2.591796875 | -0.02437692880630493 | -0.03335624933242798 | -0.046875 | -773 |
+| A1 | -1.423828125 | -0.00629812479019165 | -0.03281944990158081 | -0.0390625 | -237 |
+| A2 | -0.5078125 | 0.0008442997932434082 | -0.024645507335662842 | 0.005859375 | 194 |
+
+- **Structural ledger, means per agent:** Additions/removals count actual mask differences summed over lifetime events, not distinct edges. Min/max below are means of each agent's within-life minimum/maximum. Row caps stay fixed at birth-degree+1 (limited to legal candidates); global cap is their sum.
+
+| Input | Added | Removed | Initial | Final | Within-life min | Within-life max | Fixed cap | Initial max-abs-W mean | Post-tick max-abs-W mean |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| A0 | 578.33203125 | 619.103515625 | 3199.1953125 | 3158.423828125 | 3155.8671875 | 3223.740234375 | 3253.1953125 | 1.4686815738677979 | 3.0 |
+| A1 | 547.388671875 | 592.009765625 | 1968.0546875 | 1923.43359375 | 1921.86328125 | 1989.9609375 | 2022.0546875 | 1.9703896045684814 | 2.9995522499084473 |
+| A2 | 421.2890625 | 453.11328125 | 2531.30859375 | 2499.484375 | 2496.94921875 | 2562.876953125 | 2585.30859375 | 2.5124013423919678 | 3.0 |
+
+- **Validation pass:** Every Weight-only/Frozen fitness, both accuracies, survival and eaten count exactly equals the corresponding saved EVAL v1 final-learning/final-frozen value, without tolerance. All nine conditions are complete/finite. For each enabled and frozen condition, cap violations, illegal edges, invalid weights and invalid proposals are **zero**. Every ledger satisfies `final=initial+added-removed`; net changes A0/A1/A2 are **-40.771484375 / -44.62109375 / -31.82421875**. All post-tick weights obey wmax=3. Frozen additions/removals are **0/0**, and each frozen initial/final/min/max equals its input's initial count above with the same cap. Frozen maximum absolute weight means are **1.4686815738677979 / 1.9699804782867432 / 2.4783151149749756**. Initial development stays unchanged; initial and post-tick maxima remain separate. There are 8,424 legal possible edges per default brain (`54*156`), so initial/final realized densities are the corresponding counts divided by 8,424; this is structural density, not sparse-compute speed.
+
+| Input | Supervisor wall seconds | Sampled peak private MiB | Observed sum of process WS peaks MiB | Minimum available commit GiB | Exit |
+|---|---:|---:|---:|---:|---:|
+| A0 | 53.5360397 | 1242.98828125 | 680.4140625 | 16.096298217773438 | 0 |
+| A1 | 242.4425752 | 1239.99609375 | 681.6328125 | 13.896221160888672 | 0 |
+| A2 | 117.407068 | 1226.57421875 | 669.171875 | 14.566776275634766 | 0 |
+
+- **Resources/artifacts:** All startup floors held: available commit **17.520610809326172 / 17.369884490966797 / 15.984180450439453 GiB**, physical **11.9208984375 / 11.7724609375 / 11.5234375 GiB**, C: at least **12.100452423095703 GiB**, D: at least **46.326900482177734 GiB** across the three startup snapshots. No runtime guard fired. `.tmp/20261114-232717-000-E107-A0-full.*`, `.tmp/20261114-232922-360-E107-A1-full.*`, and `.tmp/20261114-233452-563-E107-A2-full.*` preserve stdout/stderr and supervisor metadata. Memory is sampled, may miss between-sample peaks, and the WS figure sums per-process peaks rather than measuring simultaneous resident peak. No lab panel remains running.
+- **Interpretation/decision:** The combined fixed growth/pruning intervention **lowers fitness in all three saved evolved inputs**; no positive fitness effect is supported by this panel. Operational/capability validation passes; the improvement hypothesis is not supported. This is a diagnostic of a particular fixed rule added to genomes evolved without it, not proof structural plasticity is generally harmful, a three-seed structural-evolution experiment, significance, biological fidelity, novelty, general intelligence, or a new roadmap gate. Accuracy/survival changes are mixed and do not override the negative primary fitness differences. Keep the mode default off; do not tune the rule on these evaluation worlds or launch population training from this result. A separately preregistered capacity control would be required for a specific adaptive-placement benefit claim; no such benefit is claimed here. Complete local E106 predictor/protocol compatibility before coordinator integration; preserve all measurements under their original `ffc2c0a` source hash.
+- **Recording:** Ran UTF-8 `scripts/summarize.py`: 19 run folders, structural conditions separated from historical EVAL v1. Assert-based artifact verification passed independently for all panels, including source hashes, exact genomes/checkpoints, exact reference reproduction, finite outputs, ledger/cap/weight consistency and zero frozen turnover. Commit the three immutable folders with generated results, README and these records; push stays disabled for coordinator publication.
+
+## E109 · 2026-11-14 · Benchmark evolution with the existing structural rule
+
+- **Rationale and scope:** E107's fixed-genome intervention reduced fitness in all three saved A genomes (Weight+structure minus Weight-only: -2.591796875, -1.423828125, -0.5078125). Those genomes evolved without structural changes. E109 asks the different question of whether evolution can adapt to the existing structural dynamics. Its **first task is full-population resource/timing feasibility**, using a useful, resumable training segment. It is not a learning claim, a rule search, or an automatic commitment to finish 200 generations or launch three seeds.
+- **Unchanged intervention:** `activity-grow-prune-v1`, interval 10, prune fraction 0.01, extra fan-in 1, structural stream tag 107, and existing post-brain-tick timing. Both Hebbian and predictor updates stay enabled. Do not add rules, tune thresholds, change the world, alter the 155-number genome, or use evaluation seed 123 to choose changes. B1/B2 remain planned; rule reversal is a separate later approval/protocol question.
+
+### Exact first command
+
+Commit this registration and the reviewed integrated code first, then run only through the existing runner, under the coordinator's guarded low-priority launcher:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_experiment.py --name E109-structural-train-s0 --start blank --seed 0 --generations 200 --pop 128 --worlds 8 --sigma 0.1 --lr 0.1 --eval-worlds 128 --eval-protocol structural-v1 --structural-plasticity activity-grow-prune-v1 --checkpoint-every 10 --max-train-seconds 600
+```
+
+The current runner and source worker confirm that `structural-v1` permits nonzero-generation blank-start training. EVAL v2 does not. No new protocol or runner option is required for this command. `--no-plastic`, `--quick`, `--allow-dirty`, and configuration overrides are absent.
+
+- **Matched settings/provenance:** Seed 0, default `Cfg`, population 128, eight training worlds, sigma/lr 0.1/0.1, 200-generation target and checkpoint interval 10 match A0. Verify the new `genome_start.npy` equals `runs/20261112-023245_E103-A-blank-s0/genome_start.npy` byte-for-byte and its short array hash is `9a761b031011f9ee`. Record the actual clean main source commit, package versions, full saved settings, and structural rule metadata. The only scientific training intervention is enabled structural dynamics; scheduling and explicit structural evaluation/reporting differ deliberately. Do not substitute an old lab source hash for the actual integrated source.
+- **Evaluation boundary:** The scheduled first segment should stop before the target and perform no final evaluation. The runner evaluates only when generation 200 is reached. If later completed, existing `structural-v1` reports Weight-only, Weight+structure, and Frozen on the same 128 worlds/seed 123, with the existing frozen semantics. Do not invoke intermediate held-out evaluations or choose continuation from their scores.
+
+### Budget, operational criteria, and next decision
+
+- **Guarded execution:** One full-population heavy job, `BelowNormal`, temporary files on D:, coordinate with peer labs before launch. Startup floors remain C:/D: 10 GiB each, physical memory 8 GiB, available commit 10 GiB. Runtime floors remain C: 5 GiB, D: 10 GiB, available commit 3 GiB, checked about every ten seconds. Preserve the existing owned-process stop/verification path and 10,500-second full-wall limit, below three hours. Browsers remain untouched.
+- **600 seconds is a training scheduling limit, not a hard ten-minute wall limit.** It is checked between complete generations, so it may overrun by one generation. The loop timer includes first-generation compilation and any resume replay; it excludes earlier setup and final evaluation. Record supervisor wall time and resource samples separately. Split first-generation seconds from subsequent generation timings; report warm count, median, and range only when subsequent rows exist. Do not present cold-start or evaluation time as steady training throughput. With no warm row, throughput estimation remains incomplete.
+- **Operational pass:** At least one full-size generation completes; checkpoint arrays and all metric values are finite; saved generation and contiguous history agree at the normal stop; all structural invalid-proposal/cap/illegal-edge/invalid-weight checks remain zero; initialization/settings match A0; resource floors hold and the process stops normally with a resumable checkpoint. Record actual edge-change diagnostics, timings, and sampled memory; a normal scheduled `interrupted` status is expected and is not a scientific failure.
+- **Operational fail/stop:** OOM, resource-floor or full-wall stop, structural validation failure, nonfinite state, provenance/settings mismatch, or inconsistent checkpoint/history fails this feasibility attempt. Preserve its entire folder, logs, and any flushed tail. If killed between checkpoints, verify replay before appending; never edit old rows. Do not silently reduce population/worlds, change the rule, or restart under a new name to erase the failure.
+- **Decision after benchmark:** Preserve and publish the segment with its resource/timing result. If feasible, use measured warm timing and available headroom to decide a bounded continuation of the **same folder and target**, recording its new time budget before resuming. If timings are insufficient, another bounded segment is a measurement decision, not evidence of learning. Any projection to generation 200 must state its warm-sample count and exclude future compilation/evaluation overhead rather than promise a completion time. A failed benchmark calls for a documented operational decision before more compute.
+
+Resume syntax, only after that decision and a clean preservation commit:
+
+```powershell
+.\.venv\Scripts\python.exe scripts/run_experiment.py --resume runs/<recorded-E109-folder> --max-train-seconds <recorded-next-budget>
+```
+
+- **Scientific reporting:** Early training fitness and one seed cannot establish improvement. A later A-matched structural-evolution comparison needs its exact three-seed scope and criteria preregistered before expansion; report all paired differences and compute costs, not only favorable seeds. Distinguish adaptation under structural dynamics from a claim that adaptive rewiring beats a capacity-matched static network. This first segment produces an operational feasibility decision only; no learning gate, milestone tag, general-intelligence claim, or state-of-the-art claim follows.
+- **Result:** Pending. No benchmark was launched while preparing this draft.
+
+## E108-D · 2026-11-14 · Generalization harness development registration
+
+- **Authorization/scope:** The owner requested parallel chats and experiments; this lab
+  owns a separate harness in `.tmp/parallel-labs/generalization` at base `a0cb4a7`.
+  Push is disabled. New final-world science needs owner protocol approval and a coordinated
+  compute slot. EVAL v1, E106, and every historical run remain untouched.
+- **Hypothesis:** A separate parameter-shift harness can preserve the current engine,
+  evaluate identical saved genomes with matched learning/frozen randomness, and record
+  unambiguous conditions and full file hashes. These are operational checks, not evidence
+  of broader generalization. No genome or hyperparameter tuning is planned.
+- **Baseline/check commands** (from this lab; all Python commands use the existing environment):
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v`.
+  Run baseline before implementation; repeat after implementation. Unit fixtures may mock
+  the expensive evaluator and use temporary folders, following existing tests.
+- **Planned runner smoke**, only after implementation, checks and this registration are committed:
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-D-A0-oneworld --eval-protocol broader-v1 --condition-split development --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 1 --seed 0`.
+  This uses default brain/lifetime settings, a single rule-0 world per condition, development
+  seed 8108, and all five proposed conditions (control; n_items=12; n_items=36;
+  decay=0.0015; decay=0.006). It benchmarks saved-genome runtime/memory, not scientific
+  performance. Final seed 8109 and 128-world panels must remain unaccessed.
+- **Pass:** Existing tests pass; new tests establish default-v1 dispatch compatibility,
+  one-field shifts, fixed split seeds, matched plastic/frozen calls, correct signed gaps,
+  rejection of invalid final settings and malformed genomes, full file hash preservation;
+  smoke finishes in <=300 s with finite labelled metrics and unchanged source genome.
+  Smoke costs/metrics must come from artifacts and supervisor measurements, not estimates.
+- **Fail:** Any mismatch, invalid/nonfinite output, or >300 s/guard stop. Preserve failures
+  and append the cause before another attempt. Do not run final worlds to debug it.
+- **Compute:** One owned BelowNormal process at a time in this lab, <=5 min/invocation;
+  check authoritative Windows available commit before launch and during execution, stopping
+  only the owned process tree below 5 GiB. Use D: temp files. Population-scale training and
+  final panels are deferred. Record all tests and runs honestly, including missing checks.
+- **Result:** Pending. E108 final protocol will be a separate preregistration proposal;
+  this entry grants no new-world scientific launch or claims.
+
+## E108-D implementation checkpoint · 2026-11-14
+
+- **Baseline:** Eight existing unit tests passed in 9.116 s test time; guarded wall time
+  28.0024565 s, sampled maximum owned-tree private memory 797,368,320 bytes and resident
+  223,064,064 bytes. Post-implementation first check: 16 tests passed in 3.271 s, wall
+  7.8372004 s, sampled private/resident maxima 766,513,152/186,720,256 bytes. These are
+  synthetic/unit checks; final-world dispatch is mocked and final worlds are untouched.
+- **Implementation:** Separate `broader-v1` dispatch with five fixed conditions, full
+  saved-file hash and byte-identical copies, explicit development/final seeds 8108/8109,
+  matched learning/frozen evaluations, finite metrics and signed differences. Final
+  dispatch requires default Cfg and 128 worlds; panels refuse resume and preserve errors.
+  Engine/notebook and legacy evaluation calls are unchanged. Summarizer separates the
+  broader table from EVAL v1 and explicitly labels development evidence.
+- **Proposal:** `experiments/E108_BROADER_V1.md` fixes exact final commands, source hashes,
+  reference anchors, falsifiers and limits. Owner approval of this exact protocol and a
+  coordinated slot are still required. Reversal needs its own world/recovery protocol;
+  no reversal engine change, new-task generalization, or scientific success is claimed.
+- **Next:** Finish regression checks, commit clean code/registration, then run only the
+  preregistered one-world development A0 fixture under the owned-process 5 GiB guard.
+
+## E108-D final unit checks and shared-launch hold · 2026-11-14
+
+- The same preregistered unit command passed **18 tests in 2.872 s** after adding exact
+  default-v1 call-contract and both resume-route checks. Guarded wall time 5.5681886 s;
+  sampled maximum owned-tree private/resident memory 791,289,856/216,047,616 bytes.
+  `git diff --check` passed; historical runs, engine and notebook match base `a0cb4a7`.
+  These samples are lower bounds on instantaneous peaks, not guaranteed maxima.
+- The coordinator requested a temporary hold on further JAX/test launches while main
+  E106 obtains its shared-memory slot. This already-running bounded check finished;
+  no later JAX process has been launched. Continue review/commit work. Development
+  one-world benchmark remains pending the coordinator releasing the launch hold.
+- Input A0/A1/A2 full-file hashes were rechecked and match the final proposal. Push
+  remains DISABLED. No scientific panel, EVAL v1 run, or final-split rollout occurred.
+
+## E108 · 2026-11-14 · Proposed BROADER v1 final preregistration (launch pending approval)
+
+- **Protocol and decision:** `experiments/E108_BROADER_V1.md` is the complete frozen
+  proposal. Approve its five conditions, 128 final worlds at seed 8109, fixed seven
+  input genomes/reference anchors, and descriptive falsifiers before scientific launch;
+  then reserve a coordinated slot. This is required by AGENTS.md's instruction to ask
+  before changing the evaluation protocol. The separate harness does not alter EVAL v1.
+- **Hypothesis:** The enabled-minus-frozen fitness advantage remains positive in at
+  least 2/3 A seeds separately for every shift (n_items 12/36; decay .0015/.006).
+  For a condition, <=0 in >=2 seeds falsifies its retention hypothesis; any such
+  condition falsifies retention across the suite. Report all signed differences and
+  all accuracy/survival/encounter metrics, including negative and mixed outcomes.
+- **Limits:** Same task family, fixed genomes, lifetime learning plus matched frozen
+  controls, both Hebbian/predictor updates jointly enabled/disabled. No new-task transfer,
+  individual recovery, statistical significance, roadmap gate, or AGI claim. Final split
+  remains untouched; development evidence is operational only. No tuning is authorized.
+- **Exact commands** (run sequentially only after approval, code commit and compute slot):
+
+```powershell
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A0 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A1 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A2 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank0 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022439_E100-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank1 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022514_E100-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank2 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022552_E100-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-biology --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022641_E100-biology-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+```
+
+- **Integrity and follow-up:** Verify source hashes listed in the proposal before/after;
+  all conditions share matched keys. Measure first full A0 panel runtime/memory before
+  estimating the other six; the one-world fixture cannot establish 128-world resource
+  safety. Regenerate RESULTS, append actual numbers, update README, and commit results
+  together. Main chat owns integration/publication; this lab cannot push.
+- **Result:** Not run. New food-rule reversal remains a separate pending design/world
+  protocol, with recovery measurements specified as requirements in the proposal.
+
+## E108 approval and first-panel slot · 2026-11-14
+
+- **Human approval verified:** The owner answered “Approve BROADER v1” to the concrete
+  seven-genome/five-condition/128-world/seed-8109 question in oversight chat
+  `01a1cc51-9df7-7683-b657-a8fc74b2be90`. This supersedes pending-approval notes above.
+- **Coordinated slot:** The coordinator lifted the launch hold for bounded checks and
+  the first full A0 panel only, alongside main's evaluation-only E106 panels. No later
+  full panel before actual A0 cost review. Keep startup C/D >=10 GiB, physical >=8 GiB,
+  available commit >=10 GiB; runtime C/D/commit floors 5/10/5 GiB, BelowNormal and owned
+  process-tree guard. First full panel cap 1200 s (guard threshold 1190 s for stop margin).
+- **Fresh host check:** Available commit 17.606624603271484 GiB, physical free
+  10.28121566772461 GiB, C/D free 13,040,889,856 / 49,746,169,856 bytes. Only main E106
+  evaluation processes were observed. Recheck inside the launcher; never stop another job.
+- **Next:** Commit this authorization before launch; execute the registered one-world
+  development A0 smoke, then the already registered full `E108-final-A0` command.
+  Preserve every artifact and input byte. No final-split tuning or new training.
+
+## E108-D A0 one-world result · 2026-11-14 · Operational pass
+
+- `runs/20261114-231414_E108-D-A0-oneworld/summary.json` reports finished, zero
+  generations, development seed 8108, one rule-0 world, clean source `21676c5`, input
+  array hash `ee8eaa10a7429cc5`. All five conditions/ten evaluations have finite metrics.
+  Source and both genome copies match SHA-256
+  `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`.
+- **Measured cost:** Exit 0; supervisor wall 63.8466413 s; summary evaluation time
+  44.375 s. Sampled max owned-tree private memory 975,536,128 bytes (0.909 GiB), resident
+  399,548,416 bytes (0.372 GiB); minimum sampled available commit 15,805,693,952 bytes
+  (14.720 GiB). Sampling is not an upper bound on instantaneous peak memory. Compact
+  supervision evidence: `experiments/E108_D_A0_SUPERVISION.json`.
+- **Development scores only:** Control learning/frozen/gap 11/-0.25/11.25; sparse
+  4.75/0.5/4.25; dense 26.75/3.5/23.25; low-cost 8.75/1.25/7.5; high-cost
+  8.75/-1.75/10.5. These single-world scores establish no scientific generalization or
+  three-seed result and caused no change to the approved final protocol.
+- Regenerated RESULTS with 15 unchanged legacy rows plus five explicitly development
+  rows. Record this operational pass and approval status together, then launch only
+  the already approved/preregistered full A0 panel. Remaining six full panels need
+  coordinator review of its measured cost. No old run file was modified.
+
+## E108 final A0 result and cost benchmark · 2026-11-14
+
+- **Verified evidence:** `runs/20261114-231716_E108-final-A0/summary.json` is finished,
+  generation 0, final split, seed 8109, 128 worlds (64 each rule), default Cfg; clean
+  source `a45f51aa6d22010f56214ca73c2830c3019746e8`, input array hash
+  `ee8eaa10a7429cc5`. Every raw metric is finite. Input, genome_start and genome_final
+  files retain full SHA-256 `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`.
+- **Values copied from summary:**
+
+| Condition | Learning fitness | Frozen fitness | Signed advantage | Advantage minus control | Learning survival |
+|---|---:|---:|---:|---:|---:|
+| control | 14.763671875 | 0.314453125 | 14.44921875 | 0 | 0.84375 |
+| sparse | 5.099609375 | 0.044921875 | 5.0546875 | -9.39453125 | 0.7265625 |
+| dense | 18.404296875 | 0.470703125 | 17.93359375 | 3.484375 | 0.8671875 |
+| low-cost | 14.708984375 | 0.1484375 | 14.560546875 | 0.111328125 | 0.90234375 |
+| high-cost | 13.13671875 | 0.43359375 | 12.703125 | -1.74609375 | 0.693359375 |
+
+- Full first/second accuracy, both survival fractions, encounters and all signed shifts
+  are retained in the immutable summary. For example, sparse learning accuracy is
+  0.6292421817779541 -> 0.7466049194335938 with 7,159 encounters; high-cost learning
+  accuracy is 0.6870309710502625 -> 0.8254314064979553 with 13,564 encounters.
+- **Cost:** Exit 0, supervisor wall 172.5020589 s; summary eval_seconds
+  163.59399999999732. Sampled owned-tree private/resident maxima 1,306,451,968 /
+  729,059,328 bytes (1.217/0.679 GiB); minimum sampled available commit
+  17,480,540,160 bytes (16.280 GiB). All runtime guards remained satisfied. These are
+  sampled maxima, not guaranteed instantaneous peaks. Compact supervision evidence is
+  `experiments/E108_A0_SUPERVISION.json`. The other six panels would take about 17.25
+  minutes if each matched A0 wall time; this is an extrapolation, not a measurement.
+- **Interpretation:** A0 retains a positive plasticity advantage in all four shifts.
+  Sparse resources reduce its advantage by 9.39453125; high metabolic cost reduces
+  survival despite retained positive advantage. This measures robustness within the same
+  task family for one genome, not a three-seed finding, new-task transfer, or a recovery
+  result. Neither direction nor magnitude caused tuning or changes to BROADER v1.
+- **Decision:** Regenerated RESULTS (15 historical rows unchanged; five development and
+  five final condition rows), updated README with this limited result, and preserve all
+  artifacts together. Coordinator must review the cost before releasing remaining six
+  full panels. No extra scientific run is started yet; no gate/tag or full-suite claim.
+
+## E108 remaining six panels released · 2026-11-14
+
+- The coordinator independently verified A0's source/byte hashes, exact shifts,
+  final split, finite metrics and measured cost, then released every remaining
+  preregistered command: A1 -> A2 -> blank0 -> blank1 -> blank2 -> biology, sequentially
+  in this lab. No intermediate conversational approval/review is required. Structural
+  A0 may run in parallel in its separate lab; never stop another job.
+- Conditions, source files, final seed 8109, 128 balanced worlds, default Cfg, metrics,
+  hypotheses and falsifiers remain exactly as preregistered. No tuning follows A0.
+- A single bounded scheduling process will launch the six original runner commands,
+  with fresh preflight for every child (C/D >=10 GiB, physical >=8 GiB, available
+  commit >=10 GiB). Retain BelowNormal, D: temp files, runtime C/D/commit floors
+  5/10/5 GiB and the existing stricter 1200-second per-panel cap. Stop only the owned
+  tree on guard failure, preserve all artifacts, and halt the queue for diagnosis.
+- Validate each finished panel's clean source, split/count/seed, five conditions,
+  finite metrics and all three source/start/final file hashes before proceeding.
+  Complete A1/A2 before judging retention; complete all four references before the
+  final account. Keep push disabled. Commit this release before launch, then record
+  all raw scores, signed condition differences and actual costs without changing
+  protocol, claiming new-task transfer, or declaring a new roadmap milestone.
+
+## E108 completed final panel · 2026-11-14 · Retention in 3/3 A seeds
+
+All seven preregistered final panels finished and passed the independent read-only audit. Every panel used final seed 8109, 128 balanced worlds, default Cfg and exactly the five approved conditions. No evolution or tuning occurred. All 350 raw metric values were finite; 35 condition pairs passed exact difference checks and encounter-count consistency. Every input/start/final genome copy retains its registered full file SHA-256.
+
+### Primary three-seed result
+
+| Condition | A0 advantage | A1 advantage | A2 advantage | Positive seeds | Mean advantage |
+|---|---:|---:|---:|---:|---:|
+| control | 14.44921875 | 15.39453125 | 15.30078125 | 3/3 | 15.048177083333334 |
+| sparse | 5.0546875 | 5.693359375 | 4.4609375 | 3/3 | 5.069661458333333 |
+| dense | 17.93359375 | 21.091796875 | 18.23046875 | 3/3 | 19.085286458333332 |
+| low-cost | 14.560546875 | 15.3984375 | 15.486328125 | 3/3 | 15.1484375 |
+| high-cost | 12.703125 | 15.017578125 | 13.38671875 | 3/3 | 13.702473958333334 |
+
+### Every raw fitness and condition difference
+
+Advantage = learning minus frozen; each shift column is condition minus control for the same genome.
+
+| Genome | Condition | Learning | Frozen | Advantage | Learning shift | Frozen shift | Advantage shift |
+|---|---|---:|---:|---:|---:|---:|---:|
+| A0 | control | 14.763671875 | 0.314453125 | 14.44921875 | 0.0 | 0.0 | 0.0 |
+| A0 | sparse | 5.099609375 | 0.044921875 | 5.0546875 | -9.6640625 | -0.26953125 | -9.39453125 |
+| A0 | dense | 18.404296875 | 0.470703125 | 17.93359375 | 3.640625 | 0.15625 | 3.484375 |
+| A0 | low-cost | 14.708984375 | 0.1484375 | 14.560546875 | -0.0546875 | -0.166015625 | 0.111328125 |
+| A0 | high-cost | 13.13671875 | 0.43359375 | 12.703125 | -1.626953125 | 0.119140625 | -1.74609375 |
+| A1 | control | 15.453125 | 0.05859375 | 15.39453125 | 0.0 | 0.0 | 0.0 |
+| A1 | sparse | 5.869140625 | 0.17578125 | 5.693359375 | -9.583984375 | 0.1171875 | -9.701171875 |
+| A1 | dense | 20.962890625 | -0.12890625 | 21.091796875 | 5.509765625 | -0.1875 | 5.697265625 |
+| A1 | low-cost | 15.3203125 | -0.078125 | 15.3984375 | -0.1328125 | -0.13671875 | 0.00390625 |
+| A1 | high-cost | 14.953125 | -0.064453125 | 15.017578125 | -0.5 | -0.123046875 | -0.376953125 |
+| A2 | control | 14.857421875 | -0.443359375 | 15.30078125 | 0.0 | 0.0 | 0.0 |
+| A2 | sparse | 4.853515625 | 0.392578125 | 4.4609375 | -10.00390625 | 0.8359375 | -10.83984375 |
+| A2 | dense | 18.2265625 | -0.00390625 | 18.23046875 | 3.369140625 | 0.439453125 | 2.9296875 |
+| A2 | low-cost | 15.013671875 | -0.47265625 | 15.486328125 | 0.15625 | -0.029296875 | 0.185546875 |
+| A2 | high-cost | 13.44921875 | 0.0625 | 13.38671875 | -1.408203125 | 0.505859375 | -1.9140625 |
+| blank0 | control | -0.37109375 | 0.232421875 | -0.603515625 | 0.0 | 0.0 | 0.0 |
+| blank0 | sparse | 0.24609375 | -0.16015625 | 0.40625 | 0.6171875 | -0.392578125 | 1.009765625 |
+| blank0 | dense | -0.32421875 | 0.16796875 | -0.4921875 | 0.046875 | -0.064453125 | 0.111328125 |
+| blank0 | low-cost | -0.5546875 | 0.19921875 | -0.75390625 | -0.18359375 | -0.033203125 | -0.150390625 |
+| blank0 | high-cost | -0.203125 | 0.189453125 | -0.392578125 | 0.16796875 | -0.04296875 | 0.2109375 |
+| blank1 | control | 0.390625 | 0.232421875 | 0.158203125 | 0.0 | 0.0 | 0.0 |
+| blank1 | sparse | 0.240234375 | -0.16015625 | 0.400390625 | -0.150390625 | -0.392578125 | 0.2421875 |
+| blank1 | dense | 0.3828125 | 0.16796875 | 0.21484375 | -0.0078125 | -0.064453125 | 0.056640625 |
+| blank1 | low-cost | 0.150390625 | 0.19921875 | -0.048828125 | -0.240234375 | -0.033203125 | -0.20703125 |
+| blank1 | high-cost | 0.462890625 | 0.189453125 | 0.2734375 | 0.072265625 | -0.04296875 | 0.115234375 |
+| blank2 | control | -0.154296875 | 0.232421875 | -0.38671875 | 0.0 | 0.0 | 0.0 |
+| blank2 | sparse | 0.09375 | -0.16015625 | 0.25390625 | 0.248046875 | -0.392578125 | 0.640625 |
+| blank2 | dense | 0.34375 | 0.16796875 | 0.17578125 | 0.498046875 | -0.064453125 | 0.5625 |
+| blank2 | low-cost | -0.302734375 | 0.19921875 | -0.501953125 | -0.1484375 | -0.033203125 | -0.115234375 |
+| blank2 | high-cost | -0.2109375 | 0.189453125 | -0.400390625 | -0.056640625 | -0.04296875 | -0.013671875 |
+| biology | control | 5.59375 | -0.185546875 | 5.779296875 | 0.0 | 0.0 | 0.0 |
+| biology | sparse | 2.388671875 | -0.0234375 | 2.412109375 | -3.205078125 | 0.162109375 | -3.3671875 |
+| biology | dense | 8.73046875 | 0.171875 | 8.55859375 | 3.13671875 | 0.357421875 | 2.779296875 |
+| biology | low-cost | 5.376953125 | -0.13671875 | 5.513671875 | -0.216796875 | 0.048828125 | -0.265625 |
+| biology | high-cost | 3.978515625 | 0.15234375 | 3.826171875 | -1.615234375 | 0.337890625 | -1.953125 |
+
+### Provenance and measured cost
+
+| Genome | Run folder | Clean source | Wall seconds | Eval seconds | Sampled max private bytes |
+|---|---|---|---:|---:|---:|
+| A0 | runs\20261114-231716_E108-final-A0 | a45f51aa6d22010f56214ca73c2830c3019746e8 | 172.5020589 | 163.59399999999732 | 1306451968 |
+| A1 | runs\20261114-232930_E108-final-A1 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 312.8602448 | 298.4850000000006 | 1305378816 |
+| A2 | runs\20261114-233434_E108-final-A2 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 193.2926733 | 188.32800000000134 | 1299775488 |
+| blank0 | runs\20261114-233746_E108-final-blank0 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 167.8701992 | 163.14099999999598 | 1314365440 |
+| blank1 | runs\20261114-234036_E108-final-blank1 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 193.9142836 | 185.4059999999954 | 1317044224 |
+| blank2 | runs\20261114-234357_E108-final-blank2 | f11dd9096d8858b7dcc214778a8338e559c28f29 | 229.4296985 | 212.60899999999674 | 1305956352 |
+| biology | runs\20261114-234744_E108-final-biology | f11dd9096d8858b7dcc214778a8338e559c28f29 | 166.2975765 | 154.42199999999866 | 1308971008 |
+
+Total supervised wall time across seven final panels: 1436.1667348 seconds; largest sampled private allocation: 1317044224 bytes. These are measured process totals, excluding waits between panels. Sampled memory is not an instantaneous peak upper bound.
+
+Compact checks/provenance: `experiments/E108_VERIFICATION.json`; each panel has a linked supervision JSON. Full first/second-half accuracy, both survival fractions and encountered-item counts remain in each immutable summary. The initial default-sandbox supervisor attempt failed at read-only CIM before creating a scientific run; its failure record is retained separately. One host-access supervisor then ran all six remaining panels without another approval request.
+
+### E108 interpretation and next decision
+
+- The preregistered retention hypothesis is supported in all four shifts, with positive
+  advantages in 3/3 A seeds per condition (the criterion required >=2/3). This is a
+  completed descriptive three-seed result, not a new roadmap gate or significance test.
+  Sparse resources reduce mean advantage from 15.048177083333334 to 5.069661458333333;
+  dense resources increase it to 19.085286458333332. High cost retains mean advantage
+  13.702473958333334; low cost 15.1484375. Report the raw per-seed differences above.
+- Blank references are mixed near zero (range -0.75390625 to +0.40625), including eight
+  negative advantages among 15 conditions. The unique biology prior retains positive
+  advantage in all five conditions (2.412109375 to 8.55859375). Thus parameter robustness
+  is not unique to evolved A; the prior also retains it, at smaller observed magnitudes.
+- These are shifts within the same task family, fixed saved genomes and jointly
+  enabled/disabled Hebbian/predictor updates. Pooled accuracy, encounter selection,
+  recurrent state and energy feedback limit interpretation. No individual recovery,
+  new-task transfer, SOTA, universal necessity, or AGI claim follows. EVAL v1 worlds
+  were not changed or used for tuning, and BROADER final results caused no tuning.
+- Final audit verified all 350 raw metric values, 35 matched condition pairs, unchanged
+  source/start/final bytes, exact condition differences, clean source commits and all
+  successful guard exits. Regenerated RESULTS has 15 unchanged historical rows plus
+  40 broader rows (five development, 35 final). README now records the completed result.
+  The report formatter initially used a wrong local record key; it was corrected and
+  re-executed read-only, without rerunning or editing any scientific run.
+- Pin and commit the complete E108 artifacts/provenance locally with push disabled
+  before further edits. The coordinator requested an executable food-rule-reversal
+  prototype next, on a separate branch preserving E108: no-flip versus unannounced
+  flip at step150 in T300, matched keys, per-agent/window/recovery and survival/encounter
+  accounting. Software/direct fixtures are authorized; a new scientific protocol needs
+  concrete versioned registration and owner approval before final-world execution.
+
+
+
+
+## Main integration validation · 2026-11-14 · Four protocol paths pass combined checks
+- Root's guarded combined suite passed **53 tests in 194.662 seconds**, exit 0; supervisor 53893 is terminal, wall 216.1044412 seconds, ended 23:54:33.3607238 Asia/Calcutta. Coverage includes exact v1/E106 real fixtures, original recovery safeguards, real structural ES resume/replay, all four protocol dispatch/table paths, and dirty-source markers. Static new modules match original lab blobs; the rebuilt notebook's cells compile. These are implementation checks, not additional scientific results.
+- Seventeen guard samples observed maximum private memory 1.363 GiB and minimum available commit 14.3971 GiB, with no floor breach; sampled values are not guaranteed instantaneous peaks. Main E107/E108 artifacts and unique lab LOG sections are imported from original immutable provenance commits, preserving prior main records and run hashes.
+- Next: root commits the reviewed integration/records, then fresh preflight for the already registered E109 full-population 600-second structural-training benchmark. E108's seven final panels are complete and verified; no duplicate peer launch is needed. E109 retains the unchanged rule and target 200, with no early learning claim or automatic expansion. B1/B2 remain planned.

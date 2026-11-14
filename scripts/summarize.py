@@ -12,13 +12,18 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     rows = []
     diagnostics = []
+    structural_rows = []
+    broader_rows = []
+    n_runs = 0
     for d in sorted((ROOT / "runs").glob("*/")):
         cfg_p, sum_p = d / "config.json", d / "summary.json"
         if not cfg_p.exists():
             continue
+        n_runs += 1
         cfg = json.loads(cfg_p.read_text())
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
+        commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
         if a.get("eval_protocol", "v1") == "v2":
             ev = s.get("evaluations", {})
             b, h, f = (ev.get(k, {}).get("fitness") for k in ("both", "hebbian_only", "frozen"))
@@ -30,8 +35,31 @@ def main():
                 *map(number, (b, h, f, *differences)), "undefined" if ratio is None else number(ratio),
                 str(s.get("eval_seed", cfg.get("eval_seed", ""))),
                 str(s.get("eval_worlds", cfg.get("eval_worlds", ""))),
-                (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else ""),
+                commit,
             ]) + " |")
+            continue
+        if a.get("eval_protocol", "v1") == "structural-v1":
+            if not s.get("conditions"):
+                structural_rows.append("| " + " | ".join([d.name, s.get("status", ""), *[""] * 11, commit]) + " |")
+            for condition, result in s.get("conditions", {}).items():
+                stats = result.get("structure", {})
+                structural_rows.append("| " + " | ".join(map(str, [
+                    d.name, s.get("status", ""), condition, result["fitness"], result["acc_first"],
+                    result["acc_second"], result["survived"], result["eaten"],
+                    stats.get("added", ""), stats.get("removed", ""), stats.get("initial_edges", ""),
+                    stats.get("final_edges", ""), stats.get("edge_cap", ""), commit,
+                ])) + " |")
+            continue
+        if a.get("eval_protocol", "v1") == "broader-v1":
+            protocol = cfg["eval_protocol"]
+            for label, result in s.get("condition_evaluations", {"pending": {}}).items():
+                learning, frozen = result.get("learning", {}), result.get("frozen", {})
+                metric = lambda r, k: f"{r[k]:.4f}" if k in r else ""
+                broader_rows.append("| " + " | ".join([
+                    d.name, s.get("status", ""), protocol["split"], str(protocol["seed"]),
+                    str(protocol["n_worlds"]), label, metric(learning, "fitness"), metric(frozen, "fitness"),
+                    metric(result, "learning_minus_frozen_fitness"), commit,
+                ]) + " |")
             continue
         fl, ff, sl = s.get("final_learning"), s.get("final_frozen"), s.get("start_learning")
         f = lambda r, k, p=2: f"{r[k]:.{p}f}" if r else ""
@@ -41,7 +69,7 @@ def main():
             f"{s.get('generation', '')}/{a['generations']}", f"{a['pop']}×{a['worlds']}",
             f"{a['sigma']}/{a['lr']}", ", ".join(f"{k}={v}" for k, v in cfg.get("cfg_overrides", {}).items()),
             f(sl, "fitness"), f(fl, "fitness"), f(ff, "fitness"), acc(fl),
-            (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else ""),
+            commit,
         ]) + " |")
     head = ("| Run | Status | Start | Plastic | Gens | Pop×worlds | σ/lr | Cfg overrides | Start fitness | "
             "Final learning fitness | Final frozen | Learning acc 1st→2nd | Commit |\n" + "|---" * 13 + "|")
@@ -59,9 +87,24 @@ def main():
                 "| Run | Status | Source genome | Both | Hebbian-only | Frozen | Both − Hebbian-only | "
                 "Hebbian-only − Frozen | Retained benefit | Eval seed | Eval worlds | Commit |",
                 "|---" * 12 + "|", *diagnostics, ""]
+    if structural_rows:
+        out += ["## Structural v1 (separate diagnostic)", "",
+                "Same worlds/seed 123; Weight-only retains both local weight-learning rules. "
+                "Frozen disables weight and structural updates. Edge counts are means per agent; "
+                "turnover is capability evidence, not evidence of a fitness benefit. No EVAL v1 rows changed.", "",
+                "| Run | Status | Condition | Fitness | Accuracy first | Accuracy second | Survival | Eaten | "
+                "Added | Removed | Initial edges | Final edges | Edge cap | Commit |", "|---" * 14 + "|",
+                *structural_rows, ""]
+    if broader_rows:
+        out += ["## BROADER v1 (separate parameter-shift protocol)", "",
+                "Development rows are operational checks, not scientific generalization results. "
+                "Split/seed/world count are explicit; these are not EVAL v1 seed-123 scores. "
+                "Full accuracy, survival, encounter counts and condition shifts are in each summary.json.", "",
+                "| Run | Status | Split | Eval seed | Worlds | Condition | Learning | Frozen | Gap | Commit |",
+                "|---" * 10 + "|", *broader_rows, ""]
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
-    print(f"wrote results/RESULTS.md with {len(rows) + len(diagnostics)} runs")
+    print(f"wrote results/RESULTS.md with {n_runs} runs")
 
 
 if __name__ == "__main__":

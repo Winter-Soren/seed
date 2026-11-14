@@ -1,0 +1,66 @@
+{
+  "status": "finished",
+  "generation": 0,
+  "train_minutes": 0.0,
+  "final_genome_hash": "ee8eaa10a7429cc5",
+  "eval_worlds": 128,
+  "eval_protocol": "structural-v1",
+  "conditions": {
+    "Weight-only": {
+      "fitness": 16.591796875,
+      "acc_first": 0.7049121856689453,
+      "acc_second": 0.8401943445205688,
+      "survived": 0.880859375,
+      "eaten": 15837
+    },
+    "Weight+structure": {
+      "fitness": 14.0,
+      "acc_first": 0.6805352568626404,
+      "acc_second": 0.8068380951881409,
+      "survived": 0.833984375,
+      "eaten": 15064,
+      "structure": {
+        "added": 578.33203125,
+        "cap_violations": 0.0,
+        "edge_cap": 3253.1953125,
+        "final_edges": 3158.423828125,
+        "illegal_edges": 0.0,
+        "initial_edges": 3199.1953125,
+        "initial_max_abs_weight": 1.4686815738677979,
+        "invalid_proposals": 0.0,
+        "invalid_weights": 0.0,
+        "max_abs_weight": 3.0,
+        "max_edges": 3223.740234375,
+        "min_edges": 3155.8671875,
+        "removed": 619.103515625
+      }
+    },
+    "Frozen": {
+      "fitness": 0.2890625,
+      "acc_first": 0.4963643252849579,
+      "acc_second": 0.5343427062034607,
+      "survived": 0.39453125,
+      "eaten": 7934,
+      "structure": {
+        "added": 0.0,
+        "cap_violations": 0.0,
+        "edge_cap": 3253.1953125,
+        "final_edges": 3199.1953125,
+        "illegal_edges": 0.0,
+        "initial_edges": 3199.1953125,
+        "initial_max_abs_weight": 1.4686815738677979,
+        "invalid_proposals": 0.0,
+        "invalid_weights": 0.0,
+        "max_abs_weight": 1.4686815738677979,
+        "max_edges": 3199.1953125,
+        "min_edges": 3199.1953125,
+        "removed": 0.0
+      }
+    }
+  },
+  "condition_seconds": {
+    "Weight-only": 11.232544,
+    "Weight+structure": 22.740198,
+    "Frozen": 15.091076
+  }
+}
