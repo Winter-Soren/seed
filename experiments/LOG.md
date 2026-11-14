@@ -689,3 +689,20 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
   together. Main chat owns integration/publication; this lab cannot push.
 - **Result:** Not run. New food-rule reversal remains a separate pending design/world
   protocol, with recovery measurements specified as requirements in the proposal.
+
+## E108 approval and first-panel slot · 2026-11-14
+
+- **Human approval verified:** The owner answered “Approve BROADER v1” to the concrete
+  seven-genome/five-condition/128-world/seed-8109 question in oversight chat
+  `01a1cc51-9df7-7683-b657-a8fc74b2be90`. This supersedes pending-approval notes above.
+- **Coordinated slot:** The coordinator lifted the launch hold for bounded checks and
+  the first full A0 panel only, alongside main's evaluation-only E106 panels. No later
+  full panel before actual A0 cost review. Keep startup C/D >=10 GiB, physical >=8 GiB,
+  available commit >=10 GiB; runtime C/D/commit floors 5/10/5 GiB, BelowNormal and owned
+  process-tree guard. First full panel cap 1200 s (guard threshold 1190 s for stop margin).
+- **Fresh host check:** Available commit 17.606624603271484 GiB, physical free
+  10.28121566772461 GiB, C/D free 13,040,889,856 / 49,746,169,856 bytes. Only main E106
+  evaluation processes were observed. Recheck inside the launcher; never stop another job.
+- **Next:** Commit this authorization before launch; execute the registered one-world
+  development A0 smoke, then the already registered full `E108-final-A0` command.
+  Preserve every artifact and input byte. No final-split tuning or new training.

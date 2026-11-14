@@ -26,5 +26,8 @@ shared-resource hold; this running test finished before honoring the hold.
 No graph index exists for Seed, so focused source reads used. The upstream chat separately
 owns EVAL v2; reconcile shared runner/summarizer hunks during integration, preserving both.
 Authoritative memory checks use approved read-only CIM; initial unprivileged CIM failed.
-Next: commit code; after the launch hold is released, one-world development A0 runner smoke. Proposal and
-full final scientific panel remain pending explicit protocol approval/compute slot.
+Implementation committed as fcc1f6b. Human approval “Approve BROADER v1” verified in
+oversight; hold lifted for bounded fixtures and full A0 only. Startup C/D10 GiB,
+physical8/availablecommit10 GiB; runtime C5/D10/commit5 GiB, BelowNormal, max1200 s.
+Next: commit approval, development one-world smoke then full A0 panel. Preserve sources,
+report actual cost/effects and wait for release of the remaining six full panels.
