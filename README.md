@@ -132,6 +132,11 @@ Complete these core comparisons before selecting the next research direction. Co
 
 ## Reproduce a research run
 
+A separate [BROADER v1 proposal](experiments/E108_BROADER_V1.md) prepares saved-genome
+tests under resource-density and metabolic-cost shifts. Its development fixtures are
+operational checks; final scientific evaluation awaits protocol approval and a compute
+slot. These conditions remain in the same food/poison task family. EVAL v1 is unchanged.
+
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 
 The laptop benchmark averaged about **49.5 seconds per generation** after the first. Use bounded sessions for a 200-generation run:

@@ -29,6 +29,7 @@ from jax.flatten_util import ravel_pytree
 
 from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init, es_step,
                        format_row, test_genome, genome_size)
+from scripts import broader_eval
 
 
 def git_info():
@@ -86,6 +87,49 @@ def write_json(path, obj):
     os.replace(tmp, path)
 
 
+def run_broader(a, git):
+    c = Cfg(**parse_cfg(a.cfg))
+    broader_eval.validate_request(a, c)
+    flat, source_bytes, provenance = broader_eval.load_saved_genome(a.start, c)
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    protocol = dict(name=broader_eval.PROTOCOL, split=a.condition_split,
+                    seed=broader_eval.SPLIT_SEEDS[a.condition_split], n_worlds=a.eval_worlds,
+                    rule_counts={"0": (a.eval_worlds + 1) // 2, "1": a.eval_worlds // 2},
+                    conditions=broader_eval.CONDITIONS,
+                    plasticity={"learning": True, "frozen": False})
+    config = dict(args=vars(a).copy(), cfg_overrides=parse_cfg(a.cfg), cfg=c._asdict(), git=git,
+                  created=datetime.datetime.now().isoformat(), eval_protocol=protocol,
+                  input_genome=provenance, start_genome_hash=genome_hash(flat),
+                  genome_size=flat.size,
+                  machine=dict(platform=platform.platform(), python=sys.version.split()[0],
+                               jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+    write_json(run_dir / "config.json", config)
+    (run_dir / "genome_start.npy").write_bytes(source_bytes)
+    summary = dict(status="running", generation=0, eval_protocol=broader_eval.PROTOCOL,
+                   condition_split=a.condition_split, eval_seed=protocol["seed"],
+                   eval_worlds=a.eval_worlds, input_genome=provenance,
+                   final_genome_hash=genome_hash(flat))
+    write_json(run_dir / "summary.json", summary)
+    started = time.monotonic()
+    try:
+        summary["condition_evaluations"] = broader_eval.evaluate_conditions(
+            jnp.asarray(flat), c, a.eval_worlds, a.condition_split)
+    except BaseException as error:
+        summary.update(status="interrupted" if isinstance(error, KeyboardInterrupt) else "failed",
+                       error=f"{type(error).__name__}: {error}", eval_seconds=time.monotonic() - started)
+        write_json(run_dir / "summary.json", summary)
+        raise
+    summary.update(status="finished", eval_seconds=time.monotonic() - started)
+    (run_dir / "genome_final.npy").write_bytes(source_bytes)
+    write_json(run_dir / "summary.json", summary)
+    print(f"{broader_eval.PROTOCOL} {a.condition_split}: {a.eval_worlds} worlds; {summary['eval_seconds']:.3f}s")
+    for label, row in summary["condition_evaluations"].items():
+        print(f"{label:10s} learning {row['learning']['fitness']:.6f} frozen {row['frozen']['fitness']:.6f} gap {row['learning_minus_frozen_fitness']:.6f}")
+    print("run folder:", run_dir)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--name", default="run")
@@ -98,6 +142,9 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--no-plastic", action="store_true", help="evolve with all plasticity disabled (control)")
     ap.add_argument("--eval-worlds", type=int, default=128)
+    ap.add_argument("--eval-protocol", choices=("v1", broader_eval.PROTOCOL), default="v1")
+    ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default="development",
+                    help="broader-v1 only; final fixes default Cfg and 128 worlds")
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
                     help="per-invocation training limit; stop after a complete generation and checkpoint "
@@ -115,9 +162,19 @@ def main():
     if git["dirty"] and not (a.allow_dirty or (a.quick and not a.resume)):
         raise SystemExit("Uncommitted code changes. Commit first (every run must map to a commit), "
                          "or pass --allow-dirty and say why in the experiment log.")
+    if a.eval_protocol == broader_eval.PROTOCOL:
+        try:
+            run_broader(a, git)
+        except ValueError as error:
+            ap.error(str(error))
+        return
+    if a.condition_split != "development":
+        ap.error("--condition-split is only supported by broader-v1")
     if a.resume:
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
+        if config.get("eval_protocol", {}).get("name") == broader_eval.PROTOCOL:
+            ap.error("broader-v1 panels cannot be resumed; preserve this folder and start a new run")
         args = config["args"]
         config.setdefault("resumes", []).append(dict(at=datetime.datetime.now().isoformat(), git=git,
                                                      max_train_seconds=a.max_train_seconds))

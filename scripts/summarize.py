@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def main():
     rows = []
+    broader_rows = []
     for d in sorted((ROOT / "runs").glob("*/")):
         cfg_p, sum_p = d / "config.json", d / "summary.json"
         if not cfg_p.exists():
@@ -18,6 +19,18 @@ def main():
         cfg = json.loads(cfg_p.read_text())
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
+        if cfg.get("eval_protocol", {}).get("name") == "broader-v1":
+            protocol = cfg["eval_protocol"]
+            for label, result in s.get("condition_evaluations", {"pending": {}}).items():
+                learning, frozen = result.get("learning", {}), result.get("frozen", {})
+                metric = lambda r, k: f"{r[k]:.4f}" if k in r else ""
+                broader_rows.append("| " + " | ".join([
+                    d.name, s.get("status", ""), protocol["split"], str(protocol["seed"]),
+                    str(protocol["n_worlds"]), label, metric(learning, "fitness"), metric(frozen, "fitness"),
+                    metric(result, "learning_minus_frozen_fitness"),
+                    (cfg.get("git", {}).get("commit") or "")[:7],
+                ]) + " |")
+            continue
         fl, ff, sl = s.get("final_learning"), s.get("final_frozen"), s.get("start_learning")
         f = lambda r, k, p=2: f"{r[k]:.{p}f}" if r else ""
         acc = lambda r: f"{r['acc_first']:.2f} → {r['acc_second']:.2f}" if r else ""
@@ -36,9 +49,16 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if broader_rows:
+        out.extend(["## BROADER v1 (separate parameter-shift protocol)", "",
+                    "Development rows are operational checks, not scientific generalization results. "
+                    "Split/seed/world count are explicit; these are not EVAL v1 seed-123 scores. "
+                    "Full accuracy, survival, encounter counts and condition shifts are in each summary.json.", "",
+                    "| Run | Status | Split | Eval seed | Worlds | Condition | Learning | Frozen | Gap | Commit |",
+                    "|---" * 10 + "|", *broader_rows, ""])
     (ROOT / "results").mkdir(exist_ok=True)
     (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
-    print(f"wrote results/RESULTS.md with {len(rows)} runs")
+    print(f"wrote results/RESULTS.md with {len(rows)} legacy runs and {len(broader_rows)} broader-condition rows")
 
 
 if __name__ == "__main__":

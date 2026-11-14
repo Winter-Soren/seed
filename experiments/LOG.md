@@ -585,3 +585,107 @@ These are SHA-256 hashes of the complete `.npy` files, distinct from the runner'
 - **Scientific limits:** This tests predictor learning, not removal of the predictor's static signal or all possible prediction mechanisms. Hebbian-only retains the rest of the architecture, including recurrence, energy feedback, and the modulation pathway. Pooled food-choice accuracy can reflect encounter and survival selection; accuracy gain alone does not establish a learning mechanism. The three biology E100 repeats are the same genome under the same fixed worlds, so only one is included as a reference, not three independent replicates.
 - **Compute:** Use the A0 panel first as the full-size timing benchmark. The seven-panel estimate of 4–6 minutes and conservative 10-minute provisional budget are extrapolations, not measurements. Keep one `BelowNormal` process at a time, D: temporary files, existing disk/memory guards, and the under-three-hour per-process limit; use the measured first panel to assess the remaining runtime. Preserve interrupted or failed folders. No extra evolution, new worlds, delayed-reward or eligibility-trace experiments, or state-of-the-art claim is part of E106.
 - **Result and next decision:** Pending. Summarize the actual panel, update README/LOG/RESULTS with findings and limitations, and commit/push the run folders with those records. Use the observed contribution pattern to choose the next single mechanistic question; any further protocol or goal extension still needs its applicable authorization. B1/B2 remain in the experiment queue.
+
+## E108-D · 2026-11-14 · Generalization harness development registration
+
+- **Authorization/scope:** The owner requested parallel chats and experiments; this lab
+  owns a separate harness in `.tmp/parallel-labs/generalization` at base `a0cb4a7`.
+  Push is disabled. New final-world science needs owner protocol approval and a coordinated
+  compute slot. EVAL v1, E106, and every historical run remain untouched.
+- **Hypothesis:** A separate parameter-shift harness can preserve the current engine,
+  evaluate identical saved genomes with matched learning/frozen randomness, and record
+  unambiguous conditions and full file hashes. These are operational checks, not evidence
+  of broader generalization. No genome or hyperparameter tuning is planned.
+- **Baseline/check commands** (from this lab; all Python commands use the existing environment):
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 -m unittest discover -s tests -v`.
+  Run baseline before implementation; repeat after implementation. Unit fixtures may mock
+  the expensive evaluator and use temporary folders, following existing tests.
+- **Planned runner smoke**, only after implementation, checks and this registration are committed:
+  `D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-D-A0-oneworld --eval-protocol broader-v1 --condition-split development --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 1 --seed 0`.
+  This uses default brain/lifetime settings, a single rule-0 world per condition, development
+  seed 8108, and all five proposed conditions (control; n_items=12; n_items=36;
+  decay=0.0015; decay=0.006). It benchmarks saved-genome runtime/memory, not scientific
+  performance. Final seed 8109 and 128-world panels must remain unaccessed.
+- **Pass:** Existing tests pass; new tests establish default-v1 dispatch compatibility,
+  one-field shifts, fixed split seeds, matched plastic/frozen calls, correct signed gaps,
+  rejection of invalid final settings and malformed genomes, full file hash preservation;
+  smoke finishes in <=300 s with finite labelled metrics and unchanged source genome.
+  Smoke costs/metrics must come from artifacts and supervisor measurements, not estimates.
+- **Fail:** Any mismatch, invalid/nonfinite output, or >300 s/guard stop. Preserve failures
+  and append the cause before another attempt. Do not run final worlds to debug it.
+- **Compute:** One owned BelowNormal process at a time in this lab, <=5 min/invocation;
+  check authoritative Windows available commit before launch and during execution, stopping
+  only the owned process tree below 5 GiB. Use D: temp files. Population-scale training and
+  final panels are deferred. Record all tests and runs honestly, including missing checks.
+- **Result:** Pending. E108 final protocol will be a separate preregistration proposal;
+  this entry grants no new-world scientific launch or claims.
+
+## E108-D implementation checkpoint · 2026-11-14
+
+- **Baseline:** Eight existing unit tests passed in 9.116 s test time; guarded wall time
+  28.0024565 s, sampled maximum owned-tree private memory 797,368,320 bytes and resident
+  223,064,064 bytes. Post-implementation first check: 16 tests passed in 3.271 s, wall
+  7.8372004 s, sampled private/resident maxima 766,513,152/186,720,256 bytes. These are
+  synthetic/unit checks; final-world dispatch is mocked and final worlds are untouched.
+- **Implementation:** Separate `broader-v1` dispatch with five fixed conditions, full
+  saved-file hash and byte-identical copies, explicit development/final seeds 8108/8109,
+  matched learning/frozen evaluations, finite metrics and signed differences. Final
+  dispatch requires default Cfg and 128 worlds; panels refuse resume and preserve errors.
+  Engine/notebook and legacy evaluation calls are unchanged. Summarizer separates the
+  broader table from EVAL v1 and explicitly labels development evidence.
+- **Proposal:** `experiments/E108_BROADER_V1.md` fixes exact final commands, source hashes,
+  reference anchors, falsifiers and limits. Owner approval of this exact protocol and a
+  coordinated slot are still required. Reversal needs its own world/recovery protocol;
+  no reversal engine change, new-task generalization, or scientific success is claimed.
+- **Next:** Finish regression checks, commit clean code/registration, then run only the
+  preregistered one-world development A0 fixture under the owned-process 5 GiB guard.
+
+## E108-D final unit checks and shared-launch hold · 2026-11-14
+
+- The same preregistered unit command passed **18 tests in 2.872 s** after adding exact
+  default-v1 call-contract and both resume-route checks. Guarded wall time 5.5681886 s;
+  sampled maximum owned-tree private/resident memory 791,289,856/216,047,616 bytes.
+  `git diff --check` passed; historical runs, engine and notebook match base `a0cb4a7`.
+  These samples are lower bounds on instantaneous peaks, not guaranteed maxima.
+- The coordinator requested a temporary hold on further JAX/test launches while main
+  E106 obtains its shared-memory slot. This already-running bounded check finished;
+  no later JAX process has been launched. Continue review/commit work. Development
+  one-world benchmark remains pending the coordinator releasing the launch hold.
+- Input A0/A1/A2 full-file hashes were rechecked and match the final proposal. Push
+  remains DISABLED. No scientific panel, EVAL v1 run, or final-split rollout occurred.
+
+## E108 · 2026-11-14 · Proposed BROADER v1 final preregistration (launch pending approval)
+
+- **Protocol and decision:** `experiments/E108_BROADER_V1.md` is the complete frozen
+  proposal. Approve its five conditions, 128 final worlds at seed 8109, fixed seven
+  input genomes/reference anchors, and descriptive falsifiers before scientific launch;
+  then reserve a coordinated slot. This is required by AGENTS.md's instruction to ask
+  before changing the evaluation protocol. The separate harness does not alter EVAL v1.
+- **Hypothesis:** The enabled-minus-frozen fitness advantage remains positive in at
+  least 2/3 A seeds separately for every shift (n_items 12/36; decay .0015/.006).
+  For a condition, <=0 in >=2 seeds falsifies its retention hypothesis; any such
+  condition falsifies retention across the suite. Report all signed differences and
+  all accuracy/survival/encounter metrics, including negative and mixed outcomes.
+- **Limits:** Same task family, fixed genomes, lifetime learning plus matched frozen
+  controls, both Hebbian/predictor updates jointly enabled/disabled. No new-task transfer,
+  individual recovery, statistical significance, roadmap gate, or AGI claim. Final split
+  remains untouched; development evidence is operational only. No tuning is authorized.
+- **Exact commands** (run sequentially only after approval, code commit and compute slot):
+
+```powershell
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A0 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A1 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-A2 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank0 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022439_E100-blank-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank1 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022514_E100-blank-s1/genome_final.npy --generations 0 --eval-worlds 128 --seed 1
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-blank2 --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022552_E100-blank-s2/genome_final.npy --generations 0 --eval-worlds 128 --seed 2
+D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/run_experiment.py --name E108-final-biology --eval-protocol broader-v1 --condition-split final --start file:runs/20261112-022641_E100-biology-s0/genome_final.npy --generations 0 --eval-worlds 128 --seed 0
+```
+
+- **Integrity and follow-up:** Verify source hashes listed in the proposal before/after;
+  all conditions share matched keys. Measure first full A0 panel runtime/memory before
+  estimating the other six; the one-world fixture cannot establish 128-world resource
+  safety. Regenerate RESULTS, append actual numbers, update README, and commit results
+  together. Main chat owns integration/publication; this lab cannot push.
+- **Result:** Not run. New food-rule reversal remains a separate pending design/world
+  protocol, with recovery measurements specified as requirements in the proposal.
