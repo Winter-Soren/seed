@@ -4,7 +4,7 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Latest verified result · 14 Nov 2026:** evolution with lifetime plasticity outperformed matched evolution without local weight updates in **all 3 seed pairs** after 200 generations. Learning fitness was **14.87–16.59**, versus **0.12–0.64** for the independently evolved nonplastic controls. [See the evidence and limits](#what-the-experiments-show).
+**Latest verified result · 14 Nov 2026:** adding predictor updates to Hebbian learning raised fitness by **8.09–10.50** in **all 3 saved evolved A genomes**. All seven E106 diagnostic panels completed without new evolution or changed worlds. [See the evidence and limits](#what-the-experiments-show).
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
@@ -68,7 +68,7 @@ $env:PYTHONUTF8 = '1'
 
 </details>
 
-Open the new folder under `runs/`: `config.json` records the settings and source commit, `metrics.jsonl` records training progress, and `summary.json` contains the final learning and frozen evaluations. The generated [results table](results/RESULTS.md) gives an overview of recorded runs.
+Open the new folder under `runs/`: `config.json` records the settings and source commit, `metrics.jsonl` records training progress, and `summary.json` contains the evaluations—learning/frozen for default EVAL v1 runs, or the named conditions for EVAL v2. The generated [results table](results/RESULTS.md) gives an overview of recorded runs.
 
 The `--quick` smoke run is an **integration check only**, not research evidence. To explore the completed research without running compute, start with the [A seed 0 summary](runs/20261112-023245_E103-A-blank-s0/summary.json) and the results below. A [Colab notebook](notebooks/Seed_v0.ipynb) is also available; its runtime is not benchmarked here.
 
@@ -106,6 +106,10 @@ Each A/C pair ran for 200 generations from the same starting genome, with matche
 | 1 | 15.38 | 0.12 | +15.25 |
 | 2 | 14.87 | 0.64 | +14.23 |
 
+![Matched A and C final fitness for all three evolution seeds, with positive A-minus-C differences of 16.105, 15.254 and 14.229.](results/figures/ac-matched-comparison.png)
+
+*This compares independently evolved A/C genomes, separately from A's within-genome frozen lesion. [Data and source hashes](results/figures/ac-figure-data.json); rebuild with the [control-figure generator](tools/build_control_figures.py).*
+
 All three paired differences favor plastic evolution **within the shared 155-number developmental encoding and matched 200-generation budget**. Comparisons with other static recurrent networks of matched capacity remain untested; this three-seed panel is not a statistical-significance claim or a new roadmap gate.
 
 C's `final_learning` re-enables updates and is diagnostic only: **0.0625** for C0, **0.169921875** for C1, and **0.087890625** for C2. Exact measurements are in the [C seed 0 summary](runs/20261112-224133_E105-C-noplastic-s0/summary.json), [C seed 1 summary](runs/20261114-003141_E105-C-noplastic-s1/summary.json), and [C seed 2 summary](runs/20261114-031608_E105-C-noplastic-s2/summary.json).
@@ -113,6 +117,20 @@ C's `final_learning` re-enables updates and is diagnostic only: **0.0625** for C
 C0's frozen accuracy still rose **50.42% → 53.99%** (**+3.57 percentage points**), and C2's rose **50.87% → 54.43%** (**+3.56 percentage points**), despite both synaptic update mechanisms being disabled. Both exceed the 3-point accuracy threshold and show why accuracy gain alone cannot establish synaptic learning. Recurrent state and energy feedback remain active, and pooled scores can reflect survival or encounter selection.
 
 C1's frozen accuracy rose **49.74% → 51.94%** (**+2.20 percentage points**); the same interpretation limits apply.
+
+**E106: what do predictor updates contribute beyond Hebbian learning? — all seven panels complete.**
+
+EVAL v2 evaluated the three saved A genomes, three blank references and one biology reference on the same **128 worlds, seed 123**, without new evolution. Both enables Hebbian and predictor updates; Hebbian-only disables predictor updates; Frozen disables both. Across all seven panels, **every Both/Frozen metric exactly reproduced its saved EVAL v1 counterpart**.
+
+| Evolved A seed | Both fitness | Hebbian-only fitness | Frozen fitness | Predictor contribution (Both − Hebbian-only) | Retained benefit |
+|---|---:|---:|---:|---:|---:|
+| 0 | 16.59 | 8.50 | 0.29 | +8.09 | 50.35% |
+| 1 | 15.38 | 4.88 | 0.09 | +10.50 | 31.31% |
+| 2 | 14.87 | 5.86 | -0.10 | +9.00 | 39.86% |
+
+Retained benefit is `(Hebbian-only − Frozen) / (Both − Frozen)`, defined only when Both exceeds Frozen. Hebbian-only also outperformed Frozen in all three evolved A genomes. This isolates the contribution of **predictor updates conditional on Hebbian learning**: Hebbian-only still retains the predictor's static signal, recurrence and energy feedback. Positive Hebbian-only fitness does not mean all three pass A's within-life accuracy criterion.
+
+All four references had **zero predictor fitness contribution**. Blank 0's Hebbian-only-minus-Frozen difference was **−0.048828125**, with **undefined** retained benefit. These cases remain in the [complete seven-panel results](results/RESULTS.md#eval-v2-diagnostics). Exact values, linked summaries, validation and interpretation are in the [lab notebook](experiments/LOG.md). This is a fixed-genome mechanism result, not a significance, general-intelligence or state-of-the-art claim.
 
 ## Progress and next milestones
 
@@ -128,13 +146,13 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 | **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
 | **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
 | **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Complete; all 3 seed pairs favor A within the matched encoding and budget. |
-| **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Approved and preregistered; implementation underway, results pending. |
+| **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Seven panels complete; positive predictor contribution in all 3 evolved A genomes. |
+| **E107 · Structural plasticity** | Does connection growth/pruning help beyond weight updates? | Direct tests and one-world benchmark complete in isolated lab; replicated benefit unverified. |
+| **E108 · Broader conditions** | How does adaptation hold beyond the original conditions? | Separate protocol work underway; outcomes await review. |
 
-The next priorities are **E106's seven diagnostic panels → connection growth/pruning implementation and direct tests → a preregistered comparison with weight-only learning**. **B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
+The next priorities are **connection growth/pruning tests → a preregistered comparison against weight-only learning**, with **Both updates enabled in both arms** and fair capacity controls. **B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone.
 
-The approved **E106 · EVAL v2** diagnostic will compare Both, Hebbian-only and Frozen conditions on the three saved A genomes, three blank references and one biology reference, without new evolution or changed evaluation worlds. Implementation is underway; results are pending, and EVAL v1 remains unchanged.
-
-A design is ready for the owner's requested activity-dependent connection growth and pruning among existing neurons. Implementation is pending and follows the complete E106 panel. Direct tests must verify rewiring; a fair weight-only comparison must measure any benefit. The work must preserve compatibility with existing 155-number genomes and default EVAL v1 behavior.
+E107's isolated lab owns activity-dependent growth and pruning among existing neurons; direct tests must demonstrate actual rewiring before a benefit comparison. E108 investigates broader conditions under its own protocol. Both labs are underway separately from these completed main results. Existing 155-number genomes and default EVAL v1 behavior remain compatibility requirements.
 
 Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities.
 

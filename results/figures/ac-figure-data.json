@@ -1,0 +1,235 @@
+{
+  "comparison": "E103 A versus E105 C; three matched, independently evolved pairs",
+  "source_sha256_normalization": "Replace CRLF with LF in source text bytes; all other bytes are unchanged.",
+  "binary_source_sha256_normalization": "None; SHA-256 of the exact binary file bytes.",
+  "evaluation": {
+    "protocol": "EVAL v1",
+    "worlds": 128,
+    "seed": 123,
+    "fitness_units": "Food minus poison eaten, averaged per agent",
+    "A": "final_learning: plasticity enabled during evolution and evaluation",
+    "C": "final_frozen: plasticity disabled during evolution and evaluation",
+    "excluded_diagnostic": "C.final_learning re-enables plasticity; it is not the control score."
+  },
+  "training": {
+    "generations": 200,
+    "population": 128,
+    "worlds_per_generation": 8,
+    "sigma": 0.1,
+    "learning_rate": 0.1,
+    "start": "blank",
+    "genome_size": 155,
+    "cfg": {
+      "G": 16,
+      "M": 4,
+      "T": 300,
+      "R": 2,
+      "n_items": 24,
+      "H": 48,
+      "n_htypes": 3,
+      "e0": 1.0,
+      "decay": 0.003,
+      "gain": 0.25,
+      "e_max": 2.0,
+      "micro": 2,
+      "wmax": 3.0
+    },
+    "timing_note": "Retained metric seconds sum training rows only; excludes evaluation, process overhead, pauses and discarded/replayed work. Not total wall time."
+  },
+  "scope": "Same developmental encoding and optimizer budget; C retains recurrent state and energy feedback. An independently evolved control, distinct from A's within-genome frozen lesion. Three evolution seeds in one fixed toy-world protocol; no confidence intervals or universal-necessity claim.",
+  "pairs": [
+    {
+      "evolution_seed": 0,
+      "A": {
+        "run": "runs/20261112-023245_E103-A-blank-s0",
+        "condition": "A",
+        "evolution_seed": 0,
+        "evaluation_field": "final_learning",
+        "evaluation": {
+          "fitness": 16.591796875,
+          "acc_first": 0.7049121856689453,
+          "acc_second": 0.8401943445205688,
+          "survived": 0.880859375,
+          "eaten": 15837
+        },
+        "start_genome_hash": "9a761b031011f9ee",
+        "final_genome_hash": "ee8eaa10a7429cc5",
+        "source_commits": [
+          "71126a6bacefaeef84cca226896030aa59fc8b72",
+          "55a459b63873adc159fd953ae75c9c2ff32efee4"
+        ],
+        "source_sha256": {
+          "summary.json": "0fde3bb0a23cff0a424a571becbec2719aa460db27314fa49af1e6821ac4feff",
+          "config.json": "25760b759a4d901c33047048e5cc3cecf668a07eb5d7cb746fd34b08c53c78d0",
+          "metrics.jsonl": "069bc0803af289af9a9fd866b93ba1b8a7528c99c0de57328800e245476b0b1f"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "621e5a735e408e487653f7ffc15561be773fbd1053af847ef1bb633fd5243e07",
+          "genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+          "checkpoint.npz": "41c6536e19f85f627dd016d94a07156fc8eeb2d6ebb0f280524cd2b215ce43b1"
+        },
+        "retained_training_metric_seconds": 8634.951000000001
+      },
+      "C": {
+        "run": "runs/20261112-224133_E105-C-noplastic-s0",
+        "condition": "C",
+        "evolution_seed": 0,
+        "evaluation_field": "final_frozen",
+        "evaluation": {
+          "fitness": 0.486328125,
+          "acc_first": 0.50419020652771,
+          "acc_second": 0.5398915410041809,
+          "survived": 0.408203125,
+          "eaten": 7713
+        },
+        "start_genome_hash": "9a761b031011f9ee",
+        "final_genome_hash": "37f801f0906a6d3b",
+        "source_commits": [
+          "8b42128fac8e18ac094173a2f47e771ffb71a809",
+          "1c4a60b33ce886e71a22e523b9daf1a018d1a77b"
+        ],
+        "source_sha256": {
+          "summary.json": "4a26e899a6b01332194dc4733ac2b33ae199c61b19c57a3e744e7335ff389d1d",
+          "config.json": "af0d2cecbe0e234555bdbc53f6265044d407dc06c68850e9e7e477980358ffd0",
+          "metrics.jsonl": "f2aad781297f1ced89a5831bf1f1b505b44b96c244365961e866e9794438db52"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "621e5a735e408e487653f7ffc15561be773fbd1053af847ef1bb633fd5243e07",
+          "genome_final.npy": "f0be8b60c1994e45e122f0cf958d0389201d68cdd37d926dcc8bbcb8f1aa40a0",
+          "checkpoint.npz": "4dde685b058d34bac54158e772f6a25fa58c47e9125c84f9ec7e9f953e9dc144"
+        },
+        "retained_training_metric_seconds": 11070.671
+      },
+      "fitness_difference_A_minus_C": 16.10546875
+    },
+    {
+      "evolution_seed": 1,
+      "A": {
+        "run": "runs/20261112-050319_E103-A-blank-s1",
+        "condition": "A",
+        "evolution_seed": 1,
+        "evaluation_field": "final_learning",
+        "evaluation": {
+          "fitness": 15.376953125,
+          "acc_first": 0.687602698802948,
+          "acc_second": 0.8297842144966125,
+          "survived": 0.84765625,
+          "eaten": 15609
+        },
+        "start_genome_hash": "47c2bad05aa97822",
+        "final_genome_hash": "aca49c2747a994ab",
+        "source_commits": [
+          "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+          "6639d3c72bafacd61b18cb63d07ee2f377d93cae"
+        ],
+        "source_sha256": {
+          "summary.json": "68038ab1d92fa5d0f8f3402cee876c4c786e4779ec37b977e406a0e9ae346898",
+          "config.json": "3dc8211e14bc7ab6084e76f47c7b09246e4bd7d94024819877f214151b4b619e",
+          "metrics.jsonl": "37c5d65005f7c5a33e3becd62e32db5615eb0ffa1566a1b4516f091d6affb579"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "3ec510cab0205915614a7df2d3b217eca201972897842592fcef419b215e5d99",
+          "genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+          "checkpoint.npz": "a7f1cdaa71c29219ea7322240e4799a23eba7ba1f5b7fb888c3e7d8777b2133b"
+        },
+        "retained_training_metric_seconds": 8967.139
+      },
+      "C": {
+        "run": "runs/20261114-003141_E105-C-noplastic-s1",
+        "condition": "C",
+        "evolution_seed": 1,
+        "evaluation_field": "final_frozen",
+        "evaluation": {
+          "fitness": 0.123046875,
+          "acc_first": 0.4973609447479248,
+          "acc_second": 0.5193731188774109,
+          "survived": 0.37109375,
+          "eaten": 7223
+        },
+        "start_genome_hash": "47c2bad05aa97822",
+        "final_genome_hash": "b6ab52e3f7b9fa73",
+        "source_commits": [
+          "9e7427018f4d9c4aa051e32dd21310070b6da750",
+          "5715ead141be06fb893d44571ddb6a24aaaae4c5"
+        ],
+        "source_sha256": {
+          "summary.json": "4179a56fd829c2f98abc1975585c8808d1dd9bbf00eb00cb078eefa5df480b28",
+          "config.json": "93b7988e2ee6eefbef675c267f3d5d648d7e41409be882dfc2903ed408ec1762",
+          "metrics.jsonl": "df02eed71d6f6c5235a437afcf897a5d2d8491d60ab28f650d0380db86661148"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "3ec510cab0205915614a7df2d3b217eca201972897842592fcef419b215e5d99",
+          "genome_final.npy": "795589ac8c9fa429778bdbb1e5973ae7891c75547f7762b0b5d76038833f5e0c",
+          "checkpoint.npz": "773bf2edc8b107eaf3d2e49db817404b31255fa6211f15f39f65d04ce1b57ab0"
+        },
+        "retained_training_metric_seconds": 9340.953
+      },
+      "fitness_difference_A_minus_C": 15.25390625
+    },
+    {
+      "evolution_seed": 2,
+      "A": {
+        "run": "runs/20261112-102755_E103-A-blank-s2",
+        "condition": "A",
+        "evolution_seed": 2,
+        "evaluation_field": "final_learning",
+        "evaluation": {
+          "fitness": 14.8671875,
+          "acc_first": 0.6937439441680908,
+          "acc_second": 0.8225241303443909,
+          "survived": 0.849609375,
+          "eaten": 15094
+        },
+        "start_genome_hash": "03202e865b4a4255",
+        "final_genome_hash": "17191e72299b25cc",
+        "source_commits": [
+          "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+          "1a7c4e3fb8b4896030b73737ae9dea631bf3500c"
+        ],
+        "source_sha256": {
+          "summary.json": "f62dd9b3658fb9153aa933f4054675c18a681b71890758336f51f94036c1273f",
+          "config.json": "51921368d7c032eb6e0f953f3e1c61d1db9bf2545eb3f7aa7942a47882bf3af8",
+          "metrics.jsonl": "bab52f2d6ecad59046f6545ef7ef0ed989f58ea08872663fb75dd9f129b567ad"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "c62051a478c75f3211645968e5a15bb64bcfcdb8f61c366357020f4cff8294b9",
+          "genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+          "checkpoint.npz": "57e76e4b8fdb05b2c02ea4364944caf8d70c3d30ef23f74da0f08e647584148b"
+        },
+        "retained_training_metric_seconds": 9361.847
+      },
+      "C": {
+        "run": "runs/20261114-031608_E105-C-noplastic-s2",
+        "condition": "C",
+        "evolution_seed": 2,
+        "evaluation_field": "final_frozen",
+        "evaluation": {
+          "fitness": 0.638671875,
+          "acc_first": 0.5087069272994995,
+          "acc_second": 0.5443471670150757,
+          "survived": 0.404296875,
+          "eaten": 8025
+        },
+        "start_genome_hash": "03202e865b4a4255",
+        "final_genome_hash": "44a52fca0526dac7",
+        "source_commits": [
+          "e2ca461891490d5e186dbf468278149fe451bf3d",
+          "cf49897ceb6fc5d36049ffec2870636400bf403f",
+          "77788fb9fef3089753feba7e811236bdb162b4a5"
+        ],
+        "source_sha256": {
+          "summary.json": "27b95dc46e5b2cc65f4f60978658117e4d226de66e26bd37cba022bc829dc930",
+          "config.json": "1a841fa8482a6486da751334c79625d0218147ff897fb0573bc7dbb23ebf9d1d",
+          "metrics.jsonl": "d17752a77b12cb931c11018982b7ae64e69367486bb33ee2638829b93b05cc24"
+        },
+        "binary_source_sha256": {
+          "genome_start.npy": "c62051a478c75f3211645968e5a15bb64bcfcdb8f61c366357020f4cff8294b9",
+          "genome_final.npy": "25286f5d1a000f197adb2a8bad944806bec24fe281964678f93ffc7167e9466d",
+          "checkpoint.npz": "80f86c829b63c04f2ad091b458e78021c9071227f007ff1743ca9fab7bb53b69"
+        },
+        "retained_training_metric_seconds": 9240.452
+      },
+      "fitness_difference_A_minus_C": 14.228515625
+    }
+  ]
+}

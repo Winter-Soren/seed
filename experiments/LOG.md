@@ -605,3 +605,50 @@ These are SHA-256 hashes of the complete `.npy` files, distinct from the runner'
 - **Implementation checks:** Baseline eight tests passed in 3.687 seconds before changes. The implementation worker reports 18 final tests passed in 54.092 seconds; root reviewed engine/runner/summarizer and the real-fixture/dispatch tests, and independent review found no actionable defects. Exact pre-change v1 fixtures match 22 real rollout leaves plus four-world evaluation metrics under default/explicit Both/Frozen. Predictor-only and Frozen behavior match despite nonzero predictor updates; independent brain-update switches, dispatch/resume, invalid inputs/protocol switches, source SHA, and reporting are covered. Notebook rebuilt with only engine cell 3 changed; all cells compile and the embedded engine matches exactly.
 - **Boundary:** These are implementation checks, not E106 scientific results. No actual panel has run; exact full 128-world saved-reference equality remains an acceptance requirement. C2's coherent result is committed locally as `e5be29b`, pending push/remote verification.
 - **Next:** Root commits the seven reviewed implementation files with this LOG/STATE record, then runs the registered A0 panel as the timing/reference benchmark after resource preflight. On exact saved-v1 equality, run the other six panels sequentially with existing resource guards. Hold all tracked writers/figures through the series so every run starts from the same clean tracked source; new panel folders may remain untracked because runner `git_info` excludes untracked files. Publish all seven results coherently afterward. No parameter/protocol changes, benefit claim, or extra documentation work; goal active.
+
+
+## E106 result · 2026-11-14 · Predictor updates add fitness in all three evolved A genomes
+- **Protocol and integrity:** All seven registered fixed-genome panels finished at generation zero under clean source `f0825ef8b8e0f562a396d5160209cd8653417830`, summary protocol v2, 128 worlds, evaluation seed 123. The coordinator verified checkpoint `t=0` and final genome equal to the saved source genome, full source-file SHA-256 equal to the preregistered hashes, unchanged source inputs, finite arrays/metrics, empty training metrics, and **exact full-dictionary Both/Frozen reproduction of saved EVAL v1 evaluations in all seven panels**. No evolution or new worlds; the operational acceptance criteria passed without relaxed tolerance.
+
+| Input | Run folder | Both fitness | Hebbian-only fitness | Frozen fitness | Both − Hebbian-only | Hebbian-only − Frozen | Retained benefit |
+|---|---|---:|---:|---:|---:|---:|---:|
+| E106-v2-A-s0 | [summary](../runs/20261114-230705_E106-v2-A-s0/summary.json) | 16.591796875 | 8.498046875 | 0.2890625 | 8.09375 | 8.208984375 | 0.5035342039055948 |
+| E106-v2-A-s1 | [summary](../runs/20261114-230945_E106-v2-A-s1/summary.json) | 15.376953125 | 4.87890625 | 0.09375 | 10.498046875 | 4.78515625 | 0.31309904153354634 |
+| E106-v2-A-s2 | [summary](../runs/20261114-231023_E106-v2-A-s2/summary.json) | 14.8671875 | 5.86328125 | -0.103515625 | 9.00390625 | 5.966796875 | 0.39856490541422046 |
+| E106-v2-blank-s0 | [summary](../runs/20261114-231108_E106-v2-blank-s0/summary.json) | -0.00390625 | -0.00390625 | 0.044921875 | 0.0 | -0.048828125 | undefined |
+| E106-v2-blank-s1 | [summary](../runs/20261114-231204_E106-v2-blank-s1/summary.json) | 0.4140625 | 0.4140625 | 0.044921875 | 0.0 | 0.369140625 | 1.0 |
+| E106-v2-blank-s2 | [summary](../runs/20261114-231313_E106-v2-blank-s2/summary.json) | 0.23046875 | 0.23046875 | 0.044921875 | 0.0 | 0.185546875 | 1.0 |
+| E106-v2-biology | [summary](../runs/20261114-231641_E106-v2-biology/summary.json) | 5.12890625 | 5.12890625 | 0.0 | 0.0 | 5.12890625 | 1.0 |
+
+The remaining metrics below accompany the fitness values above; all numbers are copied from the coordinator-verified summaries.
+
+| Input | Condition | Accuracy first | Accuracy second | Survival | Eaten |
+|---|---|---:|---:|---:|---:|
+| E106-v2-A-s0 | Both | 0.7049121856689453 | 0.8401943445205688 | 0.880859375 | 15837 |
+| E106-v2-A-s0 | Hebbian-only | 0.6584835648536682 | 0.6824561357498169 | 0.7421875 | 12951 |
+| E106-v2-A-s0 | Frozen | 0.4963643252849579 | 0.5343427062034607 | 0.39453125 | 7934 |
+| E106-v2-A-s1 | Both | 0.687602698802948 | 0.8297842144966125 | 0.84765625 | 15609 |
+| E106-v2-A-s1 | Hebbian-only | 0.6205653548240662 | 0.6132127046585083 | 0.64453125 | 10582 |
+| E106-v2-A-s1 | Frozen | 0.5005697011947632 | 0.5078710913658142 | 0.3984375 | 7934 |
+| E106-v2-A-s2 | Both | 0.6937439441680908 | 0.8225241303443909 | 0.849609375 | 15094 |
+| E106-v2-A-s2 | Hebbian-only | 0.662937343120575 | 0.7402196526527405 | 0.740234375 | 7830 |
+| E106-v2-A-s2 | Frozen | 0.4872659146785736 | 0.516306459903717 | 0.36328125 | 7885 |
+| E106-v2-blank-s0 | Both | 0.5008518099784851 | 0.49779558181762695 | 0.3828125 | 7778 |
+| E106-v2-blank-s0 | Hebbian-only | 0.5008518099784851 | 0.49779558181762695 | 0.3828125 | 7778 |
+| E106-v2-blank-s0 | Frozen | 0.49962562322616577 | 0.5053170323371887 | 0.37109375 | 7881 |
+| E106-v2-blank-s1 | Both | 0.5018976926803589 | 0.5329878926277161 | 0.38671875 | 8428 |
+| E106-v2-blank-s1 | Hebbian-only | 0.5018976926803589 | 0.5329878926277161 | 0.38671875 | 8428 |
+| E106-v2-blank-s1 | Frozen | 0.49962562322616577 | 0.5053170323371887 | 0.37109375 | 7881 |
+| E106-v2-blank-s2 | Both | 0.5063009858131409 | 0.5091709494590759 | 0.388671875 | 8122 |
+| E106-v2-blank-s2 | Hebbian-only | 0.5063009858131409 | 0.5091709494590759 | 0.388671875 | 8122 |
+| E106-v2-blank-s2 | Frozen | 0.49962562322616577 | 0.5053170323371887 | 0.37109375 | 7881 |
+| E106-v2-biology | Both | 0.5685573816299438 | 0.6739441156387329 | 0.6015625 | 11618 |
+| E106-v2-biology | Hebbian-only | 0.5685573816299438 | 0.6739441156387329 | 0.6015625 | 11618 |
+| E106-v2-biology | Frozen | 0.49433672428131104 | 0.5116646885871887 | 0.376953125 | 7738 |
+
+- **Interpretation:** Both-minus-Hebbian-only gains are **8.09375 / 10.498046875 / 9.00390625** in A0/A1/A2; all three support a positive predictor-update contribution conditional on Hebbian learning. Hebbian-only-minus-Frozen gains **8.208984375 / 4.78515625 / 5.966796875** are also positive. Continuous retained benefit is **0.5035342039055948 / 0.31309904153354634 / 0.39856490541422046**. This disables predictor updates, not the predictor's static signal or every prediction mechanism. Positive Hebbian-only fitness does not establish that all three satisfy the original within-life accuracy criterion. Report the fixed-panel result without a new gate, significance claim, AGI claim, or state-of-the-art claim.
+- **References and negative evidence:** Blank 0/1/2 and biology have zero predictor conditional fitness gain, with identical Both/Hebbian-only reported metrics. Blank 0's Hebbian-only-minus-Frozen gap is **−0.048828125** and its retained-benefit ratio is **undefined** because Both < Frozen; no clipping or omission. The other three reference ratios are 1.0. The biology entry is one unique reference, not three independent replicates.
+- **Observed resource recovery:** A0 preflight initially declined available commit of 7.76 and then 8.67 GiB under the unchanged 10-GiB startup floor. Actual Oracle PID 12044/service `OracleServiceFCUB147` was running again after the pause, using approximately 9.952 GiB private memory; the earlier stopped-state observation was obsolete. Under the owner's existing authorization, graceful `Stop-Service` completed with status `Stopped`; available commit was 18.63 GiB afterward versus 8.67 GiB before. Brave and Chrome remained untouched. Recheck actual service/resource state after interruptions rather than relying on old state; guards were not weakened.
+- **Timing and scheduling:** A0 started 23:07:02.7081792 Asia/Calcutta and exited 0 after **35.7830262 seconds**, ending 23:07:38.4943748 (supervisor 78447 terminal). A1/A2/blank0/blank1/blank2 exited 0 after **35.9475528 / 38.3606862 / 48.539918 / 59.5275137 / 81.835345 seconds**, verified by batch supervisor 11367. The batch stopped before creating a biology folder when authorized E108 peer compute was detected; this was scheduling, not a scientific failure. After the peer finished, biology started 23:16:37.7531355 and exited 0 after **39.1793714 seconds**, ending 23:17:16.9365250 (supervisor 57503 terminal). Summed process wall time is **339.1734133 seconds (5.65 minutes)**; first-start to final-end elapsed is **614.2283458 seconds (10.24 minutes)** including checks, approval gaps, and peer waiting. All summary `train_minutes=0` values exclude evaluation. One E106 process ran at a time; owner-authorized peer labs coordinate separately under unchanged resource guards.
+- **Measured-memory limitation:** `.tmp/E106-memory-samples.jsonl` sampled two workers; maximum observed private memory was **1.14145 GiB**, observed working-set peak **0.5839 GiB**. This is incomplete sampling, not a complete peak measurement for all panels or for A0. Do not use it to claim a proven maximum memory requirement.
+- **Record and next decision:** Regenerated **22 finished runs** in RESULTS, including seven complete v2 rows and the undefined blank-0 ratio. Main implementation and C2 result are already pushed under verified owner attribution to the private repository; publish these seven run folders with README/RESULTS/LOG/STATE coherently next. Keep **Both updates enabled** for the structural comparison, making activity-dependent connection growth/pruning the intervention against a fair weight-only/static-capacity control. E107's isolated lab owns that implementation; do not spawn a duplicate main structural worker. Owner-approved E108 broader-v1 work proceeds independently under its own protocol. Main B1/B2 remain planned. Goal active; no structural benefit is claimed by E106.

@@ -161,7 +161,7 @@ def plot_evaluation(data):
              "Frozen = the same genome with Hebbian and predictor updates disabled.",
              color=MUTED, size=11)
     fig.text(0.07, 0.079,
-             "Pooled accuracy can reflect survival and encounter selection. Independently evolved nonplastic controls are pending.",
+             "Pooled accuracy can reflect survival and encounter selection. Independent A/C controls are shown separately.",
              color=MUTED, size=10.5)
     save_figure(fig, "a-final-evaluation",
                 "Final E103 A evaluations for all three evolution seeds. Paired enabled/frozen fitness "

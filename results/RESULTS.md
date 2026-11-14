@@ -19,3 +19,17 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261112-224133_E105-C-noplastic-s0 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | -0.00 | 0.06 | 0.49 | 0.50 → 0.50 | 8b42128 |
 | 20261114-003141_E105-C-noplastic-s1 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.41 | 0.17 | 0.12 | 0.51 → 0.51 | 9e74270 |
 | 20261114-031608_E105-C-noplastic-s2 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.23 | 0.09 | 0.64 | 0.50 → 0.50 | e2ca461 |
+
+## EVAL v2 diagnostics
+
+Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables predictor updates; Frozen disables both. Differences are signed fitness changes. Retained benefit = (Hebbian-only − Frozen) / (Both − Frozen), defined only when Both > Frozen.
+
+| Run | Status | Source genome | Both | Hebbian-only | Frozen | Both − Hebbian-only | Hebbian-only − Frozen | Retained benefit | Eval seed | Eval worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261114-230705_E106-v2-A-s0 | finished | file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy | 16.591797 | 8.498047 | 0.289062 | 8.093750 | 8.208984 | 0.503534 | 123 | 128 | f0825ef |
+| 20261114-230945_E106-v2-A-s1 | finished | file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy | 15.376953 | 4.878906 | 0.093750 | 10.498047 | 4.785156 | 0.313099 | 123 | 128 | f0825ef |
+| 20261114-231023_E106-v2-A-s2 | finished | file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy | 14.867188 | 5.863281 | -0.103516 | 9.003906 | 5.966797 | 0.398565 | 123 | 128 | f0825ef |
+| 20261114-231108_E106-v2-blank-s0 | finished | file:runs/20261112-022439_E100-blank-s0/genome_final.npy | -0.003906 | -0.003906 | 0.044922 | 0.000000 | -0.048828 | undefined | 123 | 128 | f0825ef |
+| 20261114-231204_E106-v2-blank-s1 | finished | file:runs/20261112-022514_E100-blank-s1/genome_final.npy | 0.414062 | 0.414062 | 0.044922 | 0.000000 | 0.369141 | 1.000000 | 123 | 128 | f0825ef |
+| 20261114-231313_E106-v2-blank-s2 | finished | file:runs/20261112-022552_E100-blank-s2/genome_final.npy | 0.230469 | 0.230469 | 0.044922 | 0.000000 | 0.185547 | 1.000000 | 123 | 128 | f0825ef |
+| 20261114-231641_E106-v2-biology | finished | file:runs/20261112-022641_E100-biology-s0/genome_final.npy | 5.128906 | 5.128906 | 0.000000 | 0.000000 | 5.128906 | 1.000000 | 123 | 128 | f0825ef |
