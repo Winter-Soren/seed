@@ -211,6 +211,10 @@ def plot_comparison(data):
             metadata["Software"] = "Seed / tools/build_control_figures.py"
         fig.savefig(OUT / f"ac-matched-comparison.{extension}", dpi=150,
                     facecolor="white", metadata=metadata)
+        if extension == "svg":
+            path = OUT / "ac-matched-comparison.svg"
+            path.write_text("\n".join(line.rstrip() for line in path.read_text(encoding="utf-8").splitlines()) + "\n",
+                            encoding="utf-8", newline="\n")
     plt.close(fig)
 
 

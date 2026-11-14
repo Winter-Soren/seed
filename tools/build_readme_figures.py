@@ -102,6 +102,10 @@ def save_figure(fig, stem, description):
             metadata["Software"] = "Seed / tools/build_readme_figures.py"
         fig.savefig(OUT / f"{stem}.{extension}", dpi=150, facecolor="white",
                     metadata=metadata)
+        if extension == "svg":
+            path = OUT / f"{stem}.svg"
+            path.write_text("\n".join(line.rstrip() for line in path.read_text(encoding="utf-8").splitlines()) + "\n",
+                            encoding="utf-8", newline="\n")
     plt.close(fig)
 
 
