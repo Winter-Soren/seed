@@ -142,6 +142,10 @@ Both arms retained Hebbian and predictor updates. The same saved A genomes were 
 | 1 | 15.38 | 13.95 | −1.42 |
 | 2 | 14.87 | 14.36 | −0.51 |
 
+![E107: adding the fixed structural rule lowers fitness for all three saved A genomes despite verified edge growth and pruning.](results/figures/e107-structural-diagnostic.png)
+
+*Fixed-genome comparison, not evolution with structural learning. [Exact data and source hashes](results/figures/e107-figure-data.json); rebuild with the [extension-figure generator](tools/build_extension_figures.py).*
+
 Actual added and pruned edges were recorded, with **zero structural validation errors**; all Weight-only/Frozen metrics exactly reproduced the saved controls. The capability works, but this particular rule hurt brains evolved without it. This does not establish that structural learning generally fails or answer whether evolution can adapt to the rule. The mode remains off by default. Exact measurements and edge ledgers are in the [lab notebook](experiments/LOG.md).
 
 **E108: does useful plasticity survive broader foraging conditions? — all seven panels complete.**
@@ -155,6 +159,10 @@ BROADER v1 evaluated the three saved A genomes, three blank references and one b
 | Dense food/poison: 36 items per type | +17.93 | +21.09 | +18.23 |
 | Low energy cost: decay 0.0015 | +14.56 | +15.40 | +15.49 |
 | High energy cost: decay 0.006 | +12.70 | +15.02 | +13.39 |
+
+![E108: learning-minus-Frozen fitness remains positive for all three saved A genomes in the control and four foraging-parameter shifts, with smaller gaps in sparse worlds.](results/figures/e108-parameter-shifts.png)
+
+*The three evolved A genomes on BROADER v1's final worlds. [Exact data and source hashes](results/figures/e108-figure-data.json); the same [generator](tools/build_extension_figures.py) rebuilds this figure.*
 
 The advantage persists, but its absolute size falls to **4.46–5.69** in sparse worlds versus **14.45–15.39** in controls. This is robustness within the same foraging parameter family, not transfer to a new task family or a state-of-the-art result.
 
