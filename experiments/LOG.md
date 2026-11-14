@@ -727,3 +727,41 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
   rows. Record this operational pass and approval status together, then launch only
   the already approved/preregistered full A0 panel. Remaining six full panels need
   coordinator review of its measured cost. No old run file was modified.
+
+## E108 final A0 result and cost benchmark · 2026-11-14
+
+- **Verified evidence:** `runs/20261114-231716_E108-final-A0/summary.json` is finished,
+  generation 0, final split, seed 8109, 128 worlds (64 each rule), default Cfg; clean
+  source `a45f51aa6d22010f56214ca73c2830c3019746e8`, input array hash
+  `ee8eaa10a7429cc5`. Every raw metric is finite. Input, genome_start and genome_final
+  files retain full SHA-256 `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`.
+- **Values copied from summary:**
+
+| Condition | Learning fitness | Frozen fitness | Signed advantage | Advantage minus control | Learning survival |
+|---|---:|---:|---:|---:|---:|
+| control | 14.763671875 | 0.314453125 | 14.44921875 | 0 | 0.84375 |
+| sparse | 5.099609375 | 0.044921875 | 5.0546875 | -9.39453125 | 0.7265625 |
+| dense | 18.404296875 | 0.470703125 | 17.93359375 | 3.484375 | 0.8671875 |
+| low-cost | 14.708984375 | 0.1484375 | 14.560546875 | 0.111328125 | 0.90234375 |
+| high-cost | 13.13671875 | 0.43359375 | 12.703125 | -1.74609375 | 0.693359375 |
+
+- Full first/second accuracy, both survival fractions, encounters and all signed shifts
+  are retained in the immutable summary. For example, sparse learning accuracy is
+  0.6292421817779541 -> 0.7466049194335938 with 7,159 encounters; high-cost learning
+  accuracy is 0.6870309710502625 -> 0.8254314064979553 with 13,564 encounters.
+- **Cost:** Exit 0, supervisor wall 172.5020589 s; summary eval_seconds
+  163.59399999999732. Sampled owned-tree private/resident maxima 1,306,451,968 /
+  729,059,328 bytes (1.217/0.679 GiB); minimum sampled available commit
+  17,480,540,160 bytes (16.280 GiB). All runtime guards remained satisfied. These are
+  sampled maxima, not guaranteed instantaneous peaks. Compact supervision evidence is
+  `experiments/E108_A0_SUPERVISION.json`. The other six panels would take about 17.25
+  minutes if each matched A0 wall time; this is an extrapolation, not a measurement.
+- **Interpretation:** A0 retains a positive plasticity advantage in all four shifts.
+  Sparse resources reduce its advantage by 9.39453125; high metabolic cost reduces
+  survival despite retained positive advantage. This measures robustness within the same
+  task family for one genome, not a three-seed finding, new-task transfer, or a recovery
+  result. Neither direction nor magnitude caused tuning or changes to BROADER v1.
+- **Decision:** Regenerated RESULTS (15 historical rows unchanged; five development and
+  five final condition rows), updated README with this limited result, and preserve all
+  artifacts together. Coordinator must review the cost before releasing remaining six
+  full panels. No extra scientific run is started yet; no gate/tag or full-suite claim.

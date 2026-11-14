@@ -1,0 +1,88 @@
+{
+  "args": {
+    "name": "E108-final-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "eval_worlds": 128,
+    "eval_protocol": "broader-v1",
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg_overrides": {},
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "git": {
+    "commit": "a45f51aa6d22010f56214ca73c2830c3019746e8",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-14T23:17:16.335182",
+  "eval_protocol": {
+    "name": "broader-v1",
+    "split": "final",
+    "seed": 8109,
+    "n_worlds": 128,
+    "rule_counts": {
+      "0": 64,
+      "1": 64
+    },
+    "conditions": {
+      "control": {},
+      "sparse": {
+        "n_items": 12
+      },
+      "dense": {
+        "n_items": 36
+      },
+      "low-cost": {
+        "decay": 0.0015
+      },
+      "high-cost": {
+        "decay": 0.006
+      }
+    },
+    "plasticity": {
+      "learning": true,
+      "frozen": false
+    }
+  },
+  "input_genome": {
+    "path": "runs\\20261112-023245_E103-A-blank-s0\\genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "start_genome_hash": "ee8eaa10a7429cc5",
+  "genome_size": 155,
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  }
+}

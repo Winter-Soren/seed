@@ -33,5 +33,11 @@ Development smoke `runs/20261114-231414_E108-D-A0-oneworld` passed from clean216
 63.8466413 s supervisor wall, sampled private/resident max975536128/399548416 bytes,
 input/copies byte-identical, all five conditions finite. Evidence in
 experiments/E108_D_A0_SUPERVISION.json; unit checks18 passed before smoke.
-Next: commit this record and launch full A0. Preserve sources, report actual cost/effects
-and wait for release of the remaining six full panels. No protocol or tuning changes.
+Full A0 passed: runs/20261114-231716_E108-final-A0, clean source a45f51a,
+172.5020589 s guard wall, 163.594 s evaluation; sampled private/resident max
+1306451968/729059328 bytes; min sampled available commit17480540160 bytes. Inputs/copies
+byte-identical, all metrics finite. Advantages control14.44921875, sparse5.0546875,
+dense17.93359375, low-cost14.560546875, high-cost12.703125. One genome only.
+Next: commit A0 artifacts/evidence/records; coordinator reviews actual cost before
+remaining six full panels. No process from this lab remains active. No protocol/tuning
+changes; EVAL v1 and all original historical artifacts remain unchanged. Push disabled.

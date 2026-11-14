@@ -31,3 +31,8 @@ Development rows are operational checks, not scientific generalization results. 
 | 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | dense | 26.7500 | 3.5000 | 23.2500 | 21676c5 |
 | 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | low-cost | 8.7500 | 1.2500 | 7.5000 | 21676c5 |
 | 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | high-cost | 8.7500 | -1.7500 | 10.5000 | 21676c5 |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | control | 14.7637 | 0.3145 | 14.4492 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | sparse | 5.0996 | 0.0449 | 5.0547 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | dense | 18.4043 | 0.4707 | 17.9336 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | low-cost | 14.7090 | 0.1484 | 14.5605 | a45f51a |
+| 20261114-231716_E108-final-A0 | finished | final | 8109 | 128 | high-cost | 13.1367 | 0.4336 | 12.7031 | a45f51a |

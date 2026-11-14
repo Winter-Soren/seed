@@ -4,6 +4,10 @@ Status: implementation and development fixtures authorized; **final scientific l
 requires owner approval of this exact protocol and a coordinated compute slot**.
 No final-world result is available. EVAL v1/v2 remain unchanged.
 
+Result update, 2026-11-14: the first final A0 panel is complete, with the result and
+measured cost appended to LOG.md. This supersedes the initial submission status above;
+the remaining six panels await coordinator cost review. Conditions/criteria are unchanged.
+
 Approval update, 2026-11-14: the owner answered “Approve BROADER v1” to the exact panel.
 The first A0 final panel has a coordinated bounded slot; later panels await its cost
 review. See the appended E108 approval/development records in LOG.md.

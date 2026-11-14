@@ -134,9 +134,14 @@ Complete these core comparisons before selecting the next research direction. Co
 
 A separate [BROADER v1 proposal](experiments/E108_BROADER_V1.md) prepares saved-genome
 tests under resource-density and metabolic-cost shifts. Its development fixtures are
-operational checks. The owner approved the protocol; a one-world development panel passed,
-and the first final panel is next in its coordinated slot. These conditions remain in
-the same food/poison task family. EVAL v1 is unchanged.
+operational checks. The owner approved the protocol; the first final panel (saved A0,
+128 fresh worlds, seed 8109) retains a positive learning-minus-frozen fitness difference
+in all conditions: control 14.449, sparse 5.055, dense 17.934, low-cost 14.561, high-cost
+12.703. Sparse resources reduce the advantage substantially. This is one evolved genome;
+A1/A2 and references await scheduling, so the three-seed hypothesis is unresolved.
+These conditions remain in the same food/poison task family. EVAL v1 is unchanged.
+See the [full A0 summary](runs/20261114-231716_E108-final-A0/summary.json) and appended
+[lab record](experiments/LOG.md) for all metrics, measured cost and limitations.
 
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 
