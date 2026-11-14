@@ -149,7 +149,17 @@ A0 took **144.61 minutes** and A2 **157.11 minutes** of combined process wall ti
 
 ## Explore the project
 
-The experimental E107 implementation adds optional lifetime growth/pruning among existing neurons. It is off by default, keeps the 155-value genome, and requires the explicitly labeled diagnostic flags `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`. Its fixed rule allows at most one extra incoming edge per non-sensor row relative to birth; new edges affect the next neural tick. `--no-plastic` conflicts with structural training; the Frozen diagnostic disables both. All 31 software tests pass, including isolated-neuron recruitment and exact structural ES checkpoint/replay. The [one-world operational benchmark](runs/20261114-231742_E107-benchmark-A0-one-world/summary.json) finished in 28.79 seconds with zero validation errors; structural fitness was 16.0 versus weight-only 16.25, so no improvement is established. The three fixed-genome 128-world comparisons remain queued. See E107 in the lab notebook for exact commands, resource measurements and limits.
+The experimental E107 implementation adds optional lifetime growth/pruning among existing neurons. It is off by default, keeps the 155-value genome, and requires the explicitly labeled diagnostic flags `--structural-plasticity activity-grow-prune-v1 --eval-protocol structural-v1`. Its fixed rule allows at most one extra incoming edge per non-sensor row relative to birth; new edges affect the next neural tick. `--no-plastic` conflicts with structural training; the Frozen diagnostic disables both. All 31 software tests pass, including isolated-neuron recruitment and exact structural ES checkpoint/replay.
+
+**Measured E107 result: this fixed rule lowers fitness on all three saved evolved genomes.** Each comparison uses the unchanged 128 evaluation worlds/seed 123, with zero evolution. All weight-only/frozen metrics exactly reproduce their EVAL v1 references, all structural validation errors are zero, and frozen turnover is zero.
+
+| Saved input | Weight-only fitness | Weight+structure | Signed change |
+|---|---:|---:|---:|
+| [A0](runs/20261114-232719_E107-structural-A-s0/summary.json) | 16.591796875 | 14.0 | -2.591796875 |
+| [A1](runs/20261114-232924_E107-structural-A-s1/summary.json) | 15.376953125 | 13.953125 | -1.423828125 |
+| [A2](runs/20261114-233501_E107-structural-A-s2/summary.json) | 14.8671875 | 14.359375 | -0.5078125 |
+
+Capability is demonstrated; a fitness improvement is not. These genomes evolved without the structural rule, so this does not establish that structural plasticity is generally harmful. The feature stays off by default and the rule will not be tuned on these evaluation worlds. Full-panel walls were 53.54/242.44/117.41 seconds on the shared host, with sampled peak private memory about 1.20–1.21 GiB. See E107 in the lab notebook for every metric, edge ledger, timing, provenance and limitation.
 
 | Path | Contents |
 |---|---|
