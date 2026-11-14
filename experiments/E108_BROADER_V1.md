@@ -4,6 +4,10 @@ Status: implementation and development fixtures authorized; **final scientific l
 requires owner approval of this exact protocol and a coordinated compute slot**.
 No final-world result is available. EVAL v1/v2 remain unchanged.
 
+Approval update, 2026-11-14: the owner answered “Approve BROADER v1” to the exact panel.
+The first A0 final panel has a coordinated bounded slot; later panels await its cost
+review. See the appended E108 approval/development records in LOG.md.
+
 ## Question, scope and fixed conditions
 
 Does the plasticity fitness advantage in the three saved E103 A genomes persist when

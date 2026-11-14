@@ -19,3 +19,15 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261112-224133_E105-C-noplastic-s0 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | -0.00 | 0.06 | 0.49 | 0.50 → 0.50 | 8b42128 |
 | 20261114-003141_E105-C-noplastic-s1 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.41 | 0.17 | 0.12 | 0.51 → 0.51 | 9e74270 |
 | 20261114-031608_E105-C-noplastic-s2 | running | blank | no | 158/200 | 128×8 | 0.1/0.1 |  |  |  |  |  | e2ca461 |
+
+## BROADER v1 (separate parameter-shift protocol)
+
+Development rows are operational checks, not scientific generalization results. Split/seed/world count are explicit; these are not EVAL v1 seed-123 scores. Full accuracy, survival, encounter counts and condition shifts are in each summary.json.
+
+| Run | Status | Split | Eval seed | Worlds | Condition | Learning | Frozen | Gap | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | control | 11.0000 | -0.2500 | 11.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | sparse | 4.7500 | 0.5000 | 4.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | dense | 26.7500 | 3.5000 | 23.2500 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | low-cost | 8.7500 | 1.2500 | 7.5000 | 21676c5 |
+| 20261114-231414_E108-D-A0-oneworld | finished | development | 8108 | 1 | high-cost | 8.7500 | -1.7500 | 10.5000 | 21676c5 |

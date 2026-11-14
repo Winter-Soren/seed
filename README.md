@@ -134,8 +134,9 @@ Complete these core comparisons before selecting the next research direction. Co
 
 A separate [BROADER v1 proposal](experiments/E108_BROADER_V1.md) prepares saved-genome
 tests under resource-density and metabolic-cost shifts. Its development fixtures are
-operational checks; final scientific evaluation awaits protocol approval and a compute
-slot. These conditions remain in the same food/poison task family. EVAL v1 is unchanged.
+operational checks. The owner approved the protocol; a one-world development panel passed,
+and the first final panel is next in its coordinated slot. These conditions remain in
+the same food/poison task family. EVAL v1 is unchanged.
 
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 

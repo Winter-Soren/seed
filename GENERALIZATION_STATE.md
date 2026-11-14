@@ -29,5 +29,9 @@ Authoritative memory checks use approved read-only CIM; initial unprivileged CIM
 Implementation committed as fcc1f6b. Human approval “Approve BROADER v1” verified in
 oversight; hold lifted for bounded fixtures and full A0 only. Startup C/D10 GiB,
 physical8/availablecommit10 GiB; runtime C5/D10/commit5 GiB, BelowNormal, max1200 s.
-Next: commit approval, development one-world smoke then full A0 panel. Preserve sources,
-report actual cost/effects and wait for release of the remaining six full panels.
+Development smoke `runs/20261114-231414_E108-D-A0-oneworld` passed from clean21676c5;
+63.8466413 s supervisor wall, sampled private/resident max975536128/399548416 bytes,
+input/copies byte-identical, all five conditions finite. Evidence in
+experiments/E108_D_A0_SUPERVISION.json; unit checks18 passed before smoke.
+Next: commit this record and launch full A0. Preserve sources, report actual cost/effects
+and wait for release of the remaining six full panels. No protocol or tuning changes.

@@ -706,3 +706,24 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
 - **Next:** Commit this authorization before launch; execute the registered one-world
   development A0 smoke, then the already registered full `E108-final-A0` command.
   Preserve every artifact and input byte. No final-split tuning or new training.
+
+## E108-D A0 one-world result · 2026-11-14 · Operational pass
+
+- `runs/20261114-231414_E108-D-A0-oneworld/summary.json` reports finished, zero
+  generations, development seed 8108, one rule-0 world, clean source `21676c5`, input
+  array hash `ee8eaa10a7429cc5`. All five conditions/ten evaluations have finite metrics.
+  Source and both genome copies match SHA-256
+  `477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53`.
+- **Measured cost:** Exit 0; supervisor wall 63.8466413 s; summary evaluation time
+  44.375 s. Sampled max owned-tree private memory 975,536,128 bytes (0.909 GiB), resident
+  399,548,416 bytes (0.372 GiB); minimum sampled available commit 15,805,693,952 bytes
+  (14.720 GiB). Sampling is not an upper bound on instantaneous peak memory. Compact
+  supervision evidence: `experiments/E108_D_A0_SUPERVISION.json`.
+- **Development scores only:** Control learning/frozen/gap 11/-0.25/11.25; sparse
+  4.75/0.5/4.25; dense 26.75/3.5/23.25; low-cost 8.75/1.25/7.5; high-cost
+  8.75/-1.75/10.5. These single-world scores establish no scientific generalization or
+  three-seed result and caused no change to the approved final protocol.
+- Regenerated RESULTS with 15 unchanged legacy rows plus five explicitly development
+  rows. Record this operational pass and approval status together, then launch only
+  the already approved/preregistered full A0 panel. Remaining six full panels need
+  coordinator review of its measured cost. No old run file was modified.
