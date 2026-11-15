@@ -4,6 +4,8 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
+**Current direction · 15 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. E109 is stopped at generation 62. Next, complete the unchanged B1/B2 runs and decide gate B; later phases wait. The external audit's seed-777 probes are unregistered and will be remeasured in Phase 1 before being relied on.
+
 **Latest verified findings · 14 Nov 2026:** the tested connection growth/pruning rule **lowered fitness in all 3 saved A genomes**. Separately, their plasticity advantage stayed positive under **all four registered foraging-parameter shifts in all 3 genomes**. All seven E108 panels are complete. [See the evidence and limits](#what-the-experiments-show).
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
@@ -73,6 +75,8 @@ Open the new folder under `runs/`: `config.json` records the settings and source
 The `--quick` smoke run is an **integration check only**, not research evidence. To explore the completed research without running compute, start with the [A seed 0 summary](runs/20261112-023245_E103-A-blank-s0/summary.json) and the results below. A [Colab notebook](notebooks/Seed_v0.ipynb) is also available; its runtime is not benchmarked here.
 
 ## What the experiments show
+
+The historical measurements below are point estimates without reported per-world standard errors. Phase 1's EVAL v3 diagnostics will remeasure saved genomes with standard errors and better learning measures; EVAL v1 and its original records remain unchanged. Do not read these point differences as significance estimates or assume exact reproduction across machines.
 
 **Experiment A: can evolution discover useful plasticity from a blank start? — PASS, 3/3 seeds.**
 
@@ -185,15 +189,15 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 | **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Seven panels complete; positive predictor contribution in all 3 evolved A genomes. |
 | **E107 · Structural plasticity** | Does connection growth/pruning help beyond weight updates? | Rewiring capability verified; adding the rule lowered fitness in all 3 saved A genomes. |
 | **E108 · Broader conditions** | How does adaptation hold beyond the original conditions? | Seven panels complete; all 3 A genomes retain a positive gap in all 4 shifts. |
-| **E109 · Structural evolution** | Can blank-start evolution run feasibly with the unchanged structural rule? | Full-population (128 × 8) run checkpointed at 62/200 generations; learning unmeasured. |
+| **E109 · Structural evolution** | Can blank-start evolution run feasibly with the unchanged structural rule? | Stopped by owner direction at 62/200 generations; preserved as interrupted, learning unmeasured. |
 
-E109 reached a normal scheduled stop at **62/200 generations**, with a finite checkpoint, preserved history/provenance and zero structural validation errors; **no held-out evaluation has run yet**. The warm median was **124.117 seconds per generation**, projecting **~4.76 training hours** for the remaining 138, excluding future compilation, evaluation and workload variation; sampled private memory peaked at **7.175 GiB**. The next step is another guarded **7,200-second continuation** in the same run folder after fresh resource checks.
+E109 remains **interrupted at 62/200 generations**, with its folder unchanged and **no held-out evaluation**. The owner stopped it because the tested rule lowered fitness in all three fixed-genome comparisons and the roughly **eight-hour single-seed cost estimate** was not justified. That estimate is not elapsed compute: its retained generation timings total **7,995.859 seconds**. No further E109 segment is planned.
 
-**B1/B2 remain planned.** B passes only if final fitness exceeds the prior's **5.12890625** in at least 2 of 3 seeds. A and B use different evolution settings, so their difference cannot isolate initialization alone. Existing 155-number genomes and default EVAL v1 behavior remain compatibility requirements; any adaptive-placement benefit claim also needs a fair static-capacity control.
+**B1/B2 are next.** B passes only if final fitness strictly exceeds the prior's **5.12890625** in at least 2 of 3 seeds after all three finish; otherwise report failure and stop for owner input. A and B use different evolution settings, so their difference cannot isolate initialization alone. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
 
-Connectome-informed wiring, eligibility traces, sleep/replay and overlapping-generation culture remain roadmap ideas, not implemented milestones or demonstrated capabilities.
+Later measurements, baselines, task rungs and the connectome comparison follow [PLAN.md](PLAN.md). Mechanisms are added only at its specified failed-rung decision points; no speculative side experiment is queued.
 
-The [research map](results/RESEARCH.md) compares Seed with related published work and proposes falsifiable next experiments. The results above are project milestones; novelty and competitive state-of-the-art performance remain unestablished.
+The [research map](results/RESEARCH.md) is background reading. PLAN.md, rather than earlier roadmap proposals, controls the next work.
 
 ## Reproduce a research run
 
@@ -229,6 +233,7 @@ A0 took **144.61 minutes** and A2 **157.11 minutes** of combined process wall ti
 | [scripts/run_experiment.py](scripts/run_experiment.py) | Tracked, resumable experiment runner. |
 | [results/RESULTS.md](results/RESULTS.md) | Generated index of recorded runs. |
 | [experiments/LOG.md](experiments/LOG.md) | Append-only hypotheses, results, incidents and decisions. |
+| [PLAN.md](PLAN.md) | Owner-approved research sequence, gates and reporting requirements. |
 | [HANDOFF.md](HANDOFF.md) | Original design and roadmap; use the current lab notebook for subsequent results and decisions. |
 | [AGENTS.md](AGENTS.md) | Research, integrity and resource rules. |
 
