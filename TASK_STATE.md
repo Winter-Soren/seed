@@ -19,11 +19,11 @@ The thesis is a question to test, not a result to assume.
 
 - B1 finished all 200 generations and its supervisor exited normally.
 - Its original history, registered settings and starting genome are preserved.
-- B2 is running from the published clean source under the unchanged guards.
+- B2 stopped normally at its scheduled checkpoint at 161 of 200 generations, without final evaluation.
 - No later plan item has started.
-- The B2 experimental worker monitors the sole heavy job; B1 is complete.
+- B2 continuation is prepared but not running; the latest process check found no Seed job.
 - Latest check: C: has 16.31 GiB free of 373.67 GiB; D: has 46.29 GiB free of 100 GiB.
-- B2 startup checks passed; the live guard monitors memory, disk space and wall time.
+- The latest check found 13.47 GiB physical memory and 24.80 GiB commit headroom; recheck before launch.
 
 ## What is next
 
