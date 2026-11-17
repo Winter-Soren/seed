@@ -19,17 +19,17 @@ The thesis is a question to test, not a result to assume.
 
 - B1 finished all 200 generations and its supervisor exited normally.
 - Its original history, registered settings and starting genome are preserved.
-- No heavy job is running; B2 awaits publication of B1 and a fresh guarded launch.
+- B2 is running from the published clean source under the unchanged guards.
 - No later plan item has started.
-- Separate experimental subagents own B1 and queued B2; the owner confirmed one heavy job at a time.
+- The B2 experimental worker monitors the sole heavy job; B1 is complete.
 - Latest check: C: has 16.31 GiB free of 373.67 GiB; D: has 46.29 GiB free of 100 GiB.
-- Available physical memory is 14.25 GiB; resource checks repeat at each launch.
+- B2 startup checks passed; the live guard monitors memory, disk space and wall time.
 
 ## What is next
 
 - Phase 0 item 1 is recorded: E109 stays stopped; there is no continuation queued.
-- Phase 0 item 2 is active: run B2 exactly as registered in E104, then close gate B.
-- Before B2, reassess today's compute and ask the owner before a segment could exceed the eight-hour limit.
+- Phase 0 item 2 is active: finish B2 exactly as registered in E104, then close gate B.
+- Before any continuation, reassess today's compute and ask before exceeding the eight-hour limit.
 - B passes only if at least two of all three seeds strictly exceed fitness 5.12890625.
 - If B fails, report it plainly and stop for owner input.
 - After B is decided, finish Phase 0 dependency pinning, dirty-check coverage and CI.
