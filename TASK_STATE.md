@@ -17,12 +17,12 @@ The thesis is a question to test, not a result to assume.
 
 ## What is running
 
-- B1 is safely checkpointed at 104 of 200 generations after a normal scheduled stop.
+- B1 is running its continuation from the preserved checkpoint at 104 of 200 generations.
 - Its settings and starting genome match B0, apart from the registered seed change.
-- Continuation is prepared but blocked by the unchanged eight-GiB physical-memory startup floor.
+- The owner freed memory; the unchanged startup checks passed and the guarded launch was verified.
 - B2 is waiting; no other heavy job or later plan item has started.
-- Latest check: C: has 15.44 GiB free of 373.67 GiB; D: has 46.29 GiB free of 100 GiB.
-- Physical memory has 5.37 GiB free; the owner was asked to free about three GiB before a fresh check.
+- Preflight check: C: had 15.44 GiB free of 373.67 GiB; D: had 46.29 GiB free of 100 GiB.
+- The live guard monitors memory, disk space and wall time; this snapshot is not a future guarantee.
 
 ## What is next
 
