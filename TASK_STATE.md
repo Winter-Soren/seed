@@ -21,6 +21,7 @@ The thesis is a question to test, not a result to assume.
 - Its settings and starting genome match B0, apart from the registered seed change.
 - The owner freed memory; the unchanged startup checks passed and the guarded launch was verified.
 - B2 is waiting; no other heavy job or later plan item has started.
+- Separate experimental subagents own B1 and queued B2; the owner confirmed one heavy job at a time.
 - Preflight check: C: had 15.44 GiB free of 373.67 GiB; D: had 46.29 GiB free of 100 GiB.
 - The live guard monitors memory, disk space and wall time; this snapshot is not a future guarantee.
 

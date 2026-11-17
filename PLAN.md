@@ -183,8 +183,9 @@ as success.
   mechanism or a side experiment until the current gate is decided and logged.
 - Preregister the gate in `experiments/LOG.md` before running and never change it
   afterward.
-- Use subagents only for support work such as tests, documentation and figures,
-  never for extra experiments. Keep one heavy compute job at a time.
+- Owner amendment, 17 November 2026: subagents may run the registered experiments
+  under the main coordinator, as well as support work. The owner explicitly
+  confirmed: keep one heavy compute job at a time.
 - Keep `TASK_STATE.md` under 60 lines of plain English and README current.
 - After each phase, provide the five-line report above, then continue.
 - Stop and ask the owner when a gate fails, this plan is ambiguous, something in
