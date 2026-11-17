@@ -4,7 +4,9 @@ import hashlib
 import io
 import json
 from pathlib import Path
+import subprocess
 import tempfile
+import types
 import unittest
 from unittest.mock import patch
 
@@ -22,11 +24,24 @@ class EngineCompatibilityTests(unittest.TestCase):
     def setUpClass(cls):
         fixtures = Path(__file__).parent / "fixtures"
         cls.meta = json.loads((fixtures / "eval_v1_compatibility.json").read_text())
-        cls.expected = np.load(fixtures / "eval_v1_compatibility.npz")
+        source = subprocess.run(["git", "show", f"{cls.meta['source_commit']}:seed/seed.py"],
+                                cwd=fixtures.parents[1], capture_output=True, check=True, timeout=10).stdout
+        if hashlib.sha256(source).hexdigest() != cls.meta["engine_sha256"]:
+            raise AssertionError("Historical engine source does not match the fixture metadata")
+        cls.legacy = types.ModuleType("legacy_eval_v1")
+        exec(compile(source, "legacy_eval_v1.py", "exec"), cls.legacy.__dict__)
         cls.c = seed.Cfg(**cls.meta["cfg"])
         cls.g = seed.init_genome(cls.c, jax.random.PRNGKey(cls.meta["genome_seed"]))
         cls.g["mod"] = jnp.array(cls.meta["mod"])
         cls.mu = ravel_pytree(cls.g)[0]
+        cls.legacy_c = cls.legacy.Cfg(**cls.meta["cfg"])
+        cls.legacy_g = cls.legacy.init_genome(cls.legacy_c, jax.random.PRNGKey(cls.meta["genome_seed"]))
+        cls.legacy_g["mod"] = jnp.array(cls.meta["mod"])
+
+    def assert_tree_equal(self, actual, expected):
+        self.assertEqual(jax.tree.structure(actual), jax.tree.structure(expected))
+        for a, b in zip(jax.tree.leaves(actual), jax.tree.leaves(expected)):
+            np.testing.assert_array_equal(a, b)
 
     def rollout(self, plastic, **kwargs):
         m = self.meta
@@ -34,18 +49,25 @@ class EngineCompatibilityTests(unittest.TestCase):
                             jax.random.PRNGKey(m["development_seed"]), m["rule"],
                             self.c, plastic, True, **kwargs)
 
-    def test_default_and_explicit_modes_match_prechange_v1_fixture(self):
+    def test_default_and_explicit_modes_match_prechange_v1_on_same_machine(self):
+        # Archived laptop floats are not a cross-machine oracle; rerun the pinned engine here.
+        self.assert_tree_equal(self.g, self.legacy_g)
+        legacy_mu = ravel_pytree(self.legacy_g)[0]
+        m = self.meta
         for name, plastic in (("both", True), ("frozen", False)):
+            expected = self.legacy.rollout(self.legacy_g, jax.random.PRNGKey(m["world_seed"]),
+                                          jax.random.PRNGKey(m["development_seed"]), m["rule"],
+                                          self.legacy_c, plastic, True)
+            expected_eval = self.legacy.test_genome(legacy_mu, self.legacy_c,
+                                                   n_worlds=m["evaluation_worlds"],
+                                                   seed=m["evaluation_seed"], plastic=plastic)
             for kwargs in ({}, {"predictor_plastic": plastic}):
                 with self.subTest(name=name, kwargs=kwargs):
                     result = self.rollout(plastic, **kwargs)
-                    for key, value in result.items():
-                        leaves = value.items() if isinstance(value, dict) else [(None, value)]
-                        for child, array in leaves:
-                            path = f"{name}__{key}" + (f"__{child}" if child else "")
-                            np.testing.assert_array_equal(array, self.expected[path], err_msg=path)
-                    self.assertEqual(seed.test_genome(self.mu, self.c, n_worlds=4, plastic=plastic,
-                                                      seed=123, **kwargs), self.meta["evaluations"][name])
+                    self.assert_tree_equal(result, expected)
+                    self.assertEqual(seed.test_genome(self.mu, self.c, n_worlds=m["evaluation_worlds"],
+                                                      plastic=plastic, seed=m["evaluation_seed"], **kwargs),
+                                     expected_eval)
 
     def test_predictor_only_is_behaviorally_identical_to_frozen(self):
         frozen = self.rollout(False, predictor_plastic=False)
