@@ -20,7 +20,7 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261114-003141_E105-C-noplastic-s1 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.41 | 0.17 | 0.12 | 0.51 → 0.51 | 9e74270 |
 | 20261114-031608_E105-C-noplastic-s2 | finished | blank | no | 200/200 | 128×8 | 0.1/0.1 |  | 0.23 | 0.09 | 0.64 | 0.50 → 0.50 | e2ca461 |
 | 20261115-122040_E104-B-bio-s1 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 16.60 | -0.20 | 0.70 → 0.84 | 12837a7 |
-| 20261117-070747_E104-B-bio-s2 | interrupted | biology | yes | 161/200 | 128×8 | 0.05/0.02 |  |  |  |  |  | ec2d0b8 |
+| 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 
 ## EVAL v2 diagnostics
 
