@@ -6,8 +6,8 @@ The thesis is a question to test, not a result to assume.
 ## What is known
 
 - A met its original stationary-world criterion in all three evolution seeds.
-- B has one completed seed: fitness 15.90234375 versus the biology prior's 5.12890625.
-- B's gate remains undecided until B1 and B2 finish under the existing registration.
+- B0 and B1 finished: fitness 15.90234375 and 16.6015625 versus the prior's 5.12890625.
+- These point estimates have no standard errors; B's gate stays open until B2 finishes.
 - Adding the tested structural rule lowered observed fitness in all three saved A genomes.
 - E109 is stopped by owner direction at 62 of 200 generations, with status interrupted.
 - Its folder remains untouched; no final evaluation or third training segment occurred.
@@ -17,18 +17,18 @@ The thesis is a question to test, not a result to assume.
 
 ## What is running
 
-- B1 is running its continuation from the preserved checkpoint at 104 of 200 generations.
-- Its settings and starting genome match B0, apart from the registered seed change.
-- The owner freed memory; the unchanged startup checks passed and the guarded launch was verified.
-- B2 is waiting; no other heavy job or later plan item has started.
+- B1 finished all 200 generations and its supervisor exited normally.
+- Its original history, registered settings and starting genome are preserved.
+- No heavy job is running; B2 awaits publication of B1 and a fresh guarded launch.
+- No later plan item has started.
 - Separate experimental subagents own B1 and queued B2; the owner confirmed one heavy job at a time.
-- Preflight check: C: had 15.44 GiB free of 373.67 GiB; D: had 46.29 GiB free of 100 GiB.
-- The live guard monitors memory, disk space and wall time; this snapshot is not a future guarantee.
+- Latest check: C: has 16.31 GiB free of 373.67 GiB; D: has 46.29 GiB free of 100 GiB.
+- Available physical memory is 14.25 GiB; resource checks repeat at each launch.
 
 ## What is next
 
 - Phase 0 item 1 is recorded: E109 stays stopped; there is no continuation queued.
-- Phase 0 item 2 is active: finish B1, then B2, exactly as registered in E104.
+- Phase 0 item 2 is active: run B2 exactly as registered in E104, then close gate B.
 - Before B2, reassess today's compute and ask the owner before a segment could exceed the eight-hour limit.
 - B passes only if at least two of all three seeds strictly exceed fitness 5.12890625.
 - If B fails, report it plainly and stop for owner input.

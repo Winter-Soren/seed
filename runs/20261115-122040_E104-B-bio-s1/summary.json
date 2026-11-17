@@ -1,6 +1,28 @@
 {
-  "status": "interrupted",
-  "generation": 104,
-  "train_minutes": 120.7,
-  "final_genome_hash": "2c8602cc009e237a"
+  "status": "finished",
+  "generation": 200,
+  "train_minutes": 70.34,
+  "final_genome_hash": "f5926f31fe4620c7",
+  "eval_worlds": 128,
+  "final_learning": {
+    "fitness": 16.6015625,
+    "acc_first": 0.6967145800590515,
+    "acc_second": 0.8435701727867126,
+    "survived": 0.83984375,
+    "eaten": 16026
+  },
+  "final_frozen": {
+    "fitness": -0.203125,
+    "acc_first": 0.489565372467041,
+    "acc_second": 0.500990092754364,
+    "survived": 0.359375,
+    "eaten": 7748
+  },
+  "start_learning": {
+    "fitness": 5.12890625,
+    "acc_first": 0.5685573816299438,
+    "acc_second": 0.6739441156387329,
+    "survived": 0.6015625,
+    "eaten": 11618
+  }
 }
