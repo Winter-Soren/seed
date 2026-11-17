@@ -380,6 +380,7 @@ def main():
                     break
                 g0 = time.monotonic()
                 state, row = es_step(state, evaluate, args["pop"], args["worlds"], args["sigma"], args["lr"])
+                jax.block_until_ready(state)
                 row["seconds"] = round(time.monotonic() - g0, 3)
                 mf.write(json.dumps(row) + "\n"); mf.flush()
                 if row["gen"] % 10 == 0 or state["t"] == args["generations"]:

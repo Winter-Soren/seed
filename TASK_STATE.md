@@ -20,8 +20,8 @@ The thesis is a question to test, not a result to assume.
 
 - No experiment is running; B2 finished normally and all final evaluations are recorded.
 - Original histories, registered settings and starting genomes are preserved.
-- Hosted CI failed four cases comparing laptop arrays across machines; the engine is unchanged.
-- The prior disk check found C: 16.31 GiB free of 373.67 GiB and D: 46.29 GiB free of 100 GiB.
+- The same-machine compatibility correction passed all 74 tests locally and in hosted CI.
+- The latest test guard observed C: 15.83 GiB free of 373.67 GiB and D: 46.28 GiB free of 100 GiB.
 - Recheck memory, disk space and daily compute before any new run.
 - The oversight chat handles Brave/Colab preparation; this chat owns code, publication and compute order.
 
@@ -29,8 +29,8 @@ The thesis is a question to test, not a result to assume.
 
 - Phase 0 item 1 is recorded: E109 stays stopped; there is no continuation queued.
 - Phase 0 item 2 is complete: all three seeds strictly exceeded fitness 5.12890625; two were required.
-- The corrected exact same-machine compatibility oracle passes all 74 local tests.
-- Verify hosted CI before completing Phase 0 item 3.
+- Phase 0 items 3 and 4 are verified: pinned packages, source checks, hosted CI and compact handoff.
+- E111 is preregistered: verify its timing correction in CI, then run one CPU generation and one free-T4 generation.
 - Before new compute, reassess today's total and ask before exceeding the eight-hour limit.
 - Keep this handoff below 60 lines and benchmark one generation on a free Colab GPU.
 - If the GPU is at least five times faster, propose migration and wait for the owner.

@@ -230,6 +230,27 @@ class RunnerSchedulingTests(unittest.TestCase):
         np.testing.assert_array_equal(np.load(split / "genome_final.npy"),
                                       np.load(whole / "genome_final.npy"))
 
+    def test_generation_timing_includes_optimizer_state_completion(self):
+        completed = []
+
+        def delayed_ready(state):
+            completed.append(state)
+            self.now += 3.0
+            return state
+
+        with patch.object(runner.jax, "block_until_ready", side_effect=delayed_ready):
+            self.invoke("--name", "completion", "--generations", "3", "--pop", "4", "--worlds", "2",
+                        "--max-train-seconds", "6")
+        directory = self.run_dir("completion")
+        rows = [json.loads(line) for line in (directory / "metrics.jsonl").read_text().splitlines()]
+        self.assertEqual([row["seconds"] for row in rows], [5.0, 5.0])
+        self.assertEqual([state["t"] for state in completed], [1, 2])
+        self.assertEqual(set(completed[-1]), {"mu", "m", "v", "t", "key"})
+        for key, value in runner.load_checkpoint(directory).items():
+            np.testing.assert_array_equal(completed[-1][key], value, err_msg=key)
+        summary = self.read_json(directory, "summary.json")
+        self.assertEqual((summary["status"], summary["generation"]), ("interrupted", 2))
+
     def test_default_quick_and_zero_generation_runs_still_finish(self):
         for name, args, target in (("default", ["--generations", "4"], 4),
                                    ("quick", ["--quick"], 3),
