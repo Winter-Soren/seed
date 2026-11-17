@@ -194,3 +194,6 @@ as success.
   findings as review comments: fix them or answer them in the LOG before moving
   on. The reviewer cannot change the plan; only the owner can.
 - Never claim AGI, general intelligence, novelty or state of the art.
+- Owner workflow update, 15 November 2026: create no new pull requests until the
+  owner re-enables them, and do not request routine pull-request reviews. This
+  changes publication workflow only, not gates or approval requirements.

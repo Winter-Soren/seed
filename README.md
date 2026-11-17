@@ -4,7 +4,7 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 15 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. E109 is stopped at generation 62. Next, complete the unchanged B1/B2 runs and decide gate B; later phases wait. The external audit's seed-777 probes are unregistered and will be remeasured in Phase 1 before being relied on.
+**Current direction · 17 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. E109 is stopped at generation 62. B1 is checkpointed at 104/200 with its registered settings; continuation awaits sufficient free memory and B2 is pending. Complete both and decide gate B before later work. The external audit's seed-777 probes are unregistered and will be remeasured in Phase 1 before being relied on.
 
 **Latest verified findings · 14 Nov 2026:** the tested connection growth/pruning rule **lowered fitness in all 3 saved A genomes**. Separately, their plasticity advantage stayed positive under **all four registered foraging-parameter shifts in all 3 genomes**. All seven E108 panels are complete. [See the evidence and limits](#what-the-experiments-show).
 
@@ -98,7 +98,7 @@ Values are rounded here. Exact measurements are in the [seed 0](runs/20261112-02
 
 **Experiment B: can gentle evolution improve the biology prior? — one successful seed; full gate pending.**
 
-After 200 generations, B seed 0 reached **15.90** learning fitness versus the prior's **5.13**, an improvement of **10.77**. Frozen fitness was **-0.05**, a learning-minus-frozen gap of **15.95**. Pooled food-choice accuracy rose **68.57% → 83.53%** (**+14.96 percentage points**). This seed exceeds B's preregistered reference; the full gate requires success in at least 2 of 3 seeds and awaits B1/B2. Exact measurements are in the [B seed 0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json).
+After 200 generations, B seed 0 reached **15.90** learning fitness versus the prior's **5.13**, an improvement of **10.77**. Frozen fitness was **-0.05**, a learning-minus-frozen gap of **15.95**. Pooled food-choice accuracy rose **68.57% → 83.53%** (**+14.96 percentage points**). This seed exceeds B's preregistered reference; the full gate requires success in at least 2 of 3 seeds. B1 stopped normally at a scheduled **104/200 checkpoint** and awaits continuation; B2 is pending. Neither has a final evaluation yet. Exact measurements are in the [B seed 0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json).
 
 **Experiment C: how does plastic evolution compare with a matched nonplastic control? — complete; all 3 seed pairs favor plastic evolution.**
 
@@ -184,7 +184,7 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 |---|---|---|
 | **E100 · References** | How do random genomes and the biology prior behave under EVAL v1? | Measured; starting points recorded. |
 | **E103 · A** | Can blank-start evolution reach the learning criterion? | **Passed in 3/3 seeds.** |
-| **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seeds 1/2 pending. Full gate pending. |
+| **E104 · B** | Can gentle evolution improve the biology prior? | Seed 0 exceeds the prior; seed 1 checkpointed at 104/200, seed 2 pending. Full gate pending. |
 | **C · Nonplastic control** | How does A compare with independently evolved agents whose plasticity is disabled? | Complete; all 3 seed pairs favor A within the matched encoding and budget. |
 | **E106 · Mechanism diagnostic** | What does predictor learning contribute beyond Hebbian learning? | Seven panels complete; positive predictor contribution in all 3 evolved A genomes. |
 | **E107 · Structural plasticity** | Does connection growth/pruning help beyond weight updates? | Rewiring capability verified; adding the rule lowered fitness in all 3 saved A genomes. |
@@ -193,7 +193,7 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 
 E109 remains **interrupted at 62/200 generations**, with its folder unchanged and **no held-out evaluation**. The owner stopped it because the tested rule lowered fitness in all three fixed-genome comparisons and the roughly **eight-hour single-seed cost estimate** was not justified. That estimate is not elapsed compute: its retained generation timings total **7,995.859 seconds**. No further E109 segment is planned.
 
-**B1/B2 are next.** B passes only if final fitness strictly exceeds the prior's **5.12890625** in at least 2 of 3 seeds after all three finish; otherwise report failure and stop for owner input. A and B use different evolution settings, so their difference cannot isolate initialization alone. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
+**B1's continuation from 104/200 is prepared; B2 is pending.** B passes only if final fitness strictly exceeds the prior's **5.12890625** in at least 2 of 3 seeds after all three finish; otherwise report failure and stop for owner input. A and B use different evolution settings, so their difference cannot isolate initialization alone. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
 
 Later measurements, baselines, task rungs and the connectome comparison follow [PLAN.md](PLAN.md). Mechanisms are added only at its specified failed-rung decision points; no speculative side experiment is queued.
 

@@ -1,6 +1,6 @@
 # Current state
 
-Updated 15 November 2026. Follow [PLAN.md](PLAN.md) in order under [AGENTS.md](AGENTS.md).
+Updated 17 November 2026. Follow [PLAN.md](PLAN.md) in order under [AGENTS.md](AGENTS.md).
 The thesis is a question to test, not a result to assume.
 
 ## What is known
@@ -17,16 +17,18 @@ The thesis is a question to test, not a result to assume.
 
 ## What is running
 
-- No Seed experiment was running at the latest authoritative process check.
-- The latest memory and disk checks passed the existing startup requirements.
-- B1 has not launched; it awaits this documentation commit and its guarded startup.
-- C: has about 13.68 GiB free of 373.67 GiB; D: has about 46.29 GiB free of 100 GiB.
-- Recheck actual headroom before launch; do not rely on this snapshot alone.
+- B1 is safely checkpointed at 104 of 200 generations after a normal scheduled stop.
+- Its settings and starting genome match B0, apart from the registered seed change.
+- Continuation is prepared but blocked by the unchanged eight-GiB physical-memory startup floor.
+- B2 is waiting; no other heavy job or later plan item has started.
+- Latest check: C: has 15.44 GiB free of 373.67 GiB; D: has 46.29 GiB free of 100 GiB.
+- Physical memory has 5.37 GiB free; the owner was asked to free about three GiB before a fresh check.
 
 ## What is next
 
 - Phase 0 item 1 is recorded: E109 stays stopped; there is no continuation queued.
-- Next, run B1 and B2 exactly as registered in E104, one heavy job at a time.
+- Phase 0 item 2 is active: finish B1, then B2, exactly as registered in E104.
+- Before B2, reassess today's compute and ask the owner before a segment could exceed the eight-hour limit.
 - B passes only if at least two of all three seeds strictly exceed fitness 5.12890625.
 - If B fails, report it plainly and stop for owner input.
 - After B is decided, finish Phase 0 dependency pinning, dirty-check coverage and CI.
@@ -40,6 +42,7 @@ The thesis is a question to test, not a result to assume.
 - Use three seeds for claims, one heavy job at a time, and less than three hours per run.
 - Ask before stopping any laptop service, every time; earlier blanket permission no longer applies.
 - Keep the repository private and follow every AGENTS.md ask-first rule.
+- Create no new pull requests or routine pull-request reviews until the owner re-enables them.
 - Stop for a failed gate, ambiguity, infeasibility or required owner decision.
 - Review findings must be fixed or answered in the LOG; only the owner can change the plan.
 - Give the five-line report from PLAN.md after each phase, with measured uncertainty.
