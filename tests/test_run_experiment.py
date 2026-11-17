@@ -3,6 +3,7 @@ import contextlib
 import io
 import json
 from pathlib import Path
+import subprocess
 import tempfile
 import unittest
 from unittest.mock import patch
@@ -10,6 +11,75 @@ from unittest.mock import patch
 import numpy as np
 
 from scripts import run_experiment as runner
+
+
+class GitInfoTests(unittest.TestCase):
+    def setUp(self):
+        scratch = runner.ROOT / ".tmp"
+        scratch.mkdir(exist_ok=True)
+        self.temp = tempfile.TemporaryDirectory(dir=scratch)
+        self.addCleanup(self.temp.cleanup)
+        self.root = Path(self.temp.name)
+        self.git("init", "-q")
+        (self.root / "tracked.txt").write_text("original\n")
+        (self.root / ".gitignore").write_text("*/ignored.py\n")
+        self.git("add", ".")
+        self.git("-c", "user.name=Seed test fixture", "-c", "user.email=test@example.invalid",
+                 "-c", "commit.gpgSign=false", "commit", "-qm", "fixture")
+        root_patch = patch.object(runner, "ROOT", self.root)
+        root_patch.start()
+        self.addCleanup(root_patch.stop)
+
+    def git(self, *args):
+        return subprocess.run(["git", *args], cwd=self.root, capture_output=True,
+                              text=True, check=True, timeout=10).stdout.strip()
+
+    def test_untracked_nested_source_blocks_run_before_artifacts(self):
+        for directory in ("seed", "scripts"):
+            with self.subTest(directory=directory):
+                source = self.root / directory / "nested" / "new.py"
+                source.parent.mkdir(parents=True)
+                source.write_text("# uncommitted source\n")
+                try:
+                    self.assertTrue(runner.git_info()["dirty"])
+                    with (patch.object(runner.sys, "argv", ["run_experiment.py"]),
+                          self.assertRaisesRegex(SystemExit, "Uncommitted code")):
+                        runner.main()
+                    self.assertFalse((self.root / "runs").exists())
+                finally:
+                    source.unlink()
+        self.assertFalse(runner.git_info()["dirty"])
+
+    def test_untracked_scratch_and_ignored_source_remain_clean(self):
+        (self.root / "scratch.txt").write_text("not source\n")
+        for directory in ("seed", "scripts"):
+            ignored = self.root / directory / "ignored.py"
+            ignored.parent.mkdir()
+            ignored.write_text("# ignored source\n")
+        info = runner.git_info()
+        self.assertFalse(info["dirty"])
+        self.assertEqual(info["commit"], self.git("rev-parse", "HEAD"))
+        self.assertEqual(info["branch"], self.git("rev-parse", "--abbrev-ref", "HEAD"))
+
+    def test_tracked_changes_remain_dirty_before_and_after_staging(self):
+        (self.root / "tracked.txt").write_text("changed\n")
+        self.assertTrue(runner.git_info()["dirty"])
+        self.git("add", "tracked.txt")
+        self.assertTrue(runner.git_info()["dirty"])
+
+    def test_git_errors_fail_closed(self):
+        for error in (FileNotFoundError("git unavailable"),
+                      subprocess.CalledProcessError(128, ["git", "rev-parse", "HEAD"]),
+                      subprocess.TimeoutExpired(["git", "status"], 10)):
+            with (self.subTest(error=type(error).__name__),
+                  patch.object(runner.subprocess, "run", side_effect=error),
+                  self.assertRaisesRegex(SystemExit, "Cannot verify Git state")):
+                runner.git_info()
+
+    def test_git_nonzero_exit_fails_closed(self):
+        self.git("config", "core.worktree", str(self.root / "missing-worktree"))
+        with self.assertRaisesRegex(SystemExit, "Cannot verify Git state"):
+            runner.git_info()
 
 
 class RunnerSchedulingTests(unittest.TestCase):

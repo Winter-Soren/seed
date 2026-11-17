@@ -4,7 +4,7 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 17 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. All three B runs are complete and pass B's original point-estimate criterion. E109 stays stopped at generation 62. Next is Phase 0 housekeeping: pin dependencies, include untracked `seed/` and `scripts/` files in the runner's dirty check, and add test CI. No experiment is running. These EVAL v1 measurements lack per-world standard errors; Phase 1 supplies the improved measurements. The external audit's seed-777 probes remain unregistered and unverified.
+**Current direction · 17 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. All three B runs are complete and pass B's original point-estimate criterion. E109 stays stopped at generation 62. Phase 0 dependency pins, untracked-source checks and test CI are implemented; all 74 local tests pass, with the first hosted CI run pending. No experiment is running. These EVAL v1 measurements lack per-world standard errors; Phase 1 supplies the improved measurements. The external audit's seed-777 probes remain unregistered and unverified.
 
 **Latest gate decision · 17 Nov 2026:** biology-start evolution reached fitness **15.90234375, 16.6015625 and 15.326171875**, each above the prior's **5.12890625**. B's original gate therefore **passes in 3/3 seeds**; it required at least 2/3. This is the registered EVAL v1 point-estimate comparison, without standard errors. Earlier fixed-genome tests found that the tested growth/pruning rule lowered fitness in all three A genomes, while their plasticity advantage remained positive across all four registered foraging-parameter shifts. [See the evidence and limits](#what-the-experiments-show).
 
@@ -37,7 +37,7 @@ The current world is a 16 × 16 wrapping grid. Four related agents live for up t
 
 ## Try a small run
 
-Open a terminal in the root of your local Seed checkout; cloning this private repository requires access. Start with a clean Git checkout and no other Seed job running. The verified environment is **Python 3.12 with JAX on CPU, on Windows**. The macOS/Linux commands are provided for setup but have not been exercised here.
+Open a terminal in the root of your local Seed checkout; cloning this private repository requires access. Start with a clean Git checkout and no other Seed job running. The verified environment is **Python 3.12.10 with JAX on CPU, on Windows**. `requirements.txt` pins its installed package versions, including JAX and jaxlib 0.12.0.1. The macOS/Linux commands are provided for setup but have not been exercised here.
 
 **Windows · PowerShell**
 
@@ -73,6 +73,8 @@ $env:PYTHONUTF8 = '1'
 Open the new folder under `runs/`: `config.json` records the settings and source commit, `metrics.jsonl` records training progress, and `summary.json` contains the evaluations—learning/frozen for default EVAL v1 runs, or the named conditions for EVAL v2. The generated [results table](results/RESULTS.md) gives an overview of recorded runs.
 
 The `--quick` smoke run is an **integration check only**, not research evidence. To explore the completed research without running compute, start with the [A seed 0 summary](runs/20261112-023245_E103-A-blank-s0/summary.json) and the results below. A [Colab notebook](notebooks/Seed_v0.ipynb) is also available; its runtime is not benchmarked here.
+
+Run the test suite with `python -X utf8 -m unittest discover -s tests -v` after creating `.tmp/`. Compatibility tests require the full Git history. The [CI workflow](.github/workflows/tests.yml) uses Windows and the pinned environment; exact reproduction across different machines is not guaranteed.
 
 ## What the experiments show
 
@@ -201,7 +203,7 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 
 E109 remains **interrupted at 62/200 generations**, with its folder unchanged and **no held-out evaluation**. The owner stopped it because the tested rule lowered fitness in all three fixed-genome comparisons and the roughly **eight-hour single-seed cost estimate** was not justified. That estimate is not elapsed compute: its retained generation timings total **7,995.859 seconds**. No further E109 segment is planned.
 
-**Gate B is decided; Phase 0 housekeeping is next.** Pin exact dependency versions, make the runner's dirty check include untracked files under `seed/` and `scripts/`, and add a CI workflow for the test suite. Keep the compact handoff current, then benchmark one generation on a free Colab GPU against the laptop. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
+**Gate B is decided; Phase 0 housekeeping is underway.** Exact dependency pins and the runner's untracked-source check pass all 74 local tests. The new CI workflow awaits its first hosted verification. Next, keep the compact handoff current and benchmark one generation on a free Colab GPU against the laptop. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
 
 Later measurements, baselines, task rungs and the connectome comparison follow [PLAN.md](PLAN.md). Mechanisms are added only at its specified failed-rung decision points; no speculative side experiment is queued.
 

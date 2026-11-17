@@ -36,11 +36,13 @@ from scripts import broader_eval, reversal_eval
 def git_info():
     def run(*a):
         try:
-            return subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True, timeout=10).stdout.strip()
-        except Exception:
-            return ""
+            return subprocess.run(["git", *a], cwd=ROOT, capture_output=True, text=True,
+                                  timeout=10, check=True).stdout.strip()
+        except (OSError, subprocess.SubprocessError) as error:
+            raise SystemExit(f"Cannot verify Git state: {error}") from error
     return dict(commit=run("rev-parse", "HEAD"), branch=run("rev-parse", "--abbrev-ref", "HEAD"),
-                dirty=bool(run("status", "--porcelain", "--untracked-files=no")))
+                dirty=bool(run("status", "--porcelain", "--untracked-files=no")
+                           or run("ls-files", "--others", "--exclude-standard", "--", "seed/", "scripts/")))
 
 
 def genome_hash(x):
