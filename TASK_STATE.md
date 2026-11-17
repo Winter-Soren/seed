@@ -20,6 +20,7 @@ The thesis is a question to test, not a result to assume.
 
 - The CPU benchmark finished at 95.265 seconds for one cold generation.
 - No Seed job is running; the GPU source upload was blocked before any transfer.
+- Colab setup observations are saved; raw-log download is unverified and runtime files may expire.
 - Original histories, registered settings and starting genomes are preserved.
 - Hosted CI passed all 75 tests, including exact compatibility and synchronized generation timing.
 - The latest CPU guard observed C: 15.83 GiB free of 373.67 GiB and D: 46.28 GiB free of 100 GiB.

@@ -1,0 +1,43 @@
+{
+  "record_type": "browser-observed setup facts; not an exported original log",
+  "status": "setup_verified_gpu_benchmark_not_started",
+  "notebook_sha256": "ae39ff4c429a7ebc2c44a50c2747b2ca0223e84a907a6f676668aeea30c3f827",
+  "registered_source_commit": "c4bb5ce0e78444fd7913d4b04f822b7b34bd6452",
+  "python": "3.13.16",
+  "platform": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "gpu": "Tesla T4",
+  "gpu_memory_mib": 15360,
+  "driver": "580.82.07",
+  "backend": "gpu",
+  "devices": [
+    "cuda:0"
+  ],
+  "venv": "/content/seed-benchmark-venv",
+  "all_16_core_pins_match": true,
+  "jax": "0.12.0.1",
+  "jaxlib": "0.12.0.1",
+  "jax_cuda13_plugin": "0.12.0.1",
+  "jax_cuda13_pjrt": "0.12.0.1",
+  "numpy": "2.5.4",
+  "pip_check": "No broken requirements found.",
+  "successful_install_seconds": 95.342293767,
+  "initial_setup_failure": "venv ensurepip exited 1; partial environment preserved and bootstrapped using base pip --python",
+  "source_bundle_uploaded": false,
+  "manifest_uploaded": false,
+  "seed_checkout_exists": false,
+  "seed_gpu_run_started": false,
+  "blocker": "Automatic approval review rejected private source bundle and manifest upload to Colab pending specific owner authorization.",
+  "approval_requested": true,
+  "cloud_setup_archive": "/content/E111-colab-setup.zip",
+  "cloud_setup_logs": [
+    "/content/seed-setup-retry.log",
+    "/content/seed-gpu-environment.json",
+    "/content/E111-colab-setup-state.json"
+  ],
+  "raw_archive_download_verified": false,
+  "runtime_files_are_ephemeral": true,
+  "notebook_handoff_marked": true,
+  "omitted_private_fields": [
+    "notebook_url"
+  ]
+}
