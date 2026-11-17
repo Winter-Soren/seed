@@ -1,0 +1,5 @@
+gen    0 | fitness mean   3.70 best   7.97 | food-choice accuracy 1st half 0.57 -> 2nd half 0.63 | survived 0.56 | 95.3s/gen
+final_learning  fitness   6.22 | acc 0.59 -> 0.68
+final_frozen    fitness   0.19 | acc 0.51 -> 0.50
+start_learning  fitness   5.13 | acc 0.57 -> 0.67
+run folder: D:\cool-projects\general-intelligence\runs\20261118-031323_E111-benchmark-cpu

@@ -1,0 +1,17 @@
+{"processor":[{"Name":"13th Gen Intel(R) Core(TM) i7-1370P","NumberOfCores":14,"NumberOfLogicalProcessors":20}],"freeD":49694494720,"arguments":["-X","utf8","scripts/run_experiment.py","--name","E111-benchmark-cpu","--start","file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy","--sigma","0.05","--lr","0.02","--generations","1","--seed","2","--pop","128","--worlds","8","--eval-worlds","128","--checkpoint-every","10","--max-train-seconds","300"],"availablePhysicalBytes":11851550720,"time":"2026-11-18T03:13:20.0835558+05:30","event":"preflight","totalC":401226067968,"commit":"c4bb5ce0e78444fd7913d4b04f822b7b34bd6452","totalD":107373129728,"freeC":17001906176,"availableCommitBytes":20384333824}
+{"pid":28584,"time":"2026-11-18T03:13:21.6497380+05:30","event":"started"}
+{"availableCommitBytes":20454494208,"event":"sample","privateBytes":761331712,"freeC":17001906176,"seconds":14.213884,"freeD":49694490624}
+{"availableCommitBytes":19520118784,"event":"sample","privateBytes":892588032,"freeC":17001250816,"seconds":25.6722317,"freeD":49694466048}
+{"availableCommitBytes":16999370752,"event":"sample","privateBytes":3484106752,"freeC":16999534592,"seconds":37.029411,"freeD":49694461952}
+{"availableCommitBytes":17050599424,"event":"sample","privateBytes":3484106752,"freeC":17000095744,"seconds":48.9579581,"freeD":49694461952}
+{"availableCommitBytes":17055477760,"event":"sample","privateBytes":3484106752,"freeC":16999936000,"seconds":61.0781524,"freeD":49694461952}
+{"availableCommitBytes":17082781696,"event":"sample","privateBytes":3484106752,"freeC":16999964672,"seconds":72.8685384,"freeD":49694461952}
+{"availableCommitBytes":16980197376,"event":"sample","privateBytes":3484106752,"freeC":16999399424,"seconds":84.7542003,"freeD":49694461952}
+{"availableCommitBytes":16981737472,"event":"sample","privateBytes":3484106752,"freeC":17003401216,"seconds":96.6238203,"freeD":49694461952}
+{"availableCommitBytes":17077792768,"event":"sample","privateBytes":3484106752,"freeC":17003331584,"seconds":108.5649702,"freeD":49694461952}
+{"availableCommitBytes":19523821568,"event":"sample","privateBytes":1012461568,"freeC":17003323392,"seconds":120.369215,"freeD":49694445568}
+{"availableCommitBytes":19284189184,"event":"sample","privateBytes":1277263872,"freeC":17003290624,"seconds":132.5537913,"freeD":49694445568}
+{"availableCommitBytes":19433381888,"event":"sample","privateBytes":983461888,"freeC":17003114496,"seconds":144.1352653,"freeD":49694445568}
+{"availableCommitBytes":19189063680,"event":"sample","privateBytes":1293803520,"freeC":17003012096,"seconds":155.5476146,"freeD":49694445568}
+{"availableCommitBytes":19284267008,"event":"sample","privateBytes":1278029824,"freeC":17002864640,"seconds":167.0906272,"freeD":49694339072}
+{"wallSeconds":173.3138032,"time":"2026-11-18T03:16:02.2255575+05:30","event":"finished","exitCode":0}

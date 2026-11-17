@@ -4,7 +4,7 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 18 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. All three B runs are complete and pass B's original point-estimate criterion. E109 stays stopped at generation 62. Phase 0 dependency pins, untracked-source checks and CI are verified: all 75 tests passed on the hosted runner, including synchronized generation timing. E111's CPU benchmark finished at 95.265 seconds for one cold generation; the registered GPU result is pending. These EVAL v1 measurements lack per-world standard errors; Phase 1 supplies the improved measurements. The external audit's seed-777 probes remain unregistered and unverified.
+**Current direction · 18 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. All three B runs are complete and pass B's original point-estimate criterion. E109 stays stopped at generation 62. Phase 0 dependency pins, untracked-source checks and CI are verified: all 75 tests passed on the hosted runner, including synchronized generation timing. E111's CPU benchmark finished at 95.265 seconds for one cold generation. Its GPU run has not started: automatic approval review requires specific owner consent to upload the private source bundle and manifest to Colab. These EVAL v1 measurements lack per-world standard errors; Phase 1 supplies the improved measurements. The external audit's seed-777 probes remain unregistered and unverified.
 
 **Latest gate decision · 17 Nov 2026:** biology-start evolution reached fitness **15.90234375, 16.6015625 and 15.326171875**, each above the prior's **5.12890625**. B's original gate therefore **passes in 3/3 seeds**; it required at least 2/3. This is the registered EVAL v1 point-estimate comparison, without standard errors. Earlier fixed-genome tests found that the tested growth/pruning rule lowered fitness in all three A genomes, while their plasticity advantage remained positive across all four registered foraging-parameter shifts. [See the evidence and limits](#what-the-experiments-show).
 
@@ -203,7 +203,7 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 
 E109 remains **interrupted at 62/200 generations**, with its folder unchanged and **no held-out evaluation**. The owner stopped it because the tested rule lowered fitness in all three fixed-genome comparisons and the roughly **eight-hour single-seed cost estimate** was not justified. That estimate is not elapsed compute: its retained generation timings total **7,995.859 seconds**. No further E109 segment is planned.
 
-**Gate B is decided; Phase 0 housekeeping is underway.** Exact dependency pins and the runner's untracked-source check pass all 74 local tests. The corrected same-machine compatibility test passed all 74 tests in hosted CI. E111 compares one cold, synchronized CPU/GPU generation, including compilation; CPU is complete and the GPU result is pending. It makes no warm-throughput claim. Next, keep the compact handoff current and benchmark one generation on a free Colab GPU against the laptop. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
+**Gate B is decided; Phase 0 housekeeping is underway.** Exact dependency pins and the runner's untracked-source check pass all 74 local tests. The corrected same-machine compatibility test passed all 74 tests in hosted CI. E111 compares one cold, synchronized CPU/GPU generation, including compilation; CPU is complete and the GPU upload awaits specific owner authorization. It makes no warm-throughput claim. Next, keep the compact handoff current and benchmark one generation on a free Colab GPU against the laptop. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
 
 Later measurements, baselines, task rungs and the connectome comparison follow [PLAN.md](PLAN.md). Mechanisms are added only at its specified failed-rung decision points; no speculative side experiment is queued.
 
@@ -227,7 +227,7 @@ E111 measures one **cold** generation, including compilation and completion of t
 | Deployment | Cold seconds/generation |
 |---|---:|
 | Laptop CPU, Python 3.12.10 | 95.265 |
-| Free Colab T4, Python 3.13.16 | Pending |
+| Free Colab T4, Python 3.13.16 | Not run: source-upload approval pending |
 
 The registered decision uses the CPU/GPU ratio: at least five times faster triggers a migration proposal and an owner decision. OS, Python and backend differ, so this compares deployments rather than GPU hardware alone.
 

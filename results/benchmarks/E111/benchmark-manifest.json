@@ -1,0 +1,59 @@
+{
+  "protocol": "E111",
+  "source_commit": "c4bb5ce0e78444fd7913d4b04f822b7b34bd6452",
+  "bundle_sha256": "40e114777cca7af46b30eead668a51f7b77b3595316fd05969b468c19589df31",
+  "notebook_sha256": "ae39ff4c429a7ebc2c44a50c2747b2ca0223e84a907a6f676668aeea30c3f827",
+  "ci": {
+    "run_id": 44181677093,
+    "conclusion": "success",
+    "head_sha": "c4bb5ce0e78444fd7913d4b04f822b7b34bd6452"
+  },
+  "cpu": {
+    "status": "finished",
+    "generation": 1,
+    "source_commit": "c4bb5ce0e78444fd7913d4b04f822b7b34bd6452",
+    "run": "runs/20261118-031323_E111-benchmark-cpu",
+    "cold_generation_seconds": 95.265,
+    "guard_wall_seconds": 173.3138032,
+    "machine": {
+      "platform": "Windows-11-10.0.26200-SP0",
+      "python": "3.12.10",
+      "jax": "0.12.0.1",
+      "devices": [
+        "cpu:0"
+      ]
+    },
+    "metrics_sha256": "7fe7ffd17a24490e986c3357e0785326e3b843447a09ad90016b1fe087cbc2a9",
+    "start_genome_sha256": "f39d8960f182b832e2700d6274e5d838d7a0f410add2b7753b6f259aba732108"
+  },
+  "expected_args": {
+    "start": "file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy",
+    "seed": 2,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "generations": 1,
+    "eval_worlds": 128,
+    "checkpoint_every": 10,
+    "max_train_seconds": 300,
+    "no_plastic": false,
+    "structural_plasticity": "off"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "migration_ratio_threshold": 5
+}

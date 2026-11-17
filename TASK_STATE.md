@@ -18,7 +18,8 @@ The thesis is a question to test, not a result to assume.
 
 ## What is running
 
-- The CPU benchmark finished at 95.265 seconds for one cold generation; the GPU result is pending.
+- The CPU benchmark finished at 95.265 seconds for one cold generation.
+- No Seed job is running; the GPU source upload was blocked before any transfer.
 - Original histories, registered settings and starting genomes are preserved.
 - Hosted CI passed all 75 tests, including exact compatibility and synchronized generation timing.
 - The latest CPU guard observed C: 15.83 GiB free of 373.67 GiB and D: 46.28 GiB free of 100 GiB.
@@ -30,8 +31,9 @@ The thesis is a question to test, not a result to assume.
 - Phase 0 item 1 is recorded: E109 stays stopped; there is no continuation queued.
 - Phase 0 item 2 is complete: all three seeds strictly exceeded fitness 5.12890625; two were required.
 - Phase 0 items 3 and 4 are verified: pinned packages, source checks, hosted CI and compact handoff.
-- The E111 GPU packet is released after successful CI and verified CPU completion.
-- Complete the registered free-T4 generation and validate its original artifacts before the ratio decision.
+- Wait for the specific private-source upload approval requested in the oversight chat.
+- Automatic approval review requires explicit consent for the bundle and manifest going to Colab.
+- After approval, recheck Colab and run the registered GPU generation; do not change the timing gate.
 - Before new compute, reassess today's total and ask before exceeding the eight-hour limit.
 - Keep this handoff below 60 lines and benchmark one generation on a free Colab GPU.
 - If the GPU is at least five times faster, propose migration and wait for the owner.

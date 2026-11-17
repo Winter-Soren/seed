@@ -1,0 +1,288 @@
+Finished tracing convert_element_type for jit in 0.001204014 sec
+Compiling jit(convert_element_type) with global shapes and types (ShapedArray(int32[5,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(convert_element_type) in 0.023514271 sec
+Finished XLA compilation of jit(convert_element_type) in 0.015432596 sec
+Finished tracing stage for jit in 0.000000000 sec
+Compiling jit(stage) with global shapes and types (ShapedArray(int32[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(stage) in 0.001037121 sec
+Finished XLA compilation of jit(stage) in 0.004996300 sec
+Finished tracing _threefry_seed for jit in 0.002013922 sec
+Compiling jit(_threefry_seed) with global shapes and types (ShapedArray(int32[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_seed) in 0.001001596 sec
+Finished XLA compilation of jit(_threefry_seed) in 0.021591187 sec
+Finished tracing stage for jit in 0.000000000 sec
+Compiling jit(stage) with global shapes and types (ShapedArray(float32[], weak_type=True),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(stage) in 0.000000000 sec
+Finished XLA compilation of jit(stage) in 0.005250931 sec
+Finished tracing broadcast_in_dim for jit in 0.000000000 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(float32[], weak_type=True),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.000999451 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.019681215 sec
+Finished tracing convert_element_type for jit in 0.000998735 sec
+Compiling jit(convert_element_type) with global shapes and types (ShapedArray(float32[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(convert_element_type) in 0.000000000 sec
+Finished XLA compilation of jit(convert_element_type) in 0.004709005 sec
+Finished tracing broadcast_in_dim for jit in 0.000000000 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(float32[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.000974417 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.017674208 sec
+Finished tracing _normal for jit in 0.003181219 sec
+Compiling jit(_normal) with global shapes and types (ShapedArray(key<fry>[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_normal) in 0.016375065 sec
+Finished XLA compilation of jit(_normal) in 0.265513182 sec
+Finished tracing multiply for jit in 0.000000000 sec
+Compiling jit(multiply) with global shapes and types (ShapedArray(float32[], weak_type=True), ShapedArray(float32[5,5,4])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(multiply) in 0.000997066 sec
+Finished XLA compilation of jit(multiply) in 0.021595478 sec
+Finished tracing convert_element_type for jit in 0.000000000 sec
+Compiling jit(convert_element_type) with global shapes and types (ShapedArray(float32[3]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(convert_element_type) in 0.001203060 sec
+Finished XLA compilation of jit(convert_element_type) in 0.004996538 sec
+Finished tracing reshape for jit in 0.000000000 sec
+Compiling jit(reshape) with global shapes and types (ShapedArray(float32[5,5], weak_type=True),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(reshape) in 0.001015425 sec
+Finished XLA compilation of jit(reshape) in 0.005179167 sec
+Finished tracing reshape for jit in 0.000000000 sec
+Compiling jit(reshape) with global shapes and types (ShapedArray(float32[5,5,4]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(reshape) in 0.003175497 sec
+Finished XLA compilation of jit(reshape) in 0.006171465 sec
+Finished tracing reshape for jit in 0.000000000 sec
+Compiling jit(reshape) with global shapes and types (ShapedArray(float32[], weak_type=True),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(reshape) in 0.001000404 sec
+Finished XLA compilation of jit(reshape) in 0.005153894 sec
+Finished tracing reshape for jit in 0.000000000 sec
+Compiling jit(reshape) with global shapes and types (ShapedArray(float32[5,5]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(reshape) in 0.001000166 sec
+Finished XLA compilation of jit(reshape) in 0.006180763 sec
+Finished tracing concatenate for jit in 0.000000000 sec
+Compiling jit(concatenate) with global shapes and types (ShapedArray(float32[25], weak_type=True), ShapedArray(float32[100]), ShapedArray(float32[1], weak_type=True), ShapedArray(float32[1], weak_type=True), ShapedArray(float32[3]), ShapedArray(float32[25])). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue, UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(concatenate) in 0.001147032 sec
+Finished XLA compilation of jit(concatenate) in 0.010769844 sec
+Finished tracing iota for jit in 0.000993013 sec
+Compiling jit(iota) with global shapes and types (). Argument mapping: ().
+Finished jaxpr to MLIR module conversion jit(iota) in 0.000000000 sec
+Finished XLA compilation of jit(iota) in 0.015600681 sec
+Finished tracing remainder for jit in 0.002015829 sec
+Compiling jit(remainder) with global shapes and types (ShapedArray(int32[8]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(remainder) in 0.002152443 sec
+Finished XLA compilation of jit(remainder) in 0.023570061 sec
+Finished tracing stage for jit in 0.000000000 sec
+Compiling jit(stage) with global shapes and types (ShapedArray(float32[155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(stage) in 0.000986338 sec
+Finished XLA compilation of jit(stage) in 0.006161451 sec
+Finished tracing _threefry_split for jit in 0.002182007 sec
+Compiling jit(_threefry_split) with global shapes and types (ShapedArray(uint32[2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_split) in 0.009222507 sec
+Finished XLA compilation of jit(_threefry_split) in 0.051092386 sec
+Finished tracing unstack for jit in 0.000000000 sec
+Compiling jit(unstack) with global shapes and types (ShapedArray(uint32[2,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(unstack) in 0.000000000 sec
+Finished XLA compilation of jit(unstack) in 0.020696640 sec
+Finished tracing broadcast_in_dim for jit in 0.000332832 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(float32[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.000998259 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.021581411 sec
+Finished tracing _threefry_split for jit in 0.000998735 sec
+Compiling jit(_threefry_split) with global shapes and types (ShapedArray(uint32[2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_split) in 0.011199713 sec
+Finished XLA compilation of jit(_threefry_split) in 0.055066586 sec
+Finished tracing unstack for jit in 0.000000000 sec
+Compiling jit(unstack) with global shapes and types (ShapedArray(uint32[4,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(unstack) in 0.004256010 sec
+Finished XLA compilation of jit(unstack) in 0.024191141 sec
+Finished tracing _normal for jit in 0.004205465 sec
+Compiling jit(_normal) with global shapes and types (ShapedArray(key<fry>[]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_normal) in 0.013388634 sec
+Finished XLA compilation of jit(_normal) in 0.257528067 sec
+Finished tracing negative for jit in 0.000000000 sec
+Compiling jit(negative) with global shapes and types (ShapedArray(float32[64,155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(negative) in 0.002000332 sec
+Finished XLA compilation of jit(negative) in 0.052249193 sec
+Finished tracing concatenate for jit in 0.001000643 sec
+Compiling jit(concatenate) with global shapes and types (ShapedArray(float32[64,155]), ShapedArray(float32[64,155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(concatenate) in 0.000999212 sec
+Finished XLA compilation of jit(concatenate) in 0.016584635 sec
+Finished tracing multiply for jit in 0.001001358 sec
+Compiling jit(multiply) with global shapes and types (ShapedArray(float32[], weak_type=True), ShapedArray(float32[128,155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(multiply) in 0.002000332 sec
+Finished XLA compilation of jit(multiply) in 0.038797140 sec
+Finished tracing add for jit in 0.001002550 sec
+Compiling jit(add) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[128,155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(add) in 0.001995325 sec
+Finished XLA compilation of jit(add) in 0.040070534 sec
+Finished tracing _threefry_split for jit in 0.000979900 sec
+Compiling jit(_threefry_split) with global shapes and types (ShapedArray(uint32[2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_split) in 0.022759438 sec
+Finished XLA compilation of jit(_threefry_split) in 0.116120338 sec
+Finished tracing _threefry_split for jit in 0.003004789 sec
+Compiling jit(_threefry_split) with global shapes and types (ShapedArray(uint32[2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_split) in 0.022540569 sec
+Finished XLA compilation of jit(_threefry_split) in 0.098456144 sec
+Finished tracing reshape for jit in 0.001021147 sec
+Compiling jit(reshape) with global shapes and types (ShapedArray(uint32[512,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(reshape) in 0.000999689 sec
+Finished XLA compilation of jit(reshape) in 0.010252714 sec
+Finished tracing concatenate for jit in 0.000000000 sec
+Compiling jit(concatenate) with global shapes and types (ShapedArray(uint32[64,8,2]), ShapedArray(uint32[64,8,2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(concatenate) in 0.000999689 sec
+Finished XLA compilation of jit(concatenate) in 0.014373302 sec
+Finished tracing evaluate for jit in 0.740803003 sec
+Compiling jit(evaluate) with global shapes and types (ShapedArray(float32[128,155]), ShapedArray(uint32[8,2]), ShapedArray(uint32[128,8,2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(evaluate) in 0.466897964 sec
+Finished XLA compilation of jit(evaluate) in 7.731732845 sec
+Finished tracing _mean for jit in 0.014171600 sec
+Compiling jit(_mean) with global shapes and types (ShapedArray(float32[128,8]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_mean) in 0.039003134 sec
+Finished XLA compilation of jit(_mean) in 0.246994257 sec
+Finished tracing argsort for jit in 0.001011610 sec
+Compiling jit(argsort) with global shapes and types (ShapedArray(float32[128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(argsort) in 0.011149168 sec
+Finished XLA compilation of jit(argsort) in 0.085131168 sec
+Finished tracing argsort for jit in 0.000539064 sec
+Compiling jit(argsort) with global shapes and types (ShapedArray(int32[128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(argsort) in 0.003949404 sec
+Finished XLA compilation of jit(argsort) in 0.083457947 sec
+Finished tracing true_divide for jit in 0.001007557 sec
+Compiling jit(true_divide) with global shapes and types (ShapedArray(int32[128]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(true_divide) in 0.002998829 sec
+Finished XLA compilation of jit(true_divide) in 0.154395342 sec
+Finished tracing subtract for jit in 0.008008242 sec
+Compiling jit(subtract) with global shapes and types (ShapedArray(float32[128]), ShapedArray(float32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(subtract) in 0.008107185 sec
+Finished XLA compilation of jit(subtract) in 0.122428656 sec
+Finished tracing broadcast_in_dim for jit in 0.000000000 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(float32[128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.002000093 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.028207302 sec
+Finished tracing multiply for jit in 0.001001120 sec
+Compiling jit(multiply) with global shapes and types (ShapedArray(float32[128,1]), ShapedArray(float32[128,155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(multiply) in 0.002125502 sec
+Finished XLA compilation of jit(multiply) in 0.153189659 sec
+Finished tracing _reduce_sum for jit in 0.002997875 sec
+Compiling jit(_reduce_sum) with global shapes and types (ShapedArray(float32[128,155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_sum) in 0.001995802 sec
+Finished XLA compilation of jit(_reduce_sum) in 0.049395800 sec
+Finished tracing true_divide for jit in 0.000999212 sec
+Compiling jit(true_divide) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(true_divide) in 0.001998663 sec
+Finished XLA compilation of jit(true_divide) in 0.117321968 sec
+Finished tracing multiply for jit in 0.000000000 sec
+Compiling jit(multiply) with global shapes and types (ShapedArray(float32[], weak_type=True), ShapedArray(float32[155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(multiply) in 0.001017094 sec
+Finished XLA compilation of jit(multiply) in 0.089645386 sec
+Finished tracing subtract for jit in 0.000999689 sec
+Compiling jit(subtract) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(subtract) in 0.002195835 sec
+Finished XLA compilation of jit(subtract) in 0.123810768 sec
+Finished tracing add for jit in 0.001204967 sec
+Compiling jit(add) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(add) in 0.016556740 sec
+Finished XLA compilation of jit(add) in 0.137009144 sec
+Finished tracing integer_pow for jit in 0.000000000 sec
+Compiling jit(integer_pow) with global shapes and types (ShapedArray(float32[155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(integer_pow) in 0.001171350 sec
+Finished XLA compilation of jit(integer_pow) in 0.177307129 sec
+Finished tracing sqrt for jit in 0.000992775 sec
+Compiling jit(sqrt) with global shapes and types (ShapedArray(float32[155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(sqrt) in 0.002117634 sec
+Finished XLA compilation of jit(sqrt) in 0.153761625 sec
+Finished tracing add for jit in 0.001009703 sec
+Compiling jit(add) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(add) in 0.002018690 sec
+Finished XLA compilation of jit(add) in 0.189905405 sec
+Finished tracing true_divide for jit in 0.001173258 sec
+Compiling jit(true_divide) with global shapes and types (ShapedArray(float32[155]), ShapedArray(float32[155])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(true_divide) in 0.001001835 sec
+Finished XLA compilation of jit(true_divide) in 0.174425125 sec
+Finished tracing _reduce_sum for jit in 0.012198925 sec
+Compiling jit(_reduce_sum) with global shapes and types (ShapedArray(float32[128,8,2,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_sum) in 0.001075506 sec
+Finished XLA compilation of jit(_reduce_sum) in 0.046377659 sec
+Finished tracing dynamic_slice for jit in 0.000000000 sec
+Compiling jit(dynamic_slice) with global shapes and types (ShapedArray(float32[2,2]), ShapedArray(int32[], weak_type=True), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(dynamic_slice) in 0.000999928 sec
+Finished XLA compilation of jit(dynamic_slice) in 0.131042242 sec
+Finished tracing squeeze for jit in 0.000000000 sec
+Compiling jit(squeeze) with global shapes and types (ShapedArray(float32[2,1]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(squeeze) in 0.001018047 sec
+Finished XLA compilation of jit(squeeze) in 0.035191536 sec
+Finished tracing _reduce_sum for jit in 0.000998259 sec
+Compiling jit(_reduce_sum) with global shapes and types (ShapedArray(float32[2,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_sum) in 0.000999689 sec
+Finished XLA compilation of jit(_reduce_sum) in 0.099625349 sec
+Finished tracing maximum for jit in 0.000000000 sec
+Compiling jit(maximum) with global shapes and types (ShapedArray(float32[2]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(maximum) in 0.002024174 sec
+Finished XLA compilation of jit(maximum) in 0.046234131 sec
+Finished tracing true_divide for jit in 0.000000000 sec
+Compiling jit(true_divide) with global shapes and types (ShapedArray(float32[2]), ShapedArray(float32[2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(true_divide) in 0.001530409 sec
+Finished XLA compilation of jit(true_divide) in 0.053622007 sec
+Finished tracing _mean for jit in 0.002179623 sec
+Compiling jit(_mean) with global shapes and types (ShapedArray(float32[128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_mean) in 0.010365486 sec
+Finished XLA compilation of jit(_mean) in 0.063094378 sec
+Finished tracing _reduce_max for jit in 0.000983953 sec
+Compiling jit(_reduce_max) with global shapes and types (ShapedArray(float32[128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_max) in 0.001969099 sec
+Finished XLA compilation of jit(_reduce_max) in 0.073795319 sec
+Finished tracing _std for jit in 0.008387804 sec
+Compiling jit(_std) with global shapes and types (ShapedArray(float32[128]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(_std) in 0.008152008 sec
+Finished XLA compilation of jit(_std) in 0.111025333 sec
+Finished tracing dynamic_slice for jit in 0.000997305 sec
+Compiling jit(dynamic_slice) with global shapes and types (ShapedArray(float32[2]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(dynamic_slice) in 0.000999928 sec
+Finished XLA compilation of jit(dynamic_slice) in 0.033109903 sec
+Finished tracing squeeze for jit in 0.001000404 sec
+Compiling jit(squeeze) with global shapes and types (ShapedArray(float32[1]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(squeeze) in 0.001999855 sec
+Finished XLA compilation of jit(squeeze) in 0.015422821 sec
+Finished tracing _mean for jit in 0.002096415 sec
+Compiling jit(_mean) with global shapes and types (ShapedArray(float32[128,8]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_mean) in 0.003358364 sec
+Finished XLA compilation of jit(_mean) in 0.080584288 sec
+Finished tracing iota for jit in 0.000000000 sec
+Compiling jit(iota) with global shapes and types (). Argument mapping: ().
+Finished jaxpr to MLIR module conversion jit(iota) in 0.001014948 sec
+Finished XLA compilation of jit(iota) in 0.047584772 sec
+Finished tracing remainder for jit in 0.004020214 sec
+Compiling jit(remainder) with global shapes and types (ShapedArray(int32[128]), ShapedArray(int32[], weak_type=True)). Argument mapping: (UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(remainder) in 0.008218527 sec
+Finished XLA compilation of jit(remainder) in 0.086122274 sec
+Finished tracing broadcast_in_dim for jit in 0.000000000 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(float32[155]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.000999689 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.015732527 sec
+Finished tracing _threefry_split for jit in 0.002221346 sec
+Compiling jit(_threefry_split) with global shapes and types (ShapedArray(uint32[2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_threefry_split) in 0.030279636 sec
+Finished XLA compilation of jit(_threefry_split) in 0.141667604 sec
+Finished tracing broadcast_in_dim for jit in 0.000999451 sec
+Compiling jit(broadcast_in_dim) with global shapes and types (ShapedArray(uint32[128,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(broadcast_in_dim) in 0.001014471 sec
+Finished XLA compilation of jit(broadcast_in_dim) in 0.011317253 sec
+Finished tracing evaluate for jit in 0.614455938 sec
+Compiling jit(evaluate) with global shapes and types (ShapedArray(float32[1,155]), ShapedArray(uint32[128,2]), ShapedArray(uint32[1,128,2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(evaluate) in 0.524830341 sec
+Finished XLA compilation of jit(evaluate) in 8.720780134 sec
+Finished tracing _reduce_sum for jit in 0.000979424 sec
+Compiling jit(_reduce_sum) with global shapes and types (ShapedArray(float32[1,128,2,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_sum) in 0.001991510 sec
+Finished XLA compilation of jit(_reduce_sum) in 0.064818382 sec
+Finished tracing _mean for jit in 0.002974749 sec
+Compiling jit(_mean) with global shapes and types (ShapedArray(float32[1,128]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_mean) in 0.002280474 sec
+Finished XLA compilation of jit(_mean) in 0.067088366 sec
+Finished tracing _reduce_sum for jit in 0.000990391 sec
+Compiling jit(_reduce_sum) with global shapes and types (ShapedArray(float32[2,2]),). Argument mapping: (UnspecifiedValue,).
+Finished jaxpr to MLIR module conversion jit(_reduce_sum) in 0.000999689 sec
+Finished XLA compilation of jit(_reduce_sum) in 0.035487413 sec
+Finished tracing evaluate for jit in 0.372760296 sec
+Compiling jit(evaluate) with global shapes and types (ShapedArray(float32[1,155]), ShapedArray(uint32[128,2]), ShapedArray(uint32[1,128,2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(evaluate) in 0.382843494 sec
+Finished XLA compilation of jit(evaluate) in 5.315200806 sec
+Finished tracing evaluate for jit in 0.003008842 sec
+Compiling jit(evaluate) with global shapes and types (ShapedArray(float32[1,155]), ShapedArray(uint32[128,2]), ShapedArray(uint32[1,128,2])). Argument mapping: (UnspecifiedValue, UnspecifiedValue, UnspecifiedValue).
+Finished jaxpr to MLIR module conversion jit(evaluate) in 0.246057510 sec
+Finished XLA compilation of jit(evaluate) in 4.083066702 sec
