@@ -1,0 +1,14 @@
+{"availablePhysicalBytes":12738850816,"time":"2026-11-19T03:38:01.9137277+05:30","freeC":23485186048,"event":"preflight","arguments":["-X","utf8","scripts/run_experiment.py","--name","E113-direct-s0","--controller","direct-rnn-v1","--eval-protocol","direct-v1","--condition-split","final","--start","blank","--no-plastic","--generations","200","--seed","0","--pop","128","--worlds","8","--sigma","0.1","--lr","0.1","--eval-worlds","256","--checkpoint-every","10","--max-train-seconds","120"],"availableCommitBytes":16379686912,"commit":"9db7fafe9d70a6eb0974af4e137ab21e01a60be9","freeD":49651609600}
+{"time":"2026-11-19T03:38:01.9539088+05:30","pid":30284,"event":"started"}
+{"seconds":8.1365427,"event":"sample","freeD":49651605504,"privateBytes":761671680,"freeC":23485120512,"availableCommitBytes":16350461952}
+{"seconds":20.753548,"event":"sample","freeD":49651560448,"privateBytes":962400256,"freeC":23485079552,"availableCommitBytes":15402549248}
+{"seconds":33.160805,"event":"sample","freeD":49651560448,"privateBytes":962539520,"freeC":23485009920,"availableCommitBytes":15390740480}
+{"seconds":45.1763471,"event":"sample","freeD":49651458048,"privateBytes":962658304,"freeC":23484514304,"availableCommitBytes":15374729216}
+{"seconds":57.3441348,"event":"sample","freeD":49651453952,"privateBytes":962691072,"freeC":23486513152,"availableCommitBytes":15187546112}
+{"seconds":69.5890626,"event":"sample","freeD":49651449856,"privateBytes":962715648,"freeC":23486558208,"availableCommitBytes":14209294336}
+{"seconds":83.245312,"event":"sample","freeD":49651449856,"privateBytes":962736128,"freeC":23486558208,"availableCommitBytes":14338248704}
+{"seconds":95.9725476,"event":"sample","freeD":49651449856,"privateBytes":962768896,"freeC":23486554112,"availableCommitBytes":14295367680}
+{"seconds":108.6469378,"event":"sample","freeD":49651441664,"privateBytes":962772992,"freeC":23487164416,"availableCommitBytes":14301859840}
+{"seconds":121.2309753,"event":"sample","freeD":49651441664,"privateBytes":962793472,"freeC":23487164416,"availableCommitBytes":14279561216}
+{"seconds":134.1133371,"event":"sample","freeD":49651441664,"privateBytes":0,"freeC":23487221760,"availableCommitBytes":15244242944}
+{"time":"2026-11-19T03:40:09.6999150+05:30","wallSeconds":134.1200711,"event":"finished","exitCode":0}

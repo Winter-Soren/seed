@@ -1,0 +1,23 @@
+{
+  "status": "interrupted",
+  "generation": 53,
+  "train_minutes": 2.04,
+  "final_genome_hash": "759c498bd670fad1",
+  "controller": "direct-rnn-v1",
+  "eval_protocol": "direct-v1",
+  "condition_split": "final",
+  "eval_seed": 2026111901,
+  "eval_worlds": 256,
+  "initial_weights": {
+    "max_abs": 0.30411654710769653,
+    "fraction_abs_above_wmax": 0.0,
+    "comparison_wmax": 3.0,
+    "clipping": false
+  },
+  "final_weights": {
+    "max_abs": 2.8180041313171387,
+    "fraction_abs_above_wmax": 0.0,
+    "comparison_wmax": 3.0,
+    "clipping": false
+  }
+}

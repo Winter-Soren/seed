@@ -78,6 +78,14 @@ Saved genomes only; 256 fresh worlds per panel. SE treats each world-family as o
 | 20261119-030736_E112-v3-blank2 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
 | 20261119-030736_E112-v3-blank2 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
 
+## Direct recurrent baseline (direct-v1)
+
+The direct-rnn-v1 genome encodes fixed recurrent weights; hidden states still change during life. No lifetime synaptic, predictor or structural updates occur. Final rows use the same 256 EVAL v3 worlds and references; development rows use tiny fixtures and seed 41, never held-out worlds. Each uncertainty is a world-family SE for that fixed genome, not variability across training seeds. Raw events, full diagnostics and initial/final weight magnitudes remain in each run folder.
+
+| Run | Status | Controller | Split | Gens | Training seed | Condition | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Eval seed | Worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261119-033803_E113-direct-s0 | interrupted | direct-rnn-v1 | final | 53/200 | 0 | pending | undefined | undefined | undefined | undefined | 2026111901 | 256 | 9db7faf |
+
 ## EVAL v2 diagnostics
 
 Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables predictor updates; Frozen disables both. Differences are signed fitness changes. Retained benefit = (Hebbian-only − Frozen) / (Both − Frozen), defined only when Both > Frozen.

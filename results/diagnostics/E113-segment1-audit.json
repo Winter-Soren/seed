@@ -1,0 +1,23 @@
+{
+  "status": "verified",
+  "generation": 53,
+  "metric_rows": 53,
+  "checkpoint_t": 53,
+  "heldout_evaluation": false,
+  "source_commit": "9db7fafe9d70a6eb0974af4e137ab21e01a60be9",
+  "genome_start_file_sha256": "a1e85cdf5d2f2f90046e65d5bdd551f905bb52355a0444ce69aaa0c7fc1daed0",
+  "start_genome_hash": "f57b9afb5bdf2a99",
+  "checkpoint_genome_hash": "759c498bd670fad1",
+  "cold_seconds": 4.125,
+  "warm_mean_seconds": 2.268653846153846,
+  "warm_median_seconds": 2.3125,
+  "warm_min_seconds": 1.797,
+  "warm_max_seconds": 2.609,
+  "generation_seconds_sum": 122.095,
+  "estimated_remaining_train_seconds": 333.4921153846154,
+  "guard_wall_seconds": 134.1200711,
+  "sampled_peak_private_gib": 0.8966712951660156,
+  "minimum_commit_headroom_gib": 13.233436584472656,
+  "minimum_c_free_gib": 21.871658325195312,
+  "minimum_d_free_gib": 46.24150848388672
+}

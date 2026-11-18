@@ -1,0 +1,76 @@
+{
+  "args": {
+    "name": "E113-direct-s0",
+    "start": "blank",
+    "generations": 200,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": true,
+    "controller": "direct-rnn-v1",
+    "structural_plasticity": "off",
+    "eval_worlds": 256,
+    "eval_protocol": "direct-v1",
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": 120.0,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg_overrides": {},
+  "git": {
+    "commit": "9db7fafe9d70a6eb0974af4e137ab21e01a60be9",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-19T03:38:03.801284",
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  },
+  "controller": "direct-rnn-v1",
+  "eval_protocol": "direct-v1",
+  "eval_seed": 2026111901,
+  "eval_worlds": 256,
+  "encoding": {
+    "format": "direct-rnn-v1",
+    "weights": 8424,
+    "order": "row-major non-sensor postsynaptic rows, excluding diagonal",
+    "init_std": 0.08006407690254357,
+    "lifetime_weight_updates": false,
+    "weight_bounds": null,
+    "development_noise": false
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "genome_size": 8424,
+  "start_genome_hash": "f57b9afb5bdf2a99",
+  "initial_weights": {
+    "max_abs": 0.30411654710769653,
+    "fraction_abs_above_wmax": 0.0,
+    "comparison_wmax": 3.0,
+    "clipping": false
+  }
+}

@@ -39,7 +39,7 @@ Each SE uses 256 world-families as independent units; it is not variation across
 
 ## Next comparison and research council
 
-E113 preregisters three directly encoded recurrent controllers under A's ES settings and generation budget. Their 8,424 inherited weights stay fixed during a life, while recurrent state can still adapt to observations and feedback. This replaces the historical tied-sensor C baseline. The implementation is under verification; no E113 training result exists yet.
+E113 preregisters three directly encoded recurrent controllers under A's ES settings and generation budget. Their 8,424 inherited weights stay fixed during a life, while recurrent state can still adapt to observations and feedback. This replaces the historical tied-sensor C baseline. The implementation passed 112 tests. Seed 0 is safely checkpointed at 53/200 generations after its bounded timing segment; no final E113 evaluation exists yet. Warm generations averaged 2.269 seconds for this fixed-weight controller, with peak sampled private memory 0.90 GiB. The three-seed comparison remains pending.
 
 The [paper review and council decisions](experiments/LITERATURE_REVIEW.md) distinguish evidence for biological mechanisms from evidence that their implementations help Seed. The workflow is a literature proposal, skeptical review, one preregistered comparison, guarded compute, then review of the results. Candidate weight decay and eligibility traces remain conditional on the task ladder's specified failures. Growth/pruning is measured separately from weight learning; the failed rule is not silently re-enabled.
 

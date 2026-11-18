@@ -22,7 +22,7 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is running
 
-- Phase 1 is published; all direct-controller checks passed; no heavy job is currently active.
+- E113 seed zero is safely checkpointed at 53 of 200; no final evaluation has run.
 - A separate research chat reviews primary papers and mechanism proposals.
 - A compute worker handles released tests and training under coordinator control.
 - C: was about 21.87 GiB free of 373.67; D: 46.24 GiB free of 100 at the latest check.
@@ -30,8 +30,8 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is next
 
-- E113 code is implemented, preregistered and verified; commit before the first training segment.
-- Commit the verified code, then benchmark the first bounded seed-zero training segment.
+- Publish the first E113 checkpoint and wait for hosted CI before continuing.
+- Resume the same seed-zero run to 200, audit it, then run seeds one and two sequentially.
 - Use the same observations, actions, hidden size, ES budget and three seeds.
 - Continue only if A exceeds its paired baseline by two SE in all three seeds; otherwise stop.
 - Council loop: evidence proposal, skeptical review, one registered test, compute, result review.
