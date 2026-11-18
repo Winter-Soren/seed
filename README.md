@@ -4,7 +4,9 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Phase 2 result · 19 Nov 2026: the nonplastic baseline wins on the registered score in all three seeds. The continuation gate FAILED.** Direct-controller fitness is **55.520 ± 3.899, 66.481 ± 4.533 and 69.869 ± 4.757 SE**, versus plastic A **15.346 ± 0.377, 15.187 ± 0.385 and 14.984 ± 0.351** on 256 matched held-out worlds. Each direct advantage exceeds two paired SE. High scores nevertheless conceal one-rule specialization and poor reversal survival. New training is stopped for the owner's decision under [PLAN.md](PLAN.md). [Full comparison and artifacts](results/E113_BASELINE.md).
+**Phase 2 result · 19 Nov 2026: the nonplastic baseline wins on the registered score in all three seeds. The continuation gate FAILED.** Direct-controller fitness is **55.520 ± 3.899, 66.481 ± 4.533 and 69.869 ± 4.757 SE**, versus plastic A **15.346 ± 0.377, 15.187 ± 0.385 and 14.984 ± 0.351** on 256 matched held-out worlds. Each direct advantage exceeds two paired SE. High scores nevertheless conceal one-rule specialization and poor reversal survival. [Full comparison and artifacts](results/E113_BASELINE.md).
+
+**Current work:** the owner approved [E114 paired diagnostics](experiments/E114_PROPOSAL.md) and delegated scientific decisions to the council during their absence. Implementation passed all **133 local tests**; held-out evaluation is next. This evaluates saved controllers and specialist/mixture references, with no new training or reward change. E113's failed gate remains intact.
 
 **Working directive:** learn from experience, adapt when conditions change, and retain what remains useful. This is the research aim, not a capability already demonstrated or a new reward function. The registered task ladder tests each part before adding mechanisms.
 
@@ -61,7 +63,7 @@ The direct baseline changes representation, density, developmental variation and
 - Happened: direct fitness was 55.520 ± 3.899, 66.481 ± 4.533 and 69.869 ± 4.757 SE; all three paired comparisons favored it, so Phase 2's continuation gate failed.
 - Means: the baseline wins the registered objective, and rule-specific outcomes reveal that this objective can reward specialization instead of reliable adaptation.
 - Does not mean: the baseline learns the hidden rule, plasticity has no value, or useful new connections or broad transfer have been demonstrated.
-- Next: stop new training for owner input. The council proposes [E114, a diagnostic of individual adaptation versus specialist mixtures](experiments/E114_PROPOSAL.md); it is not approved or run and does not change E113's failed gate.
+- Next at gate closure: owner input. The owner subsequently approved [E114, a diagnostic of individual adaptation versus specialist mixtures](experiments/E114_PROPOSAL.md); implementation is underway, and it does not change E113's failed gate.
 
 ## Three loops, one experiment
 

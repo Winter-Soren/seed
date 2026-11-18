@@ -1,6 +1,6 @@
 # E114 proposal: individual adaptation versus specialist mixtures
 
-**Proposed, not approved or run.** This is the council's concrete next-step proposal after E113. It is not a preregistration, a replacement gate or permission to begin another experiment. Owner approval would authorize the diagnostic scope below; exact commands, implementation and verification must then be preregistered and committed before evaluation.
+**Approved by the owner on 19 November 2026; not yet run.** The owner explicitly approved this diagnostic scope. This document preserves the proposal; the appended E114 entry in LOG.md supplies the preregistration and execution details. E113's failed gate remains unchanged. Implementation and verification must be committed before evaluation.
 
 ## Question
 

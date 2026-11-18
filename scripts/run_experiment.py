@@ -31,9 +31,25 @@ from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init,
                        format_row, test_genome, genome_size)
 from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
 from seed import direct
-from scripts import broader_eval, reversal_eval, eval_v3
+from scripts import broader_eval, reversal_eval, eval_v3, eval_v4
 
 DIRECT_PROTOCOL = "direct-v1"
+V4_MAX_SECONDS = 1740
+V4_SOURCES = (
+    dict(label="A0", controller="rules-v0", seed=0, run="runs/20261112-023245_E103-A-blank-s0",
+         sha256="477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"),
+    dict(label="A1", controller="rules-v0", seed=1, run="runs/20261112-050319_E103-A-blank-s1",
+         sha256="35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"),
+    dict(label="A2", controller="rules-v0", seed=2, run="runs/20261112-102755_E103-A-blank-s2",
+         sha256="f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"),
+    dict(label="direct0", controller=direct.FORMAT, seed=0, run="runs/20261119-033803_E113-direct-s0",
+         sha256="0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61"),
+    dict(label="direct1", controller=direct.FORMAT, seed=1, run="runs/20261119-040602_E113-direct-s1",
+         sha256="0e77c3083a88c8216e57bff0667b5f594542447c14f6ae7338ec0e090b9d7d3b"),
+    dict(label="direct2", controller=direct.FORMAT, seed=2, run="runs/20261119-041609_E113-direct-s2",
+         sha256="473124dfe1c2a0d77a9a4b7cdde5cb36c41f61b0664e17ede86ae88502971bbd"),
+)
+V4_REFERENCES = ("fixed_A", "fixed_B", "mixture", "random_walk", "greedy")
 
 
 def git_info():
@@ -313,6 +329,161 @@ def run_v3(a, git):
     print("run folder:", run_dir)
 
 
+def validate_v4_request(a, c):
+    if (a.generations != 0 or a.start != "blank" or a.controller is not None or a.no_plastic
+            or a.quick or a.resume or a.structural_plasticity not in (None, "off")
+            or a.max_train_seconds is not None or a.allow_dirty or a.seed != 0
+            or (a.pop, a.worlds, a.sigma, a.lr, a.checkpoint_every) != (128, 8, .1, .1, 10)):
+        raise ValueError("EVAL v4 fixes its controller manifest; no start/controller/training overrides or resume are allowed")
+    if not a.name or any(ch not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-" for ch in a.name):
+        raise ValueError("EVAL v4 run names require letters, numbers, dots, hyphens or underscores")
+    if a.condition_split == "final":
+        if a.cfg or c != Cfg() or a.eval_worlds != eval_v4.N_WORLDS:
+            raise ValueError("EVAL v4 final fixes default Cfg and 256 worlds, with no Cfg overrides")
+    elif a.condition_split == "development":
+        if (any(not math.isfinite(value) for value in c) or not 4 <= c.T <= 30 or c.T % 2
+                or not 2 <= c.M <= 4 or c.M % 2 or not 1 <= c.H <= 6 or c.n_htypes < 1 or c.H % c.n_htypes
+                or not 0 <= c.R <= 1 or not 1 <= c.G <= 8 or not 0 <= 2*c.n_items <= c.G*c.G
+                or not 2 <= a.eval_worlds <= 4):
+            raise ValueError("EVAL v4 development requires tiny valid even-lifetime/family fixtures and 2..4 worlds")
+    else:
+        raise ValueError("EVAL v4 requires a final or development split")
+
+
+def load_v4_sources(c):
+    if tuple(source["label"] for source in V4_SOURCES) != ("A0", "A1", "A2", "direct0", "direct1", "direct2"):
+        raise ValueError("EVAL v4 source manifest must contain all six controllers in registered order")
+    loaded = {}
+    for source in V4_SOURCES:
+        folder = ROOT / source["run"]
+        data = (folder / "genome_final.npy").read_bytes()
+        config_data, summary_data = (folder / "config.json").read_bytes(), (folder / "summary.json").read_bytes()
+        config, summary = json.loads(config_data), json.loads(summary_data)
+        args = config["args"]
+        is_direct = source["controller"] == direct.FORMAT
+        expected_size = direct.genome_size(c) if is_direct else genome_size(c)
+        flat = np.load(io.BytesIO(data), allow_pickle=False)
+        if (source["controller"] not in ("rules-v0", direct.FORMAT)
+                or hashlib.sha256(data).hexdigest() != source["sha256"]
+                or not isinstance(flat, np.ndarray) or flat.shape != (expected_size,)
+                or not np.issubdtype(flat.dtype, np.floating) or not np.isfinite(flat).all()):
+            raise ValueError(f"EVAL v4 source {source['label']} has invalid bytes, format, shape or values")
+        if (config.get("cfg") != c._asdict() or config.get("genome_size") != expected_size
+                or (args.get("controller") or "rules-v0") != source["controller"]
+                or args.get("seed") != source["seed"] or args.get("start") != "blank"
+                or args.get("generations") != 200 or args.get("no_plastic") is not is_direct
+                or args.get("quick") or args.get("allow_dirty") or (args.get("structural_plasticity") or "off") != "off"
+                or (args.get("pop"), args.get("worlds"), args.get("sigma"), args.get("lr")) != (128, 8, .1, .1)
+                or summary.get("status") != "finished" or summary.get("generation") != 200
+                or summary.get("final_genome_hash") != genome_hash(flat)):
+            raise ValueError(f"EVAL v4 source {source['label']} has inconsistent completed-run provenance")
+        if is_direct and (config.get("controller") != direct.FORMAT
+                          or config.get("encoding", {}).get("format") != direct.FORMAT
+                          or config.get("encoding", {}).get("weights") != expected_size
+                          or args.get("eval_protocol") != DIRECT_PROTOCOL or args.get("condition_split") != "final"):
+            raise ValueError(f"EVAL v4 source {source['label']} has inconsistent direct format metadata")
+        provenance = [config.get("git", {})] + [entry.get("git", {}) for entry in config.get("resumes", [])]
+        for git in provenance:
+            commit = git.get("commit", "")
+            if (git.get("dirty") is not False or len(commit) != 40
+                    or any(ch not in "0123456789abcdef" for ch in commit)):
+                raise ValueError(f"EVAL v4 source {source['label']} lacks clean committed provenance")
+        loaded[source["label"]] = dict(flat=np.asarray(flat, dtype=np.float32), data=data,
+            provenance=dict(source, genome_hash=genome_hash(flat), genome_size=expected_size,
+                            config_sha256=hashlib.sha256(config_data).hexdigest(),
+                            summary_sha256=hashlib.sha256(summary_data).hexdigest(), source_commits=provenance))
+    return loaded
+
+
+def run_v4(a, git):
+    started = time.monotonic()
+    c = Cfg(**parse_cfg(a.cfg))
+    validate_v4_request(a, c)
+    sources = load_v4_sources(c)
+    if any((ROOT / "runs").glob(f"*_{a.name}")):
+        raise ValueError("An EVAL v4 attempt with this name already exists; preserve it and preregister a new attempt")
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    (run_dir / "inputs").mkdir()
+    seed = eval_v4.SPLIT_SEEDS[a.condition_split]
+    manifest = [dict(value["provenance"], copied_genome=f"inputs/{label}.npy") for label, value in sources.items()]
+    config = dict(args=vars(a).copy(), cfg=c._asdict(), git=git, created=datetime.datetime.now().isoformat(),
+                  eval_protocol=eval_v4.PROTOCOL, eval_seed=seed, eval_worlds=a.eval_worlds,
+                  input_genomes=manifest, reference_policies=V4_REFERENCES, internal_seconds_limit=V4_MAX_SECONDS,
+                  machine=dict(platform=platform.platform(), python=sys.version.split()[0],
+                               jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+    write_json(run_dir / "config.json", config)
+    for label, value in sources.items():
+        with (run_dir / "inputs" / f"{label}.npy").open("xb") as copied:
+            copied.write(value["data"])
+    summary = dict(status="running", generation=0, eval_protocol=eval_v4.PROTOCOL, condition_split=a.condition_split,
+                   eval_seed=seed, eval_worlds=a.eval_worlds, expected_panels=11, completed_panels=0, panels={})
+    write_json(run_dir / "summary.json", summary)
+    raw_by_panel = {}
+
+    def check_deadline():
+        if time.monotonic() - started >= V4_MAX_SECONDS:
+            raise TimeoutError("EVAL v4 internal time limit reached; completed panels and conditions are preserved")
+
+    try:
+        panels = [(source["label"], source["controller"]) for source in V4_SOURCES] + [(label, label) for label in V4_REFERENCES]
+        for label, controller in panels:
+            check_deadline()
+            panel_start = time.monotonic()
+            panel_dir = run_dir / label
+            panel_dir.mkdir()
+            entry = dict(status="running", controller=controller, conditions={}, raw_files={})
+            summary["panels"][label] = entry
+            write_json(run_dir / "summary.json", summary)
+
+            def persist_condition(condition, metrics, arrays):
+                if condition not in eval_v4.CONDITIONS or condition in entry["conditions"]:
+                    raise ValueError("Unexpected or duplicate EVAL v4 condition")
+                path = panel_dir / f"{condition}.npz"
+                with path.open("xb") as output:
+                    np.savez_compressed(output, **arrays)
+                entry["raw_files"][condition] = f"{label}/{path.name}"
+                json.dumps(metrics, allow_nan=False)
+                entry["conditions"][condition] = metrics
+                summary["eval_seconds"] = time.monotonic()-started
+                write_json(run_dir / "summary.json", summary)
+                check_deadline()
+
+            flat = sources[label]["flat"] if label in sources else None
+            metrics, raw = eval_v4.evaluate_controller(flat, c, a.eval_worlds, seed,
+                                                     controller=controller, on_condition=persist_condition)
+            if set(entry["conditions"]) != set(eval_v4.CONDITIONS) or metrics["conditions"] != entry["conditions"]:
+                raise ValueError("EVAL v4 controller returned incomplete or inconsistent condition records")
+            json.dumps(metrics, allow_nan=False)
+            with (panel_dir / "paired.npz").open("xb") as output:
+                np.savez_compressed(output, **{key: value for key, value in raw.items() if key.startswith("paired_")})
+            entry.update(metrics, status="finished", panel_seconds=time.monotonic()-panel_start)
+            entry["raw_files"]["paired"] = f"{label}/paired.npz"
+            raw_by_panel[label] = raw
+            summary["completed_panels"] += 1
+            if summary["completed_panels"] == 1:
+                summary["first_panel_seconds"] = entry["panel_seconds"]
+            summary["eval_seconds"] = time.monotonic()-started
+            write_json(run_dir / "summary.json", summary)
+            print(f"EVAL v4 {label}: {entry['panel_seconds']:.3f}s, {summary['completed_panels']}/11 panels complete", flush=True)
+        check_deadline()
+        summary["contrasts"] = eval_v4.compare_panels(raw_by_panel)
+        json.dumps(summary, allow_nan=False)
+    except BaseException as error:
+        summary.pop("contrasts", None)
+        summary.update(status="interrupted" if isinstance(error, (KeyboardInterrupt, TimeoutError)) else "failed",
+                       error=f"{type(error).__name__}: {error}", eval_seconds=time.monotonic()-started)
+        for panel in summary["panels"].values():
+            if panel["status"] == "running":
+                panel["status"] = summary["status"]
+        write_json(run_dir / "summary.json", summary)
+        raise
+    summary.update(status="finished", eval_seconds=time.monotonic()-started)
+    write_json(run_dir / "summary.json", summary)
+    print("run folder:", run_dir)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--name", default="run")
@@ -329,10 +500,10 @@ def main():
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, DIRECT_PROTOCOL), default=None,
-                    help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, or direct-v1")
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, DIRECT_PROTOCOL), default=None,
+                    help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, v4, or direct-v1")
     ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
-                    help="broader-v1/reversal-v1/direct-v1; final fixes the registered configuration")
+                    help="broader-v1/reversal-v1/direct-v1/v4; final fixes the registered configuration")
     ap.add_argument("--checkpoint-every", type=int, default=10)
     ap.add_argument("--max-train-seconds", type=float, default=None,
                     help="per-invocation training limit; stop after a complete generation and checkpoint "
@@ -350,6 +521,13 @@ def main():
     if git["dirty"] and not (a.allow_dirty or (a.quick and not a.resume)):
         raise SystemExit("Uncommitted code changes. Commit first (every run must map to a commit), "
                          "or pass --allow-dirty and say why in the experiment log.")
+    if a.eval_protocol == eval_v4.PROTOCOL:
+        a.condition_split = a.condition_split or "final"
+        try:
+            run_v4(a, git)
+        except ValueError as error:
+            ap.error(str(error))
+        return
     if a.eval_protocol in (eval_v3.PROTOCOL, reversal_eval.PROTOCOL) and a.controller == direct.FORMAT:
         ap.error("saved v3/reversal-v1 diagnostic CLI accepts rules-v0 only; direct-v1 evaluates its trained controller")
     if a.eval_protocol == eval_v3.PROTOCOL:
@@ -378,6 +556,8 @@ def main():
             ap.error("Cannot change direct-v1 configuration or use --quick on resume")
         if args.get("eval_protocol") == eval_v3.PROTOCOL:
             ap.error("EVAL v3 panels cannot resume; preserve this folder and start a new run")
+        if args.get("eval_protocol") == eval_v4.PROTOCOL:
+            ap.error("EVAL v4 attempts cannot resume; preserve all evidence and preregister a new attempt")
         if args.get("eval_protocol") == reversal_eval.PROTOCOL:
             ap.error("reversal-v1 does not resume; preserve the folder and use a new run name")
         if a.eval_protocol is not None and a.eval_protocol != args.get("eval_protocol", "v1"):

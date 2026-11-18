@@ -13,6 +13,7 @@ def main():
     rows = []
     diagnostics = []
     v3_rows = []
+    v4_rows = []
     direct_rows = []
     reversals = []
     structural_rows = []
@@ -27,6 +28,22 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "v4":
+            for label, panel in s.get("panels", {}).items() or [("pending", {})]:
+                paired = panel.get("paired", {})
+                estimates = []
+                for key in ("stationary_fitness", "individual_min_return", "joint_survival",
+                            "post_flip_return", "reversal_final_survival"):
+                    metric = paired.get(key, {})
+                    estimates.append("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                     else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+                v4_rows.append("| " + " | ".join([
+                    d.name, s.get("status", ""), label, panel.get("controller", ""), panel.get("status", "pending"),
+                    f"{len(panel.get('conditions', {}))}/4", a.get("condition_split", "final"), *estimates,
+                    str(s.get("eval_seed", cfg.get("eval_seed", ""))),
+                    str(s.get("eval_worlds", cfg.get("eval_worlds", a.get("eval_worlds", "")))), commit,
+                ]) + " |")
+            continue
         if a.get("eval_protocol") == "direct-v1":
             number = lambda value: "undefined" if value is None else f"{value:.6f}"
             for condition, controllers in s.get("evaluations", {"pending": {"genome": {}}}).items():
@@ -117,6 +134,18 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if v4_rows:
+        out += ["## EVAL v4 paired-world diagnostics", "",
+                "Saved controllers and fixed reference policies; no training. Each base world is evaluated under "
+                "both initial food rules and their mid-life reversals. Means and SEs use independent base-world "
+                "families; minimum return and joint survival pair each original individual across the two stationary rules "
+                "before averaging within its family. Survival values are fractions. Development rows use tiny seed-41 "
+                "fixtures only. These descriptive measurements do not replace the failed E113 gate. Per-rule accuracy, "
+                "deaths, encounters, all 15 planned A-minus-direct contrasts and raw events remain in the run folder. "
+                "Incomplete attempts retain their completed conditions and show undefined paired estimates.", "",
+                "| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | "
+                "Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | "
+                "Eval seed | Base worlds | Commit |", "|---" * 15 + "|", *v4_rows, ""]
     if v3_rows:
         out += ["## EVAL v3 diagnostics", "",
                 "Saved genomes only; 256 fresh worlds per panel. SE treats each world-family as one cluster. "

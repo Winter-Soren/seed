@@ -124,9 +124,21 @@ def greedy_logits(obs, rule, c):
     return jnp.where(cost == cost.min(1, keepdims=True), 0., -jnp.inf)
 
 
+def specialist_logits(obs, c, policy):
+    """Fixed target colors: the mixture keeps agent identities across paired lives."""
+    if policy == "fixed_A":
+        return greedy_logits(obs, 0, c)
+    if policy == "fixed_B":
+        return greedy_logits(obs, 1, c)
+    if policy != "mixture" or c.M % 2:
+        raise ValueError("specialist mixture requires an even family size")
+    return jnp.where((jnp.arange(c.M) < c.M // 2)[:, None],
+                     greedy_logits(obs, 0, c), greedy_logits(obs, 1, c))
+
+
 @partial(jax.jit, static_argnames=("c", "policy", "flip_step"))
 def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
-    if policy not in ("random_walk", "greedy"):
+    if policy not in ("random_walk", "greedy", "fixed_A", "fixed_B", "mixture"):
         raise ValueError("unknown reference policy")
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an interior integer")
@@ -137,10 +149,11 @@ def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
     def step(s, _):
         key, ka, kr = jax.random.split(s["key"], 3)
         current_rule = rule if flip_step is None else jnp.where(s["t"] >= flip_step, 1-rule, rule)
-        if policy == "greedy":
+        if policy != "random_walk":
             obs = observe(s["grid"], s["pos"], s["alive"], jnp.zeros(c.M),
                           s["energy"], s["denergy"], c)
-            logits = greedy_logits(obs, current_rule, c)
+            logits = (greedy_logits(obs, current_rule, c) if policy == "greedy"
+                      else specialist_logits(obs, c, policy))
         else:
             logits = jnp.zeros((c.M, 5))
         act = jax.random.categorical(ka, logits)

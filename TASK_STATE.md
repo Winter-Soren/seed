@@ -25,18 +25,18 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is running
 
-- No training, evaluation or hosted test job remains active or queued.
-- The compute worker completed all released work; the council completed its review.
+- E114 implementation passed all 133 local tests; the held-out diagnostic awaits committed release.
+- The council cleared measurement definitions, provenance and partial-output protection.
 - Latest run checks found about 21.9 GiB free on C: of 373.67 and 46.2 on D: of 100.
 - Recheck current memory and both drives before any new job; keep temporary files on D:.
 
 ## What is next
 
-- Owner decision is required by PLAN after the failed Phase 2 gate.
-- E114_PROPOSAL.md describes a new diagnostic of individual adaptation versus specialist mixtures.
+- The owner approved E114 and delegated scientific decisions to the council while asleep.
+- E114 is preregistered in LOG; commit the verified implementation, then run the paired diagnostic.
 - It uses saved controllers, paired rules and reversal, survival-aware outcomes and fresh worlds.
-- It is not approved, preregistered or run; it changes no reward and includes no evolution.
-- No new mechanism or task-ladder training is released until that decision.
+- It changes no reward and includes no evolution; diagnostic and verification budgets stay fixed.
+- No new mechanism or task-ladder training is released within E114.
 - Keep the original failed gate and every earlier run intact.
 
 ## Working rules
@@ -46,4 +46,4 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - Ask before stopping services; retain all memory and disk safeguards.
 - Keep the repository private and use the verified owner identity; no history rewriting.
 - Do not tune on held-out worlds or claim a percentage of AGI.
-- Continue after successful gates; stop for failed gates or required owner decisions.
+- At a gate, preserve its result and record the council's decision before any next experiment.

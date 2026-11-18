@@ -18,6 +18,15 @@ anywhere.
 
 ## Working directive
 
+**Owner delegation, 19 November 2026:** after approving E114, the owner said they
+were going to sleep and asked the research council to make the scientific decisions
+that would otherwise wait for them. During this absence, record council review and
+its decision at failed gates or proposed protocol changes instead of repeatedly
+requesting owner input. Preserve every original gate result; preregister each next
+experiment before running. This delegates research decisions, not permission to
+change repository visibility, stop services, weaken resource safeguards or exceed
+the existing compute limits. E114 retains its approved diagnostic-only scope and budget.
+
 Learn from experience, adapt when conditions change, and retain what remains useful.
 This frames the owner's 19 November direction within the existing research plan;
 it is an aim, not a demonstrated capability or a new reward function. Measure
