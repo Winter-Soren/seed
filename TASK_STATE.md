@@ -22,7 +22,8 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is running
 
-- E113 seed zero is safely checkpointed at 53 of 200; no final evaluation has run.
+- E113 seed zero completed 200 generations; seeds one and two are pending sequential release.
+- Its stationary score is 55.520 with SE 3.899, but it survives only one of the two rules.
 - A separate research chat reviews primary papers and mechanism proposals.
 - A compute worker handles released tests and training under coordinator control.
 - C: was about 21.87 GiB free of 373.67; D: 46.24 GiB free of 100 at the latest check.
@@ -30,8 +31,7 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is next
 
-- Publish the first E113 checkpoint and wait for hosted CI before continuing.
-- Resume the same seed-zero run to 200, audit it, then run seeds one and two sequentially.
+- Publish audited seed zero, then run seeds one and two with the unchanged registered settings.
 - Use the same observations, actions, hidden size, ES budget and three seeds.
 - Continue only if A exceeds its paired baseline by two SE in all three seeds; otherwise stop.
 - Council loop: evidence proposal, skeptical review, one registered test, compute, result review.

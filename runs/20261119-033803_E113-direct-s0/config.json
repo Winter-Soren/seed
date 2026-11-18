@@ -72,5 +72,17 @@
     "fraction_abs_above_wmax": 0.0,
     "comparison_wmax": 3.0,
     "clipping": false
-  }
+  },
+  "resumes": [
+    {
+      "at": "2026-11-19T03:51:41.909522",
+      "git": {
+        "commit": "e5630033125c8409218615044f3addbd0da46d61",
+        "branch": "main",
+        "dirty": false
+      },
+      "max_train_seconds": 3600.0,
+      "replayed_generations": 0
+    }
+  ]
 }

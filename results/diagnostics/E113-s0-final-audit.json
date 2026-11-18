@@ -1,0 +1,44 @@
+{
+  "status": "verified",
+  "run": "runs\\20261119-033803_E113-direct-s0",
+  "generation": 200,
+  "metric_rows": 200,
+  "checkpoint_t": 200,
+  "metrics_prefix_preserved": true,
+  "start_bytes_preserved": true,
+  "reference_identity_E112_A0": true,
+  "final_genome_hash": "b03d4ccb3d931f38",
+  "guard_wall_seconds": 356.5383645,
+  "generation_seconds_sum": 457.281,
+  "continuation_generation_seconds_sum": 335.186,
+  "sampled_peak_private_gib": 0.8808631896972656,
+  "minimum_commit_headroom_gib": 13.090599060058594,
+  "minimum_c_free_gib": 21.889934539794922,
+  "minimum_d_free_gib": 46.240604400634766,
+  "genome": {
+    "stationary": {
+      "fitness": 55.51953125,
+      "fitness_se": 3.8994588561843555,
+      "greedy_fraction": 0.674777159270293,
+      "greedy_fraction_se": 0.0482886342512891,
+      "meal20_minus_meal1_matched": {
+        "difference": 0.1328125,
+        "se": 0.019557274328665195,
+        "eligible_agents": 512,
+        "contributing_worlds": 128
+      }
+    },
+    "reversal": {
+      "fitness": 14.015625,
+      "fitness_se": 1.218095050889893,
+      "greedy_fraction": 0.20305315431304027,
+      "greedy_fraction_se": 0.017624831476539333,
+      "meal20_minus_meal1_matched": {
+        "difference": 0.125,
+        "se": 0.020337230420499015,
+        "eligible_agents": 512,
+        "contributing_worlds": 128
+      }
+    }
+  }
+}

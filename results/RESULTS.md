@@ -84,7 +84,8 @@ The direct-rnn-v1 genome encodes fixed recurrent weights; hidden states still ch
 
 | Run | Status | Controller | Split | Gens | Training seed | Condition | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Eval seed | Worlds | Commit |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|
-| 20261119-033803_E113-direct-s0 | interrupted | direct-rnn-v1 | final | 53/200 | 0 | pending | undefined | undefined | undefined | undefined | 2026111901 | 256 | 9db7faf |
+| 20261119-033803_E113-direct-s0 | finished | direct-rnn-v1 | final | 200/200 | 0 | stationary | 55.519531 | 3.899459 | 0.674777 | 0.048289 | 2026111901 | 256 | 9db7faf |
+| 20261119-033803_E113-direct-s0 | finished | direct-rnn-v1 | final | 200/200 | 0 | reversal | 14.015625 | 1.218095 | 0.203053 | 0.017625 | 2026111901 | 256 | 9db7faf |
 
 ## EVAL v2 diagnostics
 
