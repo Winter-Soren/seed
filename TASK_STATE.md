@@ -18,11 +18,11 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - Its SEs are 1.364 and 0.700; it is a privileged reference, not an optimal bound.
 - New uncertainty is across world-families; B0 alone is not a three-seed B result.
 - These diagnostics use weight changes, not active edge growth; keep those claims separate.
-- All 91 integrated tests passed, including exact same-machine EVAL v1 compatibility.
+- All 112 integrated tests passed, including exact same-machine EVAL v1 compatibility.
 
 ## What is running
 
-- All eight E112 panels are finished and audited; no local heavy compute is active.
+- Phase 1 is published; all direct-controller checks passed; no heavy job is currently active.
 - A separate research chat reviews primary papers and mechanism proposals.
 - A compute worker handles released tests and training under coordinator control.
 - C: was about 21.87 GiB free of 373.67; D: 46.24 GiB free of 100 at the latest check.
@@ -30,10 +30,10 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is next
 
-- Publish Phase 1 evidence and its five-line report; preserve all original run artifacts.
-- Preregister Phase 2's directly encoded recurrent nonplastic baseline and matched comparison.
+- E113 code is implemented, preregistered and verified; commit before the first training segment.
+- Commit the verified code, then benchmark the first bounded seed-zero training segment.
 - Use the same observations, actions, hidden size, ES budget and three seeds.
-- Stop for owner input if that baseline matches or beats plastic agents, as PLAN.md requires.
+- Continue only if A exceeds its paired baseline by two SE in all three seeds; otherwise stop.
 - Council loop: evidence proposal, skeptical review, one registered test, compute, result review.
 - Useful new connections remain a research target; no failed rule is silently re-enabled.
 - Do not invent a percentage of AGI; track concrete learning, adaptation and retention tests.

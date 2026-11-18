@@ -13,6 +13,7 @@ def main():
     rows = []
     diagnostics = []
     v3_rows = []
+    direct_rows = []
     reversals = []
     structural_rows = []
     broader_rows = []
@@ -26,6 +27,18 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "direct-v1":
+            number = lambda value: "undefined" if value is None else f"{value:.6f}"
+            for condition, controllers in s.get("evaluations", {"pending": {"genome": {}}}).items():
+                metric = controllers.get("genome", {})
+                direct_rows.append("| " + " | ".join([
+                    d.name, s.get("status", ""), cfg.get("controller", a.get("controller", "")),
+                    a.get("condition_split", "final"), f"{s.get('generation', '')}/{a['generations']}",
+                    str(a["seed"]), condition, number(metric.get("fitness")), number(metric.get("fitness_se")),
+                    number(metric.get("greedy_fraction")), number(metric.get("greedy_fraction_se")),
+                    str(s.get("eval_seed", cfg.get("eval_seed", ""))), str(a["eval_worlds"]), commit,
+                ]) + " |")
+            continue
         if a.get("eval_protocol") == "v3":
             number = lambda value: "undefined" if value is None else f"{value:.6f}"
             evaluations = s.get("evaluations", {"pending": {"pending": {}}})
@@ -113,6 +126,15 @@ def main():
                 "bins and raw events are preserved in each run's summary.json and events.npz.", "",
                 "| Run | Status | Condition | Controller | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Seed | Worlds | Commit |",
                 "|---" * 11 + "|", *v3_rows, ""]
+    if direct_rows:
+        out += ["## Direct recurrent baseline (direct-v1)", "",
+                "The direct-rnn-v1 genome encodes fixed recurrent weights; hidden states still change during life. "
+                "No lifetime synaptic, predictor or structural updates occur. Final rows use the same 256 EVAL v3 "
+                "worlds and references; development rows use tiny fixtures and seed 41, never held-out worlds. "
+                "Each uncertainty is a world-family SE for that fixed genome, not variability across training seeds. "
+                "Raw events, full diagnostics and initial/final weight magnitudes remain in each run folder.", "",
+                "| Run | Status | Controller | Split | Gens | Training seed | Condition | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Eval seed | Worlds | Commit |",
+                "|---" * 14 + "|", *direct_rows, ""]
     if diagnostics:
         out += ["## EVAL v2 diagnostics", "",
                 "Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables "

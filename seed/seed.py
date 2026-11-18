@@ -156,17 +156,24 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
 # ----------------------------------------------------------------------------- one lifetime
 @partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
-            structural=False, flip_step=None, diagnostics=False):
+            structural=False, flip_step=None, diagnostics=False, direct_weights=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
     V, D, O, n, K = dims(c)
-    types = neuron_types(c)
-    hebb = g["hebb"][types[:, None], types[None, :]]
-    eta, plr = jnp.exp(g["log_eta"]), jnp.exp(g["log_plr"])
     pl = 1.0 if plastic else 0.0
     pp = pl if predictor_plastic is None else float(predictor_plastic)
-    W, mask = jax.vmap(lambda k: develop(g, k, c))(jax.random.split(dkey, c.M))
+    if direct_weights is None:
+        types = neuron_types(c)
+        hebb = g["hebb"][types[:, None], types[None, :]]
+        eta, plr = jnp.exp(g["log_eta"]), jnp.exp(g["log_plr"])
+        W, mask = jax.vmap(lambda k: develop(g, k, c))(jax.random.split(dkey, c.M))
+    else:
+        if plastic or pp or structural:
+            raise ValueError("direct weights require frozen weights/predictor and no structural updates")
+        if direct_weights.shape != (n, n) or not jnp.issubdtype(direct_weights.dtype, jnp.floating):
+            raise ValueError("direct weights must be a floating-point (neurons, neurons) matrix")
+        W = jnp.broadcast_to(direct_weights, (c.M, n, n))
     grid, pos = init_world(wkey, c)
     food_t, poison_t = 1 + rule, 2 - rule
     M = c.M
@@ -192,10 +199,18 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
     def step(s, _):
         key, ka, kr = jax.random.split(s["key"], 3)
         obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
-        W, x, Wp, surprise = jax.vmap(
-            lambda W, x, Wp, o, de, mk: brain_step(
-                W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp)
-        )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
+        if direct_weights is None:
+            W, x, Wp, surprise = jax.vmap(
+                lambda W, x, Wp, o, de, mk: brain_step(
+                    W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp)
+            )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
+        else:
+            # Fixed direct weights bypass even the clipping performed by a frozen plastic brain.
+            W, Wp = s["W"], s["Wp"]
+            x = s["x"].at[:, :D].set(obs)
+            for _ in range(c.micro):
+                x = jax.vmap(lambda w, state: jnp.tanh(w @ state))(W, x).at[:, :D].set(obs)
+            surprise = jnp.mean(obs ** 2, axis=1)
         if structural:
             # The current neural tick/action is already computed; rewiring affects the next tick.
             def event(_):
@@ -272,6 +287,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
             res['structural_state'] = dict(mask=s['mask'], W=s['W'], x=s['x'], row_caps=caps)
     if record:
         res["traj"] = traj
+        if direct_weights is not None:
+            res["direct_state"] = dict(W=s["W"], x=s["x"], Wp=s["Wp"])
     if diagnostics:
         res["events"] = {key: traj[key] for key in ("food", "poison", "alive_before", "alive_after")}
     return res

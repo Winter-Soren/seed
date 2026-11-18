@@ -22,7 +22,7 @@ md(r"""
 
 **The world.** A small 2D world with two kinds of blobs, A and B. In every new world, a hidden rule decides which is food and which is poison. No inborn instinct can beat chance, so **the only way to win is to learn during life.** Agents live in families of four relatives, see each other, and can emit a signal the others can sense. Energy runs out and agents die.
 
-**How to run it.** Go to *Runtime → Change runtime type → T4 GPU*, then *Runtime → Run all*. The full run (two experiments) takes roughly 20–40 minutes on a free T4; the first log line shows the speed. Set `QUICK = True` below for a 2-minute smoke test.
+**Status.** This is an exploratory notebook with historical examples, not the current registered research workflow. Follow `PLAN.md` and run tracked experiments through `scripts/run_experiment.py`. The owner chose laptop-only research; the proposed GPU benchmark was cancelled before execution. Notebook runtime has not been established for the current environment. `QUICK = True` selects a smaller exploratory workload, not a timed guarantee.
 
 **What we're testing.** Does evolution discover brains that *learn*? We check this two ways:
 - **Accuracy rises within a life.** If food-choice accuracy in the second half of life is higher than in the first, the agents learned *this* world's rule.
@@ -33,7 +33,7 @@ code(r"""
 import jax
 print("JAX", jax.__version__, "| devices:", jax.devices())
 if jax.devices()[0].platform == "cpu":
-    print("No GPU found. Runtime -> Change runtime type -> T4 GPU (it still runs on CPU, just slower).")
+    print("CPU backend. Check available memory and benchmark before a large exploratory workload.")
 """)
 
 md("## 1. The Seed engine\nThe whole architecture is in this one cell: world, development, brain, lifetime and evolution. Read the comments, then change things.")

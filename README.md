@@ -37,6 +37,14 @@ Each SE uses 256 world-families as independent units; it is not variation across
 - Does not mean: robust transfer, useful connection growth, a wiring-prior advantage or superiority to a fairly trained nonplastic controller has been established. Meal and survivor curves are selection-conditioned.
 - Next: Phase 2's matched-budget nonplastic recurrent baseline, three seeds, before adding another mechanism.
 
+## Next comparison and research council
+
+E113 preregisters three directly encoded recurrent controllers under A's ES settings and generation budget. Their 8,424 inherited weights stay fixed during a life, while recurrent state can still adapt to observations and feedback. This replaces the historical tied-sensor C baseline. The implementation is under verification; no E113 training result exists yet.
+
+The [paper review and council decisions](experiments/LITERATURE_REVIEW.md) distinguish evidence for biological mechanisms from evidence that their implementations help Seed. The workflow is a literature proposal, skeptical review, one preregistered comparison, guarded compute, then review of the results. Candidate weight decay and eligibility traces remain conditional on the task ladder's specified failures. Growth/pruning is measured separately from weight learning; the failed rule is not silently re-enabled.
+
+The direct baseline changes representation, density, developmental variation and weight bounds as well as lifetime plasticity. Equal ES settings do not make an 8,424-parameter search as easy as a 155-parameter search. Its result will be reported as a comparison of these designs under this budget. The preregistered Phase 2 continuation rule requires a clear paired A advantage in all three seeds; otherwise work stops for owner input.
+
 ## Three loops, one experiment
 
 | Loop | What happens |

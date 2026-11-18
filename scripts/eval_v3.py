@@ -7,6 +7,7 @@ from jax.flatten_util import ravel_pytree
 import numpy as np
 
 from seed.seed import Cfg, MOVES, init_genome, init_world, observe, rollout
+from seed import direct
 
 PROTOCOL = "v3"
 EVAL_SEED = 2026111901
@@ -20,6 +21,7 @@ EVENT_KEYS = ("food", "poison", "alive_before", "alive_after")
 def validate_request(a, c):
     if (a.generations != 0 or not a.start.startswith("file:") or a.resume or a.quick
             or a.no_plastic or getattr(a, "structural_plasticity", "off") != "off"
+            or getattr(a, "controller", None) not in (None, "rules-v0")
             or c != Cfg() or a.eval_worlds != N_WORLDS
             or getattr(a, "condition_split", None) is not None or getattr(a, "cfg", None)):
         raise ValueError("EVAL v3 requires saved file:, zero generations, default Cfg, 256 worlds, "
@@ -162,21 +164,32 @@ def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
     return dict(events=events, fitness=fitness)
 
 
-def evaluate_conditions(mu, c, n_worlds=N_WORLDS, eval_seed=EVAL_SEED):
+def evaluate_conditions(mu, c, n_worlds=N_WORLDS, eval_seed=EVAL_SEED, *, controller="rules-v0"):
     if n_worlds < 2 or not np.isfinite(np.asarray(mu)).all():
         raise ValueError("EVAL v3 requires at least two worlds and a finite genome")
+    if controller not in ("rules-v0", direct.FORMAT):
+        raise ValueError("unknown controller format")
+    is_direct = controller == direct.FORMAT
     if eval_seed == EVAL_SEED and (c != Cfg() or n_worlds != N_WORLDS):
         raise ValueError("held-out EVAL v3 seed is reserved for the complete registered panel")
     kw, kd = jax.random.split(jax.random.PRNGKey(eval_seed))
     wkeys, dkeys = jax.random.split(kw, n_worlds), jax.random.split(kd, n_worlds)
     rules = jnp.arange(n_worlds) % 2
-    _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
-    genome = unravel(jnp.asarray(mu))
+    if is_direct:
+        genome = None
+        weights = direct.decode(jnp.asarray(mu), c)
+    else:
+        _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
+        genome = unravel(jnp.asarray(mu))
     results, arrays = {}, dict(wkeys=np.asarray(wkeys), dkeys=np.asarray(dkeys), rules=np.asarray(rules))
     for condition, flip in (("stationary", None), ("reversal", c.T // 2)):
         panels = {}
         for controller in ("genome", "random_walk", "greedy"):
-            if controller == "genome":
+            if controller == "genome" and is_direct:
+                evaluate = jax.jit(jax.vmap(lambda w, d, r: rollout(
+                    None, w, d, r, c, plastic=False, predictor_plastic=False,
+                    direct_weights=weights, flip_step=flip, diagnostics=True)))
+            elif controller == "genome":
                 evaluate = jax.jit(jax.vmap(lambda w, d, r: rollout(
                     genome, w, d, r, c, plastic=True, predictor_plastic=True,
                     structural=False, flip_step=flip, diagnostics=True)))
