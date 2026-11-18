@@ -1,0 +1,38 @@
+{
+  "run": "runs\\20261119-033803_E113-direct-s0",
+  "analysis": "posthoc descriptive per-initial-rule breakdown; not a new gate or simulation",
+  "conditions": {
+    "stationary": [
+      {
+        "initial_rule": 0,
+        "worlds": 128,
+        "fitness": -3.98828125,
+        "fitness_se": 0.005447618058140814,
+        "survival": 0.0
+      },
+      {
+        "initial_rule": 1,
+        "worlds": 128,
+        "fitness": 115.02734375,
+        "fitness_se": 2.3012906567971156,
+        "survival": 1.0
+      }
+    ],
+    "reversal": [
+      {
+        "initial_rule": 0,
+        "worlds": 128,
+        "fitness": -3.98828125,
+        "fitness_se": 0.005447618058140814,
+        "survival": 0.0
+      },
+      {
+        "initial_rule": 1,
+        "worlds": 128,
+        "fitness": 32.01953125,
+        "fitness_se": 0.9240031129271175,
+        "survival": 0.0
+      }
+    ]
+  }
+}

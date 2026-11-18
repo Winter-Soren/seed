@@ -4,15 +4,15 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 19 Nov 2026:** Phase 1 EVAL v3 is complete: all eight saved-genome panels passed their measurement-validity checks on 256 fresh worlds. The three evolved A genomes show within-cohort learning, but weak recovery after rule reversal. Work stays on the laptop. Next is the three-seed, directly encoded nonplastic baseline in Phase 2; paper research and critical review run alongside guarded compute. [Full measurements and limitations](results/EVAL_V3.md).
+**Phase 2 result · 19 Nov 2026: the nonplastic baseline wins on the registered score in all three seeds. The continuation gate FAILED.** Direct-controller fitness is **55.520 ± 3.899, 66.481 ± 4.533 and 69.869 ± 4.757 SE**, versus plastic A **15.346 ± 0.377, 15.187 ± 0.385 and 14.984 ± 0.351** on 256 matched held-out worlds. Each direct advantage exceeds two paired SE. High scores nevertheless conceal one-rule specialization and poor reversal survival. New training is stopped for the owner's decision under [PLAN.md](PLAN.md). [Full comparison and artifacts](results/E113_BASELINE.md).
 
 **Working directive:** learn from experience, adapt when conditions change, and retain what remains useful. This is the research aim, not a capability already demonstrated or a new reward function. The registered task ladder tests each part before adding mechanisms.
 
-**Latest measurement · E112:** among the same agents reaching meal 20, A0/A1/A2 improve first-to-twentieth-meal accuracy by **26.82 ± 2.42, 21.14 ± 2.44 and 24.87 ± 2.24 percentage points (SE)**. This is conditional on reaching meal 20. Stationary fitness is only **18.2–18.7%** of the local rule-knowing reference; reversal fitness is **4.5–5.2%**. Current lifetime learning changes weights; active connection growth is off because the earlier tested rule reduced fitness in all three saved A genomes.
+**Earlier measurement · E112:** among the same agents reaching meal 20, A0/A1/A2 improve first-to-twentieth-meal accuracy by **26.82 ± 2.42, 21.14 ± 2.44 and 24.87 ± 2.24 percentage points (SE)**. This is conditional on reaching meal 20. Stationary fitness is only **18.2–18.7%** of the local rule-knowing reference; reversal fitness is **4.5–5.2%**. Current lifetime learning changes weights; active connection growth is off because the earlier tested rule reduced fitness in all three saved A genomes.
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
-*Final A genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. The completed three-seed comparison with independently evolved nonplastic controls is reported below.*
+*Historical final A genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. This lesion comparison is distinct from the independently evolved E113 baseline above.*
 
 ## Phase 1: learning is measurable; reversal remains weak
 
@@ -35,19 +35,33 @@ Each SE uses 256 world-families as independent units; it is not variation across
 - Happened: all eight panels completed; A fitness is 14.984–15.346 (SE 0.351–0.385) stationary and 3.127–3.576 (SE 0.166–0.183) with reversal. Final post-reversal accuracy is 46.2%, 49.3%, 48.1% (SE 1.4, 1.2, 1.3 percentage points).
 - Means: within-cohort learning appears in all three evolved A genomes; recovery after change remains weak.
 - Does not mean: robust transfer, useful connection growth, a wiring-prior advantage or superiority to a fairly trained nonplastic controller has been established. Meal and survivor curves are selection-conditioned.
-- Next: Phase 2's matched-budget nonplastic recurrent baseline, three seeds, before adding another mechanism.
+- Next at Phase 1 closure: Phase 2's matched-budget nonplastic recurrent baseline; now completed below.
 
-## Next comparison and research council
+## Phase 2: baseline wins, objective rewards specialization
 
-E113 preregisters three directly encoded recurrent controllers under A's ES settings and generation budget. Their 8,424 inherited weights stay fixed during a life, while recurrent state can still adapt to observations and feedback. This replaces the historical tied-sensor C baseline. The implementation passed 112 tests. Seeds 0 and 1 completed 200 generations: stationary fitness **55.520 ± 3.899** and **66.481 ± 4.533 SE**; reversal fitness **14.016 ± 1.218** and **16.557 ± 1.388**. Seed 2 remains pending, so this is not a three-seed conclusion.
+E113 completed three directly encoded recurrent controllers under A's ES settings and 200-generation budget. Their 8,424 inherited weights stay fixed during a life, while recurrent state can still adapt to observations and feedback. This replaces the historical tied-sensor C baseline. The implementation passed 112 tests locally and in hosted CI; all three runs passed their final artifact audits.
+
+| Seed | Plastic A fitness ± SE | Direct fitness ± SE | Paired A − direct ± SE | Direct reversal fitness ± SE |
+|---|---:|---:|---:|---:|
+| 0 | 15.346 ± 0.377 | 55.520 ± 3.899 | −40.174 ± 3.922 | 14.016 ± 1.218 |
+| 1 | 15.187 ± 0.385 | 66.481 ± 4.533 | −51.295 ± 4.544 | 16.557 ± 1.388 |
+| 2 | 14.984 ± 0.351 | 69.869 ± 4.757 | −54.885 ± 4.737 | 19.071 ± 1.536 |
+
+Each SE describes 256 world-families for a fixed trained genome, not variation across training seeds. The registered continuation rule required A − direct > 2 paired SE in **all three** seeds. It passed in **zero of three**; the baseline has a clear advantage on this score in all three. Reversal is secondary and cannot replace the primary gate.
 
 A descriptive inspection of seed 0 exposes an objective limitation: fitness is **115.027 ± 2.301 SE** under one initial rule and **−3.988 ± 0.005** under the other. All agents survive the favorable stationary rule; none survive the opposite rule or reversal. Food continues adding fitness at the energy cap, while death stops further losses. A persistent blob preference can therefore score highly without reliable rule adaptation. These post-result diagnostics do not change the registered gate or justify changing the score mid-comparison.
 
-Seed 1 favors the opposite initial rule: **136.938 ± 2.088 SE** versus **−3.975 ± 0.008**, with stationary survival **99.8% versus 0%**. This reinforces the scoring concern while the final seed remains pending; positive mean reversal fitness still does not establish recovery.
+Seeds 1 and 2 favor the opposite initial rule: **136.938 ± 2.088** and **143.676 ± 2.258 SE** in their favorable rule, versus **−3.975 ± 0.008** and **−3.938 ± 0.032** in the other. Favorable stationary survival is 99.8–100%; unfavorable survival is 0–0.4%. Overall final reversal survival is 0%, 0.29% and 0.29%. These descriptive, post-result strata expose the scoring concern; positive mean reversal fitness does not establish recovery or identify the controller's internal mechanism.
 
 The [paper review and council decisions](experiments/LITERATURE_REVIEW.md) distinguish evidence for biological mechanisms from evidence that their implementations help Seed. The workflow is a literature proposal, skeptical review, one preregistered comparison, guarded compute, then review of the results. Candidate weight decay and eligibility traces remain conditional on the task ladder's specified failures. Growth/pruning is measured separately from weight learning; the failed rule is not silently re-enabled.
 
-The direct baseline changes representation, density, developmental variation and weight bounds as well as lifetime plasticity. Equal ES settings do not make an 8,424-parameter search as easy as a 155-parameter search. Its result will be reported as a comparison of these designs under this budget. The preregistered Phase 2 continuation rule requires a clear paired A advantage in all three seeds; otherwise work stops for owner input.
+The direct baseline changes representation, density, developmental variation and weight bounds as well as lifetime plasticity. Equal ES settings do not make an 8,424-parameter search as easy as a 155-parameter search. This is a comparison of these designs under the registered budget, not an isolated causal test of plasticity. Original EVAL v1 and all earlier run artifacts remain intact.
+
+- Asked: compare plastic agents with a directly encoded recurrent baseline under the same evolution budget, in three seeds.
+- Happened: direct fitness was 55.520 ± 3.899, 66.481 ± 4.533 and 69.869 ± 4.757 SE; all three paired comparisons favored it, so Phase 2's continuation gate failed.
+- Means: the baseline wins the registered objective, and rule-specific outcomes reveal that this objective can reward specialization instead of reliable adaptation.
+- Does not mean: the baseline learns the hidden rule, plasticity has no value, or useful new connections or broad transfer have been demonstrated.
+- Next: stop new training for owner input. The council proposes [E114, a diagnostic of individual adaptation versus specialist mixtures](experiments/E114_PROPOSAL.md); it is not approved or run and does not change E113's failed gate.
 
 ## Three loops, one experiment
 
@@ -68,7 +82,7 @@ flowchart TD
     E -->|next generation| G
 ```
 
-Evolution changes the genome between generations; lifetime weight changes are not inherited. **Control C keeps recurrent state and energy feedback active while disabling both local weight updates.** After A's 3/3 result, this control compared independently evolved nonplastic agents with their matched A runs.
+Evolution changes the genome between generations; lifetime weight changes are not inherited. Historical control C kept recurrent state and energy feedback active while disabling local weight updates, but its tied sensor encoding restricted it. E113 replaces C for later claims by giving the fixed-weight baseline independent sensor-channel weights.
 
 The current world is a 16 × 16 wrapping grid. Four related agents live for up to 300 steps, seeing only a local patch. Each world has a hidden rule assigning its two object types to food or poison. This makes a compact test bed for studying the interaction of evolution, development and plasticity.
 
@@ -145,7 +159,7 @@ After 200 generations, all three B seeds exceed the original biology-prior fitne
 | B1 | 16.6015625 | -0.203125 | 69.67% → 84.36% |
 | B2 | 15.326171875 | 0.15234375 | 69.04% → 82.52% |
 
-These are point estimates without per-world standard errors; passing this historical criterion does not establish statistical significance or transfer beyond the fixed task. A and B use different evolution settings, so their difference cannot isolate the effect of the wiring prior. Exact measurements are in the [B0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json), [B1 summary](runs/20261115-122040_E104-B-bio-s1/summary.json) and [B2 summary](runs/20261117-070747_E104-B-bio-s2/summary.json). Phase 1 will provide the registered improved measurements; Phase 2 supplies the later nonplastic baseline.
+These are point estimates without per-world standard errors; passing this historical criterion does not establish statistical significance or transfer beyond the fixed task. A and B use different evolution settings, so their difference cannot isolate the effect of the wiring prior. Exact measurements are in the [B0 summary](runs/20261112-131946_E104-B-bio-s0/summary.json), [B1 summary](runs/20261115-122040_E104-B-bio-s1/summary.json) and [B2 summary](runs/20261117-070747_E104-B-bio-s2/summary.json). E112 now supplies the improved saved-genome measurements, including B0; E113 supplies the later nonplastic baseline.
 
 **Experiment C: how does plastic evolution compare with a matched nonplastic control? — complete; all 3 seed pairs favor plastic evolution.**
 

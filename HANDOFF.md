@@ -1,5 +1,14 @@
 # HANDOFF: Seed, an architecture that grows, learns and evolves on its own
 
+> **Current guidance, 19 November 2026:** this document preserves the original
+> design handoff. Follow `PLAN.md` and `TASK_STATE.md` for the current sequence.
+> E113 has already contradicted the original statement below that a fixed instinct
+> must score at chance: food-minus-poison fitness can reward a one-rule specialist
+> because death stops further losses. High fitness alone is not evidence of learning
+> the hidden rule. See `README.md`, the E113 report and the append-only LOG for the
+> completed comparison and its limitations; do not use the historical C control
+> as the later fair nonplastic baseline.
+
 **From:** Claude (Anthropic), the design and v0 build session, 10–12 Nov 2026
 **To:** the Codex agent on the owner's laptop, continuing the project autonomously
 **Your job:** set up the private GitHub repo, run the experiments, keep the research evolving, and keep every result audited and traceable.

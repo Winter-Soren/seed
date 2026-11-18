@@ -88,6 +88,8 @@ The direct-rnn-v1 genome encodes fixed recurrent weights; hidden states still ch
 | 20261119-033803_E113-direct-s0 | finished | direct-rnn-v1 | final | 200/200 | 0 | reversal | 14.015625 | 1.218095 | 0.203053 | 0.017625 | 2026111901 | 256 | 9db7faf |
 | 20261119-040602_E113-direct-s1 | finished | direct-rnn-v1 | final | 200/200 | 1 | stationary | 66.481445 | 4.533437 | 0.808007 | 0.057205 | 2026111901 | 256 | 87702c0 |
 | 20261119-040602_E113-direct-s1 | finished | direct-rnn-v1 | final | 200/200 | 1 | reversal | 16.556641 | 1.388032 | 0.239866 | 0.020377 | 2026111901 | 256 | 87702c0 |
+| 20261119-041609_E113-direct-s2 | finished | direct-rnn-v1 | final | 200/200 | 2 | stationary | 69.869141 | 4.757295 | 0.849180 | 0.060177 | 2026111901 | 256 | 1d7e2a3 |
+| 20261119-041609_E113-direct-s2 | finished | direct-rnn-v1 | final | 200/200 | 2 | reversal | 19.071289 | 1.536024 | 0.276298 | 0.022625 | 2026111901 | 256 | 1d7e2a3 |
 
 ## EVAL v2 diagnostics
 

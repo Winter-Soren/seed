@@ -1,0 +1,78 @@
+{
+  "posthoc_per_initial_rule": {
+    "stationary": [
+      {
+        "initial_rule": 0,
+        "worlds": 128,
+        "fitness": 143.67578125,
+        "fitness_se": 2.2575748057506804,
+        "survival": 1.0
+      },
+      {
+        "initial_rule": 1,
+        "worlds": 128,
+        "fitness": -3.9375,
+        "fitness_se": 0.032338331999895,
+        "survival": 0.00390625
+      }
+    ],
+    "reversal": [
+      {
+        "initial_rule": 0,
+        "worlds": 128,
+        "fitness": 42.076171875,
+        "fitness_se": 1.0674659547179761,
+        "survival": 0.0
+      },
+      {
+        "initial_rule": 1,
+        "worlds": 128,
+        "fitness": -3.93359375,
+        "fitness_se": 0.030056486841732257,
+        "survival": 0.005859375
+      }
+    ]
+  },
+  "status": "verified",
+  "run": "runs\\20261119-041609_E113-direct-s2",
+  "generation": 200,
+  "metric_rows": 200,
+  "checkpoint_t": 200,
+  "start_bytes_preserved": true,
+  "reference_identity_E112_A0": true,
+  "final_genome_hash": "a693c973939c7fb5",
+  "guard_wall_seconds": 498.0994217,
+  "generation_seconds_sum": 472.858,
+  "cold_seconds": 4.578,
+  "warm_mean_seconds": 2.3531658291457287,
+  "sampled_peak_private_gib": 0.9001235961914062,
+  "minimum_commit_headroom_gib": 12.049339294433594,
+  "minimum_c_free_gib": 21.90509033203125,
+  "minimum_d_free_gib": 46.23820114135742,
+  "genome": {
+    "stationary": {
+      "fitness": 69.869140625,
+      "fitness_se": 4.757295120756791,
+      "greedy_fraction": 0.8491804446132482,
+      "greedy_fraction_se": 0.06017734874327852,
+      "meal20_minus_meal1_matched": {
+        "difference": 0.11284046692607004,
+        "se": 0.019984139119235456,
+        "eligible_agents": 514,
+        "contributing_worlds": 130
+      }
+    },
+    "reversal": {
+      "fitness": 19.0712890625,
+      "fitness_se": 1.5360239032287135,
+      "greedy_fraction": 0.2762977320637795,
+      "greedy_fraction_se": 0.022624935277547154,
+      "meal20_minus_meal1_matched": {
+        "difference": 0.10505836575875487,
+        "se": 0.019867124626522854,
+        "eligible_agents": 514,
+        "contributing_worlds": 130
+      }
+    }
+  }
+}
