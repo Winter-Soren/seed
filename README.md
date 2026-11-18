@@ -4,7 +4,9 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 18 Nov 2026:** follow the owner's [research plan](PLAN.md) in order. All three B runs are complete and pass B's original point-estimate criterion. E109 stays stopped at generation 62. Phase 0 dependency pins, untracked-source checks and CI are verified: all 75 tests passed on the hosted runner, including synchronized generation timing. E111's CPU benchmark finished at 95.265 seconds for one cold generation. Its GPU run has not started: automatic approval review requires specific owner consent to upload the private source bundle and manifest to Colab. These EVAL v1 measurements lack per-world standard errors; Phase 1 supplies the improved measurements. The external audit's seed-777 probes remain unregistered and unverified.
+**Current direction · 19 Nov 2026:** use the laptop only, following the owner's [research plan](PLAN.md). Phase 0 housekeeping is complete with the unrun Colab benchmark waived by the owner. All three B runs pass their original point-estimate criterion; E109 stays stopped at generation 62. Dependency pins, source checks and hosted CI are verified, with 75 tests passing. Next is Phase 1: preregister EVAL v3 and measure saved genomes with per-world standard errors. Historical EVAL v1 results lack those errors; the external seed-777 audit remains unregistered and unverified.
+
+**Working directive:** learn from experience, adapt when conditions change, and retain what remains useful. This is the research aim, not a capability already demonstrated or a new reward function. The registered task ladder tests each part before adding mechanisms.
 
 **Latest gate decision · 17 Nov 2026:** biology-start evolution reached fitness **15.90234375, 16.6015625 and 15.326171875**, each above the prior's **5.12890625**. B's original gate therefore **passes in 3/3 seeds**; it required at least 2/3. This is the registered EVAL v1 point-estimate comparison, without standard errors. Earlier fixed-genome tests found that the tested growth/pruning rule lowered fitness in all three A genomes, while their plasticity advantage remained positive across all four registered foraging-parameter shifts. [See the evidence and limits](#what-the-experiments-show).
 
@@ -203,7 +205,15 @@ The [figure data](results/figures/a-figure-data.json) links each series to its r
 
 E109 remains **interrupted at 62/200 generations**, with its folder unchanged and **no held-out evaluation**. The owner stopped it because the tested rule lowered fitness in all three fixed-genome comparisons and the roughly **eight-hour single-seed cost estimate** was not justified. That estimate is not elapsed compute: its retained generation timings total **7,995.859 seconds**. No further E109 segment is planned.
 
-**Gate B is decided; Phase 0 housekeeping is underway.** Exact dependency pins and the runner's untracked-source check pass all 74 local tests. The corrected same-machine compatibility test passed all 74 tests in hosted CI. E111 compares one cold, synchronized CPU/GPU generation, including compilation; CPU is complete and the GPU upload awaits specific owner authorization. It makes no warm-throughput claim. Next, keep the compact handoff current and benchmark one generation on a free Colab GPU against the laptop. Existing 155-number genomes and default EVAL v1 remain compatibility requirements. Phase 2 will replace C with a directly encoded recurrent baseline for later claims.
+**Phase 0 report · 19 Nov 2026**
+
+- Asked: stop E109, finish B, verify reproducibility safeguards, and compare compute options.
+- Happened: E109 stopped at 62/200; B scored 15.90234375, 16.6015625 and 15.326171875 versus 5.12890625, with standard errors unavailable; hosted CI passed 75 tests. CPU timing was 95.265 seconds for one cold generation, with no timing error estimate. The owner cancelled the GPU comparison.
+- Means: B passes its original criterion in 3/3 seeds; housekeeping is complete with the GPU item explicitly waived.
+- Does not mean: statistical significance, a wiring-prior advantage, or a measured CPU/GPU speed difference has been established.
+- Next: preregister EVAL v3 and evaluate saved genomes on fresh held-out worlds, including standard errors, reference policies and reversal diagnostics. Phase 2 supplies the fair nonplastic baseline.
+
+Existing 155-number genomes and default EVAL v1 remain compatibility requirements.
 
 Later measurements, baselines, task rungs and the connectome comparison follow [PLAN.md](PLAN.md). Mechanisms are added only at its specified failed-rung decision points; no speculative side experiment is queued.
 
@@ -222,14 +232,14 @@ Tracked tiny smoke tests preserve input bytes and physical outcomes. Only comple
 
 Preregister each research run in `experiments/LOG.md` and commit before launching; the runner rejects uncommitted code. Scientific comparisons require evolution seeds **0, 1 and 2**. Preserve every run folder, including interrupted and failed runs.
 
-E111 measures one **cold** generation, including compilation and completion of the optimizer state, with matched source/settings. It is an operational benchmark, with no standard error estimate from a single timing per platform.
+E111 measured one **cold** laptop generation, including compilation and completion of the optimizer state. It is an operational benchmark, with no standard error estimate from a single timing. The GPU arm was cancelled before execution by owner direction on 19 November 2026.
 
 | Deployment | Cold seconds/generation |
 |---|---:|
 | Laptop CPU, Python 3.12.10 | 95.265 |
-| Free Colab T4, Python 3.13.16 | Not run: source-upload approval pending |
+| Free Colab T4, Python 3.13.16 | Not run: cancelled by owner; laptop only |
 
-The registered decision uses the CPU/GPU ratio: at least five times faster triggers a migration proposal and an owner decision. OS, Python and backend differ, so this compares deployments rather than GPU hardware alone.
+The original five-times migration criterion remains in the lab notebook as history. It was not evaluated or relaxed: there is no GPU timing or speed ratio, and no migration is planned.
 
 The historical laptop benchmark averaged about **49.5 seconds per generation** after the first; that warm timing is not the comparator for E111. Use bounded sessions for a 200-generation run:
 

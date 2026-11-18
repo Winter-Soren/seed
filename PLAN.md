@@ -16,6 +16,14 @@ say so plainly in README, and stop for owner input. Never soften a gate after
 seeing results. No AGI, general-intelligence, novelty or state-of-the-art claims
 anywhere.
 
+## Working directive
+
+Learn from experience, adapt when conditions change, and retain what remains useful.
+This frames the owner's 19 November direction within the existing research plan;
+it is an aim, not a demonstrated capability or a new reward function. Measure
+learning in Phase 1, adaptation in the task ladder, and forgetting in rung 4.
+Keep evolution bounded by the registered budgets and gates below.
+
 ## Findings from an external audit
 
 These are **unregistered probes on 256 fresh worlds, seed 777**. Remeasure them
@@ -48,9 +56,10 @@ properly in Phase 1 before relying on them.
 4. Rewrite `TASK_STATE.md` to under 60 lines of plain English: what is known, what
    is running, and what is next. No hashes, process IDs or byte counts; those
    belong in the LOG.
-5. Benchmark one generation on a free Colab GPU and record seconds per generation
-   next to the laptop figure. If it is at least five times faster, propose moving
-   training there and wait for the owner's answer before doing it.
+5. **Owner amendment, 19 November 2026:** use the laptop only. The unrun Colab
+   GPU benchmark and migration proposal are withdrawn. Preserve the completed
+   CPU measurement and all benchmark history; no GPU speed comparison was made.
+   Phase 0 closes with this item waived by the owner, not passed experimentally.
 
 ## Phase 1 — better measurement
 
