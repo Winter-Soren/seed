@@ -1,0 +1,546 @@
+[
+  {
+    "label": "A0",
+    "events": [
+      {
+        "availableCommitBytes": 15466520576,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-A0",
+          "--start",
+          "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy"
+        ],
+        "event": "preflight",
+        "time": "2026-11-19T03:02:04.1245745+05:30",
+        "freeD": 49657208832,
+        "freeC": 23485833216,
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availablePhysicalBytes": 11392188416
+      },
+      {
+        "event": "started",
+        "pid": 46248,
+        "time": "2026-11-19T03:02:04.2611026+05:30"
+      },
+      {
+        "seconds": 5.7576182,
+        "availableCommitBytes": 15413542912,
+        "freeC": 23485833216,
+        "privateBytes": 759218176,
+        "event": "sample",
+        "freeD": 49657208832
+      },
+      {
+        "seconds": 18.6235087,
+        "availableCommitBytes": 14518022144,
+        "freeC": 23485751296,
+        "privateBytes": 892686336,
+        "event": "sample",
+        "freeD": 49657196544
+      },
+      {
+        "seconds": 30.2739474,
+        "availableCommitBytes": 14556733440,
+        "freeC": 23485698048,
+        "privateBytes": 894382080,
+        "event": "sample",
+        "freeD": 49657196544
+      },
+      {
+        "seconds": 42.5954159,
+        "availableCommitBytes": 16540495872,
+        "freeC": 23504662528,
+        "privateBytes": 912990208,
+        "event": "sample",
+        "freeD": 49657196544
+      },
+      {
+        "seconds": 54.9661367,
+        "availableCommitBytes": 16718671872,
+        "freeC": 23504355328,
+        "privateBytes": 932642816,
+        "event": "sample",
+        "freeD": 49657192448
+      },
+      {
+        "event": "finished",
+        "time": "2026-11-19T03:03:00.7997683+05:30",
+        "exitCode": 0,
+        "wallSeconds": 59.976888
+      }
+    ]
+  },
+  {
+    "label": "A1",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17832640512,
+        "availablePhysicalBytes": 13430071296,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-A1",
+          "--start",
+          "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy"
+        ],
+        "freeD": 49656901632,
+        "freeC": 23502028800,
+        "event": "preflight",
+        "time": "2026-11-19T03:03:32.9740889+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 36544,
+        "time": "2026-11-19T03:03:33.0349735+05:30"
+      },
+      {
+        "availableCommitBytes": 17803923456,
+        "event": "sample",
+        "freeD": 49656885248,
+        "privateBytes": 761077760,
+        "seconds": 5.1364591,
+        "freeC": 23501914112
+      },
+      {
+        "availableCommitBytes": 16911822848,
+        "event": "sample",
+        "freeD": 49656872960,
+        "privateBytes": 913022976,
+        "seconds": 17.6511069,
+        "freeC": 23501312000
+      },
+      {
+        "availableCommitBytes": 16833204224,
+        "event": "sample",
+        "freeD": 49656872960,
+        "privateBytes": 958083072,
+        "seconds": 30.1650533,
+        "freeC": 23500906496
+      },
+      {
+        "availableCommitBytes": 16781086720,
+        "event": "sample",
+        "freeD": 49656872960,
+        "privateBytes": 921731072,
+        "seconds": 42.4558997,
+        "freeC": 23500566528
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 45.1597601,
+        "time": "2026-11-19T03:04:15.1818903+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "A2",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17702268928,
+        "availablePhysicalBytes": 13293920256,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-A2",
+          "--start",
+          "file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy"
+        ],
+        "freeD": 49656582144,
+        "freeC": 23500091392,
+        "event": "preflight",
+        "time": "2026-11-19T03:04:20.6413682+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 40332,
+        "time": "2026-11-19T03:04:20.6681052+05:30"
+      },
+      {
+        "availableCommitBytes": 17677713408,
+        "event": "sample",
+        "freeD": 49656582144,
+        "privateBytes": 761098240,
+        "seconds": 6.2178258,
+        "freeC": 23499984896
+      },
+      {
+        "availableCommitBytes": 16784183296,
+        "event": "sample",
+        "freeD": 49656569856,
+        "privateBytes": 900173824,
+        "seconds": 18.5527303,
+        "freeC": 23499444224
+      },
+      {
+        "availableCommitBytes": 16782217216,
+        "event": "sample",
+        "freeD": 49656569856,
+        "privateBytes": 862740480,
+        "seconds": 30.718369,
+        "freeC": 23498797056
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 32.4956509,
+        "time": "2026-11-19T03:04:49.9340888+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "B0",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17708544000,
+        "availablePhysicalBytes": 13273694208,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-B0",
+          "--start",
+          "file:runs/20261112-131946_E104-B-bio-s0/genome_final.npy"
+        ],
+        "freeD": 49656279040,
+        "freeC": 23498506240,
+        "event": "preflight",
+        "time": "2026-11-19T03:04:54.3276743+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 46640,
+        "time": "2026-11-19T03:04:54.3513853+05:30"
+      },
+      {
+        "availableCommitBytes": 17690435584,
+        "event": "sample",
+        "freeD": 49656279040,
+        "privateBytes": 764915712,
+        "seconds": 4.8434391,
+        "freeC": 23498506240
+      },
+      {
+        "availableCommitBytes": 16826859520,
+        "event": "sample",
+        "freeD": 49656266752,
+        "privateBytes": 881647616,
+        "seconds": 16.8639471,
+        "freeC": 23498424320
+      },
+      {
+        "availableCommitBytes": 16808042496,
+        "event": "sample",
+        "freeD": 49655971840,
+        "privateBytes": 0,
+        "seconds": 28.9325751,
+        "freeC": 23498027008
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 28.9338607,
+        "time": "2026-11-19T03:05:20.4490034+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "biology",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17734414336,
+        "availablePhysicalBytes": 13297053696,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-biology",
+          "--start",
+          "file:runs/20261112-022641_E100-biology-s0/genome_start.npy"
+        ],
+        "freeD": 49655955456,
+        "freeC": 23497920512,
+        "event": "preflight",
+        "time": "2026-11-19T03:05:25.2115505+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 42416,
+        "time": "2026-11-19T03:05:25.2492234+05:30"
+      },
+      {
+        "availableCommitBytes": 17723256832,
+        "event": "sample",
+        "freeD": 49655955456,
+        "privateBytes": 786903040,
+        "seconds": 5.4297123,
+        "freeC": 23497920512
+      },
+      {
+        "availableCommitBytes": 16832684032,
+        "event": "sample",
+        "freeD": 49655943168,
+        "privateBytes": 833384448,
+        "seconds": 17.9182718,
+        "freeC": 23497879552
+      },
+      {
+        "availableCommitBytes": 16899678208,
+        "event": "sample",
+        "freeD": 49655943168,
+        "privateBytes": 929185792,
+        "seconds": 30.0885235,
+        "freeC": 23497408512
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 36.4616226,
+        "time": "2026-11-19T03:05:58.6735753+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "blank0",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17818046464,
+        "availablePhysicalBytes": 13375246336,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-blank0",
+          "--start",
+          "file:runs/20261112-022439_E100-blank-s0/genome_start.npy"
+        ],
+        "freeD": 49655656448,
+        "freeC": 23497297920,
+        "event": "preflight",
+        "time": "2026-11-19T03:06:04.3293700+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 42556,
+        "time": "2026-11-19T03:06:04.3629894+05:30"
+      },
+      {
+        "availableCommitBytes": 17808375808,
+        "event": "sample",
+        "freeD": 49655656448,
+        "privateBytes": 761389056,
+        "seconds": 5.4073074,
+        "freeC": 23497859072
+      },
+      {
+        "availableCommitBytes": 16900554752,
+        "event": "sample",
+        "freeD": 49655644160,
+        "privateBytes": 912949248,
+        "seconds": 17.8322514,
+        "freeC": 23497207808
+      },
+      {
+        "availableCommitBytes": 16865906688,
+        "event": "sample",
+        "freeD": 49655644160,
+        "privateBytes": 936468480,
+        "seconds": 30.1360747,
+        "freeC": 23496593408
+      },
+      {
+        "availableCommitBytes": 16883912704,
+        "event": "sample",
+        "freeD": 49655644160,
+        "privateBytes": 938184704,
+        "seconds": 42.3652171,
+        "freeC": 23496286208
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 43.2115757,
+        "time": "2026-11-19T03:06:44.2831431+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "blank1",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17814990848,
+        "availablePhysicalBytes": 13358354432,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-blank1",
+          "--start",
+          "file:runs/20261112-022514_E100-blank-s1/genome_start.npy"
+        ],
+        "freeD": 49655369728,
+        "freeC": 23495680000,
+        "event": "preflight",
+        "time": "2026-11-19T03:06:50.3606298+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 32272,
+        "time": "2026-11-19T03:06:50.3840876+05:30"
+      },
+      {
+        "availableCommitBytes": 17801494528,
+        "event": "sample",
+        "freeD": 49655369728,
+        "privateBytes": 761462784,
+        "seconds": 5.7114296,
+        "freeC": 23495675904
+      },
+      {
+        "availableCommitBytes": 16927780864,
+        "event": "sample",
+        "freeD": 49655357440,
+        "privateBytes": 906354688,
+        "seconds": 18.1459527,
+        "freeC": 23495671808
+      },
+      {
+        "availableCommitBytes": 16869564416,
+        "event": "sample",
+        "freeD": 49655357440,
+        "privateBytes": 945737728,
+        "seconds": 30.4570893,
+        "freeC": 23495098368
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 39.332502,
+        "time": "2026-11-19T03:07:26.1324656+05:30",
+        "exitCode": 0
+      }
+    ]
+  },
+  {
+    "label": "blank2",
+    "events": [
+      {
+        "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+        "availableCommitBytes": 17843351552,
+        "availablePhysicalBytes": 13381787648,
+        "arguments": [
+          "-X",
+          "utf8",
+          "scripts/run_experiment.py",
+          "--eval-protocol",
+          "v3",
+          "--generations",
+          "0",
+          "--eval-worlds",
+          "256",
+          "--name",
+          "E112-v3-blank2",
+          "--start",
+          "file:runs/20261112-022552_E100-blank-s2/genome_start.npy"
+        ],
+        "freeD": 49655083008,
+        "freeC": 23494365184,
+        "event": "preflight",
+        "time": "2026-11-19T03:07:32.5301363+05:30"
+      },
+      {
+        "event": "started",
+        "pid": 34508,
+        "time": "2026-11-19T03:07:32.5756636+05:30"
+      },
+      {
+        "availableCommitBytes": 17841917952,
+        "event": "sample",
+        "freeD": 49655083008,
+        "privateBytes": 760573952,
+        "seconds": 6.1241028,
+        "freeC": 23494246400
+      },
+      {
+        "availableCommitBytes": 16722481152,
+        "event": "sample",
+        "freeD": 49655070720,
+        "privateBytes": 905285632,
+        "seconds": 23.8767387,
+        "freeC": 23493533696
+      },
+      {
+        "availableCommitBytes": 16904245248,
+        "event": "sample",
+        "freeD": 49655070720,
+        "privateBytes": 934014976,
+        "seconds": 36.0985937,
+        "freeC": 23493251072
+      },
+      {
+        "event": "finished",
+        "wallSeconds": 41.5732413,
+        "time": "2026-11-19T03:08:10.1243135+05:30",
+        "exitCode": 0
+      }
+    ]
+  }
+]

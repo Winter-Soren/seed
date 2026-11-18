@@ -23,6 +23,61 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## EVAL v3 diagnostics
+
+Saved genomes only; 256 fresh worlds per panel. SE treats each world-family as one cluster. Greedy fractions use a paired world-level delta-method SE. Greedy knows the current rule but sees only the local patch; it is not an optimal-policy bound. Repeated policy rows use the same worlds and are not independent replications. Meal counts, survivor-conditioned bins and raw events are preserved in each run's summary.json and events.npz.
+
+| Run | Status | Condition | Controller | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Seed | Worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 20261119-030209_E112-v3-A0 | finished | stationary | genome | 15.345703 | 0.377380 | 0.186510 | 0.005602 | 2026111901 | 256 | c224f91 |
+| 20261119-030209_E112-v3-A0 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030209_E112-v3-A0 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030209_E112-v3-A0 | finished | reversal | genome | 3.126953 | 0.182773 | 0.045302 | 0.002654 | 2026111901 | 256 | c224f91 |
+| 20261119-030209_E112-v3-A0 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030209_E112-v3-A0 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | stationary | genome | 15.186523 | 0.384670 | 0.184575 | 0.005557 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | reversal | genome | 3.529297 | 0.183402 | 0.051131 | 0.002684 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030336_E112-v3-A1 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | stationary | genome | 14.984375 | 0.350531 | 0.182118 | 0.004674 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | reversal | genome | 3.576172 | 0.165551 | 0.051810 | 0.002447 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030424_E112-v3-A2 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | stationary | genome | 14.969727 | 0.376083 | 0.181940 | 0.005445 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | reversal | genome | 3.161133 | 0.172647 | 0.045797 | 0.002513 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030456_E112-v3-B0 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | stationary | genome | 5.792969 | 0.266110 | 0.070407 | 0.003329 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | reversal | genome | 1.178711 | 0.154153 | 0.017077 | 0.002221 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030527_E112-v3-biology | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | stationary | genome | 0.080078 | 0.138743 | 0.000973 | 0.001685 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | reversal | genome | -0.014648 | 0.126667 | -0.000212 | 0.001835 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030608_E112-v3-blank0 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | stationary | genome | 0.596680 | 0.155114 | 0.007252 | 0.001890 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | reversal | genome | 0.161133 | 0.136492 | 0.002334 | 0.001979 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030654_E112-v3-blank1 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | stationary | genome | 0.256836 | 0.138939 | 0.003122 | 0.001680 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | stationary | random_walk | -0.092773 | 0.127682 | -0.001128 | 0.001552 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | stationary | greedy | 82.278320 | 1.363976 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | reversal | genome | 0.057617 | 0.130323 | 0.000835 | 0.001888 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | reversal | random_walk | 0.010742 | 0.120359 | 0.000156 | 0.001743 | 2026111901 | 256 | c224f91 |
+| 20261119-030736_E112-v3-blank2 | finished | reversal | greedy | 69.024414 | 0.699874 | 1.000000 | 0.000000 | 2026111901 | 256 | c224f91 |
+
 ## EVAL v2 diagnostics
 
 Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables predictor updates; Frozen disables both. Differences are signed fitness changes. Retained benefit = (Hebbian-only − Frozen) / (Both − Frozen), defined only when Both > Frozen.

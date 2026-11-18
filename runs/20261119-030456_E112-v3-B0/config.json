@@ -1,0 +1,60 @@
+{
+  "args": {
+    "name": "E112-v3-B0",
+    "start": "file:runs/20261112-131946_E104-B-bio-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "structural_plasticity": "off",
+    "eval_worlds": 256,
+    "eval_protocol": "v3",
+    "condition_split": null,
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "git": {
+    "commit": "c224f91e20d9ea12a09613d70320cfe17abea8cb",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-19T03:04:56.672596",
+  "eval_protocol": "v3",
+  "eval_seed": 2026111901,
+  "eval_worlds": 256,
+  "source_genome_sha256": "7a0267c54ebdad573634692235073ad1485d64d371bae94d1b95391dd6e8000a",
+  "boundary": 150,
+  "genome_size": 155,
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  }
+}

@@ -4,15 +4,38 @@
 
 Can evolution discover rules that let a new brain learn from experience? Seed explores that question in a small, inspectable JAX simulation. A genome of **155 numbers** specifies how a recurrent brain grows and how its connections change. Its agents forage in worlds where the same kind of object can be food in one world and poison in another. Lifetime learning uses local updates, without labelled examples or backpropagation.
 
-**Current direction · 19 Nov 2026:** use the laptop only, following the owner's [research plan](PLAN.md). Phase 0 housekeeping is complete with the unrun Colab benchmark waived by the owner. All three B runs pass their original point-estimate criterion; E109 stays stopped at generation 62. Dependency pins, source checks and hosted CI are verified, with 75 tests passing. Phase 1 is now preregistered as E112: EVAL v3 will measure eight saved genomes with per-world standard errors, per-agent meal curves, survivor bins and matched random/greedy references. Implementation verification precedes held-out evaluation; no new scientific result is claimed yet. Historical EVAL v1 results lack those errors; the external seed-777 audit remains unregistered and unverified.
+**Current direction · 19 Nov 2026:** Phase 1 EVAL v3 is complete: all eight saved-genome panels passed their measurement-validity checks on 256 fresh worlds. The three evolved A genomes show within-cohort learning, but weak recovery after rule reversal. Work stays on the laptop. Next is the three-seed, directly encoded nonplastic baseline in Phase 2; paper research and critical review run alongside guarded compute. [Full measurements and limitations](results/EVAL_V3.md).
 
 **Working directive:** learn from experience, adapt when conditions change, and retain what remains useful. This is the research aim, not a capability already demonstrated or a new reward function. The registered task ladder tests each part before adding mechanisms.
 
-**Latest gate decision · 17 Nov 2026:** biology-start evolution reached fitness **15.90234375, 16.6015625 and 15.326171875**, each above the prior's **5.12890625**. B's original gate therefore **passes in 3/3 seeds**; it required at least 2/3. This is the registered EVAL v1 point-estimate comparison, without standard errors. Earlier fixed-genome tests found that the tested growth/pruning rule lowered fitness in all three A genomes, while their plasticity advantage remained positive across all four registered foraging-parameter shifts. [See the evidence and limits](#what-the-experiments-show).
+**Latest measurement · E112:** among the same agents reaching meal 20, A0/A1/A2 improve first-to-twentieth-meal accuracy by **26.82 ± 2.42, 21.14 ± 2.44 and 24.87 ± 2.24 percentage points (SE)**. This is conditional on reaching meal 20. Stationary fitness is only **18.2–18.7%** of the local rule-knowing reference; reversal fitness is **4.5–5.2%**. Current lifetime learning changes weights; active connection growth is off because the earlier tested rule reduced fitness in all three saved A genomes.
 
 ![Final A evaluations: learning fitness 14.87–16.59 versus frozen fitness -0.10–0.29, with pooled accuracy gains above the 3-percentage-point threshold in all three seeds.](results/figures/a-final-evaluation.svg)
 
 *Final A genomes on fixed EVAL v1: 128 worlds, evaluation seed 123. Each enabled/frozen pair uses the same genome; accuracy gains pool eating events. The completed three-seed comparison with independently evolved nonplastic controls is reported below.*
+
+## Phase 1: learning is measurable; reversal remains weak
+
+| Saved genome | Stationary fitness ± SE | Reversal fitness ± SE |
+|---|---:|---:|
+| A0 | 15.346 ± 0.377 | 3.127 ± 0.183 |
+| A1 | 15.187 ± 0.385 | 3.529 ± 0.183 |
+| A2 | 14.984 ± 0.351 | 3.576 ± 0.166 |
+| B0 | 14.970 ± 0.376 | 3.161 ± 0.173 |
+| biology | 5.793 ± 0.266 | 1.179 ± 0.154 |
+| blank0 | 0.080 ± 0.139 | -0.015 ± 0.127 |
+| blank1 | 0.597 ± 0.155 | 0.161 ± 0.136 |
+| blank2 | 0.257 ± 0.139 | 0.058 ± 0.130 |
+| random_walk | -0.093 ± 0.128 | 0.011 ± 0.120 |
+| greedy | 82.278 ± 1.364 | 69.024 ± 0.700 |
+
+Each SE uses 256 world-families as independent units; it is not variation across evolution seeds. B0 is descriptive, not a three-seed B claim. Greedy knows the current rule but sees only the local patch; it is a reference rather than an optimal bound. Worlds, random streams and policies match across panels. Full meal curves, eligible-agent counts, survivor bins, post-reversal bins and raw artifact links are in [EVAL_V3.md](results/EVAL_V3.md).
+
+- Asked: measure learning and reversal fairly on fresh worlds, with uncertainty and reference policies.
+- Happened: all eight panels completed; A fitness is 14.984–15.346 (SE 0.351–0.385) stationary and 3.127–3.576 (SE 0.166–0.183) with reversal. Final post-reversal accuracy is 46.2%, 49.3%, 48.1% (SE 1.4, 1.2, 1.3 percentage points).
+- Means: within-cohort learning appears in all three evolved A genomes; recovery after change remains weak.
+- Does not mean: robust transfer, useful connection growth, a wiring-prior advantage or superiority to a fairly trained nonplastic controller has been established. Meal and survivor curves are selection-conditioned.
+- Next: Phase 2's matched-budget nonplastic recurrent baseline, three seeds, before adding another mechanism.
 
 ## Three loops, one experiment
 
