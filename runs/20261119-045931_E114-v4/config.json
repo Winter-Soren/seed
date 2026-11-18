@@ -1,0 +1,201 @@
+{
+  "args": {
+    "name": "E114-v4",
+    "start": "blank",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "controller": null,
+    "structural_plasticity": null,
+    "eval_worlds": 256,
+    "eval_protocol": "v4",
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "git": {
+    "commit": "5596c1a7746069548bc533931834ead9e3904b97",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-19T04:59:31.612801",
+  "eval_protocol": "v4",
+  "eval_seed": 2026111902,
+  "eval_worlds": 256,
+  "input_genomes": [
+    {
+      "label": "A0",
+      "controller": "rules-v0",
+      "seed": 0,
+      "run": "runs/20261112-023245_E103-A-blank-s0",
+      "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+      "genome_hash": "ee8eaa10a7429cc5",
+      "genome_size": 155,
+      "config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+      "summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+      "source_commits": [
+        {
+          "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/A0.npy"
+    },
+    {
+      "label": "A1",
+      "controller": "rules-v0",
+      "seed": 1,
+      "run": "runs/20261112-050319_E103-A-blank-s1",
+      "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+      "genome_hash": "aca49c2747a994ab",
+      "genome_size": 155,
+      "config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+      "summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
+      "source_commits": [
+        {
+          "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/A1.npy"
+    },
+    {
+      "label": "A2",
+      "controller": "rules-v0",
+      "seed": 2,
+      "run": "runs/20261112-102755_E103-A-blank-s2",
+      "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+      "genome_hash": "17191e72299b25cc",
+      "genome_size": 155,
+      "config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+      "summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
+      "source_commits": [
+        {
+          "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/A2.npy"
+    },
+    {
+      "label": "direct0",
+      "controller": "direct-rnn-v1",
+      "seed": 0,
+      "run": "runs/20261119-033803_E113-direct-s0",
+      "sha256": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+      "genome_hash": "b03d4ccb3d931f38",
+      "genome_size": 8424,
+      "config_sha256": "44362a2352090361863bfd1700e8b9af58412abef8da4202d5f2afe97cf4dbf8",
+      "summary_sha256": "c8f3ead145af738c064ce19b8dd9ae629b09c932096096205cf8cb5daa62de75",
+      "source_commits": [
+        {
+          "commit": "9db7fafe9d70a6eb0974af4e137ab21e01a60be9",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "e5630033125c8409218615044f3addbd0da46d61",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/direct0.npy"
+    },
+    {
+      "label": "direct1",
+      "controller": "direct-rnn-v1",
+      "seed": 1,
+      "run": "runs/20261119-040602_E113-direct-s1",
+      "sha256": "0e77c3083a88c8216e57bff0667b5f594542447c14f6ae7338ec0e090b9d7d3b",
+      "genome_hash": "e7b8084af7c6a4c6",
+      "genome_size": 8424,
+      "config_sha256": "591142e35cd30da6e4034903ae8a722287cbb1f36dfa2b9f54d5c75f2c37255e",
+      "summary_sha256": "ec7d5bb1ae399cb8e6e920c26c0d15057a3d6e1fd7e4bd81cd6bd4164f1f5b03",
+      "source_commits": [
+        {
+          "commit": "87702c0277d63bd8f559448927662d0b296c7d83",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/direct1.npy"
+    },
+    {
+      "label": "direct2",
+      "controller": "direct-rnn-v1",
+      "seed": 2,
+      "run": "runs/20261119-041609_E113-direct-s2",
+      "sha256": "473124dfe1c2a0d77a9a4b7cdde5cb36c41f61b0664e17ede86ae88502971bbd",
+      "genome_hash": "a693c973939c7fb5",
+      "genome_size": 8424,
+      "config_sha256": "01f3b592aec0e3fd91f088de8e8f5525585768645803b128a1d312ef1175c9df",
+      "summary_sha256": "fc7dee285c2d4945dc195c115d9579264130e87d1d39e3e0745ec89f73fee2a5",
+      "source_commits": [
+        {
+          "commit": "1d7e2a3a5d8d823c1000c8b5c18d8deae49d7006",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/direct2.npy"
+    }
+  ],
+  "reference_policies": [
+    "fixed_A",
+    "fixed_B",
+    "mixture",
+    "random_walk",
+    "greedy"
+  ],
+  "internal_seconds_limit": 1740,
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  }
+}

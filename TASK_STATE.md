@@ -25,15 +25,19 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 
 ## What is running
 
-- E114 implementation passed all 133 local tests; the held-out diagnostic awaits committed release.
-- The council cleared measurement definitions, provenance and partial-output protection.
+- E114 completed all eleven controller panels and passed its artifact validity audit.
+- A individual stationary minima are 8.237, 8.453 and 8.396, with SE 0.302, 0.310 and 0.297.
+- Direct minima are near minus four; mixture averages also conceal individual failure.
+- A joint stationary survival is about 71–73%; post-reversal returns remain negative.
+- No scientific job remains active; hosted verification follows publication.
+- All 133 local tests passed; the council is reviewing a separate objective comparison.
 - Latest run checks found about 21.9 GiB free on C: of 373.67 and 46.2 on D: of 100.
 - Recheck current memory and both drives before any new job; keep temporary files on D:.
 
 ## What is next
 
 - The owner approved E114 and delegated scientific decisions to the council while asleep.
-- E114 is preregistered in LOG; commit the verified implementation, then run the paired diagnostic.
+- Publish E114, verify hosted CI within budget, and record the council next-experiment decision.
 - It uses saved controllers, paired rules and reversal, survival-aware outcomes and fresh worlds.
 - It changes no reward and includes no evolution; diagnostic and verification budgets stay fixed.
 - No new mechanism or task-ladder training is released within E114.

@@ -23,6 +23,24 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## EVAL v4 paired-world diagnostics
+
+Saved controllers and fixed reference policies; no training. Each base world is evaluated under both initial food rules and their mid-life reversals. Means and SEs use independent base-world families; minimum return and joint survival pair each original individual across the two stationary rules before averaging within its family. Survival values are fractions. Development rows use tiny seed-41 fixtures only. These descriptive measurements do not replace the failed E113 gate. Per-rule accuracy, deaths, encounters, all 15 planned A-minus-direct contrasts and raw events remain in the run folder. Incomplete attempts retain their completed conditions and show undefined paired estimates.
+
+| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | Eval seed | Base worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261119-045931_E114-v4 | finished | A0 | rules-v0 | finished | 4/4 | final | 15.124512 ± 0.253759 | 8.237305 ± 0.301619 | 0.709961 ± 0.014059 | -2.811523 ± 0.083449 | 0.403320 ± 0.010526 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | A1 | rules-v0 | finished | 4/4 | final | 14.989746 ± 0.266162 | 8.453125 ± 0.309679 | 0.705078 ± 0.014238 | -2.566895 ± 0.089489 | 0.428223 ± 0.011521 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | A2 | rules-v0 | finished | 4/4 | final | 14.971680 ± 0.260732 | 8.396484 ± 0.297109 | 0.732422 ± 0.014271 | -2.597168 ± 0.095491 | 0.433105 ± 0.011408 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | direct0 | direct-rnn-v1 | finished | 4/4 | final | 55.944824 ± 0.720582 | -3.992188 ± 0.002724 | 0.000000 ± 0.000000 | -3.973633 ± 0.003993 | 0.000000 ± 0.000000 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | direct1 | direct-rnn-v1 | finished | 4/4 | final | 66.969727 ± 0.707086 | -3.977539 ± 0.007885 | 0.000977 ± 0.000977 | -3.941406 ± 0.013887 | 0.002441 ± 0.001083 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | direct2 | direct-rnn-v1 | finished | 4/4 | final | 69.737305 ± 0.769016 | -3.961914 ± 0.013239 | 0.000977 ± 0.000977 | -3.944336 ± 0.019006 | 0.001953 ± 0.000971 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | fixed_A | fixed_A | finished | 4/4 | final | 39.080078 ± 0.720468 | -3.863281 ± 0.018705 | 0.008789 ± 0.003198 | -3.766602 ± 0.043163 | 0.036133 ± 0.006123 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | fixed_B | fixed_B | finished | 4/4 | final | 39.459961 ± 0.734380 | -3.857422 ± 0.021676 | 0.014648 ± 0.003929 | -3.731934 ± 0.044112 | 0.047363 ± 0.006854 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | mixture | mixture | finished | 4/4 | final | 33.485840 ± 1.235951 | -3.969727 ± 0.007904 | 0.000000 ± 0.000000 | -2.358398 ± 0.078140 | 0.209961 ± 0.009855 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | random_walk | random_walk | finished | 4/4 | final | 0.118652 ± 0.056240 | -2.897461 ± 0.031034 | 0.018555 ± 0.004331 | -0.030762 ± 0.046314 | 0.389160 ± 0.007219 | 2026111902 | 256 | 5596c1a |
+| 20261119-045931_E114-v4 | finished | greedy | greedy | finished | 4/4 | final | 82.400391 ± 1.022822 | 68.107422 ± 1.141227 | 1.000000 ± 0.000000 | 24.300293 ± 0.484528 | 1.000000 ± 0.000000 | 2026111902 | 256 | 5596c1a |
+
 ## EVAL v3 diagnostics
 
 Saved genomes only; 256 fresh worlds per panel. SE treats each world-family as one cluster. Greedy fractions use a paired world-level delta-method SE. Greedy knows the current rule but sees only the local patch; it is not an optimal-policy bound. Repeated policy rows use the same worlds and are not independent replications. Meal counts, survivor-conditioned bins and raw events are preserved in each run's summary.json and events.npz.
