@@ -18,17 +18,17 @@ The thesis and working directive are research aims, not assumed results.
 
 ## What is running
 
-- No Seed job is recorded as running; check live processes before new compute.
+- E112 implementation passed all 91 tests; final panels are ready for sequential guarded execution.
 - The owner chose laptop-only work and cancelled the unrun Colab comparison.
 - No private source upload or Seed GPU benchmark occurred; no transfer is queued.
 - Preserve the benchmark packet, CPU evidence and Colab setup observations.
 - The Colab raw-log download remains unverified; runtime files may expire.
-- Last recorded disk readings are historical; recheck both drives and memory before compute.
+- Preflight found C: about 21.9 GiB free and D: about 46.2 GiB free; recheck before each job.
 
 ## What is next
 
 - Phase 0 is closed with the GPU comparison explicitly waived by the owner.
-- Preregister EVAL v3 under Phase 1, commit its implementation, and verify compatibility.
+- E112 is preregistered and verified; commit, then time and audit A0 before the other seven panels.
 - Evaluate saved genomes on fresh held-out worlds with per-world standard errors.
 - Include meal accuracy, survivor bins, random/greedy policies and rule reversal.
 - Keep EVAL v1 unchanged and never use evaluation worlds for development.

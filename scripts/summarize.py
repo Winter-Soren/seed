@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 def main():
     rows = []
     diagnostics = []
+    v3_rows = []
     reversals = []
     structural_rows = []
     broader_rows = []
@@ -25,6 +26,19 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "v3":
+            number = lambda value: "undefined" if value is None else f"{value:.6f}"
+            evaluations = s.get("evaluations", {"pending": {"pending": {}}})
+            for condition, controllers in evaluations.items():
+                for controller, metric in controllers.items():
+                    v3_rows.append("| " + " | ".join([
+                        d.name, s.get("status", ""), condition, controller,
+                        number(metric.get("fitness")), number(metric.get("fitness_se")),
+                        number(metric.get("greedy_fraction")), number(metric.get("greedy_fraction_se")),
+                        str(s.get("eval_seed", cfg.get("eval_seed", ""))),
+                        str(s.get("eval_worlds", cfg.get("eval_worlds", a.get("eval_worlds", "")))), commit,
+                    ]) + " |")
+            continue
         if a.get("eval_protocol") == "reversal-v1":
             for label, row in s.get("evaluations", {"pending": {}}).items():
                 metric = row.get("metrics", {})
@@ -90,6 +104,15 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if v3_rows:
+        out += ["## EVAL v3 diagnostics", "",
+                "Saved genomes only; 256 fresh worlds per panel. SE treats each world-family as one cluster. "
+                "Greedy fractions use a paired world-level delta-method SE. Greedy knows the current rule "
+                "but sees only the local patch; it is not an optimal-policy bound. Repeated policy rows "
+                "use the same worlds and are not independent replications. Meal counts, survivor-conditioned "
+                "bins and raw events are preserved in each run's summary.json and events.npz.", "",
+                "| Run | Status | Condition | Controller | Fitness | Fitness SE | Fraction of greedy | Fraction SE | Seed | Worlds | Commit |",
+                "|---" * 11 + "|", *v3_rows, ""]
     if diagnostics:
         out += ["## EVAL v2 diagnostics", "",
                 "Saved genomes; no evolution. Both enables Hebbian and predictor updates; Hebbian-only disables "

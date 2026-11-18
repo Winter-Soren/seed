@@ -30,7 +30,7 @@ from jax.flatten_util import ravel_pytree
 from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init, es_step,
                        format_row, test_genome, genome_size)
 from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
-from scripts import broader_eval, reversal_eval
+from scripts import broader_eval, reversal_eval, eval_v3
 
 
 def git_info():
@@ -211,6 +211,50 @@ def run_reversal(a, git):
     print("run folder:", run_dir)
 
 
+
+def run_v3(a, git):
+    c = Cfg(**parse_cfg(a.cfg))
+    eval_v3.validate_request(a, c)
+    source = Path(a.start[5:]).read_bytes()
+    flat = diagnostic_genome(source, c, protocol="EVAL v3")
+    source_hash = hashlib.sha256(source).hexdigest()
+    stamp = datetime.datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_dir = ROOT / "runs" / f"{stamp}_{a.name}"
+    run_dir.mkdir(parents=True, exist_ok=False)
+    config = dict(args=vars(a).copy(), cfg=c._asdict(), cfg_overrides={}, git=git,
+                  created=datetime.datetime.now().isoformat(), eval_protocol=eval_v3.PROTOCOL,
+                  eval_seed=eval_v3.EVAL_SEED, eval_worlds=a.eval_worlds,
+                  source_genome_sha256=source_hash, boundary=150, genome_size=int(flat.size),
+                  machine=dict(platform=platform.platform(), python=sys.version.split()[0],
+                               jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
+    write_json(run_dir / "config.json", config)
+    (run_dir / "genome_start.npy").write_bytes(source)
+    summary = dict(status="running", generation=0, eval_protocol=eval_v3.PROTOCOL,
+                   eval_seed=eval_v3.EVAL_SEED, eval_worlds=a.eval_worlds, boundary=150,
+                   source_genome_sha256=source_hash, final_genome_hash=genome_hash(flat))
+    write_json(run_dir / "summary.json", summary)
+    started = time.monotonic()
+    try:
+        evaluations, raw = eval_v3.evaluate_conditions(flat, c, a.eval_worlds, eval_v3.EVAL_SEED)
+        # Save the observations before serialization validation so failures retain their evidence.
+        np.savez_compressed(run_dir / "events.npz", **raw)
+        summary["evaluations"] = evaluations
+        json.dumps(summary, allow_nan=False)
+    except BaseException as error:
+        summary.pop("evaluations", None)
+        summary.update(status="interrupted" if isinstance(error, KeyboardInterrupt) else "failed",
+                       error=f"{type(error).__name__}: {error}", eval_seconds=time.monotonic()-started)
+        write_json(run_dir / "summary.json", summary)
+        raise
+    summary.update(status="finished", eval_seconds=time.monotonic()-started)
+    (run_dir / "genome_final.npy").write_bytes(source)
+    write_json(run_dir / "summary.json", summary)
+    for condition, controllers in evaluations.items():
+        for controller, metric in controllers.items():
+            print(f"{condition}/{controller}: fitness {metric['fitness']:.6f} +/- {metric['fitness_se']:.6f} SE")
+    print("run folder:", run_dir)
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     ap.add_argument("--name", default="run")
@@ -225,8 +269,8 @@ def main():
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL), default=None,
-                    help="v1 (default), v2 mechanism diagnostic, structural-v1, broader-v1, or reversal-v1")
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL), default=None,
+                    help="v1 (default), v2 mechanism diagnostic, structural-v1, broader-v1, reversal-v1, or v3 saved-genome diagnostics")
     ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
                     help="broader-v1/reversal-v1 only; final fixes default Cfg and 128 worlds")
     ap.add_argument("--checkpoint-every", type=int, default=10)
@@ -246,6 +290,13 @@ def main():
     if git["dirty"] and not (a.allow_dirty or (a.quick and not a.resume)):
         raise SystemExit("Uncommitted code changes. Commit first (every run must map to a commit), "
                          "or pass --allow-dirty and say why in the experiment log.")
+    if a.eval_protocol == eval_v3.PROTOCOL:
+        a.structural_plasticity = a.structural_plasticity or "off"
+        try:
+            run_v3(a, git)
+        except ValueError as error:
+            ap.error(str(error))
+        return
     if a.eval_protocol == reversal_eval.PROTOCOL:
         a.condition_split = a.condition_split or "development"
         a.structural_plasticity = a.structural_plasticity or "off"
@@ -258,6 +309,8 @@ def main():
         run_dir = Path(a.resume)
         config = json.loads((run_dir / "config.json").read_text())
         args = config["args"]
+        if args.get("eval_protocol") == eval_v3.PROTOCOL:
+            ap.error("EVAL v3 panels cannot resume; preserve this folder and start a new run")
         if args.get("eval_protocol") == reversal_eval.PROTOCOL:
             ap.error("reversal-v1 does not resume; preserve the folder and use a new run name")
         if a.eval_protocol is not None and a.eval_protocol != args.get("eval_protocol", "v1"):
