@@ -151,10 +151,12 @@ The [independent audit](diagnostics/E114-final-audit.json) and [resource guard](
 
 ## Council decision and five-line report
 
-The owner delegated scientific decisions to the council. With the measurement audit complete, the next separate experiment is under council review. This report does not assume that a new objective, mechanism or training run is warranted. Any selected step must be preregistered and committed before execution, preserve past results, and distinguish measurement, causal tests and training.
+The owner delegated scientific decisions to the council. After reviewing these results, the council authorized the separately preregistered E115 continuation comparison in [LOG.md](../experiments/LOG.md). It compares mean-return and individual-minimum selection with identical exposure, unchanged plastic architecture and six matched continuations. The fixed gate requires improvement over both the other training arm and the unchanged start in all three seeds, with a joint-survival safeguard. It does not add a mechanism or reinterpret E113. No E115 outcome is claimed here.
+
+E114's complete local verification passed 133 tests. Hosted CI was interrupted at the shared verification-budget boundary after 88 tests passed; it did not finish and is not reported as a complete pass. This limitation is preserved in the lab notebook alongside the independently verified diagnostic artifacts.
 
 1. **Asked:** test saved controllers across fresh matched opposite-rule and reversal lives, with individual outcomes and specialist/mixture controls.
 2. **Happened:** all 11 controllers passed measurement validity; A's individual minimum returns were **8.237 ± 0.302, 8.453 ± 0.310 and 8.396 ± 0.297**, while the specialist mixture scored **33.486 ± 1.236** on ordinary fitness but **−3.970 ± 0.008** on individual minimum return.
 3. **Means:** the individual pairing exposes specialist mixtures that a population score can conceal; A's stationary outcomes are more robust across the two rules than the direct controllers' outcomes.
 4. **Does not mean:** paired robustness proves learning or reversal recovery—A's post-flip return remains negative, greedy succeeds with privileged rule knowledge, and E113's failed gate remains failed.
-5. **Next:** the council is reviewing a separate bounded experiment; any decision must be preregistered before new execution.
+5. **Next:** implement and verify the preregistered E115 objective-only continuation study, benchmark before release, and preserve all original gates and results.

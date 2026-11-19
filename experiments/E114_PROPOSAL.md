@@ -1,6 +1,6 @@
 # E114 proposal: individual adaptation versus specialist mixtures
 
-**Approved by the owner on 19 November 2026; not yet run.** The owner explicitly approved this diagnostic scope. This document preserves the proposal; the appended E114 entry in LOG.md supplies the preregistration and execution details. E113's failed gate remains unchanged. Implementation and verification must be committed before evaluation.
+**Approved and completed on 19 November 2026.** All 11 panels passed the measurement-validity audit; see [the EVAL v4 report](../results/EVAL_V4.md). This document preserves the approved proposal; E114 entries in LOG.md supply preregistration and execution details. E113's failed gate remains unchanged.
 
 ## Question
 

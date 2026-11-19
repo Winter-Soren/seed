@@ -99,6 +99,12 @@ def evaluate_controller(mu_or_none, c, n_worlds=N_WORLDS, eval_seed=EVAL_SEED, *
             raise ValueError("held-out EVAL v4 fixes default Cfg and 256 base worlds")
     elif (c.T > 30 or c.M > 4 or c.H > 6 or c.R > 1 or c.G > 8 or n_worlds > 4):
         raise ValueError("development uses only tiny fixtures")
+    return _evaluate_controller(mu_or_none, c, n_worlds, eval_seed,
+                                controller=controller, on_condition=on_condition)
+
+
+def _evaluate_controller(mu_or_none, c, n_worlds, eval_seed, *, controller, on_condition):
+    """Shared execution after each version's public seed/config validation."""
     if (not all(np.isfinite(value) for value in c)
             or c.T < 4 or c.T % 2 or c.G < 1 or c.M < 1 or c.R < 0 or c.H < 1
             or c.n_htypes < 1 or c.H % c.n_htypes or c.n_items < 0 or 2*c.n_items > c.G*c.G):

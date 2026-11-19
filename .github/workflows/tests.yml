@@ -28,7 +28,8 @@ concurrency:
 jobs:
   tests:
     runs-on: windows-2022
-    timeout-minutes: 15
+    # The expanded JAX compatibility suite compiles on a smaller hosted CPU.
+    timeout-minutes: 20
     env:
       JAX_PLATFORMS: cpu
       PYTHONUTF8: '1'

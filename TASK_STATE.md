@@ -29,18 +29,20 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - A individual stationary minima are 8.237, 8.453 and 8.396, with SE 0.302, 0.310 and 0.297.
 - Direct minima are near minus four; mixture averages also conceal individual failure.
 - A joint stationary survival is about 71–73%; post-reversal returns remain negative.
-- No scientific job remains active; hosted verification follows publication.
-- All 133 local tests passed; the council is reviewing a separate objective comparison.
+- No scientific job is active; E114 hosted CI ended at its verification-budget boundary.
+- All 133 local tests passed; hosted verification is incomplete after 88 passed tests.
+- E115 implementation passed all 156 local tests; no training has started.
 - Latest run checks found about 21.9 GiB free on C: of 373.67 and 46.2 on D: of 100.
 - Recheck current memory and both drives before any new job; keep temporary files on D:.
 
 ## What is next
 
 - The owner approved E114 and delegated scientific decisions to the council while asleep.
-- Publish E114, verify hosted CI within budget, and record the council next-experiment decision.
-- It uses saved controllers, paired rules and reversal, survival-aware outcomes and fresh worlds.
-- It changes no reward and includes no evolution; diagnostic and verification budgets stay fixed.
-- No new mechanism or task-ladder training is released within E114.
+- E114 is published; the council preregistered six matched E115 plastic continuations.
+- Compare mean and individual-minimum selection with identical exposure, 50 generations each.
+- Commit verified E115, benchmark one bounded segment, then assess the fixed study cost.
+- Require all three minimum-trained models to improve over both controls, with a survival safeguard.
+- No architecture or lifetime mechanism changes; E115 has a separate four-hour compute cap.
 - Keep the original failed gate and every earlier run intact.
 
 ## Working rules

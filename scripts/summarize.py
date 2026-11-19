@@ -14,6 +14,9 @@ def main():
     diagnostics = []
     v3_rows = []
     v4_rows = []
+    v5_rows = []
+    v5_gates = []
+    paired_training_rows = []
     direct_rows = []
     reversals = []
     structural_rows = []
@@ -28,7 +31,19 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
-        if a.get("eval_protocol") == "v4":
+        if a.get("eval_protocol") == "paired-train-v1":
+            paired_training_rows.append("| " + " | ".join([
+                d.name, s.get("status", ""), a.get("objective", ""), a.get("condition_split", "final"),
+                str(a.get("seed", "")), f"{s.get('generation', '')}/{a.get('generations', '')}",
+                str(a.get("pop", "")), str(a.get("worlds", "")),
+                s.get("evaluation_status", cfg.get("evaluation_status", "deferred")), commit,
+            ]) + " |")
+            continue
+        if a.get("eval_protocol") in ("v4", "v5"):
+            if a["eval_protocol"] == "v5":
+                decided = s.get("status") == "finished" and s.get("artifact_validity") == "passed" and "gate" in s
+                outcome = ("PASS" if s["gate"]["passed"] else "FAIL") if decided else "undecided"
+                v5_gates.append(f"| {d.name} | {a.get('condition_split', 'final')} | {s.get('status', '')} | {outcome} | {commit} |")
             for label, panel in s.get("panels", {}).items() or [("pending", {})]:
                 paired = panel.get("paired", {})
                 estimates = []
@@ -37,7 +52,8 @@ def main():
                     metric = paired.get(key, {})
                     estimates.append("undefined" if metric.get("mean") is None or metric.get("se") is None
                                      else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
-                v4_rows.append("| " + " | ".join([
+                target = v4_rows if a["eval_protocol"] == "v4" else v5_rows
+                target.append("| " + " | ".join([
                     d.name, s.get("status", ""), label, panel.get("controller", ""), panel.get("status", "pending"),
                     f"{len(panel.get('conditions', {}))}/4", a.get("condition_split", "final"), *estimates,
                     str(s.get("eval_seed", cfg.get("eval_seed", ""))),
@@ -134,6 +150,28 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if paired_training_rows:
+        out += ["## Paired objective continuation (paired-train-v1)", "",
+                "Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched "
+                "training keys. Paired mean averages both rule returns; paired minimum takes each individual's "
+                "minimum before averaging. Training completion saves the genome and defers evaluation to the "
+                "separate EVAL v5 aggregate. Training population variation is not held-out uncertainty; no "
+                "scientific fitness estimate or SE is reported here.", "",
+                "| Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Evaluation | Commit |",
+                "|---" * 10 + "|", *paired_training_rows, ""]
+    if v5_rows:
+        out += ["## EVAL v5 paired objective comparison", "",
+                "Original A starts and all six registered paired-mean/paired-min continuations are evaluated "
+                "together only after training completes. Every value is a base-world mean ± SE on fresh v5 "
+                "worlds; development uses seed 41 only. The fixed gate requires minimum-return improvements "
+                "over both start and paired mean beyond two paired SE in all three seeds, with no clear "
+                "joint-survival regression against start. The complete gate decision, 30 contrasts, "
+                "per-rule results and raw observations remain in the aggregate summary and panel files. "
+                "E113's failed gate remains unchanged.", "",
+                "| Run | Split | Status | E115 gate | Commit |", "|---" * 5 + "|", *v5_gates, "",
+                "| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | "
+                "Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | "
+                "Eval seed | Base worlds | Commit |", "|---" * 15 + "|", *v5_rows, ""]
     if v4_rows:
         out += ["## EVAL v4 paired-world diagnostics", "",
                 "Saved controllers and fixed reference policies; no training. Each base world is evaluated under "
