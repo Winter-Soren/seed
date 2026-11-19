@@ -32,8 +32,8 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - E115 evaluation was interrupted after eight panels during Modern Standby; no gate exists.
 - All 133 local tests passed; hosted verification is incomplete after 88 passed tests.
 - E115 passed 156 local and hosted tests; all six arms finished fifty generations and passed independent preflight.
-- Latest run checks found about 21.9 GiB free on C: of 373.67 and 46.2 on D: of 100.
-- Recheck current memory and both drives before any new job; keep temporary files on D:.
+- Recovery has not launched: free RAM was 7.78 GiB, below the unchanged eight-GiB floor.
+- C: has about 21.7 GiB free of 373.67; D: has 46.2 of 100. Recheck before launch.
 
 ## What is next
 

@@ -1,0 +1,15 @@
+{
+  "observed_at": "2026-11-19T11:28:02.9835896+05:30",
+  "recovery_started": false,
+  "reason": "Startup memory guard rejected before Start-Process",
+  "available_physical_gib": 7.7823944091796875,
+  "commit_headroom_gib": 11.464897155761719,
+  "commit_limit_gib": 47.884925842285156,
+  "committed_gib": 36.42002868652344,
+  "c_total_gib": 373.67089462280273,
+  "c_free_gib": 21.74050521850586,
+  "d_total_gib": 99.99901962280273,
+  "d_free_gib": 46.2263298034668,
+  "seed_workloads": [],
+  "recovery_folders": []
+}
