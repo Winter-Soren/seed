@@ -1,12 +1,14 @@
 {
-  "status": "interrupted",
-  "generation": 5,
-  "train_minutes": 2.22,
-  "final_genome_hash": "8b309817af747ff6",
+  "status": "finished",
+  "generation": 50,
+  "train_minutes": 18.9,
+  "final_genome_hash": "b34d469c654523a3",
   "controller": "rules-v0",
   "eval_protocol": "paired-train-v1",
   "objective": "paired-mean",
   "condition_split": "final",
-  "training_complete": false,
-  "evaluation_status": "deferred"
+  "training_complete": true,
+  "evaluation_status": "deferred",
+  "eval_worlds": 256,
+  "final_genome_sha256": "1c22e71c34bc91972d7391ebebbcba3faf1f6e30a187af66f43da9d262faafb4"
 }

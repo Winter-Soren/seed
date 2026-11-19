@@ -90,5 +90,17 @@
     "wmax": 3.0
   },
   "genome_size": 155,
-  "start_genome_hash": "ee8eaa10a7429cc5"
+  "start_genome_hash": "ee8eaa10a7429cc5",
+  "resumes": [
+    {
+      "at": "2026-11-19T06:04:11.180980",
+      "git": {
+        "commit": "5db1fcffc9217d2b3e0639b08b13bdb594d56227",
+        "branch": "main",
+        "dirty": false
+      },
+      "max_train_seconds": 1800.0,
+      "replayed_generations": 0
+    }
+  ]
 }

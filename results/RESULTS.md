@@ -29,7 +29,7 @@ Both arms continue the same saved plastic A genomes with fresh zero Adam moments
 
 | Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Evaluation | Commit |
 |---|---|---|---|---|---|---|---|---|---|
-| 20261119-054257_E115-mean-s0 | interrupted | paired-mean | final | 1000 | 5/50 | 64 | 4 | deferred | 27dfb88 |
+| 20261119-054257_E115-mean-s0 | finished | paired-mean | final | 1000 | 50/50 | 64 | 4 | deferred | 27dfb88 |
 
 ## EVAL v4 paired-world diagnostics
 
