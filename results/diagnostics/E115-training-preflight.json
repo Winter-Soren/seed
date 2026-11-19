@@ -1,0 +1,564 @@
+{
+  "status": "incomplete",
+  "mode": "full",
+  "helper_sha256": "a7198dd3840dd09d05424d76e56ff9534163bc4a48b314ad97bd07487072eed1",
+  "training": [
+    {
+      "name": "E115-mean-s0",
+      "run": "runs/20261119-054257_E115-mean-s0",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          76005737,
+          2103553955
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "mean0",
+        "controller": "rules-v0",
+        "seed": 0,
+        "training_seed": 1000,
+        "objective": "paired-mean",
+        "run": "runs/20261119-054257_E115-mean-s0",
+        "sha256": "1c22e71c34bc91972d7391ebebbcba3faf1f6e30a187af66f43da9d262faafb4",
+        "genome_hash": "b34d469c654523a3",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+          "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+          "genome_hash": "ee8eaa10a7429cc5",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-023245_E103-A-blank-s0",
+          "source_commits": [
+            {
+              "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+          "source_summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d"
+        },
+        "config_sha256": "b5bedb414cb01c5142aed24ce61334b8c144af6cae44a3d4c849577cf072b46a",
+        "summary_sha256": "4e0e932969f7fbe3edcc370d024d73886fb35997aeb00808aa1d7a9876e74ce0",
+        "source_commits": [
+          {
+            "commit": "27dfb88f25185c891e6bac57d2fcd86079ea65a0",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "5db1fcffc9217d2b3e0639b08b13bdb594d56227",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        3555561624,
+        2245497836
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 12.2119140625,
+        "fit_best": 18.625,
+        "fit_std": 2.5983078479766846,
+        "acc_first": 0.6744914650917053,
+        "acc_second": 0.794232189655304,
+        "survived": 0.8134765625,
+        "seconds": 32.531
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 11.41650390625,
+        "fit_best": 17.0,
+        "fit_std": 3.199789047241211,
+        "acc_first": 0.6625656485557556,
+        "acc_second": 0.7832835912704468,
+        "survived": 0.7822265625,
+        "seconds": 26.078
+      }
+    },
+    {
+      "name": "E115-min-s0",
+      "run": "runs/20261119-062529_E115-min-s0",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          76005737,
+          2103553955
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "min0",
+        "controller": "rules-v0",
+        "seed": 0,
+        "training_seed": 1000,
+        "objective": "paired-min",
+        "run": "runs/20261119-062529_E115-min-s0",
+        "sha256": "6a00d3958375154dbbd71eabfdae931997ece082238b2161030a693b12c896e1",
+        "genome_hash": "f23315a49f029474",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+          "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+          "genome_hash": "ee8eaa10a7429cc5",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-023245_E103-A-blank-s0",
+          "source_commits": [
+            {
+              "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+          "source_summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d"
+        },
+        "config_sha256": "507c694688d2ba53f2d7d2ac2f9ad44f52f58e56df3b3702814ec9f346a65883",
+        "summary_sha256": "82f3eed0bb177645c206f0deef8dba3d5f874af254bb0e55ba191bf66afcfd80",
+        "source_commits": [
+          {
+            "commit": "1e56564f3a1b29e291d5938a87a001792c9e4f27",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        3555561624,
+        2245497836
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 6.2294921875,
+        "fit_best": 12.9375,
+        "fit_std": 2.4965813159942627,
+        "acc_first": 0.6744914650917053,
+        "acc_second": 0.794232189655304,
+        "survived": 0.8134765625,
+        "seconds": 30.672
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 4.5771484375,
+        "fit_best": 12.5625,
+        "fit_std": 3.1661689281463623,
+        "acc_first": 0.6601226329803467,
+        "acc_second": 0.7512876987457275,
+        "survived": 0.77294921875,
+        "seconds": 25.813
+      }
+    },
+    {
+      "name": "E115-mean-s1",
+      "run": "runs/20261119-064812_E115-mean-s1",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          304371938,
+          1175611323
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "mean1",
+        "controller": "rules-v0",
+        "seed": 1,
+        "training_seed": 1001,
+        "objective": "paired-mean",
+        "run": "runs/20261119-064812_E115-mean-s1",
+        "sha256": "a3d40d161692fec1e6e7e6d9c4178ea68ad02ad38bf7c18bcd24c1c7ccc44105",
+        "genome_hash": "c71e27eea20adaaf",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+          "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+          "genome_hash": "aca49c2747a994ab",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-050319_E103-A-blank-s1",
+          "source_commits": [
+            {
+              "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+          "source_summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304"
+        },
+        "config_sha256": "9c9dc200456f895a063b3dfe0a44ed97e48c1f97543d4d7cc4797231dbc55ca1",
+        "summary_sha256": "3bbca60b9aef4d8e5a2119b39ad4ff14c7020122f586afe72475a44e84a64e67",
+        "source_commits": [
+          {
+            "commit": "700678307cfefd943f9911b9da4a7de3c4f758e1",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        2304739346,
+        1246784498
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 13.3505859375,
+        "fit_best": 20.1875,
+        "fit_std": 2.4311718940734863,
+        "acc_first": 0.670926034450531,
+        "acc_second": 0.808133065700531,
+        "survived": 0.80419921875,
+        "seconds": 30.14
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 11.81591796875,
+        "fit_best": 17.15625,
+        "fit_std": 2.429952383041382,
+        "acc_first": 0.6688395738601685,
+        "acc_second": 0.7786291241645813,
+        "survived": 0.81591796875,
+        "seconds": 25.312
+      }
+    },
+    {
+      "name": "E115-min-s1",
+      "run": "runs/20261119-071106_E115-min-s1",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          304371938,
+          1175611323
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "min1",
+        "controller": "rules-v0",
+        "seed": 1,
+        "training_seed": 1001,
+        "objective": "paired-min",
+        "run": "runs/20261119-071106_E115-min-s1",
+        "sha256": "068f06aa9d72dcc8868e166b0742979c86837c2e9d4124d86c3c500435330de2",
+        "genome_hash": "f7e0f289e6b93293",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+          "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+          "genome_hash": "aca49c2747a994ab",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-050319_E103-A-blank-s1",
+          "source_commits": [
+            {
+              "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+          "source_summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304"
+        },
+        "config_sha256": "686e838a1b842e77dd3208e0addd0a9c96bf13d024ae2e22850c1b1b7cd7bbeb",
+        "summary_sha256": "95d3a671e69e3615e62c521e8d9919dc0aeb52a0ab9ba1979ca1e0a65f31bdb2",
+        "source_commits": [
+          {
+            "commit": "9baa19b0131d230c8eb20e25e7caa8fb9ca35f37",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        2304739346,
+        1246784498
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 6.357421875,
+        "fit_best": 15.25,
+        "fit_std": 2.766274929046631,
+        "acc_first": 0.670926034450531,
+        "acc_second": 0.808133065700531,
+        "survived": 0.80419921875,
+        "seconds": 28.422
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 6.2490234375,
+        "fit_best": 10.375,
+        "fit_std": 1.995401382446289,
+        "acc_first": 0.6759956479072571,
+        "acc_second": 0.7863717079162598,
+        "survived": 0.82763671875,
+        "seconds": 24.938
+      }
+    },
+    {
+      "name": "E115-mean-s2",
+      "run": "runs/20261119-073315_E115-mean-s2",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          3566112948,
+          791253748
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "mean2",
+        "controller": "rules-v0",
+        "seed": 2,
+        "training_seed": 1002,
+        "objective": "paired-mean",
+        "run": "runs/20261119-073315_E115-mean-s2",
+        "sha256": "8ce4aa5661794c3457b84dd335cc1351b6b9a19187b4fa11827a7d9eda554803",
+        "genome_hash": "b9638f89f81bd2ec",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+          "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+          "genome_hash": "17191e72299b25cc",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-102755_E103-A-blank-s2",
+          "source_commits": [
+            {
+              "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+          "source_summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c"
+        },
+        "config_sha256": "9e4cc66948821713880841561ed33468fcd8798a4ab19cd3afa886637be51dec",
+        "summary_sha256": "445beca4311b707da5913352c592b5996a2d3695c7be8e553ef7347dabe76ffd",
+        "source_commits": [
+          {
+            "commit": "8ea83fcba9555a8c7608071ab9d0e40b6f508a21",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        352048346,
+        226963794
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 10.44921875,
+        "fit_best": 17.28125,
+        "fit_std": 3.911949872970581,
+        "acc_first": 0.668903112411499,
+        "acc_second": 0.7455540299415588,
+        "survived": 0.8095703125,
+        "seconds": 29.531
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 10.87939453125,
+        "fit_best": 16.46875,
+        "fit_std": 2.4867377281188965,
+        "acc_first": 0.6592816710472107,
+        "acc_second": 0.780882716178894,
+        "survived": 0.78759765625,
+        "seconds": 26.031
+      }
+    },
+    {
+      "name": "E115-min-s2",
+      "run": "runs/20261119-075548_E115-min-s2",
+      "status": "finished",
+      "generation": 50,
+      "initial_optimizer": {
+        "method": "es_init",
+        "generation": 0,
+        "adam_m_zero": true,
+        "adam_v_zero": true,
+        "key": [
+          3566112948,
+          791253748
+        ],
+        "l2": 0.005
+      },
+      "metadata": {
+        "label": "min2",
+        "controller": "rules-v0",
+        "seed": 2,
+        "training_seed": 1002,
+        "objective": "paired-min",
+        "run": "runs/20261119-075548_E115-min-s2",
+        "sha256": "d306bad6a0009da3105550822cbdf347aa3c4fd2e7de204cc8b10a2c36585447",
+        "genome_hash": "8d618d3e1a5401d0",
+        "genome_size": 155,
+        "input_genome": {
+          "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+          "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+          "genome_hash": "17191e72299b25cc",
+          "controller": "rules-v0",
+          "source_run": "runs/20261112-102755_E103-A-blank-s2",
+          "source_commits": [
+            {
+              "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+              "branch": "main",
+              "dirty": false
+            },
+            {
+              "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+              "branch": "main",
+              "dirty": false
+            }
+          ],
+          "source_config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+          "source_summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c"
+        },
+        "config_sha256": "8f67e76761f4adba13fe053fb6175ea7441330ab25ed891b6bd9524c087036da",
+        "summary_sha256": "6d5b38eed4f35331517a7beedc71e7888f9e836964f442e65c57c7614ada17ed",
+        "source_commits": [
+          {
+            "commit": "d74c2620fb849f2697a15b932c75a69921d5cd76",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "final_key": [
+        352048346,
+        226963794
+      ],
+      "history_rows": 50,
+      "first_training_row": {
+        "gen": 0,
+        "fit_mean": 5.0908203125,
+        "fit_best": 11.375,
+        "fit_std": 3.0590291023254395,
+        "acc_first": 0.668903112411499,
+        "acc_second": 0.7455540299415588,
+        "survived": 0.8095703125,
+        "seconds": 29.985
+      },
+      "final_training_row": {
+        "gen": 49,
+        "fit_mean": 4.640625,
+        "fit_best": 9.375,
+        "fit_std": 2.2761876583099365,
+        "acc_first": 0.6524611711502075,
+        "acc_second": 0.7426514029502869,
+        "survived": 0.7744140625,
+        "seconds": 24.766
+      }
+    }
+  ],
+  "registered_source": "27dfb88f25185c891e6bac57d2fcd86079ea65a0",
+  "registered_code_trees": {
+    "seed": "8cf7250e1ef177f0dfe528f1fbe7208151446714",
+    "scripts": "a8cdd8cf7d9de79fb80571d9667157364b9eda78"
+  },
+  "error": "final E115-v5 folder does not exist",
+  "final_evaluation_audited": false,
+  "checked_file_sha256": {
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261112-023245_E103-A-blank-s0/config.json": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+    "runs/20261112-023245_E103-A-blank-s0/summary.json": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+    "runs/20261119-054257_E115-mean-s0/config.json": "b5bedb414cb01c5142aed24ce61334b8c144af6cae44a3d4c849577cf072b46a",
+    "runs/20261119-054257_E115-mean-s0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261119-054257_E115-mean-s0/summary.json": "4e0e932969f7fbe3edcc370d024d73886fb35997aeb00808aa1d7a9876e74ce0",
+    "runs/20261119-054257_E115-mean-s0/genome_final.npy": "1c22e71c34bc91972d7391ebebbcba3faf1f6e30a187af66f43da9d262faafb4",
+    "runs/20261119-054257_E115-mean-s0/checkpoint.npz": "cf97e036019c94a677a0bbac6e92f2922d139147b3311566f1463376525f331e",
+    "runs/20261119-054257_E115-mean-s0/metrics.jsonl": "fdb4bab0fa0406e5e016183ad5aed56204f1e99ac2ccda795033ed389c9fcfba",
+    "runs/20261119-062529_E115-min-s0/config.json": "507c694688d2ba53f2d7d2ac2f9ad44f52f58e56df3b3702814ec9f346a65883",
+    "runs/20261119-062529_E115-min-s0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261119-062529_E115-min-s0/summary.json": "82f3eed0bb177645c206f0deef8dba3d5f874af254bb0e55ba191bf66afcfd80",
+    "runs/20261119-062529_E115-min-s0/genome_final.npy": "6a00d3958375154dbbd71eabfdae931997ece082238b2161030a693b12c896e1",
+    "runs/20261119-062529_E115-min-s0/checkpoint.npz": "cd40ed8aa615a251eee886622f5c2c9faa10a565ebb2f52b8aff623b952134bf",
+    "runs/20261119-062529_E115-min-s0/metrics.jsonl": "72d9167de27ca170f48ca0137a3eea91485a0a5a6b49bd59e11e893490262a82",
+    "runs/20261112-050319_E103-A-blank-s1/genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261112-050319_E103-A-blank-s1/config.json": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+    "runs/20261112-050319_E103-A-blank-s1/summary.json": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
+    "runs/20261119-064812_E115-mean-s1/config.json": "9c9dc200456f895a063b3dfe0a44ed97e48c1f97543d4d7cc4797231dbc55ca1",
+    "runs/20261119-064812_E115-mean-s1/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261119-064812_E115-mean-s1/summary.json": "3bbca60b9aef4d8e5a2119b39ad4ff14c7020122f586afe72475a44e84a64e67",
+    "runs/20261119-064812_E115-mean-s1/genome_final.npy": "a3d40d161692fec1e6e7e6d9c4178ea68ad02ad38bf7c18bcd24c1c7ccc44105",
+    "runs/20261119-064812_E115-mean-s1/checkpoint.npz": "53742924d61278ce5e97567effe1e88da2424ea3ab20ddbf387d6e320937e548",
+    "runs/20261119-064812_E115-mean-s1/metrics.jsonl": "14dffd906c2de4872b299b9de7a593e07e5fe3ff7e1aea1ead6178f35284b659",
+    "runs/20261119-071106_E115-min-s1/config.json": "686e838a1b842e77dd3208e0addd0a9c96bf13d024ae2e22850c1b1b7cd7bbeb",
+    "runs/20261119-071106_E115-min-s1/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261119-071106_E115-min-s1/summary.json": "95d3a671e69e3615e62c521e8d9919dc0aeb52a0ab9ba1979ca1e0a65f31bdb2",
+    "runs/20261119-071106_E115-min-s1/genome_final.npy": "068f06aa9d72dcc8868e166b0742979c86837c2e9d4124d86c3c500435330de2",
+    "runs/20261119-071106_E115-min-s1/checkpoint.npz": "64c725ffe41dd3c5ed84e98421a2a52db100dfe9643e0983d88e4a688fd93662",
+    "runs/20261119-071106_E115-min-s1/metrics.jsonl": "55972310a21d707512f7a22e57ae5ead48e364579d81008604ec6bab5b6b6bc2",
+    "runs/20261112-102755_E103-A-blank-s2/genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261112-102755_E103-A-blank-s2/config.json": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+    "runs/20261112-102755_E103-A-blank-s2/summary.json": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
+    "runs/20261119-073315_E115-mean-s2/config.json": "9e4cc66948821713880841561ed33468fcd8798a4ab19cd3afa886637be51dec",
+    "runs/20261119-073315_E115-mean-s2/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261119-073315_E115-mean-s2/summary.json": "445beca4311b707da5913352c592b5996a2d3695c7be8e553ef7347dabe76ffd",
+    "runs/20261119-073315_E115-mean-s2/genome_final.npy": "8ce4aa5661794c3457b84dd335cc1351b6b9a19187b4fa11827a7d9eda554803",
+    "runs/20261119-073315_E115-mean-s2/checkpoint.npz": "805802ef479a1fce81ff38c9fbfccbf3c8f7af7821cca39ba19ce7f038eb72e0",
+    "runs/20261119-073315_E115-mean-s2/metrics.jsonl": "5f9779e89b9d58c1820dbf0e5789563d016e1fae93a1d3df151cd0d843286354",
+    "runs/20261119-075548_E115-min-s2/config.json": "8f67e76761f4adba13fe053fb6175ea7441330ab25ed891b6bd9524c087036da",
+    "runs/20261119-075548_E115-min-s2/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261119-075548_E115-min-s2/summary.json": "6d5b38eed4f35331517a7beedc71e7888f9e836964f442e65c57c7614ada17ed",
+    "runs/20261119-075548_E115-min-s2/genome_final.npy": "d306bad6a0009da3105550822cbdf347aa3c4fd2e7de204cc8b10a2c36585447",
+    "runs/20261119-075548_E115-min-s2/checkpoint.npz": "a50fe5255025e75ea2f940895c10ac79b23efd11bb0009d9b20f29e9a47ea964",
+    "runs/20261119-075548_E115-min-s2/metrics.jsonl": "bb3a746257270a4405dd831990d84c9fa551b831b3890521d16501136d5aa92b"
+  }
+}
