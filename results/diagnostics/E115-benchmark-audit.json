@@ -1,0 +1,64 @@
+{
+  "status": "verified",
+  "run": "runs\\20261119-054257_E115-mean-s0",
+  "source_commit": "27dfb88f25185c891e6bac57d2fcd86079ea65a0",
+  "generation": 5,
+  "metric_prefix_sha256": "613f6f4bad316aeba22ca97c1445c56d7f9c4cd479f355415750812c954f590e",
+  "metric_prefix_snapshot": ".tmp\\E115-mean-s0-segment1-metrics-prefix.jsonl",
+  "source_and_start_npy_sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+  "start_genome_hash": "ee8eaa10a7429cc5",
+  "checkpoint_genome_hash": "8b309817af747ff6",
+  "checkpoint_key": [
+    3717499441,
+    3311061333
+  ],
+  "checkpoint_arrays_finite": true,
+  "initial_optimizer_recorded_fresh_zero_moments": {
+    "method": "es_init",
+    "generation": 0,
+    "adam_m_zero": true,
+    "adam_v_zero": true,
+    "key": [
+      76005737,
+      2103553955
+    ],
+    "l2": 0.005
+  },
+  "heldout_evaluation_deferred_and_no_artifacts": true,
+  "guard_wall_seconds": 143.1170927,
+  "cold_generation_seconds": 32.531,
+  "warm_generation_seconds": [
+    24.719,
+    25.953,
+    25.922,
+    24.093
+  ],
+  "warm_mean_seconds": 25.17175,
+  "warm_max_seconds": 25.953,
+  "generation_seconds_sum": 133.218,
+  "observed_nontraining_overhead_seconds": 9.899092700000011,
+  "peak_private_gib": 1.4939460754394531,
+  "minimum_commit_headroom_gib": 9.547958374023438,
+  "minimum_c_free_gib": 21.743453979492188,
+  "minimum_d_free_gib": 46.23459243774414,
+  "e115_measured_seconds": 694.4989409,
+  "daily_measured_seconds": 5225.727227400001,
+  "conservative_feasibility": {
+    "remaining_generations": 295,
+    "warm_max_multiplier": 1.5,
+    "forecast_seconds_per_generation": 38.9295,
+    "future_invocations_reserved": 12,
+    "cold_and_setup_charge_each": 42.43009270000001,
+    "benchmark_plus_all_training_setup_seconds": 12136.480705099999,
+    "software_total_reserved_seconds": 2400,
+    "final_eval_reserved_seconds": 1200,
+    "e115_total_forecast_seconds": 15736.480705099999,
+    "registered_14400_budget_margin_seconds": -1336.4807050999989,
+    "hypothetical_18000_budget_margin_seconds": 2263.519294900001,
+    "daily_total_forecast_seconds": 20267.708991599997,
+    "daily_28800_budget_margin_seconds": 8532.2910084,
+    "new_arm_50_generation_training_estimate_seconds": 1979.0059999999999,
+    "mean0_remaining_45_generation_training_estimate_seconds": 1784.3584999999998,
+    "limitation": "Timing forecast from four warm mean0 generations, not a guarantee; other arms, load changes, and repeated replay are unmeasured. No budget amendment or continuation is performed by this audit."
+  }
+}

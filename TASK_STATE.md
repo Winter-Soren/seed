@@ -31,7 +31,7 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - A joint stationary survival is about 71–73%; post-reversal returns remain negative.
 - No scientific job is active; E114 hosted CI ended at its verification-budget boundary.
 - All 133 local tests passed; hosted verification is incomplete after 88 passed tests.
-- E115 implementation passed all 156 local tests; no training has started.
+- E115 passed 156 local tests; its first training checkpoint is valid at five of fifty generations.
 - Latest run checks found about 21.9 GiB free on C: of 373.67 and 46.2 on D: of 100.
 - Recheck current memory and both drives before any new job; keep temporary files on D:.
 
@@ -40,9 +40,9 @@ Working directive: learn from experience, adapt to change, retain useful learnin
 - The owner approved E114 and delegated scientific decisions to the council while asleep.
 - E114 is published; the council preregistered six matched E115 plastic continuations.
 - Compare mean and individual-minimum selection with identical exposure, 50 generations each.
-- Commit verified E115, benchmark one bounded segment, then assess the fixed study cost.
+- Publish the benchmark, finish hosted verification, then resume the six fixed continuations.
 - Require all three minimum-trained models to improve over both controls, with a survival safeguard.
-- No architecture or lifetime mechanism changes; E115 has a separate four-hour compute cap.
+- Timing exceeded the original four-hour allowance; council prospectively approved five hours.
 - Keep the original failed gate and every earlier run intact.
 
 ## Working rules

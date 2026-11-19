@@ -23,6 +23,14 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Paired objective continuation (paired-train-v1)
+
+Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched training keys. Paired mean averages both rule returns; paired minimum takes each individual's minimum before averaging. Training completion saves the genome and defers evaluation to the separate EVAL v5 aggregate. Training population variation is not held-out uncertainty; no scientific fitness estimate or SE is reported here.
+
+| Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Evaluation | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261119-054257_E115-mean-s0 | interrupted | paired-mean | final | 1000 | 5/50 | 64 | 4 | deferred | 27dfb88 |
+
 ## EVAL v4 paired-world diagnostics
 
 Saved controllers and fixed reference policies; no training. Each base world is evaluated under both initial food rules and their mid-life reversals. Means and SEs use independent base-world families; minimum return and joint survival pair each original individual across the two stationary rules before averaging within its family. Survival values are fractions. Development rows use tiny seed-41 fixtures only. These descriptive measurements do not replace the failed E113 gate. Per-rule accuracy, deaths, encounters, all 15 planned A-minus-direct contrasts and raw events remain in the run folder. Incomplete attempts retain their completed conditions and show undefined paired estimates.
