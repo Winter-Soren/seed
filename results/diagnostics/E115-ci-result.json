@@ -1,0 +1,107 @@
+{
+  "run_id": "44427980705",
+  "expected_head": "86e5c5af03b26aabbe79a2aa23cc234c9c50c260",
+  "conclusion": "success",
+  "job_conclusion": "success",
+  "started_at": "2026-11-19T00:18:49Z",
+  "completed_at": "2026-11-19T00:32:03Z",
+  "job_wall_seconds": 794.0,
+  "software_prior_seconds": 551.3818482,
+  "software_total_seconds": 1345.3818482000001,
+  "software_budget_seconds": 2400,
+  "cancel_requested": false,
+  "run": {
+    "conclusion": "success",
+    "databaseId": 44427980705,
+    "headSha": "86e5c5af03b26aabbe79a2aa23cc234c9c50c260",
+    "jobs": [
+      {
+        "completedAt": "2026-11-19T00:32:03Z",
+        "conclusion": "success",
+        "databaseId": 135237682329,
+        "name": "tests",
+        "startedAt": "2026-11-19T00:18:49Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-11-19T00:18:50Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-11-19T00:18:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:18:58Z",
+            "conclusion": "success",
+            "name": "Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 2,
+            "startedAt": "2026-11-19T00:18:50Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:19:04Z",
+            "conclusion": "success",
+            "name": "Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "number": 3,
+            "startedAt": "2026-11-19T00:18:58Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:19:42Z",
+            "conclusion": "success",
+            "name": "Run python -m pip install -r requirements.txt",
+            "number": 4,
+            "startedAt": "2026-11-19T00:19:04Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:19:43Z",
+            "conclusion": "success",
+            "name": "Run python -m pip check",
+            "number": 5,
+            "startedAt": "2026-11-19T00:19:42Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:32:00Z",
+            "conclusion": "success",
+            "name": "Run full test suite",
+            "number": 6,
+            "startedAt": "2026-11-19T00:19:43Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:32:00Z",
+            "conclusion": "success",
+            "name": "Post Run actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0",
+            "number": 11,
+            "startedAt": "2026-11-19T00:32:00Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:32:02Z",
+            "conclusion": "success",
+            "name": "Post Run actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1",
+            "number": 12,
+            "startedAt": "2026-11-19T00:32:00Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-11-19T00:32:02Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 13,
+            "startedAt": "2026-11-19T00:32:02Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Winter-Soren/seed/actions/runs/44427980705/job/135237682329"
+      }
+    ],
+    "startedAt": "2026-11-19T00:18:47Z",
+    "status": "completed",
+    "updatedAt": "2026-11-19T00:32:04Z",
+    "url": "https://github.com/Winter-Soren/seed/actions/runs/44427980705"
+  }
+}
