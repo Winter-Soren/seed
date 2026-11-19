@@ -36,6 +36,26 @@ Both arms continue the same saved plastic A genomes with fresh zero Adam moments
 | 20261119-073315_E115-mean-s2 | finished | paired-mean | final | 1002 | 50/50 | 64 | 4 | deferred | 8ea83fc |
 | 20261119-075548_E115-min-s2 | finished | paired-min | final | 1002 | 50/50 | 64 | 4 | deferred | d74c262 |
 
+## EVAL v5 paired objective comparison
+
+Original A starts and all six registered paired-mean/paired-min continuations are evaluated together only after training completes. Every value is a base-world mean ± SE on fresh v5 worlds; development uses seed 41 only. The fixed gate requires minimum-return improvements over both start and paired mean beyond two paired SE in all three seeds, with no clear joint-survival regression against start. The complete gate decision, 30 contrasts, per-rule results and raw observations remain in the aggregate summary and panel files. E113's failed gate remains unchanged.
+
+| Run | Split | Status | E115 gate | Commit |
+|---|---|---|---|---|
+| 20261119-081846_E115-v5 | final | interrupted | undecided | d0696bb |
+
+| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | Eval seed | Base worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261119-081846_E115-v5 | interrupted | start0 | rules-v0 | finished | 4/4 | final | 15.395020 ± 0.254047 | 8.690430 ± 0.305273 | 0.704102 ± 0.014056 | -2.713379 ± 0.084352 | 0.409180 ± 0.011689 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | mean0 | rules-v0 | finished | 4/4 | final | 13.501465 ± 0.237166 | 6.931641 ± 0.296281 | 0.665039 ± 0.016180 | -2.199707 ± 0.091499 | 0.434570 ± 0.011862 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | min0 | rules-v0 | finished | 4/4 | final | 13.300293 ± 0.253856 | 7.215820 ± 0.293171 | 0.678711 ± 0.014320 | -2.039551 ± 0.084850 | 0.486328 ± 0.011649 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | start1 | rules-v0 | finished | 4/4 | final | 14.971191 ± 0.271456 | 8.245117 ± 0.314441 | 0.707031 ± 0.014059 | -2.515137 ± 0.092137 | 0.431641 ± 0.012137 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | mean1 | rules-v0 | finished | 4/4 | final | 12.921875 ± 0.251794 | 6.622070 ± 0.270063 | 0.666016 ± 0.014811 | -2.131348 ± 0.085268 | 0.447754 ± 0.011073 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | min1 | rules-v0 | finished | 4/4 | final | 12.073242 ± 0.242276 | 6.010742 ± 0.276111 | 0.657227 ± 0.015463 | -2.036621 ± 0.083803 | 0.440918 ± 0.010938 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | start2 | rules-v0 | finished | 4/4 | final | 15.096191 ± 0.246723 | 8.581055 ± 0.287735 | 0.731445 ± 0.013614 | -2.676758 ± 0.075219 | 0.437012 ± 0.009736 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | mean2 | rules-v0 | finished | 4/4 | final | 12.645996 ± 0.227134 | 6.317383 ± 0.284597 | 0.646484 ± 0.015162 | -2.218262 ± 0.077446 | 0.422363 ± 0.011094 | 2026111903 | 256 | d0696bb |
+| 20261119-081846_E115-v5 | interrupted | min2 | rules-v0 | interrupted | 3/4 | final | undefined | undefined | undefined | undefined | undefined | 2026111903 | 256 | d0696bb |
+
 ## EVAL v4 paired-world diagnostics
 
 Saved controllers and fixed reference policies; no training. Each base world is evaluated under both initial food rules and their mid-life reversals. Means and SEs use independent base-world families; minimum return and joint survival pair each original individual across the two stationary rules before averaging within its family. Survival values are fractions. Development rows use tiny seed-41 fixtures only. These descriptive measurements do not replace the failed E113 gate. Per-rule accuracy, deaths, encounters, all 15 planned A-minus-direct contrasts and raw events remain in the run folder. Incomplete attempts retain their completed conditions and show undefined paired estimates.

@@ -1,0 +1,62 @@
+[
+  {
+    "TimeCreated": "2026-11-19T08:24:38.84169+05:30",
+    "Id": 507,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is exiting Modern Standby \r\n\r\nReason: AC/DC Display Burst Suppressed."
+  },
+  {
+    "TimeCreated": "2026-11-19T08:24:38.8443822+05:30",
+    "Id": 506,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is entering Modern Standby \r\n\r\nReason: AC/DC Display Burst Suppressed."
+  },
+  {
+    "TimeCreated": "2026-11-19T08:31:17.3975671+05:30",
+    "Id": 507,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is exiting Modern Standby \r\n\r\nReason: AC/DC Display Burst."
+  },
+  {
+    "TimeCreated": "2026-11-19T08:31:22.4202231+05:30",
+    "Id": 506,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is entering Modern Standby \r\n\r\nReason: AC/DC Display Burst."
+  },
+  {
+    "TimeCreated": "2026-11-19T08:41:18.4772262+05:30",
+    "Id": 507,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is exiting Modern Standby \r\n\r\nReason: 16777220."
+  },
+  {
+    "TimeCreated": "2026-11-19T08:41:18.4797546+05:30",
+    "Id": 506,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is entering Modern Standby \r\n\r\nReason: 16777220."
+  },
+  {
+    "TimeCreated": "2026-11-19T09:34:58.9246757+05:30",
+    "Id": 507,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is exiting Modern Standby \r\n\r\nReason: AC/DC Display Burst Suppressed."
+  },
+  {
+    "TimeCreated": "2026-11-19T09:34:58.9264959+05:30",
+    "Id": 506,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is entering Modern Standby \r\n\r\nReason: AC/DC Display Burst Suppressed."
+  },
+  {
+    "TimeCreated": "2026-11-19T09:35:45.8085354+05:30",
+    "Id": 507,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is exiting Modern Standby \r\n\r\nReason: Austerity Battery Drain Budget Exceeded."
+  },
+  {
+    "TimeCreated": "2026-11-19T09:35:45.8107766+05:30",
+    "Id": 506,
+    "ProviderName": "Microsoft-Windows-Kernel-Power",
+    "Message": "The system is entering Modern Standby \r\n\r\nReason: Austerity Battery Drain Budget Exceeded."
+  }
+]
