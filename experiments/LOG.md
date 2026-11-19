@@ -1807,3 +1807,9 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
 - Guard wall 1289.6131948 seconds; warm maximum 27.453 seconds. Minimum commit/C:/D: headroom 10.4814872741699/21.7298126220703/46.2332954406738 GiB. Evidence: results/diagnostics/E115-mean-s1-audit.json and E115-mean-s1-guard.jsonl.
 - Actual E115 5203.6135689/18000 seconds, daily 9734.8418554/28800. Conservative total forecast 13929.1653145 seconds, retaining software contingency and final-evaluation reserves; timing remains feasible.
 - Next fixed release after publication: E115-min-s1, original A1, seed1001, paired-min, fifty generations and all unchanged settings/guards. No held-out evaluation until all six finals validate.
+
+### E115 min1 training completion · 2026-11-19
+- runs/20261119-071106_E115-min-s1 finished 50/50 from clean committed source 9baa19b0131d230c8eb20e25e7caa8fb9ca35f37. Summary final genome hash f7e0f289e6b93293; evaluation remains deferred. Audit verified fifty finite contiguous metrics, checkpoint/final equality and clean provenance. Both A1 arms match original starting bytes, fresh optimizer, settings, implementation and final RNG key. No held-out improvement claim.
+- Guard wall 1262.7674772 seconds; warm maximum 26.969 seconds. Minimum commit/C:/D: headroom 10.5390663146973/21.8034400939941/46.2330055236816 GiB. Evidence: results/diagnostics/E115-min-s1-audit.json and E115-min-s1-guard.jsonl.
+- Actual E115 6466.3810461/18000 seconds, daily 10997.6093326/28800. Conservative total forecast 13034.9549271 seconds, retaining all software/evaluation reserves. Timing remains feasible.
+- Next fixed release after publication: E115-mean-s2, original A2, seed1002, paired-mean, fifty generations and unchanged settings/guards. Held-out evaluation still waits for all six finals.

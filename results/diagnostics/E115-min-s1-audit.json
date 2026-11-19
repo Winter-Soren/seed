@@ -1,0 +1,146 @@
+{
+  "status": "verified",
+  "run": "runs/20261119-071106_E115-min-s1",
+  "source_commit": "9baa19b0131d230c8eb20e25e7caa8fb9ca35f37",
+  "latest_commit": "9baa19b0131d230c8eb20e25e7caa8fb9ca35f37",
+  "generation": 50,
+  "training_complete": true,
+  "evaluation_deferred": true,
+  "initial_optimizer_recorded_fresh_zero_moments": {
+    "method": "es_init",
+    "generation": 0,
+    "adam_m_zero": true,
+    "adam_v_zero": true,
+    "key": [
+      304371938,
+      1175611323
+    ],
+    "l2": 0.005
+  },
+  "source_and_start_npy_sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+  "start_genome_hash": "aca49c2747a994ab",
+  "final_genome_hash": "f7e0f289e6b93293",
+  "checkpoint_key": [
+    2304739346,
+    1246784498
+  ],
+  "previous_metric_prefix_preserved": true,
+  "previous_metric_prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "metrics_sha256": "55972310a21d707512f7a22e57ae5ead48e364579d81008604ec6bab5b6b6bc2",
+  "finite_contiguous_metrics": 50,
+  "paired_arm_checks": {
+    "counterpart_run": "runs\\20261119-064812_E115-mean-s1",
+    "identical_initial_npy_bytes": true,
+    "identical_fresh_optimizer_record": true,
+    "identical_exposure_and_es_settings": true,
+    "identical_implementation": true,
+    "same_generation_checkpoint_rng_key_matches": true
+  },
+  "guard_wall_seconds": 1262.7674772,
+  "cold_generation_seconds": 28.422,
+  "warm_generation_seconds": [
+    24.188,
+    23.953,
+    24.781,
+    24.547,
+    25.234,
+    24.5,
+    24.61,
+    25.656,
+    24.531,
+    25.203,
+    24.469,
+    24.313,
+    24.75,
+    24.234,
+    25.625,
+    24.922,
+    24.75,
+    25.437,
+    26.766,
+    24.937,
+    25.078,
+    25.782,
+    24.765,
+    26.297,
+    25.094,
+    24.906,
+    24.969,
+    25.047,
+    24.984,
+    24.516,
+    24.843,
+    24.469,
+    25.219,
+    26.969,
+    24.281,
+    25.094,
+    24.156,
+    24.672,
+    24.328,
+    26.062,
+    25.188,
+    25.25,
+    25.063,
+    25.203,
+    25.0,
+    24.609,
+    24.766,
+    24.109,
+    24.938
+  ],
+  "warm_mean_seconds": 24.960469387755104,
+  "warm_max_seconds": 26.969,
+  "segment_generation_seconds_sum": 1251.4850000000001,
+  "observed_nontraining_overhead_seconds": 11.282477199999903,
+  "all_generation_seconds_sum": 1251.485,
+  "peak_private_gib": 2.145488739013672,
+  "minimum_commit_headroom_gib": 10.539066314697266,
+  "minimum_c_free_gib": 21.80344009399414,
+  "minimum_d_free_gib": 46.23300552368164,
+  "e115_measured_seconds": 6466.3810461,
+  "daily_measured_seconds": 10997.609332600001,
+  "conservative_feasibility": {
+    "run_progress": {
+      "E115-mean-s0": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-min-s0": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-mean-s1": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-min-s1": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-mean-s2": {
+        "completed_generations": 0,
+        "reserved_future_invocations": 2
+      },
+      "E115-min-s2": {
+        "completed_generations": 0,
+        "reserved_future_invocations": 2
+      }
+    },
+    "remaining_generations": 100,
+    "slowest_observed_warm_seconds": 27.453,
+    "warm_multiplier": 1.5,
+    "forecast_seconds_per_generation": 41.1795,
+    "future_invocations_reserved": 4,
+    "full_cold_and_setup_charge_each": 49.00143230000008,
+    "remaining_training_setup_seconds": 4313.9557292,
+    "remaining_software_contingency_seconds": 1054.6181518,
+    "final_evaluation_reserve_seconds": 1200,
+    "remaining_total_forecast_seconds": 6568.573881,
+    "e115_total_forecast_seconds": 13034.9549271,
+    "e115_18000_budget_margin_seconds": 4965.0450729,
+    "daily_total_forecast_seconds": 17566.1832136,
+    "daily_28800_budget_margin_seconds": 11233.816786399999,
+    "limitation": "Runtime forecast, not a guarantee. No score is used to change settings, budgets, or gates. Future load and arms remain unmeasured."
+  }
+}
