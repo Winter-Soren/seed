@@ -31,6 +31,7 @@ Both arms continue the same saved plastic A genomes with fresh zero Adam moments
 |---|---|---|---|---|---|---|---|---|---|
 | 20261119-054257_E115-mean-s0 | finished | paired-mean | final | 1000 | 50/50 | 64 | 4 | deferred | 27dfb88 |
 | 20261119-062529_E115-min-s0 | finished | paired-min | final | 1000 | 50/50 | 64 | 4 | deferred | 1e56564 |
+| 20261119-064812_E115-mean-s1 | finished | paired-mean | final | 1001 | 50/50 | 64 | 4 | deferred | 7006783 |
 
 ## EVAL v4 paired-world diagnostics
 

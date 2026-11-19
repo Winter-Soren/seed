@@ -1,0 +1,139 @@
+{
+  "status": "verified",
+  "run": "runs/20261119-064812_E115-mean-s1",
+  "source_commit": "700678307cfefd943f9911b9da4a7de3c4f758e1",
+  "latest_commit": "700678307cfefd943f9911b9da4a7de3c4f758e1",
+  "generation": 50,
+  "training_complete": true,
+  "evaluation_deferred": true,
+  "initial_optimizer_recorded_fresh_zero_moments": {
+    "method": "es_init",
+    "generation": 0,
+    "adam_m_zero": true,
+    "adam_v_zero": true,
+    "key": [
+      304371938,
+      1175611323
+    ],
+    "l2": 0.005
+  },
+  "source_and_start_npy_sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+  "start_genome_hash": "aca49c2747a994ab",
+  "final_genome_hash": "c71e27eea20adaaf",
+  "checkpoint_key": [
+    2304739346,
+    1246784498
+  ],
+  "previous_metric_prefix_preserved": true,
+  "previous_metric_prefix_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "metrics_sha256": "14dffd906c2de4872b299b9de7a593e07e5fe3ff7e1aea1ead6178f35284b659",
+  "finite_contiguous_metrics": 50,
+  "paired_arm_checks": null,
+  "guard_wall_seconds": 1289.6131948,
+  "cold_generation_seconds": 30.14,
+  "warm_generation_seconds": [
+    25.407,
+    25.156,
+    25.625,
+    26.359,
+    25.141,
+    24.375,
+    24.406,
+    25.406,
+    24.657,
+    25.703,
+    25.125,
+    25.562,
+    25.219,
+    25.031,
+    26.36,
+    24.937,
+    24.36,
+    24.75,
+    24.546,
+    25.75,
+    25.266,
+    25.422,
+    24.265,
+    24.235,
+    24.156,
+    24.125,
+    25.156,
+    26.563,
+    25.64,
+    26.719,
+    27.046,
+    25.61,
+    25.515,
+    25.344,
+    25.781,
+    25.313,
+    26.656,
+    25.859,
+    27.438,
+    27.453,
+    26.36,
+    25.812,
+    24.438,
+    25.781,
+    23.859,
+    24.641,
+    25.734,
+    25.485,
+    25.312
+  ],
+  "warm_mean_seconds": 25.405285714285714,
+  "warm_max_seconds": 27.453,
+  "segment_generation_seconds_sum": 1274.9989999999998,
+  "observed_nontraining_overhead_seconds": 14.614194800000178,
+  "all_generation_seconds_sum": 1274.999,
+  "peak_private_gib": 1.4969024658203125,
+  "minimum_commit_headroom_gib": 10.481487274169922,
+  "minimum_c_free_gib": 21.729812622070312,
+  "minimum_d_free_gib": 46.23329544067383,
+  "e115_measured_seconds": 5203.6135689,
+  "daily_measured_seconds": 9734.8418554,
+  "conservative_feasibility": {
+    "run_progress": {
+      "E115-mean-s0": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-min-s0": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-mean-s1": {
+        "completed_generations": 50,
+        "reserved_future_invocations": 0
+      },
+      "E115-min-s1": {
+        "completed_generations": 0,
+        "reserved_future_invocations": 2
+      },
+      "E115-mean-s2": {
+        "completed_generations": 0,
+        "reserved_future_invocations": 2
+      },
+      "E115-min-s2": {
+        "completed_generations": 0,
+        "reserved_future_invocations": 2
+      }
+    },
+    "remaining_generations": 150,
+    "slowest_observed_warm_seconds": 27.453,
+    "warm_multiplier": 1.5,
+    "forecast_seconds_per_generation": 41.1795,
+    "future_invocations_reserved": 6,
+    "full_cold_and_setup_charge_each": 49.00143230000008,
+    "remaining_training_setup_seconds": 6470.9335937999995,
+    "remaining_software_contingency_seconds": 1054.6181518,
+    "final_evaluation_reserve_seconds": 1200,
+    "remaining_total_forecast_seconds": 8725.5517456,
+    "e115_total_forecast_seconds": 13929.1653145,
+    "e115_18000_budget_margin_seconds": 4070.8346855,
+    "daily_total_forecast_seconds": 18460.393601,
+    "daily_28800_budget_margin_seconds": 10339.606398999998,
+    "limitation": "Runtime forecast, not a guarantee. No score is used to change settings, budgets, or gates. Future load and arms remain unmeasured."
+  }
+}
