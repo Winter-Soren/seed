@@ -1,0 +1,397 @@
+{
+  "args": {
+    "name": "E115-v5-recovery1",
+    "start": "blank",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 0,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 256,
+    "eval_protocol": "v5",
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "git": {
+    "commit": "39a85927acd4b39e43840e993b6d9044fe74d55c",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-20T06:08:29.832908",
+  "eval_protocol": "v5",
+  "eval_seed": 2026111903,
+  "eval_worlds": 256,
+  "input_genomes": [
+    {
+      "label": "start0",
+      "controller": "rules-v0",
+      "seed": 0,
+      "run": "runs/20261112-023245_E103-A-blank-s0",
+      "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+      "genome_hash": "ee8eaa10a7429cc5",
+      "genome_size": 155,
+      "config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+      "summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+      "source_commits": [
+        {
+          "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/start0.npy"
+    },
+    {
+      "label": "mean0",
+      "controller": "rules-v0",
+      "seed": 0,
+      "training_seed": 1000,
+      "objective": "paired-mean",
+      "run": "runs/20261119-054257_E115-mean-s0",
+      "sha256": "1c22e71c34bc91972d7391ebebbcba3faf1f6e30a187af66f43da9d262faafb4",
+      "genome_hash": "b34d469c654523a3",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+        "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "genome_hash": "ee8eaa10a7429cc5",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-023245_E103-A-blank-s0",
+        "source_config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+        "source_summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+        "source_commits": [
+          {
+            "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "b5bedb414cb01c5142aed24ce61334b8c144af6cae44a3d4c849577cf072b46a",
+      "summary_sha256": "4e0e932969f7fbe3edcc370d024d73886fb35997aeb00808aa1d7a9876e74ce0",
+      "source_commits": [
+        {
+          "commit": "27dfb88f25185c891e6bac57d2fcd86079ea65a0",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "5db1fcffc9217d2b3e0639b08b13bdb594d56227",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/mean0.npy"
+    },
+    {
+      "label": "min0",
+      "controller": "rules-v0",
+      "seed": 0,
+      "training_seed": 1000,
+      "objective": "paired-min",
+      "run": "runs/20261119-062529_E115-min-s0",
+      "sha256": "6a00d3958375154dbbd71eabfdae931997ece082238b2161030a693b12c896e1",
+      "genome_hash": "f23315a49f029474",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+        "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "genome_hash": "ee8eaa10a7429cc5",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-023245_E103-A-blank-s0",
+        "source_config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+        "source_summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+        "source_commits": [
+          {
+            "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "507c694688d2ba53f2d7d2ac2f9ad44f52f58e56df3b3702814ec9f346a65883",
+      "summary_sha256": "82f3eed0bb177645c206f0deef8dba3d5f874af254bb0e55ba191bf66afcfd80",
+      "source_commits": [
+        {
+          "commit": "1e56564f3a1b29e291d5938a87a001792c9e4f27",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/min0.npy"
+    },
+    {
+      "label": "start1",
+      "controller": "rules-v0",
+      "seed": 1,
+      "run": "runs/20261112-050319_E103-A-blank-s1",
+      "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+      "genome_hash": "aca49c2747a994ab",
+      "genome_size": 155,
+      "config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+      "summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
+      "source_commits": [
+        {
+          "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/start1.npy"
+    },
+    {
+      "label": "mean1",
+      "controller": "rules-v0",
+      "seed": 1,
+      "training_seed": 1001,
+      "objective": "paired-mean",
+      "run": "runs/20261119-064812_E115-mean-s1",
+      "sha256": "a3d40d161692fec1e6e7e6d9c4178ea68ad02ad38bf7c18bcd24c1c7ccc44105",
+      "genome_hash": "c71e27eea20adaaf",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+        "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+        "genome_hash": "aca49c2747a994ab",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-050319_E103-A-blank-s1",
+        "source_config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+        "source_summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
+        "source_commits": [
+          {
+            "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "9c9dc200456f895a063b3dfe0a44ed97e48c1f97543d4d7cc4797231dbc55ca1",
+      "summary_sha256": "3bbca60b9aef4d8e5a2119b39ad4ff14c7020122f586afe72475a44e84a64e67",
+      "source_commits": [
+        {
+          "commit": "700678307cfefd943f9911b9da4a7de3c4f758e1",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/mean1.npy"
+    },
+    {
+      "label": "min1",
+      "controller": "rules-v0",
+      "seed": 1,
+      "training_seed": 1001,
+      "objective": "paired-min",
+      "run": "runs/20261119-071106_E115-min-s1",
+      "sha256": "068f06aa9d72dcc8868e166b0742979c86837c2e9d4124d86c3c500435330de2",
+      "genome_hash": "f7e0f289e6b93293",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+        "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+        "genome_hash": "aca49c2747a994ab",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-050319_E103-A-blank-s1",
+        "source_config_sha256": "cac8c3eebef4af9b863c787da2fe306c85275912d117e7a12b043bd678b230f9",
+        "source_summary_sha256": "79c9c67afbd08b425a1d4cc9a95c097c9602bc8de0bd6a50ddbb2edcc7717304",
+        "source_commits": [
+          {
+            "commit": "e0befc6897ef0c99fcc9a0a0c71120819f58d1ba",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "6639d3c72bafacd61b18cb63d07ee2f377d93cae",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "686e838a1b842e77dd3208e0addd0a9c96bf13d024ae2e22850c1b1b7cd7bbeb",
+      "summary_sha256": "95d3a671e69e3615e62c521e8d9919dc0aeb52a0ab9ba1979ca1e0a65f31bdb2",
+      "source_commits": [
+        {
+          "commit": "9baa19b0131d230c8eb20e25e7caa8fb9ca35f37",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/min1.npy"
+    },
+    {
+      "label": "start2",
+      "controller": "rules-v0",
+      "seed": 2,
+      "run": "runs/20261112-102755_E103-A-blank-s2",
+      "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+      "genome_hash": "17191e72299b25cc",
+      "genome_size": 155,
+      "config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+      "summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
+      "source_commits": [
+        {
+          "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+          "branch": "main",
+          "dirty": false
+        },
+        {
+          "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/start2.npy"
+    },
+    {
+      "label": "mean2",
+      "controller": "rules-v0",
+      "seed": 2,
+      "training_seed": 1002,
+      "objective": "paired-mean",
+      "run": "runs/20261119-073315_E115-mean-s2",
+      "sha256": "8ce4aa5661794c3457b84dd335cc1351b6b9a19187b4fa11827a7d9eda554803",
+      "genome_hash": "b9638f89f81bd2ec",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+        "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+        "genome_hash": "17191e72299b25cc",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-102755_E103-A-blank-s2",
+        "source_config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+        "source_summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
+        "source_commits": [
+          {
+            "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "9e4cc66948821713880841561ed33468fcd8798a4ab19cd3afa886637be51dec",
+      "summary_sha256": "445beca4311b707da5913352c592b5996a2d3695c7be8e553ef7347dabe76ffd",
+      "source_commits": [
+        {
+          "commit": "8ea83fcba9555a8c7608071ab9d0e40b6f508a21",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/mean2.npy"
+    },
+    {
+      "label": "min2",
+      "controller": "rules-v0",
+      "seed": 2,
+      "training_seed": 1002,
+      "objective": "paired-min",
+      "run": "runs/20261119-075548_E115-min-s2",
+      "sha256": "d306bad6a0009da3105550822cbdf347aa3c4fd2e7de204cc8b10a2c36585447",
+      "genome_hash": "8d618d3e1a5401d0",
+      "genome_size": 155,
+      "input_genome": {
+        "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+        "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+        "genome_hash": "17191e72299b25cc",
+        "controller": "rules-v0",
+        "source_run": "runs/20261112-102755_E103-A-blank-s2",
+        "source_config_sha256": "b0a90abf5d058445e110de235111e9a009ca381fc7a1ba0a453866b7789aac0c",
+        "source_summary_sha256": "d5ed34015d8859a40264bf83fdfd4eed6c67b15a9fe77377070089e3210a758c",
+        "source_commits": [
+          {
+            "commit": "62376af0b74f7d788d8033ce8582972a47a8fa9d",
+            "branch": "main",
+            "dirty": false
+          },
+          {
+            "commit": "1a7c4e3fb8b4896030b73737ae9dea631bf3500c",
+            "branch": "main",
+            "dirty": false
+          }
+        ]
+      },
+      "config_sha256": "8f67e76761f4adba13fe053fb6175ea7441330ab25ed891b6bd9524c087036da",
+      "summary_sha256": "6d5b38eed4f35331517a7beedc71e7888f9e836964f442e65c57c7614ada17ed",
+      "source_commits": [
+        {
+          "commit": "d74c2620fb849f2697a15b932c75a69921d5cd76",
+          "branch": "main",
+          "dirty": false
+        }
+      ],
+      "copied_genome": "inputs/min2.npy"
+    }
+  ],
+  "reference_policies": [
+    "fixed_A",
+    "fixed_B",
+    "mixture",
+    "random_walk",
+    "greedy"
+  ],
+  "internal_seconds_limit": 1140,
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  }
+}

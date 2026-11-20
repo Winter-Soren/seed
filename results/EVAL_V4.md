@@ -12,6 +12,8 @@ Within each base world, these four lives begin with the same grid, positions, ag
 
 No controller is evolved, selected or fitted during this diagnostic. The A genomes retain their existing lifetime plasticity; direct weights remain fixed. Structural growth is off. The five references are a fixed A-target specialist, fixed B-target specialist, two A plus two B specialists with fixed agent assignments, uniform random walk and the existing local greedy policy with privileged knowledge of the current food rule.
 
+![Mean return and individual worse-rule return for all three A seeds, all three direct seeds and the specialist mixture, with one standard error.](figures/e114-stationary-vs-worse-rule.svg)
+
 ## Five paired metrics
 
 Each reported ± value is one standard error over **256 base worlds**. Within a base world, average the relevant individual outcomes and paired lives before calculating that error. The agents and four replay conditions are dependent; they are not additional independent samples. These errors concern worlds for fixed saved controllers, not variability across evolution seeds.

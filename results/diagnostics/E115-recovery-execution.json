@@ -1,0 +1,163 @@
+{
+  "status": "execution_verified_independent_scientific_audit_pending",
+  "run": "runs\\20261120-060829_E115-v5-recovery1",
+  "source_commit": "39a85927acd4b39e43840e993b6d9044fe74d55c",
+  "completed_panels": 14,
+  "condition_archives": 56,
+  "paired_archives": 14,
+  "copied_genomes": 9,
+  "contrast_count": 30,
+  "summary_gate_passed": false,
+  "summary_seed_gate_passed": [
+    false,
+    false,
+    false
+  ],
+  "runner_artifact_validity": "passed",
+  "guard_wall_seconds": 477.2912099,
+  "evaluator_seconds": 464.5939999999973,
+  "first_panel_seconds": 52.14100000000326,
+  "terminal_time": "2026-11-20T06:16:13.8721409+05:30",
+  "sampled_peak_private_gib": 1.0360832214355469,
+  "minimum_commit_headroom_gib": 14.249755859375,
+  "minimum_c_free_gib": 17.2974853515625,
+  "minimum_d_free_gib": 46.21346664428711,
+  "largest_guard_sample_gap_seconds": 13.031706799999995,
+  "prior_study_full_wall_charge_seconds": 13619.341816,
+  "study_full_wall_charged_seconds": 14096.6330259,
+  "study_remaining_seconds": 3903.3669741,
+  "nov20_this_job_wall_seconds": 477.2912099,
+  "panel_timings": [
+    {
+      "label": "start0",
+      "seconds": 52.141,
+      "completed": 1
+    },
+    {
+      "label": "mean0",
+      "seconds": 35.453,
+      "completed": 2
+    },
+    {
+      "label": "min0",
+      "seconds": 62.844,
+      "completed": 3
+    },
+    {
+      "label": "start1",
+      "seconds": 50.937,
+      "completed": 4
+    },
+    {
+      "label": "mean1",
+      "seconds": 38.547,
+      "completed": 5
+    },
+    {
+      "label": "min1",
+      "seconds": 46.047,
+      "completed": 6
+    },
+    {
+      "label": "start2",
+      "seconds": 55.781,
+      "completed": 7
+    },
+    {
+      "label": "mean2",
+      "seconds": 37.765,
+      "completed": 8
+    },
+    {
+      "label": "min2",
+      "seconds": 33.969,
+      "completed": 9
+    },
+    {
+      "label": "fixed_A",
+      "seconds": 10.563,
+      "completed": 10
+    },
+    {
+      "label": "fixed_B",
+      "seconds": 10.031,
+      "completed": 11
+    },
+    {
+      "label": "mixture",
+      "seconds": 9.891,
+      "completed": 12
+    },
+    {
+      "label": "random_walk",
+      "seconds": 8.719,
+      "completed": 13
+    },
+    {
+      "label": "greedy",
+      "seconds": 10.234,
+      "completed": 14
+    }
+  ],
+  "panel_archive_counts": {
+    "start0": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "mean0": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "min0": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "start1": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "mean1": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "min1": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "start2": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "mean2": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "min2": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "fixed_A": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "fixed_B": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "mixture": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "random_walk": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    },
+    "greedy": {
+      "condition_archives": 4,
+      "paired_archives": 1
+    }
+  },
+  "config_sha256": "d26e4156b2ad4ac6068b486ce7bbb06f55529746a8d46b34174a5510fe7080a0",
+  "summary_sha256": "e45a19a822d1ca1f0c363ccb6ba7f1a020b9146a411499d432af13416189b632",
+  "scope": "Execution/provenance/config/count checks only; independent v3_measurement audit verifies raw arrays, overlap with interrupted run, scientific summaries and gate."
+}

@@ -1,0 +1,158 @@
+{
+  "metric": "individual_min_return",
+  "uncertainty": "one base-world-family standard error",
+  "n_base_worlds": 256,
+  "agents_per_world": 4,
+  "gate": {
+    "passed": false,
+    "all_minimum_improvements": false,
+    "no_joint_survival_regression": false,
+    "per_seed": [
+      {
+        "seed": 0,
+        "min-minus-mean_minimum_return": {
+          "mean": 0.2841796875,
+          "se": 0.40373966909426023,
+          "threshold": 0.8074793381885205,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_minimum_return": {
+          "mean": -1.474609375,
+          "se": 0.4062021080544642,
+          "threshold": 0.8124042161089284,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_joint_survival": {
+          "mean": -0.025390625,
+          "se": 0.019989642284816873,
+          "threshold": -0.03997928456963375,
+          "operator": ">=",
+          "passed": true
+        },
+        "passed": false
+      },
+      {
+        "seed": 1,
+        "min-minus-mean_minimum_return": {
+          "mean": -0.611328125,
+          "se": 0.36163006561566763,
+          "threshold": 0.7232601312313353,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_minimum_return": {
+          "mean": -2.234375,
+          "se": 0.42742133026578877,
+          "threshold": 0.8548426605315775,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_joint_survival": {
+          "mean": -0.0498046875,
+          "se": 0.021096072488111066,
+          "threshold": -0.04219214497622213,
+          "operator": ">=",
+          "passed": false
+        },
+        "passed": false
+      },
+      {
+        "seed": 2,
+        "min-minus-mean_minimum_return": {
+          "mean": 0.435546875,
+          "se": 0.38124269768475816,
+          "threshold": 0.7624853953695163,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_minimum_return": {
+          "mean": -1.828125,
+          "se": 0.40331115552885416,
+          "threshold": 0.8066223110577083,
+          "operator": ">",
+          "passed": false
+        },
+        "min-minus-start_joint_survival": {
+          "mean": -0.0810546875,
+          "se": 0.020339345094174274,
+          "threshold": -0.04067869018834855,
+          "operator": ">=",
+          "passed": false
+        },
+        "passed": false
+      }
+    ]
+  },
+  "values": [
+    {
+      "seed": 0,
+      "training_seed": 1000,
+      "arm": "start",
+      "mean": 8.6904296875,
+      "se": 0.3052725260256048
+    },
+    {
+      "seed": 0,
+      "training_seed": 1000,
+      "arm": "mean",
+      "mean": 6.931640625,
+      "se": 0.2962807833074116
+    },
+    {
+      "seed": 0,
+      "training_seed": 1000,
+      "arm": "min",
+      "mean": 7.2158203125,
+      "se": 0.29317093079814144
+    },
+    {
+      "seed": 1,
+      "training_seed": 1001,
+      "arm": "start",
+      "mean": 8.2451171875,
+      "se": 0.3144408210946143
+    },
+    {
+      "seed": 1,
+      "training_seed": 1001,
+      "arm": "mean",
+      "mean": 6.6220703125,
+      "se": 0.27006270839095037
+    },
+    {
+      "seed": 1,
+      "training_seed": 1001,
+      "arm": "min",
+      "mean": 6.0107421875,
+      "se": 0.2761113616877608
+    },
+    {
+      "seed": 2,
+      "training_seed": 1002,
+      "arm": "start",
+      "mean": 8.5810546875,
+      "se": 0.2877351610508148
+    },
+    {
+      "seed": 2,
+      "training_seed": 1002,
+      "arm": "mean",
+      "mean": 6.3173828125,
+      "se": 0.28459745787384205
+    },
+    {
+      "seed": 2,
+      "training_seed": 1002,
+      "arm": "min",
+      "mean": 6.7529296875,
+      "se": 0.2729665321549343
+    }
+  ],
+  "summary": "runs/20261120-060829_E115-v5-recovery1/summary.json",
+  "summary_sha256": "e45a19a822d1ca1f0c363ccb6ba7f1a020b9146a411499d432af13416189b632",
+  "audit": "results/diagnostics/E115-independent-audit.json",
+  "audit_sha256": "85b7f93558a2d34c44842be6ecad9d29cea5b6d3cea8a85559b885c520e4e8a4",
+  "caption": "Minimum is taken across the two rule returns for each agent, then averaged within its four-agent family. Points show means \u00b1 1 SE across 256 base worlds. All starting agents, including deaths and zero encounters, remain included. The gate uses paired within-world contrasts: minimum selection must beat both controls by > 2 paired SE in all 3 seeds. It also requires each minimum-minus-start joint-survival change to be \u2265 \u22122 paired SE; that safeguard is not plotted. These marginal error bars are not paired-difference bars. Stationary performance alone does not establish causal learning or reversal."
+}

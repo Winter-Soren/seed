@@ -43,6 +43,7 @@ Original A starts and all six registered paired-mean/paired-min continuations ar
 | Run | Split | Status | E115 gate | Commit |
 |---|---|---|---|---|
 | 20261119-081846_E115-v5 | final | interrupted | undecided | d0696bb |
+| 20261120-060829_E115-v5-recovery1 | final | finished | FAIL | 39a8592 |
 
 | Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | Eval seed | Base worlds | Commit |
 |---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
@@ -55,6 +56,20 @@ Original A starts and all six registered paired-mean/paired-min continuations ar
 | 20261119-081846_E115-v5 | interrupted | start2 | rules-v0 | finished | 4/4 | final | 15.096191 ± 0.246723 | 8.581055 ± 0.287735 | 0.731445 ± 0.013614 | -2.676758 ± 0.075219 | 0.437012 ± 0.009736 | 2026111903 | 256 | d0696bb |
 | 20261119-081846_E115-v5 | interrupted | mean2 | rules-v0 | finished | 4/4 | final | 12.645996 ± 0.227134 | 6.317383 ± 0.284597 | 0.646484 ± 0.015162 | -2.218262 ± 0.077446 | 0.422363 ± 0.011094 | 2026111903 | 256 | d0696bb |
 | 20261119-081846_E115-v5 | interrupted | min2 | rules-v0 | interrupted | 3/4 | final | undefined | undefined | undefined | undefined | undefined | 2026111903 | 256 | d0696bb |
+| 20261120-060829_E115-v5-recovery1 | finished | start0 | rules-v0 | finished | 4/4 | final | 15.395020 ± 0.254047 | 8.690430 ± 0.305273 | 0.704102 ± 0.014056 | -2.713379 ± 0.084352 | 0.409180 ± 0.011689 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | mean0 | rules-v0 | finished | 4/4 | final | 13.501465 ± 0.237166 | 6.931641 ± 0.296281 | 0.665039 ± 0.016180 | -2.199707 ± 0.091499 | 0.434570 ± 0.011862 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | min0 | rules-v0 | finished | 4/4 | final | 13.300293 ± 0.253856 | 7.215820 ± 0.293171 | 0.678711 ± 0.014320 | -2.039551 ± 0.084850 | 0.486328 ± 0.011649 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | start1 | rules-v0 | finished | 4/4 | final | 14.971191 ± 0.271456 | 8.245117 ± 0.314441 | 0.707031 ± 0.014059 | -2.515137 ± 0.092137 | 0.431641 ± 0.012137 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | mean1 | rules-v0 | finished | 4/4 | final | 12.921875 ± 0.251794 | 6.622070 ± 0.270063 | 0.666016 ± 0.014811 | -2.131348 ± 0.085268 | 0.447754 ± 0.011073 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | min1 | rules-v0 | finished | 4/4 | final | 12.073242 ± 0.242276 | 6.010742 ± 0.276111 | 0.657227 ± 0.015463 | -2.036621 ± 0.083803 | 0.440918 ± 0.010938 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | start2 | rules-v0 | finished | 4/4 | final | 15.096191 ± 0.246723 | 8.581055 ± 0.287735 | 0.731445 ± 0.013614 | -2.676758 ± 0.075219 | 0.437012 ± 0.009736 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | mean2 | rules-v0 | finished | 4/4 | final | 12.645996 ± 0.227134 | 6.317383 ± 0.284597 | 0.646484 ± 0.015162 | -2.218262 ± 0.077446 | 0.422363 ± 0.011094 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | min2 | rules-v0 | finished | 4/4 | final | 12.792969 ± 0.235449 | 6.752930 ± 0.272967 | 0.650391 ± 0.015138 | -2.224609 ± 0.085547 | 0.447266 ± 0.010543 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | fixed_A | fixed_A | finished | 4/4 | final | 39.154297 ± 0.609910 | -3.888672 ± 0.016641 | 0.006836 ± 0.002553 | -3.741211 ± 0.039428 | 0.041504 ± 0.005887 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | fixed_B | fixed_B | finished | 4/4 | final | 39.881348 ± 0.658886 | -3.852539 ± 0.020939 | 0.007812 ± 0.002724 | -3.809082 ± 0.026760 | 0.032715 ± 0.004523 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | mixture | mixture | finished | 4/4 | final | 37.482422 ± 1.372256 | -3.957031 ± 0.010558 | 0.000000 ± 0.000000 | -2.504395 ± 0.077254 | 0.198730 ± 0.009881 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | random_walk | random_walk | finished | 4/4 | final | -0.010254 ± 0.055358 | -2.880859 ± 0.026543 | 0.011719 ± 0.003309 | 0.009766 ± 0.044314 | 0.397461 ± 0.007285 | 2026111903 | 256 | 39a8592 |
+| 20261120-060829_E115-v5-recovery1 | finished | greedy | greedy | finished | 4/4 | final | 82.906250 ± 0.925339 | 70.552734 ± 0.967484 | 1.000000 ± 0.000000 | 24.444824 ± 0.502099 | 1.000000 ± 0.000000 | 2026111903 | 256 | 39a8592 |
 
 ## EVAL v4 paired-world diagnostics
 

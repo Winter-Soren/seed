@@ -1,55 +1,33 @@
 # Current state
 
-Updated 19 November 2026. Follow PLAN.md under AGENTS.md.
-Working directive: learn from experience, adapt to change, retain useful learning.
+Updated 20 November 2026. Follow PLAN.md and AGENTS.md.
 
-## What is known
+## What we know
 
-- Phase 0 is closed; the owner chose laptop-only work and cancelled Colab.
-- A and B passed their historical stationary criteria in three seeds each.
-- E109 remains interrupted; the tested growth rule reduced all three A point estimates.
-- Phase 1 E112 completed eight valid saved-genome panels on fresh worlds.
-- A stationary fitness is 15.346, 15.187 and 14.984, with SE 0.377, 0.385 and 0.351.
-- A reversal fitness is 3.127, 3.529 and 3.576, with SE 0.183, 0.183 and 0.166.
-- Matched first-to-twentieth meal gains condition on agents reaching meal twenty.
-- Phase 2 E113 completed all three direct recurrent controls at 200 generations.
-- Direct stationary fitness is 55.520, 66.481 and 69.869, with SE 3.899, 4.533 and 4.757.
-- All three paired comparisons favor the direct baseline beyond two world SE.
-- Phase 2's continuation gate FAILED; none of the three required A advantages passed.
-- Each direct controller performs poorly under one food rule despite its high average score.
-- Food keeps earning points at the energy cap; death stops further losses.
-- Positive reversal scores conceal nearly complete final mortality.
-- These are objective/design findings, not evidence of reliable rule learning by the baseline.
-- Lifetime weight learning and structural growth are separate; active growth remains off.
-- The implementation passed all 112 local and hosted tests; all final artifacts passed audit.
+Three evolved A genomes improve their food choices over a stationary lifetime.
+Their matched first-to-twentieth meal gains were 27, 21 and 25 percentage points, each with about two points of standard error, among agents reaching meal twenty.
+They struggle to recover when the food rule changes during a life.
+The historical biology-prior continuation also passed its original stationary gate.
+Structural growth remains off. Its earlier intervention lowered all three A point estimates.
+
+The fixed-weight recurrent baseline won the original average score in all three seeds.
+E114 showed how high average scores can coexist with individual failure under one rule.
+E115 tested whether selecting each individual for its worse rule improves the A genomes.
+Both selection objectives scored below the unchanged starts in all three seed groups.
+Worse-rule selection lost 1.47, 2.23 and 1.83 points versus the originals, with paired standard errors of 0.41, 0.43 and 0.40.
+It passed none of six return checks. Only seed zero met the joint-survival safeguard.
+The E115 gate failed. The original A genomes remain our stationary robustness benchmarks.
 
 ## What is running
 
-- E114 completed all eleven controller panels and passed its artifact validity audit.
-- A individual stationary minima are 8.237, 8.453 and 8.396, with SE 0.302, 0.310 and 0.297.
-- Direct minima are near minus four; mixture averages also conceal individual failure.
-- A joint stationary survival is about 71–73%; post-reversal returns remain negative.
-- E115 evaluation was interrupted after eight panels during Modern Standby; no gate exists.
-- All 133 local tests passed; hosted verification is incomplete after 88 passed tests.
-- E115 passed 156 local and hosted tests; all six arms finished fifty generations and passed independent preflight.
-- Recovery has not launched: free RAM was 7.78 GiB, below the unchanged eight-GiB floor.
-- C: has about 21.7 GiB free of 373.67; D: has 46.2 of 100. Recheck before launch.
+The interrupted evaluation is preserved. Its registered recovery finished every panel.
+Independent reconstruction confirmed every gate component and all overlapping raw arrays.
+Software verification passed all 156 tests locally and in hosted CI before training.
+No training or evaluation is active.
 
-## What is next
+## What comes next
 
-- The owner approved E114 and delegated scientific decisions to the council while asleep.
-- E114 is published; the council preregistered six matched E115 plastic continuations.
-- Compare mean and individual-minimum selection with identical exposure, 50 generations each.
-- Run one registered unchanged recovery evaluation, compare saved outputs, and independently audit its gate.
-- Require all three minimum-trained models to improve over both controls, with a survival safeguard.
-- Timing exceeded the original four-hour allowance; council prospectively approved five hours.
-- Keep the original failed gate and every earlier run intact.
-
-## Working rules
-
-- Preregister, commit code first, preserve runs and append-only LOG, and report uncertainty.
-- One heavy job at a time, below three hours per invocation; ask before eight hours per day.
-- Ask before stopping services; retain all memory and disk safeguards.
-- Keep the repository private and use the verified owner identity; no history rewriting.
-- Do not tune on held-out worlds or claim a percentage of AGI.
-- At a gate, preserve its result and record the council's decision before any next experiment.
+The council proposes testing the size of evolutionary updates from the original genomes.
+The owner decides whether to approve the E116 proposal after the failed E115 gate.
+Keep new training and evaluation worlds separate and measure against both controls.
+One laptop job at a time. Check both drives and available memory before each launch.
