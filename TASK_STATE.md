@@ -26,8 +26,8 @@ E125 changed which color was food once during a pupil's life. In the late window
 
 ## What is running
 
-The matched training study is registered. Both kinds of brain start from blank and get the same number of worlds and generations. The focused engine, runner and legacy behavior checks passed on the laptop. The owner lifted the VPN publication hold and the GitHub repository is private.
+The published source passed all 429 tests. Both kinds of brain completed their laptop timing checks. At the conservative speed estimate, completing the entire study would take about 12 hours 39 minutes against a 12-hour ceiling. The council released one training block for all six lineages within that ceiling. GitHub publication has resumed on the private repository.
 
 ## What is next
 
-Benchmark both architectures on the laptop. If the measured cost fits, run three matched training seeds for each, one job at a time. After all six reach their endpoints, compare them on fresh worlds and switch off post-change connection learning in matched copies to measure its contribution.
+Run up to 50 of the planned 200 generations in each of the three plastic and three recurrent lineages. Then recheck the cost once, keeping the slowest measured timings. If the full study fits, finish evolution and compare the six saved endpoints on fresh worlds. Until then, the result is open.

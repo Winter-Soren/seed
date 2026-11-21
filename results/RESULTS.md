@@ -23,6 +23,19 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Matched from-blank reversal evolution (reversal-evolution-v1)
+
+E126 targets 200 attempted rounds in each of three plastic and three direct recurrent lineages. Both use population 128 and four base worlds replayed under both initial rules: eight actual lives per candidate. The objective is mean individual minimum late return across those rule replays. Genomes start from their original blank initializers. There is no social readout or new mechanism. Equal scores receive average ranks; all-tied attempts consume worlds and advance RNG without changing the genome, Adam moments or informative-update counter. Immutable segments preserve both counters. Development benchmarks measure throughput only.
+
+No held-out world opens before all six targets reach attempt 200. Final panels use 128 independent base worlds per seed pair, each under both rules and stationary/reversal interventions. Errors use base-world units. The formal architecture comparison uses combined standard errors; the paired difference is reported separately. At least two same seeds must pass the architecture, positive late return, late first-food and postflip Hebbian-lesion criteria. All three plastic seeds must pass the joint-survival floor and relative lower-two-SE screen. Partial panels and short training segments cannot decide the rung or authorize an added mechanism.
+
+Complete three-seed rung decision: **undecided**.
+
+| Run | Status | Split | Target | Controller | Start attempt | Attempted / target | Informative updates | Scientific decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261122-004707_E126-benchmark-plastic | target_finished | development | E126-benchmark-plastic | rules-v0 | 0 | 3/3 | 3 | undecided | c65038b |
+| 20261122-004945_E126-benchmark-direct | target_finished | development | E126-benchmark-direct | direct-rnn-v1 | 0 | 3/3 | 3 | undecided | c65038b |
+
 ## Ecology/lineage development fixtures
 
 Engineering exercises of a fixed cohort schedule and saved memory. Completion records mechanism execution, not competence, a scientific gate, or an EVAL v1 score. Partial attempts retain their completed cohort evidence; paired observations remain in each run folder.

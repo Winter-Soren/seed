@@ -1,0 +1,16 @@
+{
+  "status": "target_finished",
+  "stage": "training",
+  "attempted_rounds": 3,
+  "optimizer_updates": 3,
+  "start_attempt": 0,
+  "completed_segment_attempts": 3,
+  "expected_attempts": 3,
+  "elapsed_seconds": 31.703000000008615,
+  "setup_seconds": 0.6710000000020955,
+  "attempt_seconds": [
+    16.687999999994645,
+    7.405999999988126,
+    6.657000000006519
+  ]
+}

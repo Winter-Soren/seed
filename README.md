@@ -299,7 +299,7 @@ The unprepared birth-state comparison was separate: original plastic agents exce
 
 ## Human-inspired research direction
 
-The next experiment, **E126**, will train the unchanged original rules-genome architecture and a matched directly encoded recurrent control from blank in reversal worlds, across three seeds. This tests whether selection for the changing task is enough before adding a new mechanism. These are specific capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+**E126 tests whether selection in changing worlds is enough.** The original plastic architecture and a fixed-weight recurrent control each start from blank in three matched training seeds. Both completed the three-generation laptop benchmark. The first training block allows up to 50 of the planned 200 generations in each lineage, followed by a cost check. The comparison on fresh worlds opens only after all six reach generation 200. The capabilities under study belong to this simulation. Human ancestry itself is a branching tree. [Research plan](PLAN.md#human-inspired-research-direction--21-november-2026) · [Experiment registration and budget](experiments/LOG.md) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

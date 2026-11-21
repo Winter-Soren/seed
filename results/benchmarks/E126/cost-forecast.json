@@ -1,0 +1,149 @@
+{
+  "study": "E126",
+  "recordedAt": "2026-11-22T00:58:22.5307225+05:30",
+  "status": "both development audits passed; production not released",
+  "developmentAuditEvidence": [
+    {
+      "path": ".tmp/E126-audit-benchmark-plastic-attempt2.audit.json",
+      "sha256": "24aee35e10652e1bd39a88e9db5adec71f8902643ff9159ff787a29b9510a9ae"
+    },
+    {
+      "path": ".tmp/E126-audit-benchmark-direct-attempt1.audit.json",
+      "sha256": "fdc32c885a047f1e11c15df07ba54a3701117fb335a4b170f6ec722d34a4ae42"
+    }
+  ],
+  "scientificSource": "df304221d920c5d1da20f67f7f1aa04d0845e317",
+  "benchmarkSource": "c65038b45da0f87670cf99ebd4ab9438896ea6a3",
+  "method": "For each architecture: one measured cold attempt and all measured non-attempt overhead per future process, plus 1.5 times its slower warm attempt for every later attempt. Each endpoint is a new 200-attempt final seed, at most 50 attempts per part.",
+  "arms": [
+    {
+      "architecture": "plastic",
+      "benchmark": "runs/20261122-004707_E126-benchmark-plastic",
+      "benchmarkGuardSeconds": 133.4280725,
+      "benchmarkInternalSeconds": 124.64000000001397,
+      "benchmarkSetupSeconds": 0.6089999999967404,
+      "coldAttemptSeconds": 50.10899999999674,
+      "warmAttemptSeconds": [
+        37.21799999999348,
+        36.546999999991385
+      ],
+      "warmMaximumSeconds": 37.21799999999348,
+      "bufferedWarmSeconds": 55.82699999999022,
+      "allNonAttemptProcessSeconds": 9.554072500018407,
+      "attemptsPerPart": 50,
+      "partsPerSeed": [
+        {
+          "part": 1,
+          "attempts": 50,
+          "projectedSeconds": 2795.186072499536
+        },
+        {
+          "part": 2,
+          "attempts": 50,
+          "projectedSeconds": 2795.186072499536
+        },
+        {
+          "part": 3,
+          "attempts": 50,
+          "projectedSeconds": 2795.186072499536
+        },
+        {
+          "part": 4,
+          "attempts": 50,
+          "projectedSeconds": 2795.186072499536
+        }
+      ],
+      "targetSeeds": 3,
+      "targetAttemptsPerSeed": 200,
+      "totalFutureProcesses": 12,
+      "projectedSecondsPerSeed": 11180.744289998143,
+      "projectedTrainingSeconds": 33542.232869994434,
+      "measuredBenchmarkBytes": 165592.0,
+      "projectedBytesByWholeFolderScaling": 33118400.0
+    },
+    {
+      "architecture": "direct",
+      "benchmark": "runs/20261122-004945_E126-benchmark-direct",
+      "benchmarkGuardSeconds": 38.4229792,
+      "benchmarkInternalSeconds": 31.703000000008615,
+      "benchmarkSetupSeconds": 0.6710000000020955,
+      "coldAttemptSeconds": 16.687999999994645,
+      "warmAttemptSeconds": [
+        7.405999999988126,
+        6.657000000006519
+      ],
+      "warmMaximumSeconds": 7.405999999988126,
+      "bufferedWarmSeconds": 11.108999999982188,
+      "allNonAttemptProcessSeconds": 7.6719792000107105,
+      "attemptsPerPart": 50,
+      "partsPerSeed": [
+        {
+          "part": 1,
+          "attempts": 50,
+          "projectedSeconds": 568.7009791991326
+        },
+        {
+          "part": 2,
+          "attempts": 50,
+          "projectedSeconds": 568.7009791991326
+        },
+        {
+          "part": 3,
+          "attempts": 50,
+          "projectedSeconds": 568.7009791991326
+        },
+        {
+          "part": 4,
+          "attempts": 50,
+          "projectedSeconds": 568.7009791991326
+        }
+      ],
+      "targetSeeds": 3,
+      "targetAttemptsPerSeed": 200,
+      "totalFutureProcesses": 12,
+      "projectedSecondsPerSeed": 2274.8039167965303,
+      "projectedTrainingSeconds": 6824.41175038959,
+      "measuredBenchmarkBytes": 621096.0,
+      "projectedBytesByWholeFolderScaling": 124219200.0
+    }
+  ],
+  "accounting": {
+    "alreadyChargedStudySeconds": 1579.2666371000003,
+    "alreadyChargedCISeconds": 1244.0,
+    "alreadyChargedBenchmarkSeconds": 171.85105170000003,
+    "futureTrainingSeconds": 40366.644620384024,
+    "futureEvaluationReserveSeconds": 1800.0,
+    "futureVerificationReserveSeconds": 1800.0,
+    "projectedFutureSeconds": 43966.644620384024,
+    "projectedTotalStudySeconds": 45545.911257484026,
+    "hardStudyLimitSeconds": 43200.0,
+    "remainingStudySeconds": 41620.7333629,
+    "forecastMinusHardLimitSeconds": 2345.9112574840256,
+    "fitsStudy": false,
+    "currentLocalDate": "2026-11-22",
+    "currentAllSeedSeconds": 2155.1447236000004,
+    "currentDayRemainingSeconds": 26644.855276399998,
+    "fitsEntireRemainderToday": false,
+    "minimumLocalDatesIncludingToday": 2.0,
+    "noDoubleCounting": "Each completed local or hosted job is in alreadyChargedStudySeconds exactly once. Benchmark attempts do not replace final training attempts. Future process startup is new work. The two 1800-second lines are unspent future reservations, not charges or repeats of prior jobs."
+  },
+  "storage": {
+    "measuredBenchmarkBytes": 786688.0,
+    "projectedTrainingBytesByWholeFolderScaling": 157337600.0,
+    "trainingBytesWithTwofoldVariationAllowance": 314675200.0,
+    "unmeasuredEvaluationReservationBytes": 2147483648,
+    "scratchReservationBytes": 1073741824,
+    "totalOperationalReservationBytes": 3535900672.0,
+    "currentDFreeBytes": 48402546688,
+    "runtimeDFloorBytes": 10737418240,
+    "projectedDBytesAfterReservation": 44866646016.0,
+    "fitsOperationalReservation": true,
+    "limitation": "Evaluation output has not been measured or sampled. Its 2 GiB line and 1 GiB scratch line are explicit operating reserves, not a scientific size bound; runtime disk guards remain authoritative."
+  },
+  "limitations": [
+    "Only three development attempts per architecture; warm upper rates are a forecast, not a guarantee.",
+    "No final training or evaluation was performed, and no scientific development score was used for scheduling.",
+    "The original failed dependency-byte check is preserved. Corrected plastic and direct audits passed on the same immutable benchmark artifacts.",
+    "A conservative whole-study forecast over the hard cap requires a council cost decision; it does not authorize production or changing scientific gates."
+  ]
+}
