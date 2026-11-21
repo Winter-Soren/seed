@@ -18,10 +18,12 @@ E121 showed a reader could infer the food color from the teacher's public moveme
 
 E122 selected the observers for first-food success after watching. All ten rounds changed every genome parameter in each lineage. Descendants' gains over their own starting observers were −4.7 ± 4.7, +7.0 ± 4.3 and +6.3 ± 5.8 percentage points. Zero lineages passed.
 
+E123 added one calibrated food-color memory to the original newborns. Keeping that memory improved the first independent choice versus erasing it by 32.8 ± 4.3, 24.2 ± 4.1 and 36.7 ± 4.3 percentage points. All three lineages beat five controls and met the survival safeguards. The readout was engineered and its reliability calibrated from each lineage's own experience.
+
 ## What is running
 
-E120–E122 are complete. The next study couples the teacher's publicly visible item choices to a two-color memory. A matched sibling receives the same movie and same acquired neural state, then has just that memory cleared. The laptop runs one job at a time. Publication remains on hold at the owner's request.
+E120–E123 are complete. The next study gives three successive newborns in each chain a chance to watch the preceding pupil. Only visible behavior moves between cohorts. The laptop runs one job at a time. Publication remains on hold at the owner's request.
 
 ## What is next
 
-Calibrate one scalar per original lineage on its own exploration outcomes. Freeze it before testing first food and survival on 128 fresh families. Compare against five controls, then decide whether to test transmission to another newborn cohort.
+Keep the successful genome and calibration fixed. Test whether the benefit survives all three handoffs and whether the third cohort improves over both the first cohort and a repeated demonstration from the original teacher. These are separate decisions.

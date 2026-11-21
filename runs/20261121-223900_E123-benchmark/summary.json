@@ -1,0 +1,495 @@
+{
+  "status": "finished",
+  "phase": "evaluation",
+  "completed_calibration_families": 4,
+  "expected_calibration_families": 4,
+  "completed_families": 4,
+  "expected_families": 4,
+  "calibration_seconds": 10.21799999999348,
+  "evaluation_seconds": 6.937999999994645,
+  "elapsed_seconds": 17.155999999988126,
+  "protocol": "social-belief-readout-v1",
+  "condition_split": "development",
+  "generation": 0,
+  "source_label": "A0",
+  "calibration_seed": 51,
+  "eval_seed": 52,
+  "eval_worlds": 4,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "calibration": {
+    "selected_lambda": 4.0,
+    "families": 4,
+    "contacts": 4,
+    "losses": [
+      {
+        "lambda": -4.0,
+        "mean_log_loss": 2.844604699035705,
+        "se_log_loss": 0.44534305384509093
+      },
+      {
+        "lambda": -2.0,
+        "mean_log_loss": 1.6185842264666666,
+        "se_log_loss": 0.18786253799870703
+      },
+      {
+        "lambda": -1.0,
+        "mean_log_loss": 1.1010139535452088,
+        "se_log_loss": 0.07932713112349041
+      },
+      {
+        "lambda": -0.5,
+        "mean_log_loss": 0.8815471123858396,
+        "se_log_loss": 0.035360780364647876
+      },
+      {
+        "lambda": 0.0,
+        "mean_log_loss": 0.6931471805599453,
+        "se_log_loss": 0.0
+      },
+      {
+        "lambda": 0.5,
+        "mean_log_loss": 0.5370530647667919,
+        "se_log_loss": 0.02631755205033615
+      },
+      {
+        "lambda": 1.0,
+        "mean_log_loss": 0.4120258583071135,
+        "se_log_loss": 0.044061957967305214
+      },
+      {
+        "lambda": 2.0,
+        "mean_log_loss": 0.2406080359904761,
+        "se_log_loss": 0.059082637835242625
+      },
+      {
+        "lambda": 4.0,
+        "mean_log_loss": 0.08865231808332408,
+        "se_log_loss": 0.04876288804277856
+      }
+    ],
+    "contact_coverage": {
+      "mean": 1.0,
+      "se": 0.0
+    },
+    "vote_coverage": {
+      "mean": 1.0,
+      "se": 0.0
+    },
+    "vote_tie_fraction": {
+      "mean": 0.0,
+      "se": 0.0
+    },
+    "calibration_inputs_sha256": "9007bba1e8ab7b788d1b0e22ae4ccf96ca94e3cf5964f6a5a781f33be9d76647",
+    "status": "frozen",
+    "calibration_seed": 51,
+    "completed_families": 4,
+    "expected_families": 4,
+    "elapsed_seconds": 10.202999999979511,
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "calibration/family_0000.npz",
+        "sha256": "2c7a805ee7bf74d77957bff51ed45ef40ad46b8bded3cb7387d6623d28956d98"
+      },
+      {
+        "index": 1,
+        "path": "calibration/family_0001.npz",
+        "sha256": "26e19ed7854a6534f10669e809602a77aabf91897c51596395c852370c7a93eb"
+      },
+      {
+        "index": 2,
+        "path": "calibration/family_0002.npz",
+        "sha256": "31ac72b7745553be57701b01982da4cf8e92ad78d827d40a37b15548b08b01b3"
+      },
+      {
+        "index": 3,
+        "path": "calibration/family_0003.npz",
+        "sha256": "0a5007fdf822eee47e2c8d94919125c1453bd0c3261a4fb190de2fe9a4208395"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "a79e663b8889067defe53c16c2e649ae398027426f61ebf3b2cfe0cb35200bdc"
+  },
+  "calibration_raw_files": [
+    {
+      "index": 0,
+      "path": "calibration/family_0000.npz",
+      "sha256": "2c7a805ee7bf74d77957bff51ed45ef40ad46b8bded3cb7387d6623d28956d98"
+    },
+    {
+      "index": 1,
+      "path": "calibration/family_0001.npz",
+      "sha256": "26e19ed7854a6534f10669e809602a77aabf91897c51596395c852370c7a93eb"
+    },
+    {
+      "index": 2,
+      "path": "calibration/family_0002.npz",
+      "sha256": "31ac72b7745553be57701b01982da4cf8e92ad78d827d40a37b15548b08b01b3"
+    },
+    {
+      "index": 3,
+      "path": "calibration/family_0003.npz",
+      "sha256": "0a5007fdf822eee47e2c8d94919125c1453bd0c3261a4fb190de2fe9a4208395"
+    }
+  ],
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "2634d1e21c06d92b17db72cd4832aad64fd473cb16843c6a5afde392125cd33d"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "8c79b54497d306416765910f50053c54cd1b6e7d9edd1979fcc93ce805f841e6"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "8fe3c421b95e5cf62fe59112a357382dae1efc3ae9c96fec16290afe61bd3baf"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "eb845f3dc8b66f7c634be31119e0f39503838e5cdddcdd6bc7984db6c84cec91"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "assigned_newborns": 4,
+    "arms": {
+      "observed": {
+        "first_food": {
+          "mean": 1.0,
+          "se": 0.0
+        },
+        "survival": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": 33.0,
+          "se": 12.469963913339926
+        },
+        "first_food_count": 4,
+        "survivors": 3,
+        "first_poison_count": 0,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 16.75,
+          "se": 7.465197027987049
+        },
+        "changed_weights": {
+          "mean": 3210.5,
+          "se": 3.8837267325770144
+        },
+        "belief_probability": {
+          "mean": 0.5996368741616607,
+          "se": 0.20928734037914964
+        }
+      },
+      "yoked": {
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": 7.75,
+          "se": 10.75774914499621
+        },
+        "first_food_count": 2,
+        "survivors": 1,
+        "first_poison_count": 2,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 20.5,
+          "se": 6.739188873051909
+        },
+        "changed_weights": {
+          "mean": 3210.5,
+          "se": 3.8837267325770144
+        },
+        "belief_probability": {
+          "mean": 0.6339732576161623,
+          "se": 0.2027989561998075
+        }
+      },
+      "scene_only": {
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "fitness": {
+          "mean": 8.5,
+          "se": 6.7638746292343415
+        },
+        "first_food_count": 2,
+        "survivors": 2,
+        "first_poison_count": 2,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 25.25,
+          "se": 14.203139324341878
+        },
+        "changed_weights": {
+          "mean": 3210.5,
+          "se": 3.8837267325770144
+        },
+        "belief_probability": {
+          "mean": 0.5,
+          "se": 0.0
+        }
+      },
+      "no_demo": {
+        "first_food": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "survival": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": -1.0,
+          "se": 1.35400640077266
+        },
+        "first_food_count": 1,
+        "survivors": 1,
+        "first_poison_count": 3,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 16.0,
+          "se": 7.245688373094719
+        },
+        "changed_weights": {
+          "mean": 3210.5,
+          "se": 3.8837267325770144
+        },
+        "belief_probability": {
+          "mean": 0.5,
+          "se": 0.0
+        }
+      },
+      "belief_reset": {
+        "first_food": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "survival": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": 14.5,
+          "se": 6.512807894193307
+        },
+        "first_food_count": 3,
+        "survivors": 3,
+        "first_poison_count": 1,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 26.25,
+          "se": 10.562315087138805
+        },
+        "changed_weights": {
+          "mean": 3210.5,
+          "se": 3.8837267325770144
+        },
+        "belief_probability": {
+          "mean": 0.5,
+          "se": 0.0
+        }
+      },
+      "birth_parent": {
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": 9.0,
+          "se": 5.431390245600108
+        },
+        "first_food_count": 2,
+        "survivors": 3,
+        "first_poison_count": 2,
+        "no_meal_count": 0,
+        "no_meal": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "first_meal_step": {
+          "mean": 7.5,
+          "se": 3.013856886670854
+        },
+        "changed_weights": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "belief_probability": {
+          "mean": 0.5,
+          "se": 0.0
+        }
+      }
+    },
+    "contrasts": {
+      "yoked": {
+        "first_food_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "scene_only": {
+        "first_food_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival_difference": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "no_demo": {
+        "first_food_difference": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "survival_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "gate": {
+          "passed": true,
+          "first_food_passed": true,
+          "survival_passed": true
+        }
+      },
+      "belief_reset": {
+        "first_food_difference": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "birth_parent": {
+        "first_food_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.408248290463863
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      }
+    },
+    "teacher": {
+      "practice": {
+        "food": {
+          "mean": 8.5,
+          "se": 3.570714214271425
+        },
+        "poison": {
+          "mean": 6.5,
+          "se": 1.1902380714238083
+        },
+        "accuracy": {
+          "mean": 0.5666666666666667,
+          "se": 0.08488675583901428
+        },
+        "encounters": 60
+      },
+      "demonstration": {
+        "food": {
+          "mean": 10.75,
+          "se": 4.534589286804263
+        },
+        "poison": {
+          "mean": 1.5,
+          "se": 0.6454972243679028
+        },
+        "accuracy": {
+          "mean": 0.8775510204081632,
+          "se": 0.020819102410834914
+        },
+        "encounters": 49
+      },
+      "survival": {
+        "mean": 0.75,
+        "se": 0.25
+      },
+      "visible_frames": {
+        "mean": 112.5,
+        "se": 37.5
+      }
+    },
+    "selected_lambda": 4.0
+  },
+  "safeguards": {
+    "world_keys_disjoint": true,
+    "calibration_frozen_before_evaluation": true,
+    "original_genome_unchanged": true,
+    "six_arm_evidence_validated": true
+  }
+}

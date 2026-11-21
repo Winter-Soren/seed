@@ -1,0 +1,169 @@
+{
+  "synthetic": false,
+  "studies": [
+    {
+      "study": "E120",
+      "title": "Original observers",
+      "protocol": "social-learning-v1",
+      "families_per_lineage": 128,
+      "rows": [
+        {
+          "lineage": "A0",
+          "run": "runs/20261121-215328_E120-A0",
+          "first_food_difference": {
+            "mean": -1.5625,
+            "se": 3.5048432111921026,
+            "two_se": 7.009686422384205
+          },
+          "survival_difference": {
+            "mean": -5.46875,
+            "se": 3.3841545699112476,
+            "two_se": 6.768309139822495
+          }
+        },
+        {
+          "lineage": "A1",
+          "run": "runs/20261121-215420_E120-A1",
+          "first_food_difference": {
+            "mean": 3.90625,
+            "se": 3.577451486916371,
+            "two_se": 7.154902973832742
+          },
+          "survival_difference": {
+            "mean": 0.78125,
+            "se": 3.4180676131652645,
+            "two_se": 6.836135226330529
+          }
+        },
+        {
+          "lineage": "A2",
+          "run": "runs/20261121-215547_E120-A2",
+          "first_food_difference": {
+            "mean": -2.34375,
+            "se": 3.2271386559953825,
+            "two_se": 6.454277311990765
+          },
+          "survival_difference": {
+            "mean": -8.59375,
+            "se": 3.3326380047004833,
+            "two_se": 6.665276009400967
+          }
+        }
+      ],
+      "audit": "results/diagnostics/E120-independent-audit.json",
+      "audit_sha256": "8d9cb635819150788672cd64350918786a2b78ee0f43944d723f370b8103a0bc"
+    },
+    {
+      "study": "E122",
+      "title": "Observers after selection",
+      "protocol": "social-observer-train-v1",
+      "families_per_lineage": 128,
+      "rows": [
+        {
+          "lineage": "A0",
+          "run": "runs/20261121-221709_E122-A0",
+          "first_food_difference": {
+            "mean": -1.5625,
+            "se": 3.996857617795402,
+            "two_se": 7.993715235590804
+          },
+          "survival_difference": {
+            "mean": -2.34375,
+            "se": 3.755711488774058,
+            "two_se": 7.511422977548116
+          }
+        },
+        {
+          "lineage": "A1",
+          "run": "runs/20261121-222033_E122-A1",
+          "first_food_difference": {
+            "mean": 0.78125,
+            "se": 3.233090046308542,
+            "two_se": 6.466180092617084
+          },
+          "survival_difference": {
+            "mean": -7.03125,
+            "se": 3.361355795355862,
+            "two_se": 6.722711590711724
+          }
+        },
+        {
+          "lineage": "A2",
+          "run": "runs/20261121-222537_E122-A2",
+          "first_food_difference": {
+            "mean": 7.03125,
+            "se": 3.7093587996084016,
+            "two_se": 7.418717599216803
+          },
+          "survival_difference": {
+            "mean": 3.125,
+            "se": 3.4966062004835265,
+            "two_se": 6.993212400967053
+          }
+        }
+      ],
+      "audit": "results/diagnostics/E122-independent-audit.json",
+      "audit_sha256": "0977ae7ac063cab5af4616866515f2f4017b4a58d99337c018ee1435fc19f756"
+    },
+    {
+      "study": "E123",
+      "title": "Engineered calibrated readout",
+      "protocol": "social-belief-readout-v1",
+      "families_per_lineage": 128,
+      "rows": [
+        {
+          "lineage": "A0",
+          "run": "runs/20261121-224042_E123-A0",
+          "first_food_difference": {
+            "mean": 33.59375,
+            "se": 4.191137031126649,
+            "two_se": 8.382274062253298
+          },
+          "survival_difference": {
+            "mean": 42.96875,
+            "se": 4.53057115468865,
+            "two_se": 9.0611423093773
+          }
+        },
+        {
+          "lineage": "A1",
+          "run": "runs/20261121-224439_E123-A1",
+          "first_food_difference": {
+            "mean": 28.125,
+            "se": 4.826913047376049,
+            "two_se": 9.653826094752098
+          },
+          "survival_difference": {
+            "mean": 32.8125,
+            "se": 4.72019438054806,
+            "two_se": 9.44038876109612
+          }
+        },
+        {
+          "lineage": "A2",
+          "run": "runs/20261121-224833_E123-A2",
+          "first_food_difference": {
+            "mean": 28.125,
+            "se": 4.428108477108411,
+            "two_se": 8.856216954216823
+          },
+          "survival_difference": {
+            "mean": 36.71875,
+            "se": 4.944461944914201,
+            "two_se": 9.888923889828401
+          }
+        }
+      ],
+      "audit": "results/diagnostics/E123-independent-audit.json",
+      "audit_sha256": "94816b7533945b0f0611f2e51c081733221dfdb7abc40f0cdeed36e782cb25b5"
+    }
+  ],
+  "uncertainty": "two paired family standard errors",
+  "units": "percentage points",
+  "caption": [
+    "Points show paired differences. Bars and labels show \u00b12 standard errors across 128 world families per lineage.",
+    "Both panels use the same scale. Positive values favor the intact movie. Every assigned newborn counts.",
+    "Studies use independent worlds. E123 adds an engineered calibrated readout to the original observer genomes.",
+    "Cross-study differences are descriptive. Full experiment gates include additional controls reported in the README."
+  ]
+}

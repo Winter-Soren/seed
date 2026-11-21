@@ -2,6 +2,8 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
+**Latest audited result — E123 passed in all three lineages.** An engineered food-color belief helped original observers choose food on their first meal alone, across 384 unseen world families. [E123 results and controls](#using-a-calibrated-food-belief) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
+
 ## What the creatures do
 
 Four creatures move around a 16 × 16 grid. Each sees a small patch around itself and can move one square or stay put. There are two kinds of items, A and B. In one world, A is food and B is poison. In another world, B is food and A is poison. The rule is hidden from the creatures. Food adds energy, poison drains it, and staying alive uses a little energy each turn. A life lasts up to 300 turns and ends early if energy reaches zero. In some tests, the food rule switches halfway through.
@@ -221,9 +223,35 @@ The evolved observer also faced the three movie controls. The table gives its in
 
 The registered gate required gains above two paired standard errors over the ancestor and all three controls, together with the survival safeguard. A1 also failed that safeguard against the color-reassigned movie. Its survival was 99/128 after the intact movie and 108/128 after the control, a difference of **−7.0 ± 3.4 percentage points**. This ten-round budget produced genetic change without a verified improvement in using the demonstration. [Independent genetic-update and outcome audit](results/diagnostics/E122-independent-audit.json) · [Full results](results/RESULTS.md)
 
+## Using a calibrated food belief
+
+**E123 passed every registered comparison in all three lineages.** It added an engineered reader and action bias to the original A0/A1/A2 genomes. The reader converted the teacher's visible item visits into one value representing the probability that A was food. That value biased the observer's moves using only items currently visible to it.
+
+Each lineage first used **32 separate calibration families**, with targets supplied by the learner's own first-meal energy outcomes. All three selected the confidence multiplier `lambda = 4` from the registered grid. Calibration was frozen before the **128 held-out families per lineage**, giving 384 independent test families in total. E123's change was an engineered readout applied to the original genomes.
+
+The reset control watched the same intact movie, kept its acquired neural state and reset only the food belief to neutral. The birth parent used the same original genome and matched newborn wiring, then began its solo life directly from its birth state. Every assigned newborn counts below. Rates are percentages, and gains are percentage points. Each ± value is one family-level standard error, paired for gains.
+
+| Lineage | Intact belief, first food | Reset belief, first food | Gain from retaining belief | Birth parent, first food | Gain over birth parent |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A0 | 85.9 ± 3.1 | 53.1 ± 4.4 | +32.8 ± 4.3 | 56.2 ± 4.4 | +29.7 ± 5.2 |
+| A1 | 75.8 ± 3.8 | 51.6 ± 4.4 | +24.2 ± 4.1 | 49.2 ± 4.4 | +26.6 ± 5.4 |
+| A2 | 77.3 ± 3.7 | 40.6 ± 4.4 | +36.7 ± 4.3 | 45.3 ± 4.4 | +32.0 ± 5.2 |
+
+The intact-belief observers chose food first in **110/128, 97/128 and 99/128** lives. All five controls — color-reassigned movie, scenery alone, blank view, reset belief and birth parent — were beaten by more than two paired standard errors in every lineage. All 15 corresponding survival safeguards passed. End survival with intact belief was **88.3 ± 2.9%, 87.5 ± 2.9% and 89.8 ± 2.7%**. The safeguards require a survival difference of at least minus two paired standard errors, so passing them alone does not establish a survival gain. [Independent calibration, readout and outcome audit](results/diagnostics/E123-independent-audit.json) · [Full results](results/RESULTS.md)
+
+VariBAD conditions a policy on the observed environment and an inferred belief about its task. This motivated E123's explicit route from demonstrated information to action. Here the representation is one engineered probability over two food colors, calibrated from the learner's own outcomes. The camera geometry and action-bias rule are part of our design. [Zintgraf et al., JMLR (2021)](https://jmlr.csail.mit.edu/papers/volume22/21-0657/21-0657.pdf)
+
+## Comparing social-learning studies
+
+The figure uses the same within-study contrast for the original observers in E120, the selected observers in E122 and the original observers with E123's calibrated readout. Each study has independent worlds. The bars and labels show **two paired standard errors**.
+
+![First-food and end-survival differences between intact and color-yoked movies for A0, A1 and A2. E120 and E122 first-food intervals include zero, while all E123 first-food and survival intervals are positive.](results/figures/social-learning-comparison.png)
+
+[Vector figure](results/figures/social-learning-comparison.svg) · [Plotted values and audit fingerprints](results/figures/social-learning-comparison.json) · [Reproduce the figure](tools/build_social_learning_figure.py)
+
 ## Human-inspired research direction
 
-The next experiment, E123, will test an **engineered, calibrated value representing which color is food**. It will use that value together with currently visible items to guide an original observer's movements, and compare it with the same observer after that value is reset. This tests an explicit route from demonstrated information to action. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next prospective experiment, E124, will put **three successive pupils in a teaching chain**. Each actual pupil will become the demonstrator for the next, carrying the behavior it acquired through its own life. The study will measure retention of the first-food skill and further improvement separately. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

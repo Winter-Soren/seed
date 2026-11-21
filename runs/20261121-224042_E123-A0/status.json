@@ -1,0 +1,11 @@
+{
+  "status": "finished",
+  "phase": "evaluation",
+  "completed_calibration_families": 32,
+  "expected_calibration_families": 32,
+  "completed_families": 128,
+  "expected_families": 128,
+  "calibration_seconds": 31.264999999984866,
+  "evaluation_seconds": 174.45300000000861,
+  "elapsed_seconds": 205.73399999999674
+}

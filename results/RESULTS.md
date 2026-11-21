@@ -33,6 +33,121 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Calibrated engineered social readout (social-belief-readout-v1)
+
+E123 retains the original E103 genomes and adds an engineered scalar belief with a fixed local action readout. There are zero ES generations and no genome mutation. One scalar lambda is selected from nine fixed values using public movie contacts and an unassisted pupil's own first outcome on calibration worlds. The complete calibration evidence and selection are frozen before opening disjoint evaluation worlds. Calibration losses and coverage below are fitting diagnostics, not held-out performance.
+
+Each held-out family has six paired arms. First food is one for food and zero for poison or no meal, across all assigned families. No-meal first-choice latency is capped at step 301. Means and ± SEM use families as the independent unit; contrasts use paired family differences. The observed arm must beat every one of the five controls by strictly more than two paired SEM on first food, with survival differences at least minus two paired SEM. All three lineages must pass the complete intersection gate. A parent-only benefit cannot override a failed control or survival comparison. Development and incomplete attempts have no scientific verdict.
+
+The belief-reset control changes only the added belief; birth-parent uses the original unassisted birth state. A pass supports useful public information through this calibrated engineered readout; it does not show the unchanged hidden network invented social learning. A failed gate ends this version without retuning on its evaluation worlds.
+
+| Run | Status | Split | Calibration families | Evaluation families | All first-food contrasts | All survival safeguards | Lineage decision | Commit |
+|---|---|---|---|---|---|---|---|---|
+| 20261121-223900_E123-benchmark | finished | development | 4/4 | 4/4 | not applicable | not applicable | not applicable | b7a6dfc |
+| 20261121-224042_E123-A0 | finished | final | 32/32 | 128/128 | PASS | PASS | PASS | b7a6dfc |
+| 20261121-224439_E123-A1 | finished | final | 32/32 | 128/128 | PASS | PASS | PASS | b7a6dfc |
+| 20261121-224833_E123-A2 | finished | final | 32/32 | 128/128 | PASS | PASS | PASS | b7a6dfc |
+
+Calibration diagnostics (fresh fitting worlds only):
+
+| Run | Split | Frozen lambda | Own contacts / assigned | Contact coverage ± SEM | Decoder vote coverage ± SEM |
+|---|---|---|---|---|---|
+| 20261121-223900_E123-benchmark | development | 4.0 | 4/4 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-224042_E123-A0 | final | 4.0 | 32/32 | 1.000000 ± 0.000000 | 0.812500 ± 0.070102 |
+| 20261121-224439_E123-A1 | final | 4.0 | 32/32 | 1.000000 ± 0.000000 | 0.843750 ± 0.065213 |
+| 20261121-224833_E123-A2 | final | 4.0 | 32/32 | 1.000000 ± 0.000000 | 0.906250 ± 0.052351 |
+
+| Run | Candidate lambda | Calibration log loss ± SEM |
+|---|---|---|
+| 20261121-223900_E123-benchmark | -4.0 | 2.844605 ± 0.445343 |
+| 20261121-223900_E123-benchmark | -2.0 | 1.618584 ± 0.187863 |
+| 20261121-223900_E123-benchmark | -1.0 | 1.101014 ± 0.079327 |
+| 20261121-223900_E123-benchmark | -0.5 | 0.881547 ± 0.035361 |
+| 20261121-223900_E123-benchmark | 0.0 | 0.693147 ± 0.000000 |
+| 20261121-223900_E123-benchmark | 0.5 | 0.537053 ± 0.026318 |
+| 20261121-223900_E123-benchmark | 1.0 | 0.412026 ± 0.044062 |
+| 20261121-223900_E123-benchmark | 2.0 | 0.240608 ± 0.059083 |
+| 20261121-223900_E123-benchmark | 4.0 | 0.088652 ± 0.048763 |
+| 20261121-224042_E123-A0 | -4.0 | 2.103622 ± 0.197440 |
+| 20261121-224042_E123-A0 | -2.0 | 1.296319 ± 0.086053 |
+| 20261121-224042_E123-A0 | -1.0 | 0.958912 ± 0.038178 |
+| 20261121-224042_E123-A0 | -0.5 | 0.816010 ± 0.017711 |
+| 20261121-224042_E123-A0 | 0.0 | 0.693147 ± 0.000000 |
+| 20261121-224042_E123-A0 | 0.5 | 0.591045 ± 0.014925 |
+| 20261121-224042_E123-A0 | 1.0 | 0.508982 ± 0.027322 |
+| 20261121-224042_E123-A0 | 2.0 | 0.396458 ± 0.046478 |
+| 20261121-224042_E123-A0 | 4.0 | 0.303900 ± 0.074985 |
+| 20261121-224439_E123-A1 | -4.0 | 1.961856 ± 0.208885 |
+| 20261121-224439_E123-A1 | -2.0 | 1.232758 ± 0.092289 |
+| 20261121-224439_E123-A1 | -1.0 | 0.928480 ± 0.041917 |
+| 20261121-224439_E123-A1 | -0.5 | 0.801022 ± 0.019863 |
+| 20261121-224439_E123-A1 | 0.0 | 0.693147 ± 0.000000 |
+| 20261121-224439_E123-A1 | 0.5 | 0.605669 ± 0.017947 |
+| 20261121-224439_E123-A1 | 1.0 | 0.537773 ± 0.034471 |
+| 20261121-224439_E123-A1 | 2.0 | 0.451343 ± 0.065288 |
+| 20261121-224439_E123-A1 | 4.0 | 0.399027 ± 0.125371 |
+| 20261121-224833_E123-A2 | -4.0 | 2.135725 ± 0.184253 |
+| 20261121-224833_E123-A2 | -2.0 | 1.311599 ± 0.079671 |
+| 20261121-224833_E123-A2 | -1.0 | 0.966825 ± 0.035164 |
+| 20261121-224833_E123-A2 | -0.5 | 0.820114 ± 0.016262 |
+| 20261121-224833_E123-A2 | 0.0 | 0.693147 ± 0.000000 |
+| 20261121-224833_E123-A2 | 0.5 | 0.586584 ± 0.013565 |
+| 20261121-224833_E123-A2 | 1.0 | 0.499766 ± 0.024620 |
+| 20261121-224833_E123-A2 | 2.0 | 0.377481 ± 0.040771 |
+| 20261121-224833_E123-A2 | 4.0 | 0.267490 ± 0.060770 |
+
+Held-out family outcomes:
+
+| Run | Split | Arm | First food ± SEM | No-meal fraction ± SEM | Survival ± SEM | Fitness ± SEM | First-meal step ± SEM |
+|---|---|---|---|---|---|---|---|
+| 20261121-223900_E123-benchmark | development | observed | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.750000 ± 0.250000 | 33.000000 ± 12.469964 | 16.750000 ± 7.465197 |
+| 20261121-223900_E123-benchmark | development | yoked | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.250000 ± 0.250000 | 7.750000 ± 10.757749 | 20.500000 ± 6.739189 |
+| 20261121-223900_E123-benchmark | development | scene_only | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 | 8.500000 ± 6.763875 | 25.250000 ± 14.203139 |
+| 20261121-223900_E123-benchmark | development | no_demo | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 | 0.250000 ± 0.250000 | -1.000000 ± 1.354006 | 16.000000 ± 7.245688 |
+| 20261121-223900_E123-benchmark | development | belief_reset | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | 0.750000 ± 0.250000 | 14.500000 ± 6.512808 | 26.250000 ± 10.562315 |
+| 20261121-223900_E123-benchmark | development | birth_parent | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.750000 ± 0.250000 | 9.000000 ± 5.431390 | 7.500000 ± 3.013857 |
+| 20261121-224042_E123-A0 | final | observed | 0.859375 ± 0.030848 | 0.000000 ± 0.000000 | 0.882812 ± 0.028541 | 26.140625 ± 1.654738 | 10.828125 ± 1.474275 |
+| 20261121-224042_E123-A0 | final | yoked | 0.523438 ± 0.044319 | 0.000000 ± 0.000000 | 0.453125 ± 0.044172 | 9.796875 ± 1.633923 | 12.750000 ± 2.043601 |
+| 20261121-224042_E123-A0 | final | scene_only | 0.585938 ± 0.043708 | 0.000000 ± 0.000000 | 0.757812 ± 0.038015 | 8.367188 ± 0.918483 | 14.125000 ± 1.851726 |
+| 20261121-224042_E123-A0 | final | no_demo | 0.562500 ± 0.044020 | 0.000000 ± 0.000000 | 0.445312 ± 0.044102 | 0.046875 ± 0.261981 | 29.156250 ± 2.989842 |
+| 20261121-224042_E123-A0 | final | belief_reset | 0.531250 ± 0.044281 | 0.000000 ± 0.000000 | 0.789062 ± 0.036202 | 9.898438 ± 0.966455 | 13.359375 ± 1.524357 |
+| 20261121-224042_E123-A0 | final | birth_parent | 0.562500 ± 0.044020 | 0.000000 ± 0.000000 | 0.835938 ± 0.032862 | 17.382812 ± 1.105925 | 6.195312 ± 0.576468 |
+| 20261121-224439_E123-A1 | final | observed | 0.757812 ± 0.038015 | 0.000000 ± 0.000000 | 0.875000 ± 0.029347 | 28.210938 ± 1.613895 | 9.953125 ± 1.279469 |
+| 20261121-224439_E123-A1 | final | yoked | 0.476562 ± 0.044319 | 0.000000 ± 0.000000 | 0.546875 ± 0.044172 | 13.046875 ± 1.720858 | 9.382812 ± 1.160906 |
+| 20261121-224439_E123-A1 | final | scene_only | 0.507812 ± 0.044362 | 0.000000 ± 0.000000 | 0.710938 ± 0.040226 | 9.062500 ± 0.949432 | 12.312500 ± 1.432098 |
+| 20261121-224439_E123-A1 | final | no_demo | 0.531250 ± 0.044281 | 0.007812 ± 0.007812 | 0.570312 ± 0.043927 | 2.093750 ± 0.493740 | 37.718750 ± 4.678149 |
+| 20261121-224439_E123-A1 | final | belief_reset | 0.515625 ± 0.044346 | 0.000000 ± 0.000000 | 0.750000 ± 0.038424 | 12.242188 ± 1.215809 | 10.562500 ± 1.266755 |
+| 20261121-224439_E123-A1 | final | birth_parent | 0.492188 ± 0.044362 | 0.000000 ± 0.000000 | 0.843750 ± 0.032219 | 16.765625 ± 1.155667 | 8.242188 ± 0.874349 |
+| 20261121-224833_E123-A2 | final | observed | 0.773438 ± 0.037145 | 0.000000 ± 0.000000 | 0.898438 ± 0.026805 | 30.890625 ± 1.711228 | 11.460938 ± 1.327791 |
+| 20261121-224833_E123-A2 | final | yoked | 0.492188 ± 0.044362 | 0.000000 ± 0.000000 | 0.531250 ± 0.044281 | 15.328125 ± 1.941096 | 14.187500 ± 1.890349 |
+| 20261121-224833_E123-A2 | final | scene_only | 0.398438 ± 0.043443 | 0.000000 ± 0.000000 | 0.695312 ± 0.040843 | 6.656250 ± 0.787954 | 12.710938 ± 1.233012 |
+| 20261121-224833_E123-A2 | final | no_demo | 0.453125 ± 0.044172 | 0.000000 ± 0.000000 | 0.484375 ± 0.044346 | 0.929688 ± 0.379757 | 22.367188 ± 2.428578 |
+| 20261121-224833_E123-A2 | final | belief_reset | 0.406250 ± 0.043581 | 0.000000 ± 0.000000 | 0.742188 ± 0.038816 | 10.140625 ± 1.017244 | 10.539062 ± 1.016891 |
+| 20261121-224833_E123-A2 | final | birth_parent | 0.453125 ± 0.044172 | 0.000000 ± 0.000000 | 0.835938 ± 0.032862 | 19.773438 ± 1.187524 | 9.023438 ± 0.873907 |
+
+| Run | Split | Control | Observed first-food difference ± paired SEM | Observed survival difference ± paired SEM |
+|---|---|---|---|---|
+| 20261121-223900_E123-benchmark | development | yoked | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 |
+| 20261121-223900_E123-benchmark | development | scene_only | 0.500000 ± 0.288675 | 0.250000 ± 0.250000 |
+| 20261121-223900_E123-benchmark | development | no_demo | 0.750000 ± 0.250000 | 0.500000 ± 0.288675 |
+| 20261121-223900_E123-benchmark | development | belief_reset | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 |
+| 20261121-223900_E123-benchmark | development | birth_parent | 0.500000 ± 0.288675 | 0.000000 ± 0.408248 |
+| 20261121-224042_E123-A0 | final | yoked | 0.335938 ± 0.041911 | 0.429688 ± 0.045306 |
+| 20261121-224042_E123-A0 | final | scene_only | 0.273438 ± 0.043971 | 0.125000 ± 0.038424 |
+| 20261121-224042_E123-A0 | final | no_demo | 0.296875 ± 0.051263 | 0.437500 ± 0.050526 |
+| 20261121-224042_E123-A0 | final | belief_reset | 0.328125 ± 0.043115 | 0.093750 ± 0.030250 |
+| 20261121-224042_E123-A0 | final | birth_parent | 0.296875 ± 0.052449 | 0.046875 ± 0.041293 |
+| 20261121-224439_E123-A1 | final | yoked | 0.281250 ± 0.048269 | 0.328125 ± 0.047202 |
+| 20261121-224439_E123-A1 | final | scene_only | 0.250000 ± 0.044368 | 0.164062 ± 0.039649 |
+| 20261121-224439_E123-A1 | final | no_demo | 0.226562 ± 0.054582 | 0.304688 ± 0.050293 |
+| 20261121-224439_E123-A1 | final | belief_reset | 0.242188 ± 0.041124 | 0.125000 ± 0.036788 |
+| 20261121-224439_E123-A1 | final | birth_parent | 0.265625 ± 0.053752 | 0.031250 ± 0.044281 |
+| 20261121-224833_E123-A2 | final | yoked | 0.281250 ± 0.044281 | 0.367188 ± 0.049445 |
+| 20261121-224833_E123-A2 | final | scene_only | 0.375000 ± 0.048349 | 0.203125 ± 0.037384 |
+| 20261121-224833_E123-A2 | final | no_demo | 0.320312 ± 0.050749 | 0.414062 ± 0.050254 |
+| 20261121-224833_E123-A2 | final | belief_reset | 0.367188 ± 0.042774 | 0.156250 ± 0.034075 |
+| 20261121-224833_E123-A2 | final | birth_parent | 0.320312 ± 0.051947 | 0.062500 ± 0.042599 |
+
 ## Information in public demonstrations (social-channel-v1)
 
 E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. The track reader uses consecutive visible teacher positions; the scene reader uses item-image motion only. Both predict the most frequently contacted visible item color as food. Ties and no votes earn expected accuracy of one half. Every family is retained. Means use independent families; all ± values are standard errors of the mean (SEM), and control contrasts use paired within-family differences. Fractions are proportions, while votes and identifiable steps are mean counts per family. The tie fraction includes movies with no votes.
