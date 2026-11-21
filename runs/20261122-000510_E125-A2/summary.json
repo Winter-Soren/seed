@@ -1,0 +1,4689 @@
+{
+  "status": "finished",
+  "completed_families": 128,
+  "expected_families": 128,
+  "elapsed_seconds": 199.75,
+  "setup_seconds": 2.0780000000086147,
+  "family_seconds": [
+    44.84399999998277,
+    1.8589999999967404,
+    14.625,
+    12.952999999979511,
+    0.75,
+    1.062000000005355,
+    11.875,
+    1.062000000005355,
+    1.062999999994645,
+    1.047000000020489,
+    1.062000000005355,
+    1.0780000000086147,
+    1.1090000000258442,
+    1.0469999999913853,
+    1.0469999999913853,
+    0.9529999999795109,
+    0.75,
+    0.5629999999946449,
+    0.7190000000118744,
+    1.0320000000065193,
+    0.8909999999741558,
+    0.8440000000118744,
+    0.9370000000053551,
+    0.7810000000172295,
+    0.875,
+    0.7820000000065193,
+    0.7969999999913853,
+    0.625,
+    0.9059999999881256,
+    0.7340000000258442,
+    0.7970000000204891,
+    0.75,
+    0.8429999999934807,
+    0.7190000000118744,
+    0.9379999999946449,
+    0.7820000000065193,
+    0.8279999999795109,
+    0.6879999999946449,
+    0.7179999999934807,
+    0.625,
+    0.7650000000139698,
+    0.8129999999946449,
+    1.062000000005355,
+    1.1559999999881256,
+    1.0460000000020955,
+    1.0309999999881256,
+    0.8910000000032596,
+    0.9379999999946449,
+    0.8910000000032596,
+    0.7339999999967404,
+    0.7659999999741558,
+    0.8440000000118744,
+    0.9220000000204891,
+    1.0780000000086147,
+    0.9059999999881256,
+    1.7030000000086147,
+    1.5160000000032596,
+    1.2030000000086147,
+    0.9529999999795109,
+    0.9070000000065193,
+    0.8589999999967404,
+    0.7339999999967404,
+    0.9059999999881256,
+    0.6559999999881256,
+    0.625,
+    0.514999999984866,
+    0.8120000000053551,
+    0.75,
+    0.735000000015134,
+    0.7820000000065193,
+    0.5779999999795109,
+    0.8280000000086147,
+    1.1719999999913853,
+    0.8900000000139698,
+    0.9219999999913853,
+    0.7179999999934807,
+    0.7969999999913853,
+    0.8439999999827705,
+    0.8589999999967404,
+    0.8429999999934807,
+    0.8589999999967404,
+    0.9690000000118744,
+    0.764999999984866,
+    1.125,
+    0.9060000000172295,
+    0.8900000000139698,
+    0.8280000000086147,
+    0.75,
+    0.875,
+    0.7660000000032596,
+    0.9379999999946449,
+    0.9690000000118744,
+    0.9849999999860302,
+    1.1559999999881256,
+    0.9690000000118744,
+    0.9530000000086147,
+    0.9690000000118744,
+    0.9220000000204891,
+    0.9219999999913853,
+    0.7970000000204891,
+    0.6570000000065193,
+    0.5629999999946449,
+    0.625,
+    0.8910000000032596,
+    0.8120000000053551,
+    1.0160000000032596,
+    0.9379999999946449,
+    1.0150000000139698,
+    1.0780000000086147,
+    1.0469999999913853,
+    0.9679999999934807,
+    0.9219999999913853,
+    0.9059999999881256,
+    0.7340000000258442,
+    0.75,
+    0.7969999999913853,
+    0.8910000000032596,
+    0.875,
+    0.7969999999913853,
+    0.735000000015134,
+    0.9220000000204891,
+    0.8439999999827705,
+    0.875,
+    0.8279999999795109,
+    0.7660000000032596,
+    0.7960000000020955,
+    0.9539999999979045,
+    1.0159999999741558
+  ],
+  "protocol": "reversal-random-v1",
+  "condition_split": "final",
+  "generation": 0,
+  "source_label": "A2",
+  "eval_seed": 2026120303,
+  "eval_worlds": 128,
+  "scientific_result": true,
+  "artifact_validity": "passed",
+  "gate_status": "failed",
+  "primary": "observed",
+  "formal_ladder_status": "not_decided",
+  "selected_lambda": 4.0,
+  "calibration_source": {
+    "name": "E123-A2",
+    "folder": "runs/20261121-224833_E123-A2",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 2026113003,
+    "expected_calibration_families": 32,
+    "config": {
+      "path": "runs/20261121-224833_E123-A2/config.json",
+      "sha256": "7a3aa382b8e7af57f4507e768905c6e8b49abc836c632097653d13c5279bef8a"
+    },
+    "selection": {
+      "path": "runs/20261121-224833_E123-A2/calibration/selection.json",
+      "sha256": "63feeacae1fd6f3766e049914e64a975827f76d175801050a465b27328e00425"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0000.npz",
+        "sha256": "9217dd79317c0abc59c22132f245bf2efaf881e0580de104dc806ddbb3af00d1"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0001.npz",
+        "sha256": "941f6f2ad17a02d5607fd5982f891e1e9cc52cd33d10fbcd408bd1120eb5ffd0"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0002.npz",
+        "sha256": "073f9b4d7cfec126b7bafd117ba211120a25f0e2ccd0c59a0efa2a7a1ccc68df"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0003.npz",
+        "sha256": "0d4591ecc95bb3c51ce2542415400afe746d3f7ab0af4e1a2ff247e6a7070408"
+      },
+      {
+        "index": 4,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0004.npz",
+        "sha256": "f71a42c999b8611fa4e3e8585f8653fdb68c30b5b1219e9f1c2a547ee219f3a4"
+      },
+      {
+        "index": 5,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0005.npz",
+        "sha256": "095ec4485b73240aefe4301a56624cdccfd2545bcbac6413d6a86a7be7f5dbca"
+      },
+      {
+        "index": 6,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0006.npz",
+        "sha256": "657ac8d22fe1b118c2721fb3b31218510ccd7cf10f0320c33a17b730e1e310cf"
+      },
+      {
+        "index": 7,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0007.npz",
+        "sha256": "76ea3c3a436a3fc61ab739362438a98578c3d3ff698e459ce443f184ec89002c"
+      },
+      {
+        "index": 8,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0008.npz",
+        "sha256": "27ca62f49f2caf672c6dec40267473888107a73f0e30dee52cba8cd020e6549d"
+      },
+      {
+        "index": 9,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0009.npz",
+        "sha256": "f9bd24aacbeb322d97474ef55d9926f5da8f4a746e47e0b13b1592c11d807c7a"
+      },
+      {
+        "index": 10,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0010.npz",
+        "sha256": "605a9add721dcf2440aee19b6916549bc550cc7ef63dec1603a73e18414be0ef"
+      },
+      {
+        "index": 11,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0011.npz",
+        "sha256": "e610f4b2957775927d951573d700524391bd8bfe757d29c6d2febc6315b55538"
+      },
+      {
+        "index": 12,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0012.npz",
+        "sha256": "d47dce24019896c3165cc8fbfd8b67f39cbbbe06b68bf5490afab8bd227f90c0"
+      },
+      {
+        "index": 13,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0013.npz",
+        "sha256": "93354e1d9f68d8388127d056bc979f848ae60bc375c3b551f69ff16c8aebb6b1"
+      },
+      {
+        "index": 14,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0014.npz",
+        "sha256": "e2963fb56e612c7023aba29ce9234872324ff78bbe68e605c28bb11cbc9f596f"
+      },
+      {
+        "index": 15,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0015.npz",
+        "sha256": "fa0ee5477ce4b106e613ebb8aecae1a6d3a334ad8818703ec7b8380c94d9a29a"
+      },
+      {
+        "index": 16,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0016.npz",
+        "sha256": "12585625ee4ed9b6c30afcf529aa3f9aecf207c38b28838edcc3731426080c00"
+      },
+      {
+        "index": 17,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0017.npz",
+        "sha256": "0c98a138777c02d6aece23b21e8e9f66f709095c77cd578dec07479a0595244b"
+      },
+      {
+        "index": 18,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0018.npz",
+        "sha256": "4f87b605b1858a108f0c0689a6b4e4ff6a562214f986a558774686db8d041e0d"
+      },
+      {
+        "index": 19,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0019.npz",
+        "sha256": "066fdbfc4e7aad7d4e00e89ed02ff2d1a24387faa41b6d325c0e8e52861fafde"
+      },
+      {
+        "index": 20,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0020.npz",
+        "sha256": "bfbb9482241fa6753e24ad5c83b37e235847d1ae51331b29437232702d70bcd5"
+      },
+      {
+        "index": 21,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0021.npz",
+        "sha256": "8b27707ecb10798d92a86330053ea5be5733dd8d31cca3a955b5b245c65f0281"
+      },
+      {
+        "index": 22,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0022.npz",
+        "sha256": "71ec79613d629d5f1e6847d01cf4bd163877e67520db5aa392e632e9948aaeb2"
+      },
+      {
+        "index": 23,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0023.npz",
+        "sha256": "aa8f785d9c173fb5edc60d54e899e18c0b8b3e62eef50f8809687f174664044b"
+      },
+      {
+        "index": 24,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0024.npz",
+        "sha256": "92e4bdf452bb91d44f8e37d6c3ea7b2031f681443e97f12d8f7980a7f2d9b45f"
+      },
+      {
+        "index": 25,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0025.npz",
+        "sha256": "dcfe8fc921be2d61b94256c5120446b547a95993bb14828509641f4911b9d578"
+      },
+      {
+        "index": 26,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0026.npz",
+        "sha256": "22311463937d42592dd1972479fa0c867f172e8e36ed8d7c888e1c1c3fa571f1"
+      },
+      {
+        "index": 27,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0027.npz",
+        "sha256": "cb586a1d30474a822e063d4139631d75b0ebf64c8a29a8ce8add73599c04b9bc"
+      },
+      {
+        "index": 28,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0028.npz",
+        "sha256": "d768ffddf5336d0006de8caa52ce8f82569b556fd2487e364116d966c5eda0d2"
+      },
+      {
+        "index": 29,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0029.npz",
+        "sha256": "8c569b7566077643d738bffb91d564dea31f07b76c3f420f895404a0eb1e4e9c"
+      },
+      {
+        "index": 30,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0030.npz",
+        "sha256": "e599630fd9b1a366902cf6a9f074a432e424821eb1284bd39b24f7045d421166"
+      },
+      {
+        "index": 31,
+        "path": "runs/20261121-224833_E123-A2/calibration/family_0031.npz",
+        "sha256": "0f1180f519a7af845e0308e8920ea0dac8ecf3c8edbfa708971943cb3956e679"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "63feeacae1fd6f3766e049914e64a975827f76d175801050a465b27328e00425"
+  },
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "ba7f30653768ba86761d7393901adced21795f1da53e4a62e7656a0625a52ba7"
+  },
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "31d5f9b4f7d1dbbc97da994a369a20e01e94fac3bb0b57745f27f1f673b8ee08"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "a7a1daa35680a59488cfef7b6144574311fa0a95a8b76e8d786a0fd08525cf5a"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "cf598974637cb9fb9ca58f8a0c63a58f3ad3184b4741e9a68f204c07561e3f74"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "b2dab73c1f65b2631dd834b6a2740bac308b893a0138cce344933bf6d023b2dc"
+    },
+    {
+      "index": 4,
+      "path": "families/family_0004.npz",
+      "sha256": "0f4a77fb8358d60718681aeb3dfd6cbd6dcc97e7418ca020caaedbdd48122c69"
+    },
+    {
+      "index": 5,
+      "path": "families/family_0005.npz",
+      "sha256": "8f82df72468a85edb936bcf379eae8f0941658cc8d8260fc670afa0984dbd348"
+    },
+    {
+      "index": 6,
+      "path": "families/family_0006.npz",
+      "sha256": "e153d8cf85b6fb00d1b532356c070f38ec40bb0c9d32c7195c26df24c51c0587"
+    },
+    {
+      "index": 7,
+      "path": "families/family_0007.npz",
+      "sha256": "9506c345acde12efc4d2537663311e5eca1aaa66f8800a44d9e87152ef30c6ab"
+    },
+    {
+      "index": 8,
+      "path": "families/family_0008.npz",
+      "sha256": "1a4f63ddf070f6b475297c8db1f8afdea01a62636c365edbd770e7061c4c33f0"
+    },
+    {
+      "index": 9,
+      "path": "families/family_0009.npz",
+      "sha256": "398ae4d1bd55d448201f1e5a613d0ba2fbf076e7958d879dad4ee4bfd397dc03"
+    },
+    {
+      "index": 10,
+      "path": "families/family_0010.npz",
+      "sha256": "67f38332e702b066755e8836bf2c58ac6d9692ddb7f1ce2e31980a70449d4af8"
+    },
+    {
+      "index": 11,
+      "path": "families/family_0011.npz",
+      "sha256": "421e7721d2fd28cdc2ff00dd98085c5b083bc4765126dc4e4a84c9a5f685934e"
+    },
+    {
+      "index": 12,
+      "path": "families/family_0012.npz",
+      "sha256": "6b6b2bddc202aa0f7defaf4dd64910881566c2d9cf7dabad80c3667d4fbd2821"
+    },
+    {
+      "index": 13,
+      "path": "families/family_0013.npz",
+      "sha256": "09037f64f4d5ac73c1e2001e83d7ec8fc49e280f309d1e6555444f5a8ba34027"
+    },
+    {
+      "index": 14,
+      "path": "families/family_0014.npz",
+      "sha256": "5ee975ead73e447f76539ec9383fccd7af304b94aa2ee5feb55719c3d79d791e"
+    },
+    {
+      "index": 15,
+      "path": "families/family_0015.npz",
+      "sha256": "b962cdafaac79a53fed1a426d613174df5547eadea6da4d06ad95eaac84646d0"
+    },
+    {
+      "index": 16,
+      "path": "families/family_0016.npz",
+      "sha256": "e9899ac05f0d51b211790acf1937df0fec9b68a24a45f1013db30fb539423ef5"
+    },
+    {
+      "index": 17,
+      "path": "families/family_0017.npz",
+      "sha256": "fb0c83a9e15c7b021b52f2fdd66ce0e5042d214c100a600eaba89d4561af4d66"
+    },
+    {
+      "index": 18,
+      "path": "families/family_0018.npz",
+      "sha256": "467efb5eebeb3aaea57713e5634c79e2f0057aaca7c10c0d007ec51d9f46a2bd"
+    },
+    {
+      "index": 19,
+      "path": "families/family_0019.npz",
+      "sha256": "bcc8a99c2c7cf90ed1ec295258ebd1925b28037e804b86cb2ab54f99483437c8"
+    },
+    {
+      "index": 20,
+      "path": "families/family_0020.npz",
+      "sha256": "125d642343775486997c4f94f7a11eeaadfaa6b22309f0c7a59a3b71567dc674"
+    },
+    {
+      "index": 21,
+      "path": "families/family_0021.npz",
+      "sha256": "0f05ae3eec05e8aa77d1c634ed8cfadf7efc3d05a0f0ee2087401264fcb0dae8"
+    },
+    {
+      "index": 22,
+      "path": "families/family_0022.npz",
+      "sha256": "07c8dfe12a71d206f4fc11c94ca996bf2513e6ee74f79ffcb9a319ae7d04c86b"
+    },
+    {
+      "index": 23,
+      "path": "families/family_0023.npz",
+      "sha256": "8b751150a88bec31d8dcd6ba0d85942fbdebabd5321b2e4df2f645a1716ec4a5"
+    },
+    {
+      "index": 24,
+      "path": "families/family_0024.npz",
+      "sha256": "a5fcf4b921e262299e682242ad77dbd12c22212fca1a80f5e3739f61e3b607df"
+    },
+    {
+      "index": 25,
+      "path": "families/family_0025.npz",
+      "sha256": "a18fb61479e9013f8efc9b598e2a3deb1cc529f9ac4021acc6e42b3d014ab5a0"
+    },
+    {
+      "index": 26,
+      "path": "families/family_0026.npz",
+      "sha256": "170a56cf5123dfae529975b889273ff940110aaf2e1468f7241a6ed1edae96bf"
+    },
+    {
+      "index": 27,
+      "path": "families/family_0027.npz",
+      "sha256": "0d4d444a34fe3a0f871f38bac120e71577d533312d2a114b21f445b827565600"
+    },
+    {
+      "index": 28,
+      "path": "families/family_0028.npz",
+      "sha256": "7a551074e8500a61731a72a42f7a3e3fbe46cd08d6f38990b0a4fc3c25171915"
+    },
+    {
+      "index": 29,
+      "path": "families/family_0029.npz",
+      "sha256": "b5f87e4476fcf2a103ecd1251a88e164aee97cdbc41db3ac31b43c5de3a581c6"
+    },
+    {
+      "index": 30,
+      "path": "families/family_0030.npz",
+      "sha256": "a9d6fc051fe1f122fae1752679685370dce2c81a5c838c483b10992561565613"
+    },
+    {
+      "index": 31,
+      "path": "families/family_0031.npz",
+      "sha256": "2ec7af97866bbe991d17e958af28808e3245bdcca14cdc94a35f14018e959ecc"
+    },
+    {
+      "index": 32,
+      "path": "families/family_0032.npz",
+      "sha256": "8e354021e7b4e9238abf69427f389bece6b9fb31a462bed4341cefefacc611b8"
+    },
+    {
+      "index": 33,
+      "path": "families/family_0033.npz",
+      "sha256": "5969c90a42ab819bc8d12c9fb002ccff737ead0c13963158a6e3e23184c7c776"
+    },
+    {
+      "index": 34,
+      "path": "families/family_0034.npz",
+      "sha256": "e713eee260bfe93509684cba4652e9de23de0b6f0e944903414f5fc7daab6d97"
+    },
+    {
+      "index": 35,
+      "path": "families/family_0035.npz",
+      "sha256": "bab78182dabeb503bdf741ce2084988f4152d2f312f964cf17a79830a7e3a7f3"
+    },
+    {
+      "index": 36,
+      "path": "families/family_0036.npz",
+      "sha256": "1118e9f1a3a3779a626f6de12e15008d88b4aea159fe949d038d074c0abbcf73"
+    },
+    {
+      "index": 37,
+      "path": "families/family_0037.npz",
+      "sha256": "c867333851f618609b39a51424c239d08c1fca1c92a71ef1c84c27062a1e2684"
+    },
+    {
+      "index": 38,
+      "path": "families/family_0038.npz",
+      "sha256": "5050d3bb6d00654bfab921cebeee81357012251ff91245e95662884f6651239c"
+    },
+    {
+      "index": 39,
+      "path": "families/family_0039.npz",
+      "sha256": "150979c2510da52de0641ebd862d2a05c791f25b8c728bad2956b32318055560"
+    },
+    {
+      "index": 40,
+      "path": "families/family_0040.npz",
+      "sha256": "8c48333e10ae3ccf588711c6fd58e65ba149f6b6db738b101bfb0f8010ffb2b5"
+    },
+    {
+      "index": 41,
+      "path": "families/family_0041.npz",
+      "sha256": "026243013c8b243e5dbf4b8930461f5d83312b70ecbbf17562d733b34bbb5186"
+    },
+    {
+      "index": 42,
+      "path": "families/family_0042.npz",
+      "sha256": "50c5e21634ef70a9606fd32c2cef4a85db5db9e0944fb7dbe46439eac730205f"
+    },
+    {
+      "index": 43,
+      "path": "families/family_0043.npz",
+      "sha256": "a5a394755ddc0ece1f552146096bd8406d292052b468eb0ade80cebe14ce4325"
+    },
+    {
+      "index": 44,
+      "path": "families/family_0044.npz",
+      "sha256": "b44bdbfc9be51238035708770501737716620c57fedfef8ea91644b52b1084a1"
+    },
+    {
+      "index": 45,
+      "path": "families/family_0045.npz",
+      "sha256": "a18df84b4f54b50ce15375647642b4dfd1a951d5e00743f72f5a07874c4931ea"
+    },
+    {
+      "index": 46,
+      "path": "families/family_0046.npz",
+      "sha256": "2445e84204906b76ec8542332fb1b1238f3f4ed06a14b8da616b9354e1a4c083"
+    },
+    {
+      "index": 47,
+      "path": "families/family_0047.npz",
+      "sha256": "2070ae96e749247ea37554f80c7d1920b981370ac2f6e7a027aba7161db5b824"
+    },
+    {
+      "index": 48,
+      "path": "families/family_0048.npz",
+      "sha256": "dee7b69c4a8e2d7799b1ca49fa0443ee51a4799d1817de925775756e51b6d569"
+    },
+    {
+      "index": 49,
+      "path": "families/family_0049.npz",
+      "sha256": "681d5e4532e96e60762fe3830e02a8c3d23ce6a2cffb621250f6b1828ce8f318"
+    },
+    {
+      "index": 50,
+      "path": "families/family_0050.npz",
+      "sha256": "e63fa3a175ea1980cc2ca8831b5e5c387a4c48bbf8f7131dfd5affa6a57cfd0e"
+    },
+    {
+      "index": 51,
+      "path": "families/family_0051.npz",
+      "sha256": "a377d60d04f1893d40e2418c7a400274e6690c4349d9d920e956eed6125a4c36"
+    },
+    {
+      "index": 52,
+      "path": "families/family_0052.npz",
+      "sha256": "365f7c4b22a16ceba0e08f2a9960ebdb766e658b87b1b05e2afeed63d0272544"
+    },
+    {
+      "index": 53,
+      "path": "families/family_0053.npz",
+      "sha256": "d1a69610902ad9bdfcc7437a159a755d7bb0005e0c42fd5e68fa99d70577168e"
+    },
+    {
+      "index": 54,
+      "path": "families/family_0054.npz",
+      "sha256": "ea5c426613bb90fe3c10b06d41915a29b867ac436b1a04db243d15fe30a44d10"
+    },
+    {
+      "index": 55,
+      "path": "families/family_0055.npz",
+      "sha256": "35d53bd595f19d503a0e5f47963eb9a19f0d42f48f886e7dc9543f229aa957bf"
+    },
+    {
+      "index": 56,
+      "path": "families/family_0056.npz",
+      "sha256": "ff19f534461c5113884403d157ea1b0a7308122dc6c72993e587ede89025731e"
+    },
+    {
+      "index": 57,
+      "path": "families/family_0057.npz",
+      "sha256": "e31efa2ab11ee9fc32214da75cccfe999bd985e5dc85120a039ed4a15ce721b0"
+    },
+    {
+      "index": 58,
+      "path": "families/family_0058.npz",
+      "sha256": "d9399bd7697cf29993488b8f0b446d7456fce9887038661bf4a9f6744b946447"
+    },
+    {
+      "index": 59,
+      "path": "families/family_0059.npz",
+      "sha256": "3835f556526eae502370d15f5769e7a9f06ab423c27b0cf85ed10fe289cbccef"
+    },
+    {
+      "index": 60,
+      "path": "families/family_0060.npz",
+      "sha256": "5cd2261eac5a3c0693db39d3db8d0a8a90a470f4caf562574fba903f9effbd67"
+    },
+    {
+      "index": 61,
+      "path": "families/family_0061.npz",
+      "sha256": "98b605c9e31a89134fb1c95b007fc2ebfb18b262863428e47445799639d3e8d9"
+    },
+    {
+      "index": 62,
+      "path": "families/family_0062.npz",
+      "sha256": "f5441f3ceaaf18b3903cf1501dc41fdd7139bb1731e9968344170f7cb6451b8a"
+    },
+    {
+      "index": 63,
+      "path": "families/family_0063.npz",
+      "sha256": "ca190a724bdf4f3fab254dcdaabb620d024e12ac8010411c2eab293717b9f833"
+    },
+    {
+      "index": 64,
+      "path": "families/family_0064.npz",
+      "sha256": "94affe13feea7c0025da29755964ea297e6bf79737382d46fb1b83f50669e32d"
+    },
+    {
+      "index": 65,
+      "path": "families/family_0065.npz",
+      "sha256": "372ea9466486875185a5ec0d48126c0f83162b0df969f48c2a743ea625a04e16"
+    },
+    {
+      "index": 66,
+      "path": "families/family_0066.npz",
+      "sha256": "9ba15ae5dc35c59634cb38b4b100045ceed2a8c2cfb5a1f210aa01cdf1bd5c2c"
+    },
+    {
+      "index": 67,
+      "path": "families/family_0067.npz",
+      "sha256": "2e6e774a562f0f8e0490bac188fe9d9d3795cb91237ee82a95917cb7f6a87c19"
+    },
+    {
+      "index": 68,
+      "path": "families/family_0068.npz",
+      "sha256": "8dfeab8a75c24355970f25c388bbc553be99601a8460d4ca2933505a0d5222c3"
+    },
+    {
+      "index": 69,
+      "path": "families/family_0069.npz",
+      "sha256": "1dd50bc66d1af3ce88e7a18cf1414ccdcfb67a1f786a2bc83fb50246d53fa6e6"
+    },
+    {
+      "index": 70,
+      "path": "families/family_0070.npz",
+      "sha256": "73074e3816728b3facf8a054b0945ceac876c8dc992ebcde9bc3bc3541ff21b0"
+    },
+    {
+      "index": 71,
+      "path": "families/family_0071.npz",
+      "sha256": "da9e838b498f57e3ebcb780104ed7b12c9cd7f7a7f8a2d2077fd6d7689cf8c76"
+    },
+    {
+      "index": 72,
+      "path": "families/family_0072.npz",
+      "sha256": "6a8792e54c769208179469ef752e90b9e9e68f3e108a5ee1525cf1038bda366a"
+    },
+    {
+      "index": 73,
+      "path": "families/family_0073.npz",
+      "sha256": "063048fa03a68bab6ca35f31aabe41372d78c5e2b119075f682bd65d68cf74b6"
+    },
+    {
+      "index": 74,
+      "path": "families/family_0074.npz",
+      "sha256": "f8e5be212fbcf4e1a622acd946d8320a025406ea4a6da981ab1709084a031fd6"
+    },
+    {
+      "index": 75,
+      "path": "families/family_0075.npz",
+      "sha256": "832d609e2922707a3bafd390f2a3fdfbb06a2a9002bad7e0bda1e115301d1a95"
+    },
+    {
+      "index": 76,
+      "path": "families/family_0076.npz",
+      "sha256": "b9fbef620008636c71dcc65fe8732fcfef571398f8d651ef76faf5c7aba98d6e"
+    },
+    {
+      "index": 77,
+      "path": "families/family_0077.npz",
+      "sha256": "3a00b7123722dff2fc362a485a8ebd7b2e6db536f4ea48a6a6c50a232b82cacb"
+    },
+    {
+      "index": 78,
+      "path": "families/family_0078.npz",
+      "sha256": "a6c971fb7e0cf89cafabde2d59a66ce9dffc5bdfe6c59e1f78031cfbbbd22001"
+    },
+    {
+      "index": 79,
+      "path": "families/family_0079.npz",
+      "sha256": "551363b116dd571b4d3a15d70081832e9fcb1eec02207d1f989173fc36ab4394"
+    },
+    {
+      "index": 80,
+      "path": "families/family_0080.npz",
+      "sha256": "d3cb40206e2a1885f506e3e288fdd74444e1865f461547a6221f0680246737ba"
+    },
+    {
+      "index": 81,
+      "path": "families/family_0081.npz",
+      "sha256": "80e076c9c52c568f0b1c4bd5b352e477089c6732a7854932ecfe56636f94d1e0"
+    },
+    {
+      "index": 82,
+      "path": "families/family_0082.npz",
+      "sha256": "b7a5c7795188e8646a248c1859c036617112d7c3b04e0c99b203195b5721e3e5"
+    },
+    {
+      "index": 83,
+      "path": "families/family_0083.npz",
+      "sha256": "99c6554346c1bc07ba80e07c5f4afe4134aaa3bd2ba9cf968f360e4ada26d09d"
+    },
+    {
+      "index": 84,
+      "path": "families/family_0084.npz",
+      "sha256": "0ee5924f9a3241f8b038e13a89cb5c965d30ab62889ecea078854ba2d3ac2b82"
+    },
+    {
+      "index": 85,
+      "path": "families/family_0085.npz",
+      "sha256": "b855329d969e42599f904cbada740a56a9da6f0d1ed7098e89c69ed465fa4da0"
+    },
+    {
+      "index": 86,
+      "path": "families/family_0086.npz",
+      "sha256": "67a3ec2d6c7e6c44bef2fafeaee570db51a017dd683cddb9c8c9232e2cda9c66"
+    },
+    {
+      "index": 87,
+      "path": "families/family_0087.npz",
+      "sha256": "cc380303f70f827d67ca7e23948b7330ee4470cc4e4ee54724928bf3e9dfc9a6"
+    },
+    {
+      "index": 88,
+      "path": "families/family_0088.npz",
+      "sha256": "1b9d346f83dfe123b65cc09698a11bec8e6ad8cd03ef428b804bd964f767cd1f"
+    },
+    {
+      "index": 89,
+      "path": "families/family_0089.npz",
+      "sha256": "2b7a77a34fa1c375edb732fb45d6a746d753c9d76b214128a9385f8cf1caf1c7"
+    },
+    {
+      "index": 90,
+      "path": "families/family_0090.npz",
+      "sha256": "dba14ead7ecc680df03eedaf01f858d07f2fd3ce547f018cc2028113c4a7536c"
+    },
+    {
+      "index": 91,
+      "path": "families/family_0091.npz",
+      "sha256": "de99cb2c91b0062dd1706d9fcb5e45be219a9db166fba57b446b433e45a2e587"
+    },
+    {
+      "index": 92,
+      "path": "families/family_0092.npz",
+      "sha256": "36452b278d6b86a6b2e4b53587a5121deb9bc2e3ac3a21214c128889d563e695"
+    },
+    {
+      "index": 93,
+      "path": "families/family_0093.npz",
+      "sha256": "8c650060ac8ba747a203beea42b2da40df825892a3e7ca340882a85347db75f8"
+    },
+    {
+      "index": 94,
+      "path": "families/family_0094.npz",
+      "sha256": "f8981fcefca1043642053822c7f69a2d59c98f19c92b2e060589839015ce55e7"
+    },
+    {
+      "index": 95,
+      "path": "families/family_0095.npz",
+      "sha256": "299fb234e90ac4df0ddbe9c30a15b1bce2d9c423a48511ed6f620b5c7fd40331"
+    },
+    {
+      "index": 96,
+      "path": "families/family_0096.npz",
+      "sha256": "53a408dea749c4c3f309a33fe544684b6b52d06f2bf941cf9a515c0cac6d5ec0"
+    },
+    {
+      "index": 97,
+      "path": "families/family_0097.npz",
+      "sha256": "dd717347cec987bc679283e2cab6fa3b19e07086a54de7a9accbdb92883a2b3f"
+    },
+    {
+      "index": 98,
+      "path": "families/family_0098.npz",
+      "sha256": "94bfb5fa53169cba6ca566f6d7dd9ce0d00a9f9fc2d3e829d93ba539a260c546"
+    },
+    {
+      "index": 99,
+      "path": "families/family_0099.npz",
+      "sha256": "33a6328c4b1363787aac1269d93644b7cd8c3903ba42f3893b70bc260fed7754"
+    },
+    {
+      "index": 100,
+      "path": "families/family_0100.npz",
+      "sha256": "79f65ab51c7dca4b0526bc06112db2223f4f728538456c5dcbca63cf7bba3ab5"
+    },
+    {
+      "index": 101,
+      "path": "families/family_0101.npz",
+      "sha256": "2cd810ebb1b262df0b22139ce530cfec1ff3f27f6e4f5f499097ba58e39d2372"
+    },
+    {
+      "index": 102,
+      "path": "families/family_0102.npz",
+      "sha256": "99c340e1634914763b78cde6d70cd6dc24565b7bd6447c8e54a9e50394de1b24"
+    },
+    {
+      "index": 103,
+      "path": "families/family_0103.npz",
+      "sha256": "92c47f549785acaa361e42cedec0a2201fd32e58643ef681e50e71be43a8140e"
+    },
+    {
+      "index": 104,
+      "path": "families/family_0104.npz",
+      "sha256": "0a67b3e96336d2c17d7eda1dfef301a7582eb48f086e28bb819aaa6c5c056d28"
+    },
+    {
+      "index": 105,
+      "path": "families/family_0105.npz",
+      "sha256": "47a8643cf2da7d92f45fddc46740d96e0e4fa6cd0012e970fdc3502a76e1438d"
+    },
+    {
+      "index": 106,
+      "path": "families/family_0106.npz",
+      "sha256": "6aadb6d2cee02284633c611e8388291db4ae694a89652595cd26d8557cb315f1"
+    },
+    {
+      "index": 107,
+      "path": "families/family_0107.npz",
+      "sha256": "df254c4c3ec36792b7be932b70ba818602e1e84e7e00326cb1957ed6dce7b9c5"
+    },
+    {
+      "index": 108,
+      "path": "families/family_0108.npz",
+      "sha256": "36dafa102e51dc01af8cfdcc18fad58d4c78641c4887aabbad8e6c1a9add10fb"
+    },
+    {
+      "index": 109,
+      "path": "families/family_0109.npz",
+      "sha256": "c1f070f85aa1e146f6b958fd752785705c683b56d71edbb284e19ffb524f0096"
+    },
+    {
+      "index": 110,
+      "path": "families/family_0110.npz",
+      "sha256": "f5800458492ef713d742aa8902c5074040973b09a0e080bee413a49bdfc7a3e8"
+    },
+    {
+      "index": 111,
+      "path": "families/family_0111.npz",
+      "sha256": "2d957bb8f447860fec046583ffc8264eeb81c616c56703d072fccd043e0fbf79"
+    },
+    {
+      "index": 112,
+      "path": "families/family_0112.npz",
+      "sha256": "8d3337ddc49d1d0224ac1810dc6f4df061943357c63233b49d833e6fe6b9a9f9"
+    },
+    {
+      "index": 113,
+      "path": "families/family_0113.npz",
+      "sha256": "26d337cbbdcb0420594cc0fe04bdf94032a21aae96ff3d9164b2c58cf19b1e00"
+    },
+    {
+      "index": 114,
+      "path": "families/family_0114.npz",
+      "sha256": "796ebac76e14f7cdd15f0fc08ce60a346db93ea91f59fdb8334b34127509947c"
+    },
+    {
+      "index": 115,
+      "path": "families/family_0115.npz",
+      "sha256": "d9c34cabdb3ea25e8643c3eaa70b171014fd639cb73946d16527f9fae448b2a7"
+    },
+    {
+      "index": 116,
+      "path": "families/family_0116.npz",
+      "sha256": "5e89f866a53c32f362fc6c1ac0aaefea1affcfd3b592c3d8765ac9b4de2492ab"
+    },
+    {
+      "index": 117,
+      "path": "families/family_0117.npz",
+      "sha256": "5846d6ad89e6a9145c369fea0a8ef5316a7c5d1f692d99e4c9b79d6940060595"
+    },
+    {
+      "index": 118,
+      "path": "families/family_0118.npz",
+      "sha256": "bb17388ae4eb59208923e03150f62a2a0794626cb7797e14fa762acf196109f8"
+    },
+    {
+      "index": 119,
+      "path": "families/family_0119.npz",
+      "sha256": "164f8b0abcbaeb62cc54a9e3308bc0da3f386bb932f0da06e5698c55e444971f"
+    },
+    {
+      "index": 120,
+      "path": "families/family_0120.npz",
+      "sha256": "6579e0d52301088d00a497bdad89081c176ede09cd1ed902846524c2e410f414"
+    },
+    {
+      "index": 121,
+      "path": "families/family_0121.npz",
+      "sha256": "7c404ac920f091ef7675b93ab17286cdfffcd9dcef3494462756283f07f86aae"
+    },
+    {
+      "index": 122,
+      "path": "families/family_0122.npz",
+      "sha256": "3d43d8510c9e3faad617b9acf041cc3b4c52c3081df0847bfaf3a83fc930a070"
+    },
+    {
+      "index": 123,
+      "path": "families/family_0123.npz",
+      "sha256": "c4cf0b9a6936ba020f622eb8a160e4960c31d9b58778488a1ccb4c4c78a8cfe5"
+    },
+    {
+      "index": 124,
+      "path": "families/family_0124.npz",
+      "sha256": "d42c1193368374a8dac6da43a5bfa6d390f989b5aa53e0bd8981d88a6823d44b"
+    },
+    {
+      "index": 125,
+      "path": "families/family_0125.npz",
+      "sha256": "45d614d4bf8937489516466a9c90e76be383eafdaaa75399c8a117baa0b8ea84"
+    },
+    {
+      "index": 126,
+      "path": "families/family_0126.npz",
+      "sha256": "84c5302117825a387d8fa091dc5ebf5a0938968f91c3fd24132809430b6cbd18"
+    },
+    {
+      "index": 127,
+      "path": "families/family_0127.npz",
+      "sha256": "05d5c1f8374857e2ec191ea267a482973a05c4eb85a4ea312883b66ea78ab613"
+    }
+  ],
+  "measurements": {
+    "families": 128,
+    "primary": "observed",
+    "selected_lambda": 4.0,
+    "arms": {
+      "observed": {
+        "conditions": {
+          "stationary": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.7265625,
+                  "se": 0.03955156442885268
+                },
+                "first_poison": {
+                  "mean": 0.171875,
+                  "se": 0.03347745561491821
+                },
+                "no_meal": {
+                  "mean": 0.1015625,
+                  "se": 0.02680456515850638
+                },
+                "food_count": {
+                  "mean": 5.5078125,
+                  "se": 0.36231771376435773
+                },
+                "poison_count": {
+                  "mean": 0.75,
+                  "se": 0.08942621116929023
+                },
+                "fitness": {
+                  "mean": 4.7578125,
+                  "se": 0.38033380194808025
+                },
+                "first_meal_step": {
+                  "mean": 13.8828125,
+                  "se": 1.3927637922571048
+                },
+                "accuracy": {
+                  "mean": 0.8801498127340824,
+                  "se": 0.014860946454828768
+                },
+                "food_encounters": 705,
+                "poison_encounters": 96,
+                "encounters": 801,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.7109375,
+                  "se": 0.04022626664627534
+                },
+                "first_poison": {
+                  "mean": 0.1484375,
+                  "se": 0.0315484639796987
+                },
+                "no_meal": {
+                  "mean": 0.140625,
+                  "se": 0.030847556262404395
+                },
+                "food_count": {
+                  "mean": 5.90625,
+                  "se": 0.38414657366564536
+                },
+                "poison_count": {
+                  "mean": 0.6015625,
+                  "se": 0.07869807042195992
+                },
+                "fitness": {
+                  "mean": 5.3046875,
+                  "se": 0.37900723018204513
+                },
+                "first_meal_step": {
+                  "mean": 16.796875,
+                  "se": 1.4322528925794373
+                },
+                "accuracy": {
+                  "mean": 0.907563025210084,
+                  "se": 0.011409931490176743
+                },
+                "food_encounters": 756,
+                "poison_encounters": 77,
+                "encounters": 833,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.7109375,
+                  "se": 0.04022626664627534
+                },
+                "first_poison": {
+                  "mean": 0.1640625,
+                  "se": 0.032861675748836264
+                },
+                "no_meal": {
+                  "mean": 0.125,
+                  "se": 0.02934655810211727
+                },
+                "food_count": {
+                  "mean": 5.7890625,
+                  "se": 0.3933584235512072
+                },
+                "poison_count": {
+                  "mean": 0.640625,
+                  "se": 0.07743295852506787
+                },
+                "fitness": {
+                  "mean": 5.1484375,
+                  "se": 0.40361461123003955
+                },
+                "first_meal_step": {
+                  "mean": 14.0703125,
+                  "se": 1.4911642485521797
+                },
+                "accuracy": {
+                  "mean": 0.9003645200486027,
+                  "se": 0.012627559434362477
+                },
+                "food_encounters": 741,
+                "poison_encounters": 82,
+                "encounters": 823,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 28.296875,
+              "se": 1.638697546075774
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.921875,
+                "se": 0.023813825861573653
+              },
+              "after_early": {
+                "mean": 0.8984375,
+                "se": 0.02680456515850638
+              },
+              "after_late": {
+                "mean": 0.8828125,
+                "se": 0.02854125206846796
+              },
+              "end": {
+                "mean": 0.8828125,
+                "se": 0.02854125206846796
+              }
+            },
+            "end_survivor_only": {
+              "families": 113,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.8141592920353983,
+                    "se": 0.036754972844770244
+                  },
+                  "first_poison": {
+                    "mean": 0.1415929203539823,
+                    "se": 0.03294264025485558
+                  },
+                  "no_meal": {
+                    "mean": 0.04424778761061947,
+                    "se": 0.019431638620656635
+                  },
+                  "food_count": {
+                    "mean": 6.176991150442478,
+                    "se": 0.36612012470874505
+                  },
+                  "poison_count": {
+                    "mean": 0.7168141592920354,
+                    "se": 0.08751830813401153
+                  },
+                  "fitness": {
+                    "mean": 5.460176991150442,
+                    "se": 0.3835746181777295
+                  },
+                  "first_meal_step": {
+                    "mean": 11.336283185840708,
+                    "se": 1.2385767939985155
+                  },
+                  "accuracy": {
+                    "mean": 0.8960205391527599,
+                    "se": 0.013058581086907124
+                  },
+                  "food_encounters": 698,
+                  "poison_encounters": 81,
+                  "encounters": 779,
+                  "assigned_families": 113
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.7876106194690266,
+                    "se": 0.03864676704837616
+                  },
+                  "first_poison": {
+                    "mean": 0.1504424778761062,
+                    "se": 0.03378100939541691
+                  },
+                  "no_meal": {
+                    "mean": 0.061946902654867256,
+                    "se": 0.022777942789794246
+                  },
+                  "food_count": {
+                    "mean": 6.663716814159292,
+                    "se": 0.38142113565279173
+                  },
+                  "poison_count": {
+                    "mean": 0.6194690265486725,
+                    "se": 0.08080523171570651
+                  },
+                  "fitness": {
+                    "mean": 6.04424778761062,
+                    "se": 0.3761601061978541
+                  },
+                  "first_meal_step": {
+                    "mean": 13.371681415929203,
+                    "se": 1.220945177113222
+                  },
+                  "accuracy": {
+                    "mean": 0.9149453219927096,
+                    "se": 0.0103662640201432
+                  },
+                  "food_encounters": 753,
+                  "poison_encounters": 70,
+                  "encounters": 823,
+                  "assigned_families": 113
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.8053097345132744,
+                    "se": 0.03741489939222956
+                  },
+                  "first_poison": {
+                    "mean": 0.168141592920354,
+                    "se": 0.03533891997128863
+                  },
+                  "no_meal": {
+                    "mean": 0.02654867256637168,
+                    "se": 0.015190410670920246
+                  },
+                  "food_count": {
+                    "mean": 6.557522123893805,
+                    "se": 0.3921113013078818
+                  },
+                  "poison_count": {
+                    "mean": 0.6637168141592921,
+                    "se": 0.07709425358818248
+                  },
+                  "fitness": {
+                    "mean": 5.893805309734513,
+                    "se": 0.4064436024842566
+                  },
+                  "first_meal_step": {
+                    "mean": 9.805309734513274,
+                    "se": 1.1366675075018917
+                  },
+                  "accuracy": {
+                    "mean": 0.9080882352941176,
+                    "se": 0.011300556328743864
+                  },
+                  "food_encounters": 741,
+                  "poison_encounters": 75,
+                  "encounters": 816,
+                  "assigned_families": 113
+                }
+              },
+              "fitness": {
+                "mean": 32.47787610619469,
+                "se": 1.4548133493139557
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 118,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.788135593220339,
+                    "se": 0.037777789332276636
+                  },
+                  "first_poison": {
+                    "mean": 0.16101694915254236,
+                    "se": 0.03397969368949713
+                  },
+                  "no_meal": {
+                    "mean": 0.05084745762711865,
+                    "se": 0.020309989475094176
+                  },
+                  "food_count": {
+                    "mean": 5.9491525423728815,
+                    "se": 0.36464168772499533
+                  },
+                  "poison_count": {
+                    "mean": 0.7457627118644068,
+                    "se": 0.08777716036854391
+                  },
+                  "fitness": {
+                    "mean": 5.203389830508475,
+                    "se": 0.3846917378426609
+                  },
+                  "first_meal_step": {
+                    "mean": 11.686440677966102,
+                    "se": 1.2355905177874644
+                  },
+                  "accuracy": {
+                    "mean": 0.8886075949367088,
+                    "se": 0.013737112350585525
+                  },
+                  "food_encounters": 702,
+                  "poison_encounters": 88,
+                  "encounters": 790,
+                  "assigned_families": 118
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.7711864406779662,
+                    "se": 0.03883538724538848
+                  },
+                  "first_poison": {
+                    "mean": 0.16101694915254236,
+                    "se": 0.03397969368949713
+                  },
+                  "no_meal": {
+                    "mean": 0.06779661016949153,
+                    "se": 0.023241620090605715
+                  },
+                  "food_count": {
+                    "mean": 6.406779661016949,
+                    "se": 0.3825540116114691
+                  },
+                  "poison_count": {
+                    "mean": 0.652542372881356,
+                    "se": 0.0837145722213986
+                  },
+                  "fitness": {
+                    "mean": 5.754237288135593,
+                    "se": 0.3834427107485375
+                  },
+                  "first_meal_step": {
+                    "mean": 13.898305084745763,
+                    "se": 1.2231997228593767
+                  },
+                  "accuracy": {
+                    "mean": 0.907563025210084,
+                    "se": 0.011413740260016172
+                  },
+                  "food_encounters": 756,
+                  "poison_encounters": 77,
+                  "encounters": 833,
+                  "assigned_families": 118
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.7711864406779662,
+                    "se": 0.03883538724538848
+                  },
+                  "first_poison": {
+                    "mean": 0.17796610169491525,
+                    "se": 0.03536067741432931
+                  },
+                  "no_meal": {
+                    "mean": 0.05084745762711865,
+                    "se": 0.020309989475094176
+                  },
+                  "food_count": {
+                    "mean": 6.279661016949152,
+                    "se": 0.39478815088897
+                  },
+                  "poison_count": {
+                    "mean": 0.6949152542372882,
+                    "se": 0.08208184523478862
+                  },
+                  "fitness": {
+                    "mean": 5.584745762711864,
+                    "se": 0.41350627089478237
+                  },
+                  "first_meal_step": {
+                    "mean": 10.940677966101696,
+                    "se": 1.2436302938654982
+                  },
+                  "accuracy": {
+                    "mean": 0.9003645200486027,
+                    "se": 0.012631774662785243
+                  },
+                  "food_encounters": 741,
+                  "poison_encounters": 82,
+                  "encounters": 823,
+                  "assigned_families": 118
+                }
+              },
+              "fitness": {
+                "mean": 31.008474576271187,
+                "se": 1.5353526639823192
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.9745762711864406,
+                  "se": 0.014552399522167074
+                },
+                "after_late": {
+                  "mean": 0.9576271186440678,
+                  "se": 0.018622984668462256
+                },
+                "end": {
+                  "mean": 0.9576271186440678,
+                  "se": 0.018622984668462256
+                }
+              }
+            }
+          },
+          "reversal": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.7265625,
+                  "se": 0.03955156442885268
+                },
+                "first_poison": {
+                  "mean": 0.171875,
+                  "se": 0.03347745561491821
+                },
+                "no_meal": {
+                  "mean": 0.1015625,
+                  "se": 0.02680456515850638
+                },
+                "food_count": {
+                  "mean": 5.5078125,
+                  "se": 0.36231771376435773
+                },
+                "poison_count": {
+                  "mean": 0.75,
+                  "se": 0.08942621116929023
+                },
+                "fitness": {
+                  "mean": 4.7578125,
+                  "se": 0.38033380194808025
+                },
+                "first_meal_step": {
+                  "mean": 13.8828125,
+                  "se": 1.3927637922571048
+                },
+                "accuracy": {
+                  "mean": 0.8801498127340824,
+                  "se": 0.014860946454828768
+                },
+                "food_encounters": 705,
+                "poison_encounters": 96,
+                "encounters": 801,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.1484375,
+                  "se": 0.0315484639796987
+                },
+                "first_poison": {
+                  "mean": 0.7109375,
+                  "se": 0.04022626664627534
+                },
+                "no_meal": {
+                  "mean": 0.140625,
+                  "se": 0.030847556262404395
+                },
+                "food_count": {
+                  "mean": 0.7421875,
+                  "se": 0.10478587897155107
+                },
+                "poison_count": {
+                  "mean": 3.9375,
+                  "se": 0.23679443475451162
+                },
+                "fitness": {
+                  "mean": -3.1953125,
+                  "se": 0.25824461222427114
+                },
+                "first_meal_step": {
+                  "mean": 16.796875,
+                  "se": 1.4322528925794373
+                },
+                "accuracy": {
+                  "mean": 0.15859766277128548,
+                  "se": 0.02042449890728791
+                },
+                "food_encounters": 95,
+                "poison_encounters": 504,
+                "encounters": 599,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.203125,
+                  "se": 0.035700551879873775
+                },
+                "first_poison": {
+                  "mean": 0.484375,
+                  "se": 0.04434615620188394
+                },
+                "no_meal": {
+                  "mean": 0.3125,
+                  "se": 0.041130075016539196
+                },
+                "food_count": {
+                  "mean": 0.6640625,
+                  "se": 0.09938129452530586
+                },
+                "poison_count": {
+                  "mean": 1.6953125,
+                  "se": 0.15391806868866442
+                },
+                "fitness": {
+                  "mean": -1.03125,
+                  "se": 0.1450196412844402
+                },
+                "first_meal_step": {
+                  "mean": 25.6484375,
+                  "se": 1.7878564923045532
+                },
+                "accuracy": {
+                  "mean": 0.2814569536423841,
+                  "se": 0.02824408353243964
+                },
+                "food_encounters": 85,
+                "poison_encounters": 217,
+                "encounters": 302,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 6.796875,
+              "se": 0.6628647576126238
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.921875,
+                "se": 0.023813825861573653
+              },
+              "after_early": {
+                "mean": 0.75,
+                "se": 0.038423663968391995
+              },
+              "after_late": {
+                "mean": 0.453125,
+                "se": 0.04417241936858356
+              },
+              "end": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              }
+            },
+            "end_survivor_only": {
+              "families": 28,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.5714285714285714,
+                    "se": 0.09523809523809525
+                  },
+                  "first_poison": {
+                    "mean": 0.25,
+                    "se": 0.08333333333333333
+                  },
+                  "no_meal": {
+                    "mean": 0.17857142857142858,
+                    "se": 0.07370704611510598
+                  },
+                  "food_count": {
+                    "mean": 3.3214285714285716,
+                    "se": 0.5067104498328071
+                  },
+                  "poison_count": {
+                    "mean": 0.6785714285714286,
+                    "se": 0.16308509990503586
+                  },
+                  "fitness": {
+                    "mean": 2.642857142857143,
+                    "se": 0.5225453721073499
+                  },
+                  "first_meal_step": {
+                    "mean": 18.892857142857142,
+                    "se": 3.28590837936042
+                  },
+                  "accuracy": {
+                    "mean": 0.8303571428571429,
+                    "se": 0.038952424948535465
+                  },
+                  "food_encounters": 93,
+                  "poison_encounters": 19,
+                  "encounters": 112,
+                  "assigned_families": 28
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.25,
+                    "se": 0.08333333333333333
+                  },
+                  "first_poison": {
+                    "mean": 0.5714285714285714,
+                    "se": 0.09523809523809525
+                  },
+                  "no_meal": {
+                    "mean": 0.17857142857142858,
+                    "se": 0.07370704611510599
+                  },
+                  "food_count": {
+                    "mean": 1.3214285714285714,
+                    "se": 0.33748827700028755
+                  },
+                  "poison_count": {
+                    "mean": 2.0,
+                    "se": 0.3170632437371139
+                  },
+                  "fitness": {
+                    "mean": -0.6785714285714286,
+                    "se": 0.4426159951054693
+                  },
+                  "first_meal_step": {
+                    "mean": 19.142857142857142,
+                    "se": 3.2618178646749922
+                  },
+                  "accuracy": {
+                    "mean": 0.3978494623655914,
+                    "se": 0.06916455384947333
+                  },
+                  "food_encounters": 37,
+                  "poison_encounters": 56,
+                  "encounters": 93,
+                  "assigned_families": 28
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.35714285714285715,
+                    "se": 0.09221388919541469
+                  },
+                  "first_poison": {
+                    "mean": 0.5357142857142857,
+                    "se": 0.09597925890831606
+                  },
+                  "no_meal": {
+                    "mean": 0.10714285714285714,
+                    "se": 0.05952380952380952
+                  },
+                  "food_count": {
+                    "mean": 1.3571428571428572,
+                    "se": 0.27320499171521434
+                  },
+                  "poison_count": {
+                    "mean": 1.8214285714285714,
+                    "se": 0.2866222345991167
+                  },
+                  "fitness": {
+                    "mean": -0.4642857142857143,
+                    "se": 0.3020307933823496
+                  },
+                  "first_meal_step": {
+                    "mean": 22.357142857142858,
+                    "se": 3.530747138925769
+                  },
+                  "accuracy": {
+                    "mean": 0.42696629213483145,
+                    "se": 0.048169920179685154
+                  },
+                  "food_encounters": 38,
+                  "poison_encounters": 51,
+                  "encounters": 89,
+                  "assigned_families": 28
+                }
+              },
+              "fitness": {
+                "mean": 6.928571428571429,
+                "se": 1.0234403173338291
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 118,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.788135593220339,
+                    "se": 0.037777789332276636
+                  },
+                  "first_poison": {
+                    "mean": 0.16101694915254236,
+                    "se": 0.03397969368949713
+                  },
+                  "no_meal": {
+                    "mean": 0.05084745762711865,
+                    "se": 0.020309989475094176
+                  },
+                  "food_count": {
+                    "mean": 5.9491525423728815,
+                    "se": 0.36464168772499533
+                  },
+                  "poison_count": {
+                    "mean": 0.7457627118644068,
+                    "se": 0.08777716036854391
+                  },
+                  "fitness": {
+                    "mean": 5.203389830508475,
+                    "se": 0.3846917378426609
+                  },
+                  "first_meal_step": {
+                    "mean": 11.686440677966102,
+                    "se": 1.2355905177874644
+                  },
+                  "accuracy": {
+                    "mean": 0.8886075949367088,
+                    "se": 0.013737112350585525
+                  },
+                  "food_encounters": 702,
+                  "poison_encounters": 88,
+                  "encounters": 790,
+                  "assigned_families": 118
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.16101694915254236,
+                    "se": 0.03397969368949713
+                  },
+                  "first_poison": {
+                    "mean": 0.7711864406779662,
+                    "se": 0.03883538724538848
+                  },
+                  "no_meal": {
+                    "mean": 0.06779661016949153,
+                    "se": 0.023241620090605715
+                  },
+                  "food_count": {
+                    "mean": 0.8050847457627118,
+                    "se": 0.11178459305738536
+                  },
+                  "poison_count": {
+                    "mean": 4.271186440677966,
+                    "se": 0.23203557180736561
+                  },
+                  "fitness": {
+                    "mean": -3.4661016949152543,
+                    "se": 0.26552400868336806
+                  },
+                  "first_meal_step": {
+                    "mean": 13.898305084745763,
+                    "se": 1.2231997228593767
+                  },
+                  "accuracy": {
+                    "mean": 0.15859766277128548,
+                    "se": 0.020431316846159012
+                  },
+                  "food_encounters": 95,
+                  "poison_encounters": 504,
+                  "encounters": 599,
+                  "assigned_families": 118
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.22033898305084745,
+                    "se": 0.038318248492233156
+                  },
+                  "first_poison": {
+                    "mean": 0.5254237288135594,
+                    "se": 0.04616522112086746
+                  },
+                  "no_meal": {
+                    "mean": 0.2542372881355932,
+                    "se": 0.04025566684714267
+                  },
+                  "food_count": {
+                    "mean": 0.7203389830508474,
+                    "se": 0.10622081501009084
+                  },
+                  "poison_count": {
+                    "mean": 1.8389830508474576,
+                    "se": 0.16011473639582333
+                  },
+                  "fitness": {
+                    "mean": -1.11864406779661,
+                    "se": 0.1546842084219753
+                  },
+                  "first_meal_step": {
+                    "mean": 23.5,
+                    "se": 1.805184719938282
+                  },
+                  "accuracy": {
+                    "mean": 0.2814569536423841,
+                    "se": 0.028253511740978256
+                  },
+                  "food_encounters": 85,
+                  "poison_encounters": 217,
+                  "encounters": 302,
+                  "assigned_families": 118
+                }
+              },
+              "fitness": {
+                "mean": 7.686440677966102,
+                "se": 0.6562306986922981
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.8135593220338984,
+                  "se": 0.036005763019918265
+                },
+                "after_late": {
+                  "mean": 0.4915254237288136,
+                  "se": 0.04621837625778502
+                },
+                "end": {
+                  "mean": 0.23728813559322035,
+                  "se": 0.039330125499343824
+                }
+              }
+            }
+          }
+        },
+        "reversal_minus_stationary": {
+          "pre_first_food_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "early_first_food_difference": {
+            "mean": -0.5625,
+            "se": 0.06538611846706437
+          },
+          "late_first_food_difference": {
+            "mean": -0.5078125,
+            "se": 0.05433484437936962
+          },
+          "recovery_difference": {
+            "mean": 0.0546875,
+            "se": 0.07867363951087934
+          },
+          "end_survival_difference": {
+            "mean": -0.6640625,
+            "se": 0.04610485277665558
+          }
+        },
+        "gate": {
+          "passed": false,
+          "late_level_passed": false,
+          "late_chance_passed": false,
+          "recovery_passed": false,
+          "accuracy_noninferiority_passed": false,
+          "survival_noninferiority_passed": false
+        }
+      },
+      "belief_reset": {
+        "conditions": {
+          "stationary": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.5,
+                  "se": 0.044367825470805686
+                },
+                "first_poison": {
+                  "mean": 0.34375,
+                  "se": 0.0421457853694702
+                },
+                "no_meal": {
+                  "mean": 0.15625,
+                  "se": 0.03221922171672519
+                },
+                "food_count": {
+                  "mean": 3.015625,
+                  "se": 0.26247993338186754
+                },
+                "poison_count": {
+                  "mean": 1.265625,
+                  "se": 0.10315183974279292
+                },
+                "fitness": {
+                  "mean": 1.75,
+                  "se": 0.2579923242464371
+                },
+                "first_meal_step": {
+                  "mean": 18.3203125,
+                  "se": 1.5579731113746749
+                },
+                "accuracy": {
+                  "mean": 0.7043795620437956,
+                  "se": 0.021658630201891734
+                },
+                "food_encounters": 386,
+                "poison_encounters": 162,
+                "encounters": 548,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.578125,
+                  "se": 0.04382287939944462
+                },
+                "first_poison": {
+                  "mean": 0.265625,
+                  "se": 0.03919147016458323
+                },
+                "no_meal": {
+                  "mean": 0.15625,
+                  "se": 0.03221922171672519
+                },
+                "food_count": {
+                  "mean": 3.296875,
+                  "se": 0.26303595805763746
+                },
+                "poison_count": {
+                  "mean": 1.171875,
+                  "se": 0.09676698957118221
+                },
+                "fitness": {
+                  "mean": 2.125,
+                  "se": 0.25535601209563447
+                },
+                "first_meal_step": {
+                  "mean": 18.265625,
+                  "se": 1.4971875033383626
+                },
+                "accuracy": {
+                  "mean": 0.7377622377622378,
+                  "se": 0.01908376829156966
+                },
+                "food_encounters": 422,
+                "poison_encounters": 150,
+                "encounters": 572,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.609375,
+                  "se": 0.04329327832163609
+                },
+                "first_poison": {
+                  "mean": 0.2265625,
+                  "se": 0.037145376625835905
+                },
+                "no_meal": {
+                  "mean": 0.1640625,
+                  "se": 0.032861675748836264
+                },
+                "food_count": {
+                  "mean": 3.640625,
+                  "se": 0.27501216307210563
+                },
+                "poison_count": {
+                  "mean": 1.0546875,
+                  "se": 0.11219259935113092
+                },
+                "fitness": {
+                  "mean": 2.5859375,
+                  "se": 0.2805031298840602
+                },
+                "first_meal_step": {
+                  "mean": 16.859375,
+                  "se": 1.5576888280761305
+                },
+                "accuracy": {
+                  "mean": 0.7753743760399334,
+                  "se": 0.021000334953826114
+                },
+                "food_encounters": 466,
+                "poison_encounters": 135,
+                "encounters": 601,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 11.9296875,
+              "se": 1.016605702690509
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.8984375,
+                "se": 0.02680456515850638
+              },
+              "after_early": {
+                "mean": 0.8671875,
+                "se": 0.030114393430435732
+              },
+              "after_late": {
+                "mean": 0.8046875,
+                "se": 0.03517845700641747
+              },
+              "end": {
+                "mean": 0.8046875,
+                "se": 0.03517845700641747
+              }
+            },
+            "end_survivor_only": {
+              "families": 103,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.5825242718446602,
+                    "se": 0.04882840548212235
+                  },
+                  "first_poison": {
+                    "mean": 0.3300970873786408,
+                    "se": 0.046561471100123486
+                  },
+                  "no_meal": {
+                    "mean": 0.08737864077669903,
+                    "se": 0.027960689125970644
+                  },
+                  "food_count": {
+                    "mean": 3.6116504854368934,
+                    "se": 0.2934117011428644
+                  },
+                  "poison_count": {
+                    "mean": 1.3398058252427185,
+                    "se": 0.11085514483740583
+                  },
+                  "fitness": {
+                    "mean": 2.2718446601941746,
+                    "se": 0.2927495493425382
+                  },
+                  "first_meal_step": {
+                    "mean": 15.116504854368932,
+                    "se": 1.5525137879114035
+                  },
+                  "accuracy": {
+                    "mean": 0.7294117647058823,
+                    "se": 0.02053603846223026
+                  },
+                  "food_encounters": 372,
+                  "poison_encounters": 138,
+                  "encounters": 510,
+                  "assigned_families": 103
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.6796116504854369,
+                    "se": 0.046202840822800406
+                  },
+                  "first_poison": {
+                    "mean": 0.2621359223300971,
+                    "se": 0.04354631077260595
+                  },
+                  "no_meal": {
+                    "mean": 0.05825242718446602,
+                    "se": 0.0231912512898309
+                  },
+                  "food_count": {
+                    "mean": 4.009708737864078,
+                    "se": 0.2836006104205853
+                  },
+                  "poison_count": {
+                    "mean": 1.2912621359223302,
+                    "se": 0.10654488213709234
+                  },
+                  "fitness": {
+                    "mean": 2.7184466019417477,
+                    "se": 0.284579729847445
+                  },
+                  "first_meal_step": {
+                    "mean": 13.96116504854369,
+                    "se": 1.3094366987149757
+                  },
+                  "accuracy": {
+                    "mean": 0.7564102564102564,
+                    "se": 0.018170951470370546
+                  },
+                  "food_encounters": 413,
+                  "poison_encounters": 133,
+                  "encounters": 546,
+                  "assigned_families": 103
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.7281553398058253,
+                    "se": 0.04405268024140923
+                  },
+                  "first_poison": {
+                    "mean": 0.23300970873786409,
+                    "se": 0.04185832598928315
+                  },
+                  "no_meal": {
+                    "mean": 0.038834951456310676,
+                    "se": 0.019129793517354915
+                  },
+                  "food_count": {
+                    "mean": 4.475728155339806,
+                    "se": 0.28472257486902663
+                  },
+                  "poison_count": {
+                    "mean": 1.1359223300970873,
+                    "se": 0.12189298193960925
+                  },
+                  "fitness": {
+                    "mean": 3.3398058252427183,
+                    "se": 0.30119800080004155
+                  },
+                  "first_meal_step": {
+                    "mean": 11.339805825242719,
+                    "se": 1.2131923955841732
+                  },
+                  "accuracy": {
+                    "mean": 0.7975778546712803,
+                    "se": 0.019466325002114784
+                  },
+                  "food_encounters": 461,
+                  "poison_encounters": 117,
+                  "encounters": 578,
+                  "assigned_families": 103
+                }
+              },
+              "fitness": {
+                "mean": 15.524271844660195,
+                "se": 0.9740439391094495
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 115,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.5565217391304348,
+                    "se": 0.04652911680416965
+                  },
+                  "first_poison": {
+                    "mean": 0.34782608695652173,
+                    "se": 0.04460775443848496
+                  },
+                  "no_meal": {
+                    "mean": 0.09565217391304348,
+                    "se": 0.027546266588623438
+                  },
+                  "food_count": {
+                    "mean": 3.347826086956522,
+                    "se": 0.2753663334245069
+                  },
+                  "poison_count": {
+                    "mean": 1.3478260869565217,
+                    "se": 0.10841305751169579
+                  },
+                  "fitness": {
+                    "mean": 2.0,
+                    "se": 0.2767359052435254
+                  },
+                  "first_meal_step": {
+                    "mean": 15.956521739130435,
+                    "se": 1.4826940302160851
+                  },
+                  "accuracy": {
+                    "mean": 0.7129629629629629,
+                    "se": 0.021265674136480544
+                  },
+                  "food_encounters": 385,
+                  "poison_encounters": 155,
+                  "encounters": 540,
+                  "assigned_families": 115
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.6434782608695652,
+                    "se": 0.044859819541314946
+                  },
+                  "first_poison": {
+                    "mean": 0.2956521739130435,
+                    "se": 0.04273972288221523
+                  },
+                  "no_meal": {
+                    "mean": 0.06086956521739131,
+                    "se": 0.02239291500727701
+                  },
+                  "food_count": {
+                    "mean": 3.6695652173913045,
+                    "se": 0.2716510917644486
+                  },
+                  "poison_count": {
+                    "mean": 1.3043478260869565,
+                    "se": 0.10047477913551628
+                  },
+                  "fitness": {
+                    "mean": 2.365217391304348,
+                    "se": 0.2754458101374745
+                  },
+                  "first_meal_step": {
+                    "mean": 14.565217391304348,
+                    "se": 1.2636519446391594
+                  },
+                  "accuracy": {
+                    "mean": 0.7377622377622378,
+                    "se": 0.019092267255276657
+                  },
+                  "food_encounters": 422,
+                  "poison_encounters": 150,
+                  "encounters": 572,
+                  "assigned_families": 115
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.6782608695652174,
+                    "se": 0.04375199868936842
+                  },
+                  "first_poison": {
+                    "mean": 0.25217391304347825,
+                    "se": 0.040672227541547194
+                  },
+                  "no_meal": {
+                    "mean": 0.06956521739130435,
+                    "se": 0.023827946499672844
+                  },
+                  "food_count": {
+                    "mean": 4.052173913043478,
+                    "se": 0.28134022668634706
+                  },
+                  "poison_count": {
+                    "mean": 1.173913043478261,
+                    "se": 0.11991661835213904
+                  },
+                  "fitness": {
+                    "mean": 2.878260869565217,
+                    "se": 0.3003044034302473
+                  },
+                  "first_meal_step": {
+                    "mean": 13.0,
+                    "se": 1.312324958361561
+                  },
+                  "accuracy": {
+                    "mean": 0.7753743760399334,
+                    "se": 0.021009687461249198
+                  },
+                  "food_encounters": 466,
+                  "poison_encounters": 135,
+                  "encounters": 601,
+                  "assigned_families": 115
+                }
+              },
+              "fitness": {
+                "mean": 13.678260869565218,
+                "se": 1.0085483466443177
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.9652173913043478,
+                  "se": 0.017160945775059652
+                },
+                "after_late": {
+                  "mean": 0.8956521739130435,
+                  "se": 0.028632480218978584
+                },
+                "end": {
+                  "mean": 0.8956521739130435,
+                  "se": 0.028632480218978584
+                }
+              }
+            }
+          },
+          "reversal": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.5,
+                  "se": 0.044367825470805686
+                },
+                "first_poison": {
+                  "mean": 0.34375,
+                  "se": 0.0421457853694702
+                },
+                "no_meal": {
+                  "mean": 0.15625,
+                  "se": 0.03221922171672519
+                },
+                "food_count": {
+                  "mean": 3.015625,
+                  "se": 0.26247993338186754
+                },
+                "poison_count": {
+                  "mean": 1.265625,
+                  "se": 0.10315183974279292
+                },
+                "fitness": {
+                  "mean": 1.75,
+                  "se": 0.2579923242464371
+                },
+                "first_meal_step": {
+                  "mean": 18.3203125,
+                  "se": 1.5579731113746749
+                },
+                "accuracy": {
+                  "mean": 0.7043795620437956,
+                  "se": 0.021658630201891734
+                },
+                "food_encounters": 386,
+                "poison_encounters": 162,
+                "encounters": 548,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.265625,
+                  "se": 0.03919147016458323
+                },
+                "first_poison": {
+                  "mean": 0.578125,
+                  "se": 0.04382287939944462
+                },
+                "no_meal": {
+                  "mean": 0.15625,
+                  "se": 0.03221922171672519
+                },
+                "food_count": {
+                  "mean": 1.2890625,
+                  "se": 0.1308438803774722
+                },
+                "poison_count": {
+                  "mean": 2.4609375,
+                  "se": 0.19463218128784399
+                },
+                "fitness": {
+                  "mean": -1.171875,
+                  "se": 0.21396535491830204
+                },
+                "first_meal_step": {
+                  "mean": 18.265625,
+                  "se": 1.4971875033383626
+                },
+                "accuracy": {
+                  "mean": 0.34375,
+                  "se": 0.026357176632963594
+                },
+                "food_encounters": 165,
+                "poison_encounters": 315,
+                "encounters": 480,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.3046875,
+                  "se": 0.040842797083119005
+                },
+                "first_poison": {
+                  "mean": 0.40625,
+                  "se": 0.04358094446512651
+                },
+                "no_meal": {
+                  "mean": 0.2890625,
+                  "se": 0.04022626664627534
+                },
+                "food_count": {
+                  "mean": 1.296875,
+                  "se": 0.16163815022837882
+                },
+                "poison_count": {
+                  "mean": 1.640625,
+                  "se": 0.14745811121131272
+                },
+                "fitness": {
+                  "mean": -0.34375,
+                  "se": 0.16654102465669168
+                },
+                "first_meal_step": {
+                  "mean": 23.40625,
+                  "se": 1.7544739457397271
+                },
+                "accuracy": {
+                  "mean": 0.44148936170212766,
+                  "se": 0.029330474320720765
+                },
+                "food_encounters": 166,
+                "poison_encounters": 210,
+                "encounters": 376,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 2.8671875,
+              "se": 0.5341869481645175
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.8984375,
+                "se": 0.02680456515850638
+              },
+              "after_early": {
+                "mean": 0.7734375,
+                "se": 0.037145376625835905
+              },
+              "after_late": {
+                "mean": 0.59375,
+                "se": 0.04358094446512651
+              },
+              "end": {
+                "mean": 0.484375,
+                "se": 0.04434615620188394
+              }
+            },
+            "end_survivor_only": {
+              "families": 62,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.5483870967741935,
+                    "se": 0.06371796062332931
+                  },
+                  "first_poison": {
+                    "mean": 0.3548387096774194,
+                    "se": 0.06126109130650273
+                  },
+                  "no_meal": {
+                    "mean": 0.0967741935483871,
+                    "se": 0.0378541092928044
+                  },
+                  "food_count": {
+                    "mean": 3.6774193548387095,
+                    "se": 0.4053934333789232
+                  },
+                  "poison_count": {
+                    "mean": 1.1290322580645162,
+                    "se": 0.13503994153784912
+                  },
+                  "fitness": {
+                    "mean": 2.5483870967741935,
+                    "se": 0.3947550227048852
+                  },
+                  "first_meal_step": {
+                    "mean": 17.14516129032258,
+                    "se": 2.109489372349077
+                  },
+                  "accuracy": {
+                    "mean": 0.7651006711409396,
+                    "se": 0.025426637870807397
+                  },
+                  "food_encounters": 228,
+                  "poison_encounters": 70,
+                  "encounters": 298,
+                  "assigned_families": 62
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.3709677419354839,
+                    "se": 0.06184998726145517
+                  },
+                  "first_poison": {
+                    "mean": 0.5483870967741935,
+                    "se": 0.06371796062332932
+                  },
+                  "no_meal": {
+                    "mean": 0.08064516129032258,
+                    "se": 0.03486308566114124
+                  },
+                  "food_count": {
+                    "mean": 2.0,
+                    "se": 0.2082385647313047
+                  },
+                  "poison_count": {
+                    "mean": 2.032258064516129,
+                    "se": 0.21445359581270335
+                  },
+                  "fitness": {
+                    "mean": -0.03225806451612903,
+                    "se": 0.2651718279277387
+                  },
+                  "first_meal_step": {
+                    "mean": 15.483870967741936,
+                    "se": 1.8801675746231055
+                  },
+                  "accuracy": {
+                    "mean": 0.496,
+                    "se": 0.032873099894225634
+                  },
+                  "food_encounters": 124,
+                  "poison_encounters": 126,
+                  "encounters": 250,
+                  "assigned_families": 62
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.45161290322580644,
+                    "se": 0.06371796062332931
+                  },
+                  "first_poison": {
+                    "mean": 0.46774193548387094,
+                    "se": 0.06388506807164904
+                  },
+                  "no_meal": {
+                    "mean": 0.08064516129032258,
+                    "se": 0.03486308566114124
+                  },
+                  "food_count": {
+                    "mean": 2.274193548387097,
+                    "se": 0.266367295550573
+                  },
+                  "poison_count": {
+                    "mean": 2.032258064516129,
+                    "se": 0.18818589256781762
+                  },
+                  "fitness": {
+                    "mean": 0.24193548387096775,
+                    "se": 0.26588654561795577
+                  },
+                  "first_meal_step": {
+                    "mean": 14.483870967741936,
+                    "se": 1.8909651781184713
+                  },
+                  "accuracy": {
+                    "mean": 0.5280898876404494,
+                    "se": 0.03008683622685528
+                  },
+                  "food_encounters": 141,
+                  "poison_encounters": 126,
+                  "encounters": 267,
+                  "assigned_families": 62
+                }
+              },
+              "fitness": {
+                "mean": 6.935483870967742,
+                "se": 0.734750114096594
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 115,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.5565217391304348,
+                    "se": 0.04652911680416965
+                  },
+                  "first_poison": {
+                    "mean": 0.34782608695652173,
+                    "se": 0.04460775443848496
+                  },
+                  "no_meal": {
+                    "mean": 0.09565217391304348,
+                    "se": 0.027546266588623438
+                  },
+                  "food_count": {
+                    "mean": 3.347826086956522,
+                    "se": 0.2753663334245069
+                  },
+                  "poison_count": {
+                    "mean": 1.3478260869565217,
+                    "se": 0.10841305751169579
+                  },
+                  "fitness": {
+                    "mean": 2.0,
+                    "se": 0.2767359052435254
+                  },
+                  "first_meal_step": {
+                    "mean": 15.956521739130435,
+                    "se": 1.4826940302160851
+                  },
+                  "accuracy": {
+                    "mean": 0.7129629629629629,
+                    "se": 0.021265674136480544
+                  },
+                  "food_encounters": 385,
+                  "poison_encounters": 155,
+                  "encounters": 540,
+                  "assigned_families": 115
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.2956521739130435,
+                    "se": 0.04273972288221523
+                  },
+                  "first_poison": {
+                    "mean": 0.6434782608695652,
+                    "se": 0.044859819541314946
+                  },
+                  "no_meal": {
+                    "mean": 0.06086956521739131,
+                    "se": 0.02239291500727701
+                  },
+                  "food_count": {
+                    "mean": 1.434782608695652,
+                    "se": 0.13926385669743563
+                  },
+                  "poison_count": {
+                    "mean": 2.739130434782609,
+                    "se": 0.20071837290270095
+                  },
+                  "fitness": {
+                    "mean": -1.3043478260869565,
+                    "se": 0.23505648348037525
+                  },
+                  "first_meal_step": {
+                    "mean": 14.565217391304348,
+                    "se": 1.2636519446391594
+                  },
+                  "accuracy": {
+                    "mean": 0.34375,
+                    "se": 0.026368914811933285
+                  },
+                  "food_encounters": 165,
+                  "poison_encounters": 315,
+                  "encounters": 480,
+                  "assigned_families": 115
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.3391304347826087,
+                    "se": 0.04433930011819814
+                  },
+                  "first_poison": {
+                    "mean": 0.45217391304347826,
+                    "se": 0.046614569799583463
+                  },
+                  "no_meal": {
+                    "mean": 0.20869565217391303,
+                    "se": 0.038060636862776734
+                  },
+                  "food_count": {
+                    "mean": 1.4434782608695653,
+                    "se": 0.17475767437158804
+                  },
+                  "poison_count": {
+                    "mean": 1.826086956521739,
+                    "se": 0.154890217052937
+                  },
+                  "fitness": {
+                    "mean": -0.3826086956521739,
+                    "se": 0.18509799441260463
+                  },
+                  "first_meal_step": {
+                    "mean": 20.286956521739132,
+                    "se": 1.7252451032443759
+                  },
+                  "accuracy": {
+                    "mean": 0.44148936170212766,
+                    "se": 0.029343536658983947
+                  },
+                  "food_encounters": 166,
+                  "poison_encounters": 210,
+                  "encounters": 376,
+                  "assigned_families": 115
+                }
+              },
+              "fitness": {
+                "mean": 3.591304347826087,
+                "se": 0.5552462022442143
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.8608695652173913,
+                  "se": 0.03241360404508151
+                },
+                "after_late": {
+                  "mean": 0.6608695652173913,
+                  "se": 0.04433930011819814
+                },
+                "end": {
+                  "mean": 0.5391304347826087,
+                  "se": 0.046685661147584205
+                }
+              }
+            }
+          }
+        },
+        "reversal_minus_stationary": {
+          "pre_first_food_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "early_first_food_difference": {
+            "mean": -0.3125,
+            "se": 0.07664694342899704
+          },
+          "late_first_food_difference": {
+            "mean": -0.3046875,
+            "se": 0.05822864431235476
+          },
+          "recovery_difference": {
+            "mean": 0.0078125,
+            "se": 0.09509118975409038
+          },
+          "end_survival_difference": {
+            "mean": -0.3203125,
+            "se": 0.04952231679732289
+          }
+        },
+        "gate": {
+          "passed": false,
+          "late_level_passed": false,
+          "late_chance_passed": false,
+          "recovery_passed": false,
+          "accuracy_noninferiority_passed": false,
+          "survival_noninferiority_passed": false
+        }
+      },
+      "birth_parent": {
+        "conditions": {
+          "stationary": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.6171875,
+                  "se": 0.04313201579072394
+                },
+                "first_poison": {
+                  "mean": 0.21875,
+                  "se": 0.03668319762764659
+                },
+                "no_meal": {
+                  "mean": 0.1640625,
+                  "se": 0.032861675748836264
+                },
+                "food_count": {
+                  "mean": 4.2578125,
+                  "se": 0.32400022133320605
+                },
+                "poison_count": {
+                  "mean": 1.1953125,
+                  "se": 0.10757401873428221
+                },
+                "fitness": {
+                  "mean": 3.0625,
+                  "se": 0.32390601764665705
+                },
+                "first_meal_step": {
+                  "mean": 15.9140625,
+                  "se": 1.5390275261824249
+                },
+                "accuracy": {
+                  "mean": 0.7808022922636103,
+                  "se": 0.018436714090316355
+                },
+                "food_encounters": 545,
+                "poison_encounters": 153,
+                "encounters": 698,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.6015625,
+                  "se": 0.04344288118823427
+                },
+                "first_poison": {
+                  "mean": 0.1875,
+                  "se": 0.03463462265730887
+                },
+                "no_meal": {
+                  "mean": 0.2109375,
+                  "se": 0.03620184785532036
+                },
+                "food_count": {
+                  "mean": 4.3203125,
+                  "se": 0.29987973182888134
+                },
+                "poison_count": {
+                  "mean": 1.125,
+                  "se": 0.10924310100921812
+                },
+                "fitness": {
+                  "mean": 3.1953125,
+                  "se": 0.2793012305391071
+                },
+                "first_meal_step": {
+                  "mean": 17.7578125,
+                  "se": 1.6747658967086407
+                },
+                "accuracy": {
+                  "mean": 0.793400286944046,
+                  "se": 0.01584124232641494
+                },
+                "food_encounters": 553,
+                "poison_encounters": 144,
+                "encounters": 697,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.6015625,
+                  "se": 0.04344288118823427
+                },
+                "first_poison": {
+                  "mean": 0.203125,
+                  "se": 0.035700551879873775
+                },
+                "no_meal": {
+                  "mean": 0.1953125,
+                  "se": 0.03517845700641747
+                },
+                "food_count": {
+                  "mean": 4.4140625,
+                  "se": 0.3024521143343275
+                },
+                "poison_count": {
+                  "mean": 1.0078125,
+                  "se": 0.09827253863192599
+                },
+                "fitness": {
+                  "mean": 3.40625,
+                  "se": 0.2802640197522981
+                },
+                "first_meal_step": {
+                  "mean": 18.3125,
+                  "se": 1.6530643669201457
+                },
+                "accuracy": {
+                  "mean": 0.8141210374639769,
+                  "se": 0.01445637372692422
+                },
+                "food_encounters": 565,
+                "poison_encounters": 129,
+                "encounters": 694,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 16.609375,
+              "se": 1.1488201311670185
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.84375,
+                "se": 0.03221922171672519
+              },
+              "after_early": {
+                "mean": 0.84375,
+                "se": 0.03221922171672519
+              },
+              "after_late": {
+                "mean": 0.8359375,
+                "se": 0.032861675748836264
+              },
+              "end": {
+                "mean": 0.828125,
+                "se": 0.03347745561491821
+              }
+            },
+            "end_survivor_only": {
+              "families": 106,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.7169811320754716,
+                    "se": 0.04396093377439377
+                  },
+                  "first_poison": {
+                    "mean": 0.2169811320754717,
+                    "se": 0.040225592469367105
+                  },
+                  "no_meal": {
+                    "mean": 0.0660377358490566,
+                    "se": 0.024236287884273826
+                  },
+                  "food_count": {
+                    "mean": 5.09433962264151,
+                    "se": 0.33793631459196366
+                  },
+                  "poison_count": {
+                    "mean": 1.2735849056603774,
+                    "se": 0.11416560760620624
+                  },
+                  "fitness": {
+                    "mean": 3.8207547169811322,
+                    "se": 0.34484971264987696
+                  },
+                  "first_meal_step": {
+                    "mean": 11.849056603773585,
+                    "se": 1.2771959721484683
+                  },
+                  "accuracy": {
+                    "mean": 0.8,
+                    "se": 0.016898465677961813
+                  },
+                  "food_encounters": 540,
+                  "poison_encounters": 135,
+                  "encounters": 675,
+                  "assigned_families": 106
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.7264150943396226,
+                    "se": 0.0435054681899906
+                  },
+                  "first_poison": {
+                    "mean": 0.2169811320754717,
+                    "se": 0.040225592469367105
+                  },
+                  "no_meal": {
+                    "mean": 0.05660377358490566,
+                    "se": 0.022551483194988557
+                  },
+                  "food_count": {
+                    "mean": 5.2075471698113205,
+                    "se": 0.2960406534368972
+                  },
+                  "poison_count": {
+                    "mean": 1.3396226415094339,
+                    "se": 0.12056082816951064
+                  },
+                  "fitness": {
+                    "mean": 3.8679245283018866,
+                    "se": 0.2979641830710395
+                  },
+                  "first_meal_step": {
+                    "mean": 11.226415094339623,
+                    "se": 1.2658542118627059
+                  },
+                  "accuracy": {
+                    "mean": 0.7953890489913544,
+                    "se": 0.015788231183668736
+                  },
+                  "food_encounters": 552,
+                  "poison_encounters": 142,
+                  "encounters": 694,
+                  "assigned_families": 106
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.7169811320754716,
+                    "se": 0.04396093377439377
+                  },
+                  "first_poison": {
+                    "mean": 0.24528301886792453,
+                    "se": 0.041988576623712213
+                  },
+                  "no_meal": {
+                    "mean": 0.03773584905660377,
+                    "se": 0.01859642944545589
+                  },
+                  "food_count": {
+                    "mean": 5.30188679245283,
+                    "se": 0.2985950363702809
+                  },
+                  "poison_count": {
+                    "mean": 1.179245283018868,
+                    "se": 0.10537842627599942
+                  },
+                  "fitness": {
+                    "mean": 4.122641509433962,
+                    "se": 0.29359831315223245
+                  },
+                  "first_meal_step": {
+                    "mean": 11.962264150943396,
+                    "se": 1.255065175392783
+                  },
+                  "accuracy": {
+                    "mean": 0.8180494905385735,
+                    "se": 0.01404809924731431
+                  },
+                  "food_encounters": 562,
+                  "poison_encounters": 125,
+                  "encounters": 687,
+                  "assigned_families": 106
+                }
+              },
+              "fitness": {
+                "mean": 20.735849056603772,
+                "se": 0.9914551266027766
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 108,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.7037037037037037,
+                    "se": 0.04414343666854928
+                  },
+                  "first_poison": {
+                    "mean": 0.2222222222222222,
+                    "se": 0.040191074725573483
+                  },
+                  "no_meal": {
+                    "mean": 0.07407407407407407,
+                    "se": 0.025317997297209748
+                  },
+                  "food_count": {
+                    "mean": 5.0092592592592595,
+                    "se": 0.3370754051017906
+                  },
+                  "poison_count": {
+                    "mean": 1.2592592592592593,
+                    "se": 0.11268642134380483
+                  },
+                  "fitness": {
+                    "mean": 3.75,
+                    "se": 0.34207767240260845
+                  },
+                  "first_meal_step": {
+                    "mean": 12.398148148148149,
+                    "se": 1.3175953199971673
+                  },
+                  "accuracy": {
+                    "mean": 0.7991137370753324,
+                    "se": 0.016883497793431894
+                  },
+                  "food_encounters": 541,
+                  "poison_encounters": 136,
+                  "encounters": 677,
+                  "assigned_families": 108
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.7129629629629629,
+                    "se": 0.04373313040914761
+                  },
+                  "first_poison": {
+                    "mean": 0.2222222222222222,
+                    "se": 0.040191074725573483
+                  },
+                  "no_meal": {
+                    "mean": 0.06481481481481481,
+                    "se": 0.0238009374266292
+                  },
+                  "food_count": {
+                    "mean": 5.12037037037037,
+                    "se": 0.29701339970465607
+                  },
+                  "poison_count": {
+                    "mean": 1.3333333333333333,
+                    "se": 0.1191291813759889
+                  },
+                  "fitness": {
+                    "mean": 3.787037037037037,
+                    "se": 0.29798298691795333
+                  },
+                  "first_meal_step": {
+                    "mean": 11.601851851851851,
+                    "se": 1.2957408071540113
+                  },
+                  "accuracy": {
+                    "mean": 0.793400286944046,
+                    "se": 0.01585280443460804
+                  },
+                  "food_encounters": 553,
+                  "poison_encounters": 144,
+                  "encounters": 697,
+                  "assigned_families": 108
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.7129629629629629,
+                    "se": 0.0437331304091476
+                  },
+                  "first_poison": {
+                    "mean": 0.24074074074074073,
+                    "se": 0.041331194402438355
+                  },
+                  "no_meal": {
+                    "mean": 0.046296296296296294,
+                    "se": 0.020313650225214416
+                  },
+                  "food_count": {
+                    "mean": 5.231481481481482,
+                    "se": 0.2978538909836301
+                  },
+                  "poison_count": {
+                    "mean": 1.1944444444444444,
+                    "se": 0.10724719792619598
+                  },
+                  "fitness": {
+                    "mean": 4.037037037037037,
+                    "se": 0.2944407979728533
+                  },
+                  "first_meal_step": {
+                    "mean": 12.25925925925926,
+                    "se": 1.285443866780475
+                  },
+                  "accuracy": {
+                    "mean": 0.8141210374639769,
+                    "se": 0.014466925055769932
+                  },
+                  "food_encounters": 565,
+                  "poison_encounters": 129,
+                  "encounters": 694,
+                  "assigned_families": 108
+                }
+              },
+              "fitness": {
+                "mean": 20.324074074074073,
+                "se": 1.0152718163853294
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 0.9907407407407407,
+                  "se": 0.009259259259259259
+                },
+                "end": {
+                  "mean": 0.9814814814814815,
+                  "se": 0.013033236804129005
+                }
+              }
+            }
+          },
+          "reversal": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.6171875,
+                  "se": 0.04313201579072394
+                },
+                "first_poison": {
+                  "mean": 0.21875,
+                  "se": 0.03668319762764659
+                },
+                "no_meal": {
+                  "mean": 0.1640625,
+                  "se": 0.032861675748836264
+                },
+                "food_count": {
+                  "mean": 4.2578125,
+                  "se": 0.32400022133320605
+                },
+                "poison_count": {
+                  "mean": 1.1953125,
+                  "se": 0.10757401873428221
+                },
+                "fitness": {
+                  "mean": 3.0625,
+                  "se": 0.32390601764665705
+                },
+                "first_meal_step": {
+                  "mean": 15.9140625,
+                  "se": 1.5390275261824249
+                },
+                "accuracy": {
+                  "mean": 0.7808022922636103,
+                  "se": 0.018436714090316355
+                },
+                "food_encounters": 545,
+                "poison_encounters": 153,
+                "encounters": 698,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.1875,
+                  "se": 0.03463462265730887
+                },
+                "first_poison": {
+                  "mean": 0.6015625,
+                  "se": 0.04344288118823427
+                },
+                "no_meal": {
+                  "mean": 0.2109375,
+                  "se": 0.03620184785532036
+                },
+                "food_count": {
+                  "mean": 1.2109375,
+                  "se": 0.14658696784663522
+                },
+                "poison_count": {
+                  "mean": 3.1875,
+                  "se": 0.22507380679220984
+                },
+                "fitness": {
+                  "mean": -1.9765625,
+                  "se": 0.21291496183495212
+                },
+                "first_meal_step": {
+                  "mean": 17.7578125,
+                  "se": 1.6747658967086407
+                },
+                "accuracy": {
+                  "mean": 0.2753108348134991,
+                  "se": 0.022477978702247256
+                },
+                "food_encounters": 155,
+                "poison_encounters": 408,
+                "encounters": 563,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.2265625,
+                  "se": 0.037145376625835905
+                },
+                "first_poison": {
+                  "mean": 0.453125,
+                  "se": 0.04417241936858356
+                },
+                "no_meal": {
+                  "mean": 0.3203125,
+                  "se": 0.04140375447464223
+                },
+                "food_count": {
+                  "mean": 1.5234375,
+                  "se": 0.19017606189130695
+                },
+                "poison_count": {
+                  "mean": 2.0625,
+                  "se": 0.18782779745304737
+                },
+                "fitness": {
+                  "mean": -0.5390625,
+                  "se": 0.18390662473871197
+                },
+                "first_meal_step": {
+                  "mean": 24.0390625,
+                  "se": 1.83438298026239
+                },
+                "accuracy": {
+                  "mean": 0.42483660130718953,
+                  "se": 0.026658192764842596
+                },
+                "food_encounters": 195,
+                "poison_encounters": 264,
+                "encounters": 459,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 3.8125,
+              "se": 0.5907703415513451
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.84375,
+                "se": 0.03221922171672519
+              },
+              "after_early": {
+                "mean": 0.75,
+                "se": 0.038423663968391995
+              },
+              "after_late": {
+                "mean": 0.5078125,
+                "se": 0.0443624091458791
+              },
+              "end": {
+                "mean": 0.3984375,
+                "se": 0.04344288118823427
+              }
+            },
+            "end_survivor_only": {
+              "families": 51,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.7450980392156863,
+                    "se": 0.061632288805889064
+                  },
+                  "first_poison": {
+                    "mean": 0.21568627450980393,
+                    "se": 0.05816626264388755
+                  },
+                  "no_meal": {
+                    "mean": 0.0392156862745098,
+                    "se": 0.02745098039215686
+                  },
+                  "food_count": {
+                    "mean": 5.294117647058823,
+                    "se": 0.5105123283234619
+                  },
+                  "poison_count": {
+                    "mean": 1.2745098039215685,
+                    "se": 0.1682165536433507
+                  },
+                  "fitness": {
+                    "mean": 4.019607843137255,
+                    "se": 0.5197964881385047
+                  },
+                  "first_meal_step": {
+                    "mean": 10.0,
+                    "se": 1.656833739159028
+                  },
+                  "accuracy": {
+                    "mean": 0.8059701492537313,
+                    "se": 0.02419775723179891
+                  },
+                  "food_encounters": 270,
+                  "poison_encounters": 65,
+                  "encounters": 335,
+                  "assigned_families": 51
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.21568627450980393,
+                    "se": 0.058166262643887544
+                  },
+                  "first_poison": {
+                    "mean": 0.7058823529411765,
+                    "se": 0.06443794794178424
+                  },
+                  "no_meal": {
+                    "mean": 0.0784313725490196,
+                    "se": 0.03802101848953983
+                  },
+                  "food_count": {
+                    "mean": 2.0392156862745097,
+                    "se": 0.2685630379335519
+                  },
+                  "poison_count": {
+                    "mean": 3.627450980392157,
+                    "se": 0.31926482254192345
+                  },
+                  "fitness": {
+                    "mean": -1.588235294117647,
+                    "se": 0.3182999825522043
+                  },
+                  "first_meal_step": {
+                    "mean": 11.07843137254902,
+                    "se": 1.9565562257480993
+                  },
+                  "accuracy": {
+                    "mean": 0.35986159169550175,
+                    "se": 0.0284543945140513
+                  },
+                  "food_encounters": 104,
+                  "poison_encounters": 185,
+                  "encounters": 289,
+                  "assigned_families": 51
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.37254901960784315,
+                    "se": 0.06837488538887332
+                  },
+                  "first_poison": {
+                    "mean": 0.5294117647058824,
+                    "se": 0.07058823529411765
+                  },
+                  "no_meal": {
+                    "mean": 0.09803921568627451,
+                    "se": 0.042054138410837674
+                  },
+                  "food_count": {
+                    "mean": 3.1176470588235294,
+                    "se": 0.34601038046712335
+                  },
+                  "poison_count": {
+                    "mean": 2.607843137254902,
+                    "se": 0.28844196938718886
+                  },
+                  "fitness": {
+                    "mean": 0.5098039215686274,
+                    "se": 0.31232530680410875
+                  },
+                  "first_meal_step": {
+                    "mean": 15.490196078431373,
+                    "se": 2.2596846125622645
+                  },
+                  "accuracy": {
+                    "mean": 0.5445205479452054,
+                    "se": 0.026701336341502832
+                  },
+                  "food_encounters": 159,
+                  "poison_encounters": 133,
+                  "encounters": 292,
+                  "assigned_families": 51
+                }
+              },
+              "fitness": {
+                "mean": 8.411764705882353,
+                "se": 0.829919188406251
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 108,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.7037037037037037,
+                    "se": 0.04414343666854928
+                  },
+                  "first_poison": {
+                    "mean": 0.2222222222222222,
+                    "se": 0.040191074725573483
+                  },
+                  "no_meal": {
+                    "mean": 0.07407407407407407,
+                    "se": 0.025317997297209748
+                  },
+                  "food_count": {
+                    "mean": 5.0092592592592595,
+                    "se": 0.3370754051017906
+                  },
+                  "poison_count": {
+                    "mean": 1.2592592592592593,
+                    "se": 0.11268642134380483
+                  },
+                  "fitness": {
+                    "mean": 3.75,
+                    "se": 0.34207767240260845
+                  },
+                  "first_meal_step": {
+                    "mean": 12.398148148148149,
+                    "se": 1.3175953199971673
+                  },
+                  "accuracy": {
+                    "mean": 0.7991137370753324,
+                    "se": 0.016883497793431894
+                  },
+                  "food_encounters": 541,
+                  "poison_encounters": 136,
+                  "encounters": 677,
+                  "assigned_families": 108
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.2222222222222222,
+                    "se": 0.040191074725573483
+                  },
+                  "first_poison": {
+                    "mean": 0.7129629629629629,
+                    "se": 0.04373313040914761
+                  },
+                  "no_meal": {
+                    "mean": 0.06481481481481481,
+                    "se": 0.0238009374266292
+                  },
+                  "food_count": {
+                    "mean": 1.4351851851851851,
+                    "se": 0.16498274354528938
+                  },
+                  "poison_count": {
+                    "mean": 3.7777777777777777,
+                    "se": 0.22454651555646987
+                  },
+                  "fitness": {
+                    "mean": -2.3425925925925926,
+                    "se": 0.23612850233563762
+                  },
+                  "first_meal_step": {
+                    "mean": 11.601851851851851,
+                    "se": 1.2957408071540113
+                  },
+                  "accuracy": {
+                    "mean": 0.2753108348134991,
+                    "se": 0.022494384790631133
+                  },
+                  "food_encounters": 155,
+                  "poison_encounters": 408,
+                  "encounters": 563,
+                  "assigned_families": 108
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.26851851851851855,
+                    "se": 0.04284467968052193
+                  },
+                  "first_poison": {
+                    "mean": 0.5370370370370371,
+                    "se": 0.04820403072760628
+                  },
+                  "no_meal": {
+                    "mean": 0.19444444444444445,
+                    "se": 0.038260763248848646
+                  },
+                  "food_count": {
+                    "mean": 1.8055555555555556,
+                    "se": 0.21474639640436985
+                  },
+                  "poison_count": {
+                    "mean": 2.4444444444444446,
+                    "se": 0.20224310368835915
+                  },
+                  "fitness": {
+                    "mean": -0.6388888888888888,
+                    "se": 0.21675185374363884
+                  },
+                  "first_meal_step": {
+                    "mean": 19.046296296296298,
+                    "se": 1.800704847346849
+                  },
+                  "accuracy": {
+                    "mean": 0.42483660130718953,
+                    "se": 0.026677649882070432
+                  },
+                  "food_encounters": 195,
+                  "poison_encounters": 264,
+                  "encounters": 459,
+                  "assigned_families": 108
+                }
+              },
+              "fitness": {
+                "mean": 5.157407407407407,
+                "se": 0.6183366902861291
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.8888888888888888,
+                  "se": 0.030381596756651693
+                },
+                "after_late": {
+                  "mean": 0.6018518518518519,
+                  "se": 0.047323326159788126
+                },
+                "end": {
+                  "mean": 0.4722222222222222,
+                  "se": 0.04826217294139894
+                }
+              }
+            }
+          }
+        },
+        "reversal_minus_stationary": {
+          "pre_first_food_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "early_first_food_difference": {
+            "mean": -0.4140625,
+            "se": 0.06973598953882178
+          },
+          "late_first_food_difference": {
+            "mean": -0.375,
+            "se": 0.056558101962829295
+          },
+          "recovery_difference": {
+            "mean": 0.0390625,
+            "se": 0.09106377539787469
+          },
+          "end_survival_difference": {
+            "mean": -0.4296875,
+            "se": 0.04392693937331274
+          }
+        },
+        "gate": {
+          "passed": false,
+          "late_level_passed": false,
+          "late_chance_passed": false,
+          "recovery_passed": false,
+          "accuracy_noninferiority_passed": false,
+          "survival_noninferiority_passed": false
+        }
+      },
+      "direct_baseline": {
+        "conditions": {
+          "stationary": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.4609375,
+                  "se": 0.044232218376094055
+                },
+                "first_poison": {
+                  "mean": 0.015625,
+                  "se": 0.011004959288293975
+                },
+                "no_meal": {
+                  "mean": 0.5234375,
+                  "se": 0.04431905471661607
+                },
+                "food_count": {
+                  "mean": 4.8515625,
+                  "se": 0.5012398313897293
+                },
+                "poison_count": {
+                  "mean": 0.2421875,
+                  "se": 0.04928885731544807
+                },
+                "fitness": {
+                  "mean": 4.609375,
+                  "se": 0.4799414507383281
+                },
+                "first_meal_step": {
+                  "mean": 29.8515625,
+                  "se": 2.031951040253905
+                },
+                "accuracy": {
+                  "mean": 0.9524539877300614,
+                  "se": 0.008131160946101711
+                },
+                "food_encounters": 621,
+                "poison_encounters": 31,
+                "encounters": 652,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.46875,
+                  "se": 0.044281084771084105
+                },
+                "first_poison": {
+                  "mean": 0.015625,
+                  "se": 0.011004959288293975
+                },
+                "no_meal": {
+                  "mean": 0.515625,
+                  "se": 0.04434615620188394
+                },
+                "food_count": {
+                  "mean": 5.2265625,
+                  "se": 0.5562828823057631
+                },
+                "poison_count": {
+                  "mean": 0.25,
+                  "se": 0.05319515400343173
+                },
+                "fitness": {
+                  "mean": 4.9765625,
+                  "se": 0.5340825762894851
+                },
+                "first_meal_step": {
+                  "mean": 30.0859375,
+                  "se": 2.018950187648388
+                },
+                "accuracy": {
+                  "mean": 0.9543509272467903,
+                  "se": 0.008255857256071662
+                },
+                "food_encounters": 669,
+                "poison_encounters": 32,
+                "encounters": 701,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.421875,
+                  "se": 0.04382287939944462
+                },
+                "first_poison": {
+                  "mean": 0.0234375,
+                  "se": 0.013424675715302162
+                },
+                "no_meal": {
+                  "mean": 0.5546875,
+                  "se": 0.04410164327680508
+                },
+                "food_count": {
+                  "mean": 4.1953125,
+                  "se": 0.47773489936739266
+                },
+                "poison_count": {
+                  "mean": 0.1875,
+                  "se": 0.055181786193988454
+                },
+                "fitness": {
+                  "mean": 4.0078125,
+                  "se": 0.4672460905903847
+                },
+                "first_meal_step": {
+                  "mean": 30.9921875,
+                  "se": 2.007199642595372
+                },
+                "accuracy": {
+                  "mean": 0.9572192513368984,
+                  "se": 0.011805551853666078
+                },
+                "food_encounters": 537,
+                "poison_encounters": 24,
+                "encounters": 561,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 24.9375,
+              "se": 2.7371916735723887
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.5,
+                "se": 0.044367825470805686
+              },
+              "after_early": {
+                "mean": 0.5,
+                "se": 0.044367825470805686
+              },
+              "after_late": {
+                "mean": 0.5,
+                "se": 0.044367825470805686
+              },
+              "end": {
+                "mean": 0.4921875,
+                "se": 0.0443624091458791
+              }
+            },
+            "end_survivor_only": {
+              "families": 63,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.9206349206349206,
+                    "se": 0.034329114781078814
+                  },
+                  "first_poison": {
+                    "mean": 0.031746031746031744,
+                    "se": 0.022266067491202145
+                  },
+                  "no_meal": {
+                    "mean": 0.047619047619047616,
+                    "se": 0.02704580163081261
+                  },
+                  "food_count": {
+                    "mean": 9.777777777777779,
+                    "se": 0.5182014489086472
+                  },
+                  "poison_count": {
+                    "mean": 0.4444444444444444,
+                    "se": 0.08088659314894589
+                  },
+                  "fitness": {
+                    "mean": 9.333333333333334,
+                    "se": 0.4988465959263239
+                  },
+                  "first_meal_step": {
+                    "mean": 8.73015873015873,
+                    "se": 1.5893279436433647
+                  },
+                  "accuracy": {
+                    "mean": 0.9565217391304348,
+                    "se": 0.007190691231054868
+                  },
+                  "food_encounters": 616,
+                  "poison_encounters": 28,
+                  "encounters": 644,
+                  "assigned_families": 63
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.9365079365079365,
+                    "se": 0.030968459856707504
+                  },
+                  "first_poison": {
+                    "mean": 0.031746031746031744,
+                    "se": 0.02226606749120215
+                  },
+                  "no_meal": {
+                    "mean": 0.031746031746031744,
+                    "se": 0.022266067491202145
+                  },
+                  "food_count": {
+                    "mean": 10.555555555555555,
+                    "se": 0.6179503713345869
+                  },
+                  "poison_count": {
+                    "mean": 0.49206349206349204,
+                    "se": 0.09830362453923237
+                  },
+                  "fitness": {
+                    "mean": 10.063492063492063,
+                    "se": 0.602466774158275
+                  },
+                  "first_meal_step": {
+                    "mean": 8.841269841269842,
+                    "se": 1.5867484955480786
+                  },
+                  "accuracy": {
+                    "mean": 0.9554597701149425,
+                    "se": 0.00827828247857522
+                  },
+                  "food_encounters": 665,
+                  "poison_encounters": 31,
+                  "encounters": 696,
+                  "assigned_families": 63
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.8571428571428571,
+                    "se": 0.04444078691701822
+                  },
+                  "first_poison": {
+                    "mean": 0.031746031746031744,
+                    "se": 0.02226606749120215
+                  },
+                  "no_meal": {
+                    "mean": 0.1111111111111111,
+                    "se": 0.039912289339283306
+                  },
+                  "food_count": {
+                    "mean": 8.492063492063492,
+                    "se": 0.6020416772903522
+                  },
+                  "poison_count": {
+                    "mean": 0.3333333333333333,
+                    "se": 0.09863378037897787
+                  },
+                  "fitness": {
+                    "mean": 8.158730158730158,
+                    "se": 0.6009066154356442
+                  },
+                  "first_meal_step": {
+                    "mean": 11.031746031746032,
+                    "se": 1.9096285328891316
+                  },
+                  "accuracy": {
+                    "mean": 0.9622302158273381,
+                    "se": 0.01082176877734256
+                  },
+                  "food_encounters": 535,
+                  "poison_encounters": 21,
+                  "encounters": 556,
+                  "assigned_families": 63
+                }
+              },
+              "fitness": {
+                "mean": 54.714285714285715,
+                "se": 1.7368374970787763
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": 0.0
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 64,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.921875,
+                    "se": 0.033811213593755246
+                  },
+                  "first_poison": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "no_meal": {
+                    "mean": 0.046875,
+                    "se": 0.026630253226448332
+                  },
+                  "food_count": {
+                    "mean": 9.703125,
+                    "se": 0.5154746654340687
+                  },
+                  "poison_count": {
+                    "mean": 0.484375,
+                    "se": 0.08906532820627824
+                  },
+                  "fitness": {
+                    "mean": 9.21875,
+                    "se": 0.50418326910877
+                  },
+                  "first_meal_step": {
+                    "mean": 8.703125,
+                    "se": 1.5645311698710307
+                  },
+                  "accuracy": {
+                    "mean": 0.9524539877300614,
+                    "se": 0.008163363689733865
+                  },
+                  "food_encounters": 621,
+                  "poison_encounters": 31,
+                  "encounters": 652,
+                  "assigned_families": 64
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.9375,
+                    "se": 0.030496877279641663
+                  },
+                  "first_poison": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "no_meal": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "food_count": {
+                    "mean": 10.453125,
+                    "se": 0.6167831644704695
+                  },
+                  "poison_count": {
+                    "mean": 0.5,
+                    "se": 0.09708039541845291
+                  },
+                  "fitness": {
+                    "mean": 9.953125,
+                    "se": 0.6031620084870588
+                  },
+                  "first_meal_step": {
+                    "mean": 9.171875,
+                    "se": 1.5963678216420571
+                  },
+                  "accuracy": {
+                    "mean": 0.9543509272467903,
+                    "se": 0.008288553848408627
+                  },
+                  "food_encounters": 669,
+                  "poison_encounters": 32,
+                  "encounters": 701,
+                  "assigned_families": 64
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.84375,
+                    "se": 0.045745315919462494
+                  },
+                  "first_poison": {
+                    "mean": 0.046875,
+                    "se": 0.026630253226448332
+                  },
+                  "no_meal": {
+                    "mean": 0.109375,
+                    "se": 0.039322054350368486
+                  },
+                  "food_count": {
+                    "mean": 8.390625,
+                    "se": 0.6011798863105494
+                  },
+                  "poison_count": {
+                    "mean": 0.375,
+                    "se": 0.10564428184106457
+                  },
+                  "fitness": {
+                    "mean": 8.015625,
+                    "se": 0.608509509510478
+                  },
+                  "first_meal_step": {
+                    "mean": 10.984375,
+                    "se": 1.8801506223830107
+                  },
+                  "accuracy": {
+                    "mean": 0.9572192513368984,
+                    "se": 0.011852306697445424
+                  },
+                  "food_encounters": 537,
+                  "poison_encounters": 24,
+                  "encounters": 561,
+                  "assigned_families": 64
+                }
+              },
+              "fitness": {
+                "mean": 53.84375,
+                "se": 1.9183764048679206
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "end": {
+                  "mean": 0.984375,
+                  "se": 0.015625
+                }
+              }
+            }
+          },
+          "reversal": {
+            "families": 128,
+            "windows": {
+              "pre": {
+                "first_food": {
+                  "mean": 0.4609375,
+                  "se": 0.044232218376094055
+                },
+                "first_poison": {
+                  "mean": 0.015625,
+                  "se": 0.011004959288293975
+                },
+                "no_meal": {
+                  "mean": 0.5234375,
+                  "se": 0.04431905471661607
+                },
+                "food_count": {
+                  "mean": 4.8515625,
+                  "se": 0.5012398313897293
+                },
+                "poison_count": {
+                  "mean": 0.2421875,
+                  "se": 0.04928885731544807
+                },
+                "fitness": {
+                  "mean": 4.609375,
+                  "se": 0.4799414507383281
+                },
+                "first_meal_step": {
+                  "mean": 29.8515625,
+                  "se": 2.031951040253905
+                },
+                "accuracy": {
+                  "mean": 0.9524539877300614,
+                  "se": 0.008131160946101711
+                },
+                "food_encounters": 621,
+                "poison_encounters": 31,
+                "encounters": 652,
+                "assigned_families": 128
+              },
+              "early": {
+                "first_food": {
+                  "mean": 0.015625,
+                  "se": 0.011004959288293975
+                },
+                "first_poison": {
+                  "mean": 0.46875,
+                  "se": 0.044281084771084105
+                },
+                "no_meal": {
+                  "mean": 0.515625,
+                  "se": 0.04434615620188394
+                },
+                "food_count": {
+                  "mean": 0.1484375,
+                  "se": 0.04013057512412833
+                },
+                "poison_count": {
+                  "mean": 3.484375,
+                  "se": 0.3470531836455953
+                },
+                "fitness": {
+                  "mean": -3.3359375,
+                  "se": 0.3342853877178646
+                },
+                "first_meal_step": {
+                  "mean": 30.0859375,
+                  "se": 2.018950187648388
+                },
+                "accuracy": {
+                  "mean": 0.04086021505376344,
+                  "se": 0.009842903402577438
+                },
+                "food_encounters": 19,
+                "poison_encounters": 446,
+                "encounters": 465,
+                "assigned_families": 128
+              },
+              "late": {
+                "first_food": {
+                  "mean": 0.0234375,
+                  "se": 0.013424675715302162
+                },
+                "first_poison": {
+                  "mean": 0.078125,
+                  "se": 0.023813825861573653
+                },
+                "no_meal": {
+                  "mean": 0.8984375,
+                  "se": 0.02680456515850638
+                },
+                "food_count": {
+                  "mean": 0.03125,
+                  "se": 0.019010655424919976
+                },
+                "poison_count": {
+                  "mean": 0.4296875,
+                  "se": 0.1287257706685136
+                },
+                "fitness": {
+                  "mean": -0.3984375,
+                  "se": 0.12218274226997936
+                },
+                "first_meal_step": {
+                  "mean": 46.4921875,
+                  "se": 1.1988037474582858
+                },
+                "accuracy": {
+                  "mean": 0.06779661016949153,
+                  "se": 0.035225275826004813
+                },
+                "food_encounters": 4,
+                "poison_encounters": 55,
+                "encounters": 59,
+                "assigned_families": 128
+              }
+            },
+            "fitness": {
+              "mean": 7.015625,
+              "se": 1.1254911643799967
+            },
+            "survival": {
+              "at_flip": {
+                "mean": 0.5,
+                "se": 0.044367825470805686
+              },
+              "after_early": {
+                "mean": 0.1328125,
+                "se": 0.030114393430435732
+              },
+              "after_late": {
+                "mean": 0.03125,
+                "se": 0.015439349844538378
+              },
+              "end": {
+                "mean": 0.0078125,
+                "se": 0.0078125
+              }
+            },
+            "end_survivor_only": {
+              "families": 1,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "first_poison": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "no_meal": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "food_count": {
+                    "mean": 5.0,
+                    "se": null
+                  },
+                  "poison_count": {
+                    "mean": 3.0,
+                    "se": null
+                  },
+                  "fitness": {
+                    "mean": 2.0,
+                    "se": null
+                  },
+                  "first_meal_step": {
+                    "mean": 7.0,
+                    "se": null
+                  },
+                  "accuracy": {
+                    "mean": 0.625,
+                    "se": null
+                  },
+                  "food_encounters": 5,
+                  "poison_encounters": 3,
+                  "encounters": 8,
+                  "assigned_families": 1
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "first_poison": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "no_meal": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "food_count": {
+                    "mean": 2.0,
+                    "se": null
+                  },
+                  "poison_count": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "fitness": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "first_meal_step": {
+                    "mean": 30.0,
+                    "se": null
+                  },
+                  "accuracy": {
+                    "mean": 0.6666666666666666,
+                    "se": null
+                  },
+                  "food_encounters": 2,
+                  "poison_encounters": 1,
+                  "encounters": 3,
+                  "assigned_families": 1
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "first_poison": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "no_meal": {
+                    "mean": 0.0,
+                    "se": null
+                  },
+                  "food_count": {
+                    "mean": 1.0,
+                    "se": null
+                  },
+                  "poison_count": {
+                    "mean": 4.0,
+                    "se": null
+                  },
+                  "fitness": {
+                    "mean": -3.0,
+                    "se": null
+                  },
+                  "first_meal_step": {
+                    "mean": 6.0,
+                    "se": null
+                  },
+                  "accuracy": {
+                    "mean": 0.2,
+                    "se": null
+                  },
+                  "food_encounters": 1,
+                  "poison_encounters": 4,
+                  "encounters": 5,
+                  "assigned_families": 1
+                }
+              },
+              "fitness": {
+                "mean": 4.0,
+                "se": null
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": null
+                },
+                "after_early": {
+                  "mean": 1.0,
+                  "se": null
+                },
+                "after_late": {
+                  "mean": 1.0,
+                  "se": null
+                },
+                "end": {
+                  "mean": 1.0,
+                  "se": null
+                }
+              }
+            },
+            "alive_at_flip_only": {
+              "families": 64,
+              "windows": {
+                "pre": {
+                  "first_food": {
+                    "mean": 0.921875,
+                    "se": 0.033811213593755246
+                  },
+                  "first_poison": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "no_meal": {
+                    "mean": 0.046875,
+                    "se": 0.026630253226448332
+                  },
+                  "food_count": {
+                    "mean": 9.703125,
+                    "se": 0.5154746654340687
+                  },
+                  "poison_count": {
+                    "mean": 0.484375,
+                    "se": 0.08906532820627824
+                  },
+                  "fitness": {
+                    "mean": 9.21875,
+                    "se": 0.50418326910877
+                  },
+                  "first_meal_step": {
+                    "mean": 8.703125,
+                    "se": 1.5645311698710307
+                  },
+                  "accuracy": {
+                    "mean": 0.9524539877300614,
+                    "se": 0.008163363689733865
+                  },
+                  "food_encounters": 621,
+                  "poison_encounters": 31,
+                  "encounters": 652,
+                  "assigned_families": 64
+                },
+                "early": {
+                  "first_food": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "first_poison": {
+                    "mean": 0.9375,
+                    "se": 0.030496877279641663
+                  },
+                  "no_meal": {
+                    "mean": 0.03125,
+                    "se": 0.021921011700381302
+                  },
+                  "food_count": {
+                    "mean": 0.296875,
+                    "se": 0.07611501680831555
+                  },
+                  "poison_count": {
+                    "mean": 6.96875,
+                    "se": 0.31651684268984676
+                  },
+                  "fitness": {
+                    "mean": -6.671875,
+                    "se": 0.31184827874838966
+                  },
+                  "first_meal_step": {
+                    "mean": 9.171875,
+                    "se": 1.5963678216420571
+                  },
+                  "accuracy": {
+                    "mean": 0.04086021505376344,
+                    "se": 0.009881885350785121
+                  },
+                  "food_encounters": 19,
+                  "poison_encounters": 446,
+                  "encounters": 465,
+                  "assigned_families": 64
+                },
+                "late": {
+                  "first_food": {
+                    "mean": 0.046875,
+                    "se": 0.026630253226448332
+                  },
+                  "first_poison": {
+                    "mean": 0.15625,
+                    "se": 0.045745315919462494
+                  },
+                  "no_meal": {
+                    "mean": 0.796875,
+                    "se": 0.050688158720985414
+                  },
+                  "food_count": {
+                    "mean": 0.0625,
+                    "se": 0.03776362363229024
+                  },
+                  "poison_count": {
+                    "mean": 0.859375,
+                    "se": 0.2468724884340799
+                  },
+                  "fitness": {
+                    "mean": -0.796875,
+                    "se": 0.23483750661657282
+                  },
+                  "first_meal_step": {
+                    "mean": 41.984375,
+                    "se": 2.269152631365842
+                  },
+                  "accuracy": {
+                    "mean": 0.06779661016949153,
+                    "se": 0.03536478241483216
+                  },
+                  "food_encounters": 4,
+                  "poison_encounters": 55,
+                  "encounters": 59,
+                  "assigned_families": 64
+                }
+              },
+              "fitness": {
+                "mean": 18.0,
+                "se": 1.1297299157496372
+              },
+              "survival": {
+                "at_flip": {
+                  "mean": 1.0,
+                  "se": 0.0
+                },
+                "after_early": {
+                  "mean": 0.265625,
+                  "se": 0.05564461487585784
+                },
+                "after_late": {
+                  "mean": 0.0625,
+                  "se": 0.030496877279641663
+                },
+                "end": {
+                  "mean": 0.015625,
+                  "se": 0.015625
+                }
+              }
+            }
+          }
+        },
+        "reversal_minus_stationary": {
+          "pre_first_food_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "early_first_food_difference": {
+            "mean": -0.453125,
+            "se": 0.04687499999999999
+          },
+          "late_first_food_difference": {
+            "mean": -0.3984375,
+            "se": 0.046188168593926986
+          },
+          "recovery_difference": {
+            "mean": 0.0546875,
+            "se": 0.03891458214466775
+          },
+          "end_survival_difference": {
+            "mean": -0.484375,
+            "se": 0.04571228572216534
+          }
+        },
+        "gate": {
+          "passed": false,
+          "late_level_passed": false,
+          "late_chance_passed": false,
+          "recovery_passed": false,
+          "accuracy_noninferiority_passed": false,
+          "survival_noninferiority_passed": false
+        }
+      }
+    },
+    "within_social": {
+      "stationary": {
+        "windows": {
+          "pre": {
+            "first_food_difference": {
+              "mean": 0.2265625,
+              "se": 0.05679129727009305
+            },
+            "fitness_difference": {
+              "mean": 3.0078125,
+              "se": 0.44305335048583305
+            }
+          },
+          "early": {
+            "first_food_difference": {
+              "mean": 0.1328125,
+              "se": 0.052462835728046116
+            },
+            "fitness_difference": {
+              "mean": 3.1796875,
+              "se": 0.4247558344697486
+            }
+          },
+          "late": {
+            "first_food_difference": {
+              "mean": 0.1015625,
+              "se": 0.05300962314908002
+            },
+            "fitness_difference": {
+              "mean": 2.5625,
+              "se": 0.45446575670312944
+            }
+          }
+        },
+        "end_survival_difference": {
+          "mean": 0.078125,
+          "se": 0.036128759714987545
+        }
+      },
+      "reversal": {
+        "windows": {
+          "pre": {
+            "first_food_difference": {
+              "mean": 0.2265625,
+              "se": 0.05679129727009305
+            },
+            "fitness_difference": {
+              "mean": 3.0078125,
+              "se": 0.44305335048583305
+            }
+          },
+          "early": {
+            "first_food_difference": {
+              "mean": -0.1171875,
+              "se": 0.04786419353119544
+            },
+            "fitness_difference": {
+              "mean": -2.0234375,
+              "se": 0.29335338104414194
+            }
+          },
+          "late": {
+            "first_food_difference": {
+              "mean": -0.1015625,
+              "se": 0.04940572495388063
+            },
+            "fitness_difference": {
+              "mean": -0.6875,
+              "se": 0.19740877989074537
+            }
+          }
+        },
+        "end_survival_difference": {
+          "mean": -0.265625,
+          "se": 0.05259549690126844
+        }
+      }
+    },
+    "within_birth": {
+      "stationary": {
+        "windows": {
+          "pre": {
+            "first_food_difference": {
+              "mean": 0.15625,
+              "se": 0.06018089119774092
+            },
+            "fitness_difference": {
+              "mean": -1.546875,
+              "se": 0.5676285641903889
+            }
+          },
+          "early": {
+            "first_food_difference": {
+              "mean": 0.1328125,
+              "se": 0.06502866356756733
+            },
+            "fitness_difference": {
+              "mean": -1.78125,
+              "se": 0.5945265332350377
+            }
+          },
+          "late": {
+            "first_food_difference": {
+              "mean": 0.1796875,
+              "se": 0.06413567694992237
+            },
+            "fitness_difference": {
+              "mean": -0.6015625,
+              "se": 0.5550789832327669
+            }
+          }
+        },
+        "end_survival_difference": {
+          "mean": 0.3359375,
+          "se": 0.057930755304820655
+        }
+      },
+      "reversal": {
+        "windows": {
+          "pre": {
+            "first_food_difference": {
+              "mean": 0.15625,
+              "se": 0.06018089119774092
+            },
+            "fitness_difference": {
+              "mean": -1.546875,
+              "se": 0.5676285641903889
+            }
+          },
+          "early": {
+            "first_food_difference": {
+              "mean": 0.171875,
+              "se": 0.03697029924919195
+            },
+            "fitness_difference": {
+              "mean": 1.359375,
+              "se": 0.40584047726564276
+            }
+          },
+          "late": {
+            "first_food_difference": {
+              "mean": 0.203125,
+              "se": 0.0389947739659245
+            },
+            "fitness_difference": {
+              "mean": -0.140625,
+              "se": 0.21270380887525117
+            }
+          }
+        },
+        "end_survival_difference": {
+          "mean": 0.390625,
+          "se": 0.04329327832163609
+        }
+      }
+    },
+    "assignment_counts": {
+      "0:100": 16,
+      "0:125": 16,
+      "0:150": 16,
+      "0:175": 16,
+      "1:100": 16,
+      "1:125": 16,
+      "1:150": 16,
+      "1:175": 16
+    },
+    "neutral_selected_birth_duplicates": "birth_parent",
+    "preflip_identity": {
+      "all_recorded_fields_identical": true,
+      "limitation": "Per-frame W and Wp were not recorded; their intermediate identity is not independently replayed."
+    }
+  },
+  "safeguards": {
+    "world_keys_disjoint": true,
+    "calibration_source_unchanged": true,
+    "sources_unchanged": true,
+    "balanced_schedule_preserved": true,
+    "paired_traces_validated": true
+  },
+  "gate": {
+    "passed": false,
+    "late_level_passed": false,
+    "late_chance_passed": false,
+    "recovery_passed": false,
+    "accuracy_noninferiority_passed": false,
+    "survival_noninferiority_passed": false
+  }
+}

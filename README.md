@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Latest audited result — E124 retained a useful lesson through three successive pupils in all three lineages.** The test covered 384 independent teaching chains. Further improvement passed in A2 alone, so the study-wide cumulative-improvement gate failed. [E124 retention and limits](#learning-passed-through-three-pupils) · [E123 calibrated readout](#using-a-calibrated-food-belief) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
+**Latest audited result — E125 failed the changing-world transfer gate in all three lineages.** In the late window after a hidden food-rule reversal, first-food success was **12.5 ± 2.9%, 18.0 ± 3.4% and 20.3 ± 3.6%** (one standard error). E124's successful transmission across pupils used a stationary rule. [E125 figure and results](#when-the-food-rule-changes) · [E124 retention and limits](#learning-passed-through-three-pupils) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
 
 ## What the creatures do
 
@@ -265,9 +265,41 @@ At every cohort, the predecessor-movie pupil beat both the color-reassigned movi
 
 Only A2 exceeded two paired standard errors on both improvement contrasts. **The three-lineage cumulative-improvement gate failed.** The verified result is repeated transmission of a useful lesson under a stationary two-color rule, using the engineered reader. This experiment involved no genome evolution and does not establish a generally improving chain. [Independent transmission and outcome audit](results/diagnostics/E124-independent-audit.json) · [Full results](results/RESULTS.md)
 
+## When the food rule changes
+
+**E125 passed its independent integrity audit but failed its scientific transfer gate in all three lineages.** It tested the saved original genomes with the calibrated social readout on 128 fresh families per lineage, 384 total. Each family had matched stationary and reversal worlds. In the reversal world, food and poison exchanged roles at a hidden randomized turn. The pupil received no change signal.
+
+Each point below measures the first item contacted in a 50-turn window: before the change (−50 to −1), early afterward (0 to 49), and late afterward (50 to 99). Food scores one. Poison, no contact and death before contact score zero. **All 128 assigned pupils remain in each denominator.** Whiskers are one family standard error.
+
+![Three panels show all-assigned first-food probability for A0, A1 and A2. Stationary scores remain near 0.7, while reversal scores fall after the hidden change and remain between 0.125 and 0.203 in the late window. Points summarize separate 50-turn windows with one-standard-error whiskers.](results/figures/e125-changing-world.png)
+
+[Vector figure](results/figures/e125-changing-world.svg) · [Reproduce the figure](tools/build_e125_window_figure.py) · [Independent audit and all controller measurements](results/diagnostics/E125-independent-audit.json)
+
+Rates below are percentages ± one standard error. Differences are reversal minus its matched stationary world, in percentage points ± one paired family standard error.
+
+| Lineage | Late first food, stationary (%) | Late first food, reversal (%) | Paired difference, points |
+| --- | ---: | ---: | ---: |
+| A0 | 78.1 ± 3.7 | 12.5 ± 2.9 | −65.6 ± 4.8 |
+| A1 | 69.5 ± 4.1 | 18.0 ± 3.4 | −51.6 ± 5.7 |
+| A2 | 71.1 ± 4.0 | 20.3 ± 3.6 | −50.8 ± 5.4 |
+
+Only **16/128, 23/128 and 26/128** pupils chose food at their first late-window contact. No late-window contact occurred in **39/128, 45/128 and 40/128** lives, including pupils already dead. Those outcomes remain in the first-food denominator. End-of-life survival also uses every assigned pupil:
+
+| Lineage | End survival, stationary (%) | End survival, reversal (%) | Paired difference, points |
+| --- | ---: | ---: | ---: |
+| A0 | 84.4 ± 3.2 | 22.7 ± 3.7 | −61.7 ± 4.9 |
+| A1 | 92.2 ± 2.4 | 19.5 ± 3.5 | −72.7 ± 4.1 |
+| A2 | 88.3 ± 2.9 | 21.9 ± 3.7 | −66.4 ± 4.6 |
+
+Recovery was the early-to-late change after reversal, minus the same change in the stationary copy. It was **−10.2 ± 6.5, +11.7 ± 7.8 and +5.5 ± 7.9 points** for A0/A1/A2. None exceeded two paired standard errors. All three also missed the registered late-success minimum of 60%, above-chance test, and −10-point lower-bound safeguards for late success and survival.
+
+The separate causal reset kept the same demonstration and acquired neural state, clearing only the engineered food belief. Intact belief minus reset gave late first-food differences of **−14.1 ± 4.0, −14.8 ± 4.8 and −10.2 ± 4.9 points**, with end-survival differences of **−20.3 ± 5.2, −25.8 ± 5.1 and −26.6 ± 5.3 points**. Retaining that belief contributed to the cost after the rule changed.
+
+The unprepared birth-state comparison was separate: original plastic agents exceeded their matched directly encoded recurrent controls on late first food by **+23.4 ± 3.8, +29.7 ± 4.1 and +20.3 ± 3.9 points**, but their own late rates were only **23.4 ± 3.8%, 30.5 ± 4.1% and 22.7 ± 3.7%**. These saved controllers had not been trained for this changing world. E125 measures that transfer failure, and does not decide the later training-and-lesion gate or establish superiority from comparing a socially prepared pupil with an unprepared control. [Full results](results/RESULTS.md)
+
 ## Human-inspired research direction
 
-The next experiment, **E125**, asks what happens when a useful lesson becomes obsolete. In fresh worlds, the hidden food rule will reverse at an unpredictable time, without a change signal. Paired stationary worlds will show how much behavior changes because of the reversal. Social memory will be compared with its reset, alongside separate paired benchmarks for the original birth parent and the directly encoded recurrent controller. The study will measure whether the saved controllers revise their behavior after the change, before any new training. These are specific capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next experiment, **E126**, will train the unchanged original rules-genome architecture and a matched directly encoded recurrent control from blank in reversal worlds, across three seeds. This tests whether selection for the changing task is enough before adding a new mechanism. These are specific capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

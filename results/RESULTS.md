@@ -257,6 +257,302 @@ Held-out family outcomes:
 | 20261121-224833_E123-A2 | final | belief_reset | 0.367188 ± 0.042774 | 0.156250 ± 0.034075 |
 | 20261121-224833_E123-A2 | final | birth_parent | 0.320312 ± 0.051947 | 0.062500 ± 0.042599 |
 
+## Saved-controller transfer to randomized rule reversal (reversal-random-v1)
+
+E125 changes only the hidden food interpretation at time 100, 125, 150 or 175, with 16 families per initial-rule/time cell in each final lineage. Every arm has paired stationary and reversal copies; the stationary copy uses the same shadow boundary for analysis. No new genome optimization or scalar calibration occurs. The fixed primary is the E123 prepared observer, with its original genome and pinned calibration. Its belief is not reset at the hidden flip.
+
+Windows relative to the boundary are pre [-50,0), early [0,50), and late [50,100). First contact is food scores one; poison, death or no contact scores zero across all assigned families. Means and ± SEM use independent families; all contrasts use paired family differences. Contact-conditioned accuracy includes its explicit encounter denominator and is undefined when no items were eaten.
+
+The primary passes only if late reversal success is at least 0.60 and exceeds 0.50 by more than two SEM; recovery (late minus early in reversal, minus the same change in stationary) exceeds two paired SEM; and the lower two-SEM bounds for late-success and end-survival reversal-minus-stationary differences both exceed -0.10. Every criterion must pass in all three lineages. These bounds are a transfer screen, not proof of equivalence. A good immediate response without the registered recovery contrast still fails this gate. Development and incomplete attempts have no scientific verdict.
+
+This measures saved-controller transfer, Phase 3(a). The formal rung remains undecided: it still requires registered evolution from blank across three seeds, a matched fair baseline comparison, and a mechanism lesion. The neutral selected birth state is exactly birth_parent and is reused, not another replicate. Only the birth_parent versus direct_baseline panel has matched birth information. Prepared-versus-direct scores have unequal prior information and cannot establish architecture superiority.
+
+| Run | Status | Split | Families | Primary late success ± SEM | Recovery contrast ± paired SEM | Late gap ± paired SEM | End-survival gap ± paired SEM | Transfer decision | Formal rung | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | finished | development | 4/4 | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 | -0.500000 ± 0.288675 | -1.000000 ± 0.000000 | not applicable | undecided | 591417f |
+| 20261121-235634_E125-A0 | finished | final | 128/128 | 0.125000 ± 0.029347 | -0.101562 ± 0.064524 | -0.656250 ± 0.047628 | -0.617188 ± 0.048503 | FAIL | undecided | 36b3ac1 |
+| 20261122-000030_E125-A1 | finished | final | 128/128 | 0.179688 ± 0.034068 | 0.117188 ± 0.078134 | -0.515625 ± 0.056541 | -0.726562 ± 0.041077 | FAIL | undecided | 36b3ac1 |
+| 20261122-000510_E125-A2 | finished | final | 128/128 | 0.203125 ± 0.035701 | 0.054688 ± 0.078674 | -0.507812 ± 0.054335 | -0.664062 ± 0.046105 | FAIL | undecided | 36b3ac1 |
+
+All assigned families:
+
+| Run | Split | Arm | World | Window | First food ± SEM | No contact ± SEM | Fitness ± SEM | Contact accuracy ± SEM | Food count | Poison count | Accuracy denominator |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | development | observed | stationary | pre | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 7.500000 ± 3.068659 | 0.941176 ± 0.031461 | 32 | 2 | 34 |
+| 20261121-235048_E125-benchmark | development | observed | stationary | early | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 7.500000 ± 1.500000 | 0.968750 ± 0.025012 | 31 | 1 | 32 |
+| 20261121-235048_E125-benchmark | development | observed | stationary | late | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 8.000000 ± 1.290994 | 1.000000 ± 0.000000 | 32 | 0 | 32 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | pre | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 7.500000 ± 3.068659 | 0.941176 ± 0.031461 | 32 | 2 | 34 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | early | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 | -5.250000 ± 0.629153 | 0.080000 ± 0.037773 | 2 | 23 | 25 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | late | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | -1.500000 ± 0.866025 | 0.200000 ± 0.126491 | 2 | 8 | 10 |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | pre | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | 3.750000 ± 0.478714 | 0.857143 ± 0.052105 | 18 | 3 | 21 |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | early | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | 4.250000 ± 1.600781 | 0.840000 ± 0.048741 | 21 | 4 | 25 |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | late | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 1.250000 ± 0.629153 | 0.666667 ± 0.088889 | 10 | 5 | 15 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | pre | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | 3.750000 ± 0.478714 | 0.857143 ± 0.052105 | 18 | 3 | 21 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | early | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 | -3.250000 ± 1.314978 | 0.290323 ± 0.082829 | 9 | 22 | 31 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | late | 0.000000 ± 0.000000 | 0.250000 ± 0.250000 | -2.000000 ± 0.816497 | 0.166667 ± 0.078567 | 2 | 10 | 12 |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | pre | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 5.250000 ± 1.181454 | 0.838710 ± 0.017577 | 26 | 5 | 31 |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | early | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 | 4.250000 ± 2.096624 | 0.869565 ± 0.078033 | 20 | 3 | 23 |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | late | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 2.750000 ± 0.853913 | 0.823529 ± 0.105105 | 14 | 3 | 17 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | pre | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 5.250000 ± 1.181454 | 0.838710 ± 0.017577 | 26 | 5 | 31 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | early | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | -2.250000 ± 2.322893 | 0.263158 ± 0.176185 | 5 | 14 | 19 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | late | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | -2.250000 ± 1.108678 | 0.200000 ± 0.078505 | 3 | 12 | 15 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | pre | 0.250000 ± 0.250000 | 0.500000 ± 0.288675 | 5.250000 ± 3.544362 | 0.956522 ± 0.046304 | 22 | 1 | 23 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | early | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 | 3.750000 ± 2.174665 | 0.894737 ± 0.063329 | 17 | 2 | 19 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | late | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 | 5.000000 ± 2.915476 | 0.916667 ± 0.051031 | 22 | 2 | 24 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | pre | 0.250000 ± 0.250000 | 0.500000 ± 0.288675 | 5.250000 ± 3.544362 | 0.956522 ± 0.046304 | 22 | 1 | 23 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | early | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 | -4.000000 ± 2.309401 | 0.000000 ± 0.000000 | 0 | 16 | 16 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | late | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | undefined | 0 | 0 | 0 |
+| 20261121-235634_E125-A0 | final | observed | stationary | pre | 0.664062 ± 0.041911 | 0.125000 ± 0.029347 | 4.062500 ± 0.349309 | 0.858127 ± 0.015736 | 623 | 103 | 726 |
+| 20261121-235634_E125-A0 | final | observed | stationary | early | 0.703125 ± 0.040542 | 0.148438 ± 0.031548 | 4.625000 ± 0.383114 | 0.900000 ± 0.012342 | 666 | 74 | 740 |
+| 20261121-235634_E125-A0 | final | observed | stationary | late | 0.781250 ± 0.036683 | 0.148438 ± 0.031548 | 5.171875 ± 0.374690 | 0.935526 ± 0.009728 | 711 | 49 | 760 |
+| 20261121-235634_E125-A0 | final | observed | reversal | pre | 0.664062 ± 0.041911 | 0.125000 ± 0.029347 | 4.062500 ± 0.349309 | 0.858127 ± 0.015736 | 623 | 103 | 726 |
+| 20261121-235634_E125-A0 | final | observed | reversal | early | 0.148438 ± 0.031548 | 0.148438 ± 0.031548 | -2.992188 ± 0.252569 | 0.144712 ± 0.018118 | 78 | 461 | 539 |
+| 20261121-235634_E125-A0 | final | observed | reversal | late | 0.125000 ± 0.029347 | 0.304688 ± 0.040843 | -1.179688 ± 0.148580 | 0.212928 ± 0.033723 | 56 | 207 | 263 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | pre | 0.539062 ± 0.044232 | 0.125000 ± 0.029347 | 1.867188 ± 0.229304 | 0.724203 ± 0.020002 | 386 | 147 | 533 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | early | 0.578125 ± 0.043823 | 0.195312 ± 0.035178 | 2.156250 ± 0.259523 | 0.769531 ± 0.020618 | 394 | 118 | 512 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | late | 0.539062 ± 0.044232 | 0.226562 ± 0.037145 | 2.390625 ± 0.280439 | 0.787594 ± 0.018219 | 419 | 113 | 532 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | pre | 0.539062 ± 0.044232 | 0.125000 ± 0.029347 | 1.867188 ± 0.229304 | 0.724203 ± 0.020002 | 386 | 147 | 533 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | early | 0.226562 ± 0.037145 | 0.195312 ± 0.035178 | -1.257812 ± 0.211693 | 0.337374 ± 0.025190 | 167 | 328 | 495 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | late | 0.265625 ± 0.039191 | 0.281250 ± 0.039896 | -0.515625 ± 0.170753 | 0.404624 ± 0.032003 | 140 | 206 | 346 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | pre | 0.562500 ± 0.044020 | 0.140625 ± 0.030848 | 2.687500 ± 0.290675 | 0.754438 ± 0.019022 | 510 | 166 | 676 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | early | 0.593750 ± 0.043581 | 0.210938 ± 0.036202 | 2.976562 ± 0.284193 | 0.802862 ± 0.015355 | 505 | 124 | 629 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | late | 0.609375 ± 0.043293 | 0.226562 ± 0.037145 | 3.585938 ± 0.307895 | 0.828326 ± 0.014116 | 579 | 120 | 699 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | pre | 0.562500 ± 0.044020 | 0.140625 ± 0.030848 | 2.687500 ± 0.290675 | 0.754438 ± 0.019022 | 510 | 166 | 676 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | early | 0.195312 ± 0.035178 | 0.210938 ± 0.036202 | -2.312500 ± 0.229673 | 0.256579 ± 0.020049 | 156 | 452 | 608 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | late | 0.234375 ± 0.037589 | 0.367188 ± 0.042774 | -0.414062 ± 0.193880 | 0.426184 ± 0.036722 | 153 | 206 | 359 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | pre | 0.460938 ± 0.044232 | 0.507812 ± 0.044362 | 4.492188 ± 0.453279 | 0.920937 ± 0.010529 | 629 | 54 | 683 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | early | 0.437500 ± 0.044020 | 0.523438 ± 0.044319 | 4.234375 ± 0.434783 | 0.947195 ± 0.009078 | 574 | 32 | 606 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | late | 0.429688 ± 0.043927 | 0.515625 ± 0.044346 | 4.015625 ± 0.430160 | 0.940068 ± 0.010984 | 549 | 35 | 584 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | pre | 0.460938 ± 0.044232 | 0.507812 ± 0.044362 | 4.492188 ± 0.453279 | 0.920937 ± 0.010529 | 629 | 54 | 683 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | early | 0.039062 ± 0.017192 | 0.523438 ± 0.044319 | -3.226562 ± 0.316114 | 0.068894 ± 0.010770 | 33 | 446 | 479 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | late | 0.000000 ± 0.000000 | 0.781250 ± 0.036683 | -0.507812 ± 0.099207 | 0.014925 ± 0.014194 | 1 | 66 | 67 |
+| 20261122-000030_E125-A1 | final | observed | stationary | pre | 0.718750 ± 0.039896 | 0.062500 ± 0.021479 | 4.000000 ± 0.333313 | 0.832468 ± 0.014586 | 641 | 129 | 770 |
+| 20261122-000030_E125-A1 | final | observed | stationary | early | 0.750000 ± 0.038424 | 0.132812 ± 0.030114 | 5.179688 ± 0.402140 | 0.902795 ± 0.011092 | 743 | 80 | 823 |
+| 20261122-000030_E125-A1 | final | observed | stationary | late | 0.695312 ± 0.040843 | 0.156250 ± 0.032219 | 5.257812 ± 0.400118 | 0.898225 ± 0.011550 | 759 | 86 | 845 |
+| 20261122-000030_E125-A1 | final | observed | reversal | pre | 0.718750 ± 0.039896 | 0.062500 ± 0.021479 | 4.000000 ± 0.333313 | 0.832468 ± 0.014586 | 641 | 129 | 770 |
+| 20261122-000030_E125-A1 | final | observed | reversal | early | 0.117188 ± 0.028541 | 0.132812 ± 0.030114 | -3.460938 ± 0.254367 | 0.157651 ± 0.017858 | 102 | 545 | 647 |
+| 20261122-000030_E125-A1 | final | observed | reversal | late | 0.179688 ± 0.034068 | 0.351562 ± 0.042368 | -1.132812 ± 0.177946 | 0.271293 ± 0.034524 | 86 | 231 | 317 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | pre | 0.468750 ± 0.044281 | 0.156250 ± 0.032219 | 2.132812 ± 0.259270 | 0.725620 ± 0.019051 | 439 | 166 | 605 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | early | 0.523438 ± 0.044319 | 0.203125 ± 0.035701 | 2.234375 ± 0.269989 | 0.756272 ± 0.020484 | 422 | 136 | 558 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | late | 0.507812 ± 0.044362 | 0.234375 ± 0.037589 | 2.156250 ± 0.231191 | 0.754613 ± 0.017158 | 409 | 133 | 542 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | pre | 0.468750 ± 0.044281 | 0.156250 ± 0.032219 | 2.132812 ± 0.259270 | 0.725620 ± 0.019051 | 439 | 166 | 605 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | early | 0.273438 ± 0.039552 | 0.203125 ± 0.035701 | -1.296875 ± 0.200688 | 0.343396 ± 0.022717 | 182 | 348 | 530 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | late | 0.328125 ± 0.041664 | 0.226562 ± 0.037145 | -0.140625 ± 0.197404 | 0.480263 ± 0.028116 | 219 | 237 | 456 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | pre | 0.593750 ± 0.043581 | 0.132812 ± 0.030114 | 2.796875 ± 0.285035 | 0.749304 ± 0.016826 | 538 | 180 | 718 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | early | 0.617188 ± 0.043132 | 0.203125 ± 0.035701 | 2.929688 ± 0.303600 | 0.784522 ± 0.017186 | 517 | 142 | 659 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | late | 0.632812 ± 0.042774 | 0.187500 ± 0.034635 | 3.554688 ± 0.327318 | 0.846271 ± 0.016440 | 556 | 101 | 657 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | pre | 0.593750 ± 0.043581 | 0.132812 ± 0.030114 | 2.796875 ± 0.285035 | 0.749304 ± 0.016826 | 538 | 180 | 718 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | early | 0.179688 ± 0.034068 | 0.203125 ± 0.035701 | -1.859375 ± 0.220095 | 0.303630 ± 0.020635 | 184 | 422 | 606 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | late | 0.304688 ± 0.040843 | 0.335938 ± 0.041911 | -0.382812 ± 0.187949 | 0.442623 ± 0.029370 | 189 | 238 | 427 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | pre | 0.335938 ± 0.041911 | 0.617188 ± 0.043132 | 2.156250 ± 0.309670 | 0.925926 ± 0.013511 | 300 | 24 | 324 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | early | 0.359375 ± 0.042577 | 0.617188 ± 0.043132 | 2.539062 ± 0.355272 | 0.935657 ± 0.012681 | 349 | 24 | 373 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | late | 0.335938 ± 0.041911 | 0.640625 ± 0.042577 | 2.140625 ± 0.309132 | 0.930818 ± 0.014383 | 296 | 22 | 318 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | pre | 0.335938 ± 0.041911 | 0.617188 ± 0.043132 | 2.156250 ± 0.309670 | 0.925926 ± 0.013511 | 300 | 24 | 324 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | early | 0.023438 ± 0.013425 | 0.617188 ± 0.043132 | -2.320312 ± 0.289866 | 0.045872 ± 0.011548 | 15 | 312 | 327 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | late | 0.007812 ± 0.007812 | 0.812500 ± 0.034635 | -0.648438 ± 0.149058 | 0.089109 ± 0.028831 | 9 | 92 | 101 |
+| 20261122-000510_E125-A2 | final | observed | stationary | pre | 0.726562 ± 0.039552 | 0.101562 ± 0.026805 | 4.757812 ± 0.380334 | 0.880150 ± 0.014861 | 705 | 96 | 801 |
+| 20261122-000510_E125-A2 | final | observed | stationary | early | 0.710938 ± 0.040226 | 0.140625 ± 0.030848 | 5.304688 ± 0.379007 | 0.907563 ± 0.011410 | 756 | 77 | 833 |
+| 20261122-000510_E125-A2 | final | observed | stationary | late | 0.710938 ± 0.040226 | 0.125000 ± 0.029347 | 5.148438 ± 0.403615 | 0.900365 ± 0.012628 | 741 | 82 | 823 |
+| 20261122-000510_E125-A2 | final | observed | reversal | pre | 0.726562 ± 0.039552 | 0.101562 ± 0.026805 | 4.757812 ± 0.380334 | 0.880150 ± 0.014861 | 705 | 96 | 801 |
+| 20261122-000510_E125-A2 | final | observed | reversal | early | 0.148438 ± 0.031548 | 0.140625 ± 0.030848 | -3.195312 ± 0.258245 | 0.158598 ± 0.020424 | 95 | 504 | 599 |
+| 20261122-000510_E125-A2 | final | observed | reversal | late | 0.203125 ± 0.035701 | 0.312500 ± 0.041130 | -1.031250 ± 0.145020 | 0.281457 ± 0.028244 | 85 | 217 | 302 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | pre | 0.500000 ± 0.044368 | 0.156250 ± 0.032219 | 1.750000 ± 0.257992 | 0.704380 ± 0.021659 | 386 | 162 | 548 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | early | 0.578125 ± 0.043823 | 0.156250 ± 0.032219 | 2.125000 ± 0.255356 | 0.737762 ± 0.019084 | 422 | 150 | 572 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | late | 0.609375 ± 0.043293 | 0.164062 ± 0.032862 | 2.585938 ± 0.280503 | 0.775374 ± 0.021000 | 466 | 135 | 601 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | pre | 0.500000 ± 0.044368 | 0.156250 ± 0.032219 | 1.750000 ± 0.257992 | 0.704380 ± 0.021659 | 386 | 162 | 548 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | early | 0.265625 ± 0.039191 | 0.156250 ± 0.032219 | -1.171875 ± 0.213965 | 0.343750 ± 0.026357 | 165 | 315 | 480 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | late | 0.304688 ± 0.040843 | 0.289062 ± 0.040226 | -0.343750 ± 0.166541 | 0.441489 ± 0.029330 | 166 | 210 | 376 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | pre | 0.617188 ± 0.043132 | 0.164062 ± 0.032862 | 3.062500 ± 0.323906 | 0.780802 ± 0.018437 | 545 | 153 | 698 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | early | 0.601562 ± 0.043443 | 0.210938 ± 0.036202 | 3.195312 ± 0.279301 | 0.793400 ± 0.015841 | 553 | 144 | 697 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | late | 0.601562 ± 0.043443 | 0.195312 ± 0.035178 | 3.406250 ± 0.280264 | 0.814121 ± 0.014456 | 565 | 129 | 694 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | pre | 0.617188 ± 0.043132 | 0.164062 ± 0.032862 | 3.062500 ± 0.323906 | 0.780802 ± 0.018437 | 545 | 153 | 698 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | early | 0.187500 ± 0.034635 | 0.210938 ± 0.036202 | -1.976562 ± 0.212915 | 0.275311 ± 0.022478 | 155 | 408 | 563 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | late | 0.226562 ± 0.037145 | 0.320312 ± 0.041404 | -0.539062 ± 0.183907 | 0.424837 ± 0.026658 | 195 | 264 | 459 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | pre | 0.460938 ± 0.044232 | 0.523438 ± 0.044319 | 4.609375 ± 0.479941 | 0.952454 ± 0.008131 | 621 | 31 | 652 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | early | 0.468750 ± 0.044281 | 0.515625 ± 0.044346 | 4.976562 ± 0.534083 | 0.954351 ± 0.008256 | 669 | 32 | 701 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | late | 0.421875 ± 0.043823 | 0.554688 ± 0.044102 | 4.007812 ± 0.467246 | 0.957219 ± 0.011806 | 537 | 24 | 561 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | pre | 0.460938 ± 0.044232 | 0.523438 ± 0.044319 | 4.609375 ± 0.479941 | 0.952454 ± 0.008131 | 621 | 31 | 652 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | early | 0.015625 ± 0.011005 | 0.515625 ± 0.044346 | -3.335938 ± 0.334285 | 0.040860 ± 0.009843 | 19 | 446 | 465 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | late | 0.023438 ± 0.013425 | 0.898438 ± 0.026805 | -0.398438 ± 0.122183 | 0.067797 ± 0.035225 | 4 | 55 | 59 |
+
+| Run | Split | Arm | World | Lifetime fitness ± SEM | Survival at flip ± SEM | Survival after 50 ± SEM | Survival after 100 ± SEM | End survival ± SEM |
+|---|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | development | observed | stationary | 40.500000 ± 8.855319 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | 10.250000 ± 3.750000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | 17.250000 ± 3.567796 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | 2.000000 ± 2.160247 | 1.000000 ± 0.000000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | 23.000000 ± 5.244044 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | 5.250000 ± 2.926175 | 1.000000 ± 0.000000 | 0.750000 ± 0.250000 | 0.500000 ± 0.288675 | 0.250000 ± 0.250000 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | 24.750000 ± 16.610112 | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | 6.750000 ± 6.368870 | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-235634_E125-A0 | final | observed | stationary | 26.851562 ± 1.655903 | 0.890625 ± 0.027695 | 0.875000 ± 0.029347 | 0.859375 ± 0.030848 | 0.843750 ± 0.032219 |
+| 20261121-235634_E125-A0 | final | observed | reversal | 6.093750 ± 0.641844 | 0.890625 ± 0.027695 | 0.773438 ± 0.037145 | 0.390625 ± 0.043293 | 0.226562 ± 0.037145 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | 11.250000 ± 1.047353 | 0.867188 ± 0.030114 | 0.828125 ± 0.033477 | 0.796875 ± 0.035701 | 0.781250 ± 0.036683 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | 2.335938 ± 0.491722 | 0.867188 ± 0.030114 | 0.742188 ± 0.038816 | 0.562500 ± 0.044020 | 0.429688 ± 0.043927 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | 17.132812 ± 1.229776 | 0.812500 ± 0.034635 | 0.796875 ± 0.035701 | 0.789062 ± 0.036202 | 0.781250 ± 0.036683 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | 3.671875 ± 0.602765 | 0.812500 ± 0.034635 | 0.664062 ± 0.041911 | 0.460938 ± 0.044232 | 0.351562 ± 0.042368 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | 23.429688 ± 2.531025 | 0.500000 ± 0.044368 | 0.500000 ± 0.044368 | 0.500000 ± 0.044368 | 0.500000 ± 0.044368 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | 6.562500 ± 1.080413 | 0.500000 ± 0.044368 | 0.234375 ± 0.037589 | 0.031250 ± 0.015439 | 0.023438 ± 0.013425 |
+| 20261122-000030_E125-A1 | final | observed | stationary | 28.179688 ± 1.545704 | 0.929688 ± 0.022687 | 0.929688 ± 0.022687 | 0.921875 ± 0.023814 | 0.921875 ± 0.023814 |
+| 20261122-000030_E125-A1 | final | observed | reversal | 6.125000 ± 0.611568 | 0.929688 ± 0.022687 | 0.750000 ± 0.038424 | 0.398438 ± 0.043443 | 0.195312 ± 0.035178 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | 11.398438 ± 0.992674 | 0.843750 ± 0.032219 | 0.820312 ± 0.034068 | 0.812500 ± 0.034635 | 0.796875 ± 0.035701 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | 3.250000 ± 0.554043 | 0.843750 ± 0.032219 | 0.796875 ± 0.035701 | 0.617188 ± 0.043132 | 0.453125 ± 0.044172 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | 16.632812 ± 1.154036 | 0.851562 ± 0.031548 | 0.843750 ± 0.032219 | 0.828125 ± 0.033477 | 0.828125 ± 0.033477 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | 3.187500 ± 0.537331 | 0.851562 ± 0.031548 | 0.710938 ± 0.040226 | 0.500000 ± 0.044368 | 0.398438 ± 0.043443 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | 13.781250 ± 1.774919 | 0.492188 ± 0.044362 | 0.492188 ± 0.044362 | 0.492188 ± 0.044362 | 0.492188 ± 0.044362 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | 2.773438 ± 0.769291 | 0.492188 ± 0.044362 | 0.250000 ± 0.038424 | 0.109375 ± 0.027695 | 0.039062 ± 0.017192 |
+| 20261122-000510_E125-A2 | final | observed | stationary | 28.296875 ± 1.638698 | 0.921875 ± 0.023814 | 0.898438 ± 0.026805 | 0.882812 ± 0.028541 | 0.882812 ± 0.028541 |
+| 20261122-000510_E125-A2 | final | observed | reversal | 6.796875 ± 0.662865 | 0.921875 ± 0.023814 | 0.750000 ± 0.038424 | 0.453125 ± 0.044172 | 0.218750 ± 0.036683 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | 11.929688 ± 1.016606 | 0.898438 ± 0.026805 | 0.867188 ± 0.030114 | 0.804688 ± 0.035178 | 0.804688 ± 0.035178 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | 2.867188 ± 0.534187 | 0.898438 ± 0.026805 | 0.773438 ± 0.037145 | 0.593750 ± 0.043581 | 0.484375 ± 0.044346 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | 16.609375 ± 1.148820 | 0.843750 ± 0.032219 | 0.843750 ± 0.032219 | 0.835938 ± 0.032862 | 0.828125 ± 0.033477 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | 3.812500 ± 0.590770 | 0.843750 ± 0.032219 | 0.750000 ± 0.038424 | 0.507812 ± 0.044362 | 0.398438 ± 0.043443 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | 24.937500 ± 2.737192 | 0.500000 ± 0.044368 | 0.500000 ± 0.044368 | 0.500000 ± 0.044368 | 0.492188 ± 0.044362 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | 7.015625 ± 1.125491 | 0.500000 ± 0.044368 | 0.132812 ± 0.030114 | 0.031250 ± 0.015439 | 0.007812 ± 0.007812 |
+
+Paired reversal minus stationary differences:
+
+| Run | Split | Arm | Pre first-food gap ± SEM | Early gap ± SEM | Late gap ± SEM | Recovery contrast ± SEM | End-survival gap ± SEM |
+|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | development | observed | 0.000000 ± 0.000000 | -1.000000 ± 0.000000 | -0.500000 ± 0.288675 | 0.500000 ± 0.288675 | -1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | belief_reset | 0.000000 ± 0.000000 | -0.500000 ± 0.500000 | -0.500000 ± 0.288675 | 0.000000 ± 0.408248 | -1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | 0.000000 ± 0.000000 | 0.500000 ± 0.500000 | -0.750000 ± 0.250000 | -1.250000 ± 0.478714 | -0.750000 ± 0.250000 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | 0.000000 ± 0.000000 | -0.500000 ± 0.288675 | -0.500000 ± 0.288675 | 0.000000 ± 0.000000 | -0.500000 ± 0.288675 |
+| 20261121-235634_E125-A0 | final | observed | 0.000000 ± 0.000000 | -0.554688 ± 0.065441 | -0.656250 ± 0.047628 | -0.101562 ± 0.064524 | -0.617188 ± 0.048503 |
+| 20261121-235634_E125-A0 | final | belief_reset | 0.000000 ± 0.000000 | -0.351562 ± 0.073232 | -0.273438 ± 0.057330 | 0.078125 ± 0.081214 | -0.351562 ± 0.050331 |
+| 20261121-235634_E125-A0 | final | birth_parent | 0.000000 ± 0.000000 | -0.398438 ± 0.070449 | -0.375000 ± 0.053195 | 0.023438 ± 0.079573 | -0.429688 ± 0.045306 |
+| 20261121-235634_E125-A0 | final | direct_baseline | 0.000000 ± 0.000000 | -0.398438 ± 0.050024 | -0.429688 ± 0.043927 | -0.031250 ± 0.034966 | -0.476562 ± 0.044319 |
+| 20261122-000030_E125-A1 | final | observed | 0.000000 ± 0.000000 | -0.632812 ± 0.060622 | -0.515625 ± 0.056541 | 0.117188 ± 0.078134 | -0.726562 ± 0.041077 |
+| 20261122-000030_E125-A1 | final | belief_reset | 0.000000 ± 0.000000 | -0.250000 ± 0.076043 | -0.179688 ± 0.057028 | 0.070312 ± 0.088863 | -0.343750 ± 0.046318 |
+| 20261122-000030_E125-A1 | final | birth_parent | 0.000000 ± 0.000000 | -0.437500 ± 0.069047 | -0.328125 ± 0.059845 | 0.109375 ± 0.087503 | -0.429688 ± 0.045306 |
+| 20261122-000030_E125-A1 | final | direct_baseline | 0.000000 ± 0.000000 | -0.335938 ± 0.046105 | -0.328125 ± 0.043115 | 0.007812 ± 0.045050 | -0.453125 ± 0.044172 |
+| 20261122-000510_E125-A2 | final | observed | 0.000000 ± 0.000000 | -0.562500 ± 0.065386 | -0.507812 ± 0.054335 | 0.054688 ± 0.078674 | -0.664062 ± 0.046105 |
+| 20261122-000510_E125-A2 | final | belief_reset | 0.000000 ± 0.000000 | -0.312500 ± 0.076647 | -0.304688 ± 0.058229 | 0.007812 ± 0.095091 | -0.320312 ± 0.049522 |
+| 20261122-000510_E125-A2 | final | birth_parent | 0.000000 ± 0.000000 | -0.414062 ± 0.069736 | -0.375000 ± 0.056558 | 0.039062 ± 0.091064 | -0.429688 ± 0.043927 |
+| 20261122-000510_E125-A2 | final | direct_baseline | 0.000000 ± 0.000000 | -0.453125 ± 0.046875 | -0.398438 ± 0.046188 | 0.054688 ± 0.038915 | -0.484375 ± 0.045712 |
+
+Matched comparisons: within_social is observed minus belief_reset; within_birth is birth_parent minus direct_baseline. All ± values below are paired SEM.
+
+| Run | Split | Comparison | World | Window | First-food gap ± SEM | Fitness gap ± SEM | End-survival gap ± SEM |
+|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | development | within_social | stationary | pre | 0.250000 ± 0.250000 | 3.750000 ± 3.275541 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_social | stationary | early | 0.250000 ± 0.250000 | 3.250000 ± 1.973787 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_social | stationary | late | 0.500000 ± 0.288675 | 6.750000 ± 1.701715 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_social | reversal | pre | 0.250000 ± 0.250000 | 3.750000 ± 3.275541 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_social | reversal | early | -0.250000 ± 0.250000 | -2.000000 ± 1.779513 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_social | reversal | late | 0.500000 ± 0.288675 | 0.500000 ± 1.322876 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | within_birth | stationary | pre | 0.750000 ± 0.250000 | 0.000000 ± 2.798809 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | within_birth | stationary | early | -0.250000 ± 0.250000 | 0.500000 ± 2.533114 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | within_birth | stationary | late | 0.500000 ± 0.288675 | -2.250000 ± 3.010399 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | within_birth | reversal | pre | 0.750000 ± 0.250000 | 0.000000 ± 2.798809 | 0.250000 ± 0.250000 |
+| 20261121-235048_E125-benchmark | development | within_birth | reversal | early | 0.750000 ± 0.250000 | 1.750000 ± 2.954516 | 0.250000 ± 0.250000 |
+| 20261121-235048_E125-benchmark | development | within_birth | reversal | late | 0.250000 ± 0.250000 | -2.250000 ± 1.108678 | 0.250000 ± 0.250000 |
+| 20261121-235634_E125-A0 | final | within_social | stationary | pre | 0.125000 ± 0.054339 | 2.195312 ± 0.357715 | 0.062500 ± 0.034635 |
+| 20261121-235634_E125-A0 | final | within_social | stationary | early | 0.125000 ± 0.054339 | 2.468750 ± 0.419144 | 0.062500 ± 0.034635 |
+| 20261121-235634_E125-A0 | final | within_social | stationary | late | 0.242188 ± 0.050522 | 2.781250 ± 0.408289 | 0.062500 ± 0.034635 |
+| 20261121-235634_E125-A0 | final | within_social | reversal | pre | 0.125000 ± 0.054339 | 2.195312 ± 0.357715 | -0.203125 ± 0.052449 |
+| 20261121-235634_E125-A0 | final | within_social | reversal | early | -0.078125 ± 0.045205 | -1.734375 ± 0.300812 | -0.203125 ± 0.052449 |
+| 20261121-235634_E125-A0 | final | within_social | reversal | late | -0.140625 ± 0.039582 | -0.664062 ± 0.217718 | -0.203125 ± 0.052449 |
+| 20261121-235634_E125-A0 | final | within_birth | stationary | pre | 0.101562 ± 0.062588 | -1.804688 ± 0.536564 | 0.281250 ± 0.057569 |
+| 20261121-235634_E125-A0 | final | within_birth | stationary | early | 0.156250 ± 0.062192 | -1.257812 ± 0.502117 | 0.281250 ± 0.057569 |
+| 20261121-235634_E125-A0 | final | within_birth | stationary | late | 0.179688 ± 0.061191 | -0.429688 ± 0.543923 | 0.281250 ± 0.057569 |
+| 20261121-235634_E125-A0 | final | within_birth | reversal | pre | 0.101562 ± 0.062588 | -1.804688 ± 0.536564 | 0.328125 ± 0.043115 |
+| 20261121-235634_E125-A0 | final | within_birth | reversal | early | 0.156250 ± 0.040660 | 0.914062 ± 0.399315 | 0.328125 ± 0.043115 |
+| 20261121-235634_E125-A0 | final | within_birth | reversal | late | 0.234375 ± 0.037589 | 0.093750 ± 0.220012 | 0.328125 ± 0.043115 |
+| 20261122-000030_E125-A1 | final | within_social | stationary | pre | 0.250000 ± 0.056558 | 1.867188 ± 0.383976 | 0.125000 ± 0.039993 |
+| 20261122-000030_E125-A1 | final | within_social | stationary | early | 0.226562 ± 0.056791 | 2.945312 ± 0.470632 | 0.125000 ± 0.039993 |
+| 20261122-000030_E125-A1 | final | within_social | stationary | late | 0.187500 ± 0.057368 | 3.101562 ± 0.449168 | 0.125000 ± 0.039993 |
+| 20261122-000030_E125-A1 | final | within_social | reversal | pre | 0.250000 ± 0.056558 | 1.867188 ± 0.383976 | -0.257812 ± 0.051127 |
+| 20261122-000030_E125-A1 | final | within_social | reversal | early | -0.156250 ± 0.040660 | -2.164062 ± 0.318742 | -0.257812 ± 0.051127 |
+| 20261122-000030_E125-A1 | final | within_social | reversal | late | -0.148438 ± 0.048463 | -0.992188 ± 0.263535 | -0.257812 ± 0.051127 |
+| 20261122-000030_E125-A1 | final | within_birth | stationary | pre | 0.257812 ± 0.058950 | 0.640625 ± 0.372322 | 0.335938 ± 0.053515 |
+| 20261122-000030_E125-A1 | final | within_birth | stationary | early | 0.257812 ± 0.061002 | 0.390625 ± 0.445785 | 0.335938 ± 0.053515 |
+| 20261122-000030_E125-A1 | final | within_birth | stationary | late | 0.296875 ± 0.062114 | 1.414062 ± 0.455247 | 0.335938 ± 0.053515 |
+| 20261122-000030_E125-A1 | final | within_birth | reversal | pre | 0.257812 ± 0.058950 | 0.640625 ± 0.372322 | 0.359375 ± 0.043998 |
+| 20261122-000030_E125-A1 | final | within_birth | reversal | early | 0.156250 ± 0.037512 | 0.460938 ± 0.345796 | 0.359375 ± 0.043998 |
+| 20261122-000030_E125-A1 | final | within_birth | reversal | late | 0.296875 ± 0.040542 | 0.265625 ± 0.239310 | 0.359375 ± 0.043998 |
+| 20261122-000510_E125-A2 | final | within_social | stationary | pre | 0.226562 ± 0.056791 | 3.007812 ± 0.443053 | 0.078125 ± 0.036129 |
+| 20261122-000510_E125-A2 | final | within_social | stationary | early | 0.132812 ± 0.052463 | 3.179688 ± 0.424756 | 0.078125 ± 0.036129 |
+| 20261122-000510_E125-A2 | final | within_social | stationary | late | 0.101562 ± 0.053010 | 2.562500 ± 0.454466 | 0.078125 ± 0.036129 |
+| 20261122-000510_E125-A2 | final | within_social | reversal | pre | 0.226562 ± 0.056791 | 3.007812 ± 0.443053 | -0.265625 ± 0.052595 |
+| 20261122-000510_E125-A2 | final | within_social | reversal | early | -0.117188 ± 0.047864 | -2.023438 ± 0.293353 | -0.265625 ± 0.052595 |
+| 20261122-000510_E125-A2 | final | within_social | reversal | late | -0.101562 ± 0.049406 | -0.687500 ± 0.197409 | -0.265625 ± 0.052595 |
+| 20261122-000510_E125-A2 | final | within_birth | stationary | pre | 0.156250 ± 0.060181 | -1.546875 ± 0.567629 | 0.335938 ± 0.057931 |
+| 20261122-000510_E125-A2 | final | within_birth | stationary | early | 0.132812 ± 0.065029 | -1.781250 ± 0.594527 | 0.335938 ± 0.057931 |
+| 20261122-000510_E125-A2 | final | within_birth | stationary | late | 0.179688 ± 0.064136 | -0.601562 ± 0.555079 | 0.335938 ± 0.057931 |
+| 20261122-000510_E125-A2 | final | within_birth | reversal | pre | 0.156250 ± 0.060181 | -1.546875 ± 0.567629 | 0.390625 ± 0.043293 |
+| 20261122-000510_E125-A2 | final | within_birth | reversal | early | 0.171875 ± 0.036970 | 1.359375 ± 0.405840 | 0.390625 ± 0.043293 |
+| 20261122-000510_E125-A2 | final | within_birth | reversal | late | 0.203125 ± 0.038995 | -0.140625 ± 0.212704 | 0.390625 ± 0.043293 |
+
+Secondary subgroups only. End-survivor selection cannot establish recovery or replace the assigned-family gate; subgroup sizes are shown explicitly.
+
+| Run | Split | Arm | World | Subgroup | Families | Pre first food ± SEM | Early ± SEM | Late ± SEM |
+|---|---|---|---|---|---|---|---|---|
+| 20261121-235048_E125-benchmark | development | observed | stationary | alive_at_flip_only | 4 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | observed | stationary | end_survivor_only | 4 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | alive_at_flip_only | 4 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | observed | reversal | end_survivor_only | 0 | undefined | undefined | undefined |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | alive_at_flip_only | 4 | 0.750000 ± 0.250000 | 0.750000 ± 0.250000 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | belief_reset | stationary | end_survivor_only | 4 | 0.750000 ± 0.250000 | 0.750000 ± 0.250000 | 0.500000 ± 0.288675 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | alive_at_flip_only | 4 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | belief_reset | reversal | end_survivor_only | 0 | undefined | undefined | undefined |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | alive_at_flip_only | 4 | 1.000000 ± 0.000000 | 0.250000 ± 0.250000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | stationary | end_survivor_only | 4 | 1.000000 ± 0.000000 | 0.250000 ± 0.250000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | alive_at_flip_only | 4 | 1.000000 ± 0.000000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 |
+| 20261121-235048_E125-benchmark | development | birth_parent | reversal | end_survivor_only | 1 | 1.000000 ± undefined | 1.000000 ± undefined | 1.000000 ± undefined |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | alive_at_flip_only | 2 | 0.500000 ± 0.500000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | stationary | end_survivor_only | 2 | 0.500000 ± 0.500000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | alive_at_flip_only | 2 | 0.500000 ± 0.500000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-235048_E125-benchmark | development | direct_baseline | reversal | end_survivor_only | 0 | undefined | undefined | undefined |
+| 20261121-235634_E125-A0 | final | observed | stationary | alive_at_flip_only | 114 | 0.736842 ± 0.041424 | 0.789474 ± 0.038352 | 0.877193 ± 0.030876 |
+| 20261121-235634_E125-A0 | final | observed | stationary | end_survivor_only | 108 | 0.768519 ± 0.040775 | 0.824074 ± 0.036809 | 0.916667 ± 0.026719 |
+| 20261121-235634_E125-A0 | final | observed | reversal | alive_at_flip_only | 114 | 0.736842 ± 0.041424 | 0.166667 ± 0.035059 | 0.140351 ± 0.032676 |
+| 20261121-235634_E125-A0 | final | observed | reversal | end_survivor_only | 29 | 0.689655 ± 0.087430 | 0.310345 ± 0.087430 | 0.344828 ± 0.089826 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | alive_at_flip_only | 111 | 0.612613 ± 0.046448 | 0.666667 ± 0.044947 | 0.621622 ± 0.046241 |
+| 20261121-235634_E125-A0 | final | belief_reset | stationary | end_survivor_only | 100 | 0.650000 ± 0.047937 | 0.730000 ± 0.044620 | 0.680000 ± 0.046883 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | alive_at_flip_only | 111 | 0.612613 ± 0.046448 | 0.261261 ± 0.041888 | 0.306306 ± 0.043951 |
+| 20261121-235634_E125-A0 | final | belief_reset | reversal | end_survivor_only | 55 | 0.636364 ± 0.065462 | 0.363636 ± 0.065462 | 0.509091 ± 0.068030 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | alive_at_flip_only | 104 | 0.673077 ± 0.046221 | 0.730769 ± 0.043705 | 0.750000 ± 0.042666 |
+| 20261121-235634_E125-A0 | final | birth_parent | stationary | end_survivor_only | 100 | 0.670000 ± 0.047258 | 0.760000 ± 0.042923 | 0.770000 ± 0.042295 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | alive_at_flip_only | 104 | 0.673077 ± 0.046221 | 0.240385 ± 0.042105 | 0.288462 ± 0.044640 |
+| 20261121-235634_E125-A0 | final | birth_parent | reversal | end_survivor_only | 45 | 0.688889 ± 0.069792 | 0.311111 ± 0.069792 | 0.488889 ± 0.075359 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | alive_at_flip_only | 64 | 0.921875 ± 0.033811 | 0.875000 ± 0.041667 | 0.859375 ± 0.043798 |
+| 20261121-235634_E125-A0 | final | direct_baseline | stationary | end_survivor_only | 64 | 0.921875 ± 0.033811 | 0.875000 ± 0.041667 | 0.859375 ± 0.043798 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | alive_at_flip_only | 64 | 0.921875 ± 0.033811 | 0.078125 ± 0.033811 | 0.000000 ± 0.000000 |
+| 20261121-235634_E125-A0 | final | direct_baseline | reversal | end_survivor_only | 3 | 0.333333 ± 0.333333 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261122-000030_E125-A1 | final | observed | stationary | alive_at_flip_only | 119 | 0.764706 ± 0.039049 | 0.806723 ± 0.036351 | 0.747899 ± 0.039973 |
+| 20261122-000030_E125-A1 | final | observed | stationary | end_survivor_only | 118 | 0.771186 ± 0.038835 | 0.813559 ± 0.036006 | 0.754237 ± 0.039803 |
+| 20261122-000030_E125-A1 | final | observed | reversal | alive_at_flip_only | 119 | 0.764706 ± 0.039049 | 0.126050 ± 0.030554 | 0.193277 ± 0.036351 |
+| 20261122-000030_E125-A1 | final | observed | reversal | end_survivor_only | 25 | 0.680000 ± 0.095219 | 0.200000 ± 0.081650 | 0.360000 ± 0.097980 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | alive_at_flip_only | 108 | 0.546296 ± 0.048129 | 0.620370 ± 0.046915 | 0.601852 ± 0.047323 |
+| 20261122-000030_E125-A1 | final | belief_reset | stationary | end_survivor_only | 102 | 0.568627 ± 0.049281 | 0.656863 ± 0.047240 | 0.627451 ± 0.048108 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | alive_at_flip_only | 108 | 0.546296 ± 0.048129 | 0.324074 ± 0.045246 | 0.388889 ± 0.047128 |
+| 20261122-000030_E125-A1 | final | belief_reset | reversal | end_survivor_only | 58 | 0.517241 ± 0.066187 | 0.448276 ± 0.065871 | 0.517241 ± 0.066187 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | alive_at_flip_only | 109 | 0.688073 ± 0.044579 | 0.724771 ± 0.042977 | 0.743119 ± 0.042042 |
+| 20261122-000030_E125-A1 | final | birth_parent | stationary | end_survivor_only | 106 | 0.698113 ± 0.044801 | 0.735849 ± 0.043025 | 0.764151 ± 0.041430 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | alive_at_flip_only | 109 | 0.688073 ± 0.044579 | 0.211009 ± 0.039262 | 0.357798 ± 0.046126 |
+| 20261122-000030_E125-A1 | final | birth_parent | reversal | end_survivor_only | 51 | 0.686275 ± 0.065620 | 0.235294 ± 0.059988 | 0.509804 ± 0.070697 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | alive_at_flip_only | 63 | 0.682540 ± 0.059117 | 0.730159 ± 0.056372 | 0.682540 ± 0.059117 |
+| 20261122-000030_E125-A1 | final | direct_baseline | stationary | end_survivor_only | 63 | 0.682540 ± 0.059117 | 0.730159 ± 0.056372 | 0.682540 ± 0.059117 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | alive_at_flip_only | 63 | 0.682540 ± 0.059117 | 0.047619 ± 0.027046 | 0.015873 ± 0.015873 |
+| 20261122-000030_E125-A1 | final | direct_baseline | reversal | end_survivor_only | 5 | 0.800000 ± 0.200000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261122-000510_E125-A2 | final | observed | stationary | alive_at_flip_only | 118 | 0.788136 ± 0.037778 | 0.771186 ± 0.038835 | 0.771186 ± 0.038835 |
+| 20261122-000510_E125-A2 | final | observed | stationary | end_survivor_only | 113 | 0.814159 ± 0.036755 | 0.787611 ± 0.038647 | 0.805310 ± 0.037415 |
+| 20261122-000510_E125-A2 | final | observed | reversal | alive_at_flip_only | 118 | 0.788136 ± 0.037778 | 0.161017 ± 0.033980 | 0.220339 ± 0.038318 |
+| 20261122-000510_E125-A2 | final | observed | reversal | end_survivor_only | 28 | 0.571429 ± 0.095238 | 0.250000 ± 0.083333 | 0.357143 ± 0.092214 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | alive_at_flip_only | 115 | 0.556522 ± 0.046529 | 0.643478 ± 0.044860 | 0.678261 ± 0.043752 |
+| 20261122-000510_E125-A2 | final | belief_reset | stationary | end_survivor_only | 103 | 0.582524 ± 0.048828 | 0.679612 ± 0.046203 | 0.728155 ± 0.044053 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | alive_at_flip_only | 115 | 0.556522 ± 0.046529 | 0.295652 ± 0.042740 | 0.339130 ± 0.044339 |
+| 20261122-000510_E125-A2 | final | belief_reset | reversal | end_survivor_only | 62 | 0.548387 ± 0.063718 | 0.370968 ± 0.061850 | 0.451613 ± 0.063718 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | alive_at_flip_only | 108 | 0.703704 ± 0.044143 | 0.712963 ± 0.043733 | 0.712963 ± 0.043733 |
+| 20261122-000510_E125-A2 | final | birth_parent | stationary | end_survivor_only | 106 | 0.716981 ± 0.043961 | 0.726415 ± 0.043505 | 0.716981 ± 0.043961 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | alive_at_flip_only | 108 | 0.703704 ± 0.044143 | 0.222222 ± 0.040191 | 0.268519 ± 0.042845 |
+| 20261122-000510_E125-A2 | final | birth_parent | reversal | end_survivor_only | 51 | 0.745098 ± 0.061632 | 0.215686 ± 0.058166 | 0.372549 ± 0.068375 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | alive_at_flip_only | 64 | 0.921875 ± 0.033811 | 0.937500 ± 0.030497 | 0.843750 ± 0.045745 |
+| 20261122-000510_E125-A2 | final | direct_baseline | stationary | end_survivor_only | 63 | 0.920635 ± 0.034329 | 0.936508 ± 0.030968 | 0.857143 ± 0.044441 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | alive_at_flip_only | 64 | 0.921875 ± 0.033811 | 0.031250 ± 0.021921 | 0.046875 ± 0.026630 |
+| 20261122-000510_E125-A2 | final | direct_baseline | reversal | end_survivor_only | 1 | 1.000000 ± undefined | 0.000000 ± undefined | 1.000000 ± undefined |
+
 ## Information in public demonstrations (social-channel-v1)
 
 E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. The track reader uses consecutive visible teacher positions; the scene reader uses item-image motion only. Both predict the most frequently contacted visible item color as food. Ties and no votes earn expected accuracy of one half. Every family is retained. Means use independent families; all ± values are standard errors of the mean (SEM), and control contrasts use paired within-family differences. Fractions are proportions, while votes and identifiable steps are mean counts per family. The tie fraction includes movies with no votes.

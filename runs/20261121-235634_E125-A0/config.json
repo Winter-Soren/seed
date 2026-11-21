@@ -1,0 +1,322 @@
+{
+  "protocol": "reversal-random-v1",
+  "args": {
+    "name": "E125-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120301,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "reversal-random-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "36b3ac1737a5258434ccf0fa29b5767b1aa2211f",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "direct_source": {
+    "label": "direct0",
+    "training_seed": 0,
+    "path": "runs/20261119-033803_E113-direct-s0/genome_final.npy",
+    "sha256": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61"
+  },
+  "calibration_source": {
+    "name": "E123-A0",
+    "folder": "runs/20261121-224042_E123-A0",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 2026113001,
+    "expected_calibration_families": 32,
+    "config": {
+      "path": "runs/20261121-224042_E123-A0/config.json",
+      "sha256": "029a7f5ce0354da59d747358ba8000128673f25bad7dd97b32a552dc73cecccb"
+    },
+    "selection": {
+      "path": "runs/20261121-224042_E123-A0/calibration/selection.json",
+      "sha256": "b1d49b1fcc42e6a2bba6ea190106cadc216319b1ebab29750c10d5f365742c02"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0000.npz",
+        "sha256": "ae3a5e5cb7cfdfe5a213f1c9c585e37dfa940b106ea863e42250f800a1fd74aa"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0001.npz",
+        "sha256": "57db20e9144c9fd8ca1c80d1fe7d32e57fec97d9f32792755157f560207e6d42"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0002.npz",
+        "sha256": "bff77d87996e74085a922dbdd710202fc0704e64608c36081d93f5089d793aaf"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0003.npz",
+        "sha256": "f78776db367b11b66a38227efadbe7c0555af97456f087281d92af6197da99d2"
+      },
+      {
+        "index": 4,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0004.npz",
+        "sha256": "5e48b3d87466d2428275c7dcd9f4b741b20d1a8597e1a84cd572b993ee4dbdbe"
+      },
+      {
+        "index": 5,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0005.npz",
+        "sha256": "53c789d20e5fa0f44020c4b0ecc46fec5c63738c8b53b15f73955f5b8933d0e5"
+      },
+      {
+        "index": 6,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0006.npz",
+        "sha256": "7bf3fd2180039235b7dcb65bf1a49efcda1656c2eee59e745b46e74d37d19f25"
+      },
+      {
+        "index": 7,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0007.npz",
+        "sha256": "fb66b3799974dfeb36a75fd3b40d77d87124bf4578c7c330e1402bba2b1a80d0"
+      },
+      {
+        "index": 8,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0008.npz",
+        "sha256": "3969a805c4b50d2562e5dd75412f25f0482a06c9b01dfa1f88fac224e26be610"
+      },
+      {
+        "index": 9,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0009.npz",
+        "sha256": "1796c4dfd91485cf3fd889a1069a435d9a33e7aacb4ac17b5ff1cb3ffb678b51"
+      },
+      {
+        "index": 10,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0010.npz",
+        "sha256": "c0982e8067747c0d67ff722d5271e7b6b932d3e284f4652ce6b9dbfc0085c00c"
+      },
+      {
+        "index": 11,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0011.npz",
+        "sha256": "44853cae62306389e6862eb724ada2f93766c9933105ac4867b9cc0117068a2c"
+      },
+      {
+        "index": 12,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0012.npz",
+        "sha256": "34006a618cbc691974ebe951099190855323abd9f7fb899539ce27b11ec43fad"
+      },
+      {
+        "index": 13,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0013.npz",
+        "sha256": "82e8bf49c445f819e4ff254b32e21fe3b07e33cb4cf1e945ef4005ce379f4efb"
+      },
+      {
+        "index": 14,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0014.npz",
+        "sha256": "a9c55e3efc236f31c1a993332b45bcf557c9a0b0e1dbd54370eaef7e47af04cb"
+      },
+      {
+        "index": 15,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0015.npz",
+        "sha256": "7de1d93940b777826233d91981ef5f7f3efa1192bae227d0c8110947b4110383"
+      },
+      {
+        "index": 16,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0016.npz",
+        "sha256": "7187470647807ca40ac221f43082d809e4c7d8778e314147c2318a997deed146"
+      },
+      {
+        "index": 17,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0017.npz",
+        "sha256": "8b2e0cabe204a28a0c3787f581ba107a7ffe01e686e563e828f4993242a9f16c"
+      },
+      {
+        "index": 18,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0018.npz",
+        "sha256": "eb3ffd64e03b775cef020bfbca498b1b41c3348cbeef9e7be922a2aa9c9add8d"
+      },
+      {
+        "index": 19,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0019.npz",
+        "sha256": "abb05107de33393d2b4cf0d7d0b02213e905f739990a2710d96da3f51ef0a3eb"
+      },
+      {
+        "index": 20,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0020.npz",
+        "sha256": "2be52f0c4f708cbf0055e8e89735c19bbc75b2f93219328bcbd6072a13cf1dd8"
+      },
+      {
+        "index": 21,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0021.npz",
+        "sha256": "f66449253b73ebdcffd0f6151b7c2b796da506352e3e938ad94782e24a91e368"
+      },
+      {
+        "index": 22,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0022.npz",
+        "sha256": "4522d3e0e46de60d5e7ba4ab1d6902a9589a240a6697c9c469fb39024506c72a"
+      },
+      {
+        "index": 23,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0023.npz",
+        "sha256": "70e078e00912ea9b3a632fcc127b946a7725c0d695e7b487c104389aa7439e66"
+      },
+      {
+        "index": 24,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0024.npz",
+        "sha256": "29ad1fc14d6d81ec43f2f697e472293957a9d245e77480c8aa3d2e1d63f87932"
+      },
+      {
+        "index": 25,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0025.npz",
+        "sha256": "467af2f2e9c1388f34e2ce5ce40610c639031e882ebfc51f08733ef88fe16690"
+      },
+      {
+        "index": 26,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0026.npz",
+        "sha256": "4d62a57f55b50839b23ee88f0b44ef994ad6a6efef51281eb0cf289a8a520c42"
+      },
+      {
+        "index": 27,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0027.npz",
+        "sha256": "f614131a9c9d15b99adb4de58c584ba66d0862676f0a155dc8449b7f34f7c100"
+      },
+      {
+        "index": 28,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0028.npz",
+        "sha256": "f061b0568ff1c66b01cf7343be8b79c3aee4ae33e3f88e3fdc3ccb4990aefefb"
+      },
+      {
+        "index": 29,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0029.npz",
+        "sha256": "639a8bab6f7d245b88c86df973d78e80cd204d7ae41d11c08240037b5627a89b"
+      },
+      {
+        "index": 30,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0030.npz",
+        "sha256": "80a22810a3f8f0b904c4a649af4e301e77f1496c9930e8ba558c91e59214680c"
+      },
+      {
+        "index": 31,
+        "path": "runs/20261121-224042_E123-A0/calibration/family_0031.npz",
+        "sha256": "a4c80e723f7197cb5148bd0af5dd655c0720719b9b31598dfb919c871a93ffeb"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "b1d49b1fcc42e6a2bba6ea190106cadc216319b1ebab29750c10d5f365742c02"
+  },
+  "selected_lambda": 4.0,
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "3a0cc1edd1008a030fcaec956a965a8ce48485ff6e598bad9ae9a05cc7780f78"
+  },
+  "assignment_columns": [
+    "rule",
+    "flip_step"
+  ],
+  "assignment_stream_tag": 57637,
+  "condition_split": "final",
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": null,
+  "persistence": "off",
+  "generation": 0,
+  "seed": 2026120301,
+  "eval_seed": 2026120301,
+  "eval_worlds": 128,
+  "expected_families": 128,
+  "arms": [
+    "observed",
+    "belief_reset",
+    "birth_parent",
+    "direct_baseline"
+  ],
+  "conditions": [
+    "stationary",
+    "reversal"
+  ],
+  "primary": "observed",
+  "key_order": [
+    "teacher_world",
+    "teacher_birth",
+    "solo_world",
+    "pupil_birth"
+  ],
+  "flip_steps": [
+    100,
+    125,
+    150,
+    175
+  ],
+  "practice_steps": 150,
+  "watch_steps": 150,
+  "solo_steps": 300,
+  "windows": {
+    "pre": [
+      -50,
+      0
+    ],
+    "early": [
+      0,
+      50
+    ],
+    "late": [
+      50,
+      100
+    ]
+  },
+  "max_seconds": 3600,
+  "raw_schema": "reversal-random-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "mechanism": "unchanged original genome and E123 calibrated fixed belief readout; hidden world reversal only",
+  "primary_preparation": "150 passive frames from a fresh original teacher; q remains fixed throughout solo life",
+  "fair_birth_panel": [
+    "birth_parent",
+    "direct_baseline"
+  ],
+  "selected_neutral_birth_reuses": "birth_parent",
+  "comparison_limit": "prepared versus unprepared direct controller is descriptive unequal information",
+  "formal_ladder_status": "not_decided",
+  "scientific_result": true
+}

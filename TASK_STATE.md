@@ -1,6 +1,6 @@
 # Current state
 
-Updated 21 November 2026. Follow PLAN.md and AGENTS.md.
+Updated 22 November 2026. Follow PLAN.md and AGENTS.md.
 
 ## What we know
 
@@ -22,10 +22,12 @@ E123 added one calibrated food-color memory to the original newborns. Keeping th
 
 E124 found that the same lesson survived three behavioral handoffs in all three lineages. Third-cohort first-food rates were 86.7 ± 3.0%, 83.6 ± 3.3% and 86.7 ± 3.0%. Only the third lineage improved beyond both the first cohort and replaying the original teacher. Cumulative improvement failed to replicate.
 
+E125 changed which color was food once during a pupil's life. In the late window the socially prepared pupils chose food first in 12.5 ± 2.9%, 18.0 ± 3.4% and 20.3 ± 3.6% of assigned worlds. When the rule stayed fixed, the same pupils scored 78.1 ± 3.7%, 69.5 ± 4.1% and 71.1 ± 4.0%. Keeping the old lesson also hurt survival. Every lineage failed the recovery test. The two types of unprepared controller also struggled after the change.
+
 ## What is running
 
-The social transmission studies are complete. The next study changes the world: the food and poison colors switch once at a hidden randomized time. Each reversal is paired with a stationary copy of the same world. Local publication is on hold at the owner's request.
+The saved-controller test and its independent verification are complete. The next study starts both kinds of brain from blank and trains them where the food rule changes. Each controller gets the same number of worlds and generations. GitHub publication is on hold at the owner's request.
 
 ## What is next
 
-Measure the successful social observer and its memory-reset sibling on both versions. Compare the unassisted original and fixed recurrent controllers on equal terms separately. Count deaths and missed contacts when measuring recovery. Complete this measurement before selecting new genomes for a changing world.
+Benchmark both architectures on the laptop. If the measured cost fits, run three matched training seeds for each, one job at a time. After all six reach their endpoints, compare them on fresh worlds and switch off post-change connection learning in matched copies to measure its contribution.
