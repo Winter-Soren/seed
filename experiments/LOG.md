@@ -2164,3 +2164,7 @@ Run locally and sequentially after E120, with the existing resource floors and d
     python scripts/run_experiment.py --eval-protocol social-channel-v1 --name E121-A0 --condition-split final --seed 2026112701 --generations 0 --eval-worlds 128 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
     python scripts/run_experiment.py --eval-protocol social-channel-v1 --name E121-A1 --condition-split final --seed 2026112702 --generations 0 --eval-worlds 128 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
     python scripts/run_experiment.py --eval-protocol social-channel-v1 --name E121-A2 --condition-split final --seed 2026112703 --generations 0 --eval-worlds 128 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+
+### E120 development record · 21 November 2026 · Reward-only reference fixture
+
+Before the first benchmark, one of seven backend checks failed. The test expected the hand-built reward-only genome to change synaptic weights during passive viewing. Its modulator takes only the newborn's energy change, which is exactly zero during every demonstration. The correct expectation is unchanged synaptic weights for that genome. The fixture now distinguishes that case from a synthetic surprise-sensitive genome whose weights can change on the same movie. The scientific code, controls, sources and registered thresholds are unchanged. No final worlds had been opened. The first backend test invocation used 40.779 seconds of guarded wall time.

@@ -64,7 +64,8 @@ class SocialLearningTests(unittest.TestCase):
     def test_watch_learns_in_own_brain_with_stay_action_and_zero_reward(self):
         c, raw = teacher_fixture()
         movie, _ = social.make_movie(raw, c)
-        genome = seed.biology_prior(c)
+        # Observation can open a surprise gate; it provides no energy feedback.
+        genome = dict(seed.biology_prior(c), mod=jnp.array([0., 1., 0.]))
         flat, _ = ravel_pytree(genome)
         result = jax.tree.map(np.asarray, social.watch(flat, jax.random.PRNGKey(47), movie, c))
         np.testing.assert_array_equal(result["trace"]["motor"], np.tile([1, 0, 0, 0, 0], (3, 1)))
@@ -73,6 +74,18 @@ class SocialLearningTests(unittest.TestCase):
         np.testing.assert_array_equal(result["initial"]["Wp"], 0)
         self.assertTrue(np.any(result["final"]["W"] != result["initial"]["W"]))
         self.assertTrue(np.all(result["final"]["W"][result["mask"] == 0] == 0))
+
+    def test_reward_only_watch_changes_activity_and_predictor_but_not_weights(self):
+        c, raw = teacher_fixture()
+        movie, _ = social.make_movie(raw, c)
+        flat, _ = ravel_pytree(seed.biology_prior(c))
+        result = jax.tree.map(np.asarray, social.watch(flat, jax.random.PRNGKey(47), movie, c))
+        # The biology prior has mod=[3,0,0]. With the pupil's own denergy=0,
+        # its Hebbian gate is closed even when a demonstrator is visible.
+        np.testing.assert_array_equal(result["trace"]["denergy"], 0)
+        np.testing.assert_array_equal(result["final"]["W"], result["initial"]["W"])
+        self.assertTrue(np.any(result["final"]["x"] != result["initial"]["x"]))
+        self.assertTrue(np.any(result["final"]["Wp"] != result["initial"]["Wp"]))
 
     def test_optional_hook_preserves_exact_legacy_trajectory(self):
         source = subprocess.check_output(["git", "show", "1e864e1:seed/seed.py"],
