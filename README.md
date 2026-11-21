@@ -81,6 +81,8 @@ The optional `--persistence` trait gives “never giving up” a specific meanin
 
 In a matched check with the original A0 genome, newborns with shared memory spent four agent-turns pursuing an out-of-sight shelter in the cold world. One of two reached shelter with the trait on, and one of two with it off. This is a programmed behavior. Whether it improves survival, or whether evolution can discover it unaided, remains open. [Trait enabled](runs/20261121-074534_ecology-persistence-a0-on/summary.json) · [Trait disabled](runs/20261121-074522_ecology-persistence-a0-off/summary.json)
 
+All 208 software tests passed on Windows, including the paired persistence checks and compatibility with earlier experiments. [Verification run](https://github.com/Winter-Soren/seed/actions/runs/44856721457)
+
 ## What comes next
 
 The next proposed experiment gives a donor cohort a cold season of its own. Its successors then face an unfamiliar cold world. Matching their genomes, birth wiring and starting conditions lets us test whether earlier creatures' lessons help a newborn reach shelter sooner or survive longer. [Read the proposed controls](experiments/ECOLOGY_TRANSFER.md)

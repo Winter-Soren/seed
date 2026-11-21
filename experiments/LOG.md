@@ -2019,3 +2019,7 @@ Read-only reproduction:
 GitHub confirmed the repository is private and credits both author and committer of the gate commit to Winter-Soren. The E116 milestone is tagged v0.6-evalv6. The full Windows suite passed 172 tests in 1016.356 seconds at that commit. Hosted workflow 44854937369 used 1091 seconds from creation to completion. Including that verification, E116 used 5190.8136706 of its registered 10800-second total; software and hosted verification used 1849.8102507 of 2400 seconds. The integrated ecology/trait software checks and paired fixtures used a separate 90.5555001 seconds after the final E116 evaluation. Cumulative supervised time for the day through E116 hosted verification was 5455.325 seconds.
 
 The expanded integration suite has 208 test methods. The hosted runner timeout for this software job is now 30 minutes, since the 172-test workflow already used more than 18 minutes. Scientific run settings and time limits are unchanged.
+
+### Integrated software verification · 21 November 2026
+
+GitHub Actions workflow 44856721457 passed all 208 tests on Windows at 1d9195229156d3722daf9e61df4c5388b94a1cd0. The full test command took 1350.724 seconds and the workflow used 1418 seconds from creation to completion. The combined daily supervised charge through this software verification was 6873.325 seconds, within eight hours. No scientific training or held-out ecology evaluation was launched after the E116 gate.
