@@ -18,6 +18,8 @@ import audit_reversal_evolution as source_bytes
 base, film = prior.base, prior.film
 require, same, subset, typed = base.require, base.same, base.subset, base.typed
 PROTOCOL = "encounter-diagnostic-v1"
+DEVELOPMENT_NAME = "E127-benchmark"
+RETRY_NAME = "E127-benchmark-retry1"
 ARMS = ("plastic_stationary", "plastic_reversal", "plastic_frozen", "direct_stationary", "direct_reversal")
 CONTACTS = (0, 2, 8, 16)
 STATE_FIELDS = ("W", "x", "Wp", "mask")
@@ -325,6 +327,23 @@ def replicated_gates(panels):
     return result
 
 
+def empty_development_evidence(config, status, summary, journal, family_entries):
+    """Only an unsuccessful zero-record development attempt can precede retry1."""
+    subset(config, dict(protocol=PROTOCOL, condition_split="development", generation=0,
+        eval_seed=2026120600, expected_families=4, scientific_result=False), "original development identity")
+    subset(config["args"], dict(name=DEVELOPMENT_NAME, seed=2026120600, generations=0, eval_worlds=4,
+        allow_dirty=False, resume=None), "original benchmark command")
+    require(config.get("retry_of") is None, "the predecessor must be the original attempt")
+    for record in (status, summary):
+        subset(record, dict(status="failed", completed_families=0, expected_families=4, family_seconds=[]), "empty failed predecessor")
+    subset(summary, dict(protocol=PROTOCOL, condition_split="development", evaluation_seed=2026120600,
+        seed_index=0, source_label="A0", scientific_result=False, artifact_validity="incomplete", gate_status="undecided", raw_files=[]),
+        "original failure evidence")
+    require(isinstance(summary.get("error"), str) and bool(summary["error"])
+            and "measurements" not in summary and journal == b"" and not family_entries,
+            "retry1 cannot replace any recorded family, outcome or partial journal")
+
+
 def summarize(rows):
     require(len(rows) >= 2, "at least two independent families for SE")
     local = {arm: {key: np.stack([row["local"][arm][key] for row in rows])
@@ -365,11 +384,59 @@ class Auditor(prior.chain.Auditor):
         require(re.fullmatch(r"[0-9a-f]{40}", source), "full immutable source commit required")
         super().__init__(root, source)
         self.code = None
+        self.development_recovery = None
+
+    def empty_benchmark(self):
+        found = list(self.path("runs").glob("*_" + DEVELOPMENT_NAME))
+        require(len(found) == 1, "retry1 requires the unique preserved original benchmark")
+        predecessor = found[0]
+        folder = predecessor.relative_to(self.root).as_posix()
+        config, status, summary = (self.json(folder + "/" + name) for name in ("config.json", "status.json", "summary.json"))
+        require((predecessor / "families").is_dir(), "original empty family directory must remain")
+        require(not any(predecessor.rglob("family_*.npz")), "original attempt must contain no saved family anywhere")
+        empty_development_evidence(config, status, summary, self.read(folder + "/metrics.jsonl"),
+                                   list((predecessor / "families").iterdir()))
+        old_commit = config["git"]["commit"]
+        require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", old_commit), "original clean source identity")
+        self.code_trees(old_commit)
+        require(set(config["source_code"]) == {"seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py",
+                "scripts/run_encounter_diagnostic.py"}, "complete original source manifest")
+        context = type("SourceContext", (), {"root": self.root, "source": old_commit})()
+        attributes = source_bytes.Auditor.source_attributes(context, list(config["source_code"]))
+        for path, digest in config["source_code"].items():
+            require(path in ("seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py", "scripts/run_encounter_diagnostic.py"),
+                    "original source manifest path")
+            blob = base.subprocess.run(["git", "show", old_commit + ":" + path], cwd=self.root,
+                capture_output=True, check=True, timeout=15).stdout
+            source_bytes.source_hash_representation(blob, digest, attributes[path])
+        for field, pinned, copied in (("source", base.ORIGINALS[0], "plastic_genome.npy"),
+                                     ("direct_source", prior.DIRECT[0], "direct_genome.npy")):
+            path, digest = pinned
+            subset(config[field], dict(path=path, sha256=digest, training_seed=0), "original benchmark controller")
+            content = self.read(path)
+            same(hashlib.sha256(content).hexdigest(), digest, "original benchmark source hash")
+            require(self.read(folder + "/" + copied) == content, "original controller copy must remain unchanged")
+        same(config["assignments"]["path"], "assignments.npz", "original assignment artifact path")
+        schedule = self.artifact(folder, config["assignments"])
+        files = {}
+        for path in sorted(predecessor.rglob("*")):
+            if path.is_file():
+                require(path.resolve().is_relative_to(predecessor.resolve()), "predecessor artifact leaves its folder")
+                relative = path.relative_to(predecessor).as_posix()
+                files[relative] = hashlib.sha256(self.read(folder + "/" + relative)).hexdigest()
+        return dict(run=folder, files=files), config, schedule
 
     def completed_bundle(self, development=False):
         count = 4 if development else 128
         folders, pending = [], []
-        for name in (["E127-benchmark"] if development else [f"E127-A{i}" for i in range(3)]):
+        name = DEVELOPMENT_NAME
+        if development:
+            retries = list(self.path("runs").glob("*_" + DEVELOPMENT_NAME + "-retry*"))
+            require(len(retries) <= 1 and all(path.name.endswith("_" + RETRY_NAME) for path in retries), "only the single registered retry1 is allowed")
+            if retries:
+                self.development_recovery, _, _ = self.empty_benchmark()
+                name = RETRY_NAME
+        for name in ([name] if development else [f"E127-A{i}" for i in range(3)]):
             found = list(self.path("runs").glob("*_" + name))
             require(len(found) <= 1, "duplicate canonical panel " + name)
             if not found or not (found[0] / "status.json").is_file():
@@ -399,7 +466,22 @@ class Auditor(prior.chain.Auditor):
     def metadata(self, folder, index, development):
         config = self.json(folder + "/config.json")
         count, master = (4, 2026120600) if development else (128, 2026120601 + index)
-        name = "E127-benchmark" if development else f"E127-A{index}"
+        retry = development and self.path(folder).name.endswith("_" + RETRY_NAME)
+        name = RETRY_NAME if retry else DEVELOPMENT_NAME if development else f"E127-A{index}"
+        old_schedule = None
+        if retry:
+            proof, old_config, old_schedule = self.empty_benchmark()
+            same(config.get("retry_of"), proof, "exact preserved empty predecessor receipt")
+            self.development_recovery = proof
+            for field in ("protocol", "source", "direct_source", "cfg", "cfg_overrides", "condition_split", "generation",
+                "eval_seed", "expected_families", "statistical_unit", "assignment_stream_tag", "arms", "key_roles",
+                "initial_rules", "pre_contact_choices", "post_contacts", "readout_contacts", "grid_steps", "probe_placements",
+                "raw_schema", "raw_pattern", "runtime", "max_seconds", "scientific_result"):
+                same(config[field], old_config[field], "retry preserves registered setting " + field)
+            unchanged = lambda args: {key: value for key, value in args.items() if key not in ("name", "hypothesis")}
+            same(unchanged(config["args"]), unchanged(old_config["args"]), "retry changes only its identity/comment")
+        else:
+            require(config.get("retry_of") is None, "only registered development retry1 can carry a predecessor")
         subset(config, dict(protocol=PROTOCOL, condition_split="development" if development else "final",
             cfg=CFG, cfg_overrides={}, generation=0, eval_seed=master, expected_families=count,
             statistical_unit="independent paired base family", arms=list(ARMS),
@@ -433,6 +515,10 @@ class Auditor(prior.chain.Auditor):
             require(value.shape == shape and value.dtype == np.float32 and np.isfinite(value).all(), "original controller format")
             originals.append(value)
         schedule = self.artifact(folder, config["assignments"])
+        if old_schedule is not None:
+            require(set(schedule) == set(old_schedule), "retry preserves assignment fields")
+            for field in schedule:
+                exact(schedule[field], old_schedule[field], "retry keeps the original development assignment")
         permutation = typed(schedule, "permutation", (count,), "iu")
         require(np.array_equal(np.sort(permutation), np.arange(count)), "complete assignment permutation")
         exact(schedule["pre_contacts"], np.repeat(np.array([8, 16], np.int32), count // 2)[permutation], "balanced hidden boundary")
@@ -472,6 +558,8 @@ class Auditor(prior.chain.Auditor):
             rows.append(audit_family(raw, family, int(schedule["pre_contacts"][family]), *genomes))
         measured = summarize(rows)
         same(summary["measurements"], measured, "independent probabilities, assigned outcomes, SE and gates")
+        if development and self.development_recovery is not None:
+            same(self.empty_benchmark()[0], self.development_recovery, "preserved predecessor remained unchanged during audit")
         return dict(index=index, run=folder, measurements=measured)
 
 
@@ -490,12 +578,14 @@ def self_check():
         require(np.all(local_vectors(policy, placements)["S"] == (-1 if obsolete else 1)), "current versus obsolete rule fixture")
     masked = np.zeros_like(uniform)
     masked[..., 1:3] = .5
-    try:
-        softmax(np.zeros_like(masked), masked)
-    except base.AuditError:
-        pass
-    else:
-        raise base.AuditError("renormalized two-action readout accepted")
+    missing = uniform.copy()
+    missing[..., 0] = 0
+    for corrupted in (masked, np.zeros_like(uniform), missing):
+        try:
+            softmax(np.zeros_like(corrupted), corrupted)
+        except base.AuditError:
+            continue
+        raise base.AuditError("renormalized, zeroed or missing probability mass accepted")
     outcomes, rows = [], []
     for pair in ((1, -1), (1, 1), (-1, -1), (0, 0)):
         per_rule = []
@@ -521,10 +611,29 @@ def self_check():
             and not replicated_gates(panels)["plastic"]["hebbian_local"]["passed"], "same qualifying lineages must replicate each effect")
     weights = prior.direct_weights(np.full(8424, 4., np.float32))
     require(weights.max() == 4 and not np.array_equal(fingerprint(weights), fingerprint(np.clip(weights, -3, 3))), "unbounded direct-weight fixture")
+    original = dict(protocol=PROTOCOL, condition_split="development", generation=0, eval_seed=2026120600,
+        expected_families=4, scientific_result=False, args=dict(name=DEVELOPMENT_NAME, seed=2026120600,
+            generations=0, eval_worlds=4, allow_dirty=False, resume=None))
+    stopped = dict(status="failed", completed_families=0, expected_families=4, family_seconds=[])
+    failure = dict(stopped, protocol=PROTOCOL, condition_split="development", evaluation_seed=2026120600,
+        seed_index=0, source_label="A0", scientific_result=False, artifact_validity="incomplete", gate_status="undecided", raw_files=[], error="fixture failure")
+    empty_development_evidence(original, stopped, failure, b"", [])
+    cases = [(stopped, dict(failure, measurements={}), b"", []),
+             (stopped, dict(failure, raw_files=["family_0000.npz"]), b"", []),
+             (dict(stopped, completed_families=1), failure, b"", []),
+             (stopped, failure, b"\n", []), (stopped, failure, b"", ["family_0000.npz"]),
+             (dict(stopped, status="interrupted"), failure, b"", [])]
+    for state, result, journal, files in cases:
+        try:
+            empty_development_evidence(original, state, result, journal, files)
+        except base.AuditError:
+            continue
+        raise base.AuditError("nonempty or unregistered retry predecessor accepted")
     require("seed.seed" not in sys.modules and "jax" not in sys.modules, "self-check must use no simulator or JAX")
-    return dict(protocol=PROTOCOL, mode="self-check", status="passed", checks=5,
+    return dict(protocol=PROTOCOL, mode="self-check", status="passed", checks=6,
         coverage=["five-action floors and current/obsolete rule readers", "no-contact/death, horizon and paired-family signed SE",
-                  "effect sizes and strict uncertainty gates", "same-lineage replication intersections", "unclipped direct weights"],
+                  "effect sizes and strict uncertainty gates", "same-lineage replication intersections", "unclipped direct weights",
+                  "retry1 accepts only an empty failed original; partial evidence and nonfailed attempts are rejected"],
         simulator_imported=False)
 
 
@@ -549,8 +658,11 @@ def main():
             # Development assignment metadata only: no scores or raw events.
             auditor.metadata(auditor.completed_bundle(True)[0], 0, True)
         panels = [auditor.panel(folder, index, args.development) for index, folder in enumerate(folders)]
+        if auditor.development_recovery is not None:
+            same(auditor.empty_benchmark()[0], auditor.development_recovery, "original failure remains preserved at audit completion")
         report.update(status="passed", registered_source=args.source_commit, registered_code_trees=auditor.expected_trees,
-            panels=panels, replicated_gates=None if args.development else replicated_gates([p["measurements"] for p in panels]),
+            panels=panels, development_recovery=auditor.development_recovery,
+            replicated_gates=None if args.development else replicated_gates([p["measurements"] for p in panels]),
             limitations=["Events, body feedback, cloned-state fingerprints and probabilities are reconstructed; neural weight updates are not independently replayed.",
                 "Key assignment uses the archived JAX random primitives; action sampling and neural matrix operations are not rerun.",
                 "Guided exposure and fresh-body readouts are explicit interventions; weak grid transfer does not isolate navigation.",

@@ -1,0 +1,18 @@
+{
+  "status": "failed",
+  "completed_families": 0,
+  "expected_families": 4,
+  "elapsed_seconds": 15.046000000002095,
+  "setup_seconds": 0.375,
+  "family_seconds": [],
+  "protocol": "encounter-diagnostic-v1",
+  "condition_split": "development",
+  "source_label": "A0",
+  "seed_index": 0,
+  "evaluation_seed": 2026120600,
+  "scientific_result": false,
+  "artifact_validity": "incomplete",
+  "gate_status": "undecided",
+  "raw_files": [],
+  "error": "ValueError: readout must retain a finite five-action distribution"
+}

@@ -21,6 +21,7 @@ MAX_SECONDS = {"development": 180, "final": 3600}
 ARMS = ("plastic_stationary", "plastic_reversal", "plastic_frozen", "direct_stationary", "direct_reversal")
 KEY_ROLES = ("script", "birth", "chamber", "grid", "action", "probe")
 AUDIT_PATH = "results/diagnostics/E127-independent-audit.json"
+BENCHMARK_RETRY = "E127-benchmark-retry1"
 ALLOWED_FLAGS = {"--eval-protocol", "--condition-split", "--name", "--start", "--seed",
                  "--generations", "--eval-worlds", "--hypothesis"}
 
@@ -54,6 +55,63 @@ def _assignments(master, count):
     return data
 
 
+def _retry_predecessor(args, root, schedule):
+    """Permit one development retry only while its empty failure remains intact."""
+    if args.name != BENCHMARK_RETRY:
+        return None
+    candidates = list((root / "runs").glob("*_E127-benchmark"))
+    if len(candidates) != 1 or not candidates[0].is_dir():
+        raise ValueError("benchmark retry requires one retained canonical failed benchmark")
+    folder = candidates[0]
+    required = {"config.json", "status.json", "summary.json", "metrics.jsonl", "assignments.npz",
+                "plastic_genome.npy", "direct_genome.npy"}
+    if any(not (folder / name).is_file() for name in required):
+        raise ValueError("benchmark retry requires every original failure file to remain present")
+    config, status, summary = (json.loads((folder / name).read_text(encoding="utf-8"))
+                               for name in ("config.json", "status.json", "summary.json"))
+    expected_args = vars(args).copy()
+    expected_args.update(name="E127-benchmark", start="file:" + SOURCES[0]["path"],
+                         hypothesis=config.get("args", {}).get("hypothesis"))
+    expected = dict(protocol=PROTOCOL, condition_split="development", generation=0,
+                    eval_seed=2026120600, expected_families=4, source=SOURCES[0], direct_source=DIRECT_SOURCES[0],
+                    cfg=Cfg(M=1)._asdict(), cfg_overrides={}, arms=list(ARMS), key_roles=list(KEY_ROLES),
+                    initial_rules=[0, 1], pre_contact_choices=[8, 16], post_contacts=16,
+                    readout_contacts=[0, 2, 8, 16], grid_steps=50, probe_placements=12,
+                    assignment_stream_tag=0xE127, scientific_result=False)
+    previous_commit = config.get("git", {}).get("commit", "")
+    if (any(config.get(key) != value for key, value in expected.items())
+            or config.get("args") != expected_args or config.get("git", {}).get("dirty") is not False
+            or not isinstance(previous_commit, str) or len(previous_commit) != 40
+            or any(ch not in "0123456789abcdef" for ch in previous_commit)):
+        raise ValueError("benchmark retry must preserve the original development settings and source pair")
+    if (any(item.get("status") != "failed" or item.get("completed_families") != 0
+            or item.get("expected_families") != 4 or item.get("family_seconds") != [] for item in (status, summary))
+            or summary.get("raw_files") != [] or "measurements" in summary
+            or summary.get("protocol") != PROTOCOL or summary.get("condition_split") != "development"
+            or summary.get("evaluation_seed") != 2026120600 or summary.get("source_label") != "A0"
+            or summary.get("seed_index") != 0 or summary.get("scientific_result") is not False
+            or summary.get("artifact_validity") != "incomplete" or summary.get("gate_status") != "undecided"
+            or not isinstance(summary.get("error"), str) or not summary["error"]
+            or (folder / "metrics.jsonl").read_bytes() != b""
+            or not (folder / "families").is_dir() or any((folder / "families").iterdir())
+            or any(folder.rglob("family_*.npz"))):
+        raise ValueError("benchmark retry requires a failed zero-family attempt with no saved outcome evidence")
+    assignment = config.get("assignments", {})
+    if assignment.get("path") != "assignments.npz":
+        raise ValueError("failed benchmark assignment manifest differs from registration")
+    raw_assignments = _read_pinned(folder / "assignments.npz", assignment.get("sha256"))
+    with np.load(io.BytesIO(raw_assignments), allow_pickle=False) as previous:
+        if (set(previous.files) != set(schedule)
+                or any(previous[name].dtype != value.dtype or not np.array_equal(previous[name], value)
+                       for name, value in schedule.items())):
+            raise ValueError("benchmark retry must reuse the identical development assignments")
+    _read_pinned(folder / "plastic_genome.npy", SOURCES[0]["sha256"])
+    _read_pinned(folder / "direct_genome.npy", DIRECT_SOURCES[0]["sha256"])
+    files = {path.relative_to(folder).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
+             for path in sorted(folder.rglob("*")) if path.is_file()}
+    return dict(run=folder.relative_to(root).as_posix(), files=files)
+
+
 def _validate(args, git, root, explicit):
     if explicit is not None and set(explicit) - ALLOWED_FLAGS:
         raise ValueError("encounter diagnostics accept only the registered source and evaluation flags")
@@ -69,7 +127,8 @@ def _validate(args, git, root, explicit):
             or any(ch not in "0123456789abcdef" for ch in commit)):
         raise ValueError("encounter diagnostics require clean committed source provenance")
     if args.condition_split == "development":
-        source, expected = SOURCES[0], ("E127-benchmark", 2026120600, 4)
+        name = BENCHMARK_RETRY if args.name == BENCHMARK_RETRY else "E127-benchmark"
+        source, expected = SOURCES[0], (name, 2026120600, 4)
     else:
         candidates = [source for source in SOURCES if args.name == "E127-" + source["label"]]
         if len(candidates) != 1:
@@ -103,6 +162,7 @@ def run_tracked(args, git, root, *, explicit=None):
     source, original, plastic, baseline, recurrent, direct_flat = _validate(args, git, root, explicit)
     c = Cfg(M=1)
     schedule = _assignments(args.seed, args.eval_worlds)
+    retry_of = _retry_predecessor(args, root, schedule)
     code_source = _source_code(root)
     folder = root / "runs" / (datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "_" + args.name)
     folder.mkdir(parents=True, exist_ok=False)
@@ -118,6 +178,8 @@ def run_tracked(args, git, root, *, explicit=None):
         grid_steps=50, probe_placements=12, source_code=code_source,
         raw_schema=PROTOCOL, raw_pattern="families/family_{index:04d}.npz", runtime=_runtime(),
         max_seconds=MAX_SECONDS[args.condition_split], scientific_result=False)
+    if retry_of is not None:
+        config["retry_of"] = retry_of
     _write_json(folder / "config.json", config)
     _write_bytes(folder / "plastic_genome.npy", original)
     _write_bytes(folder / "direct_genome.npy", recurrent)
@@ -178,6 +240,8 @@ def run_tracked(args, git, root, *, explicit=None):
                 or not np.array_equal(plastic, np.load(io.BytesIO(original), allow_pickle=False))
                 or not np.array_equal(direct_flat, np.load(io.BytesIO(recurrent), allow_pickle=False))):
             raise ValueError("a diagnostic changed its frozen controller")
+        if retry_of is not None and _retry_predecessor(args, root, schedule) != retry_of:
+            raise ValueError("the original benchmark failure changed during its immutable retry")
         final = summary("finished")
         final.update(artifact_validity="passed", measurements=measurements,
                      gate_status="not_applicable" if args.condition_split == "development" else "undecided")

@@ -188,6 +188,135 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
             self.invoke("--resume", str(self.folder()), common=False)
         self.assertEqual(before, self.snapshot(self.folder()))
 
+    def empty_failure(self):
+        self.fail_at = 0
+        with self.assertRaisesRegex(RuntimeError, "interruption"):
+            self.invoke()
+        self.fail_at = None
+        return self.folder()
+
+    def test_empty_failed_benchmark_allows_exactly_one_pinned_retry(self):
+        failed = self.empty_failure()
+        before = self.snapshot(failed)
+        self.invoke("--name", entry.BENCHMARK_RETRY)
+        retry = self.folder(entry.BENCHMARK_RETRY)
+        config = json.loads((retry / "config.json").read_text())
+        self.assertEqual(config["retry_of"], dict(run=failed.relative_to(self.root).as_posix(),
+            files={name: hashlib.sha256(raw).hexdigest() for name, raw in before.items()}))
+        self.assertEqual((config["eval_seed"], config["expected_families"]), (2026120600, 4))
+        self.assertEqual(config["source"], entry.SOURCES[0])
+        self.assertEqual(config["direct_source"], entry.DIRECT_SOURCES[0])
+        self.assertEqual(self.result(entry.BENCHMARK_RETRY)["status"], "finished")
+        self.assertEqual(before, self.snapshot(failed))
+        retried = self.snapshot(retry)
+        with self.assertRaises(SystemExit):
+            self.invoke("--name", entry.BENCHMARK_RETRY)
+        self.assertEqual(retried, self.snapshot(retry))
+        self.assertEqual(before, self.snapshot(failed))
+
+    def test_retry_requires_original_failure_and_does_not_expand_registered_names(self):
+        for flags in (("--name", entry.BENCHMARK_RETRY), ("--name", "E127-benchmark-retry2"),
+                      ("--condition-split", "final", "--name", entry.BENCHMARK_RETRY),
+                      ("--condition-split", "final", "--name", "E127-A0-retry1")):
+            with self.subTest(flags=flags), self.assertRaises(SystemExit):
+                self.invoke(*flags)
+        self.assertFalse(self.calls)
+        self.assertFalse(list((self.root / "runs").glob("*_E127-*")))
+
+    def test_retry_rejects_completed_evidence_or_changed_original_identity(self):
+        failed = self.empty_failure()
+        changes = (
+            ("status.json", {"status": "finished"}),
+            ("status.json", {"status": "interrupted"}),
+            ("status.json", {"completed_families": 1}),
+            ("summary.json", {"status": "finished"}),
+            ("summary.json", {"raw_files": [{"index": 0}]}),
+            ("summary.json", {"measurements": {}}),
+            ("config.json", {"eval_seed": 2026120601}),
+            ("config.json", {"source": entry.SOURCES[1]}),
+            ("config.json", {"direct_source": entry.DIRECT_SOURCES[1]}),
+            ("config.json", {"grid_steps": 300}),
+        )
+        for name, update in changes:
+            path, original = failed / name, (failed / name).read_bytes()
+            data = json.loads(original)
+            data.update(update)
+            path.write_text(json.dumps(data))
+            try:
+                with self.subTest(name=name, update=update), self.assertRaises(SystemExit):
+                    self.invoke("--name", entry.BENCHMARK_RETRY)
+            finally:
+                path.write_bytes(original)
+        for relative in ("metrics.jsonl", "families/family_0000.npz"):
+            path = failed / relative
+            original = path.read_bytes() if path.exists() else None
+            path.write_bytes(b"unexpected evidence")
+            try:
+                with self.subTest(evidence=relative), self.assertRaises(SystemExit):
+                    self.invoke("--name", entry.BENCHMARK_RETRY)
+            finally:
+                if original is not None:
+                    path.write_bytes(original)
+                else:
+                    path.unlink()
+        self.assertFalse(self.calls)
+        self.assertFalse(list((self.root / "runs").glob("*_" + entry.BENCHMARK_RETRY)))
+
+    def test_retry_requires_all_retained_files_unique_predecessor_and_same_assignments(self):
+        failed = self.empty_failure()
+        before = self.snapshot(failed)
+        for name in before:
+            path = failed / name
+            path.unlink()
+            try:
+                with self.subTest(missing=name), self.assertRaises(SystemExit):
+                    self.invoke("--name", entry.BENCHMARK_RETRY)
+            finally:
+                path.write_bytes(before[name])
+        duplicate = self.root / "runs" / "duplicate_E127-benchmark"
+        duplicate.mkdir()
+        try:
+            with self.assertRaises(SystemExit):
+                self.invoke("--name", entry.BENCHMARK_RETRY)
+        finally:
+            duplicate.rmdir()
+        with np.load(failed / "assignments.npz") as archive:
+            changed = {name: archive[name].copy() for name in archive.files}
+        changed["key"][1] += 1
+        np.savez_compressed(failed / "assignments.npz", **changed)
+        config = json.loads(before["config.json"])
+        config["assignments"]["sha256"] = hashlib.sha256((failed / "assignments.npz").read_bytes()).hexdigest()
+        (failed / "config.json").write_text(json.dumps(config))
+        try:
+            with self.assertRaises(SystemExit):
+                self.invoke("--name", entry.BENCHMARK_RETRY)
+        finally:
+            for name in ("config.json", "assignments.npz"):
+                (failed / name).write_bytes(before[name])
+        self.assertEqual(before, self.snapshot(failed))
+        self.assertFalse(self.calls)
+
+    def test_retry_rechecks_preserved_failure_before_claiming_completion(self):
+        failed = self.empty_failure()
+        original_evaluate = self.evaluate
+
+        def change_failure(*args, **kwargs):
+            row = original_evaluate(*args, **kwargs)
+            if args[3] == 3:
+                path = failed / "summary.json"
+                data = json.loads(path.read_text())
+                data["error"] = "changed after retry began"
+                path.write_text(json.dumps(data))
+            return row
+
+        self.evaluate = change_failure
+        with self.assertRaises(SystemExit):
+            self.invoke("--name", entry.BENCHMARK_RETRY)
+        result = self.result(entry.BENCHMARK_RETRY)
+        self.assertEqual((result["status"], result["completed_families"]), ("failed", 4))
+        self.assertNotIn("measurements", result)
+        self.assertEqual(result["gate_status"], "undecided")
+
     def test_failure_keeps_prefix_without_result_or_decision(self):
         self.fail_at = 2
         with self.assertRaisesRegex(RuntimeError, "interruption"):

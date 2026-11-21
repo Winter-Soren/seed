@@ -1,0 +1,332 @@
+{
+  "scientific_result": false,
+  "behavior_scores_computed": false,
+  "source_commit": "e096042c30558c9e5af62140f012f9a448aa07a6",
+  "failed_run": "runs/20261122-041408_E127-benchmark",
+  "config_sha256": "05bf94ee101158b20a32dabb36c13c2b83700059b8c74678f2d31d0f08661e4d",
+  "family_index": 0,
+  "development_seed": 2026120600,
+  "arms": {
+    "plastic_stationary": {
+      "shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "dtype": "<f4",
+      "logits_shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "logits_dtype": "<f4",
+      "finite": true,
+      "nan_count": 0,
+      "infinity_count": 0,
+      "zero_count": 0,
+      "negative_count": 0,
+      "logits_finite": true,
+      "minimum": 0.001413751975633204,
+      "maximum": 0.9815984964370728,
+      "probabilities_sha256": "b73beec6bf53faa9d4abec7b0b4b9e243963a3297cc57745d76fbc76b66efc71",
+      "logits_sha256": "c8c774abc56a53fab6885550cf3baf03a6d5f38ab056153185c55efe3ecf392c",
+      "minimum_sum_float32": 0.9999998211860657,
+      "maximum_sum_float32": 1.0000001192092896,
+      "minimum_sum_float64": 0.9999998803250492,
+      "maximum_sum_float64": 1.00000016274862,
+      "maximum_sum_error_float32": 1.7881393432617188e-07,
+      "maximum_sum_error_float64": 1.6274861991405487e-07,
+      "maximum_probability_error_vs_float64_softmax": 1.2028843410227807e-07,
+      "maximum_relative_error_vs_float64_softmax": 3.9747920613797226e-07,
+      "original_sum_check_passed": true,
+      "worst_sum_index": [
+        0,
+        1,
+        7
+      ],
+      "worst_probabilities": [
+        0.10117585957050323,
+        0.2789825201034546,
+        0.004771977197378874,
+        0.37450462579727173,
+        0.24056489765644073
+      ],
+      "worst_logits": [
+        0.10989436507225037,
+        1.1241834163665771,
+        -2.9442050457000732,
+        1.4186384677886963,
+        0.9760241508483887
+      ],
+      "worst_float64_softmax": [
+        0.10117586163941868,
+        0.2789825564960648,
+        0.0047719775336916865,
+        0.37450468383045044,
+        0.2405649205003745
+      ],
+      "worst_sum_float32": 0.9999998211860657,
+      "worst_sum_float64": 0.9999998803250492
+    },
+    "plastic_reversal": {
+      "shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "dtype": "<f4",
+      "logits_shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "logits_dtype": "<f4",
+      "finite": true,
+      "nan_count": 0,
+      "infinity_count": 0,
+      "zero_count": 0,
+      "negative_count": 0,
+      "logits_finite": true,
+      "minimum": 0.002249472076073289,
+      "maximum": 0.9476593136787415,
+      "probabilities_sha256": "e39c04b9632715f4b9bfceb571d102d6c1bba8628eb67184ec2ea265bbf48c12",
+      "logits_sha256": "0e64eb6603c814791d6f4d40c4b54db8f4096deb1d9b2929902773575438bf99",
+      "minimum_sum_float32": 0.9999998807907104,
+      "maximum_sum_float32": 1.0000001192092896,
+      "minimum_sum_float64": 0.9999998947605491,
+      "maximum_sum_float64": 1.0000001366715878,
+      "maximum_sum_error_float32": 1.1920928955078125e-07,
+      "maximum_sum_error_float64": 1.3667158782482147e-07,
+      "maximum_probability_error_vs_float64_softmax": 1.2211175570708832e-07,
+      "maximum_relative_error_vs_float64_softmax": 4.3941429229632086e-07,
+      "original_sum_check_passed": true,
+      "worst_sum_index": [
+        0,
+        0,
+        2
+      ],
+      "worst_probabilities": [
+        0.09177514910697937,
+        0.551842451095581,
+        0.021164624020457268,
+        0.3316470682621002,
+        0.0035708441864699125
+      ],
+      "worst_logits": [
+        0.5104427337646484,
+        2.30436372756958,
+        -0.956567645072937,
+        1.7951724529266357,
+        -2.7360970973968506
+      ],
+      "worst_float64_softmax": [
+        0.09177514123590959,
+        0.5518423800550443,
+        0.02116462359457128,
+        0.33164701234734073,
+        0.003570842767134164
+      ],
+      "worst_sum_float32": 1.0000001192092896,
+      "worst_sum_float64": 1.0000001366715878
+    },
+    "plastic_frozen": {
+      "shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "dtype": "<f4",
+      "logits_shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "logits_dtype": "<f4",
+      "finite": true,
+      "nan_count": 0,
+      "infinity_count": 0,
+      "zero_count": 0,
+      "negative_count": 0,
+      "logits_finite": true,
+      "minimum": 0.0026999739930033684,
+      "maximum": 0.9154037237167358,
+      "probabilities_sha256": "44cf94669fe6bf9afa6d3f3af4ec511a1c80c672ed43a858bd76b245044f4afe",
+      "logits_sha256": "90a59699300fa51ea2e2a9de6e7404e642b34cfc72b56ed47c37ed30646c6a25",
+      "minimum_sum_float32": 0.9999998211860657,
+      "maximum_sum_float32": 1.0000001192092896,
+      "minimum_sum_float64": 0.9999998873099685,
+      "maximum_sum_float64": 1.0000001366715878,
+      "maximum_sum_error_float32": 1.7881393432617188e-07,
+      "maximum_sum_error_float64": 1.3667158782482147e-07,
+      "maximum_probability_error_vs_float64_softmax": 1.0075176448687273e-07,
+      "maximum_relative_error_vs_float64_softmax": 3.996920736687451e-07,
+      "original_sum_check_passed": true,
+      "worst_sum_index": [
+        1,
+        3,
+        6
+      ],
+      "worst_probabilities": [
+        0.3442774713039398,
+        0.21030813455581665,
+        0.38825395703315735,
+        0.009025449864566326,
+        0.048134878277778625
+      ],
+      "worst_logits": [
+        1.0810825824737549,
+        0.5882084369659424,
+        1.2012944221496582,
+        -2.560317039489746,
+        -0.8863583207130432
+      ],
+      "worst_float64_softmax": [
+        0.34427749092561316,
+        0.2103081521534632,
+        0.3882540259842705,
+        0.00902545004901343,
+        0.04813488088763978
+      ],
+      "worst_sum_float32": 0.9999998211860657,
+      "worst_sum_float64": 0.9999998910352588
+    },
+    "direct_stationary": {
+      "shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "dtype": "<f4",
+      "logits_shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "logits_dtype": "<f4",
+      "finite": true,
+      "nan_count": 0,
+      "infinity_count": 0,
+      "zero_count": 0,
+      "negative_count": 0,
+      "logits_finite": true,
+      "minimum": 0.0012348241871222854,
+      "maximum": 0.9901658892631531,
+      "probabilities_sha256": "ab978c5bfe881b63b20a72cae73a4706dc70d2862aa4596e7bb0daeaa48fbfb0",
+      "logits_sha256": "91f73b8eea80083758fdbdb95e9e1527292526b8f74173a2dac8d6728e5fc9a0",
+      "minimum_sum_float32": 0.9999998211860657,
+      "maximum_sum_float32": 1.0000001192092896,
+      "minimum_sum_float64": 0.9999998768325895,
+      "maximum_sum_float64": 1.000000159488991,
+      "maximum_sum_error_float32": 1.7881393432617188e-07,
+      "maximum_sum_error_float64": 1.594889909029007e-07,
+      "maximum_probability_error_vs_float64_softmax": 1.5710012357672554e-07,
+      "maximum_relative_error_vs_float64_softmax": 4.5317419139762044e-07,
+      "original_sum_check_passed": true,
+      "worst_sum_index": [
+        0,
+        0,
+        11
+      ],
+      "worst_probabilities": [
+        0.08520802855491638,
+        0.0031573765445500612,
+        0.9053159356117249,
+        0.003157339058816433,
+        0.0031612166203558445
+      ],
+      "worst_logits": [
+        0.2953660786151886,
+        -2.999988079071045,
+        2.6585545539855957,
+        -3.0,
+        -2.998772621154785
+      ],
+      "worst_float64_softmax": [
+        0.08520802552201957,
+        0.003157376521235255,
+        0.9053160425614227,
+        0.0031573388825984054,
+        0.0031612165127238826
+      ],
+      "worst_sum_float32": 0.9999998211860657,
+      "worst_sum_float64": 0.9999998963903636
+    },
+    "direct_reversal": {
+      "shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "dtype": "<f4",
+      "logits_shape": [
+        2,
+        4,
+        12,
+        5
+      ],
+      "logits_dtype": "<f4",
+      "finite": true,
+      "nan_count": 0,
+      "infinity_count": 0,
+      "zero_count": 0,
+      "negative_count": 0,
+      "logits_finite": true,
+      "minimum": 0.0012348245363682508,
+      "maximum": 0.9901658892631531,
+      "probabilities_sha256": "a2ab4161f11103bc11a051bc9da6f42635be74bf40c6add373eab2be6986749f",
+      "logits_sha256": "bbbfc850ae18297f4c589ccd2b42403794f16d1db9e3f3df20f1f6bec93547ab",
+      "minimum_sum_float32": 0.9999998211860657,
+      "maximum_sum_float32": 1.000000238418579,
+      "minimum_sum_float64": 0.9999998575076461,
+      "maximum_sum_float64": 1.000000159488991,
+      "maximum_sum_error_float32": 2.384185791015625e-07,
+      "maximum_sum_error_float64": 1.594889909029007e-07,
+      "maximum_probability_error_vs_float64_softmax": 1.576856623053402e-07,
+      "maximum_relative_error_vs_float64_softmax": 4.563432699147392e-07,
+      "original_sum_check_passed": false,
+      "worst_sum_index": [
+        1,
+        1,
+        8
+      ],
+      "worst_probabilities": [
+        0.49940401315689087,
+        0.0012383188586682081,
+        0.0012383188586682081,
+        0.0012383188586682081,
+        0.4968811571598053
+      ],
+      "worst_logits": [
+        2.9996604919433594,
+        -3.0,
+        -3.0,
+        -3.0,
+        2.994596004486084
+      ],
+      "worst_float64_softmax": [
+        0.49940393716380665,
+        0.0012383189441789878,
+        0.0012383189441789878,
+        0.0012383189441789878,
+        0.4968811060036563
+      ],
+      "worst_sum_float32": 1.000000238418579,
+      "worst_sum_float64": 1.0000001268927008
+    }
+  },
+  "original_validation_passed": false,
+  "original_validation_error": "readout must retain a finite five-action distribution",
+  "source_unchanged": true,
+  "arrays": "D:\\cool-projects\\general-intelligence\\.tmp\\E127-dev-diagnostic-attempt1.npz",
+  "arrays_sha256": "e50eaafad4443dcdc73fd3dc5895869867d3dc4a5953a5486bb4da974fd19ca4",
+  "elapsed_seconds": 16.328000000008615
+}

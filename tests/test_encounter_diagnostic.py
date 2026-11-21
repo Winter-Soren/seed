@@ -39,6 +39,52 @@ def compact_family(index, *, pre_s=-.4, post_s=.4, grid_success=True):
 
 
 class EncounterAccountingTests(unittest.TestCase):
+    def test_captured_development_vector_uses_float64_validation_sum(self):
+        # Original e096... family0 capture, selected solely by maximum mass error.
+        p = np.asarray([.49940401315689087, .0012383188586682081, .0012383188586682081,
+                        .0012383188586682081, .4968811571598053], np.float32)
+        logits = np.asarray([2.9996604919433594, -3., -3., -3., 2.994596004486084], np.float32)
+        before = p.tobytes(), logits.tobytes()
+        self.assertGreater(abs(float(p.sum(dtype=np.float32)) - 1), 2e-7)
+        self.assertLess(abs(float(p.sum(dtype=np.float64)) - 1), 2e-7)
+        diagnostic.validate_probabilities(p, logits)
+        self.assertEqual(before, (p.tobytes(), logits.tobytes()))
+        redistributed = p.copy()
+        redistributed[0] += np.float32(.0001)
+        redistributed[4] -= np.float32(.0001)
+        self.assertLess(abs(redistributed.sum(dtype=np.float64) - 1), diagnostic.PROBABILITY_MASS_BOUND)
+        with self.assertRaises(ValueError):
+            diagnostic.validate_probabilities(redistributed, logits)
+
+    def test_mass_bound_is_derived_before_data_and_rejects_excess(self):
+        unit = 2. ** -24
+        gamma = 4 * unit / (1 - 4 * unit)
+        expected = (gamma + unit) / (1 - gamma) + 8 * np.finfo(np.float64).eps
+        self.assertEqual(diagnostic.PROBABILITY_MASS_BOUND, expected)
+        self.assertLess(diagnostic.PROBABILITY_MASS_BOUND, 3e-7)
+        # Contract fixture inside the derived bound but outside the old cutoff.
+        p = np.full(5, .20000004768371582, np.float32)
+        self.assertGreater(abs(p.sum(dtype=np.float64) - 1), 2e-7)
+        diagnostic.validate_probabilities(p, np.zeros(5, np.float32))
+        with self.assertRaises(ValueError):
+            diagnostic.validate_probabilities(np.full(5, .20000008, np.float32), np.zeros(5, np.float32))
+
+    def test_probability_contract_rejects_invalid_or_masked_distributions(self):
+        p, logits = np.full(5, .2, np.float32), np.zeros(5, np.float32)
+        cases = [(p[:4], logits[:4]), (p.astype(np.float64), logits),
+                 (np.asarray([.5, .5, 0, 0, 0], np.float32), logits),
+                 (p, np.full(5, 3.1, np.float32))]
+        for bad in (np.nan, np.inf, -.1):
+            q = p.copy()
+            q[0] = bad
+            cases.append((q, logits))
+        bad_logits = logits.copy()
+        bad_logits[0] = np.nan
+        cases.append((p, bad_logits))
+        for probability, logit in cases:
+            with self.subTest(probability=probability, logits=logit), self.assertRaises(ValueError):
+                diagnostic.validate_probabilities(probability, logit)
+
     def test_five_way_uniform_and_current_obsolete_rule_readers(self):
         uniform = diagnostic.local_outcomes(np.full((2, 4, 12, 5), .2, np.float64))
         np.testing.assert_allclose(uniform, np.broadcast_to([.2, .2, .4, .6, 0.], uniform.shape), atol=1e-15)

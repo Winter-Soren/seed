@@ -29,6 +29,17 @@ LOCAL_FIELDS = ("p_food", "p_poison", "approach", "other", "S")
 GRID_FIELDS = ("first_food", "first_poison", "no_contact", "food_minus_poison", "latency", "net_return", "survival")
 PLACEMENTS = np.asarray([(a, b) for a in range(1, 5) for b in range(1, 5) if a != b], np.int32)
 OPPOSITE = np.asarray([0, 2, 1, 4, 3], np.int32)
+# Five positive float32 numerators: four additions have relative error gamma4;
+# rounding each quotient contributes u. Hence the exact stored mass differs from
+# one by at most (gamma4 + u)/(1 - gamma4). Check it in float64, with a small
+# binary64 accumulation margin; a second float32 sum adds avoidable roundoff.
+_F32_U = float(np.finfo(np.float32).eps) / 2
+_GAMMA4 = 4 * _F32_U / (1 - 4 * _F32_U)
+PROBABILITY_MASS_BOUND = (_GAMMA4 + _F32_U) / (1 - _GAMMA4) + 8 * np.finfo(np.float64).eps
+# Conservative per-class agreement allowance for this bounded [-3, 3] softmax,
+# including float32 subtraction/exp/normalization. This independent reference
+# check rejects redistributed or masked mass; it is not a universal XLA proof.
+SOFTMAX_RELATIVE_BOUND = 32 * _F32_U
 
 
 def _config(c):
@@ -317,6 +328,23 @@ def _arm(row, arm):
     return {name[len(prefix):]: np.asarray(value) for name, value in row.items() if name.startswith(prefix)}
 
 
+def validate_probabilities(probabilities, logits):
+    """Validate recorded float32 outputs without renormalizing or modifying them."""
+    probabilities, logits = np.asarray(probabilities), np.asarray(logits)
+    if (probabilities.shape != logits.shape or probabilities.ndim < 1 or probabilities.shape[-1] != 5
+            or probabilities.dtype != np.float32 or logits.dtype != np.float32
+            or not np.isfinite(probabilities).all() or not np.isfinite(logits).all()
+            or np.any(probabilities <= 0) or np.any(probabilities >= 1) or np.any(np.abs(logits) > 3)):
+        raise ValueError("readout requires all five finite positive float32 probabilities and bounded logits")
+    p64, logits64 = probabilities.astype(np.float64), logits.astype(np.float64)
+    if np.any(np.abs(p64.sum(axis=-1) - 1.) > PROBABILITY_MASS_BOUND):
+        raise ValueError("five-action probability mass exceeds its float32 rounding bound")
+    exponent = np.exp(logits64 - logits64.max(axis=-1, keepdims=True))
+    reference = exponent / exponent.sum(axis=-1, keepdims=True)
+    if np.any(np.abs(p64 - reference) > SOFTMAX_RELATIVE_BOUND * reference):
+        raise ValueError("recorded probabilities disagree with the original five-action logits")
+
+
 def validate_world(row, c=CFG):
     _config(c)
     pre = int(row["pre_contacts"])
@@ -369,10 +397,9 @@ def validate_world(row, c=CFG):
             for stem in ("probe_initial_", "grid_initial_"):
                 if not np.all(value[stem + field] == expected):
                     raise ValueError("readout did not begin with its declared fresh neutral body")
-        probabilities = value["probe_probabilities"]
-        if (not np.isfinite(probabilities).all() or np.any(probabilities < 0)
-                or not np.allclose(probabilities.sum(-1), 1., atol=2e-7, rtol=0)):
-            raise ValueError("readout must retain a finite five-action distribution")
+        if not _identical(value["probe_logits"], np.float32(3) * value["probe_decision_motor"]):
+            raise ValueError("recorded probe logits differ from the actual five motor activations")
+        validate_probabilities(value["probe_probabilities"], value["probe_logits"])
     for controller in ("plastic", "direct"):
         left, right = (_arm(row, controller + "_" + condition) for condition in ("stationary", "reversal"))
         if not _identical(left["probe_probabilities"][:, 0], right["probe_probabilities"][:, 0]):
