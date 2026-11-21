@@ -24,6 +24,12 @@ def main():
     shelter_evolution_rows = []
     inherited_evolution_rows = []
     social_learning_rows = []
+    random_reversal_gates = []
+    random_reversal_windows = []
+    random_reversal_survival = []
+    random_reversal_pairs = []
+    random_reversal_controls = []
+    random_reversal_subgroups = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -51,6 +57,76 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "reversal-random-v1":
+            split = a.get("condition_split", "")
+            expected = 128 if split == "final" else 4 if split == "development" else None
+            complete = (expected is not None and s.get("status") == "finished"
+                        and s.get("artifact_validity") == "passed" and s.get("primary") == "observed"
+                        and s.get("completed_families") == s.get("expected_families") == expected)
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None else
+                                       f"{metric['mean']:.6f} ± " +
+                                       ("undefined" if metric.get("se") is None else f"{metric['se']:.6f}"))
+            gate = s.get("gate", {})
+            gate_fields = ("passed", "late_level_passed", "late_chance_passed", "recovery_passed",
+                           "accuracy_noninferiority_passed", "survival_noninferiority_passed")
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and all(type(gate.get(field)) is bool for field in gate_fields))
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            primary = measurements.get("arms", {}).get("observed", {})
+            paired = primary.get("reversal_minus_stationary", {})
+            random_reversal_gates.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                estimate(primary.get("conditions", {}).get("reversal", {}).get("windows", {}).get("late", {}).get("first_food", {})),
+                *[estimate(paired.get(field, {})) for field in
+                  ("recovery_difference", "late_first_food_difference", "end_survival_difference")],
+                outcome, "undecided", commit,
+            ]) + " |")
+            if complete:
+                for arm in ("observed", "belief_reset", "birth_parent", "direct_baseline"):
+                    panel = measurements.get("arms", {}).get(arm, {})
+                    differences = panel.get("reversal_minus_stationary", {})
+                    random_reversal_pairs.append("| " + " | ".join([
+                        d.name, split, arm, *[estimate(differences.get(field, {})) for field in
+                            ("pre_first_food_difference", "early_first_food_difference", "late_first_food_difference",
+                             "recovery_difference", "end_survival_difference")],
+                    ]) + " |")
+                    for condition in ("stationary", "reversal"):
+                        life = panel.get("conditions", {}).get(condition, {})
+                        random_reversal_survival.append("| " + " | ".join([
+                            d.name, split, arm, condition, estimate(life.get("fitness", {})),
+                            *[estimate(life.get("survival", {}).get(point, {})) for point in
+                              ("at_flip", "after_early", "after_late", "end")],
+                        ]) + " |")
+                        for window in ("pre", "early", "late"):
+                            metric = life.get("windows", {}).get(window, {})
+                            random_reversal_windows.append("| " + " | ".join([
+                                d.name, split, arm, condition, window,
+                                *[estimate(metric.get(field, {})) for field in ("first_food", "no_meal", "fitness", "accuracy")],
+                                str(metric.get("food_encounters", "?")), str(metric.get("poison_encounters", "?")),
+                                str(metric.get("encounters", "?")),
+                            ]) + " |")
+                        for group in ("alive_at_flip_only", "end_survivor_only"):
+                            subgroup = life.get(group, {})
+                            random_reversal_subgroups.append("| " + " | ".join([
+                                d.name, split, arm, condition, group, str(subgroup.get("families", "?")),
+                                *[estimate(subgroup.get("windows", {}).get(window, {}).get("first_food", {}))
+                                  for window in ("pre", "early", "late")],
+                            ]) + " |")
+                for comparison in ("within_social", "within_birth"):
+                    for condition in ("stationary", "reversal"):
+                        paired = measurements.get(comparison, {}).get(condition, {})
+                        for window in ("pre", "early", "late"):
+                            metric = paired.get("windows", {}).get(window, {})
+                            random_reversal_controls.append("| " + " | ".join([
+                                d.name, split, comparison, condition, window,
+                                estimate(metric.get("first_food_difference", {})), estimate(metric.get("fitness_difference", {})),
+                                estimate(paired.get("end_survival_difference", {})),
+                            ]) + " |")
+            continue
         if a.get("eval_protocol") == "social-transmission-v1":
             split = a.get("condition_split", "")
             expected = 128 if split == "final" else 4 if split == "development" else None
@@ -530,6 +606,54 @@ def main():
                     "Fitness ± SEM | First-meal step ± SEM |", "|---" * 8 + "|", *social_belief_arms, "",
                     "| Run | Split | Control | Observed first-food difference ± paired SEM | "
                     "Observed survival difference ± paired SEM |", "|---" * 5 + "|", *social_belief_contrasts, ""]
+    if random_reversal_gates:
+        out += ["## Saved-controller transfer to randomized rule reversal (reversal-random-v1)", "",
+                "E125 changes only the hidden food interpretation at time 100, 125, 150 or 175, with 16 "
+                "families per initial-rule/time cell in each final lineage. Every arm has paired stationary "
+                "and reversal copies; the stationary copy uses the same shadow boundary for analysis. "
+                "No new genome optimization or scalar calibration occurs. The fixed primary is the E123 "
+                "prepared observer, with its original genome and pinned calibration. Its belief is not "
+                "reset at the hidden flip.", "",
+                "Windows relative to the boundary are pre [-50,0), early [0,50), and late [50,100). "
+                "First contact is food scores one; poison, death or no contact scores zero across all "
+                "assigned families. Means and ± SEM use independent families; all contrasts use paired "
+                "family differences. Contact-conditioned accuracy includes its explicit encounter "
+                "denominator and is undefined when no items were eaten.", "",
+                "The primary passes only if late reversal success is at least 0.60 and exceeds 0.50 by "
+                "more than two SEM; recovery (late minus early in reversal, minus the same change in "
+                "stationary) exceeds two paired SEM; and the lower two-SEM bounds for late-success and "
+                "end-survival reversal-minus-stationary differences both exceed -0.10. Every criterion "
+                "must pass in all three lineages. These bounds are a transfer screen, not proof of "
+                "equivalence. A good immediate response without the registered recovery contrast still "
+                "fails this gate. Development and incomplete attempts have no scientific verdict.", "",
+                "This measures saved-controller transfer, Phase 3(a). The formal rung remains undecided: "
+                "it still requires registered evolution from blank across three seeds, a matched fair "
+                "baseline comparison, and a mechanism lesion. The neutral selected birth state is exactly "
+                "birth_parent and is reused, not another replicate. Only the birth_parent versus "
+                "direct_baseline panel has matched birth information. Prepared-versus-direct scores "
+                "have unequal prior information and cannot establish architecture superiority.", "",
+                "| Run | Status | Split | Families | Primary late success ± SEM | Recovery contrast ± paired SEM | "
+                "Late gap ± paired SEM | End-survival gap ± paired SEM | Transfer decision | Formal rung | Commit |",
+                "|---" * 11 + "|", *random_reversal_gates, ""]
+        if random_reversal_windows:
+            out += ["All assigned families:", "",
+                    "| Run | Split | Arm | World | Window | First food ± SEM | No contact ± SEM | Fitness ± SEM | "
+                    "Contact accuracy ± SEM | Food count | Poison count | Accuracy denominator |",
+                    "|---" * 12 + "|", *random_reversal_windows, "",
+                    "| Run | Split | Arm | World | Lifetime fitness ± SEM | Survival at flip ± SEM | "
+                    "Survival after 50 ± SEM | Survival after 100 ± SEM | End survival ± SEM |",
+                    "|---" * 9 + "|", *random_reversal_survival, "",
+                    "Paired reversal minus stationary differences:", "",
+                    "| Run | Split | Arm | Pre first-food gap ± SEM | Early gap ± SEM | Late gap ± SEM | "
+                    "Recovery contrast ± SEM | End-survival gap ± SEM |", "|---" * 8 + "|", *random_reversal_pairs, "",
+                    "Matched comparisons: within_social is observed minus belief_reset; within_birth is "
+                    "birth_parent minus direct_baseline. All ± values below are paired SEM.", "",
+                    "| Run | Split | Comparison | World | Window | First-food gap ± SEM | Fitness gap ± SEM | "
+                    "End-survival gap ± SEM |", "|---" * 8 + "|", *random_reversal_controls, "",
+                    "Secondary subgroups only. End-survivor selection cannot establish recovery or replace "
+                    "the assigned-family gate; subgroup sizes are shown explicitly.", "",
+                    "| Run | Split | Arm | World | Subgroup | Families | Pre first food ± SEM | Early ± SEM | Late ± SEM |",
+                    "|---" * 9 + "|", *random_reversal_subgroups, ""]
     if social_channel_gates:
         out += ["## Information in public demonstrations (social-channel-v1)", "",
                 "E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. "

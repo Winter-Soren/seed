@@ -175,18 +175,22 @@ def social_action_bias(observation, q, c):
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights"))
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights", "_world_protocol"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
             persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False,
-            _initial_brain=None, _belief_q=None):
+            _initial_brain=None, _belief_q=None, _world_protocol=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
     validate_persistence(persistence, ecology)
+    if _world_protocol not in (None, "reversal-random-v1"):
+        raise ValueError("unknown versioned world protocol")
+    if _world_protocol is not None and (structural or ecology is not None or persistence is not None):
+        raise ValueError("randomized reversal preserves the original foraging world and controller")
     if _belief_q is not None:
         if (structural or direct_weights is not None or ecology is not None
-                or persistence is not None or flip_step is not None or c.R < 1):
+                or persistence is not None or (flip_step is not None and _world_protocol is None) or c.R < 1):
             raise ValueError("social belief requires the unchanged stationary rules world")
         if _belief_q.shape != (c.M,) or not jnp.issubdtype(_belief_q.dtype, jnp.floating):
             raise ValueError("social belief must be one floating-point probability per agent")
@@ -338,6 +342,9 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
         out = dict(surprise=jnp.mean(surprise))
+        if _world_protocol is not None and (record or diagnostics):
+            out["_world"] = dict(observation=obs, action=act, action_key=ka,
+                                  efference=x[:, n - O:n - 1], activity=x, denergy=denergy)
         if _belief_q is not None and (record or diagnostics):
             out["_belief"] = dict(q=_belief_q, action=act, bias=belief_bias,
                                   unbiased_logits=unbiased_logits, biased_logits=logits,
@@ -389,6 +396,10 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         res["_initial_brain"] = {name: carry[name] for name in ("x", "Wp", "energy", "alive", "denergy")}
     if _belief_q is not None and (record or diagnostics):
         res["_belief"] = traj["_belief"]
+    if _world_protocol is not None and (record or diagnostics):
+        res["_world"] = traj["_world"]
+        res["_world_initial"] = {name: carry[name] for name in ("W", "x", "Wp", "energy", "alive", "denergy")}
+        res["_world_final"] = {name: s[name] for name in ("W", "x", "Wp")}
     if ecology is not None and (record or diagnostics):
         res["ecology"] = dict(shelter=shelter,
                               initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),
