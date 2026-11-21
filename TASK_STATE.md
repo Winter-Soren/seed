@@ -30,4 +30,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E127's four-family rehearsal and independent audit passed. The owner approved a total of 100 minutes against a forecast of about 98 and a half. Run the three fresh panels sequentially. Then check every family's observations, choices, transfer outcomes and uncertainty before reporting the result. E126's formal training comparison remains stopped.
+E127's four-family rehearsal passed. Its first evaluation stopped after eleven families when a discarded choice probe failed its frozen-weight check. All eleven are archived and unscored. Diagnose the failure on synthetic inputs. A rerun must start the first lineage from the beginning, use one verified implementation for all three lineages and fit the owner's one-hundred-minute total. E126 remains stopped.
