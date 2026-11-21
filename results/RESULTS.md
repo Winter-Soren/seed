@@ -33,6 +33,17 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Observational learning and solo transfer (social-learning-v1)
+
+E120 tests one newborn per independent world family after 150 observation frames from an experienced teacher. Its solo test lasts 300 turns in a fresh world. The primary measure is first solo meal being food per assigned newborn; poison and no meal both count as zero. The observed movie is compared with yoked item colors, a time-matched blank movie and a scene-only movie. Each lineage must exceed every control by more than two paired family standard errors, with each all-assigned survival difference at least minus two SE. The table shows proportions and observed-minus-control differences. All three lineages must pass; development and incomplete attempts have no scientific verdict.
+
+| Run | Status | Split | Families | Observed first-food ± SE | Difference vs yoked ± SE | Difference vs no demo ± SE | Difference vs scene only ± SE | Seed decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261121-215143_E120-benchmark | finished | development | 4/4 | 0.500000 ± 0.288675 | 0.000000 ± 0.408248 | 0.000000 ± 0.408248 | -0.250000 ± 0.250000 | not applicable | 839846f |
+| 20261121-215328_E120-A0 | finished | final | 128/128 | 0.523438 ± 0.044319 | -0.015625 ± 0.035048 | 0.000000 ± 0.050830 | 0.085938 ± 0.041543 | FAIL | 839846f |
+| 20261121-215420_E120-A1 | finished | final | 128/128 | 0.515625 ± 0.044346 | 0.039062 ± 0.035775 | 0.000000 ± 0.050830 | 0.007812 ± 0.045050 | FAIL | 839846f |
+| 20261121-215547_E120-A2 | finished | final | 128/128 | 0.500000 ± 0.044368 | -0.023438 ± 0.032271 | 0.007812 ± 0.057095 | 0.039062 ± 0.051314 | FAIL | 839846f |
+
 ## Evolution with inherited experience (inherited-evolution-v1)
 
 E119 continues each E118 optimizer for ten updates. Before each update, the current mean genome adds its training donors' acquired sensory-to-output changes to a bounded archive. All candidates then receive that archive. The final child with its latest archive is compared with its immediate parent and previous archive on 128 fresh paired worlds. Death and nonarrival count as 301 turns; inside births are excluded from latency and retained in survival. A seed passes when saved turns exceed two paired family-cluster standard errors and survival changes by at least minus two SE. All three seeds must pass. Additional controls hold the genome or archive fixed and remain in each summary. Development and incomplete attempts have no scientific decision.

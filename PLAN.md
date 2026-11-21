@@ -43,6 +43,16 @@ The owner asked to use human evolution to guide the research. Human ancestry bra
 
 A three-stage puzzle-box study by Dean and colleagues found that children's higher-stage performance was associated with behaviors including teaching and imitation. It motivates the observable-demonstration control. E119's engineered transfer of acquired weight changes answers a different question. The observational and multi-cohort tests above are proposed, and each requires its own preregistration. [Dean et al., Science (2012)](https://lalandlab.wp.st-andrews.ac.uk/files/2015/08/dean_kendal_schapiro_thierry_laland_2012.pdf)
 
+### How we will choose the next observer design
+
+The owner asked us to change strategy when the evidence warrants it. E120 tests the newborn's first choice alone. E121 independently tests whether a reader can identify the food color from a teacher's visible choices. These two answers determine whether to improve the demonstration, select the observer for using it, or test transmission to another cohort. Record each decision and its fresh test worlds in the lab notebook.
+
+Three published approaches inform different parts of that decision.
+
+- A recurrent agent trained with a demonstrator sometimes absent could recall demonstrated navigation after the expert disappeared. Seed borrows the separate solo test. Seed's teacher is an evolved forager whose late choices are measured. [Learning few-shot imitation as cultural transmission](https://pmc.ncbi.nlm.nih.gov/articles/PMC10684502/)
+- Behavioral cloning from observation first learns which actions cause visible transitions, then infers an expert's actions from a demonstration. E121 asks the smaller question of whether consecutive public frames reveal what a teacher approached. Its reader uses known camera geometry. [Torabi, Warnell and Stone (2018)](https://www.ijcai.org/proceedings/2018/0687.pdf)
+- VariBAD learns a belief about the current task and conditions actions on that belief. If the food rule is readable but evolved newborns still cannot use it, a small separately registered comparison can carry a two-color belief into a fresh world. Erasing that belief before the first meal would test its causal role. This would be an engineered adaptation evaluated against the original genome. [Zintgraf et al. (2021)](https://jmlr.csail.mit.edu/papers/volume22/21-0657/21-0657.pdf)
+
 ## Findings from an external audit
 
 These are **unregistered probes on 256 fresh worlds, seed 777**. Remeasure them

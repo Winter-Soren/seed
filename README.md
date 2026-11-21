@@ -169,9 +169,25 @@ Only A2 had a positive parent comparison, and its gain fell short of two standar
 
 E117 showed a benefit from a single donor cohort paired with its successors. In E119 the same descendant did better with its accumulated archive cleared. The experiments differ in donor experience, the number of transfers and training, so the cause of the difference is still open.
 
+## Learning by watching another creature
+
+**E120's observational-learning gate failed in all three lineages.** Each newborn watched the last 150 turns of an experienced teacher's life, then acted alone in a new layout with the same food rule. The four matched versions of that newborn saw the intact movie, the same movie with A/B colors swapped for half the families under each rule, a blank view, or the scenery with the teacher and its signal removed. Each version started with an empty archive and learned through its own brain.
+
+The table reports 128 unseen families per lineage. Teacher accuracy is the fraction of its late meals that were food. Newborn success means its first meal alone was food, counting every assigned newborn. The three gains are intact-movie success minus the corresponding control, in percentage points. Every ± value is one family-level standard error, paired for the gains.
+
+| Lineage | Teacher late food (%) | Newborn first food (%) | Gain vs color-reassigned movie | Gain vs blank view | Gain vs scenery alone |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A0 | 82.9 ± 0.9 | 52.3 ± 4.4 | −1.6 ± 3.5 | 0.0 ± 5.1 | +8.6 ± 4.2 |
+| A1 | 81.1 ± 1.0 | 51.6 ± 4.4 | +3.9 ± 3.6 | 0.0 ± 5.1 | +0.8 ± 4.5 |
+| A2 | 81.8 ± 0.8 | 50.0 ± 4.4 | −2.3 ± 3.2 | +0.8 ± 5.7 | +3.9 ± 5.1 |
+
+A0 passed the first-food comparison against scenery alone. The registered gate required an advantage above two paired standard errors against all three controls, together with the survival safeguard. A2 also failed that safeguard against the color-reassigned movie. Its survival fell by **8.6 ± 3.3 percentage points**, from 99/128 to 88/128 newborns. All deaths and missed meals remained in the assigned groups. [Independent movie and event audit](results/diagnostics/E120-independent-audit.json) · [Full results](results/RESULTS.md)
+
+The teachers made useful food choices, and watching changed newborns' own synaptic weights. These observations were insufficient to establish transfer of the food rule. The next diagnostic asks whether the visible movies contain a readable clue that the current newborns fail to use.
+
 ## Human-inspired research direction
 
-The next proposed test asks whether a newborn can **learn by watching another agent, then use the skill alone**. Both groups would start with empty archives. One would see a useful demonstration; the control would see matched activity with its informative relationship to the task removed. The demonstrator would leave before the solo test on a fresh layout. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next registered test, E121, asks whether a reader can **identify the food color from a teacher's visible choices**. It uses independent films and a reader with known camera geometry. The result will help decide whether to improve the demonstrations or train observers to use their information. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

@@ -12,10 +12,12 @@ E118 let all three original genomes mutate for ten generations with the persiste
 
 E119 continued the three saved E118 genomes from generation ten through generation twenty. Every generation received real acquired weight changes from its parent cohort. Against its immediate parent, the final descendant saved −2.1 ± 3.1, −40.8 ± 6.3 and +6.3 ± 6.0 turns. No lineage cleared the improvement threshold. All three descendants reached shelter more slowly with their accumulated archive than when the same genome started fresh. Absolute survival was low.
 
+E120 gave newborns a movie of a practiced forager before they acted alone. Teachers chose food on about 81–83% of late encounters. Newborns chose food first in 67, 66 and 64 of 128 solo lives. Watching beat every control in zero of three lineages. The independent reconstruction confirmed the decision.
+
 ## What is running
 
-E120 is registered. It tests the original three lineages as newborn observers, using an experienced agent's public behavior. Each observer then acts alone in a fresh world. The three controls remove the dependable color mapping, the visible teacher, or the whole demonstration. All local publication remains on hold.
+E121 is registered. It asks whether a fixed reader can tell which color is food from the teacher's public movements in new movies. Its decision concerns the movies. Newborn behavior was measured separately in E120. Publication remains on hold at the owner's request.
 
 ## What is next
 
-Benchmark the full observation and solo lifetimes. Run all three registered panels, independently verify the first solo choices and survival, and report every control comparison. The owner requested continued local research beyond E120. Use each decision to register the next question before opening new experimental worlds.
+Run the E121 benchmark and all three held-out panels on the laptop. If the movies reliably reveal food color, train observers to use them. If the reader fails, test a controlled demonstration whose visible choices can be verified. Register each comparison before opening its worlds.
