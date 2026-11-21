@@ -21,6 +21,7 @@ from jax.flatten_util import ravel_pytree
 
 from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure
 from seed.ecology import EcologyV1, apply_costs, make_shelter
+from seed.persistence import PersistenceV1, bias_logits, initial_memory, validate_persistence
 
 
 class Cfg(NamedTuple):
@@ -165,13 +166,14 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "_return_weights"))
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
-            _initial_weights=None, _initial_alive=None, _return_weights=False):
+            persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
+    validate_persistence(persistence, ecology)
     V, D, O, n, K = dims(c, ecology=ecology)
     pl = 1.0 if plastic else 0.0
     pp = pl if predictor_plastic is None else float(predictor_plastic)
@@ -208,6 +210,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         carry.update(alive=_initial_alive, energy=carry["energy"] * _initial_alive)
     if _return_weights:
         carry["last_alive_W"] = W
+    if persistence is not None:
+        carry["persistence"] = initial_memory(M)
     if structural:
         legal = (types[:, None] != 0) & ~jnp.eye(n, dtype=bool)
         caps = birth_caps(mask, legal)
@@ -268,6 +272,11 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
             stats['invalid_weights'] += ((~jnp.isfinite(W)) | (jnp.abs(W) > c.wmax) |
                                          ((new_mask == 0) & (W != 0))).sum((1, 2))
         logits = 3.0 * x[:, n - O:n - 1]
+        if persistence is not None:
+            local_shelter = obs[:, D - V * V - 1:D - 1].reshape(M, V, V)
+            logits, pursuit, pursuit_events = bias_logits(
+                logits, local_shelter, obs[:, D - 1] > 0, s["alive"],
+                s["persistence"], persistence, MOVES)
         act = jax.random.categorical(ka, logits)
         # efference copy: motor neurons "know" which action was actually taken, so the
         # next Hebbian update links what was seen to what was done
@@ -299,6 +308,14 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
         out = dict(surprise=jnp.mean(surprise))
+        if persistence is not None:
+            pursuit["last_action"] = act
+            ns["persistence"] = pursuit
+            if record or diagnostics:
+                previous_action = s["persistence"]["last_action"]
+                out["persistence"] = dict(pursuit_events, previous_action=previous_action,
+                                          selected_action=act,
+                                          action_switched=pursuit_events["tactic_attempted"] & (act != previous_action))
         if _return_weights:
             # No post-death credit: the fatal transition's delayed reward is not learned after death.
             ns["last_alive_W"] = jnp.where(alive[:, None, None] > 0, W, s["last_alive_W"])
@@ -339,12 +356,16 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
                               initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),
                               sheltered=traj["sheltered"],
                               energy_lost=traj["ecology_energy_lost"])
+    if persistence is not None and (record or diagnostics):
+        res["persistence"] = traj["persistence"]
     return res
 
 
 # ----------------------------------------------------------------------------- evolution
-def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=False, ecology=None):
+def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=False, ecology=None, persistence=None):
     """Evaluate a population of flat genomes in E worlds each (half with each rule)."""
+    validate_persistence(persistence, ecology)
+    options = {} if persistence is None else dict(persistence=persistence)
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
     rules = jnp.arange(E) % 2
 
@@ -352,7 +373,7 @@ def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=Fal
         g = unravel(flat)
         r = jax.vmap(lambda wk, dk, ru: rollout(
             g, wk, dk, ru, c, plastic, predictor_plastic=predictor_plastic,
-            structural=structural, ecology=ecology))(wkeys, dkeys, rules)
+            structural=structural, ecology=ecology, **options))(wkeys, dkeys, rules)
         return r
 
     @jax.jit
@@ -416,10 +437,11 @@ def format_row(row):
 
 
 def evolve(c, generations=200, pop=128, E=4, sigma=0.1, lr=0.1, seed=0, plastic=True,
-           log_every=10, mean=None, *, structural=False, ecology=None):
+           log_every=10, mean=None, *, structural=False, ecology=None, persistence=None):
     """Run ES for a number of generations. Returns (mean genome, unravel, history)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
-    evaluate, _ = make_evaluator(c, E, plastic, structural=structural, ecology=ecology)
+    options = {} if persistence is None else dict(persistence=persistence)
+    evaluate, _ = make_evaluator(c, E, plastic, structural=structural, ecology=ecology, **options)
     state = es_init(c, mean, seed)
     hist = []
     for gen in range(generations):

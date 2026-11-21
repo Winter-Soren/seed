@@ -7,6 +7,9 @@ structural_src = (Path(__file__).resolve().parents[1] / "seed" / "structural.py"
 seed_src = seed_src.replace("from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure", structural_src)
 ecology_src = (Path(__file__).resolve().parents[1] / "seed" / "ecology.py").read_text()
 seed_src = seed_src.replace("from seed.ecology import EcologyV1, apply_costs, make_shelter", ecology_src)
+persistence_src = (Path(__file__).resolve().parents[1] / "seed" / "persistence.py").read_text()
+persistence_src = persistence_src.replace("from seed.ecology import EcologyV1", "")
+seed_src = seed_src.replace("from seed.persistence import PersistenceV1, bias_logits, initial_memory, validate_persistence", persistence_src)
 QUICK = "--quick" in sys.argv
 
 cells = []

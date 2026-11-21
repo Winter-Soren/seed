@@ -25,7 +25,7 @@ class EcologyRunnerTests(unittest.TestCase):
                        "--seed", "41", "--generations", "0"]
         self.fail_before = None
 
-    def fake_lineage(self, g, wkeys, dkeys, rules, c, *, ecologies, plastic, on_life):
+    def fake_lineage(self, g, wkeys, dkeys, rules, c, *, ecologies, plastic, on_life, persistence=None):
         self.assertEqual(c, entry.DEVELOPMENT_CFG)
         self.assertEqual(len(wkeys), 3)
         self.assertEqual(len({np.asarray(key).tobytes() for key in dkeys}), 3)
@@ -34,6 +34,8 @@ class EcologyRunnerTests(unittest.TestCase):
                          [(0., 0.), (.01, 0.), (.01, .02)])
         _, sensory, motors, _, _ = dims(c, ecology=ecologies[0])
         archive = np.zeros((motors, sensory), np.float32)
+        trait = {} if persistence is None else dict(persistence=dict(
+            version=persistence.version, memory_steps=persistence.memory_steps, stall_steps=persistence.stall_steps))
         for i in range(3):
             if i == self.fail_before:
                 raise RuntimeError("fixture cohort failure")
@@ -48,21 +50,24 @@ class EcologyRunnerTests(unittest.TestCase):
                 raw[condition] = dict(events=events, fitness=float(events["food"].sum()/c.M),
                     ecology=dict(shelter=np.eye(c.G, dtype=bool), sheltered=occupied,
                                  energy_lost=np.zeros((c.T, c.M), np.float32), initial_sheltered=np.array([True, False])))
+                if persistence is not None:
+                    raw[condition]["persistence"] = {name: np.zeros((c.T, c.M), bool) for name in
+                        ("active", "remembered", "progress_observed", "stalled", "tactic_attempted", "action_switched")}
             row = dict(life=i, agent_ids=np.column_stack((np.full(c.M, i), np.arange(c.M))),
                 world_key=np.asarray(wkeys[i]), development_key=np.asarray(dkeys[i]), rule=int(rules[i]),
                 ecology=dict(version="ecology-v1", movement_energy_cost=ecologies[i].movement_energy_cost,
                              seasonal_energy_cost=ecologies[i].seasonal_energy_cost), **raw,
                 archive_before=archive.copy(), archive_after=archive.copy(),
                 donor_delta=np.zeros((c.M, motors, sensory), np.float32),
-                donor_mask=np.ones((c.M, motors, sensory), np.float32), donor_counts=np.full_like(archive, c.M))
+                donor_mask=np.ones((c.M, motors, sensory), np.float32), donor_counts=np.full_like(archive, c.M), **trait)
             state = dict(protocol="lineage-v1", state_version=1, method="sensor-motor-mean-delta-v1",
                 genome_sha256="a"*64, layout=dict(sensors=sensory, motors=motors, hidden=c.H, hidden_types=c.n_htypes,
                 view_radius=c.R, weight_bound=c.wmax, ecology_version="ecology-v1"), next_life=i+1, archive=archive.copy(),
-                used_world_keys=np.asarray(wkeys[:i+1]), used_development_keys=np.asarray(dkeys[:i+1]))
+                used_world_keys=np.asarray(wkeys[:i+1]), used_development_keys=np.asarray(dkeys[:i+1]), **trait)
             row["archive_state"] = state
             on_life(row)
         return dict(protocol="lineage-v1", mode="collective", genome=g, config=c._asdict(),
-                    lives=[], completed_lives=3, final_archive=archive, archive_state=state)
+                    lives=[], completed_lives=3, final_archive=archive, archive_state=state, **trait)
 
     def invoke(self, *extra, base=True, actual=False, dirty=False):
         with contextlib.ExitStack() as stack:
@@ -118,6 +123,9 @@ class EcologyRunnerTests(unittest.TestCase):
             self.assertEqual(summary["status"], "finished")
             self.assertFalse(summary["scientific_result"])
             self.assertNotIn("gate", summary)
+            self.assertNotIn("persistence", config["args"])
+            self.assertNotIn("persistence", config)
+            self.assertNotIn("persistence", summary)
             self.assertEqual(history[1]["selected"]["fitness"], .5 if condition == "shared" else 0.)
             self.assertEqual(history[1]["selected"]["agents_initially_sheltered"], 1)
             self.assertEqual(history[1]["selected"]["agents_reaching_shelter"], 1)
@@ -140,6 +148,15 @@ class EcologyRunnerTests(unittest.TestCase):
             self.invoke(*without_quick, base=False)
         with self.assertRaises(SystemExit):
             self.invoke("--memory-condition", "shared", base=False)
+        protocols = (None, "v1", "v2", "structural-v1", runner.broader_eval.PROTOCOL, runner.reversal_eval.PROTOCOL,
+                     runner.eval_v3.PROTOCOL, runner.eval_v4.PROTOCOL, runner.eval_v5.PROTOCOL, runner.eval_v6.PROTOCOL,
+                     runner.DIRECT_PROTOCOL, *runner.PAIRED_PROTOCOLS)
+        for protocol in protocols:
+            options = [] if protocol is None else ["--eval-protocol", protocol]
+            with self.subTest(protocol=protocol), self.assertRaises(SystemExit):
+                self.invoke(*options, "--persistence", base=False)
+        with self.assertRaises(SystemExit):
+            self.invoke("--persistence", "--resume", str(self.root/"old-run"), base=False)
         self.assertFalse((self.root/"runs").exists())
 
     def test_completed_attempt_cannot_be_replaced_or_resumed(self):
@@ -179,6 +196,7 @@ class EcologyRunnerTests(unittest.TestCase):
             keys.append(row["development_key"].tobytes())
             np.testing.assert_array_equal(row["agent_ids"], [[i, 0], [i, 1]])
             for arm in ("inherited", "fresh"):
+                self.assertNotIn("persistence", row[arm])
                 self.assertTrue(row[arm]["events"]["alive_before"][0].all())
                 self.assertEqual(row[arm]["ecology"]["shelter"].shape, (6, 6))
                 self.assertEqual(row[arm]["ecology"]["energy_lost"].shape, (12, 2))
@@ -188,12 +206,66 @@ class EcologyRunnerTests(unittest.TestCase):
                 np.testing.assert_array_equal(row["inherited"]["ecology"]["energy_lost"], 0.)
         self.assertEqual(len(set(keys)), 3)
         state = entry.load_development_archive(folder)
+        self.assertNotIn("persistence", state)
         self.assertEqual(state["next_life"], 3)
         np.testing.assert_array_equal(state["archive"], row["archive_after"])
         for key in ("archive", "used_world_keys", "used_development_keys"):
             np.testing.assert_array_equal(state[key], row["archive_state"][key])
         with self.assertRaisesRegex(ValueError, "seed 41"):
             entry.run_development_curriculum(seed=123)
+        self.invoke("--name", "actual-persistent", "--memory-condition", "empty", "--persistence", actual=True)
+        enabled = self.folder("actual-persistent")
+        setting = dict(version="persistence-v1", memory_steps=4, stall_steps=2)
+        config = json.loads((enabled/"config.json").read_text())
+        summary = json.loads((enabled/"summary.json").read_text())
+        self.assertEqual((enabled/"genome_start.npy").read_bytes(), (folder/"genome_start.npy").read_bytes())
+        self.assertIs(config["args"]["persistence"], True)
+        self.assertEqual(config["persistence"], setting)
+        self.assertEqual(summary["persistence"], setting)
+        loaded = entry.load_development_archive(enabled)
+        self.assertEqual(loaded["persistence"], setting)
+        for i in range(3):
+            off, on = self.read_cohort(folder, i), self.read_cohort(enabled, i)
+            self.assertEqual(on["persistence"], setting)
+            self.assertEqual(on["archive_state"]["persistence"], setting)
+            for key in ("world_key", "development_key", "agent_ids"):
+                np.testing.assert_array_equal(off[key], on[key])
+            for condition, arm in entry.MEMORY_CONDITIONS.items():
+                activity = on[arm]["persistence"]
+                for name in ("active", "remembered", "progress_observed", "stalled", "tactic_attempted", "action_switched"):
+                    self.assertEqual(activity[name].shape, (12, 2))
+                    self.assertEqual(summary["observations"][i]["paired"][condition]["persistence_"+name+"_agent_steps"],
+                                     int(activity[name].sum()))
+                for name in ("previous_action", "selected_action"):
+                    self.assertEqual(activity[name].shape, (12, 2))
+        np.testing.assert_array_equal(loaded["archive"], on["archive_after"])
+
+    def test_optional_persistence_archive_binding_is_checked(self):
+        self.invoke("--name", "persistent", "--persistence")
+        folder = self.folder("persistent")
+        expected = dict(version="persistence-v1", memory_steps=4, stall_steps=2)
+        self.assertEqual(entry.load_development_archive(folder)["persistence"], expected)
+        path = folder/"lineage_final.json"
+        original = path.read_bytes()
+        for setting in (dict(expected, version="other"), dict(expected, memory_steps=0),
+                        dict(expected, memory_steps=3), dict(expected, extra=1)):
+            metadata = json.loads(original)
+            metadata["archive_state"]["persistence"] = setting
+            path.write_text(json.dumps(metadata))
+            with self.subTest(setting=setting), self.assertRaises(ValueError):
+                entry.load_development_archive(folder)
+        metadata = json.loads(original)
+        metadata["archive_state"].pop("persistence")
+        path.write_text(json.dumps(metadata))
+        with self.assertRaisesRegex(ValueError, "persistence setting disagrees"):
+            entry.load_development_archive(folder)
+        path.write_bytes(original)
+        config_path = folder/"config.json"
+        config = json.loads(config_path.read_text())
+        config.pop("persistence")
+        config_path.write_text(json.dumps(config))
+        with self.assertRaisesRegex(ValueError, "persistence setting disagrees"):
+            entry.load_development_archive(folder)
 
     def test_archive_loader_rejects_partial_legacy_and_unsafe_array_references(self):
         self.invoke("--name", "portable")

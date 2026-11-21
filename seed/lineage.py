@@ -15,6 +15,7 @@ import jax.numpy as jnp
 import numpy as np
 
 from seed import seed
+from seed.persistence import PersistenceV1
 
 
 def _key(value):
@@ -68,7 +69,19 @@ def _birth(g, dkey, c, ecology):
     return weights, mask
 
 
-def _life(g, wkey, dkey, rule, c, ecology, plastic, *, weights=None, alive=None):
+def _persistence_options(persistence, ecologies):
+    if persistence is None:
+        return {}
+    if not isinstance(persistence, PersistenceV1) or any(ecology is None for ecology in ecologies):
+        raise ValueError("persistence requires a PersistenceV1 setting and ecology in every lifetime")
+    return dict(persistence=persistence)
+
+
+def _persistence_metadata(persistence):
+    return dict(version=persistence.version, **asdict(persistence))
+
+
+def _life(g, wkey, dkey, rule, c, ecology, plastic, *, weights=None, alive=None, persistence=None):
     if weights is not None:
         birth, mask = _birth(g, dkey, c, ecology)
         weights = np.asarray(weights)
@@ -80,9 +93,10 @@ def _life(g, wkey, dkey, rule, c, ecology, plastic, *, weights=None, alive=None)
         alive = np.asarray(alive)
         if alive.shape != (c.M,) or not np.isin(alive, (0, 1)).all():
             raise ValueError("eligibility must be a binary value per original agent")
+    options = {} if persistence is None else dict(persistence=persistence)
     result = seed.rollout(g, wkey, dkey, rule, c, plastic=plastic, diagnostics=True,
                           ecology=ecology, _initial_weights=weights,
-                          _initial_alive=alive, _return_weights=True)
+                          _initial_alive=alive, _return_weights=True, **options)
     result = jax.tree.map(np.asarray, result)
     state = result.pop("_weight_state")
     if not np.isfinite(state["terminal_W"]).all():
@@ -98,10 +112,13 @@ def _life(g, wkey, dkey, rule, c, ecology, plastic, *, weights=None, alive=None)
     return result, state
 
 
-def _record(index, wkey, dkey, rule, ecology, c):
-    return dict(life=index, agent_ids=np.column_stack((np.full(c.M, index), np.arange(c.M))),
+def _record(index, wkey, dkey, rule, ecology, c, *, persistence=None):
+    result = dict(life=index, agent_ids=np.column_stack((np.full(c.M, index), np.arange(c.M))),
                 world_key=np.asarray(wkey), development_key=np.asarray(dkey), rule=rule,
                 ecology=None if ecology is None else dict(version=ecology.version, **asdict(ecology)))
+    if persistence is not None:
+        result["persistence"] = _persistence_metadata(persistence)
+    return result
 
 
 def _emit(row, lives, on_life):
@@ -111,7 +128,7 @@ def _emit(row, lives, on_life):
         on_life(row)
 
 
-def _archive_start(g, c, ecology, dimensions, wkeys, dkeys, saved):
+def _archive_start(g, c, ecology, dimensions, wkeys, dkeys, saved, *, persistence=None):
     _, D, O, _, _ = dimensions
     digest = hashlib.sha256()
     for name in sorted(g):
@@ -123,14 +140,16 @@ def _archive_start(g, c, ecology, dimensions, wkeys, dkeys, saved):
                     layout=dict(sensors=D, motors=O, hidden=c.H, hidden_types=c.n_htypes,
                                 view_radius=c.R, weight_bound=float(c.wmax),
                                 ecology_version=None if ecology is None else ecology.version))
+    if persistence is not None:
+        metadata["persistence"] = _persistence_metadata(persistence)
     empty_keys = np.empty((0, 2), np.uint32)
     if saved is None:
         return metadata, np.zeros((O, D), np.float32), 0, empty_keys, empty_keys.copy()
     required = set(metadata) | {"archive", "next_life", "used_world_keys", "used_development_keys"}
     if not isinstance(saved, dict) or set(saved) != required:
-        raise ValueError("invalid collective archive checkpoint fields")
+        raise ValueError("archive fields must match checkpoint version and persistence setting")
     if any(saved[name] != value for name, value in metadata.items()):
-        raise ValueError("archive protocol, genome, method and sensor layout must match")
+        raise ValueError("archive protocol, genome, method, sensor layout and persistence setting must match")
     next_life = saved["next_life"]
     if not isinstance(next_life, Integral) or isinstance(next_life, (bool, np.bool_)) or next_life < 1:
         raise ValueError("archive next_life must count the completed cohorts")
@@ -151,43 +170,52 @@ def _archive_start(g, c, ecology, dimensions, wkeys, dkeys, saved):
 
 
 def _archive_checkpoint(metadata, archive, next_life, wkeys, dkeys):
-    return dict(metadata, layout=metadata["layout"].copy(), archive=archive.copy(),
+    result = dict(metadata, layout=metadata["layout"].copy(), archive=archive.copy(),
                 next_life=next_life, used_world_keys=wkeys.copy(),
                 used_development_keys=dkeys.copy())
+    if "persistence" in metadata:
+        result["persistence"] = metadata["persistence"].copy()
+    return result
 
 
-def same_individual(g, wkeys, dkey, rules, c, *, ecologies=None, plastic=True, on_life=None):
+def same_individual(g, wkeys, dkey, rules, c, *, ecologies=None, plastic=True,
+                    on_life=None, persistence=None):
     """Give first-life survivors matched inherited-weight and fresh-weight lives.
 
     All original slots remain in outcomes. Agents dead after the first life begin
     both second arms with zero energy and eligibility; no survivor renormalization.
     Only W transfers. Energy, position, activations and prediction weights reset.
+    A fixed persistence setting applies to both lives; pursuit state resets at birth.
     With on_life, completed records are streamed and the returned lives is empty.
     """
     g, wkeys, rules, ecologies, _ = _inputs(g, wkeys, rules, c, ecologies, on_life)
+    options = _persistence_options(persistence, ecologies)
     if len(wkeys) != 2:
         raise ValueError("same-individual comparison requires exactly two lifetimes")
     dkey = _key(dkey)
-    first, state = _life(g, wkeys[0], dkey, rules[0], c, ecologies[0], plastic)
+    first, state = _life(g, wkeys[0], dkey, rules[0], c, ecologies[0], plastic, **options)
     eligibility = state["alive"].copy()
     lives = []
-    first_record = _record(0, wkeys[0], dkey, rules[0], ecologies[0], c)
+    first_record = _record(0, wkeys[0], dkey, rules[0], ecologies[0], c, **options)
     first_record["first"] = first
     _emit(first_record, lives, on_life)
     inherited, _ = _life(g, wkeys[1], dkey, rules[1], c, ecologies[1], plastic,
-                         weights=state["terminal_W"], alive=eligibility)
+                         weights=state["terminal_W"], alive=eligibility, **options)
     fresh, _ = _life(g, wkeys[1], dkey, rules[1], c, ecologies[1], plastic,
-                     alive=eligibility)
-    second_record = _record(1, wkeys[1], dkey, rules[1], ecologies[1], c)
+                     alive=eligibility, **options)
+    second_record = _record(1, wkeys[1], dkey, rules[1], ecologies[1], c, **options)
     second_record.update(inherited=inherited, fresh=fresh, eligibility=eligibility,
                          agent_ids=np.column_stack((np.zeros(c.M, int), np.arange(c.M))))
     _emit(second_record, lives, on_life)
-    return dict(protocol="lineage-v1", mode="same-individual", config=c._asdict(),
-                genome=jax.tree.map(np.asarray, g), lives=lives, completed_lives=2)
+    result = dict(protocol="lineage-v1", mode="same-individual", config=c._asdict(),
+                  genome=jax.tree.map(np.asarray, g), lives=lives, completed_lives=2)
+    if persistence is not None:
+        result["persistence"] = _persistence_metadata(persistence)
+    return result
 
 
 def collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True,
-                     on_life=None, archive_state=None):
+                     on_life=None, archive_state=None, persistence=None):
     """Run successive newborn cohorts with a shared sensory-to-action archive.
 
     Every life has a paired fresh-weight control with identical world and birth
@@ -199,8 +227,11 @@ def collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True,
     cohort identities. Each completed record also includes a checkpoint. Changes
     to world pressures are allowed while the genome, learning method and sensor
     layout remain fixed. Previously consumed world and development keys are rejected.
+    A persistence setting is fixed for the lineage and bound to its checkpoint;
+    its transient pursuit state resets in every newborn and fresh control.
     """
     g, wkeys, rules, ecologies, dimensions = _inputs(g, wkeys, rules, c, ecologies, on_life)
+    options = _persistence_options(persistence, ecologies)
     _, D, O, n, _ = dimensions
     dkeys = tuple(_key(value) for value in dkeys)
     if len(dkeys) != len(wkeys):
@@ -208,7 +239,7 @@ def collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True,
     if len({np.asarray(key).tobytes() for key in dkeys}) != len(dkeys):
         raise ValueError("newborn cohorts require fresh development keys")
     metadata, archive, start_life, old_wkeys, old_dkeys = _archive_start(
-        g, c, ecologies[0], dimensions, wkeys, dkeys, archive_state)
+        g, c, ecologies[0], dimensions, wkeys, dkeys, archive_state, **options)
     used_wkeys = np.concatenate((old_wkeys, np.asarray(wkeys)))
     used_dkeys = np.concatenate((old_dkeys, np.asarray(dkeys)))
     lives = []
@@ -221,13 +252,13 @@ def collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True,
         # An empty archive must preserve even the signed zeros of the fresh brain.
         np.copyto(sensor_motor, np.clip(sensor_motor + delta, -c.wmax, c.wmax), where=delta != 0)
         inherited, state = _life(g, wkey, dkey, rule, c, ecology, plastic,
-                                 weights=inherited_weights)
-        fresh, _ = _life(g, wkey, dkey, rule, c, ecology, plastic, weights=fresh_weights)
+                                 weights=inherited_weights, **options)
+        fresh, _ = _life(g, wkey, dkey, rule, c, ecology, plastic, weights=fresh_weights, **options)
         donor_delta = (state["terminal_W"] - state["initial_W"])[:, n - O:, :D]
         donor_mask = state["mask"][:, n - O:, :D]
         donor_counts = donor_mask.sum(axis=0)
         update = donor_delta.sum(axis=0) / np.maximum(donor_counts, 1)
-        row = _record(index, wkey, dkey, rule, ecology, c)
+        row = _record(index, wkey, dkey, rule, ecology, c, **options)
         row.update(inherited=inherited, fresh=fresh, archive_before=archive.copy(),
                    donor_delta=donor_delta.copy(), donor_mask=donor_mask.copy(),
                    donor_counts=donor_counts)
@@ -236,8 +267,11 @@ def collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True,
         row["archive_state"] = _archive_checkpoint(
             metadata, archive, index + 1, used_wkeys[:index + 1], used_dkeys[:index + 1])
         _emit(row, lives, on_life)
-    return dict(protocol="lineage-v1", mode="collective", config=c._asdict(),
-                genome=jax.tree.map(np.asarray, g), lives=lives,
-                completed_lives=len(wkeys), final_archive=archive.copy(),
-                archive_state=_archive_checkpoint(metadata, archive, start_life + len(wkeys),
-                                                  used_wkeys, used_dkeys))
+    result = dict(protocol="lineage-v1", mode="collective", config=c._asdict(),
+                  genome=jax.tree.map(np.asarray, g), lives=lives,
+                  completed_lives=len(wkeys), final_archive=archive.copy(),
+                  archive_state=_archive_checkpoint(metadata, archive, start_life + len(wkeys),
+                                                    used_wkeys, used_dkeys))
+    if persistence is not None:
+        result["persistence"] = _persistence_metadata(persistence)
+    return result

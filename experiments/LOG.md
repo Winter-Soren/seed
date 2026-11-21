@@ -1923,3 +1923,14 @@ Decision: the engineering fixture passes. It shows that an inherited record chan
 Read-only verification from the repository root:
 
     python tools/audit_ecology_fixture.py --root . --run runs/20261121-062635_ecology-transfer-smoke-a0 --source-commit 6d8a378278fa8e90829792441f2a8780eedf97d9 --guard results/diagnostics/ecology-fixture-guard.jsonl
+
+### Engineering verification registered · 21 November 2026 · Persistence after a setback
+
+The owner requested a “never giving up” trait. This opt-in behavior keeps a locally observed shelter goal briefly after a creature loses sight of it, and changes action preferences after progress stalls. The animal's energy, lifetime and ability to rest still apply. This is a programmed trait, with no change to the E116 controller, scientific comparisons or their criteria.
+
+Verify the normal development CLI in two separate, immutable folders. Use the same source commit, original A0 bytes, development keys, two-agent cohorts and twelve-turn schedule. Allow at most 120 seconds per software check. The only treatment difference is the persistence flag. The shared and fresh memory groups are retained in both. Exact commands from the clean development checkout:
+
+    python -X utf8 scripts/run_experiment.py --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --name ecology-persistence-a0-off --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+    python -X utf8 scripts/run_experiment.py --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --name ecology-persistence-a0-on --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --persistence
+
+The engineering check passes if both runs record three complete cohorts, starts and random keys match between on/off, the default reproduces the earlier A0 fixture's event trajectories, and the enabled setting and its per-agent activity can be read back from the saved output. Scripted local-observation tests must separately exercise cue loss, expiry, stalled progress, a changed action preference, arrival, and inactive/dead agents. Summarize attempts and realized actions separately. Report zero events wherever they occur. Never select another world to make the trait look successful, or use these two runs to infer a performance benefit.

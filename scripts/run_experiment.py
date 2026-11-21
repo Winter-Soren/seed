@@ -710,6 +710,8 @@ def main():
                     help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, v4, v5, v6, direct-v1 or paired-train-v1/v2; ecology-lineage-v1 runs a development fixture")
     ap.add_argument("--memory-condition", choices=("shared", "empty"), default=None,
                     help="ecology-lineage-v1 selected trace; both paired memory conditions are retained")
+    ap.add_argument("--persistence", action="store_true", default=argparse.SUPPRESS,
+                    help="ecology-lineage-v1 development fixture only; enable the fixed persistence-v1 trait in both memory arms")
     ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
                     help="versioned training/diagnostic protocols; final fixes the registered configuration")
     ap.add_argument("--checkpoint-every", type=int, default=10)
@@ -733,6 +735,8 @@ def main():
                          "or pass --allow-dirty and say why in the experiment log.")
     if a.memory_condition is not None and a.eval_protocol != ECOLOGY_LINEAGE_PROTOCOL:
         ap.error("--memory-condition is only valid for ecology-lineage-v1")
+    if getattr(a, "persistence", False) and a.eval_protocol != ECOLOGY_LINEAGE_PROTOCOL:
+        ap.error("--persistence is only valid for the ecology-lineage-v1 development fixture")
     if a.eval_protocol == ECOLOGY_LINEAGE_PROTOCOL:
         from scripts import ecology_lineage
         try:

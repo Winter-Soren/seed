@@ -24,6 +24,7 @@ from jax.flatten_util import ravel_pytree
 import numpy as np
 
 from seed.ecology import EcologyV1
+from seed.persistence import PersistenceV1
 from seed import lineage
 from seed.seed import Cfg, init_genome
 
@@ -35,6 +36,14 @@ MEMORY_CONDITIONS = {"shared": "inherited", "empty": "fresh"}
 PHASES = ("base", "costly_movement", "cold_with_shelter")
 ECOLOGIES = (EcologyV1(), EcologyV1(movement_energy_cost=.01),
              EcologyV1(movement_energy_cost=.01, seasonal_energy_cost=.02))
+
+
+def _trait_metadata(persistence):
+    if persistence is None:
+        return {}
+    if not isinstance(persistence, PersistenceV1):
+        raise ValueError("persistence must be None or a PersistenceV1 setting")
+    return dict(persistence=dict(version=persistence.version, **asdict(persistence)))
 
 
 def _keys():
@@ -87,20 +96,30 @@ def _observations(raw):
             row.update(agents_initially_sheltered=int(initially.sum()),
                        agents_reaching_shelter=int((occupied.any(0) & ~initially).sum()),
                        exposed_agents_reaching_shelter_before_cold=int((occupied[:6].any(0) & ~initially).sum()))
+    if "persistence" in raw:
+        for name in ("active", "remembered", "progress_observed", "stalled", "tactic_attempted", "action_switched"):
+            event = np.asarray(raw["persistence"][name])
+            if event.shape != (12, 2) or not np.isin(event, (0, 1)).all() or np.any(event.astype(bool) & ~before):
+                raise ValueError("invalid persistence activity diagnostics")
+            row["persistence_"+name+"_agent_steps"] = int(event.sum())
     return row
 
 
 def run_development_curriculum(flat_genome=None, *, seed=DEVELOPMENT_SEED,
-                               memory_condition="shared", on_cohort=None):
+                               memory_condition="shared", on_cohort=None, persistence=None):
     """Run the fixed seed-41 mechanism fixture; callback streams each complete pair.
 
     New agents and developmental keys are used in every cohort. Shared memory is
     the sensory-to-motor lineage archive; empty memory is the matched fresh arm.
     Both arms run regardless of the selected display condition. Without a callback,
     the returned ``cohorts`` retain all three compact paired traces.
+    Optional persistence applies equally to both arms and resets each lifetime;
+    these arms do not compare persistence enabled against disabled.
     """
     if type(seed) is not int or seed != DEVELOPMENT_SEED or memory_condition not in MEMORY_CONDITIONS:
         raise ValueError("this development fixture permits seed 41 and shared/empty memory only")
+    trait = _trait_metadata(persistence)
+    options = {} if persistence is None else dict(persistence=persistence)
     started = time.monotonic()
     flat, genome = _genome(flat_genome)
     _, wkeys, dkeys = _keys()
@@ -115,6 +134,9 @@ def run_development_curriculum(flat_genome=None, *, seed=DEVELOPMENT_SEED,
                 or not np.array_equal(row["agent_ids"], np.column_stack((np.full(2, index), np.arange(2))))
                 or row["rule"] != 0):
             raise ValueError("development cohort keys, identities or rule changed")
+        if (row.get("persistence") != trait.get("persistence")
+                or any(("persistence" in row[key]) != (persistence is not None) for key in MEMORY_CONDITIONS.values())):
+            raise ValueError("development cohort persistence setting or diagnostics changed")
         paired = {name: _observations(row[key]) for name, key in MEMORY_CONDITIONS.items()}
         observation = dict(cohort=index, phase=PHASES[index], memory_condition=memory_condition,
                            selected=paired[memory_condition], paired=paired)
@@ -127,21 +149,23 @@ def run_development_curriculum(flat_genome=None, *, seed=DEVELOPMENT_SEED,
             raise TimeoutError("development lineage deadline reached; completed cohorts remain preserved")
 
     result = lineage.collective_lives(genome, wkeys, dkeys, np.zeros(3, np.int32), DEVELOPMENT_CFG,
-                                     ecologies=ECOLOGIES, plastic=True, on_life=receive)
+                                     ecologies=ECOLOGIES, plastic=True, on_life=receive, **options)
     if len(observations) != 3 or result.get("completed_lives") != 3:
         raise ValueError("lineage did not finish exactly three development cohorts")
+    if result.get("persistence") != trait.get("persistence"):
+        raise ValueError("final lineage persistence setting changed")
     return dict(protocol=PROTOCOL, purpose="development mechanism fixture; no scientific claim",
                 scientific_result=False, seed=seed, memory_condition=memory_condition,
                 schedule_independent_of_competence=True, observations=observations, cohorts=records,
-                lineage=result, elapsed_seconds=time.monotonic()-started)
+                lineage=result, elapsed_seconds=time.monotonic()-started, **trait)
 
 
 def load_development_archive(run_dir):
     """Load only a completed fixture's portable lineage checkpoint, without pickle.
 
     Pass the returned state to ``lineage.collective_lives(..., archive_state=state)``
-    with the same genome/layout and new world/development keys. This loads saved
-    lessons; it does not resume or modify the tracked fixture.
+    with the same genome/layout, matching persistence setting and new world/development
+    keys. This loads saved lessons; it does not resume or modify the tracked fixture.
     """
     folder = Path(run_dir).resolve()
 
@@ -172,6 +196,19 @@ def load_development_archive(run_dir):
         raise ValueError("this fixture has no portable archive_state; legacy traces alone are not a checkpoint")
     expected_fields = {"protocol", "state_version", "method", "genome_sha256", "layout", "next_life",
                        "archive", "used_world_keys", "used_development_keys"}
+    if "persistence" in state:
+        setting = state["persistence"]
+        if (not isinstance(setting, dict) or set(setting) != {"version", "memory_steps", "stall_steps"}
+                or setting["version"] != PersistenceV1.version):
+            raise ValueError("portable archive persistence setting is invalid")
+        expected = _trait_metadata(PersistenceV1(memory_steps=setting["memory_steps"], stall_steps=setting["stall_steps"]))
+        expected_fields.add("persistence")
+    else:
+        expected = {}
+    for document in (config, summary, metadata, state):
+        actual = {"persistence": document["persistence"]} if "persistence" in document else {}
+        if actual != expected:
+            raise ValueError("portable archive persistence setting disagrees with its fixture")
     layout = dict(sensors=49, motors=6, hidden=3, hidden_types=3, view_radius=1,
                   weight_bound=3., ecology_version="ecology-v1")
     digest = state.get("genome_sha256", "")
@@ -256,6 +293,8 @@ def run_tracked(args, git, root):
         raise ValueError("ecology-lineage-v1 requires --quick --condition-split development --seed 41 --generations 0; "
                          "no final science, resume, evolution or other configuration overrides are enabled")
     condition = args.memory_condition or "shared"
+    persistence = PersistenceV1() if getattr(args, "persistence", False) else None
+    trait = _trait_metadata(persistence)
     if condition not in MEMORY_CONDITIONS or not args.name or any(ch not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-" for ch in args.name):
         raise ValueError("invalid development run name or memory condition")
     root = Path(root)
@@ -285,7 +324,7 @@ def run_tracked(args, git, root):
         memory_condition=condition, selected_trace=MEMORY_CONDITIONS[condition], paired_traces_retained=True,
         source=source, genome_size=155, max_seconds=MAX_SECONDS, schedule_independent_of_competence=True,
         schedule=[dict(cohort=i, phase=phase, rule=0, ecology=dict(version=ecology.version, **asdict(ecology)))
-                  for i, (phase, ecology) in enumerate(zip(PHASES, ECOLOGIES))])
+                  for i, (phase, ecology) in enumerate(zip(PHASES, ECOLOGIES))], **trait)
     _write_json(folder/"config.json", config)
     with (folder/"genome_start.npy").open("xb") as output:
         output.write(source_bytes)
@@ -301,20 +340,21 @@ def run_tracked(args, git, root):
                 history.append(record)
                 _write_status(folder, dict(status="running", completed_cohorts=len(history), expected_cohorts=3))
 
-            result = run_development_curriculum(flat, memory_condition=condition, on_cohort=persist)
+            options = {} if persistence is None else dict(persistence=persistence)
+            result = run_development_curriculum(flat, memory_condition=condition, on_cohort=persist, **options)
         final_files = _bundle(folder, "lineage_final", result["lineage"])
     except BaseException as error:
         status = "interrupted" if isinstance(error, (KeyboardInterrupt, TimeoutError)) else "failed"
         outcome = dict(status=status, protocol=PROTOCOL, condition_split="development", scientific_result=False,
                        generation=0, completed_cohorts=len(history), expected_cohorts=3, memory_condition=condition,
-                       observations=history, error=f"{type(error).__name__}: {error}")
+                       observations=history, error=f"{type(error).__name__}: {error}", **trait)
         _write_json(folder/"summary.json", outcome)
         _write_status(folder, dict(status=status, completed_cohorts=len(history), expected_cohorts=3))
         raise
     outcome = dict(status="finished", protocol=PROTOCOL, condition_split="development", scientific_result=False,
                    generation=0, completed_cohorts=3, expected_cohorts=3, memory_condition=condition,
                    schedule_independent_of_competence=True, observations=history, final_memory=final_files,
-                   elapsed_seconds=result["elapsed_seconds"])
+                   elapsed_seconds=result["elapsed_seconds"], **trait)
     _write_json(folder/"summary.json", outcome)
     _write_status(folder, dict(status="finished", completed_cohorts=3, expected_cohorts=3))
     print("development mechanism fixture only; no scientific gate or learning claim")

@@ -137,3 +137,43 @@ return value as `archive_state` to `seed.lineage.collective_lives` with the
 same genome and sensor layout and new world and development keys. It continues
 the cohort numbering and checks which keys have already been used. The paired
 fresh-weight group starts from birth weights on every life.
+
+## Optional persistence rule
+
+`from seed.persistence import PersistenceV1` supplies the optional
+`persistence=PersistenceV1(memory_steps=4, stall_steps=2)` keyword to ecology
+`rollout`, `make_evaluator`, `evolve`, `same_individual` and `collective_lives`.
+Omitting it preserves the previous policy and output schema exactly. It requires
+the ecology observation layout; registered historical protocols reject it.
+
+This is an explicit agent rule, not an evolved trait or a claim about motivation.
+When alive, cold and outside shelter, a creature that sees shelter adds one to
+one movement logit pointing toward its nearest visible shelter cue. It can retain
+that relative offset for at most four missing-cue decisions by subtracting its
+own previous movement. No global map, absolute position or hidden food rule is
+available to the rule. Warmth, shelter, death or stale memory clears pursuit.
+The existing stochastic policy still selects the action and pays the same costs.
+
+After two consecutive visible observations without a decrease in shelter
+distance, the rule biases an alternative movement and subtracts one from the
+previous action's logit. Repeatedly staying can therefore count as a stall only
+while actively seeking cold-weather shelter. There are at most two such tactic
+attempts per uninterrupted pursuit episode. The local distance heuristic can
+switch between visible shelter pixels and does not infer progress from a missing
+cue. Memory is configurable from 1 to 16 decisions, with the stall threshold
+between 1 and that bound. No extra energy or additional lifetime is provided.
+
+Recorded/diagnostic rollouts include per-agent `persistence` arrays: `active`,
+`remembered`, `progress_observed` (actual visible distance decrease), `stalled`,
+`tactic_attempted`, `previous_action`, `selected_action`, and `action_switched`.
+The last is true only when a tactic was attempted and the sampled action differs
+from the preceding action. Action 0 is stay and is the initial previous-action
+sentinel. As in the original engine, actions are still sampled for dead slots;
+all six boolean behavior events are false there. Reweighting is not evidence of
+a successful switch or of better shelter use.
+
+The same setting applies to every parent, successor and matched control arm.
+Only learned weights transfer; pursuit memory resets at birth. Archive metadata
+binds the setting and rejects a different setting on continuation. An archive
+without this metadata means the trait was off. Shared versus fresh weights with
+the trait enabled is not an enabled-versus-disabled persistence comparison.
