@@ -154,7 +154,7 @@ def record_pupil(flat, solo_key, pupil_key, rule, frames, c=CFG, *,
     row.update({prefix + name: value for name, value in first_meal(
         row[prefix + "food"], row[prefix + "poison"]).items()})
     if _record_solo:
-        for name, source in (("grid", "grid"), ("position", "pos"), ("energy", "energy")):
+        for name, source in (("grid", "grid"), ("position", "pos"), ("energy", "energy"), ("signal", "sig")):
             row["solo_" + name] = solo["traj"][source]
     if _belief_q is not None:
         row.update({"belief_" + name: value for name, value in solo["_belief"].items()})

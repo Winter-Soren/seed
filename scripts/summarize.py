@@ -30,6 +30,9 @@ def main():
     social_belief_contrasts = []
     social_belief_calibrations = []
     social_belief_losses = []
+    social_transmission_gates = []
+    social_transmission_arms = []
+    social_transmission_contrasts = []
     social_channel_rows = []
     social_channel_contrasts = []
     social_channel_gates = []
@@ -48,6 +51,58 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "social-transmission-v1":
+            split = a.get("condition_split", "")
+            expected = 128 if split == "final" else 4 if split == "development" else None
+            frozen = s.get("frozen_calibration") or {}
+            complete = (expected is not None and s.get("status") == "finished"
+                        and s.get("artifact_validity") == "passed"
+                        and s.get("completed_chains") == s.get("expected_chains") == expected
+                        and len(s.get("raw_files", [])) == expected
+                        and frozen.get("path") == "calibration/selection.json"
+                        and len(frozen.get("sha256", "")) == 64)
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            interval = lambda metric: ("undefined" if metric.get("lower_2se") is None or metric.get("upper_2se") is None
+                                       else f"[{metric['lower_2se']:.6f}, {metric['upper_2se']:.6f}]")
+            verdicts = []
+            fields = ("passed", "first_food_passed", "survival_passed")
+            for decision in ("retained_efficacy", "cumulative_improvement"):
+                gate = s.get(decision, {})
+                decided = (complete and split == "final" and s.get("scientific_result") is True
+                           and all(type(gate.get(field)) is bool for field in fields))
+                verdicts.append(("PASS" if gate["passed"] else "FAIL") if decided
+                                else "not applicable" if complete and split == "development" else "undecided")
+            social_transmission_gates.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_chains', '?')}/{cfg.get('expected_chains', '?')}",
+                str(s.get("selected_lambda", "undefined")), *verdicts, commit,
+            ]) + " |")
+            if complete:
+                for cohort in (1, 2, 3):
+                    cohort_data = measurements.get("cohorts", {}).get(str(cohort), {})
+                    for arm in ("predecessor", "repeated_founder", "yoked", "belief_reset"):
+                        metrics = cohort_data.get("arms", {}).get(arm, {})
+                        social_transmission_arms.append("| " + " | ".join([
+                            d.name, split, str(cohort), arm,
+                            *[estimate(metrics.get(metric, {})) for metric in
+                              ("first_food", "no_meal", "survival", "fitness", "decoder_coverage")],
+                        ]) + " |")
+                    for control in ("repeated_founder", "yoked", "belief_reset"):
+                        metrics = cohort_data.get("contrasts", {}).get(control, {})
+                        social_transmission_contrasts.append("| " + " | ".join([
+                            d.name, split, str(cohort), "predecessor minus " + control,
+                            estimate(metrics.get("first_food_difference", {})), interval(metrics.get("first_food_difference", {})),
+                            estimate(metrics.get("survival_difference", {})), interval(metrics.get("survival_difference", {})),
+                        ]) + " |")
+                metrics = measurements.get("cross_cohort", {}).get("c3_vs_c1", {})
+                social_transmission_contrasts.append("| " + " | ".join([
+                    d.name, split, "3 versus 1", "c3 versus c1 predecessor",
+                    estimate(metrics.get("first_food_difference", {})), interval(metrics.get("first_food_difference", {})),
+                    estimate(metrics.get("survival_difference", {})), interval(metrics.get("survival_difference", {})),
+                ]) + " |")
+            continue
         if a.get("eval_protocol") == "social-belief-readout-v1":
             split = a.get("condition_split", "")
             expected = (32, 128) if split == "final" else (4, 4) if split == "development" else (None, None)
@@ -410,6 +465,36 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if social_transmission_gates:
+        out += ["## Three public-behavior handoffs (social-transmission-v1)", "",
+                "E124 freezes each original E103 genotype and its E123 training-calibrated scalar. "
+                "A solitary founder supplies its last 150 public frames to a newborn. Three successive "
+                "cohorts watch, act alone, and supply their last 150 public frames to the next newborn. "
+                "Only the predecessor arm teaches the next cohort. All assigned chains remain, including "
+                "dead teachers and empty late footage. Fresh bodies, brains and solo layouts are drawn "
+                "for each cohort. No weights, internal beliefs, rewards or hidden labels cross the handoff.", "",
+                "First-food accuracy scores one for food and zero for first poison or no meal. Each mean "
+                "and standard error uses independent chains; paired comparisons keep entire chains intact. "
+                "Intervals show mean minus/plus two paired standard errors. Retained efficacy requires "
+                "first-food gains over yoked and belief-reset movies strictly above two SE in every cohort. "
+                "The survival lower two-SE bound must strictly exceed -0.10 against every same-cohort control, "
+                "and for cohort 3 versus cohort 1. This ten-percentage-point tolerance is a confidence screen; "
+                "it does not prove equal survival.", "",
+                "Cumulative improvement additionally requires cohort 3 to beat both cohort 1 and the "
+                "cohort 3 repeated-founder control by more than two paired SE. All gates must hold in all "
+                "three lineages. Retention alone supports persistence through these three handoffs. "
+                "Both gates support net improvement over these three cohorts, not perpetual or monotonic "
+                "improvement. The genotype and engineered readout remain fixed. Development and incomplete "
+                "attempts have no scientific decision.", "",
+                "| Run | Status | Split | Chains | Frozen lambda | Retained efficacy | Cumulative improvement | Commit |",
+                "|---" * 8 + "|", *social_transmission_gates, ""]
+        if social_transmission_arms:
+            out += ["| Run | Split | Cohort | Arm | First food ± SEM | No-meal fraction ± SEM | "
+                    "Survival ± SEM | Fitness ± SEM | Decoder coverage ± SEM |",
+                    "|---" * 9 + "|", *social_transmission_arms, "",
+                    "| Run | Split | Cohort | Paired comparison | First-food difference ± SEM | "
+                    "First-food two-SE interval | Survival difference ± SEM | Survival two-SE interval |",
+                    "|---" * 8 + "|", *social_transmission_contrasts, ""]
     if social_belief_gates:
         out += ["## Calibrated engineered social readout (social-belief-readout-v1)", "",
                 "E123 retains the original E103 genomes and adds an engineered scalar belief with a fixed "
