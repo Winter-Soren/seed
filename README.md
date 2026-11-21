@@ -149,7 +149,11 @@ The comparison establishes that an earlier cohort's experience helped its succes
 
 Positive turns saved means the descendant reached shelter sooner. The ± values are one world-level standard error, paired for the changes. Deaths and missed arrivals count as 301 turns. All three lineages met the survival safeguard. The audit reconstructed all 30 selection updates from the candidates and their training scores. It also checked every held-out result against the saved events. [Independent audit](results/diagnostics/E118-independent-audit.json) · [Results index](results/RESULTS.md) · [Figure builder](tools/build_e118_genome_figure.py)
 
-The original parents remain the reference genomes. This ten-generation budget produced no verified gain in shelter finding. The strongest replicated improvement so far came from giving newborns donor experience. A separate comparison using a scrambled donor archive of matched size could test whether its specific contents account for that benefit. No further training is running.
+The original parents remain the reference genomes. This ten-generation budget produced no verified gain in shelter finding. The strongest replicated improvement so far came from giving newborns donor experience. A separate comparison using a scrambled donor archive of matched size could test whether its specific contents account for that benefit.
+
+## Evolving with inherited experience
+
+E119 continues the three saved E118 endpoints. Before each new evolutionary update, the parent lives on four training worlds. Its offspring inherit the changes the parent acquired on connections they also possess. The registered comparison tests each final descendant against both its immediate parent and the genome that started this continuation. Each comparison uses fresh paired worlds and counts deaths and missed shelter arrivals. [Preregistration](experiments/LOG.md#e119-preregistration--21-november-2026--can-an-evolving-descendant-use-inherited-experience-to-beat-its-own-parent)
 
 ## Try it locally
 

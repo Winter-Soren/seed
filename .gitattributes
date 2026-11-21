@@ -1,5 +1,6 @@
 # Preserve the bytes used by the experiment provenance checks on every OS.
 runs/*_E117-*/** -text
 runs/*_E118-*/** -text
+runs/*_E119-*/** -text
 results/diagnostics/E117-*-guard.jsonl -text
 results/diagnostics/E118-*-guard.jsonl -text
