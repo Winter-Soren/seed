@@ -33,6 +33,16 @@ it is an aim, not a demonstrated capability or a new reward function. Measure
 learning in Phase 1, adaptation in the task ladder, and forgetting in rung 4.
 Keep evolution bounded by the registered budgets and gates below.
 
+### Human-inspired research direction · 21 November 2026
+
+The owner asked to use human evolution to guide the research. Human ancestry branches, and different human species once lived at the same time. Seed will use a sequence of measurable behaviors as its engineering curriculum. The sequence concerns what the simulated agents can do. It assigns them no species or historical era. [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+
+1. **Learn from individual experience.** Keep the original within-life food-learning results and the shelter task as reference measurements. Genetic changes, learned connection strengths and the programmed persistence trait are separate mechanisms.
+2. **Learn by observing another agent.** The next proposed test gives a newborn a demonstration of a useful choice. A matched control sees the same amount of activity with the link between the demonstration and the useful choice removed. Both newborns start with identical conditions and an empty weight archive. Remove the demonstrator before testing the observer alone on a new layout governed by the same hidden rule. Counterbalance the rule. Register success and survival thresholds, three lineages, and fresh held-out worlds before training. This tests whether useful information survives after the demonstrator leaves.
+3. **Test whether successive cohorts can build on a skill.** If observational transfer passes, let each cohort learn from its immediate predecessor and become the next demonstrator. Compare independent chains with matched individual practice and a repeated, unchanged demonstration. Use unseen layouts to test whether a later cohort preserves a useful innovation and improves it. Direct copying of synaptic weights is disabled in this behavioral transmission study.
+
+A three-stage puzzle-box study by Dean and colleagues found that children's higher-stage performance was associated with behaviors including teaching and imitation. It motivates the observable-demonstration control. E119's engineered transfer of acquired weight changes answers a different question. The observational and multi-cohort tests above are proposed, and each requires its own preregistration. [Dean et al., Science (2012)](https://lalandlab.wp.st-andrews.ac.uk/files/2015/08/dean_kendal_schapiro_thierry_laland_2012.pdf)
+
 ## Findings from an external audit
 
 These are **unregistered probes on 256 fresh worlds, seed 777**. Remeasure them

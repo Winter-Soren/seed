@@ -33,6 +33,17 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Evolution with inherited experience (inherited-evolution-v1)
+
+E119 continues each E118 optimizer for ten updates. Before each update, the current mean genome adds its training donors' acquired sensory-to-output changes to a bounded archive. All candidates then receive that archive. The final child with its latest archive is compared with its immediate parent and previous archive on 128 fresh paired worlds. Death and nonarrival count as 301 turns; inside births are excluded from latency and retained in survival. A seed passes when saved turns exceed two paired family-cluster standard errors and survival changes by at least minus two SE. All three seeds must pass. Additional controls hold the genome or archive fixed and remain in each summary. Development and incomplete attempts have no scientific decision.
+
+| Run | Status | Split | Additional generations | Families | Parent latency ± SE | Child latency ± SE | Latency reduction ± SE | Survival difference ± SE | Seed decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-195940_E119-benchmark | finished | development | 1/1 | 4/4 | 195.312500 ± 53.682552 | 187.875000 ± 34.449314 | 7.437500 ± 27.956695 | 0.000000 ± 0.000000 | not applicable | 2b8c4b3 |
+| 20261121-200133_E119-A0 | finished | final | 10/10 | 128/128 | 198.549061 ± 5.995490 | 200.647182 ± 6.309799 | -2.098121 ± 3.139030 | 0.000000 ± 0.000000 | FAIL | 2b8c4b3 |
+| 20261121-200931_E119-A1 | finished | final | 10/10 | 128/128 | 178.495798 ± 5.735760 | 219.245798 ± 5.681010 | -40.750000 ± 6.283733 | -0.003906 ± 0.007836 | FAIL | 2b8c4b3 |
+| 20261121-201610_E119-A2 | finished | final | 10/10 | 128/128 | 172.278826 ± 5.777348 | 165.974843 ± 5.948865 | 6.303983 ± 6.017207 | 0.001953 ± 0.003392 | FAIL | 2b8c4b3 |
+
 ## Shelter evolution (shelter-evolution-v1)
 
 E118 evolves each original A genome for ten generations and compares its final descendant with its parent on 128 paired unseen worlds. Both use the same shelter ecology and persistence trait. Births outside shelter contribute to the capped first living arrival time. Death and nonarrival count as 301 turns. The reported reduction is parent minus descendant, with a family-cluster standard error. The survival difference is descendant minus parent among all assigned creatures. Each seed passes if latency improves by more than two paired standard errors and survival falls by at most two paired standard errors. All three seeds must pass. The development benchmark and incomplete runs have no scientific decision. Genome changes describe mutation and selection; the paired test measures their outcome.

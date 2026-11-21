@@ -1,6 +1,6 @@
 # Seed
 
-Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection)
+Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
 ## What the creatures do
 
@@ -153,7 +153,25 @@ The original parents remain the reference genomes. This ten-generation budget pr
 
 ## Evolving with inherited experience
 
-E119 continues the three saved E118 endpoints. Before each new evolutionary update, the parent lives on four training worlds. Its offspring inherit the changes the parent acquired on connections they also possess. The registered comparison tests each final descendant against both its immediate parent and the genome that started this continuation. Each comparison uses fresh paired worlds and counts deaths and missed shelter arrivals. [Preregistration](experiments/LOG.md#e119-preregistration--21-november-2026--can-an-evolving-descendant-use-inherited-experience-to-beat-its-own-parent)
+**None of the three generation-20 descendants reliably beat its generation-19 parent. The accumulated archive slowed shelter finding in all three lineages.**
+
+E119 continued the actual E118 generation-ten genomes and optimizer states. Before each new update, 16 creatures born from the current parent genome lived across four training worlds. On each sensory-to-output connection they possessed, their acquired weight changes were averaged and added to the archive. The next generation's candidates received those changes on their own matching connections. All 7,680 candidate births across the study received changed starting weights. The audit reconstructed all 30 evolutionary updates and all 30 archive updates. [Independent audit](results/diagnostics/E119-independent-audit.json)
+
+For each lineage, the same 128 unseen world families were used for every comparison below. Each number is the **turns saved by the generation-20 descendant with its accumulated archive**, ± one paired world-level standard error. Negative values mean it took longer to reach shelter.
+
+| Lineage | Versus its immediate parent with the parent's archive | Versus its generation-ten founder with an empty archive | Versus the same descendant with an empty archive |
+| --- | ---: | ---: | ---: |
+| A0 | −2.1 ± 3.1 | −34.9 ± 7.1 | −48.0 ± 8.1 |
+| A1 | −40.8 ± 6.3 | −62.2 ± 7.3 | −56.4 ± 8.1 |
+| A2 | +6.3 ± 6.0 | −20.8 ± 7.4 | −23.5 ± 7.0 |
+
+Only A2 had a positive parent comparison, and its gain fell short of two standard errors. Each lineage met the relative survival safeguard, but absolute survival was low. Of 512 newborns assigned per group, the parent and descendant survival counts were 0 and 0 in A0, 8 and 6 in A1, and 3 and 4 in A2. The paired survival changes were 0.00 ± 0.00, −0.39 ± 0.78 and +0.20 ± 0.34 percentage points. Deaths and missed arrivals counted as 301 turns in the latency score. The original reference genomes remain in place. [Results table](results/RESULTS.md) · [Lab notebook](experiments/LOG.md)
+
+E117 showed a benefit from a single donor cohort paired with its successors. In E119 the same descendant did better with its accumulated archive cleared. The experiments differ in donor experience, the number of transfers and training, so the cause of the difference is still open.
+
+## Human-inspired research direction
+
+The next proposed test asks whether a newborn can **learn by watching another agent, then use the skill alone**. Both groups would start with empty archives. One would see a useful demonstration; the control would see matched activity with its informative relationship to the task removed. The demonstrator would leave before the solo test on a fresh layout. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

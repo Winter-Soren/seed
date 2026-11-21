@@ -1,0 +1,9 @@
+{
+  "status": "finished",
+  "generation": 10,
+  "optimizer_generation": 20,
+  "expected_generations": 10,
+  "completed_families": 128,
+  "expected_families": 128,
+  "elapsed_seconds": 356.01500000001397
+}

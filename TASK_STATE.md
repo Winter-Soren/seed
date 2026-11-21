@@ -10,10 +10,12 @@ E116 found smaller evolutionary steps beat larger ones, but neither justified re
 
 E118 let all three original genomes mutate for ten generations with the persistence trait active. Their descendants saved −6.6, −8.5 and +5.0 turns versus their parents, with paired standard errors of 6.0, 6.4 and 6.9 turns. All met the survival safeguard and none met the shelter improvement threshold. All ten updates per lineage and all held-out results passed independent reconstruction.
 
+E119 continued the three saved E118 genomes from generation ten through generation twenty. Every generation received real acquired weight changes from its parent cohort. Against its immediate parent, the final descendant saved −2.1 ± 3.1, −40.8 ± 6.3 and +6.3 ± 6.0 turns. No lineage cleared the improvement threshold. All three descendants reached shelter more slowly with their accumulated archive than when the same genome started fresh. Absolute survival was low.
+
 ## What is running
 
-E119 is registered. The owner asked to continue all three saved E118 genomes on the laptop and give each new generation an archive of the previous generation's learned weight changes. Local changes stay off GitHub until the owner lifts the VPN hold.
+Local training, all three held-out comparisons and the independent audit are complete. The README includes all three parent, founder and empty-archive comparisons. Publication remains on hold until the owner says the VPN is off.
 
 ## What is next
 
-Benchmark one full-size update, then train ten more updates per lineage. Compare the final descendant with its immediate parent, its original E118 founder, and versions of itself with earlier or empty memory, using fresh paired worlds. Record uncertainty and survival alongside shelter time.
+Keep the original reference genomes. The owner requested a human-inspired research direction. The next proposed test compares observation of a useful demonstration against matched uninformative activity, followed by a solo test on a fresh layout. Only after a successful observational result would we test whether skills accumulate across cohorts. PLAN.md records the direction. A new experiment requires a preregistered protocol.

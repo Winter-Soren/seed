@@ -1,0 +1,315 @@
+{
+  "status": "finished",
+  "generation": 1,
+  "optimizer_generation": 2,
+  "expected_generations": 1,
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 25.687999999994645,
+  "protocol": "inherited-evolution-v1",
+  "condition_split": "development",
+  "source_label": "A0",
+  "donor_seed": 45,
+  "evaluation_seed": 46,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "generations": [
+    {
+      "path": "generations/generation_0000.npz",
+      "sha256": "9c8fa76b3b2b3da22707199cf00988621d873f5901dcd45c7115354b87286cde"
+    },
+    {
+      "path": "generations/generation_0001.npz",
+      "sha256": "0e2f5aa16c483f0f3a4a0c519ca3f0f9467d5deba6aed09ebb3854d9840c80fa"
+    }
+  ],
+  "archives": [
+    {
+      "path": "generations/archive_0000.npz",
+      "sha256": "eb0880a092a75303a1ff3e6b17d5579f21ffbd5c2b010d1e38d216969fa869a7"
+    },
+    {
+      "path": "generations/archive_0001.npz",
+      "sha256": "21ad3ee77a0e2ee43afc092e4d3a6915405dbefb445fdc8dab298ce7689b4ebd"
+    }
+  ],
+  "donors": [
+    {
+      "path": "donors/donor_0001.npz",
+      "sha256": "aff1e3088d1419b5227fb11dbefa037c5b06faaa96c54b46f2446aec99ed2255"
+    }
+  ],
+  "raw_files": [
+    {
+      "path": "families/family_0000.npz",
+      "sha256": "c653ea61309f3249ad369ff0b832b48ad1394c976f5e82ddf51ef16b3fed849c"
+    },
+    {
+      "path": "families/family_0001.npz",
+      "sha256": "c865adcb89296f52d48885740cc53c2fbe9aef667a5b4b16cb31c50ef36a1d94"
+    },
+    {
+      "path": "families/family_0002.npz",
+      "sha256": "4faf46d369d539856f801e7b29567436347f769ea5f31c53cffde5834fa28b8c"
+    },
+    {
+      "path": "families/family_0003.npz",
+      "sha256": "a9151cab598e2cf48f81422b2e33f6c3ac5b2f85a53ff15136d922823f4cd7a4"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "agents_per_family": 4,
+    "assigned_agents": 16,
+    "outside_born_agents": 16,
+    "rule_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "parent_previous": {
+      "latency": {
+        "mean": 195.3125,
+        "se": 53.68255215849932
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 2.5625,
+        "se": 1.8153712889287046
+      },
+      "living_arrivals": 7,
+      "before_cold_arrivals": 6,
+      "cold_sheltered_fraction": {
+        "mean": 0.013333333333333334,
+        "se": 0.007964039548239696
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3821.6875,
+        "se": 5.242430058347623
+      }
+    },
+    "child_latest": {
+      "latency": {
+        "mean": 187.875,
+        "se": 34.449313611933306
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 2.375,
+        "se": 0.1613743060919757
+      },
+      "living_arrivals": 7,
+      "before_cold_arrivals": 7,
+      "cold_sheltered_fraction": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3811.0625,
+        "se": 5.961137160810846
+      }
+    },
+    "founder_empty": {
+      "latency": {
+        "mean": 195.3125,
+        "se": 53.68255215849932
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 2.5625,
+        "se": 1.8153712889287046
+      },
+      "living_arrivals": 7,
+      "before_cold_arrivals": 6,
+      "cold_sheltered_fraction": {
+        "mean": 0.013333333333333334,
+        "se": 0.007964039548239696
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3821.6875,
+        "se": 5.242430058347623
+      }
+    },
+    "child_empty": {
+      "latency": {
+        "mean": 141.3125,
+        "se": 46.875652773232574
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 6.6875,
+        "se": 2.398730132799436
+      },
+      "living_arrivals": 10,
+      "before_cold_arrivals": 10,
+      "cold_sheltered_fraction": {
+        "mean": 0.028749999999999998,
+        "se": 0.01894650119170839
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3811.0625,
+        "se": 5.961137160810846
+      }
+    },
+    "parent_latest": {
+      "latency": {
+        "mean": 191.1875,
+        "se": 42.643309239746706
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 3.5625,
+        "se": 1.8009690678446795
+      },
+      "living_arrivals": 8,
+      "before_cold_arrivals": 6,
+      "cold_sheltered_fraction": {
+        "mean": 0.04708333333333334,
+        "se": 0.03887524562266098
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3821.6875,
+        "se": 5.242430058347623
+      }
+    },
+    "child_previous": {
+      "latency": {
+        "mean": 141.3125,
+        "se": 46.875652773232574
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 6.6875,
+        "se": 2.398730132799436
+      },
+      "living_arrivals": 10,
+      "before_cold_arrivals": 10,
+      "cold_sheltered_fraction": {
+        "mean": 0.028749999999999998,
+        "se": 0.01894650119170839
+      },
+      "deaths": 16,
+      "birth_connections": {
+        "mean": 3811.0625,
+        "se": 5.961137160810846
+      }
+    },
+    "contrasts": {
+      "child_vs_parent": {
+        "latency_improvement": {
+          "mean": 7.4375,
+          "se": 27.956695493506857
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      },
+      "child_vs_founder": {
+        "latency_improvement": {
+          "mean": 7.4375,
+          "se": 27.956695493506857
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      },
+      "inherited_vs_empty": {
+        "latency_improvement": {
+          "mean": -46.5625,
+          "se": 28.698209692998855
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      },
+      "genotype_same_memory": {
+        "latency_improvement": {
+          "mean": 3.3125,
+          "se": 40.38981603799816
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      },
+      "latest_lessons": {
+        "latency_improvement": {
+          "mean": -46.5625,
+          "se": 28.698209692998855
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      },
+      "parent_lessons": {
+        "latency_improvement": {
+          "mean": 4.125,
+          "se": 40.075254729903676
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "latency_passed": false,
+          "survival_passed": true
+        }
+      }
+    }
+  },
+  "changed_parameters": 155,
+  "l2_distance_from_founder": 0.17348533868789673
+}
