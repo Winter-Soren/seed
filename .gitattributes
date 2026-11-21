@@ -5,3 +5,4 @@ runs/*_E119-*/** -text
 results/diagnostics/E117-*-guard.jsonl -text
 results/diagnostics/E118-*-guard.jsonl -text
 runs/*_E120-*/** -text
+runs/*_E121-*/** -text

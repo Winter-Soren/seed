@@ -24,6 +24,9 @@ def main():
     shelter_evolution_rows = []
     inherited_evolution_rows = []
     social_learning_rows = []
+    social_channel_rows = []
+    social_channel_contrasts = []
+    social_channel_gates = []
     paired_v2_training_rows = []
     direct_rows = []
     reversals = []
@@ -39,6 +42,42 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "social-channel-v1":
+            split = a.get("condition_split", "")
+            expected = 128 if split == "final" else 4 if split == "development" else None
+            complete = (expected is not None and s.get("status") == "finished"
+                        and s.get("artifact_validity") == "passed"
+                        and s.get("completed_families") == s.get("expected_families") == expected)
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            gate_fields = ("passed", "coverage_passed", "accuracy_passed", "chance_passed", "yoked_passed")
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and all(type(gate.get(field)) is bool for field in gate_fields))
+            decision = lambda field: (("PASS" if gate[field] else "FAIL") if decided else
+                                      "not applicable" if complete and split == "development" else "undecided")
+            social_channel_gates.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                *[decision(field) for field in gate_fields[1:]], decision("passed"), commit,
+            ]) + " |")
+            if complete:
+                for method in ("track", "scene"):
+                    panel = measurements.get(method, {})
+                    for arm in ("observed", "yoked", "no_demo", "scene_only"):
+                        metrics = panel.get("arms", {}).get(arm, {})
+                        social_channel_rows.append("| " + " | ".join([
+                            d.name, split, method, arm,
+                            *[estimate(metrics.get(metric, {})) for metric in (
+                                "accuracy", "coverage", "no_vote_fraction", "tie_fraction", "votes", "identifiable_steps")],
+                        ]) + " |")
+                    social_channel_contrasts.append("| " + " | ".join([
+                        d.name, split, method, estimate(panel.get("chance_difference", {})),
+                        *[estimate(panel.get("comparisons", {}).get(control, {}))
+                          for control in ("yoked", "no_demo", "scene_only")],
+                    ]) + " |")
+            continue
         if a.get("eval_protocol") == "social-learning-v1":
             split = a.get("condition_split", "")
             expected = 128 if split == "final" else 4 if split == "development" else None
@@ -284,6 +323,34 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if social_channel_gates:
+        out += ["## Information in public demonstrations (social-channel-v1)", "",
+                "E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. "
+                "The track reader uses consecutive visible teacher positions; the scene reader uses "
+                "item-image motion only. Both predict the most frequently contacted visible item color "
+                "as food. Ties and no votes earn expected accuracy of one half. Every family is retained. "
+                "Means use independent families; all ± values are standard errors of the mean (SEM), "
+                "and control contrasts use paired within-family differences. Fractions are proportions, "
+                "while votes and identifiable steps are mean counts per family. The tie fraction "
+                "includes movies with no votes.", "",
+                "The channel gate uses only the track reader's observed arm: coverage at least 0.50, "
+                "expected accuracy at least 0.60, accuracy minus chance (0.50) strictly greater than "
+                "two family SEM, and observed-minus-yoked accuracy strictly greater than two paired SEM. "
+                "All four criteria must pass separately in all three lineages. A pass shows this fixed "
+                "reader can use the public stimulus; it does not show an agent learned socially. "
+                "A failure does not establish that every possible reader would fail. The scene reader "
+                "and other control comparisons are diagnostics. Development and incomplete attempts "
+                "have no scientific verdict.", "",
+                "| Run | Status | Split | Families | Coverage ≥ 0.50 | Accuracy ≥ 0.60 | Above chance > 2 SEM | "
+                "Above yoked > 2 paired SEM | Lineage decision | Commit |", "|---" * 10 + "|",
+                *social_channel_gates, ""]
+        if social_channel_rows:
+            out += ["| Run | Split | Reader | Movie | Expected accuracy ± SEM | Coverage ± SEM | "
+                    "No-vote fraction ± SEM | Tie fraction ± SEM | Votes ± SEM | Identifiable steps ± SEM |",
+                    "|---" * 10 + "|", *social_channel_rows, "",
+                    "| Run | Split | Reader | Observed minus chance ± SEM | Observed minus yoked ± paired SEM | "
+                    "Observed minus no demo ± paired SEM | Observed minus scene only ± paired SEM |",
+                    "|---" * 7 + "|", *social_channel_contrasts, ""]
     if social_learning_rows:
         out += ["## Observational learning and solo transfer (social-learning-v1)", "",
                 "E120 tests one newborn per independent world family after 150 observation frames from "
