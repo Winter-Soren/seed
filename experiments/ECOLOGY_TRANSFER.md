@@ -18,6 +18,8 @@ Proposed sample: 256 base-world families per original A seed. Pair starting cond
 
 Evaluate fresh births under both stationary food rules in matched ecology conditions, without mid-life food reversal. Reset learned state and physics. Report pressure-minus-control return, individual minimum return, survival, food/poison, absent encounters and movement/exposure costs. Original fitness excludes energy costs; do not call it efficiency. Separate nominal debits from actual clipped energy changes. This tests genome transfer, not inherited lifetime memory.
 
+To ask whether reusing an evolved genome helps, include a matched blank-genome start in each of the three seed groups. Both starts receive the same environment, development random streams and training budget. Comparing an evolved genome across two environments measures the effect of the environment on that genome; it does not measure an advantage over starting fresh.
+
 ## 2. Same-individual weight reuse: benefit and harmful transfer
 
 Interface: `same_individual(g, wkeys[2], dkey, rules[2], c, *, ecologies=None, plastic=True)`. The wrapper develops and transfers internally; no arbitrary caller-supplied W.
@@ -40,6 +42,8 @@ Record first-meal food/poison/no-encounter categories, early 50-step and full-li
 ## 3. Collective memory: different individuals and successors
 
 Interface: `collective_lives(g, wkeys, dkeys, rules, c, *, ecologies=None, plastic=True)`. Cohorts have independent development; do not copy entire W between differently wired individuals.
+
+Give the donor cohort a cold season **before** scoring its successors on a fresh cold world. In the software fixture, cold first appears in the last cohort, so earlier cohorts never experience the shelter's protection. Their archive can change a newborn's behavior but cannot contain an acquired lesson about that cold-weather consequence. In the scientific comparison, hold the target world and independently drawn newborn wiring fixed across recipients of relevant, reset and relevance-broken memory.
 
 Archive acquired sensor-to-motor deltas: donor terminal-while-alive W minus its **actual initialized W**, including prior archive initialization. Average over donors possessing each edge. Present-edge zero deltas count; absent edges do not. Include dead donors' last live state, not post-death updates. Preserve donor identities, edge counts, deaths, inherited baselines and clipping. This is an engineered sharing rule, not spontaneous communication.
 
