@@ -122,6 +122,7 @@ def run_tracked(args, git, root, *, explicit=None):
     source, payloads, state, evaluation_seed = _validate(args, git, root, explicit)
     founder = state["mu"].copy()
     state = {name: jnp.asarray(value) for name, value in state.items()}
+    state["t"] = int(state["t"])
     c = seed.Cfg()
     archive = inherited_evolution.empty_archive(c)
     folder = root / "runs" / (datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "_" + args.name)
