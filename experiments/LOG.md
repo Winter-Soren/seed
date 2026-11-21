@@ -1891,3 +1891,7 @@ After all six valid finals are committed, run once under a 1,200-second full-pro
     .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-v6 --eval-protocol v6 --condition-split final --generations 0 --eval-worlds 256
 
 Software fixtures use tiny worlds and seed 41. E116 uses the default world physics and original controller. New environmental features carry no scientific claim until separately tested.
+
+### E116 local verification · 21 November 2026
+
+The initial full suite ran 172 tests in 657.769 seconds; 170 passed. One new test captured the first panel before its paired archive was written. One legacy timeout test exposed a change in when the runner read its configured deadline. We moved the new fixture's snapshot to the completed-panel boundary and restored the per-check deadline lookup. The complete E116 runner file then passed 8/8 and the legacy v4 runner file passed 11/11. The initial supervisor and both focused reruns charged 758.8102507 seconds against the 2,400-second software/CI allowance. This verifies the affected local paths and preserves the original test expectations. Hosted verification remains pending while the owner restores repository privacy. No held-out comparison or evolutionary generation contributed to these checks.

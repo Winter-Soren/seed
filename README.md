@@ -55,7 +55,9 @@ This experiment, **E115**, passed none of its six required score comparisons. Tw
 
 ## What comes next
 
-**E116 is underway.** It starts from the original brains and test whether taking a smaller step when updating the genome between generations helps. A new brain would have to beat both its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
+**E116 is underway.** It tests whether smaller changes to the genome between generations help the three original brains. Each trained brain has to beat its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
+
+The next world in development gives creatures a reason to move beyond finding food. They can see nearby shelter, moving costs energy, and cold weather makes staying outside costly. We want to find out whether a newborn can use what earlier creatures learned before they died. We will compare newborns with matching genomes and wiring, give one group shared experience, and measure how soon they reach shelter and how long they survive. The food experiments above establish the starting point for that question.
 
 ## Try it locally
 

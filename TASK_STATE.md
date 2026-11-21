@@ -29,5 +29,8 @@ E116 implementation and verification are in progress.
 
 The council proposes testing the size of evolutionary updates from the original genomes.
 The owner directed us to proceed. Reuse A0, A1 and A2 in both E116 arms.
-Keep new training and evaluation worlds separate and measure against both controls. Develop the two optional world pressures separately from E116.
+Keep E116 training and evaluation worlds separate and measure against both controls.
+In a separate development checkout, add visible shelter, cold exposure and a cost to moving.
+Test the plumbing for genome reuse, an individual's second life and what independently wired newborns can inherit from earlier creatures, including those that die.
+The next scientific question is whether that shared experience helps a newborn on a fresh world.
 One laptop job at a time. Check both drives and available memory before each launch.

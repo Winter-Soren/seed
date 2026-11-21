@@ -16,7 +16,10 @@ def main():
     v4_rows = []
     v5_rows = []
     v5_gates = []
+    v6_rows = []
+    v6_gates = []
     paired_training_rows = []
+    paired_v2_training_rows = []
     direct_rows = []
     reversals = []
     structural_rows = []
@@ -31,19 +34,28 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
-        if a.get("eval_protocol") == "paired-train-v1":
-            paired_training_rows.append("| " + " | ".join([
+        if a.get("eval_protocol") in ("paired-train-v1", "paired-train-v2"):
+            learning_rate_study = a["eval_protocol"] == "paired-train-v2"
+            target = paired_v2_training_rows if learning_rate_study else paired_training_rows
+            target.append("| " + " | ".join([
                 d.name, s.get("status", ""), a.get("objective", ""), a.get("condition_split", "final"),
                 str(a.get("seed", "")), f"{s.get('generation', '')}/{a.get('generations', '')}",
                 str(a.get("pop", "")), str(a.get("worlds", "")),
+                *([str(a.get("sigma", "")), str(a.get("lr", ""))] if learning_rate_study else []),
                 s.get("evaluation_status", cfg.get("evaluation_status", "deferred")), commit,
             ]) + " |")
             continue
-        if a.get("eval_protocol") in ("v4", "v5"):
-            if a["eval_protocol"] == "v5":
+        if a.get("eval_protocol") in ("v4", "v5", "v6"):
+            if a["eval_protocol"] in ("v5", "v6"):
                 decided = s.get("status") == "finished" and s.get("artifact_validity") == "passed" and "gate" in s
+                if a["eval_protocol"] == "v6":
+                    panels = s.get("panels", {})
+                    decided = (decided and s.get("completed_panels") == s.get("expected_panels") == 14
+                               and len(panels) == 14 and all(panel.get("status") == "finished"
+                                   and len(panel.get("conditions", {})) == 4 for panel in panels.values()))
                 outcome = ("PASS" if s["gate"]["passed"] else "FAIL") if decided else "undecided"
-                v5_gates.append(f"| {d.name} | {a.get('condition_split', 'final')} | {s.get('status', '')} | {outcome} | {commit} |")
+                target = v5_gates if a["eval_protocol"] == "v5" else v6_gates
+                target.append(f"| {d.name} | {a.get('condition_split', 'final')} | {s.get('status', '')} | {outcome} | {commit} |")
             for label, panel in s.get("panels", {}).items() or [("pending", {})]:
                 paired = panel.get("paired", {})
                 estimates = []
@@ -52,7 +64,7 @@ def main():
                     metric = paired.get(key, {})
                     estimates.append("undefined" if metric.get("mean") is None or metric.get("se") is None
                                      else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
-                target = v4_rows if a["eval_protocol"] == "v4" else v5_rows
+                target = {"v4": v4_rows, "v5": v5_rows, "v6": v6_rows}[a["eval_protocol"]]
                 target.append("| " + " | ".join([
                     d.name, s.get("status", ""), label, panel.get("controller", ""), panel.get("status", "pending"),
                     f"{len(panel.get('conditions', {}))}/4", a.get("condition_split", "final"), *estimates,
@@ -159,6 +171,29 @@ def main():
                 "scientific fitness estimate or SE is reported here.", "",
                 "| Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Evaluation | Commit |",
                 "|---" * 10 + "|", *paired_training_rows, ""]
+    if paired_v2_training_rows:
+        out += ["## Paired-min learning-rate continuation (paired-train-v2)", "",
+                "E116 compares control learning rate 0.1 with candidate 0.02, both using paired individual-minimum "
+                "selection from the same original A genomes. Fresh optimizer states and matched seeds 2000/2001/2002 "
+                "give both arms the same 20-generation exposure. The run name identifies the arm; sigma and learning "
+                "rate are shown explicitly. Evaluation remains deferred until all six final genomes are valid. "
+                "Training variation is not held-out uncertainty or a scientific improvement estimate.", "",
+                "| Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Sigma | Learning rate | Evaluation | Commit |",
+                "|---" * 12 + "|", *paired_v2_training_rows, ""]
+    if v6_rows:
+        out += ["## EVAL v6 paired learning-rate comparison", "",
+                "Original starts, six fixed E116 final genomes and five references share fresh v6 worlds. Values "
+                "are independent base-world means ± SE, never pooled across training seeds. The gate requires "
+                "candidate individual-minimum return to exceed both control and unchanged start by strictly more "
+                "than two paired SE in every seed, with candidate-minus-start joint survival at least minus two "
+                "paired SE. Equality fails return checks and is allowed at the survival boundary; this does not "
+                "prove equivalent survival. Incomplete or invalid attempts remain undecided. All 30 registered "
+                "contrasts and per-rule survival/encounter data remain in the aggregate summary and raw files. "
+                "Reversal outcomes cannot substitute for the gate, and E115's failed gate is unchanged.", "",
+                "| Run | Split | Status | E116 gate | Commit |", "|---" * 5 + "|", *v6_gates, "",
+                "| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | "
+                "Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | "
+                "Eval seed | Base worlds | Commit |", "|---" * 15 + "|", *v6_rows, ""]
     if v5_rows:
         out += ["## EVAL v5 paired objective comparison", "",
                 "Original A starts and all six registered paired-mean/paired-min continuations are evaluated "
