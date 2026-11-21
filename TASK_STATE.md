@@ -14,8 +14,8 @@ E119 continued the three saved E118 genomes from generation ten through generati
 
 ## What is running
 
-Local training, all three held-out comparisons and the independent audit are complete. The README includes all three parent, founder and empty-archive comparisons. Publication remains on hold until the owner says the VPN is off.
+E120 is registered. It tests the original three lineages as newborn observers, using an experienced agent's public behavior. Each observer then acts alone in a fresh world. The three controls remove the dependable color mapping, the visible teacher, or the whole demonstration. All local publication remains on hold.
 
 ## What is next
 
-Keep the original reference genomes. The owner requested a human-inspired research direction. The next proposed test compares observation of a useful demonstration against matched uninformative activity, followed by a solo test on a fresh layout. Only after a successful observational result would we test whether skills accumulate across cohorts. PLAN.md records the direction. A new experiment requires a preregistered protocol.
+Benchmark the full observation and solo lifetimes. Run all three registered panels, independently verify the first solo choices and survival, and report every control comparison. The owner requested continued local research beyond E120. Use each decision to register the next question before opening new experimental worlds.
