@@ -146,6 +146,94 @@ def late_scores(events, flips):
     return returns.min(axis=2).astype(np.float32), returns, counts
 
 
+def recorded_rank_weights(scores):
+    """Derive tied positions by sorting, then reproduce float32 rank arithmetic."""
+    order = np.argsort(scores, kind="stable")
+    positions = np.empty(len(scores), np.float32)
+    start = 0
+    while start < len(scores):
+        stop = start + 1
+        while stop < len(scores) and scores[order[stop]] == scores[order[start]]:
+            stop += 1
+        positions[order[start:stop]] = (start + stop - 1) / 2
+        start = stop
+    _, jnp = random_runtime()
+    weights = np.asarray(jnp.asarray(positions) / (len(scores) - 1) - .5)
+    close(weights, average_ranks(scores), "independent sorted tied ranks")
+    return weights
+
+
+def replay_adam(previous, eps, weights):
+    """Independent eager JAX arithmetic; preserve reduction and scalar ordering.
+
+    A NumPy reduction can differ by a few ulps. Near zero, Adam's denominator
+    can amplify that difference enough to reject a valid recorded transition.
+    No production optimizer or simulator is imported here.
+    """
+    _, jnp = random_runtime()
+    mu, m, v = (jnp.asarray(previous[name]) for name in ("mu", "m", "v"))
+    gradient = (jnp.asarray(weights)[:, None] * jnp.asarray(eps)).sum(0) / (len(weights) * .1) - .005 * mu
+    # Check the reduction against float64 with an a priori float32 roundoff
+    # bound, independently of the archived after-state. This is not an archive
+    # comparison tolerance; every archived optimizer array is checked exactly.
+    products = weights.astype(np.float64)[:, None] * eps.astype(np.float64)
+    regularizer = .005 * previous["mu"].astype(np.float64)
+    reference = products.sum(0) / (len(weights) * .1) - regularizer
+    operations = len(weights) + 6
+    unit_roundoff = float(np.finfo(np.float32).eps) / 2
+    gamma = operations * unit_roundoff / (1 - operations * unit_roundoff)
+    bound = gamma * (np.abs(products).sum(0) / (len(weights) * .1) + np.abs(regularizer))
+    bound += operations * float(np.finfo(np.float32).smallest_subnormal)
+    require(np.all(np.isfinite(gradient)) and np.all(np.abs(np.asarray(gradient, np.float64) - reference) <= bound),
+            "device gradient exceeds independent float64 roundoff bound")
+    step = int(previous["t"]) + 1
+    m = .9 * m + .1 * gradient
+    v = .999 * v + .001 * gradient ** 2
+    # Python-double powers precede conversion to the float32 device arrays.
+    mu = mu + .1 * (m / (1 - .9 ** step)) / (jnp.sqrt(v / (1 - .999 ** step)) + 1e-8)
+    return dict(mu=np.asarray(mu), m=np.asarray(m), v=np.asarray(v), t=np.asarray(step, previous["t"].dtype))
+
+
+def exact_optimizer_state(actual, expected):
+    for name, value in expected.items():
+        reversal.identical(actual[name], value, "exact optimizer transition " + name)
+
+
+def optimizer_arithmetic_self_check():
+    """A cancellation case that the former NumPy after-state check rejects."""
+    _, jnp = random_runtime()
+    weights = recorded_rank_weights(np.repeat(np.array([0., 1.], np.float32), 64))
+    half = np.ones((64, 2), np.float32)
+    half[0], half[-1] = 2 ** 24, -(2 ** 24)
+    eps = np.concatenate((half, -half))
+    reduced_numpy = (weights[:, None] * eps).sum(0) / np.float32(12.8)
+    previous = dict(mu=reduced_numpy / np.float32(.005), m=np.zeros(2, np.float32),
+                    v=np.zeros(2, np.float32), t=np.asarray(0, np.int64))
+    # Form an independent device reference from the literal registered first
+    # update, without calling the production optimizer or its simulator.
+    g = (jnp.asarray(weights)[:, None] * jnp.asarray(eps)).sum(0) / 12.8 - .005 * jnp.asarray(previous["mu"])
+    first_m, first_v = .1 * g, .001 * g ** 2
+    first_mu = jnp.asarray(previous["mu"]) + .1 * (first_m / (1 - .9)) / (jnp.sqrt(first_v / (1 - .999)) + 1e-8)
+    recorded = dict(mu=np.asarray(first_mu), m=np.asarray(first_m), v=np.asarray(first_v), t=np.asarray(1, np.int64))
+    expected = replay_adam(previous, eps, weights)
+    exact_optimizer_state(recorded, expected)
+    old_g = reduced_numpy - np.float32(.005) * previous["mu"]
+    old_m, old_v = np.float32(.1) * old_g, np.float32(.001) * old_g ** 2
+    old_mu = previous["mu"] + np.float32(.1) * (old_m / np.float32(1 - .9)) / (
+        np.sqrt(old_v / np.float32(1 - .999)) + np.float32(1e-8))
+    require(not np.allclose(recorded["mu"], old_mu, rtol=2e-5, atol=2e-6),
+            "cancellation fixture must expose the former NumPy after-state mismatch")
+    for name in recorded:
+        corrupted = {field: value.copy() for field, value in recorded.items()}
+        corrupted[name].reshape(-1).view(np.uint8)[0] ^= 1
+        try:
+            exact_optimizer_state(corrupted, expected)
+        except base.AuditError:
+            continue
+        raise base.AuditError("one-bit optimizer corruption was accepted: " + name)
+    return "cancellation update matches device bytes; one-bit corruption of genome, moments and counter rejected"
+
+
 def optimizer_transition(previous, samples, controller, pop=128, worlds=4, steps=300):
     dimension = DIMENSIONS[controller]
     half = regenerate_half(samples, pop, dimension)
@@ -167,18 +255,12 @@ def optimizer_transition(previous, samples, controller, pop=128, worlds=4, steps
     require(np.array_equal(typed(samples, "survived", (pop, worlds), "f"), events["alive_after"][..., -1, 0].mean(2)),
             "all-assigned training survival")
     scores = fitness.mean(axis=1, dtype=np.float32)
-    ranks = average_ranks(scores)
-    close(typed(samples, "rank_weights", (pop,), "f"), ranks, "average tied centered ranks")
+    ranks = recorded_rank_weights(scores)
+    reversal.identical(typed(samples, "rank_weights", (pop,), "f"), ranks, "exact average tied centered ranks")
     informative = bool(np.any(scores != scores[0]))
     expected = {name: previous[name].copy() for name in ("mu", "m", "v", "t")}
     if informative:
-        gradient = (ranks[:, None] * eps).sum(0) / np.float32(pop * .1) - np.float32(.005) * previous["mu"]
-        step = int(previous["t"]) + 1
-        expected["m"] = np.float32(.9) * previous["m"] + np.float32(.1) * gradient
-        expected["v"] = np.float32(.999) * previous["v"] + np.float32(.001) * gradient ** 2
-        expected["mu"] = previous["mu"] + np.float32(.1) * (expected["m"] / np.float32(1 - .9 ** step)) / (
-            np.sqrt(expected["v"] / np.float32(1 - .999 ** step)) + np.float32(1e-8))
-        expected["t"] = np.asarray(step, previous["t"].dtype)
+        expected = replay_adam(previous, eps, ranks)
     return expected, scores, informative
 
 
@@ -554,11 +636,10 @@ class Auditor(reversal.Auditor):
                 self.sampling(current, samples, controller, master, attempt + 1, development)
                 expected, scores, informative = optimizer_transition(current, samples, controller)
                 following = self.state(samples, attempt + 1, controller, "next_")
-                for field, value in expected.items():
-                    if informative and field != "t":
-                        close(following[field], value, "independent Adam " + field)
-                    else:
-                        require(np.array_equal(following[field], value), "exact tie skip/update count " + field)
+                try:
+                    exact_optimizer_state(following, expected)
+                except base.AuditError as error:
+                    raise base.AuditError(f"{target} attempt {attempt + 1}: {error}") from error
                 subset(row, dict(informative=informative, optimizer_updates=int(following["t"]),
                     changed_parameters=int(np.count_nonzero(following["mu"] != current["mu"]))), "attempt outcome accounting")
                 for name, value in (("fit_mean", scores.mean()), ("fit_best", scores.max()), ("fit_std", scores.std())):
@@ -681,7 +762,7 @@ class Auditor(reversal.Auditor):
 def self_check():
     """Small PRNG/arithmetic fixtures only; schedule this after the E125 decision."""
     jax, jnp = random_runtime()
-    checks = [source_hash_self_check()]
+    checks = [source_hash_self_check(), optimizer_arithmetic_self_check()]
     pop = 4
 
     def sample(previous, controller, informative):
@@ -696,11 +777,15 @@ def self_check():
         fitness, returns, counts = late_scores(events, FLIPS)
         all_counts = np.zeros((pop, 4, 2, 3, 2), np.int32)
         all_counts[..., 2, :] = counts
+        device_scores = jnp.asarray(fitness).mean(1)
+        lower = (device_scores[None, :] < device_scores[:, None]).sum(1)
+        equal = (device_scores[None, :] == device_scores[:, None]).sum(1)
+        actual_ranks = (lower + .5 * (equal - 1)) / (pop - 1) - .5
         result = dict(noise_key=np.asarray(key), half_eps_sha256=digest(np.asarray(half)),
             candidate_sha256=np.stack([digest(value) for value in np.asarray(actual)]),
             flip_steps=np.asarray(FLIPS, np.int32), permutation=np.arange(4, dtype=np.int32),
             fitness=fitness, rule_late_return=returns, rule_window_counts=all_counts,
-            survived=np.ones((pop, 4), np.float32), rank_weights=average_ranks(fitness.mean(1)),
+            survived=np.ones((pop, 4), np.float32), rank_weights=np.asarray(actual_ranks),
             event_shape=np.asarray(events["food"].shape))
         result.update({name + "_packed": np.packbits(value.reshape(-1), bitorder="little") for name, value in events.items()})
         return result
@@ -800,7 +885,7 @@ def main():
                           panels=panels, scientific_gate=replicated_gate([panel["gate"] for panel in panels]))
         report.update(registered_source=args.source_commit, registered_code_trees=auditor.expected_trees,
             source_byte_representations=auditor.source_byte_representations,
-            limitations=["Exact random initialization, perturbations and candidate digests require the archived JAX CPU runtime/configuration.",
+            limitations=["Exact initialization, perturbations, rank arithmetic and optimizer state require the archived JAX CPU runtime/configuration.",
                 "World events and optimizer arithmetic are reconstructed; candidate fitness is not regenerated by rerunning the simulator.",
                 "Lesion masks, full recorded prefixes and boundary hashes are checked; intermediate neural updates are not independently replayed.",
                 "Reported episode outcomes are clustered by independent base world; the controller parameterizations remain different.",

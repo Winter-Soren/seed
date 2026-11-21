@@ -11,3 +11,4 @@ runs/*_E123-*/** -text
 runs/*_E124-*/** -text
 runs/*_E125-*/** -text
 runs/*_E126-*/** -text
+results/benchmarks/E126/prefix-*.json -text
