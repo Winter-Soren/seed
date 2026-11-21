@@ -22,6 +22,7 @@ def main():
     ecology_fixture_rows = []
     cold_donor_rows = []
     shelter_evolution_rows = []
+    inherited_evolution_rows = []
     paired_v2_training_rows = []
     direct_rows = []
     reversals = []
@@ -37,6 +38,32 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "inherited-evolution-v1":
+            split = a.get("condition_split", "")
+            expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
+            complete = (s.get("status") == "finished" and s.get("artifact_validity") == "passed"
+                        and s.get("generation") == s.get("expected_generations") == expected[0]
+                        and s.get("completed_families") == s.get("expected_families") == expected[1])
+            measurements = s.get("measurements", {}) if complete else {}
+            comparison = measurements.get("contrasts", {}).get("child_vs_parent", {})
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and type(gate.get("passed")) is bool)
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            inherited_evolution_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('generation', '?')}/{cfg.get('expected_generations', '?')}",
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                estimate(measurements.get("parent_previous", {}).get("latency", {})),
+                estimate(measurements.get("child_latest", {}).get("latency", {})),
+                estimate(comparison.get("latency_improvement", {})),
+                estimate(comparison.get("survival_difference", {})), outcome, commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "shelter-evolution-v1":
             split = a.get("condition_split", "")
             expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
@@ -232,6 +259,19 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if inherited_evolution_rows:
+        out += ["## Evolution with inherited experience (inherited-evolution-v1)", "",
+                "E119 continues each E118 optimizer for ten updates. Before each update, the current mean genome "
+                "adds its training donors' acquired sensory-to-output changes to a bounded archive. All candidates "
+                "then receive that archive. The final child with its latest archive is compared with its immediate "
+                "parent and previous archive on 128 fresh paired worlds. Death and nonarrival count as 301 turns; "
+                "inside births are excluded from latency and retained in survival. A seed passes when saved turns "
+                "exceed two paired family-cluster standard errors and survival changes by at least minus two SE. "
+                "All three seeds must pass. Additional controls hold the genome or archive fixed and remain in "
+                "each summary. Development and incomplete attempts have no scientific decision.", "",
+                "| Run | Status | Split | Additional generations | Families | Parent latency ± SE | "
+                "Child latency ± SE | Latency reduction ± SE | Survival difference ± SE | Seed decision | Commit |",
+                "|---" * 11 + "|", *inherited_evolution_rows, ""]
     if shelter_evolution_rows:
         out += ["## Shelter evolution (shelter-evolution-v1)", "",
                 "E118 evolves each original A genome for ten generations and compares its final descendant "
