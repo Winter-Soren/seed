@@ -65,6 +65,12 @@ When a cohort's life ends, Seed saves what its members learned on connections fr
 
 One software check reused the original A0 genome across **three cohorts of two newborns**, with matched fresh-weight controls. Both newborns in each later cohort received changed starting weights. In the cold world, one of two creatures reached shelter in each group, and all survived. This verifies the transfer mechanism. Measuring a survival or navigation benefit requires independent lineages on held-out worlds. [Run and inspect the example](experiments/ECOLOGY_API.md) · [Saved observations](runs/20261121-062635_ecology-transfer-smoke-a0/summary.json) · [Proposed comparisons](experiments/ECOLOGY_TRANSFER.md)
 
+### Persistence after a setback
+
+The optional `--persistence` trait gives “never giving up” a specific meaning in this world. A cold creature outside shelter can remember the direction of a shelter it saw for up to four moves after it disappears from view. If two successive visible checks show no progress, it increases the chance of trying another move. Reaching shelter, warmth or an expired memory clears the goal. The normal controller still chooses each action and the creature still pays its energy costs.
+
+In a matched check with the original A0 genome, newborns with shared memory spent four agent-turns pursuing an out-of-sight shelter in the cold world. One of two reached shelter with the trait on, and one of two with it off. This is a programmed behavior. Whether it improves survival, or whether evolution can discover it unaided, remains open. [Trait enabled](runs/20261121-074534_ecology-persistence-a0-on/summary.json) · [Trait disabled](runs/20261121-074522_ecology-persistence-a0-off/summary.json)
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.

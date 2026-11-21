@@ -1,0 +1,427 @@
+{
+  "status": "passed",
+  "scientific_result": false,
+  "helper_sha256": "541b587a2b6fe641f7fd22e3fa79ffca3aa2f362fff0e97e65154df6c6205718",
+  "registered_source": "2db4fe6d3b96f6a09624689d636222df6fedc4a6",
+  "guards": {
+    "off": {
+      "sha256": "bab0986c109bc92e9d11cc16513796b0274cfbc8a65648cf7ce6469001f646bf",
+      "terminal": {
+        "event": "finished",
+        "time": "2026-11-21T07:45:28.3683031+05:30",
+        "wallSeconds": 12.1926731,
+        "exitCode": 0
+      },
+      "source_commit": "2db4fe6d3b96f6a09624689d636222df6fedc4a6",
+      "arguments": [
+        "-X",
+        "utf8",
+        "scripts/run_experiment.py",
+        "--eval-protocol",
+        "ecology-lineage-v1",
+        "--quick",
+        "--condition-split",
+        "development",
+        "--seed",
+        "41",
+        "--generations",
+        "0",
+        "--name",
+        "ecology-persistence-a0-off",
+        "--memory-condition",
+        "shared",
+        "--start",
+        "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy"
+      ]
+    },
+    "on": {
+      "sha256": "db67adaa9c29ccd49ebb8250c8d97771a05cb981f2dbc2161fb4ba40a989fecf",
+      "terminal": {
+        "event": "finished",
+        "time": "2026-11-21T07:45:40.3753884+05:30",
+        "wallSeconds": 11.9744537,
+        "exitCode": 0
+      },
+      "source_commit": "2db4fe6d3b96f6a09624689d636222df6fedc4a6",
+      "arguments": [
+        "-X",
+        "utf8",
+        "scripts/run_experiment.py",
+        "--eval-protocol",
+        "ecology-lineage-v1",
+        "--quick",
+        "--condition-split",
+        "development",
+        "--seed",
+        "41",
+        "--generations",
+        "0",
+        "--name",
+        "ecology-persistence-a0-on",
+        "--memory-condition",
+        "shared",
+        "--start",
+        "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+        "--persistence"
+      ]
+    }
+  },
+  "cohorts": {
+    "off": [
+      {
+        "cohort": 0,
+        "phase": "base",
+        "paired": {
+          "shared": {
+            "food": 4,
+            "poison": 1,
+            "fitness": 1.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.0,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              4
+            ]
+          },
+          "empty": {
+            "food": 4,
+            "poison": 1,
+            "fitness": 1.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.0,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              4
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      },
+      {
+        "cohort": 1,
+        "phase": "costly_movement",
+        "paired": {
+          "shared": {
+            "food": 1,
+            "poison": 1,
+            "fitness": 0.0,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.18999981880187988,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              1
+            ]
+          },
+          "empty": {
+            "food": 1,
+            "poison": 2,
+            "fitness": -0.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.1699998378753662,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              0
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      },
+      {
+        "cohort": 2,
+        "phase": "cold_with_shelter",
+        "paired": {
+          "shared": {
+            "food": 3,
+            "poison": 1,
+            "fitness": 1.0,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 2,
+            "extra_energy_lost": 0.4499995708465576,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 1,
+            "exposed_agents_reaching_shelter_before_cold": 1,
+            "deaths": 0,
+            "per_agent_return": [
+              0,
+              2
+            ]
+          },
+          "empty": {
+            "food": 1,
+            "poison": 0,
+            "fitness": 0.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 1,
+            "sheltered_agent_steps": 1,
+            "extra_energy_lost": 0.4399995803833008,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 1,
+            "exposed_agents_reaching_shelter_before_cold": 1,
+            "deaths": 0,
+            "per_agent_return": [
+              0,
+              1
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      }
+    ],
+    "on": [
+      {
+        "cohort": 0,
+        "phase": "base",
+        "paired": {
+          "shared": {
+            "food": 4,
+            "poison": 1,
+            "fitness": 1.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.0,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "persistence_active_agent_steps": 5,
+            "persistence_remembered_agent_steps": 0,
+            "persistence_progress_observed_agent_steps": 2,
+            "persistence_stalled_agent_steps": 2,
+            "persistence_tactic_attempted_agent_steps": 1,
+            "persistence_action_switched_agent_steps": 1,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              4
+            ]
+          },
+          "empty": {
+            "food": 4,
+            "poison": 1,
+            "fitness": 1.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.0,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "persistence_active_agent_steps": 5,
+            "persistence_remembered_agent_steps": 0,
+            "persistence_progress_observed_agent_steps": 2,
+            "persistence_stalled_agent_steps": 2,
+            "persistence_tactic_attempted_agent_steps": 1,
+            "persistence_action_switched_agent_steps": 1,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              4
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      },
+      {
+        "cohort": 1,
+        "phase": "costly_movement",
+        "paired": {
+          "shared": {
+            "food": 1,
+            "poison": 1,
+            "fitness": 0.0,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.18999981880187988,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "persistence_active_agent_steps": 0,
+            "persistence_remembered_agent_steps": 0,
+            "persistence_progress_observed_agent_steps": 0,
+            "persistence_stalled_agent_steps": 0,
+            "persistence_tactic_attempted_agent_steps": 0,
+            "persistence_action_switched_agent_steps": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              1
+            ]
+          },
+          "empty": {
+            "food": 1,
+            "poison": 2,
+            "fitness": -0.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 0,
+            "extra_energy_lost": 0.1699998378753662,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 0,
+            "exposed_agents_reaching_shelter_before_cold": 0,
+            "persistence_active_agent_steps": 4,
+            "persistence_remembered_agent_steps": 0,
+            "persistence_progress_observed_agent_steps": 0,
+            "persistence_stalled_agent_steps": 3,
+            "persistence_tactic_attempted_agent_steps": 1,
+            "persistence_action_switched_agent_steps": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              -1,
+              0
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      },
+      {
+        "cohort": 2,
+        "phase": "cold_with_shelter",
+        "paired": {
+          "shared": {
+            "food": 3,
+            "poison": 1,
+            "fitness": 1.0,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 0,
+            "sheltered_agent_steps": 2,
+            "extra_energy_lost": 0.4499995708465576,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 1,
+            "exposed_agents_reaching_shelter_before_cold": 1,
+            "persistence_active_agent_steps": 6,
+            "persistence_remembered_agent_steps": 4,
+            "persistence_progress_observed_agent_steps": 0,
+            "persistence_stalled_agent_steps": 1,
+            "persistence_tactic_attempted_agent_steps": 0,
+            "persistence_action_switched_agent_steps": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              0,
+              2
+            ]
+          },
+          "empty": {
+            "food": 1,
+            "poison": 0,
+            "fitness": 0.5,
+            "starting_agents": 2,
+            "surviving_agents": 2,
+            "survival": 1.0,
+            "no_encounter_agents": 1,
+            "sheltered_agent_steps": 3,
+            "extra_energy_lost": 0.39999961853027344,
+            "agents_initially_sheltered": 0,
+            "agents_reaching_shelter": 1,
+            "exposed_agents_reaching_shelter_before_cold": 1,
+            "persistence_active_agent_steps": 5,
+            "persistence_remembered_agent_steps": 1,
+            "persistence_progress_observed_agent_steps": 0,
+            "persistence_stalled_agent_steps": 1,
+            "persistence_tactic_attempted_agent_steps": 0,
+            "persistence_action_switched_agent_steps": 0,
+            "deaths": 0,
+            "per_agent_return": [
+              0,
+              1
+            ]
+          }
+        },
+        "archive_nonzero": 294
+      }
+    ]
+  },
+  "checked_artifact_sha256": {
+    "runs/20261121-074522_ecology-persistence-a0-off/summary.json": "5c1588f3bc0538d4cb5c1841a7fffd1643ad0950683ae39916529dd8ecab6056",
+    "runs/20261121-074522_ecology-persistence-a0-off/status.json": "aa4a9d1c44915b0d2b9dd968b70d7602aaa816b0a01706d5bc59b5ea0cc78960",
+    "runs/20261121-074522_ecology-persistence-a0-off/config.json": "53b0fd682e5e75d726b8f2dda51e4bedd8b41c752af3489303f0be8ce757feff",
+    "runs/20261121-074522_ecology-persistence-a0-off/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-074522_ecology-persistence-a0-off/metrics.jsonl": "5f04b34cb2f4595564de395ade01c9de39d2c5a9f8a5e13417443c2a96c8b253",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_000.json": "ba2cf1ec9e33fb5371ea263a0f0457d6460766dadf152e1f3f8bfeb2b5fd9456",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_000.npz": "4c687bec07bc8c199fc85f4e6d109f1009ca5748fecb639df33ebe7270050f6b",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_001.json": "2b507d5f02173132026f0c14d12de0be346ab9a22925b770c26b568e140d10f6",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_001.npz": "6bdf39568441bf48933e71744e7e550159e0fcfa772ec7d33dc85368626a2ea4",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_002.json": "86b819db989a527b7ad5d6ddc0db128ca533298e9c8c4adb2488bd6b0eca328e",
+    "runs/20261121-074522_ecology-persistence-a0-off/cohort_002.npz": "289f92c9d0b8d5f1f82a34b8a4c4e68f0a47d44c1e7ada265518d971c6ec7c31",
+    "runs/20261121-074522_ecology-persistence-a0-off/lineage_final.json": "5a7a5e501d31712351f8ed9ceaa4d8bb1522f7d87c62ed3eb7e86b402335129c",
+    "runs/20261121-074522_ecology-persistence-a0-off/lineage_final.npz": "33ebddc4fcf792a8cc5485aa7a331ee894b57bbe7be44e30741334b5717962b9",
+    "runs/20261121-074534_ecology-persistence-a0-on/summary.json": "d2ae28215be4b148feebc788dec70ecdead00388bc3c2a8ad591ead86534b2ef",
+    "runs/20261121-074534_ecology-persistence-a0-on/status.json": "aa4a9d1c44915b0d2b9dd968b70d7602aaa816b0a01706d5bc59b5ea0cc78960",
+    "runs/20261121-074534_ecology-persistence-a0-on/config.json": "341830d6af00512688aa64ea74f45da6dcc757afecf8e9efba7bbf852b3c065c",
+    "runs/20261121-074534_ecology-persistence-a0-on/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-074534_ecology-persistence-a0-on/metrics.jsonl": "bd15be103748db5bbe0ce899b92c05b4845b14d713634012053392e6ceada69e",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_000.json": "cb24a148bea5b0dd01c5a109512927d700003c2484cfe26d84fe0c20cf4acb0c",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_000.npz": "550522e55fd6893d99736cf9686804141401a5c70783adf0adf1c9d553c3f44c",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_001.json": "54a8ba96da24bb0a23a29092c6323c6c6fd33ba3ef3f859c0658afa7fcc6d0ba",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_001.npz": "a5751921722bcbac23cc061ce18b2ca6c9d37cb6d6e87c53780aaa2b6cd4ea51",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_002.json": "dd3bee5cbf096859e3475bcc91ba6664829fe919c6c4edbd1a4173d891ca378c",
+    "runs/20261121-074534_ecology-persistence-a0-on/cohort_002.npz": "d353a5fd99c3e41f9ee7a0ed2696cea37fd322378f6fdbc5c38569c3c2fae90d",
+    "runs/20261121-074534_ecology-persistence-a0-on/lineage_final.json": "5f57c5331f7d55734d29c441b9e56bb02e191eb1a3c6624d02fe51b8fb691a7b",
+    "runs/20261121-074534_ecology-persistence-a0-on/lineage_final.npz": "6948248f7ed580d2f5b5bb33099be77fb18fb8ba6a896d514fa1b3128559f003",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/summary.json": "be177baa140f505db0022167632a6481eeed96a46f42ce4cdec24e2d8682592f",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/status.json": "aa4a9d1c44915b0d2b9dd968b70d7602aaa816b0a01706d5bc59b5ea0cc78960",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/config.json": "77b7c2870608617550ec43e8a0d1716b7e235a2ad4b4a9b2f6fb6f9a26dcd3bf",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/metrics.jsonl": "5f04b34cb2f4595564de395ade01c9de39d2c5a9f8a5e13417443c2a96c8b253",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_000.json": "ba2cf1ec9e33fb5371ea263a0f0457d6460766dadf152e1f3f8bfeb2b5fd9456",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_000.npz": "4c687bec07bc8c199fc85f4e6d109f1009ca5748fecb639df33ebe7270050f6b",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_001.json": "2b507d5f02173132026f0c14d12de0be346ab9a22925b770c26b568e140d10f6",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_001.npz": "6bdf39568441bf48933e71744e7e550159e0fcfa772ec7d33dc85368626a2ea4",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_002.json": "86b819db989a527b7ad5d6ddc0db128ca533298e9c8c4adb2488bd6b0eca328e",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/cohort_002.npz": "289f92c9d0b8d5f1f82a34b8a4c4e68f0a47d44c1e7ada265518d971c6ec7c31",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/lineage_final.json": "5a7a5e501d31712351f8ed9ceaa4d8bb1522f7d87c62ed3eb7e86b402335129c",
+    "runs/20261121-062635_ecology-transfer-smoke-a0/lineage_final.npz": "33ebddc4fcf792a8cc5485aa7a331ee894b57bbe7be44e30741334b5717962b9"
+  },
+  "limits": [
+    "One development seed, no performance inference or standard error.",
+    "Initial positions, full topology and local cue patches were not saved; keys, birth signatures and occupancy are checked.",
+    "Remembered activity is a recorded flag; cue disappearance cannot be independently reconstructed from these artifacts."
+  ]
+}

@@ -30,6 +30,8 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | Run | Status | Cohorts completed/expected | Split | Commit |
 |---|---|---|---|---|
 | 20261121-062635_ecology-transfer-smoke-a0 | finished | 3/3 | development | 6d8a378 |
+| 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
+| 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
 ## Paired objective continuation (paired-train-v1)
 

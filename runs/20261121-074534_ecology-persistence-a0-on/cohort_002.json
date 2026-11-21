@@ -1,0 +1,519 @@
+{
+  "life": 2,
+  "agent_ids": {
+    "array": "array0000",
+    "shape": [
+      2,
+      2
+    ],
+    "dtype": "int64"
+  },
+  "world_key": {
+    "array": "array0001",
+    "shape": [
+      2
+    ],
+    "dtype": "uint32"
+  },
+  "development_key": {
+    "array": "array0002",
+    "shape": [
+      2
+    ],
+    "dtype": "uint32"
+  },
+  "rule": 0,
+  "ecology": {
+    "version": "ecology-v1",
+    "movement_energy_cost": 0.01,
+    "seasonal_energy_cost": 0.02
+  },
+  "persistence": {
+    "version": "persistence-v1",
+    "memory_steps": 4,
+    "stall_steps": 2
+  },
+  "inherited": {
+    "counts": {
+      "array": "array0003",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "ecology": {
+      "energy_lost": {
+        "array": "array0004",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "initial_sheltered": {
+        "array": "array0005",
+        "shape": [
+          2
+        ],
+        "dtype": "bool"
+      },
+      "shelter": {
+        "array": "array0006",
+        "shape": [
+          6,
+          6
+        ],
+        "dtype": "bool"
+      },
+      "sheltered": {
+        "array": "array0007",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "events": {
+      "alive_after": {
+        "array": "array0008",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "alive_before": {
+        "array": "array0009",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "food": {
+        "array": "array0010",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "poison": {
+        "array": "array0011",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "fitness": {
+      "array": "array0012",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "persistence": {
+      "action_switched": {
+        "array": "array0013",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "active": {
+        "array": "array0014",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "previous_action": {
+        "array": "array0015",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "int32"
+      },
+      "progress_observed": {
+        "array": "array0016",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "remembered": {
+        "array": "array0017",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "selected_action": {
+        "array": "array0018",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "int32"
+      },
+      "stalled": {
+        "array": "array0019",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "tactic_attempted": {
+        "array": "array0020",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "surprise_first": {
+      "array": "array0021",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_last": {
+      "array": "array0022",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "survived": {
+      "array": "array0023",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "weights": {
+      "birth_W_sha256": [
+        "4568e231a17e6de7edb676c199351b3879b4a67d71d2eab1f341b8759ca614f8",
+        "5ef52e457280f2e697799d2eda2ece42f18ca22c74fed6eff04c07fecbfe171f"
+      ],
+      "initial_W_sha256": [
+        "a5bc5eb83ee993f8cab7c772d7080baedbaa0e5626b4faf98a3215d7eee8c24d",
+        "6f7c77a643694fa773dd37b66a807a2f9cfd11b2a8cf78b6365c1b1b325a472d"
+      ],
+      "terminal_W_sha256": [
+        "c357c8b38e78f927d124db79ce220a3728cea131275a9efe66fb7d5ad6416f23",
+        "ce52f7edf7e57c3c31e05106f90071b2a00d23d501be45e58c92d9a9b7ef6783"
+      ],
+      "changed_connections": {
+        "array": "array0024",
+        "shape": [
+          2
+        ],
+        "dtype": "int64"
+      },
+      "mean_abs_change": {
+        "array": "array0025",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      },
+      "final_alive": {
+        "array": "array0026",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      }
+    }
+  },
+  "fresh": {
+    "counts": {
+      "array": "array0027",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "ecology": {
+      "energy_lost": {
+        "array": "array0028",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "initial_sheltered": {
+        "array": "array0029",
+        "shape": [
+          2
+        ],
+        "dtype": "bool"
+      },
+      "shelter": {
+        "array": "array0030",
+        "shape": [
+          6,
+          6
+        ],
+        "dtype": "bool"
+      },
+      "sheltered": {
+        "array": "array0031",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "events": {
+      "alive_after": {
+        "array": "array0032",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "alive_before": {
+        "array": "array0033",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "food": {
+        "array": "array0034",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "poison": {
+        "array": "array0035",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "fitness": {
+      "array": "array0036",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "persistence": {
+      "action_switched": {
+        "array": "array0037",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "active": {
+        "array": "array0038",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "previous_action": {
+        "array": "array0039",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "int32"
+      },
+      "progress_observed": {
+        "array": "array0040",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "remembered": {
+        "array": "array0041",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "selected_action": {
+        "array": "array0042",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "int32"
+      },
+      "stalled": {
+        "array": "array0043",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "tactic_attempted": {
+        "array": "array0044",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "surprise_first": {
+      "array": "array0045",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_last": {
+      "array": "array0046",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "survived": {
+      "array": "array0047",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "weights": {
+      "birth_W_sha256": [
+        "4568e231a17e6de7edb676c199351b3879b4a67d71d2eab1f341b8759ca614f8",
+        "5ef52e457280f2e697799d2eda2ece42f18ca22c74fed6eff04c07fecbfe171f"
+      ],
+      "initial_W_sha256": [
+        "0e012992ef5a3f4bd3359fdfddbc609d38e8b1471065f835efc39e019d4a036d",
+        "0b79ea8c8b904fc319e5c1757b139c0d0d511359e6a4b703d3875ee7fb05ba63"
+      ],
+      "terminal_W_sha256": [
+        "d933e979a144b30345390ce986454c96dc317082f112085c08a36bee4b48d72a",
+        "69cba960be7aad2f1b4d0fed67f92bf3587a73c0ab118d21269bca89556c7a8e"
+      ],
+      "changed_connections": {
+        "array": "array0048",
+        "shape": [
+          2
+        ],
+        "dtype": "int64"
+      },
+      "mean_abs_change": {
+        "array": "array0049",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      },
+      "final_alive": {
+        "array": "array0050",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      }
+    }
+  },
+  "archive_before": {
+    "array": "array0051",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_delta": {
+    "array": "array0052",
+    "shape": [
+      2,
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_mask": {
+    "array": "array0053",
+    "shape": [
+      2,
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_counts": {
+    "array": "array0054",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "archive_after": {
+    "array": "array0055",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "archive_state": {
+    "protocol": "lineage-v1",
+    "state_version": 1,
+    "method": "sensor-motor-mean-delta-v1",
+    "genome_sha256": "2901439c688d1e750ea2498c390c1ca684f49a238dfabf4fb5190d69f11ccdd3",
+    "layout": {
+      "sensors": 49,
+      "motors": 6,
+      "hidden": 3,
+      "hidden_types": 3,
+      "view_radius": 1,
+      "weight_bound": 3.0,
+      "ecology_version": "ecology-v1"
+    },
+    "persistence": {
+      "version": "persistence-v1",
+      "memory_steps": 4,
+      "stall_steps": 2
+    },
+    "archive": {
+      "array": "array0056",
+      "shape": [
+        6,
+        49
+      ],
+      "dtype": "float32"
+    },
+    "next_life": 3,
+    "used_world_keys": {
+      "array": "array0057",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    },
+    "used_development_keys": {
+      "array": "array0058",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    }
+  }
+}

@@ -1934,3 +1934,15 @@ Verify the normal development CLI in two separate, immutable folders. Use the sa
     python -X utf8 scripts/run_experiment.py --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --name ecology-persistence-a0-on --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --persistence
 
 The engineering check passes if both runs record three complete cohorts, starts and random keys match between on/off, the default reproduces the earlier A0 fixture's event trajectories, and the enabled setting and its per-agent activity can be read back from the saved output. Scripted local-observation tests must separately exercise cue loss, expiry, stalled progress, a changed action preference, arrival, and inactive/dead agents. Summarize attempts and realized actions separately. Report zero events wherever they occur. Never select another world to make the trait look successful, or use these two runs to infer a performance benefit.
+
+### Engineering verification completed · 21 November 2026 · Persistence after a setback
+
+The disabled and enabled A0 runs used clean source 2db4fe6d3b96f6a09624689d636222df6fedc4a6. Their supervisors finished in 12.193 and 11.974 seconds respectively. The focused persistence, lineage and runner suites passed 7/7, 2/2 and 7/7 tests. Scripted cases exercised temporary cue loss, stale memory, visible stalls, actual versus attempted switches, termination at shelter and inactivity after death.
+
+Read-back of the three disabled cohorts matched the original A0 fixture's raw events, ecology arrays and weight signatures. Enabled runs preserved the same starting genome and random keys. In the final cold cohort the shared-memory group pursued a remembered shelter for four agent-turns and the fresh-weight group for one. Both groups reached shelter with one of their two newborns, both with the trait enabled and with it disabled. All assigned creatures survived. Across the three enabled cohorts the shared-memory group had one tactic attempt and one actual action change at that attempt. The fresh-weight group had two attempts and one action change. The groups' first-cohort experiences are paired and identical. A changed sampled action after an attempt does not by itself establish that the bias caused it.
+
+Decision: the development check passed. The trait changes action preferences using only locally available cues, and the recorded behavior can be inspected. The underlying genome was fixed. These are one-seed engineering observations with no estimable between-lineage error or scientific performance claim. A future scientific study would need fresh independent lineages, matched cold-experienced donors and identical recipient worlds.
+
+Read-only reproduction:
+
+    python tools/audit_persistence_pair.py --root . --off runs/20261121-074522_ecology-persistence-a0-off --on runs/20261121-074534_ecology-persistence-a0-on --off-guard results/diagnostics/persistence-off-guard.jsonl --on-guard results/diagnostics/persistence-on-guard.jsonl --source-commit 2db4fe6d3b96f6a09624689d636222df6fedc4a6
