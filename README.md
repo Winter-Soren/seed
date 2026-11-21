@@ -85,7 +85,7 @@ All 208 software tests passed on Windows, including the paired persistence check
 
 ## What comes next
 
-The next proposed experiment gives a donor cohort a cold season of its own. Its successors then face an unfamiliar cold world. Matching their genomes, birth wiring and starting conditions lets us test whether earlier creatures' lessons help a newborn reach shelter sooner or survive longer. [Read the proposed controls](experiments/ECOLOGY_TRANSFER.md)
+E117 will test whether newborns that inherit weight changes from cold-experienced donors reach shelter sooner. Each of the three original genomes has 256 unseen world families. In each family, newborns with inherited weights and newborns starting fresh share their world and wiring. Deaths and missed arrivals count in the comparison. Both groups have the optional persistence trait off so the comparison isolates inherited experience. [Preregistered experiment](experiments/LOG.md#e117-preregistration--21-november-2026--can-newborns-inherit-faster-shelter-finding)
 
 ## Try it locally
 

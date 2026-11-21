@@ -20,6 +20,6 @@ The optional persistence trait passed its local checks. In the cold world, the s
 ## What is next
 
 Keep the three original A genomes as the reference learners.
-The E116 decision has been reported. No new scientific comparison is running.
-The proposed shelter experiment gives earlier creatures cold-weather experience, then tests whether their independently wired successors benefit on unseen cold worlds.
+The owner approved the three-seed cold-donor test, E117. Its notebook entry fixes the comparison before evaluation.
+Benchmark the full life on development worlds, then run each original genome on 256 new world families and independently check first living shelter entries and survival. The two newborn groups share their world, wiring and random stream. Only their starting weights differ. Both have the optional persistence trait off.
 Keep one laptop job at a time and check both drives and memory before each launch.
