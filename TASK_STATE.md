@@ -20,16 +20,16 @@ The E115 gate failed. The original A genomes remain our stationary robustness be
 
 ## What is running
 
-The interrupted evaluation is preserved. Its registered recovery finished every panel.
-Independent reconstruction confirmed every gate component and all overlapping raw arrays.
-Software verification passed all 156 tests locally and in hosted CI before training.
-E116's first continuation reached generation five and passed its runtime benchmark.
-Local checks are complete. The owner is restoring repository privacy before publication.
+Four E116 arms finished twenty generations: both learning rates for seeds zero and one.
+Their artifacts and matched-pair checks passed; all four finals are committed locally.
+The startup memory guard stopped seed two before it created a run.
+The owner approved one retry after three stable resource readings, with every guard unchanged.
+No held-out E116 evaluation has run. Publication and hosted checks remain on hold while repository privacy is restored.
 
 ## What comes next
 
-The council proposes testing the size of evolutionary updates from the original genomes.
-The owner directed us to proceed. Reuse A0, A1 and A2 in both E116 arms.
+Finish the fixed seed-two pair after the authorized resource checks.
+Then evaluate all six generation-twenty finals together after the coordinator release.
 Keep E116 training and evaluation worlds separate and measure against both controls.
 In a separate development checkout, three newborn cohorts ran with shelter, cold exposure and a cost to moving.
 The two later cohorts received earlier agents' learned changes. An independent check reconstructed their saved memory. All agents survived this one development fixture. Controlled tests also cover dead donors and reloading memory in another session.
