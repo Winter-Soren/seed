@@ -1,0 +1,401 @@
+{
+  "stage": "parity",
+  "scientific_result": false,
+  "deployment_authorized": false,
+  "full_es_parity_checked": false,
+  "throughput_measured": false,
+  "fixture_seed": 236088576,
+  "guard": {
+    "expected_commit": "f978c283a45b2509b839d557a2d9dc149ebbb127",
+    "manifest_path": "D:\\cool-projects\\general-intelligence\\.tmp\\E126-row-parity-attempt1.source.json",
+    "manifest_sha256": "3f1b35f1d6798d0c43ab990d3cf707f0114f88bb98b11866e25c325160965568",
+    "source_files": 111,
+    "guard_path": "D:\\cool-projects\\general-intelligence\\.tmp\\E126-row-parity-attempt1.guard.jsonl",
+    "guard_prefix_sha256": "2e585742acc64349b316dca1eedceb035a553d9d37110f1fc50523e7f212796f",
+    "hard_limit_seconds": 60
+  },
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "batch": 128,
+  "runtime": {
+    "python": "3.12.10",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1",
+    "backend": "cpu",
+    "enable_x64": false,
+    "precision": "None",
+    "prng": "threefry2x32",
+    "partitionable": true
+  },
+  "compiler_environment": {
+    "XLA_FLAGS": null,
+    "JAX_DEFAULT_MATMUL_PRECISION": null,
+    "OMP_NUM_THREADS": null
+  },
+  "source_sha256": {
+    "seed\\seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed\\direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "tools\\probe_reversal_sensor_rows.py": "390156dbf488af824553db30e2a4ac55afb5cf3e13b28ad431cba8891e3ca2dc"
+  },
+  "reference_compilation": {
+    "plastic": {
+      "compile_seconds": 0.17100000000209548,
+      "hlo_sha256": "deea94b6902fcf7d27d52ad49bc5baff9d963e6095d584137d8c400b54093ef0",
+      "inspection": {
+        "status": "not_pruned",
+        "neural_dots": [
+          {
+            "output_axes": [
+              157
+            ],
+            "lhs": [
+              128,
+              157,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.4 = f32[128,157,1]{2,1,0} dot(%clamp_bitcast_fusion, %dynamic-update-slice_bitcast_fusion.1), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          },
+          {
+            "output_axes": [
+              157
+            ],
+            "lhs": [
+              128,
+              157,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.5 = f32[128,157,1]{2,1,0} dot(%clamp_bitcast_fusion, %dynamic-update-slice_bitcast_fusion), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          }
+        ],
+        "unparsed_dot_lines": [],
+        "custom_call_lines": [],
+        "explanation": "Only unambiguous optimized N157-to-54 dot shapes permit an early exit."
+      }
+    },
+    "direct": {
+      "compile_seconds": 0.07899999999790452,
+      "hlo_sha256": "727016360adc6714a420121e3fe20f2ddf2231159533446d824d07db5e51d5a8",
+      "inspection": {
+        "status": "not_pruned",
+        "neural_dots": [
+          {
+            "output_axes": [
+              157
+            ],
+            "lhs": [
+              128,
+              157,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.2 = f32[128,157,1]{2,1,0} dot(%bitcast, %dynamic-update-slice_bitcast_fusion.1), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          },
+          {
+            "output_axes": [
+              157
+            ],
+            "lhs": [
+              128,
+              157,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.3 = f32[128,157,1]{2,1,0} dot(%bitcast, %dynamic-update-slice_bitcast_fusion), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          }
+        ],
+        "unparsed_dot_lines": [],
+        "custom_call_lines": [],
+        "explanation": "Only unambiguous optimized N157-to-54 dot shapes permit an early exit."
+      }
+    }
+  },
+  "brain_step_sources": {
+    "reference_sha256": "efd017e19db700aa618d2c02449206ce16ff49a7b6ef14c1be2cce17cf2dff9c",
+    "candidate_sha256": "c9a07a452243c7b8741ada87a19d0677813982f793089bf86817b0392bd7d59b"
+  },
+  "decision": "FAIL_BYTE_MISMATCH_STOP",
+  "candidate_compilation": {
+    "plastic": {
+      "compile_seconds": 0.2029999999795109,
+      "hlo_sha256": "a66de47b39d85f47a6787a9344ea13592933f7e4548d4833495c5b174bd0ce7f",
+      "inspection": {
+        "status": "already_pruned",
+        "neural_dots": [
+          {
+            "output_axes": [
+              54
+            ],
+            "lhs": [
+              128,
+              54,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.4 = f32[128,54,1]{2,1,0} dot(%slice_bitcast_fusion, %dynamic-update-slice_bitcast_fusion), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          },
+          {
+            "output_axes": [
+              54
+            ],
+            "lhs": [
+              128,
+              54,
+              157
+            ],
+            "rhs": [
+              128,
+              157,
+              1
+            ],
+            "evidence": "  %dot.5 = f32[128,54,1]{2,1,0} dot(%slice_bitcast_fusion, %bitcast_bitcast_fusion), lhs_batch_dims={0}, lhs_contracting_dims={2}, rhs_batch_dims={0}, rhs_contracting_dims={1}"
+          }
+        ],
+        "unparsed_dot_lines": [],
+        "custom_call_lines": [],
+        "explanation": "Only unambiguous optimized N157-to-54 dot shapes permit an early exit."
+      }
+    }
+  },
+  "comparisons": {
+    "plastic": {
+      "passed": false,
+      "input_manifest": [
+        {
+          "path": "[0]['conn']",
+          "shape": [
+            128,
+            5,
+            5
+          ],
+          "dtype": "<f4",
+          "sha256": "e320c8784b420f88287c4336c6f102158df73083c78912c3a974eb46f47ec1c0",
+          "max_abs": 1.353486180305481,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[0]['hebb']",
+          "shape": [
+            128,
+            5,
+            5,
+            4
+          ],
+          "dtype": "<f4",
+          "sha256": "57dc5aa5e11b36446f1a7fe1d91194a82be9e77d99aa97398379966f739b41ae",
+          "max_abs": 0.5340884923934937,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[0]['log_eta']",
+          "shape": [
+            128
+          ],
+          "dtype": "<f4",
+          "sha256": "7da9772f87e745c0b92c55027544cf55866b30715be89c9ae278482f33c1b54c",
+          "max_abs": 1.7462283372879028,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[0]['log_plr']",
+          "shape": [
+            128
+          ],
+          "dtype": "<f4",
+          "sha256": "49b5866962de6800770f3d498f2b293974f0eaaa7dc69be73877892caf874963",
+          "max_abs": 3.2031972408294678,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[0]['mod']",
+          "shape": [
+            128,
+            3
+          ],
+          "dtype": "<f4",
+          "sha256": "28cd300e4e8e5879af7ba116d0799afb671a931da56c374bc902250f237222c0",
+          "max_abs": 1.2311121225357056,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[0]['wscale']",
+          "shape": [
+            128,
+            5,
+            5
+          ],
+          "dtype": "<f4",
+          "sha256": "7959f4e60133c86c5e9f31d9f6d372eac88a3b7bcac8bfc845395f679ca1e8b7",
+          "max_abs": 0.30380189418792725,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[1]",
+          "shape": [
+            128,
+            1,
+            157,
+            157
+          ],
+          "dtype": "<f4",
+          "sha256": "59cc164d99620294337e7024b2270dfbe49e8592ea1e9f1de4e5b701c29cdf56",
+          "max_abs": 0.8157668113708496,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[2]",
+          "shape": [
+            128,
+            1,
+            157
+          ],
+          "dtype": "<f4",
+          "sha256": "f3e70b0a6e1cd82876241a96d8f81e0b0633bfff2ee9774806f2ac8af02e3774",
+          "max_abs": 1.0,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[3]",
+          "shape": [
+            128,
+            1,
+            103,
+            48
+          ],
+          "dtype": "<f4",
+          "sha256": "0cfba9a1d21a468b159a3526371bb7b8e5e565006ce0d013acd12cf3cb670e8a",
+          "max_abs": 0.1408129632472992,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[4]",
+          "shape": [
+            128,
+            1,
+            103
+          ],
+          "dtype": "<f4",
+          "sha256": "db238526b874820c88e863b73647b594b36bf5e1f189d8c80194efafd1b97f8f",
+          "max_abs": 1.0,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[5]",
+          "shape": [
+            128,
+            1
+          ],
+          "dtype": "<f4",
+          "sha256": "e5be871532a14f2aea0396645e662f50e5e2096e99a96f9d4ba5c6f88913129f",
+          "max_abs": 0.25,
+          "negative_zeros": 0
+        },
+        {
+          "path": "[6]",
+          "shape": [
+            128,
+            1,
+            157,
+            157
+          ],
+          "dtype": "<f4",
+          "sha256": "7bf586daddc6255cb0d713f803ae09536c6fc8c03376ec40a960b92679617b80",
+          "max_abs": 1.0,
+          "negative_zeros": 0
+        }
+      ],
+      "outputs": {
+        "W": {
+          "identical": true,
+          "shape": [
+            128,
+            1,
+            157,
+            157
+          ],
+          "dtype": "<f4",
+          "reference_sha256": "2cdb290fa431614179146f4fc0dfcea8c90ab84a7843ba5c9b2f8623b3fdcc65",
+          "candidate_sha256": "2cdb290fa431614179146f4fc0dfcea8c90ab84a7843ba5c9b2f8623b3fdcc65",
+          "unequal_bytes": 0,
+          "first_unequal_byte": null
+        },
+        "Wp": {
+          "identical": true,
+          "shape": [
+            128,
+            1,
+            103,
+            48
+          ],
+          "dtype": "<f4",
+          "reference_sha256": "eea8eebe4c3c9906ed7c216f5c6843dae65ff5ff6f5b31c618eaacdcb258d15b",
+          "candidate_sha256": "eea8eebe4c3c9906ed7c216f5c6843dae65ff5ff6f5b31c618eaacdcb258d15b",
+          "unequal_bytes": 0,
+          "first_unequal_byte": null
+        },
+        "surprise": {
+          "identical": true,
+          "shape": [
+            128,
+            1
+          ],
+          "dtype": "<f4",
+          "reference_sha256": "95cf6eb8b0241e33e45f8cea0573965a33937475d14bd259b3791a0f05d5a70d",
+          "candidate_sha256": "95cf6eb8b0241e33e45f8cea0573965a33937475d14bd259b3791a0f05d5a70d",
+          "unequal_bytes": 0,
+          "first_unequal_byte": null
+        },
+        "x": {
+          "identical": false,
+          "shape": [
+            128,
+            1,
+            157
+          ],
+          "dtype": "<f4",
+          "reference_sha256": "051a1495ced7dbf738c20f590e64b62ea37d8c75582654ecb4e49d3c2bc36f70",
+          "candidate_sha256": "74137446bbcb1b6ffb7134ab74f6b1112c6844885712fcd70428d4eab4a18661",
+          "unequal_bytes": 154,
+          "first_unequal_byte": 416
+        }
+      }
+    }
+  },
+  "source_manifest_unchanged": true,
+  "elapsed_seconds": 11.562000000005355
+}

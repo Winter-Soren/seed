@@ -30,4 +30,4 @@ Training is stopped. All six lineages reached generation 50 of 200. An independe
 
 ## What is next
 
-Keep all six generation-50 checkpoints. Review whether the laptop can avoid computing neuron outputs that observations immediately overwrite. Any faster implementation must reproduce the same brain dynamics and optimizer updates and save enough time to justify the switch. The question of which controller adapts better remains open.
+Keep all six generation-50 checkpoints. The proposed laptop speedup changed neural activations in its first comparison and was rejected. The council recommends a separate diagnostic with older, completed genomes. Give each creature the same evidence that the food rule has changed, then compare its choice when both items are adjacent with its behavior when it must find food on its own. This addresses a different question from which architecture improves more through evolution.
