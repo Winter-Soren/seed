@@ -2352,3 +2352,7 @@ foreach ($i in 0..2) {
         --name "E126-eval-s$i" --seed (2026120501+$i) --generations 0 --eval-worlds 128 --start blank
 }
 ```
+
+#### E126 local verification and publication release · 22 November 2026
+
+Before the full-population benchmarks, 12 backend tests, 18 runner tests, the pinned legacy trajectory test and four independent audit self-check groups passed on source df304221d920c5d1da20f67f7f1aa04d0845e317. The rebuilt exploratory notebook has nine standalone code cells that parse; its example simulations were not run. The guarded E126 verification charged 100.674 seconds. The owner confirmed the VPN is off. GitHub CLI verified Winter-Soren and the private Winter-Soren/seed destination. Publish local commits and the seven pending registered gate tags by normal fast-forward. The configured hosted test suite and local benchmarks run sequentially.

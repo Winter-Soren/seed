@@ -26,7 +26,7 @@ E125 changed which color was food once during a pupil's life. In the late window
 
 ## What is running
 
-The saved-controller test and its independent verification are complete. The next study starts both kinds of brain from blank and trains them where the food rule changes. Each controller gets the same number of worlds and generations. GitHub publication is on hold at the owner's request.
+The matched training study is registered. Both kinds of brain start from blank and get the same number of worlds and generations. The focused engine, runner and legacy behavior checks passed on the laptop. The owner lifted the VPN publication hold and the GitHub repository is private.
 
 ## What is next
 
