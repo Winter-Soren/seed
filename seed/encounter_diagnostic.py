@@ -121,6 +121,26 @@ def _birth(flat, controller, birth_key, chamber_key, c):
         counts=jnp.zeros((1, 2, 2)), key=chamber_key, t=jnp.asarray(0, jnp.int32))
 
 
+def _frozen_hebbian_tick(W, x, Wp, obs, plr, c, predictor):
+    """Read original W; a disabled update performs no arithmetic or clipping.
+
+    Even ``clip(weight + 0 * update)`` can erase signed zeros or subnormals on
+    the CPU. Frozen state must therefore bypass that write, including in the
+    forward calculation; restoring an already-mutated output would hide it.
+    """
+    _, inputs, _, _, _ = seed.dims(c)
+    h = x[inputs:inputs + c.H]
+    err = obs - Wp @ h
+    surprise = jnp.mean(err ** 2)
+    if predictor:
+        # Keep the original active predictor expression and its order.
+        Wp = jnp.clip(Wp + 1. * plr * jnp.outer(err, h), -c.wmax, c.wmax)
+    x = x.at[:inputs].set(obs)
+    for _ in range(c.micro):
+        x = jnp.tanh(W @ x).at[:inputs].set(obs)
+    return W, x, Wp, surprise
+
+
 def _think(s, g, obs, controller, c, hebbian, predictor):
     _, inputs, outputs, neurons, _ = seed.dims(c)
     if controller == "plastic":
@@ -133,8 +153,13 @@ def _think(s, g, obs, controller, c, hebbian, predictor):
                 g["mod"], update, c, predictor_plastic=float(predictor)))(
                     s["W"], s["x"], s["Wp"], obs, s["denergy"], s["mask"])
 
-        result = neural(float(hebbian)) if isinstance(hebbian, bool) else jax.lax.cond(
-            hebbian, lambda _: neural(1.), lambda _: neural(0.), operand=None)
+        def frozen():
+            return jax.vmap(lambda w, x, wp, o: _frozen_hebbian_tick(
+                w, x, wp, o, jnp.exp(g["log_plr"]), c, predictor))(
+                    s["W"], s["x"], s["Wp"], obs)
+
+        result = (neural(1.) if hebbian else frozen()) if isinstance(hebbian, bool) else jax.lax.cond(
+            hebbian, lambda _: neural(1.), lambda _: frozen(), operand=None)
         W, x, Wp, surprise = result
     else:
         # Preserve the original direct path: in particular never clip its weights.

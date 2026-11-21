@@ -64,9 +64,12 @@ def main():
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
         if a.get("eval_protocol") == "encounter-diagnostic-v1":
+            role = ("preserved partial; excluded" if a.get("name") == "E127-A0" else
+                    "registered full-panel recovery" if a.get("name") == "E127-A0-recovery1" else
+                    "development only" if a.get("condition_split") == "development" else "registered final panel")
             encounter_status_rows.append("| " + " | ".join([
                 d.name, s.get("status", "no summary"), a.get("condition_split", ""),
-                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit,
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", role, commit,
             ]) + " |")
             continue
         if a.get("eval_protocol") == "reversal-evolution-v1":
@@ -604,7 +607,11 @@ def main():
                 "Development, incomplete panels and panels awaiting independent verification have no replicated "
                 "scientific decision. Local reversal, transfer in the same lineages, and Hebbian contribution "
                 "are separate decisions. A failed threshold means this assay did not establish that effect.", "",
-                "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|",
+                "The registered comparison uses E127-A0-recovery1, E127-A1 and E127-A2. The failed original "
+                "A0 prefix remains preserved and is excluded from inference; its eleven families are not added "
+                "to the recovery's 128-family denominator. The corrected four-family rehearsal is for "
+                "verification and timing only.", "",
+                "| Run | Status | Split | Families completed/assigned | Role | Commit |", "|---" * 6 + "|",
                 *encounter_status_rows, ""]
         if study["status"] != "complete":
             out += ["Replicated diagnostic decisions: **undecided**; " + study["reason"] + ".", ""]

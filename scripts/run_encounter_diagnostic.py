@@ -6,6 +6,7 @@ import json
 import os
 from pathlib import Path
 import time
+from types import SimpleNamespace
 
 import numpy as np
 
@@ -22,6 +23,17 @@ ARMS = ("plastic_stationary", "plastic_reversal", "plastic_frozen", "direct_stat
 KEY_ROLES = ("script", "birth", "chamber", "grid", "action", "probe")
 AUDIT_PATH = "results/diagnostics/E127-independent-audit.json"
 BENCHMARK_RETRY = "E127-benchmark-retry1"
+BENCHMARK_RECOVERY = "E127-benchmark-recovery2"
+A0_RECOVERY = "E127-A0-recovery1"
+FINAL_NAMES = (A0_RECOVERY, "E127-A1", "E127-A2")
+RECOVERY_PREDECESSORS = {
+    A0_RECOVERY: dict(run="runs/20261122-050231_E127-A0",
+        commit="5e6398e5d4f493afe428c3daaebe9bee3247ddfd",
+        inventory_sha256="15ff3384e436471a370807d55b07e9a211de8856b8a27e1ced00b10f8b530022"),
+    BENCHMARK_RECOVERY: dict(run="runs/20261122-045153_E127-benchmark-retry1",
+        commit="d99bcc80957bb97dfc3d7d27e1ed2a80ee3a31a1",
+        inventory_sha256="7768d9fd14af85a2fb61b010c572daca7bd05f4b1f34589b1ccc1902972e65fd"),
+}
 ALLOWED_FLAGS = {"--eval-protocol", "--condition-split", "--name", "--start", "--seed",
                  "--generations", "--eval-worlds", "--hypothesis"}
 
@@ -41,6 +53,35 @@ def _source_code(root):
     names = ("seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py",
              "scripts/run_encounter_diagnostic.py")
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in names}
+
+
+def _file_inventory(folder):
+    """Hash preserved evidence without decoding any behavioral arrays."""
+    files = {}
+    for path in sorted(folder.rglob("*")):
+        if path.is_file():
+            digest = hashlib.sha256()
+            with path.open("rb") as stream:
+                for chunk in iter(lambda: stream.read(1024 * 1024), b""):
+                    digest.update(chunk)
+            files[path.relative_to(folder).as_posix()] = digest.hexdigest()
+    return files
+
+
+def _inventory_sha(files):
+    return hashlib.sha256(json.dumps(files, sort_keys=True, separators=(",", ":")).encode("utf-8")).hexdigest()
+
+
+def _verify_assignments(folder, config, schedule):
+    assignment = config.get("assignments", {})
+    if assignment.get("path") != "assignments.npz":
+        raise ValueError("predecessor assignment manifest differs from registration")
+    raw = _read_pinned(folder / "assignments.npz", assignment.get("sha256"))
+    with np.load(io.BytesIO(raw), allow_pickle=False) as previous:
+        if (set(previous.files) != set(schedule)
+                or any(previous[name].dtype != value.dtype or not np.array_equal(previous[name], value)
+                       for name, value in schedule.items())):
+            raise ValueError("recovery must reuse the identical registered assignments")
 
 
 def _assignments(master, count):
@@ -96,20 +137,81 @@ def _retry_predecessor(args, root, schedule):
             or not (folder / "families").is_dir() or any((folder / "families").iterdir())
             or any(folder.rglob("family_*.npz"))):
         raise ValueError("benchmark retry requires a failed zero-family attempt with no saved outcome evidence")
-    assignment = config.get("assignments", {})
-    if assignment.get("path") != "assignments.npz":
-        raise ValueError("failed benchmark assignment manifest differs from registration")
-    raw_assignments = _read_pinned(folder / "assignments.npz", assignment.get("sha256"))
-    with np.load(io.BytesIO(raw_assignments), allow_pickle=False) as previous:
-        if (set(previous.files) != set(schedule)
-                or any(previous[name].dtype != value.dtype or not np.array_equal(previous[name], value)
-                       for name, value in schedule.items())):
-            raise ValueError("benchmark retry must reuse the identical development assignments")
+    _verify_assignments(folder, config, schedule)
     _read_pinned(folder / "plastic_genome.npy", SOURCES[0]["sha256"])
     _read_pinned(folder / "direct_genome.npy", DIRECT_SOURCES[0]["sha256"])
     files = {path.relative_to(folder).as_posix(): hashlib.sha256(path.read_bytes()).hexdigest()
              for path in sorted(folder.rglob("*")) if path.is_file()}
     return dict(run=folder.relative_to(root).as_posix(), files=files)
+
+
+def _recovery_predecessor(args, root, schedule):
+    """Verify the one registered historical panel using metadata and opaque hashes only."""
+    if args.name not in RECOVERY_PREDECESSORS:
+        return None
+    final = args.name == A0_RECOVERY
+    old_name, split, seed, expected, completed = (("E127-A0", "final", 2026120601, 128, 11)
+        if final else (BENCHMARK_RETRY, "development", 2026120600, 4, 4))
+    pin = RECOVERY_PREDECESSORS[args.name]
+    candidates = list((root / "runs").glob("*_" + old_name))
+    if (len(candidates) != 1 or candidates[0] != root / pin["run"]
+            or not candidates[0].is_dir()):
+        raise ValueError("recovery requires its unique, exact registered predecessor folder")
+    folder = candidates[0]
+    files = _file_inventory(folder)
+    required = {"config.json", "status.json", "summary.json", "metrics.jsonl", "assignments.npz",
+                "plastic_genome.npy", "direct_genome.npy"}
+    required.update(f"families/family_{index:04d}.npz" for index in range(completed))
+    if set(files) != required or _inventory_sha(files) != pin["inventory_sha256"]:
+        raise ValueError("registered recovery predecessor inventory or SHA256 changed")
+    config, status, summary = (json.loads((folder / name).read_text(encoding="utf-8"))
+                               for name in ("config.json", "status.json", "summary.json"))
+    old_args = vars(args).copy()
+    old_args.update(name=old_name, start="file:" + SOURCES[0]["path"],
+                    hypothesis=config.get("args", {}).get("hypothesis"))
+    metadata = dict(protocol=PROTOCOL, condition_split=split, generation=0, eval_seed=seed,
+        expected_families=expected, source=SOURCES[0], direct_source=DIRECT_SOURCES[0], cfg=Cfg(M=1)._asdict(),
+        cfg_overrides={}, arms=list(ARMS), key_roles=list(KEY_ROLES), initial_rules=[0, 1],
+        pre_contact_choices=[8, 16], post_contacts=16, readout_contacts=[0, 2, 8, 16], grid_steps=50,
+        probe_placements=12, assignment_stream_tag=0xE127, scientific_result=False)
+    if (any(config.get(key) != value for key, value in metadata.items()) or config.get("args") != old_args
+            or config.get("git", {}).get("commit") != pin["commit"]
+            or config.get("git", {}).get("dirty") is not False):
+        raise ValueError("recovery predecessor settings, source commit or original controller pair changed")
+    state = "failed" if final else "finished"
+    if (any(item.get("status") != state or item.get("completed_families") != completed
+            or item.get("expected_families") != expected for item in (status, summary))
+            or summary.get("protocol") != PROTOCOL or summary.get("condition_split") != split
+            or summary.get("evaluation_seed") != seed or summary.get("source_label") != "A0"
+            or summary.get("seed_index") != 0 or summary.get("scientific_result") is not False
+            or summary.get("artifact_validity") != ("incomplete" if final else "passed")
+            or summary.get("gate_status") != ("undecided" if final else "not_applicable")
+            or final and ("measurements" in summary or not isinstance(summary.get("error"), str) or not summary["error"])):
+        raise ValueError("recovery predecessor is not the registered failed prefix or completed rehearsal")
+    _verify_assignments(folder, config, schedule)
+    for name, source in (("plastic_genome.npy", SOURCES[0]), ("direct_genome.npy", DIRECT_SOURCES[0])):
+        if files[name] != source["sha256"]:
+            raise ValueError("recovery predecessor changed an original source genome")
+    journal = [json.loads(line) for line in (folder / "metrics.jsonl").read_text(encoding="utf-8").splitlines()]
+    durations = status.get("family_seconds")
+    if (len(journal) != completed or len(summary.get("raw_files", [])) != completed
+            or not isinstance(durations, list) or len(durations) != completed
+            or summary.get("family_seconds") != durations):
+        raise ValueError("predecessor journal or preserved family count differs from registration")
+    for index, record in enumerate(journal):
+        path = f"families/family_{index:04d}.npz"
+        artifact = dict(index=index, path=path, sha256=files[path])
+        keys = np.asarray(engine.evaluation_keys(seed, index)).tolist()
+        if (record.get("family") != index or record.get("pre_contacts") != int(schedule["pre_contacts"][index])
+                or record.get("keys") != keys or record.get("raw_file") != artifact
+                or summary["raw_files"][index] != artifact or record.get("family_seconds") != durations[index]):
+            raise ValueError("predecessor journal order, assignment or raw file digest changed")
+    if not final:
+        original_args = SimpleNamespace(**vars(args))
+        original_args.name = BENCHMARK_RETRY
+        if config.get("retry_of") != _retry_predecessor(original_args, root, schedule):
+            raise ValueError("corrected rehearsal must preserve the original failed benchmark chain")
+    return dict(run=pin["run"], files=files)
 
 
 def _validate(args, git, root, explicit):
@@ -127,14 +229,16 @@ def _validate(args, git, root, explicit):
             or any(ch not in "0123456789abcdef" for ch in commit)):
         raise ValueError("encounter diagnostics require clean committed source provenance")
     if args.condition_split == "development":
-        name = BENCHMARK_RETRY if args.name == BENCHMARK_RETRY else "E127-benchmark"
+        name = args.name if args.name in (BENCHMARK_RETRY, BENCHMARK_RECOVERY) else "E127-benchmark"
         source, expected = SOURCES[0], (name, 2026120600, 4)
     else:
-        candidates = [source for source in SOURCES if args.name == "E127-" + source["label"]]
+        candidates = [source for source in SOURCES if args.name == "E127-" + source["label"]
+                      or args.name == A0_RECOVERY and source["training_seed"] == 0]
         if len(candidates) != 1:
             raise ValueError("final encounter panels must be E127-A0, E127-A1 or E127-A2")
         source = candidates[0]
-        expected = ("E127-" + source["label"], 2026120601 + source["training_seed"], 128)
+        expected = (A0_RECOVERY if args.name == A0_RECOVERY else "E127-" + source["label"],
+                    2026120601 + source["training_seed"], 128)
     if (args.name, args.seed, args.eval_worlds) != expected:
         raise ValueError("encounter panel name, seed and family count differ from registration")
     if any((root / "runs").glob("*_" + args.name)):
@@ -163,6 +267,7 @@ def run_tracked(args, git, root, *, explicit=None):
     c = Cfg(M=1)
     schedule = _assignments(args.seed, args.eval_worlds)
     retry_of = _retry_predecessor(args, root, schedule)
+    recovery_of = _recovery_predecessor(args, root, schedule)
     code_source = _source_code(root)
     folder = root / "runs" / (datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "_" + args.name)
     folder.mkdir(parents=True, exist_ok=False)
@@ -180,16 +285,22 @@ def run_tracked(args, git, root, *, explicit=None):
         max_seconds=MAX_SECONDS[args.condition_split], scientific_result=False)
     if retry_of is not None:
         config["retry_of"] = retry_of
+    if recovery_of is not None:
+        config["recovery_of"] = recovery_of
     _write_json(folder / "config.json", config)
     _write_bytes(folder / "plastic_genome.npy", original)
     _write_bytes(folder / "direct_genome.npy", recurrent)
-    rows, artifacts, durations, used_keys = [], [], [], {schedule["key"].tobytes()}
+    rows, artifacts, durations, wall_durations, used_keys = [], [], [], [], {schedule["key"].tobytes()}
     setup_seconds = time.monotonic() - started
 
     def status(value):
+        if (len(wall_durations) > len(artifacts) or any(not np.isfinite(duration) or duration < 0 for duration in wall_durations)
+                or value == "finished" and len(wall_durations) != len(artifacts)):
+            raise ValueError("family wall timing must preserve its complete nonnegative prefix")
         return dict(status=value, completed_families=len(artifacts), expected_families=args.eval_worlds,
                     elapsed_seconds=time.monotonic() - started, setup_seconds=setup_seconds,
-                    family_seconds=list(durations))
+                    family_seconds=list(durations), family_wall_seconds=list(wall_durations),
+                    family_pre_contacts=[int(value) for value in schedule["pre_contacts"][:len(artifacts)]])
 
     def summary(value):
         return dict(**status(value), protocol=PROTOCOL, condition_split=args.condition_split,
@@ -230,6 +341,7 @@ def run_tracked(args, git, root, *, explicit=None):
                 stream.flush()
                 os.fsync(stream.fileno())
                 _write_status(folder, status("running"))
+                wall_durations.append(time.monotonic() - family_started)
                 print(f"encounter family {index + 1}/{args.eval_worlds} saved", flush=True)
                 del row
                 deadline()
@@ -242,6 +354,8 @@ def run_tracked(args, git, root, *, explicit=None):
             raise ValueError("a diagnostic changed its frozen controller")
         if retry_of is not None and _retry_predecessor(args, root, schedule) != retry_of:
             raise ValueError("the original benchmark failure changed during its immutable retry")
+        if recovery_of is not None and _recovery_predecessor(args, root, schedule) != recovery_of:
+            raise ValueError("the registered predecessor changed during its immutable recovery")
         final = summary("finished")
         final.update(artifact_validity="passed", measurements=measurements,
                      gate_status="not_applicable" if args.condition_split == "development" else "undecided")
@@ -291,8 +405,8 @@ def build_comparison(root):
     """Release replicated decisions only after all three panels and their independent audit."""
     root = Path(root).resolve()
     folders, configs = [], []
-    for index in range(3):
-        candidates = list((root / "runs").glob(f"*_E127-A{index}"))
+    for index, name in enumerate(FINAL_NAMES):
+        candidates = list((root / "runs").glob("*_" + name))
         if len(candidates) != 1 or not (candidates[0] / "status.json").exists():
             return dict(status="undecided", reason="all three complete final panels are required")
         folder = candidates[0]
@@ -302,6 +416,7 @@ def build_comparison(root):
                 or status.get("expected_families") != 128):
             return dict(status="undecided", reason="a registered final panel is incomplete")
         if (config.get("protocol") != PROTOCOL or config.get("condition_split") != "final"
+                or config.get("args", {}).get("name") != name
                 or config.get("source") != SOURCES[index] or config.get("direct_source") != DIRECT_SOURCES[index]
                 or config.get("eval_seed") != 2026120601 + index or config.get("expected_families") != 128
                 or config.get("git", {}).get("dirty") is not False or config.get("grid_steps") != 50):
@@ -320,6 +435,9 @@ def build_comparison(root):
     if (not isinstance(registered, str) or len(registered) != 40
             or any(ch not in "0123456789abcdef" for ch in registered) or not isinstance(checked, dict)):
         raise ValueError("independent verification lacks source and artifact provenance")
+    selected = [(index, folder.relative_to(root).as_posix()) for index, folder in enumerate(folders)]
+    if [(panel.get("index"), panel.get("run")) for panel in audit.get("panels", [])] != selected:
+        raise ValueError("independent verification selected different final panels")
 
     def verified(path, expected=None):
         relative = path.relative_to(root).as_posix()
@@ -328,11 +446,19 @@ def build_comparison(root):
             raise ValueError("independent verification does not cover the current artifact manifest")
         return _read_pinned(path, digest)
 
-    panels = []
+    panels, excluded_runs = [], []
     for index, (folder, config) in enumerate(zip(folders, configs)):
         verified(folder / "config.json")
         verified(folder / "metrics.jsonl")
         verified(folder / "assignments.npz", config["assignments"]["sha256"])
+        if index == 0:
+            args = SimpleNamespace(**config["args"])
+            receipt = _recovery_predecessor(args, root, _assignments(args.seed, args.eval_worlds))
+            if config.get("recovery_of") != receipt:
+                raise ValueError("final A0 recovery does not preserve its registered predecessor")
+            for path, digest in receipt["files"].items():
+                verified(root / receipt["run"] / path, digest)
+            excluded_runs.append(receipt["run"])
         for source in (config["source"], config["direct_source"]):
             verified(root / source["path"], source["sha256"])
         verified(folder / "plastic_genome.npy", SOURCES[index]["sha256"])
@@ -356,4 +482,4 @@ def build_comparison(root):
         raise ValueError("runner and independent verifier disagree on replicated diagnostic decisions")
     return dict(status="complete", protocol=PROTOCOL, scientific_result=True, registered_source=registered,
                 audit=dict(path=AUDIT_PATH, sha256=hashlib.sha256(audit_raw).hexdigest()),
-                panels=panels, replicated_gates=decisions)
+                panels=panels, replicated_gates=decisions, excluded_partial_runs=excluded_runs)

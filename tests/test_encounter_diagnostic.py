@@ -17,6 +17,39 @@ def same_bytes(test, actual, expected):
     test.assertEqual(actual.tobytes(), expected.tobytes())
 
 
+def synthetic_frozen_snapshot():
+    """Normal, signed-zero and subnormal state; never load an experimental genome."""
+    c = diagnostic.CFG
+    _, inputs, _, neurons, _ = seed.dims(c)
+    genome = seed.biology_prior(c)
+    flat = ravel_pytree(genome)[0]
+    mask = ((np.arange(neurons)[:, None] >= inputs) & ~np.eye(neurons, dtype=bool)).astype(np.float32)[None]
+    W = np.linspace(-.125, .125, neurons * neurons, dtype=np.float32).reshape(1, neurons, neurons) * mask
+    Wp = np.linspace(-.05, .05, inputs * c.H, dtype=np.float32).reshape(1, inputs, c.H)
+    patterns = np.asarray([0, 0x80000000, 1, 0x80000001, 0x007fffff, 0x807fffff,
+                           0x00800000, 0x80800000, 0x3d800000, 0xbd800000], np.uint32)
+    W.view(np.uint32)[0, inputs, :len(patterns)] = patterns
+    Wp.view(np.uint32)[0, 0, :len(patterns)] = patterns
+    grid = np.zeros((c.G, c.G), np.int32)
+    grid[8, 7], grid[8, 9] = 1, 2
+    host = dict(W=W, Wp=Wp, mask=mask, x=np.linspace(-.8, .8, neurons, dtype=np.float32)[None],
+        grid=grid, pos=np.asarray([[8, 8]], np.int32), energy=np.ones(1, np.float32), alive=np.ones(1, np.float32),
+        sig=np.zeros(1, np.float32), denergy=np.asarray([.125], np.float32), counts=np.zeros((1, 2, 2), np.float32),
+        t=np.asarray(0, np.int32), key=np.asarray(jax.random.PRNGKey(0xE127F0)))
+    return c, genome, flat, host, jax.tree.map(jnp.asarray, host)
+
+
+def legacy_plastic_tick(state, genome, observation, c, hebbian=True, predictor=True):
+    """Unchanged legacy API as a reference for active learning and prediction."""
+    types = seed.neuron_types(c)
+    hebb = genome["hebb"][types[:, None], types[None, :]]
+    result = jax.vmap(lambda w, x, wp, obs, de, mask: seed.brain_step(w, x, wp, obs, de,
+        mask, hebb, jnp.exp(genome["log_eta"]), jnp.exp(genome["log_plr"]), genome["mod"],
+        float(hebbian), c, predictor_plastic=float(predictor)))(state["W"], state["x"], state["Wp"],
+        observation, state["denergy"], state["mask"])
+    return (*result, 3. * result[1][:, -6:-1])
+
+
 def compact_family(index, *, pre_s=-.4, post_s=.4, grid_success=True):
     row = dict(base_index=np.asarray(index, np.int32),
         keys=np.arange(index * 12, index * 12 + 12, dtype=np.uint32).reshape(6, 2),
@@ -141,6 +174,58 @@ class EncounterAccountingTests(unittest.TestCase):
 
 
 class EncounterDynamicsTests(unittest.TestCase):
+    def test_frozen_probe_preserves_ieee_state_and_uses_original_forward(self):
+        c, _, flat, host, snapshot = synthetic_frozen_snapshot()
+        keys = jax.random.split(jax.random.PRNGKey(0xE127F0), 12)
+        for name in ("W", "Wp", "mask"):
+            same_bytes(self, snapshot[name], host[name])
+        actual = diagnostic._readouts("plastic", c)(flat, snapshot, keys)
+        # The existing fixed-weight forward is an independent reference for the
+        # recurrent response to the same original W/x and twelve visible scenes.
+        fixed = diagnostic._readouts("direct", c)(flat, snapshot, keys)
+        for phase in ("initial", "final"):
+            for name in ("W", "Wp", "mask"):
+                expected = np.broadcast_to(host[name], np.asarray(actual[phase][name]).shape)
+                same_bytes(self, actual[phase][name], expected)
+        same_bytes(self, actual["final"]["x"], fixed["final"]["x"])
+        for field in ("observation", "decision_motor", "logits", "probabilities", "sampled_action", "action_key"):
+            same_bytes(self, actual[field], fixed[field])
+        self.assertFalse(np.array_equal(np.asarray(actual["final"]["x"]), np.asarray(actual["initial"]["x"])))
+        for name in diagnostic.NEURAL:
+            same_bytes(self, snapshot[name], host[name])
+
+    def test_dynamic_frozen_hebbian_preserves_w_and_active_predictor(self):
+        c, genome, _, host, snapshot = synthetic_frozen_snapshot()
+        observation = seed.observe(snapshot["grid"], snapshot["pos"], snapshot["alive"], snapshot["sig"],
+                                   snapshot["energy"], snapshot["denergy"], c)
+        dynamic = jax.jit(lambda s, g, o, enabled: diagnostic._think(s, g, o, "plastic", c, enabled, True))
+        actual = dynamic(snapshot, genome, observation, jnp.asarray(False))
+        legacy = jax.jit(lambda s, g, o: legacy_plastic_tick(s, g, o, c, False, True))(snapshot, genome, observation)
+        same_bytes(self, actual[0], host["W"])
+        same_bytes(self, actual[2], legacy[2])
+        same_bytes(self, actual[3], legacy[3])
+        self.assertFalse(np.array_equal(np.asarray(actual[2]), host["Wp"]))
+        fixed = jax.jit(lambda s, o: diagnostic._think(s, None, o, "direct", c, False, False))(snapshot, observation)
+        same_bytes(self, actual[1], fixed[1])
+        same_bytes(self, actual[4], fixed[4])
+        # The same conditional executable must retain the original active arm.
+        active = dynamic(snapshot, genome, observation, jnp.asarray(True))
+        original = jax.jit(lambda s, g, o: legacy_plastic_tick(s, g, o, c))(snapshot, genome, observation)
+        for actual_field, expected_field in zip(active, original):
+            same_bytes(self, actual_field, expected_field)
+
+    def test_already_disabled_chamber_keeps_frozen_w_bits(self):
+        c, _, flat, host, snapshot = synthetic_frozen_snapshot()
+        script = jnp.asarray([[4, 1, 1, 4, 3], [1, 4, 2, 4, 3]], jnp.int32)
+        # This is a synthetic continuation at/after the registered cutoff. The
+        # ordinary timing fixture below separately verifies its first live tick.
+        snapshot = dict(snapshot, t=jnp.asarray(1, jnp.int32))
+        final, trace = diagnostic._chamber("plastic", c, 1)(flat, snapshot, script, 1)
+        same_bytes(self, final["W"], host["W"])
+        same_bytes(self, final["mask"], host["mask"])
+        np.testing.assert_array_equal(trace["hebbian_enabled"], False)
+        np.testing.assert_array_equal(trace["predictor_enabled"], True)
+
     def test_scripts_balance_colors_directions_and_boundary(self):
         assignment = diagnostic.assignments_manifest(2026120600, 4)
         self.assertEqual(sorted(assignment["pre_contacts"].tolist()), [8, 8, 16, 16])

@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 import re
 import sys
+import time
 
 import numpy as np
 
@@ -20,6 +21,17 @@ require, same, subset, typed = base.require, base.same, base.subset, base.typed
 PROTOCOL = "encounter-diagnostic-v1"
 DEVELOPMENT_NAME = "E127-benchmark"
 RETRY_NAME = "E127-benchmark-retry1"
+DEVELOPMENT_RECOVERY = "E127-benchmark-recovery2"
+FINAL_RECOVERY = "E127-A0-recovery1"
+RECOVERIES = {
+    DEVELOPMENT_RECOVERY: dict(name=RETRY_NAME, run="runs/20261122-045153_E127-benchmark-retry1",
+        commit="d99bcc80957bb97dfc3d7d27e1ed2a80ee3a31a1", status="finished", completed=4, expected=4,
+        inventory_sha256="7768d9fd14af85a2fb61b010c572daca7bd05f4b1f34589b1ccc1902972e65fd"),
+    FINAL_RECOVERY: dict(name="E127-A0", run="runs/20261122-050231_E127-A0",
+        commit="5e6398e5d4f493afe428c3daaebe9bee3247ddfd", status="failed", completed=11, expected=128,
+        inventory_sha256="15ff3384e436471a370807d55b07e9a211de8856b8a27e1ced00b10f8b530022"),
+}
+SOURCE_PATHS = {"seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py", "scripts/run_encounter_diagnostic.py"}
 ARMS = ("plastic_stationary", "plastic_reversal", "plastic_frozen", "direct_stationary", "direct_reversal")
 CONTACTS = (0, 2, 8, 16)
 STATE_FIELDS = ("W", "x", "Wp", "mask")
@@ -344,6 +356,46 @@ def empty_development_evidence(config, status, summary, journal, family_entries)
             "retry1 cannot replace any recorded family, outcome or partial journal")
 
 
+def recovery_evidence(config, status, summary, records, family_entries, name):
+    """Check archived bookkeeping only; never decode an excluded family's outcomes."""
+    pinned = RECOVERIES[name]
+    completed, expected = pinned["completed"], pinned["expected"]
+    development = expected == 4
+    master = 2026120600 if development else 2026120601
+    subset(config, dict(protocol=PROTOCOL, condition_split="development" if development else "final",
+        generation=0, eval_seed=master, expected_families=expected, scientific_result=False), "preserved panel identity")
+    subset(config["args"], dict(name=pinned["name"], seed=master, generations=0, eval_worlds=expected,
+        allow_dirty=False, resume=None), "preserved invocation")
+    subset(config["git"], dict(commit=pinned["commit"], dirty=False), "preserved source commit")
+    require(config.get("recovery_of") is None, "only the registered original panel may be replaced")
+    for record in (status, summary):
+        subset(record, dict(status=pinned["status"], completed_families=completed, expected_families=expected), "preserved completion")
+        durations = record["family_seconds"]
+        require(len(durations) == completed and np.isfinite(durations).all() and np.all(np.asarray(durations) > 0),
+                "preserve every completed-family duration")
+    same(status["family_seconds"], summary["family_seconds"], "preserved timing records")
+    subset(summary, dict(protocol=PROTOCOL, condition_split=config["condition_split"], evaluation_seed=master,
+        source_label="A0", seed_index=0, scientific_result=False,
+        artifact_validity="passed" if development else "incomplete", gate_status="not_applicable" if development else "undecided"),
+        "preserved result identity")
+    if not development:
+        require("measurements" not in summary and isinstance(summary.get("error"), str) and bool(summary["error"]),
+                "failed final panel must have no scientific summary")
+    manifests = summary["raw_files"]
+    require(len(records) == len(manifests) == completed, "every preserved journal entry and raw manifest retained")
+    expected_files = {f"families/family_{index:04d}.npz" for index in range(completed)}
+    require(set(family_entries) == expected_files, "preserved family files are the exact completed prefix")
+    for index, (record, manifest) in enumerate(zip(records, manifests)):
+        subset(manifest, dict(index=index, path=f"families/family_{index:04d}.npz"), "ordered preserved family")
+        require(isinstance(manifest.get("sha256"), str) and re.fullmatch(r"[0-9a-f]{64}", manifest["sha256"]),
+                "preserved raw digest")
+        same(record["raw_file"], manifest, "preserved journal/raw linkage")
+        subset(record, dict(family=index), "preserved assigned index")
+        keys = np.asarray(record["keys"])
+        require(keys.shape == (6, 2) and keys.dtype.kind in "iu" and np.all(keys >= 0)
+                and np.all(keys <= np.iinfo(np.uint32).max), "preserved key roles")
+
+
 def summarize(rows):
     require(len(rows) >= 2, "at least two independent families for SE")
     local = {arm: {key: np.stack([row["local"][arm][key] for row in rows])
@@ -385,6 +437,68 @@ class Auditor(prior.chain.Auditor):
         super().__init__(root, source)
         self.code = None
         self.development_recovery = None
+        self.recovery_provenance = {}
+        self.preserved = {}
+        self.family_seconds = []
+
+    def recorded_source(self, config):
+        commit = config["git"]["commit"]
+        require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", commit), "clean recorded source identity")
+        require(set(config["source_code"]) == SOURCE_PATHS, "complete recorded source manifest")
+        context = type("SourceContext", (), {"root": self.root, "source": commit})()
+        attributes = source_bytes.Auditor.source_attributes(context, list(config["source_code"]))
+        for path, digest in config["source_code"].items():
+            blob = base.subprocess.run(["git", "show", commit + ":" + path], cwd=self.root,
+                capture_output=True, check=True, timeout=15).stdout
+            source_bytes.source_hash_representation(blob, digest, attributes[path])
+
+    def inventory(self, folder):
+        directory, files = self.path(folder), {}
+        for path in sorted(directory.rglob("*")):
+            if path.is_file():
+                require(path.resolve().is_relative_to(directory), "preserved artifact leaves its folder")
+                relative = path.relative_to(directory).as_posix()
+                files[relative] = hashlib.sha256(self.read(folder + "/" + relative)).hexdigest()
+        return dict(run=folder, files=files)
+
+    def preserved_panel(self, name):
+        pinned = RECOVERIES[name]
+        found = list(self.path("runs").glob("*_" + pinned["name"]))
+        require(len(found) == 1 and found[0].relative_to(self.root).as_posix() == pinned["run"], "unique pinned recovery predecessor")
+        folder = pinned["run"]
+        proof = self.inventory(folder)
+        digest = hashlib.sha256(json.dumps(proof["files"], sort_keys=True, separators=(",", ":")).encode()).hexdigest()
+        same(digest, pinned["inventory_sha256"], "complete immutable predecessor inventory")
+        config, status, summary = (self.json(folder + "/" + file) for file in ("config.json", "status.json", "summary.json"))
+        records = [json.loads(line) for line in self.read(folder + "/metrics.jsonl").decode().splitlines()]
+        family_files = [file for file in proof["files"] if file.startswith("families/") or Path(file).name.startswith("family_")]
+        recovery_evidence(config, status, summary, records, family_files, name)
+        self.recorded_source(config)
+        for field, pinned_source, copied in (("source", base.ORIGINALS[0], "plastic_genome.npy"),
+                                            ("direct_source", prior.DIRECT[0], "direct_genome.npy")):
+            path, sha = pinned_source
+            subset(config[field], dict(path=path, sha256=sha, training_seed=0), "preserved original controller")
+            source = self.read(path)
+            same(hashlib.sha256(source).hexdigest(), sha, "preserved original source digest")
+            require(self.read(folder + "/" + copied) == source, "preserved original controller bytes")
+        same(config["assignments"]["path"], "assignments.npz", "preserved assignment artifact")
+        schedule = self.artifact(folder, config["assignments"])
+        for index, (record, manifest) in enumerate(zip(records, summary["raw_files"])):
+            same(proof["files"][manifest["path"]], manifest["sha256"], "opaque archived family digest")
+            same(record["pre_contacts"], int(schedule["pre_contacts"][index]), "preserved boundary assignment")
+        if name == DEVELOPMENT_RECOVERY:
+            original, _, _ = self.empty_benchmark()
+            same(config.get("retry_of"), original, "retained original empty failure link")
+            self.development_recovery = original
+        else:
+            require(config.get("retry_of") is None, "failed original A0 is not a development retry")
+        self.preserved[pinned["name"]] = proof
+        self.recovery_provenance[name] = proof
+        return proof, config, schedule, records
+
+    def verify_preserved(self):
+        for proof in self.preserved.values():
+            same(self.inventory(proof["run"]), proof, "preserved evidence remained unchanged throughout verification")
 
     def empty_benchmark(self):
         found = list(self.path("runs").glob("*_" + DEVELOPMENT_NAME))
@@ -396,19 +510,7 @@ class Auditor(prior.chain.Auditor):
         require(not any(predecessor.rglob("family_*.npz")), "original attempt must contain no saved family anywhere")
         empty_development_evidence(config, status, summary, self.read(folder + "/metrics.jsonl"),
                                    list((predecessor / "families").iterdir()))
-        old_commit = config["git"]["commit"]
-        require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", old_commit), "original clean source identity")
-        self.code_trees(old_commit)
-        require(set(config["source_code"]) == {"seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py",
-                "scripts/run_encounter_diagnostic.py"}, "complete original source manifest")
-        context = type("SourceContext", (), {"root": self.root, "source": old_commit})()
-        attributes = source_bytes.Auditor.source_attributes(context, list(config["source_code"]))
-        for path, digest in config["source_code"].items():
-            require(path in ("seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py", "scripts/run_encounter_diagnostic.py"),
-                    "original source manifest path")
-            blob = base.subprocess.run(["git", "show", old_commit + ":" + path], cwd=self.root,
-                capture_output=True, check=True, timeout=15).stdout
-            source_bytes.source_hash_representation(blob, digest, attributes[path])
+        self.recorded_source(config)
         for field, pinned, copied in (("source", base.ORIGINALS[0], "plastic_genome.npy"),
                                      ("direct_source", prior.DIRECT[0], "direct_genome.npy")):
             path, digest = pinned
@@ -418,25 +520,19 @@ class Auditor(prior.chain.Auditor):
             require(self.read(folder + "/" + copied) == content, "original controller copy must remain unchanged")
         same(config["assignments"]["path"], "assignments.npz", "original assignment artifact path")
         schedule = self.artifact(folder, config["assignments"])
-        files = {}
-        for path in sorted(predecessor.rglob("*")):
-            if path.is_file():
-                require(path.resolve().is_relative_to(predecessor.resolve()), "predecessor artifact leaves its folder")
-                relative = path.relative_to(predecessor).as_posix()
-                files[relative] = hashlib.sha256(self.read(folder + "/" + relative)).hexdigest()
-        return dict(run=folder, files=files), config, schedule
+        proof = self.inventory(folder)
+        self.preserved[DEVELOPMENT_NAME] = proof
+        return proof, config, schedule
 
     def completed_bundle(self, development=False):
         count = 4 if development else 128
         folders, pending = [], []
-        name = DEVELOPMENT_NAME
-        if development:
-            retries = list(self.path("runs").glob("*_" + DEVELOPMENT_NAME + "-retry*"))
-            require(len(retries) <= 1 and all(path.name.endswith("_" + RETRY_NAME) for path in retries), "only the single registered retry1 is allowed")
-            if retries:
-                self.development_recovery, _, _ = self.empty_benchmark()
-                name = RETRY_NAME
-        for name in ([name] if development else [f"E127-A{i}" for i in range(3)]):
+        retries = list(self.path("runs").glob("*_" + DEVELOPMENT_NAME + "-retry*"))
+        require(len(retries) <= 1 and all(path.name.endswith("_" + RETRY_NAME) for path in retries), "only the retained original retry1 is allowed")
+        for path in self.path("runs").glob("*_E127-*-recovery*"):
+            require(any(path.name.endswith("_" + name) for name in RECOVERIES), "unregistered E127 recovery")
+        names = [DEVELOPMENT_RECOVERY] if development else [FINAL_RECOVERY, "E127-A1", "E127-A2"]
+        for name in names:
             found = list(self.path("runs").glob("*_" + name))
             require(len(found) <= 1, "duplicate canonical panel " + name)
             if not found or not (found[0] / "status.json").is_file():
@@ -466,22 +562,22 @@ class Auditor(prior.chain.Auditor):
     def metadata(self, folder, index, development):
         config = self.json(folder + "/config.json")
         count, master = (4, 2026120600) if development else (128, 2026120601 + index)
-        retry = development and self.path(folder).name.endswith("_" + RETRY_NAME)
-        name = RETRY_NAME if retry else DEVELOPMENT_NAME if development else f"E127-A{index}"
-        old_schedule = None
-        if retry:
-            proof, old_config, old_schedule = self.empty_benchmark()
-            same(config.get("retry_of"), proof, "exact preserved empty predecessor receipt")
-            self.development_recovery = proof
+        name = DEVELOPMENT_RECOVERY if development else FINAL_RECOVERY if index == 0 else f"E127-A{index}"
+        require(self.path(folder).name.endswith("_" + name), "only the newly registered complete panel may be certified")
+        old_schedule, old_records = None, []
+        require(config.get("retry_of") is None, "new panels must retain their own corrected execution identity")
+        if name in RECOVERIES:
+            proof, old_config, old_schedule, old_records = self.preserved_panel(name)
+            same(config.get("recovery_of"), proof, "exact retained predecessor receipt")
             for field in ("protocol", "source", "direct_source", "cfg", "cfg_overrides", "condition_split", "generation",
                 "eval_seed", "expected_families", "statistical_unit", "assignment_stream_tag", "arms", "key_roles",
                 "initial_rules", "pre_contact_choices", "post_contacts", "readout_contacts", "grid_steps", "probe_placements",
                 "raw_schema", "raw_pattern", "runtime", "max_seconds", "scientific_result"):
-                same(config[field], old_config[field], "retry preserves registered setting " + field)
+                same(config[field], old_config[field], "recovery preserves registered setting " + field)
             unchanged = lambda args: {key: value for key, value in args.items() if key not in ("name", "hypothesis")}
-            same(unchanged(config["args"]), unchanged(old_config["args"]), "retry changes only its identity/comment")
+            same(unchanged(config["args"]), unchanged(old_config["args"]), "recovery changes only its identity/comment")
         else:
-            require(config.get("retry_of") is None, "only registered development retry1 can carry a predecessor")
+            require(config.get("recovery_of") is None, "only the two registered recoveries can carry predecessors")
         subset(config, dict(protocol=PROTOCOL, condition_split="development" if development else "final",
             cfg=CFG, cfg_overrides={}, generation=0, eval_seed=master, expected_families=count,
             statistical_unit="independent paired base family", arms=list(ARMS),
@@ -493,8 +589,7 @@ class Auditor(prior.chain.Auditor):
             resume=None, cfg=None, no_plastic=False, objective=None, memory_condition=None), "registered invocation")
         require(config["git"]["dirty"] is False and self.code_trees(config["git"]["commit"]) == self.expected_trees,
                 "clean registered scientific source")
-        expected_paths = {"seed/seed.py", "seed/direct.py", "seed/encounter_diagnostic.py", "scripts/run_encounter_diagnostic.py"}
-        require(set(config["source_code"]) == expected_paths, "complete scientific source manifest")
+        self.recorded_source(config)
         if self.code is None:
             attributes = source_bytes.Auditor.source_attributes(self, list(config["source_code"]))
             for path, digest in config["source_code"].items():
@@ -516,9 +611,9 @@ class Auditor(prior.chain.Auditor):
             originals.append(value)
         schedule = self.artifact(folder, config["assignments"])
         if old_schedule is not None:
-            require(set(schedule) == set(old_schedule), "retry preserves assignment fields")
+            require(set(schedule) == set(old_schedule), "recovery preserves assignment fields")
             for field in schedule:
-                exact(schedule[field], old_schedule[field], "retry keeps the original development assignment")
+                exact(schedule[field], old_schedule[field], "recovery retains every original assigned family")
         permutation = typed(schedule, "permutation", (count,), "iu")
         require(np.array_equal(np.sort(permutation), np.arange(count)), "complete assignment permutation")
         exact(schedule["pre_contacts"], np.repeat(np.array([8, 16], np.int32), count // 2)[permutation], "balanced hidden boundary")
@@ -537,11 +632,13 @@ class Auditor(prior.chain.Auditor):
             require(keys.shape == (6, 2), "separate script, birth, chamber, grid, action and probe roles")
             expected_keys = np.asarray(jax.random.split(jax.random.fold_in(jax.random.PRNGKey(master), family), 6))
             exact(keys, expected_keys, "fixed assigned family key roles")
+            if family < len(old_records):
+                exact(keys, np.asarray(old_records[family]["keys"], np.uint32), "recovery replays the original assignment from a fresh birth")
             self.register_keys(keys, "independent family")
         return config, schedule, records, originals
 
-    def panel(self, folder, index, development):
-        config, schedule, records, genomes = self.metadata(folder, index, development)
+    def panel(self, folder, index, development, prepared=None):
+        config, schedule, records, genomes = self.metadata(folder, index, development) if prepared is None else prepared
         count = config["expected_families"]
         summary = self.json(folder + "/summary.json")
         subset(summary, dict(status="finished", protocol=PROTOCOL, condition_split=config["condition_split"],
@@ -550,16 +647,16 @@ class Auditor(prior.chain.Auditor):
         require(len(summary["raw_files"]) == count and 0 < summary["elapsed_seconds"] <= config["max_seconds"], "complete bounded run")
         rows = []
         for family, record in enumerate(records):
+            started = time.monotonic()
             manifest = summary["raw_files"][family]
             subset(manifest, dict(index=family, path=f"families/family_{family:04d}.npz"), "ordered immutable family")
             same(record["raw_file"], manifest, "journal artifact")
             raw = self.artifact(folder, manifest)
             exact(raw["keys"], np.asarray(record["keys"], np.uint32), "actual assigned keys")
             rows.append(audit_family(raw, family, int(schedule["pre_contacts"][family]), *genomes))
+            self.family_seconds.append(time.monotonic() - started)
         measured = summarize(rows)
         same(summary["measurements"], measured, "independent probabilities, assigned outcomes, SE and gates")
-        if development and self.development_recovery is not None:
-            same(self.empty_benchmark()[0], self.development_recovery, "preserved predecessor remained unchanged during audit")
         return dict(index=index, run=folder, measurements=measured)
 
 
@@ -650,6 +747,7 @@ def main():
     if not args.source_commit:
         parser.error("--source-commit is required")
     auditor = None
+    started = time.monotonic()
     report = dict(protocol=PROTOCOL, mode="development" if args.development else "final")
     try:
         auditor = Auditor(args.root, args.source_commit)
@@ -657,11 +755,14 @@ def main():
         if not args.development:
             # Development assignment metadata only: no scores or raw events.
             auditor.metadata(auditor.completed_bundle(True)[0], 0, True)
-        panels = [auditor.panel(folder, index, args.development) for index, folder in enumerate(folders)]
-        if auditor.development_recovery is not None:
-            same(auditor.empty_benchmark()[0], auditor.development_recovery, "original failure remains preserved at audit completion")
+        # Validate every final source and assigned input before opening any final outcome.
+        prepared = [auditor.metadata(folder, index, args.development) for index, folder in enumerate(folders)]
+        panels = [auditor.panel(folder, index, args.development, prepared[index]) for index, folder in enumerate(folders)]
+        auditor.verify_preserved()
         report.update(status="passed", registered_source=args.source_commit, registered_code_trees=auditor.expected_trees,
             panels=panels, development_recovery=auditor.development_recovery,
+            recovery_provenance=auditor.recovery_provenance,
+            excluded_partial_runs=[] if args.development else [RECOVERIES[FINAL_RECOVERY]["run"]],
             replicated_gates=None if args.development else replicated_gates([p["measurements"] for p in panels]),
             limitations=["Events, body feedback, cloned-state fingerprints and probabilities are reconstructed; neural weight updates are not independently replayed.",
                 "Key assignment uses the archived JAX random primitives; action sampling and neural matrix operations are not rerun.",
@@ -676,6 +777,11 @@ def main():
         code = 1
     if auditor is not None:
         report["checked_file_sha256"] = auditor.hashes
+        elapsed = time.monotonic() - started
+        reconstruction = sum(auditor.family_seconds)
+        report["timing"] = dict(elapsed_seconds=elapsed, setup_and_summary_seconds=elapsed - reconstruction,
+            reconstruction_seconds=reconstruction, family_seconds=auditor.family_seconds,
+            completed_families=len(auditor.family_seconds))
     print(json.dumps(report, indent=2, allow_nan=False))
     return code
 

@@ -104,18 +104,45 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
         return {path.relative_to(folder).as_posix(): path.read_bytes() for path in folder.rglob("*") if path.is_file()}
 
     def finish_panels(self):
+        self.failed_a0()
         for index in range(3):
-            self.invoke(*self.final_args(index))
+            self.invoke(*self.final_args(index), "--name", entry.FINAL_NAMES[index])
+
+    def pin_predecessor(self, name, folder):
+        config = json.loads((folder / "config.json").read_text())
+        pin = dict(run=folder.relative_to(self.root).as_posix(), commit=config["git"]["commit"],
+                   inventory_sha256=entry._inventory_sha(entry._file_inventory(folder)))
+        update = patch.dict(entry.RECOVERY_PREDECESSORS, {name: pin})
+        update.start()
+        self.addCleanup(update.stop)
+        return pin
+
+    def failed_a0(self):
+        self.fail_at = 11
+        with self.assertRaisesRegex(RuntimeError, "interruption"):
+            self.invoke(*self.final_args(0))
+        self.fail_at = None
+        folder = self.folder("E127-A0")
+        self.pin_predecessor(entry.A0_RECOVERY, folder)
+        return folder
+
+    def comparison(self):
+        with patch.object(entry.engine, "assignments_manifest", side_effect=self.assignments), \
+                patch.object(entry.engine, "evaluation_keys", side_effect=self.keys):
+            return entry.build_comparison(self.root)
 
     def write_audit(self):
         checked, panels = {}, []
         for index in range(3):
-            folder = self.folder(f"E127-A{index}")
-            result = self.result(f"E127-A{index}")
+            folder = self.folder(entry.FINAL_NAMES[index])
+            result = self.result(entry.FINAL_NAMES[index])
             panels.append(dict(index=index, run=folder.relative_to(self.root).as_posix(), measurements=result["measurements"]))
             for path in folder.rglob("*"):
                 if path.is_file():
                     checked[path.relative_to(self.root).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
+        for path in self.folder("E127-A0").rglob("*"):
+            if path.is_file():
+                checked[path.relative_to(self.root).as_posix()] = hashlib.sha256(path.read_bytes()).hexdigest()
         for source in (*entry.SOURCES, *entry.DIRECT_SOURCES):
             checked[source["path"]] = source["sha256"]
         report = dict(status="passed", protocol=entry.PROTOCOL, mode="final", registered_source="a"*40,
@@ -133,6 +160,7 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
         self.assertEqual((config["grid_steps"], config["post_contacts"], config["probe_placements"]), (50, 16, 12))
         self.assertEqual(config["arms"], list(entry.ARMS))
         self.assertEqual(config["key_roles"], list(entry.KEY_ROLES))
+        self.assertEqual(result["family_pre_contacts"], [8, 8, 16, 16])
         self.assertFalse(result["scientific_result"])
         self.assertEqual(result["gate_status"], "not_applicable")
         self.assertTrue(all("large_trace" not in row for row in self.projected))
@@ -142,16 +170,21 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
             self.assertIn("large_trace", data)
 
     def test_final_panels_and_independent_audit_are_both_required(self):
+        failed = self.failed_a0()
+        before = self.snapshot(failed)
         for index in range(3):
-            self.invoke(*self.final_args(index))
-            self.assertEqual(entry.build_comparison(self.root)["status"], "undecided")
+            self.invoke(*self.final_args(index), "--name", entry.FINAL_NAMES[index])
+            self.assertEqual(self.comparison()["status"], "undecided")
         self.write_audit()
-        decision = entry.build_comparison(self.root)
+        decision = self.comparison()
         self.assertEqual(decision["status"], "complete")
         self.assertEqual(decision["replicated_gates"]["plastic"]["local"], dict(count=2, seeds=[0, 2], passed=True))
         self.assertEqual(decision["replicated_gates"]["plastic"]["transfer"], dict(count=1, seeds=[2], passed=False))
         self.assertTrue(decision["replicated_gates"]["plastic"]["hebbian_local"]["passed"])
         self.assertTrue(decision["replicated_gates"]["direct"]["transfer"]["passed"])
+        self.assertEqual(decision["excluded_partial_runs"], [failed.relative_to(self.root).as_posix()])
+        self.assertEqual(decision["panels"][0]["measurements"]["families"], 128)
+        self.assertEqual(before, self.snapshot(failed))
 
     def test_no_e126_data_or_calibration_is_needed_or_read(self):
         for name in ("unused_E126-plastic-s0-part001", "unused_E123-A0"):
@@ -317,12 +350,138 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
         self.assertNotIn("measurements", result)
         self.assertEqual(result["gate_status"], "undecided")
 
+    def test_final_recovery_replays_all_assignments_and_never_decodes_old_outcomes(self):
+        failed = self.failed_a0()
+        before = self.snapshot(failed)
+        old_raw = {raw for name, raw in before.items() if name.startswith("families/")}
+        real_load = np.load
+
+        def checked_load(source, *args, **kwargs):
+            if isinstance(source, io.BytesIO):
+                self.assertNotIn(source.getvalue(), old_raw)
+            elif isinstance(source, (str, Path)):
+                self.assertNotIn((failed / "families").resolve(), Path(source).resolve().parents)
+            return real_load(source, *args, **kwargs)
+
+        self.calls.clear()
+        with patch.object(entry.np, "load", side_effect=checked_load):
+            self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+        self.assertEqual([index for _, index, _ in self.calls], list(range(128)))
+        self.assertTrue(all(master == 2026120601 for master, _, _ in self.calls))
+        recovered = self.folder(entry.A0_RECOVERY)
+        config = json.loads((recovered / "config.json").read_text())
+        self.assertEqual(config["recovery_of"], dict(run=failed.relative_to(self.root).as_posix(),
+            files={name: hashlib.sha256(raw).hexdigest() for name, raw in before.items()}))
+        result = self.result(entry.A0_RECOVERY)
+        self.assertEqual((result["completed_families"], len(result["raw_files"])), (128, 128))
+        self.assertEqual(before, self.snapshot(failed))
+        complete = self.snapshot(recovered)
+        with self.assertRaises(SystemExit):
+            self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+        self.assertEqual(complete, self.snapshot(recovered))
+
+    def test_recovery_rejects_missing_changed_and_wrong_source_predecessors(self):
+        with self.assertRaises(SystemExit):
+            self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+        failed = self.failed_a0()
+        self.calls.clear()
+        for relative in ("status.json", "metrics.jsonl", "families/family_0010.npz"):
+            path = failed / relative
+            raw = path.read_bytes()
+            path.write_bytes(raw + b"changed")
+            try:
+                with self.subTest(path=relative), self.assertRaises(SystemExit):
+                    self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+            finally:
+                path.write_bytes(raw)
+        pin = dict(entry.RECOVERY_PREDECESSORS[entry.A0_RECOVERY], commit="b"*40)
+        with patch.dict(entry.RECOVERY_PREDECESSORS, {entry.A0_RECOVERY: pin}), self.assertRaises(SystemExit):
+            self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+        for name in ("E127-A0-recovery2", "E127-A1-recovery1", "E127-benchmark-recovery3"):
+            with self.subTest(name=name), self.assertRaises(SystemExit):
+                self.invoke(*self.final_args(0), "--name", name)
+        self.assertFalse(self.calls)
+        self.assertFalse(list((self.root / "runs").glob("*_" + entry.A0_RECOVERY)))
+
+    def test_recovery_checks_prefix_journal_order_keys_and_raw_manifest(self):
+        failed = self.failed_a0()
+        path = failed / "metrics.jsonl"
+        original = path.read_bytes()
+        for change in ("order", "keys", "raw_digest"):
+            rows = [json.loads(line) for line in original.splitlines()]
+            if change == "order":
+                rows[0], rows[1] = rows[1], rows[0]
+            elif change == "keys":
+                rows[0]["keys"][0][1] += 1
+            else:
+                rows[0]["raw_file"]["sha256"] = "0"*64
+            path.write_text("".join(json.dumps(row) + "\n" for row in rows))
+            self.pin_predecessor(entry.A0_RECOVERY, failed)
+            try:
+                with self.subTest(change=change), self.assertRaises(SystemExit):
+                    self.invoke(*self.final_args(0), "--name", entry.A0_RECOVERY)
+            finally:
+                path.write_bytes(original)
+        self.assertFalse(list((self.root / "runs").glob("*_" + entry.A0_RECOVERY)))
+
+    def test_corrected_rehearsal_keeps_the_entire_previous_development_chain(self):
+        original = self.empty_failure()
+        self.invoke("--name", entry.BENCHMARK_RETRY)
+        previous = self.folder(entry.BENCHMARK_RETRY)
+        self.pin_predecessor(entry.BENCHMARK_RECOVERY, previous)
+        original_before, before = self.snapshot(original), self.snapshot(previous)
+        self.calls.clear()
+        self.invoke("--name", entry.BENCHMARK_RECOVERY)
+        self.assertEqual(self.calls, [(2026120600, 0, 8), (2026120600, 1, 8),
+                                     (2026120600, 2, 16), (2026120600, 3, 16)])
+        config = json.loads((self.folder(entry.BENCHMARK_RECOVERY) / "config.json").read_text())
+        self.assertEqual(config["recovery_of"], dict(run=previous.relative_to(self.root).as_posix(),
+            files={name: hashlib.sha256(raw).hexdigest() for name, raw in before.items()}))
+        self.assertEqual(self.result(entry.BENCHMARK_RECOVERY)["gate_status"], "not_applicable")
+        self.assertEqual(original_before, self.snapshot(original))
+        self.assertEqual(before, self.snapshot(previous))
+        with self.assertRaises(SystemExit):
+            self.invoke("--name", entry.BENCHMARK_RECOVERY)
+
+    def test_status_timing_uses_actual_permuted_boundary_schedule(self):
+        schedule = self.assignments(2026120600, 4)
+        schedule["permutation"] = np.asarray([2, 0, 3, 1], np.int32)
+        schedule["pre_contacts"] = np.asarray([16, 8, 16, 8], np.int32)
+        self.assignments = lambda master, count: schedule
+        self.invoke()
+        status = json.loads((self.folder() / "status.json").read_text())
+        self.assertEqual(status["family_pre_contacts"], [16, 8, 16, 8])
+        self.assertEqual(len(status["family_seconds"]), len(status["family_pre_contacts"]))
+        self.assertEqual(status["family_pre_contacts"], self.result()["family_pre_contacts"])
+
+    def test_family_wall_timing_includes_journal_sync_and_status_write(self):
+        write_status, fsync = entry._write_status, entry.os.fsync
+
+        def timed_status(*args, **kwargs):
+            write_status(*args, **kwargs)
+            self.now += .5
+
+        def timed_sync(*args, **kwargs):
+            fsync(*args, **kwargs)
+            self.now += .25
+
+        with patch.object(entry, "_write_status", side_effect=timed_status), \
+                patch.object(entry.os, "fsync", side_effect=timed_sync):
+            self.invoke()
+        status = json.loads((self.folder() / "status.json").read_text())
+        result = self.result()
+        self.assertEqual(len(status["family_wall_seconds"]), status["expected_families"])
+        self.assertEqual(status["family_wall_seconds"], result["family_wall_seconds"])
+        self.assertTrue(all(wall >= 0 and wall >= inner + .75
+                            for wall, inner in zip(status["family_wall_seconds"], status["family_seconds"])))
+
     def test_failure_keeps_prefix_without_result_or_decision(self):
         self.fail_at = 2
         with self.assertRaisesRegex(RuntimeError, "interruption"):
             self.invoke()
         result = self.result()
         self.assertEqual((result["status"], result["completed_families"]), ("failed", 2))
+        self.assertEqual(len(result["family_wall_seconds"]), 2)
         self.assertNotIn("measurements", result)
         self.assertEqual(result["gate_status"], "undecided")
 
@@ -359,26 +518,48 @@ class EncounterDiagnosticRunnerTests(unittest.TestCase):
         report["replicated_gates"]["plastic"]["transfer"]["passed"] = True
         audit_path.write_text(json.dumps(report))
         with self.assertRaisesRegex(ValueError, "disagree"):
-            entry.build_comparison(self.root)
+            self.comparison()
         self.write_audit()
         path = self.folder("E127-A1") / "families/family_0000.npz"
         path.write_bytes(path.read_bytes() + b"changed since audit")
         with self.assertRaisesRegex(ValueError, "SHA256"):
-            entry.build_comparison(self.root)
+            self.comparison()
+
+    def test_audit_must_select_recovery_and_cover_every_retained_partial_file(self):
+        self.finish_panels()
+        path = self.write_audit()
+        original = path.read_bytes()
+        report = json.loads(original)
+        report["panels"][0]["run"] = self.folder("E127-A0").relative_to(self.root).as_posix()
+        path.write_text(json.dumps(report))
+        with self.assertRaisesRegex(ValueError, "different final panels"):
+            self.comparison()
+        report = json.loads(original)
+        old_raw = (self.folder("E127-A0") / "families/family_0010.npz").relative_to(self.root).as_posix()
+        del report["checked_file_sha256"][old_raw]
+        path.write_text(json.dumps(report))
+        with self.assertRaisesRegex(ValueError, "does not cover"):
+            self.comparison()
 
     def test_generated_report_keeps_decisions_locked_until_verified(self):
         self.finish_panels()
-        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()), \
+                patch.object(entry.engine, "assignments_manifest", side_effect=self.assignments), \
+                patch.object(entry.engine, "evaluation_keys", side_effect=self.keys):
             summarize.main()
         path = self.root / "results/RESULTS.md"
         self.assertIn("Replicated diagnostic decisions: **undecided**", path.read_text(encoding="utf-8"))
         self.assertFalse((self.root / "results/diagnostics/E127-comparison.json").exists())
         self.write_audit()
-        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()):
+        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()), \
+                patch.object(entry.engine, "assignments_manifest", side_effect=self.assignments), \
+                patch.object(entry.engine, "evaluation_keys", side_effect=self.keys):
             summarize.main()
         text = path.read_text(encoding="utf-8")
         self.assertIn("| plastic | transfer | 1/3 | 2 | FAIL |", text)
         self.assertIn("n=128", text)
+        self.assertIn("preserved partial; excluded", text)
+        self.assertIn("eleven families are not added", text)
         self.assertTrue((self.root / "results/diagnostics/E127-comparison.json").exists())
 
 
