@@ -33,10 +33,71 @@ EVENTS = ("food", "poison", "alive_before", "alive_after")
 ARMS = ("plastic_stationary", "plastic_reversal", "lesion_stationary", "lesion_reversal", "direct_stationary", "direct_reversal")
 PREFIX_FIELDS = ("grid", "position", "energy", "signal", "alive", "surprise", *EVENTS,
                  "observation", "action", "action_key", "efference", "activity", "denergy", "hebbian_enabled", "predictor_enabled")
+SOURCE_ATTRIBUTES = ("text", "eol", "filter", "working-tree-encoding", "ident")
 
 
 def digest(value):
     return np.frombuffer(hashlib.sha256(np.asarray(value).tobytes()).digest(), np.uint8)
+
+
+def source_hash_representation(blob, expected, attributes):
+    """Verify tracked source bytes, allowing only reversible LF-to-CRLF checkout.
+
+    The runner hashes checkout bytes; Git may store their LF representation.
+    Never use this rule for run artifacts, mixed endings or content filters.
+    """
+    require(isinstance(expected, str) and re.fullmatch(r"[0-9a-f]{64}", expected), "source SHA256 format")
+    if hashlib.sha256(blob).hexdigest() == expected:
+        return "git-blob"
+    require(set(attributes) == set(SOURCE_ATTRIBUTES)
+            and attributes["text"] in ("unspecified", "set", "auto")
+            and attributes["eol"] in ("unspecified", "crlf")
+            and all(attributes[name] in ("unspecified", "unset") for name in ("filter", "working-tree-encoding", "ident")),
+            "source attributes do not permit plain CRLF checkout")
+    require(b"\r" not in blob and b"\0" not in blob, "source checkout conversion requires a plain LF text blob")
+    try:
+        blob.decode("utf-8")
+    except UnicodeDecodeError as error:
+        raise base.AuditError("source checkout conversion requires UTF-8 text") from error
+    checkout = blob.replace(b"\n", b"\r\n")
+    require(checkout.replace(b"\r\n", b"\n") == blob
+            and hashlib.sha256(checkout).hexdigest() == expected,
+            "source digest matches neither the Git blob nor its exact CRLF checkout")
+    return "git-crlf-checkout"
+
+
+def source_hash_self_check():
+    """Pure byte regression; no JAX, run data, working-tree edits or simulator."""
+    blob = b"def identity(value):\n    return value\n"
+    crlf = blob.replace(b"\n", b"\r\n")
+    sha = lambda value: hashlib.sha256(value).hexdigest()
+    attributes = dict.fromkeys(SOURCE_ATTRIBUTES, "unspecified")
+    same(source_hash_representation(blob, sha(blob), attributes), "git-blob", "exact source digest")
+    same(source_hash_representation(blob, sha(crlf), attributes), "git-crlf-checkout", "Windows checkout regression")
+
+    def rejects(source, recorded, attrs=attributes):
+        try:
+            source_hash_representation(source, sha(recorded), attrs)
+        except base.AuditError:
+            return
+        raise base.AuditError("invalid source-byte equivalence was accepted")
+
+    for altered in (crlf.replace(b"return value", b"return 0"), crlf + b" ", crlf[:-2],
+                    crlf.replace(b"\r\n", b"\n", 1), crlf.replace(b"\r\n", b"\r")):
+        rejects(blob, altered)
+    for name, value in (("text", "unset"), ("eol", "lf"), ("filter", "lfs"),
+                        ("working-tree-encoding", "UTF-16"), ("ident", "set")):
+        rejects(blob, crlf, {**attributes, name: value})
+    rejects(b"x\0\ny\n", b"x\0\r\ny\r\n")
+    rejects(b"x\xff\ny\n", b"x\xff\r\ny\r\n")
+    rejects(b"x\ry\n", b"x\ry\r\n")
+    try:
+        same(sha(blob), sha(crlf), "run artifact SHA256 remains byte-exact")
+    except base.AuditError:
+        pass
+    else:
+        raise base.AuditError("artifact hash comparison normalized line endings")
+    return "exact source and uniform Git CRLF checkout accepted; content edits, mixed endings, filters and artifact normalization rejected"
 
 
 def random_runtime():
@@ -322,6 +383,19 @@ class Auditor(reversal.Auditor):
         require(isinstance(source, str) and re.fullmatch(r"[0-9a-f]{40}", source), "source must be the full immutable registration commit")
         super().__init__(root, source)
         self.common_settings, self.exposures, self.key_owners = None, {}, {}
+        self.source_byte_representations = {}
+
+    def source_attributes(self, paths):
+        result = base.subprocess.run(["git", "check-attr", "--source=" + self.source, "-z", *SOURCE_ATTRIBUTES, "--", *paths],
+            cwd=self.root, capture_output=True, check=True, timeout=15)
+        fields = result.stdout.decode("utf-8").split("\0")
+        require(fields[-1] == "" and len(fields[:-1]) == 3 * len(paths) * len(SOURCE_ATTRIBUTES), "complete pinned source attributes")
+        attributes = {path: {} for path in paths}
+        for offset in range(0, len(fields) - 1, 3):
+            path, name, value = fields[offset:offset + 3]
+            require(path in attributes and name in SOURCE_ATTRIBUTES and name not in attributes[path], "unambiguous pinned source attribute")
+            attributes[path][name] = value
+        return attributes
 
     def prior_keys(self):
         super().prior_keys()
@@ -356,12 +430,18 @@ class Auditor(reversal.Auditor):
                 ("reversal_evolution", "run_reversal_evolution", "social_observer_evolution", "social_reversal",
                  "social_learning", "run_cold_donor", "run_shelter_evolution")]}.issubset(settings["code"]),
                 "scientific code manifest must include transitive training and trace helpers")
-            for path, expected in settings["code"].items():
+            for path in settings["code"]:
                 require(path.endswith(".py") and (path.startswith("seed/") or path.startswith("scripts/"))
                         and ".." not in Path(path).parts, "scientific source path")
+            attributes = self.source_attributes(list(settings["code"]))
+            for path, expected in settings["code"].items():
                 content = base.subprocess.run(["git", "show", self.source + ":" + path], cwd=self.root,
                     capture_output=True, check=True, timeout=15).stdout
-                same(hashlib.sha256(content).hexdigest(), expected, "pinned code " + path)
+                try:
+                    representation = source_hash_representation(content, expected, attributes[path])
+                except base.AuditError as error:
+                    raise base.AuditError("pinned code " + path + ": " + str(error)) from error
+                self.source_byte_representations[path] = representation
             self.common_settings = settings
         else:
             same(settings, self.common_settings, "all segments/controllers retain identical science and runtime")
@@ -601,7 +681,7 @@ class Auditor(reversal.Auditor):
 def self_check():
     """Small PRNG/arithmetic fixtures only; schedule this after the E125 decision."""
     jax, jnp = random_runtime()
-    checks = []
+    checks = [source_hash_self_check()]
     pop = 4
 
     def sample(previous, controller, informative):
@@ -719,6 +799,7 @@ def main():
             report.update(status="passed", final_evaluation_audited=True, training=[value["report"] for value in endpoints.values()],
                           panels=panels, scientific_gate=replicated_gate([panel["gate"] for panel in panels]))
         report.update(registered_source=args.source_commit, registered_code_trees=auditor.expected_trees,
+            source_byte_representations=auditor.source_byte_representations,
             limitations=["Exact random initialization, perturbations and candidate digests require the archived JAX CPU runtime/configuration.",
                 "World events and optimizer arithmetic are reconstructed; candidate fitness is not regenerated by rerunning the simulator.",
                 "Lesion masks, full recorded prefixes and boundary hashes are checked; intermediate neural updates are not independently replayed.",
