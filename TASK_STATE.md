@@ -30,4 +30,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E127 is registered and in preparation. Give the previously completed controllers the same evidence that the food rule has changed. Test which item they prefer when both colors are adjacent, then send a copy of each brain into a fresh grid to look for food. Check all three lineages of each architecture within a one-hour budget. This addresses a different question from which architecture improves more through evolution.
+E127's four-family rehearsal and independent audit passed. The owner approved a total of 100 minutes against a forecast of about 98 and a half. Run the three fresh panels sequentially. Then check every family's observations, choices, transfer outcomes and uncertainty before reporting the result. E126's formal training comparison remains stopped.

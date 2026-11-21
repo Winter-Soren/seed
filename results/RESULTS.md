@@ -23,6 +23,21 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Guided evidence and fresh-grid transfer (encounter-diagnostic-v1)
+
+E127 uses the original three E103 plastic controllers and matched E113 recurrent controllers. There is no training or fitted readout. Each independent family replays both initial rules on the same counterbalanced guided-contact script. The boundary follows eight or sixteen contacts; sixteen further contacts provide stationary or reversed feedback. Choice probes use discarded clones at zero, two, eight and sixteen post-boundary contacts. The grid readout preserves the unprobed brain in a fresh body and ordinary grid for fifty turns.
+
+All uncertainties use independent families after averaging both rule replays and, for local probes, twelve ordered color placements. S is target-food action probability minus other-color action probability. G is all-assigned first-food success in fifty turns. Y is +1 for first food, -1 for first poison and zero for no contact or death before contact; its SE retains covariance within each family. Net return is a separate whole-grid endpoint. A weak grid readout can reflect context, fresh body, search or memory effects and cannot isolate navigation alone.
+
+Development, incomplete panels and panels awaiting independent verification have no replicated scientific decision. Local reversal, transfer in the same lineages, and Hebbian contribution are separate decisions. A failed threshold means this assay did not establish that effect.
+
+| Run | Status | Split | Families completed/assigned | Commit |
+|---|---|---|---|---|
+| 20261122-041408_E127-benchmark | failed | development | 0/4 | e096042 |
+| 20261122-045153_E127-benchmark-retry1 | finished | development | 4/4 | d99bcc8 |
+
+Replicated diagnostic decisions: **undecided**; all three complete final panels are required.
+
 ## Matched from-blank reversal evolution (reversal-evolution-v1)
 
 E126 targets 200 attempted rounds in each of three plastic and three direct recurrent lineages. Both use population 128 and four base worlds replayed under both initial rules: eight actual lives per candidate. The objective is mean individual minimum late return across those rule replays. Genomes start from their original blank initializers. There is no social readout or new mechanism. Equal scores receive average ranks; all-tied attempts consume worlds and advance RNG without changing the genome, Adam moments or informative-update counter. Immutable segments preserve both counters. Development benchmarks measure throughput only.

@@ -312,6 +312,8 @@ We also checked whether skipping 103 overwritten neuron outputs could make the l
 
 Fruit flies can switch an established preference when experience contradicts it. Our next target is to demonstrate a switch in Seed and see it guide behavior in a fresh place. The architecture council chose a controlled test with the existing brains first. It identified distinct follow-ups for a creature that cannot switch locally and one that switches but fails when searching. The annelid and bee studies inform how to control body state and test transfer. [Animal experiments and architecture decision](experiments/ANIMAL_LEARNING_BENCHMARKS.md)
 
+E127's four-family laptop rehearsal passed independent verification, including 20 file hashes. All 460 software tests passed on the corrected source. Under the registered timing rule the three evaluation panels and their audit would bring total study time to 98 minutes 29 seconds, above the original 60-minute budget. The owner approved 100 minutes before any final world was opened. The three panels are released for testing. The learning result remains open until all three have been audited. [Rehearsal audit](results/diagnostics/E127-development-audit.json) · [Cost forecast](results/diagnostics/E127-cost-forecast.json)
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.

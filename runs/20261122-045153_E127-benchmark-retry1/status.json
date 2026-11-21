@@ -1,0 +1,13 @@
+{
+  "status": "finished",
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 23.280999999988126,
+  "setup_seconds": 0.42199999999138527,
+  "family_seconds": [
+    16.875,
+    0.7339999999967404,
+    4.639999999984866,
+    0.5320000000065193
+  ]
+}
