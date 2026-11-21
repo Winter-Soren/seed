@@ -20,6 +20,7 @@ def main():
     v6_gates = []
     paired_training_rows = []
     ecology_fixture_rows = []
+    cold_donor_rows = []
     paired_v2_training_rows = []
     direct_rows = []
     reversals = []
@@ -35,6 +36,33 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "cold-donor-v1":
+            split = a.get("condition_split", "")
+            expected = 256 if split == "final" else 4 if split == "development" else None
+            complete = (expected is not None and s.get("status") == "finished"
+                        and s.get("artifact_validity") == "passed"
+                        and s.get("completed_families") == s.get("expected_families") == expected)
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and type(gate.get("passed")) is bool)
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            cold_donor_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                cfg.get("source", {}).get("label", ""), str(a.get("seed", "")),
+                estimate(measurements.get("inherited", {}).get("latency", {})),
+                estimate(measurements.get("fresh", {}).get("latency", {})),
+                estimate(measurements.get("latency_improvement", {})),
+                estimate(measurements.get("inherited", {}).get("survival", {})),
+                estimate(measurements.get("fresh", {}).get("survival", {})),
+                estimate(measurements.get("survival_difference", {})), outcome, commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "ecology-lineage-v1":
             expected = s.get("expected_cohorts", len(cfg.get("schedule", [])) or "?")
             ecology_fixture_rows.append("| " + " | ".join([
@@ -177,6 +205,21 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if cold_donor_rows:
+        out += ["## Cold donor inheritance (cold-donor-v1)", "",
+                "E117 uses fixed original A genomes in the same full ecology for both splits. Each independent "
+                "family has one cold donor life and paired newborn recipient arms, with persistence off. "
+                "Restricted first-shelter-arrival latency excludes agents born inside shelter; nonarrival, "
+                "including death before a living arrival, counts as 301 steps. Latency reduction is fresh minus "
+                "inherited, and survival difference is inherited minus fresh. Estimates are means ± paired "
+                "family SE; pooled outside-born latency uses a family-cluster ratio SE. Each seed requires "
+                "latency improvement strictly above two SE and survival difference at least minus two SE. "
+                "All three final seed decisions must pass for the study gate. The four-family development "
+                "benchmark has no gate; incomplete attempts have no pooled estimates or decision. Other "
+                "registered metrics and compressed family evidence remain in each run folder.", "",
+                "| Run | Status | Split | Families completed/expected | Source | Evaluation seed | Inherited latency ± SE | "
+                "Fresh latency ± SE | Latency reduction ± SE | Inherited survival ± SE | Fresh survival ± SE | "
+                "Survival difference ± SE | Seed decision | Commit |", "|---" * 14 + "|", *cold_donor_rows, ""]
     if paired_training_rows:
         out += ["## Paired objective continuation (paired-train-v1)", "",
                 "Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched "
