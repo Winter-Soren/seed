@@ -127,8 +127,10 @@ def evaluate_family(g, keys, rule, c=seed.Cfg(), ecology=ECOLOGY):
     for arm, actual in (("inherited", inherited), ("fresh", fresh)):
         if not np.array_equal(row[arm + "_initial_sha256"], _fingerprints(actual)):
             raise ValueError("recipient initial weights disagree with the exact archive overlay")
-        if not np.array_equal(row[arm + "_birth_sha256"], _fingerprints(birth)):
-            raise ValueError("recipient birth weights disagree with its recorded developmental key")
+    # rollout's birth_W is its JIT-developed, pre-override value. The actual
+    # initial_W comes from collective_lives' eager development and can differ
+    # by rounding. Validate actual initial hashes above and paired birth hashes
+    # below, without equating these two arithmetic paths.
     validate_family(row, c)
     return row
 

@@ -1,6 +1,7 @@
 """Development-only event fixtures; held-out E117 worlds are never used here."""
 import copy
 import unittest
+from unittest.mock import patch
 
 import jax
 import numpy as np
@@ -167,6 +168,23 @@ class ColdDonorEngineTests(unittest.TestCase):
                 np.testing.assert_array_equal(row[arm + "_" + event], raw["events"][event])
             np.testing.assert_array_equal(row[arm + "_sheltered"], raw["ecology"]["sheltered"])
         np.testing.assert_array_equal(row["archive_after"], reference["lives"][0]["archive_after"])
+        # Engine birth_W precedes the lineage's initial-weight override. A
+        # paired counterfactual birth fingerprint need not equal the actual
+        # eager-developed fresh initial fingerprint, even on one machine.
+        alternate = copy.deepcopy(reference)
+        alternate_birth = ["0" * 64] * c.M
+        for arm in ("inherited", "fresh"):
+            alternate["lives"][1][arm]["weights"]["birth_W_sha256"] = alternate_birth
+        with patch.object(lineage, "collective_lives", return_value=alternate):
+            alternate_row = cold_donor.evaluate_family(genome, keys, 0, c, ecology)
+        np.testing.assert_array_equal(alternate_row["inherited_birth_sha256"], 0)
+        np.testing.assert_array_equal(alternate_row["fresh_birth_sha256"], 0)
+        np.testing.assert_array_equal(alternate_row["fresh_initial_sha256"], row["fresh_initial_sha256"])
+        # Actual initial weights must still match the reconstructed overlay.
+        alternate["lives"][1]["inherited"]["weights"]["initial_W_sha256"] = alternate_birth
+        with patch.object(lineage, "collective_lives", return_value=alternate):
+            with self.assertRaisesRegex(ValueError, "exact archive overlay"):
+                cold_donor.evaluate_family(genome, keys, 0, c, ecology)
         replay = cold_donor.evaluate_family(genome, keys, 0, c, ecology)
         for name in row:
             np.testing.assert_array_equal(row[name], replay[name], err_msg=name)
