@@ -149,6 +149,13 @@ class SocialBeliefTests(unittest.TestCase):
         self.assertFalse(bool(row["birth_parent_readout_enabled"]))
         unassisted = seed.rollout(seed.biology_prior(c), keys[2], keys[3], 0, c,
                                   record=True, diagnostics=True, _return_weights=True)
+        birth = belief._birth_observer(flat, keys[3], c)
+        normal_birth = unassisted["_weight_state"]["birth_W"][0]
+        np.testing.assert_array_equal(birth["initial"]["W"], normal_birth)
+        np.testing.assert_array_equal(birth["mask"], unassisted["_weight_state"]["mask"][0])
+        np.testing.assert_array_equal(row["observed_birth_sha256"], social._hash(normal_birth))
+        for name in ("W", "x", "Wp"):
+            np.testing.assert_array_equal(birth["final"][name], birth["initial"][name])
         for name in social.EVENTS:
             np.testing.assert_array_equal(row["birth_parent_" + name], unassisted["events"][name])
         for name, source_name in (("position", "pos"), ("grid", "grid"), ("energy", "energy")):

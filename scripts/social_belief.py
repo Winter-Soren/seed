@@ -7,7 +7,7 @@ import jax
 import jax.numpy as jnp
 import numpy as np
 
-from scripts import cold_donor, shelter_evolution, social_channel, social_learning as social
+from scripts import cold_donor, social_channel, social_learning as social
 from seed import seed
 
 
@@ -59,12 +59,10 @@ def _base(flat, keys, index, c):
 
 
 def _birth_observer(flat, pupil_key, c):
-    g = shelter_evolution._unravel(c)(flat)
-    weights, mask = seed.develop(g, jax.random.split(pupil_key, 1)[0], c)
-    _, inputs, outputs, neurons, _ = seed.dims(c)
-    initial = dict(W=weights, x=jnp.zeros(neurons), Wp=jnp.zeros((inputs, c.H)))
-    return dict(initial=initial, final=initial, mask=mask,
-                trace=dict(motor=jnp.zeros((0, outputs - 1)), denergy=jnp.zeros(0)))
+    # Reuse the compiled observation birth with zero neural ticks. Eager develop
+    # rounds some float32 weights differently from watch and normal rollout.
+    empty = np.zeros((0, seed.dims(c)[1]), np.float32)
+    return social.watch(flat, pupil_key, empty, c)
 
 
 def first_contact(initial_grid, grids, positions, energies, alive_before, c=CFG):
