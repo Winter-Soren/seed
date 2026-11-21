@@ -1,6 +1,6 @@
 # Current state
 
-Updated 20 November 2026. Follow PLAN.md and AGENTS.md.
+Updated 21 November 2026. Follow PLAN.md and AGENTS.md.
 
 ## What we know
 
@@ -23,11 +23,11 @@ The E115 gate failed. The original A genomes remain our stationary robustness be
 The interrupted evaluation is preserved. Its registered recovery finished every panel.
 Independent reconstruction confirmed every gate component and all overlapping raw arrays.
 Software verification passed all 156 tests locally and in hosted CI before training.
-No training or evaluation is active.
+E116 implementation and verification are in progress.
 
 ## What comes next
 
 The council proposes testing the size of evolutionary updates from the original genomes.
-The owner decides whether to approve the E116 proposal after the failed E115 gate.
-Keep new training and evaluation worlds separate and measure against both controls.
+The owner directed us to proceed. Reuse A0, A1 and A2 in both E116 arms.
+Keep new training and evaluation worlds separate and measure against both controls. Develop the two optional world pressures separately from E116.
 One laptop job at a time. Check both drives and available memory before each launch.

@@ -1,6 +1,6 @@
 # E116 proposal: test a smaller evolution step during continuation
 
-**Proposed only; awaiting the owner's decision. No implementation or run is authorized by this file.** E115's registered gate remains FAIL. [PLAN.md](../PLAN.md) requires an owner decision at this failed gate now that the owner is present. Approval would cover only the comparison and limits below; exact commands and source hashes must then be preregistered in the LOG and verified code committed before training.
+**Approved for execution on 21 November 2026.** The owner directed the team to continue in response to this proposal. The lab notebook records the commands, input fingerprints and criteria. E115 retains its failed gate.
 
 ## Why this experiment
 

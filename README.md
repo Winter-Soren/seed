@@ -55,7 +55,7 @@ This experiment, **E115**, passed none of its six required score comparisons. Tw
 
 ## What comes next
 
-**E116 is awaiting approval.** It would start from the original brains and test whether taking a smaller step when updating the genome between generations helps. A new brain would have to beat both its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
+**E116 is underway.** It starts from the original brains and test whether taking a smaller step when updating the genome between generations helps. A new brain would have to beat both its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
 
 ## Try it locally
 
