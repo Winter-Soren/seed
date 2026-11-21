@@ -67,9 +67,23 @@ E116 trained each original genome for 20 more generations at two update sizes. T
 
 ![Return differences for the three lineages, with two paired standard errors and survival differences](results/figures/e116-paired-gate.svg)
 
+## A world with shelter and memory across lives
+
+Creatures in the new world can see nearby shelter. Moving costs energy. Halfway through a life the weather turns cold, and a creature that ends its turn outside loses extra energy. In a controlled check, staying outdoors left a creature with 0.750 energy and moving into shelter left it with 0.875.
+
+When a cohort's life ends, Seed saves what its members learned on connections from senses to actions. A newborn develops its own wiring. It receives earlier changes only on connections it actually has. An agent that dies early contributes its last living weights. The saved table can be loaded in a later local session.
+
+One software check reused the original A0 genome across **three cohorts of two newborns**, with matched fresh-weight controls. Both newborns in each later cohort received changed starting weights. In the cold world, one of two creatures reached shelter in each group, and all survived. This verifies the transfer mechanism. Measuring a survival or navigation benefit requires independent lineages on held-out worlds. [Run and inspect the example](experiments/ECOLOGY_API.md) · [Saved observations](runs/20261121-062635_ecology-transfer-smoke-a0/summary.json) · [Proposed comparisons](experiments/ECOLOGY_TRANSFER.md)
+
+### Persistence after a setback
+
+The optional `--persistence` trait gives “never giving up” a specific meaning in this world. A cold creature outside shelter can remember the direction of a shelter it saw for up to four moves after it disappears from view. If two successive visible checks show no progress, it increases the chance of trying another move. Reaching shelter, warmth or an expired memory clears the goal. The normal controller still chooses each action and the creature still pays its energy costs.
+
+In a matched check with the original A0 genome, newborns with shared memory spent four agent-turns pursuing an out-of-sight shelter in the cold world. One of two reached shelter with the trait on, and one of two with it off. This is a programmed behavior. Whether it improves survival, or whether evolution can discover it unaided, remains open. [Trait enabled](runs/20261121-074534_ecology-persistence-a0-on/summary.json) · [Trait disabled](runs/20261121-074522_ecology-persistence-a0-off/summary.json)
+
 ## What comes next
 
-The next world in development gives creatures a reason to move beyond finding food. They can see nearby shelter, moving costs energy, and cold weather makes staying outside costly. We want to find out whether a newborn can use what earlier creatures learned before they died. We will compare newborns with matching genomes and wiring, give one group shared experience, and measure how soon they reach shelter and how long they survive. The food experiments above establish the starting point for that question.
+The next proposed experiment gives a donor cohort a cold season of its own. Its successors then face an unfamiliar cold world. Matching their genomes, birth wiring and starting conditions lets us test whether earlier creatures' lessons help a newborn reach shelter sooner or survive longer. [Read the proposed controls](experiments/ECOLOGY_TRANSFER.md)
 
 ## Try it locally
 

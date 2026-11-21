@@ -1,0 +1,113 @@
+{
+  "protocol": "lineage-v1",
+  "mode": "collective",
+  "config": {
+    "G": 6,
+    "M": 2,
+    "T": 12,
+    "R": 1,
+    "n_items": 4,
+    "H": 3,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "genome": {
+    "conn": {
+      "array": "array0000",
+      "shape": [
+        5,
+        5
+      ],
+      "dtype": "float32"
+    },
+    "hebb": {
+      "array": "array0001",
+      "shape": [
+        5,
+        5,
+        4
+      ],
+      "dtype": "float32"
+    },
+    "log_eta": {
+      "array": "array0002",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "log_plr": {
+      "array": "array0003",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "mod": {
+      "array": "array0004",
+      "shape": [
+        3
+      ],
+      "dtype": "float32"
+    },
+    "wscale": {
+      "array": "array0005",
+      "shape": [
+        5,
+        5
+      ],
+      "dtype": "float32"
+    }
+  },
+  "lives": [],
+  "completed_lives": 3,
+  "final_archive": {
+    "array": "array0006",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "archive_state": {
+    "protocol": "lineage-v1",
+    "state_version": 1,
+    "method": "sensor-motor-mean-delta-v1",
+    "genome_sha256": "2901439c688d1e750ea2498c390c1ca684f49a238dfabf4fb5190d69f11ccdd3",
+    "layout": {
+      "sensors": 49,
+      "motors": 6,
+      "hidden": 3,
+      "hidden_types": 3,
+      "view_radius": 1,
+      "weight_bound": 3.0,
+      "ecology_version": "ecology-v1"
+    },
+    "archive": {
+      "array": "array0007",
+      "shape": [
+        6,
+        49
+      ],
+      "dtype": "float32"
+    },
+    "next_life": 3,
+    "used_world_keys": {
+      "array": "array0008",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    },
+    "used_development_keys": {
+      "array": "array0009",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    }
+  }
+}

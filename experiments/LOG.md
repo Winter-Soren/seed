@@ -1968,3 +1968,48 @@ Decision: smaller steps improved continuation relative to larger steps at this b
     python tools/audit_e116.py --source-commit 861405d7651421abd216fec28683be54b0c4edf5 --evaluation runs/20261121-072924_E116-v6
 
 The final evaluator's minimum available commit was 20.0147 GiB. Minimum free space was 17.6232 GiB on C and 46.2203 GiB on D. Peak private memory for its owned process tree was 1.037 GiB, and the supervisor exited successfully.
+
+### Engineering verification registered · 21 November 2026 · Successive newborn cohorts
+
+The owner requested a perceivable environment and reusable experience across deaths. Verify the new ecological and inheritance mechanisms on a development fixture with three cohorts of two newborns, twelve turns each, random seed 41 and the original A0 rule genome. The fixed schedule adds a movement cost of 0.01, then an outdoor cold cost of 0.02 per exposed turn in the second half. The visible shelter moves between worlds. All three cohorts have the same sensor layout. This is a software check with zero evolutionary generations.
+
+From the clean development checkout, using the project's Python interpreter, run exactly once:
+
+    python -X utf8 scripts/run_experiment.py --name ecology-transfer-smoke-a0 --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+
+Pass the engineering check only if the fixture finishes within its 120-second process budget, the source genome fingerprint matches its original, three paired cohort records can be reconstructed from disk, birth keys differ between cohorts, shared and fresh arms use matched starts apart from inherited weights, and recomputing the shared archive from donors reproduces every transition. Preserve any incomplete attempt. Check deaths and the shelter action separately on controlled software fixtures. A difference in fitness on this one fixture cannot establish a scientific result. E116 uses its own unchanged default world.
+
+### Engineering verification completed · 21 November 2026 · Successive newborn cohorts
+
+Source 6d8a378278fa8e90829792441f2a8780eedf97d9. The original A0 development fixture finished three cohorts with two newly developed agents per arm and twelve turns per cohort. The process took 12.6436896 seconds under its 120-second guard. The 25 focused ecology, lineage and runner software checks passed after correcting a scalar conversion in an unjitted fixture and preserving signed zeros on untouched newborn weights. The new summary-table test also passed. A controlled cold-turn test left 0.750 energy after staying exposed and 0.875 after moving into visible shelter, from the same initial position and energy.
+
+The independent read-back verified the original A0 bytes, all 13 run files and the three portable archive checkpoints. The table started empty. Donors updated 294 entries in each cohort. Shared versus fresh initial weight signatures differed for 0/2, 2/2 and 2/2 newborns across the three cohorts. Both arms learned during their lives. All assigned agents survived. In the cold world both groups started outdoors and one of two agents reached shelter in each group. The shared arm spent two agent-turns sheltered, the fresh arm one. The three pairs of food-minus-poison scores were 1.5/1.5, 0.0/-0.5 and 1.0/0.5 (shared/fresh). This one seeded engineering fixture has no between-lineage standard error or scientific performance decision. Dead-donor contribution and split-session continuation were independently exercised by software tests. Real deaths occurred only in controlled tests, not in this A0 fixture.
+
+Decision: the engineering fixture passes. It shows that an inherited record changes later newborns' initial weights, and that the archive is portable. Whether that change helps on unseen worlds, accumulates useful lessons, or supports a harder task remains open. E116 continues on the original world. Future scientific comparisons are proposed in experiments/ECOLOGY_TRANSFER.md.
+
+Read-only verification from the repository root:
+
+    python tools/audit_ecology_fixture.py --root . --run runs/20261121-062635_ecology-transfer-smoke-a0 --source-commit 6d8a378278fa8e90829792441f2a8780eedf97d9 --guard results/diagnostics/ecology-fixture-guard.jsonl
+
+### Engineering verification registered · 21 November 2026 · Persistence after a setback
+
+The owner requested a “never giving up” trait. This opt-in behavior keeps a locally observed shelter goal briefly after a creature loses sight of it, and changes action preferences after progress stalls. The animal's energy, lifetime and ability to rest still apply. This is a programmed trait, with no change to the E116 controller, scientific comparisons or their criteria.
+
+Verify the normal development CLI in two separate, immutable folders. Use the same source commit, original A0 bytes, development keys, two-agent cohorts and twelve-turn schedule. Allow at most 120 seconds per software check. The only treatment difference is the persistence flag. The shared and fresh memory groups are retained in both. Exact commands from the clean development checkout:
+
+    python -X utf8 scripts/run_experiment.py --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --name ecology-persistence-a0-off --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+    python -X utf8 scripts/run_experiment.py --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --name ecology-persistence-a0-on --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --persistence
+
+The engineering check passes if both runs record three complete cohorts, starts and random keys match between on/off, the default reproduces the earlier A0 fixture's event trajectories, and the enabled setting and its per-agent activity can be read back from the saved output. Scripted local-observation tests must separately exercise cue loss, expiry, stalled progress, a changed action preference, arrival, and inactive/dead agents. Summarize attempts and realized actions separately. Report zero events wherever they occur. Never select another world to make the trait look successful, or use these two runs to infer a performance benefit.
+
+### Engineering verification completed · 21 November 2026 · Persistence after a setback
+
+The disabled and enabled A0 runs used clean source 2db4fe6d3b96f6a09624689d636222df6fedc4a6. Their supervisors finished in 12.193 and 11.974 seconds respectively. The focused persistence, lineage and runner suites passed 7/7, 2/2 and 7/7 tests. Scripted cases exercised temporary cue loss, stale memory, visible stalls, actual versus attempted switches, termination at shelter and inactivity after death.
+
+Read-back of the three disabled cohorts matched the original A0 fixture's raw events, ecology arrays and weight signatures. Enabled runs preserved the same starting genome and random keys. In the final cold cohort the shared-memory group pursued a remembered shelter for four agent-turns and the fresh-weight group for one. Both groups reached shelter with one of their two newborns, both with the trait enabled and with it disabled. All assigned creatures survived. Across the three enabled cohorts the shared-memory group had one tactic attempt and one actual action change at that attempt. The fresh-weight group had two attempts and one action change. The groups' first-cohort experiences are paired and identical. A changed sampled action after an attempt does not by itself establish that the bias caused it.
+
+Decision: the development check passed. The trait changes action preferences using only locally available cues, and the recorded behavior can be inspected. The underlying genome was fixed. These are one-seed engineering observations with no estimable between-lineage error or scientific performance claim. A future scientific study would need fresh independent lineages, matched cold-experienced donors and identical recipient worlds.
+
+Read-only reproduction:
+
+    python tools/audit_persistence_pair.py --root . --off runs/20261121-074522_ecology-persistence-a0-off --on runs/20261121-074534_ecology-persistence-a0-on --off-guard results/diagnostics/persistence-off-guard.jsonl --on-guard results/diagnostics/persistence-on-guard.jsonl --source-commit 2db4fe6d3b96f6a09624689d636222df6fedc4a6

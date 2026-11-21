@@ -13,13 +13,13 @@ The smaller steps missed the required improvement over the starting brains in al
 ## What is running
 
 All E116 training and held-out evaluation are finished. The independent audit reconstructed every comparison from the saved events.
-In local development, three newborn cohorts ran in worlds with visible shelter, cold exposure and a cost to moving. Earlier experience changed later newborns' starting weights.
+Three newborn cohorts ran in worlds with visible shelter, cold exposure and a cost to moving. Earlier experience changed later newborns' starting weights.
 One of two newborns reached shelter in each group in the cold world. All agents survived this fixture. A separate test checks that a creature that dies contributes only its last living weights.
-Software verification is in progress for the optional persistence trait.
+The optional persistence trait passed its local checks. In the cold world, the shared-memory arm pursued an out-of-sight shelter for four agent-turns. One of two creatures reached shelter with the trait enabled and one of two with it disabled. All survived.
 
 ## What is next
 
 Keep the three original A genomes as the reference learners.
-Report the E116 decision before starting another scientific comparison.
+The E116 decision has been reported. No new scientific comparison is running.
 The proposed shelter experiment gives earlier creatures cold-weather experience, then tests whether their independently wired successors benefit on unseen cold worlds.
 Keep one laptop job at a time and check both drives and memory before each launch.
