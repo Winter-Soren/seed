@@ -46,6 +46,7 @@ E116 compares control learning rate 0.1 with candidate 0.02, both using paired i
 | 20261121-063859_E116-candidate-s0 | finished | paired-min | final | 2000 | 20/20 | 64 | 4 | 0.1 | 0.02 | deferred | 5dc60cb |
 | 20261121-064706_E116-control-s1 | finished | paired-min | final | 2001 | 20/20 | 64 | 4 | 0.1 | 0.1 | deferred | bea3fe0 |
 | 20261121-065520_E116-candidate-s1 | finished | paired-min | final | 2001 | 20/20 | 64 | 4 | 0.1 | 0.02 | deferred | 8018206 |
+| 20261121-071247_E116-control-s2 | finished | paired-min | final | 2002 | 20/20 | 64 | 4 | 0.1 | 0.1 | deferred | fa28652 |
 
 ## EVAL v5 paired objective comparison
 
