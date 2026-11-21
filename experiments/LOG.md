@@ -2404,3 +2404,23 @@ Maximum 60 seconds for this process. All development work on this candidate shar
 #### E126 engineering decision · 22 November 2026 · Reject the reduced-row CPU operation
 
 The [development receipt](../results/benchmarks/E126/prefix-sensor-row-check.json) shows both original plastic matrix products produced 157 output rows and the proposed products produced 54. In the first production-shaped synthetic fixture, 154 bytes differed in the float32 neural activation array of shape (128, 1, 157). The first difference was at byte offset 416. The full synaptic weights, predictor weights and surprise output matched byte for byte. The process stopped at this first discrepancy as registered. No direct fixture, training, full-generation timing or final evaluation followed. The guarded process took 18.3198586 seconds, including startup. E126 had then consumed 8,435.8107378 seconds of actual and conservatively charged work. A throughput gain was never demonstrated. The existing engine and six saved lineages remain the reference. The council recommends a distinct encounter-matched diagnostic on the previously completed E103/E113 controllers, without using the partial E126 genomes or its reserved worlds.
+
+### E127 preregistration · 22 November 2026 · Can matched encounters teach the new food rule?
+
+The owner asked to continue experiments after E126 reached its laptop cost limit. The council chose one separate diagnostic using the six completed E103/E113 genomes. A controlled encounter removes differences in who finds which item. Does evidence that the rule has changed reverse a creature’s preference between adjacent items, and does that change help when it must forage without assistance? Use the [frozen E127 protocol](E127_PROTOCOL.md) for the presentation, interventions, causal contrasts, decision thresholds and limitations. E126 stays stopped and undecided. No change to the older worlds, genomes or registered tests.
+
+Each architecture has three lineage panels. Each final panel uses 128 independent families; both rule assignments, both feedback histories, the twelve item placements and the Hebbian intervention are paired within family. Give pre-boundary experiences and sixteen additional contacts after the hidden boundary. Measure the primary local preference and first-food grid transfer after sixteen contacts. Report all five action probabilities and all assigned grid outcomes. Replication requires the same two or more of three lineages within an architecture to meet the registered criteria. Keep inadequate exposure, unchanged preference, failed transfer, failed intervention and inconclusive comparisons visible in the report. No search for a better snapshot or a more successful subgroup after outcomes are seen.
+
+Run from clean, committed scientific code through the tracked entry point. Exact PowerShell payloads from the project root:
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','encounter-diagnostic-v1','--generations',0)
+& $python $entry @common --name E127-benchmark --condition-split development --seed 2026120600 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E127-A0 --condition-split final --seed 2026120601 --eval-worlds 128 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E127-A1 --condition-split final --seed 2026120602 --eval-worlds 128 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --name E127-A2 --condition-split final --seed 2026120603 --eval-worlds 128 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+The runner pins each paired E113 direct controller from E125’s verified source registry. The 3,600-second total E127 allowance includes tests, hosted verification, development, the panels and their independent audit. Reserve 1,800 seconds for the hosted suite until its actual wall time is known. Sequence all heavy jobs. Use the measured development cost and storage to review feasibility before exposing any final families, keep room for independent verification and retain the original daily and disk limits. If an integrity or resource check prevents full completion, preserve the records and leave the behavioral result open. Benchmark results never decide gate thresholds or select controllers.

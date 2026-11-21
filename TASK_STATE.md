@@ -26,8 +26,8 @@ E125 changed which color was food once during a pupil's life. In the late window
 
 ## What is running
 
-Training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
+E126 training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-Keep all six generation-50 checkpoints. The proposed laptop speedup changed neural activations in its first comparison and was rejected. The council recommends a separate diagnostic with older, completed genomes. Give each creature the same evidence that the food rule has changed, then compare its choice when both items are adjacent with its behavior when it must find food on its own. This addresses a different question from which architecture improves more through evolution.
+E127 is registered and in preparation. Give the previously completed controllers the same evidence that the food rule has changed. Test which item they prefer when both colors are adjacent, then send a copy of each brain into a fresh grid to look for food. Check all three lineages of each architecture within a one-hour budget. This addresses a different question from which architecture improves more through evolution.
