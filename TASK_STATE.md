@@ -12,8 +12,8 @@ E118 let all three original genomes mutate for ten generations with the persiste
 
 ## What is running
 
-Both experiments are finished. The README shows the genome design, archived parameter changes and the ten-generation trajectories.
+E119 is registered. The owner asked to continue all three saved E118 genomes on the laptop and give each new generation an archive of the previous generation's learned weight changes. Local changes stay off GitHub until the owner lifts the VPN hold.
 
 ## What is next
 
-Retain the three original genomes and preserve all descendants. E118 failed its registered gate. A matched scrambled donor archive is a candidate control for identifying what helped in E117. It has not been registered or run. The next research experiment awaits a decision after this report.
+Benchmark one full-size update, then train ten more updates per lineage. Compare the final descendant with its immediate parent, its original E118 founder, and versions of itself with earlier or empty memory, using fresh paired worlds. Record uncertainty and survival alongside shelter time.
