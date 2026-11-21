@@ -17,6 +17,7 @@ def main():
     v5_rows = []
     v5_gates = []
     paired_training_rows = []
+    ecology_fixture_rows = []
     direct_rows = []
     reversals = []
     structural_rows = []
@@ -31,6 +32,13 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "ecology-lineage-v1":
+            expected = s.get("expected_cohorts", len(cfg.get("schedule", [])) or "?")
+            ecology_fixture_rows.append("| " + " | ".join([
+                d.name, s.get("status", ""), f"{s.get('completed_cohorts', '?')}/{expected}",
+                s.get("condition_split", cfg.get("condition_split", a.get("condition_split", ""))), commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "paired-train-v1":
             paired_training_rows.append("| " + " | ".join([
                 d.name, s.get("status", ""), a.get("objective", ""), a.get("condition_split", "final"),
@@ -150,6 +158,13 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if ecology_fixture_rows:
+        out += ["## Ecology/lineage development fixtures", "",
+                "Engineering exercises of a fixed cohort schedule and saved memory. Completion records mechanism "
+                "execution, not competence, a scientific gate, or an EVAL v1 score. Partial attempts retain their "
+                "completed cohort evidence; paired observations remain in each run folder.", "",
+                "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
+                *ecology_fixture_rows, ""]
     if paired_training_rows:
         out += ["## Paired objective continuation (paired-train-v1)", "",
                 "Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched "

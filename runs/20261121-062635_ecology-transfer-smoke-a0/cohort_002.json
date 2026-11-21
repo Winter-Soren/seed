@@ -1,0 +1,377 @@
+{
+  "life": 2,
+  "agent_ids": {
+    "array": "array0000",
+    "shape": [
+      2,
+      2
+    ],
+    "dtype": "int64"
+  },
+  "world_key": {
+    "array": "array0001",
+    "shape": [
+      2
+    ],
+    "dtype": "uint32"
+  },
+  "development_key": {
+    "array": "array0002",
+    "shape": [
+      2
+    ],
+    "dtype": "uint32"
+  },
+  "rule": 0,
+  "ecology": {
+    "version": "ecology-v1",
+    "movement_energy_cost": 0.01,
+    "seasonal_energy_cost": 0.02
+  },
+  "inherited": {
+    "counts": {
+      "array": "array0003",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "ecology": {
+      "energy_lost": {
+        "array": "array0004",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "initial_sheltered": {
+        "array": "array0005",
+        "shape": [
+          2
+        ],
+        "dtype": "bool"
+      },
+      "shelter": {
+        "array": "array0006",
+        "shape": [
+          6,
+          6
+        ],
+        "dtype": "bool"
+      },
+      "sheltered": {
+        "array": "array0007",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "events": {
+      "alive_after": {
+        "array": "array0008",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "alive_before": {
+        "array": "array0009",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "food": {
+        "array": "array0010",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "poison": {
+        "array": "array0011",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "fitness": {
+      "array": "array0012",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_first": {
+      "array": "array0013",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_last": {
+      "array": "array0014",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "survived": {
+      "array": "array0015",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "weights": {
+      "birth_W_sha256": [
+        "4568e231a17e6de7edb676c199351b3879b4a67d71d2eab1f341b8759ca614f8",
+        "5ef52e457280f2e697799d2eda2ece42f18ca22c74fed6eff04c07fecbfe171f"
+      ],
+      "initial_W_sha256": [
+        "6d395aea4868438c5baf884494d44c383cd7523ff6b2e8d686f43765f813ad0b",
+        "4aa16884712b2f89d6b5f217623975c9120d606a43c1ee3f1a7c41ba98bacef7"
+      ],
+      "terminal_W_sha256": [
+        "4ee685701019f231987c322324181111d55f4a58efd5b7d1f1a04981e502c3a1",
+        "dedb7cfd5429c41157c36c9e778cf1a777f2bcbf38917c0aba3bf88088d05942"
+      ],
+      "changed_connections": {
+        "array": "array0016",
+        "shape": [
+          2
+        ],
+        "dtype": "int64"
+      },
+      "mean_abs_change": {
+        "array": "array0017",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      },
+      "final_alive": {
+        "array": "array0018",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      }
+    }
+  },
+  "fresh": {
+    "counts": {
+      "array": "array0019",
+      "shape": [
+        2,
+        2
+      ],
+      "dtype": "float32"
+    },
+    "ecology": {
+      "energy_lost": {
+        "array": "array0020",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "initial_sheltered": {
+        "array": "array0021",
+        "shape": [
+          2
+        ],
+        "dtype": "bool"
+      },
+      "shelter": {
+        "array": "array0022",
+        "shape": [
+          6,
+          6
+        ],
+        "dtype": "bool"
+      },
+      "sheltered": {
+        "array": "array0023",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "events": {
+      "alive_after": {
+        "array": "array0024",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "alive_before": {
+        "array": "array0025",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "float32"
+      },
+      "food": {
+        "array": "array0026",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      },
+      "poison": {
+        "array": "array0027",
+        "shape": [
+          12,
+          2
+        ],
+        "dtype": "bool"
+      }
+    },
+    "fitness": {
+      "array": "array0028",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_first": {
+      "array": "array0029",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "surprise_last": {
+      "array": "array0030",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "survived": {
+      "array": "array0031",
+      "shape": [],
+      "dtype": "float32"
+    },
+    "weights": {
+      "birth_W_sha256": [
+        "4568e231a17e6de7edb676c199351b3879b4a67d71d2eab1f341b8759ca614f8",
+        "5ef52e457280f2e697799d2eda2ece42f18ca22c74fed6eff04c07fecbfe171f"
+      ],
+      "initial_W_sha256": [
+        "0e012992ef5a3f4bd3359fdfddbc609d38e8b1471065f835efc39e019d4a036d",
+        "0b79ea8c8b904fc319e5c1757b139c0d0d511359e6a4b703d3875ee7fb05ba63"
+      ],
+      "terminal_W_sha256": [
+        "73751c551b20873a08eefc45b588e71c52877fd8467f27ebf23bdef1aff894d9",
+        "1769d18910b0af931f5435ef3e73a4d10f35bef942e74584b0add32eb9fb9014"
+      ],
+      "changed_connections": {
+        "array": "array0032",
+        "shape": [
+          2
+        ],
+        "dtype": "int64"
+      },
+      "mean_abs_change": {
+        "array": "array0033",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      },
+      "final_alive": {
+        "array": "array0034",
+        "shape": [
+          2
+        ],
+        "dtype": "float32"
+      }
+    }
+  },
+  "archive_before": {
+    "array": "array0035",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_delta": {
+    "array": "array0036",
+    "shape": [
+      2,
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_mask": {
+    "array": "array0037",
+    "shape": [
+      2,
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "donor_counts": {
+    "array": "array0038",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "archive_after": {
+    "array": "array0039",
+    "shape": [
+      6,
+      49
+    ],
+    "dtype": "float32"
+  },
+  "archive_state": {
+    "protocol": "lineage-v1",
+    "state_version": 1,
+    "method": "sensor-motor-mean-delta-v1",
+    "genome_sha256": "2901439c688d1e750ea2498c390c1ca684f49a238dfabf4fb5190d69f11ccdd3",
+    "layout": {
+      "sensors": 49,
+      "motors": 6,
+      "hidden": 3,
+      "hidden_types": 3,
+      "view_radius": 1,
+      "weight_bound": 3.0,
+      "ecology_version": "ecology-v1"
+    },
+    "archive": {
+      "array": "array0040",
+      "shape": [
+        6,
+        49
+      ],
+      "dtype": "float32"
+    },
+    "next_life": 3,
+    "used_world_keys": {
+      "array": "array0041",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    },
+    "used_development_keys": {
+      "array": "array0042",
+      "shape": [
+        3,
+        2
+      ],
+      "dtype": "uint32"
+    }
+  }
+}

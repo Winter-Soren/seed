@@ -1,0 +1,94 @@
+{
+  "args": {
+    "name": "ecology-transfer-smoke-a0",
+    "start": "file:genome_start.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 41,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "ecology-lineage-v1",
+    "memory_condition": "shared",
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": true,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "6d8a378278fa8e90829792441f2a8780eedf97d9",
+    "branch": "development/ecology-lineage",
+    "dirty": false
+  },
+  "protocol": "ecology-lineage-v1",
+  "condition_split": "development",
+  "cfg": {
+    "G": 6,
+    "M": 2,
+    "T": 12,
+    "R": 1,
+    "n_items": 4,
+    "H": 3,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "scientific_result": false,
+  "purpose": "development mechanism fixture; not a registered evaluation",
+  "memory_condition": "shared",
+  "selected_trace": "inherited",
+  "paired_traces_retained": true,
+  "source": {
+    "kind": "file",
+    "filename": "genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "genome_size": 155,
+  "max_seconds": 120,
+  "schedule_independent_of_competence": true,
+  "schedule": [
+    {
+      "cohort": 0,
+      "phase": "base",
+      "rule": 0,
+      "ecology": {
+        "version": "ecology-v1",
+        "movement_energy_cost": 0.0,
+        "seasonal_energy_cost": 0.0
+      }
+    },
+    {
+      "cohort": 1,
+      "phase": "costly_movement",
+      "rule": 0,
+      "ecology": {
+        "version": "ecology-v1",
+        "movement_energy_cost": 0.01,
+        "seasonal_energy_cost": 0.0
+      }
+    },
+    {
+      "cohort": 2,
+      "phase": "cold_with_shelter",
+      "rule": 0,
+      "ecology": {
+        "version": "ecology-v1",
+        "movement_energy_cost": 0.01,
+        "seasonal_energy_cost": 0.02
+      }
+    }
+  ]
+}

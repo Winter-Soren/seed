@@ -23,6 +23,14 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Ecology/lineage development fixtures
+
+Engineering exercises of a fixed cohort schedule and saved memory. Completion records mechanism execution, not competence, a scientific gate, or an EVAL v1 score. Partial attempts retain their completed cohort evidence; paired observations remain in each run folder.
+
+| Run | Status | Cohorts completed/expected | Split | Commit |
+|---|---|---|---|---|
+| 20261121-062635_ecology-transfer-smoke-a0 | finished | 3/3 | development | 6d8a378 |
+
 ## Paired objective continuation (paired-train-v1)
 
 Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched training keys. Paired mean averages both rule returns; paired minimum takes each individual's minimum before averaging. Training completion saves the genome and defers evaluation to the separate EVAL v5 aggregate. Training population variation is not held-out uncertainty; no scientific fitness estimate or SE is reported here.

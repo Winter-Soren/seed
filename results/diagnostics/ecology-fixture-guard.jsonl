@@ -1,0 +1,4 @@
+{"event":"preflight","fullLimitSeconds":120,"engineeringSmoke":true,"freeD":49636429824,"commit":"6d8a378278fa8e90829792441f2a8780eedf97d9","availablePhysicalBytes":9277796352,"time":"2026-11-21T06:26:33.5156691+05:30","arguments":["-X","utf8","scripts/run_experiment.py","--name","ecology-transfer-smoke-a0","--eval-protocol","ecology-lineage-v1","--quick","--condition-split","development","--seed","41","--generations","0","--memory-condition","shared","--start","file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy"],"availableCommitBytes":11460497408,"freeC":18869002240}
+{"pid":15004,"time":"2026-11-21T06:26:33.5491343+05:30","event":"started"}
+{"freeD":49636425728,"availableCommitBytes":11446484992,"freeC":18869002240,"privateBytes":763793408,"event":"sample","seconds":8.3509878}
+{"wallSeconds":12.6436896,"exitCode":0,"time":"2026-11-21T06:26:39.3692136+05:30","event":"finished"}

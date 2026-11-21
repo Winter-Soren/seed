@@ -31,6 +31,14 @@ This experiment, **E115**, passed none of its six required score comparisons. Tw
 
 **E116 is awaiting approval.** It would start from the original brains and test whether making smaller changes to the genome each generation helps. A new brain would have to beat both its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
 
+## A world with shelter and memory across lives
+
+Creatures in the new world can see nearby shelter. Moving costs energy. Halfway through a life the weather turns cold, and a creature that ends its turn outside loses extra energy. In a controlled check, staying outdoors left a creature with 0.750 energy and moving into shelter left it with 0.875.
+
+When a cohort's life ends, Seed saves what its members learned on connections from senses to actions. A newborn develops its own wiring. It receives earlier changes only on connections it actually has. An agent that dies early contributes its last living weights. The saved table can be loaded in a later local session.
+
+One software check reused the original A0 genome across **three cohorts of two newborns**, with matched fresh-weight controls. Both newborns in each later cohort received changed starting weights. In the cold world, one of two creatures reached shelter in each group, and all survived. This verifies the transfer mechanism. Measuring a survival or navigation benefit requires independent lineages on held-out worlds. [Run and inspect the example](experiments/ECOLOGY_API.md) · [Saved observations](runs/20261121-062635_ecology-transfer-smoke-a0/summary.json) · [Proposed comparisons](experiments/ECOLOGY_TRANSFER.md)
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.
