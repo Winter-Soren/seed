@@ -35,6 +35,7 @@ def main():
     reversal_training_rows = []
     reversal_endpoint_rows = []
     reversal_window_rows = []
+    encounter_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -62,6 +63,12 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "encounter-diagnostic-v1":
+            encounter_status_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), a.get("condition_split", ""),
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "reversal-evolution-v1":
             split, stage = a.get("condition_split", ""), cfg.get("stage", "")
             if stage == "training":
@@ -578,6 +585,77 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if encounter_status_rows:
+        from scripts import run_encounter_diagnostic
+        study = run_encounter_diagnostic.build_comparison(ROOT)
+        out += ["## Guided evidence and fresh-grid transfer (encounter-diagnostic-v1)", "",
+                "E127 uses the original three E103 plastic controllers and matched E113 recurrent controllers. "
+                "There is no training or fitted readout. Each independent family replays both initial rules on "
+                "the same counterbalanced guided-contact script. The boundary follows eight or sixteen contacts; "
+                "sixteen further contacts provide stationary or reversed feedback. Choice probes use discarded "
+                "clones at zero, two, eight and sixteen post-boundary contacts. The grid readout preserves the "
+                "unprobed brain in a fresh body and ordinary grid for fifty turns.", "",
+                "All uncertainties use independent families after averaging both rule replays and, for local "
+                "probes, twelve ordered color placements. S is target-food action probability minus other-color "
+                "action probability. G is all-assigned first-food success in fifty turns. Y is +1 for first food, "
+                "-1 for first poison and zero for no contact or death before contact; its SE retains covariance "
+                "within each family. Net return is a separate whole-grid endpoint. A weak grid readout can reflect "
+                "context, fresh body, search or memory effects and cannot isolate navigation alone.", "",
+                "Development, incomplete panels and panels awaiting independent verification have no replicated "
+                "scientific decision. Local reversal, transfer in the same lineages, and Hebbian contribution "
+                "are separate decisions. A failed threshold means this assay did not establish that effect.", "",
+                "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|",
+                *encounter_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated diagnostic decisions: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E127-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimates = lambda value: (f"undefined (n={value.get('n', '?')})" if value.get("mean") is None or value.get("se") is None
+                                       else f"{value['mean']:.6f} ± {value['se']:.6f} (n={value.get('n', '?')})")
+            decisions, primary, probes, grids, lesions, subgroups = [], [], [], [], [], []
+            for architecture, effects in study["replicated_gates"].items():
+                for effect, decision in effects.items():
+                    decisions.append("| " + " | ".join([architecture, effect, f"{decision['count']}/3",
+                        ", ".join(map(str, decision["seeds"])) or "none", "PASS" if decision["passed"] else "FAIL"]) + " |")
+            for panel in study["panels"]:
+                label, measures = str(panel["index"]), panel["measurements"]
+                for architecture, values in measures["architectures"].items():
+                    primary.append("| " + " | ".join([label, architecture,
+                        *[estimates(values["local"][name]) for name in ("pre_old", "post_target", "reversal_minus_stationary")],
+                        estimates(values["transfer"]["reversal_minus_stationary"]), estimates(values["transfer"]["food_minus_poison"]),
+                        "PASS" if values["local_pass"] else "FAIL", "PASS" if values["transfer_pass"] else "FAIL"]) + " |")
+                lesions.append("| " + " | ".join([label, estimates(measures["hebbian"]["local_difference"]),
+                    estimates(measures["hebbian"]["transfer_difference"]),
+                    "PASS" if measures["hebbian"]["hebbian_local_pass"] else "FAIL"]) + " |")
+                for rule, architectures in measures.get("by_initial_rule", {}).items():
+                    for architecture, values in architectures.items():
+                        subgroups.append("| " + " | ".join([label, rule, architecture,
+                            *[estimates(values[name]) for name in ("S", "delta_S", "G", "delta_G")]]) + " |")
+                for arm, values in measures["arms"].items():
+                    for contacts, reading in zip((0, 2, 8, 16), values["local"]):
+                        for metric, value in reading.items():
+                            if isinstance(value, dict) and {"mean", "se", "n"} <= set(value):
+                                probes.append("| " + " | ".join([label, arm, str(contacts), metric, estimates(value)]) + " |")
+                    grids.append("| " + " | ".join([label, arm, *[estimates(values["grid"][name]) for name in
+                        ("first_food", "first_poison", "no_contact", "food_minus_poison", "latency", "net_return", "survival")]]) + " |")
+            out += ["Independent three-panel verification passed. Decisions use the frozen thresholds:", "",
+                "| Architecture | Effect | Qualifying lineages | Seed indices | Replicated decision |", "|---" * 5 + "|", *decisions, "",
+                "| Seed | Architecture | Old-food preference before reversal ± SE | S after sixteen contacts ± SE | "
+                "Reversed minus stationary S ± paired SE | Reversed minus stationary G ± paired SE | Reversal Y ± SE | "
+                "Local decision | Transfer decision |", "|---" * 9 + "|", *primary, "",
+                "| Seed | Intact minus frozen S ± paired SE | Intact minus frozen G ± paired SE | Local Hebbian decision |",
+                "|---" * 4 + "|", *lesions, "",
+                "| Seed | Arm | Post-boundary contacts | Choice statistic | Mean ± family SE (denominator) |",
+                "|---" * 5 + "|", *probes, "",
+                "| Seed | Arm | G first food ± SE | First poison ± SE | No contact ± SE | Y ± SE | "
+                "Latency ± SE | Net return ± SE | Survival ± SE |", "|---" * 9 + "|", *grids, ""]
+            if subgroups:
+                out += ["Initial-rule contrasts are descriptive and do not create extra independent replications:", "",
+                        "| Seed | Initial rule | Architecture | S after reversed feedback ± SE | "
+                        "Reversed minus stationary S ± paired SE | G after reversed feedback ± SE | "
+                        "Reversed minus stationary G ± paired SE |", "|---" * 7 + "|", *subgroups, ""]
     if reversal_training_rows or reversal_endpoint_rows:
         from scripts.run_reversal_evolution import build_comparison
         study = build_comparison(ROOT)

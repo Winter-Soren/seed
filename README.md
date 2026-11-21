@@ -310,6 +310,8 @@ The independent audit reconstructed all 300 optimizer updates and checked 480 fi
 
 We also checked whether skipping 103 overwritten neuron outputs could make the laptop fast enough to finish. The first development check found that the shorter matrix operation changed neural activations. We rejected the optimization before timing it or resuming training. The registered E127 diagnostic asks a narrower question about the previously completed genomes. After identical experiences with the changed rule, can an agent choose the new food when it is next to both colors, and can it use that knowledge when it must search? [Numerical check](results/benchmarks/E126/prefix-sensor-row-check.json) · [E127 protocol](experiments/E127_PROTOCOL.md)
 
+Fruit flies can switch an established preference when experience contradicts it. Our next target is to demonstrate a switch in Seed and see it guide behavior in a fresh place. The architecture council chose a controlled test with the existing brains first. It identified distinct follow-ups for a creature that cannot switch locally and one that switches but fails when searching. The annelid and bee studies inform how to control body state and test transfer. [Animal experiments and architecture decision](experiments/ANIMAL_LEARNING_BENCHMARKS.md)
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.
