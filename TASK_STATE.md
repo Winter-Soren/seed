@@ -4,22 +4,16 @@ Updated 21 November 2026. Follow PLAN.md and AGENTS.md.
 
 ## What we know
 
-Three evolved A genomes improve their food choices during a stationary lifetime. From the first to twentieth meal, accuracy rose by 27, 21 and 25 percentage points, each with about two points of standard error among agents that reached both meals.
-They struggled after a change in the food rule. A fixed-weight recurrent baseline won the original average score in all three seeds.
-Selecting for the worse of two food rules in E115 produced lower return than all three unchanged starting genomes.
-E116 compared smaller and larger evolutionary steps for another twenty generations. Smaller steps beat larger ones by 1.30, 0.88 and 1.15 points, with paired standard errors of 0.42, 0.41 and 0.41.
-The smaller steps missed the required improvement over the starting brains in all three seeds. All three survival safeguards passed. The E116 improvement gate failed.
+All three original A genomes improved their food choices within a stationary lifetime. Among creatures reaching both meals, first-to-twentieth meal accuracy rose by 27, 21 and 25 percentage points, with standard errors near two points. They struggled after a food-rule change. A fixed-weight recurrent baseline won the original average score in all three seeds.
+
+E116 found smaller evolutionary steps beat larger ones, but neither justified replacing the original genomes. E117 tested a different kind of inheritance. Newborns given donors' acquired connection changes reached shelter 38.4, 44.6 and 37.3 turns sooner than fresh-start siblings, with paired standard errors of 5.3, 5.4 and 5.4 turns. Survival increased in all three lineages. Most arrivals happened before cold, leaving the specific content of the archive open.
+
+E118 let all three original genomes mutate for ten generations with the persistence trait active. Their descendants saved −6.6, −8.5 and +5.0 turns versus their parents, with paired standard errors of 6.0, 6.4 and 6.9 turns. All met the survival safeguard and none met the shelter improvement threshold. All ten updates per lineage and all held-out results passed independent reconstruction.
 
 ## What is running
 
-All E116 training and held-out evaluation are finished. The independent audit reconstructed every comparison from the saved events.
-Three newborn cohorts ran in worlds with visible shelter, cold exposure and a cost to moving. Earlier experience changed later newborns' starting weights.
-One of two newborns reached shelter in each group in the cold world. All agents survived this fixture. A separate test checks that a creature that dies contributes only its last living weights.
-The optional persistence trait passed its local checks. In the cold world, the shared-memory arm pursued an out-of-sight shelter for four agent-turns. One of two creatures reached shelter with the trait enabled and one of two with it disabled. All survived.
+Both experiments are finished. The README shows the genome design, archived parameter changes and the ten-generation trajectories.
 
 ## What is next
 
-Keep the three original A genomes as the reference learners.
-E117 passed in all three lineages. Inherited donor experience reduced the time to shelter by 38.4, 44.6 and 37.3 turns, each with a standard error near five turns. Survival rose in all three. An independent audit verified all 768 families, including the 75 recovered from the interrupted third panel. Shelter-specific content remains untested.
-The owner requested active genome evolution. E118 is registered before reading E117's results. It will evolve each original genome for ten generations with shelter, cold and persistence, then compare the final descendant with its parent on fresh paired worlds. An improved genome must reach shelter sooner and meet the survival safeguard.
-Keep one laptop job at a time and check both drives and memory before each launch.
+Retain the three original genomes and preserve all descendants. E118 failed its registered gate. A matched scrambled donor archive is a candidate control for identifying what helped in E117. It has not been registered or run. The next research experiment awaits a decision after this report.

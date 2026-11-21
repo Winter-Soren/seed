@@ -1,6 +1,6 @@
 # Seed
 
-Seed is a small simulation about learning from experience. We evolve simple brains for creatures that have to find food and avoid poison. Then we watch what each creature learns during its life and how it reacts when the rules change.
+Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection)
 
 ## What the creatures do
 
@@ -135,9 +135,21 @@ Times are measured from birth to the first turn ending alive in shelter. Outside
 
 The comparison establishes that an earlier cohort's experience helped its successors on new worlds. Most first arrivals in the inherited groups came before the cold started (650, 690 and 702). Better foraging or exploration could explain some of the gain. Identifying what information the archive carried requires a separate experiment.
 
-## What comes next
+## Ten generations of shelter selection
 
-E118 lets the 155-number genomes evolve. Each original lineage gets ten generations of mutation and selection for reaching shelter alive, with the persistence trait available to every creature. Each final descendant faces its original parent on 128 fresh matched worlds. We measure both shelter arrival and survival. [Experiment registrations](experiments/LOG.md)
+**All three genomes evolved. None of the three descendants cleared the required improvement over its parent.** For each lineage we mutated 16 candidate genomes per generation and scored them on four fresh training worlds. After ten generations, the final descendant and its original parent each faced 128 new, matched worlds. Every creature had the same shelter cues, cold costs and programmed persistence trait. Every life started with fresh weights.
+
+![Two charts showing all eleven saved genome states for A0, A1 and A2. Each lineage moved away from its parent, while its sensor-to-output wiring probability stayed above 96%.](results/figures/e118-genome-evolution.svg)
+
+| Lineage | Parent, turns to shelter | Descendant, turns to shelter | Turns saved by evolution | Survival change, percentage points |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | 142.0 ± 5.8 | 148.6 ± 6.0 | −6.6 ± 6.0 | 0.0 ± 0.9 |
+| A1 | 157.7 ± 5.9 | 166.2 ± 6.1 | −8.5 ± 6.4 | −0.6 ± 1.2 |
+| A2 | 147.3 ± 5.6 | 142.4 ± 5.8 | +5.0 ± 6.9 | +0.4 ± 1.1 |
+
+Positive turns saved means the descendant reached shelter sooner. The ± values are one world-level standard error, paired for the changes. Deaths and missed arrivals count as 301 turns. All three lineages met the survival safeguard. The audit reconstructed all 30 selection updates from the candidates and their training scores. It also checked every held-out result against the saved events. [Independent audit](results/diagnostics/E118-independent-audit.json) · [Results index](results/RESULTS.md) · [Figure builder](tools/build_e118_genome_figure.py)
+
+The original parents remain the reference genomes. This ten-generation budget produced no verified gain in shelter finding. The strongest replicated improvement so far came from giving newborns donor experience. A separate comparison using a scrambled donor archive of matched size could test whether its specific contents account for that benefit. No further training is running.
 
 ## Try it locally
 

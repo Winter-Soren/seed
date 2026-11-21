@@ -33,6 +33,17 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Shelter evolution (shelter-evolution-v1)
+
+E118 evolves each original A genome for ten generations and compares its final descendant with its parent on 128 paired unseen worlds. Both use the same shelter ecology and persistence trait. Births outside shelter contribute to the capped first living arrival time. Death and nonarrival count as 301 turns. The reported reduction is parent minus descendant, with a family-cluster standard error. The survival difference is descendant minus parent among all assigned creatures. Each seed passes if latency improves by more than two paired standard errors and survival falls by at most two paired standard errors. All three seeds must pass. The development benchmark and incomplete runs have no scientific decision. Genome changes describe mutation and selection; the paired test measures their outcome.
+
+| Run | Status | Split | Generations | Families | Changed parameters | Parent latency ± SE | Descendant latency ± SE | Latency reduction ± SE | Survival difference ± SE | Seed decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-182049_E118-benchmark | finished | development | 1/1 | 4/4 | 155 | 125.142857 ± 32.673684 | 147.928571 ± 53.104055 | -22.785714 ± 39.446857 | 0.000000 ± 0.102062 | not applicable | cd08b59 |
+| 20261121-182237_E118-A0 | finished | final | 10/10 | 128/128 | 155 | 141.989648 ± 5.816913 | 148.614907 ± 5.956660 | -6.625259 ± 6.049099 | 0.000000 ± 0.009197 | FAIL | cd08b59 |
+| 20261121-182511_E118-A1 | finished | final | 10/10 | 128/128 | 155 | 157.704403 ± 5.869992 | 166.186583 ± 6.141528 | -8.482180 ± 6.382815 | -0.005859 ± 0.012234 | FAIL | cd08b59 |
+| 20261121-182806_E118-A2 | finished | final | 10/10 | 128/128 | 155 | 147.342553 ± 5.648423 | 142.353191 ± 5.773327 | 4.989362 ± 6.901403 | 0.003906 ± 0.010734 | FAIL | cd08b59 |
+
 ## Cold donor inheritance (cold-donor-v1)
 
 E117 uses fixed original A genomes in the same full ecology for both splits. Each independent family has one cold donor life and paired newborn recipient arms, with persistence off. Restricted first-shelter-arrival latency excludes agents born inside shelter; nonarrival, including death before a living arrival, counts as 301 steps. Latency reduction is fresh minus inherited, and survival difference is inherited minus fresh. Estimates are means ± paired family SE; pooled outside-born latency uses a family-cluster ratio SE. Each seed requires latency improvement strictly above two SE and survival difference at least minus two SE. All three final seed decisions must pass for the study gate. The four-family development benchmark has no gate; incomplete attempts have no pooled estimates or decision. Other registered metrics and compressed family evidence remain in each run folder.

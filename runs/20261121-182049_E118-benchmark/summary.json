@@ -1,0 +1,114 @@
+{
+  "status": "finished",
+  "generation": 1,
+  "expected_generations": 1,
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 31.578000000008615,
+  "protocol": "shelter-evolution-v1",
+  "condition_split": "development",
+  "source_label": "A0",
+  "training_seed": 43,
+  "evaluation_seed": 44,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "generations": [
+    {
+      "path": "generations/generation_0000.npz",
+      "sha256": "d154fc1a198b86f3891e0bb31fb4d9e0b0feb051cc0b6059c7d27225ba1fb27e"
+    },
+    {
+      "path": "generations/generation_0001.npz",
+      "sha256": "9c8fa76b3b2b3da22707199cf00988621d873f5901dcd45c7115354b87286cde"
+    }
+  ],
+  "raw_files": [
+    {
+      "path": "families/family_0000.npz",
+      "sha256": "14e784326f6f0cb708a0fe5dd148a1fbad4c1895a25833f7d6c5def96870b5e5"
+    },
+    {
+      "path": "families/family_0001.npz",
+      "sha256": "8b32187b11caf28f2284d2b061f93688c7a63653ae01c751b9b5a89bdd0a53c8"
+    },
+    {
+      "path": "families/family_0002.npz",
+      "sha256": "71e1265157ce594e221cba3dc53714d4db70360f662c519fee0a4f5ca8c01eb7"
+    },
+    {
+      "path": "families/family_0003.npz",
+      "sha256": "4e519f2aaf136855f4691e843dcd73f1060a973af7b8d8053cf8f5a3e3196e86"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "agents_per_family": 4,
+    "assigned_agents": 16,
+    "outside_born_agents": 14,
+    "rule_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "parent": {
+      "latency": {
+        "mean": 125.14285714285714,
+        "se": 32.67368396382438
+      },
+      "survival": {
+        "mean": 0.0625,
+        "se": 0.0625
+      },
+      "fitness": {
+        "mean": 6.0625,
+        "se": 1.288470508005519
+      },
+      "living_arrivals": 10,
+      "before_cold_arrivals": 9,
+      "cold_sheltered_fraction": {
+        "mean": 0.044583333333333336,
+        "se": 0.025068194028526506
+      },
+      "deaths": 15,
+      "birth_connections": {
+        "mean": 3850.5625,
+        "se": 5.297773706945211
+      }
+    },
+    "descendant": {
+      "latency": {
+        "mean": 147.92857142857142,
+        "se": 53.10405453522327
+      },
+      "survival": {
+        "mean": 0.0625,
+        "se": 0.0625
+      },
+      "fitness": {
+        "mean": 4.5625,
+        "se": 2.197003167195411
+      },
+      "living_arrivals": 9,
+      "before_cold_arrivals": 8,
+      "cold_sheltered_fraction": {
+        "mean": 0.045,
+        "se": 0.01968501968502953
+      },
+      "deaths": 15,
+      "birth_connections": {
+        "mean": 3832.625,
+        "se": 5.659155561271192
+      }
+    },
+    "latency_improvement": {
+      "mean": -22.785714285714285,
+      "se": 39.44685654376314
+    },
+    "survival_difference": {
+      "mean": 0.0,
+      "se": 0.10206207261596575
+    }
+  },
+  "changed_parameters": 155,
+  "l2_distance_from_parent": 0.24899788200855255
+}
