@@ -1,0 +1,1527 @@
+{
+  "protocol": "social-channel-v1",
+  "mode": "final",
+  "development_audit": {
+    "run": "runs/20261121-220258_E121-benchmark",
+    "source_commit": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+    "measurements": {
+      "families": 4,
+      "rule_counts": {
+        "0": 2,
+        "1": 2
+      },
+      "track": {
+        "arms": {
+          "observed": {
+            "accuracy": {
+              "mean": 0.875,
+              "se": 0.125
+            },
+            "coverage": {
+              "mean": 0.75,
+              "se": 0.25
+            },
+            "no_vote_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "tie_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "votes": {
+              "mean": 19.25,
+              "se": 6.992555565266059
+            },
+            "identifiable_steps": {
+              "mean": 104.0,
+              "se": 35.06185011281255
+            }
+          },
+          "yoked": {
+            "accuracy": {
+              "mean": 0.375,
+              "se": 0.23935677693908453
+            },
+            "coverage": {
+              "mean": 0.75,
+              "se": 0.25
+            },
+            "no_vote_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "tie_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "votes": {
+              "mean": 19.25,
+              "se": 6.992555565266059
+            },
+            "identifiable_steps": {
+              "mean": 104.0,
+              "se": 35.06185011281255
+            }
+          },
+          "no_demo": {
+            "accuracy": {
+              "mean": 0.5,
+              "se": 0.0
+            },
+            "coverage": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "no_vote_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "tie_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "votes": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "identifiable_steps": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          },
+          "scene_only": {
+            "accuracy": {
+              "mean": 0.5,
+              "se": 0.0
+            },
+            "coverage": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "no_vote_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "tie_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "votes": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "identifiable_steps": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          }
+        },
+        "chance_difference": {
+          "mean": 0.375,
+          "se": 0.125
+        },
+        "comparisons": {
+          "yoked": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "no_demo": {
+            "mean": 0.375,
+            "se": 0.125
+          },
+          "scene_only": {
+            "mean": 0.375,
+            "se": 0.125
+          }
+        }
+      },
+      "scene": {
+        "arms": {
+          "observed": {
+            "accuracy": {
+              "mean": 0.875,
+              "se": 0.125
+            },
+            "coverage": {
+              "mean": 0.75,
+              "se": 0.25
+            },
+            "no_vote_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "tie_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "votes": {
+              "mean": 17.75,
+              "se": 6.329494450586082
+            },
+            "identifiable_steps": {
+              "mean": 135.0,
+              "se": 6.867799259345505
+            }
+          },
+          "yoked": {
+            "accuracy": {
+              "mean": 0.375,
+              "se": 0.23935677693908453
+            },
+            "coverage": {
+              "mean": 0.75,
+              "se": 0.25
+            },
+            "no_vote_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "tie_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "votes": {
+              "mean": 17.75,
+              "se": 6.329494450586082
+            },
+            "identifiable_steps": {
+              "mean": 135.0,
+              "se": 6.867799259345505
+            }
+          },
+          "no_demo": {
+            "accuracy": {
+              "mean": 0.5,
+              "se": 0.0
+            },
+            "coverage": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "no_vote_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "tie_fraction": {
+              "mean": 1.0,
+              "se": 0.0
+            },
+            "votes": {
+              "mean": 0.0,
+              "se": 0.0
+            },
+            "identifiable_steps": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          },
+          "scene_only": {
+            "accuracy": {
+              "mean": 0.875,
+              "se": 0.125
+            },
+            "coverage": {
+              "mean": 0.75,
+              "se": 0.25
+            },
+            "no_vote_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "tie_fraction": {
+              "mean": 0.25,
+              "se": 0.25
+            },
+            "votes": {
+              "mean": 17.75,
+              "se": 6.329494450586082
+            },
+            "identifiable_steps": {
+              "mean": 135.0,
+              "se": 6.867799259345505
+            }
+          }
+        },
+        "chance_difference": {
+          "mean": 0.375,
+          "se": 0.125
+        },
+        "comparisons": {
+          "yoked": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "no_demo": {
+            "mean": 0.375,
+            "se": 0.125
+          },
+          "scene_only": {
+            "mean": 0.0,
+            "se": 0.0
+          }
+        }
+      }
+    },
+    "demonstration": {
+      "visible_frames": 450,
+      "teacher_alive_at_demo_start": 3
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/20261121-220410_E121-A0",
+      "source_commit": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+      "measurements": {
+        "families": 128,
+        "rule_counts": {
+          "0": 64,
+          "1": 64
+        },
+        "track": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.84375,
+                "se": 0.023365621407947353
+              },
+              "coverage": {
+                "mean": 0.7734375,
+                "se": 0.03714537662583591
+              },
+              "no_vote_fraction": {
+                "mean": 0.2265625,
+                "se": 0.03714537662583591
+              },
+              "tie_fraction": {
+                "mean": 0.25,
+                "se": 0.038423663968391995
+              },
+              "votes": {
+                "mean": 13.984375,
+                "se": 0.8754908897900165
+              },
+              "identifiable_steps": {
+                "mean": 104.234375,
+                "se": 5.216905490850636
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.038423663968391995
+              },
+              "coverage": {
+                "mean": 0.7734375,
+                "se": 0.03714537662583591
+              },
+              "no_vote_fraction": {
+                "mean": 0.2265625,
+                "se": 0.03714537662583591
+              },
+              "tie_fraction": {
+                "mean": 0.25,
+                "se": 0.038423663968391995
+              },
+              "votes": {
+                "mean": 13.984375,
+                "se": 0.8754908897900165
+              },
+              "identifiable_steps": {
+                "mean": 104.234375,
+                "se": 5.216905490850636
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.34375,
+            "se": 0.023365621407947353
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.34375,
+              "se": 0.04497032595540567
+            },
+            "no_demo": {
+              "mean": 0.34375,
+              "se": 0.023365621407947353
+            },
+            "scene_only": {
+              "mean": 0.34375,
+              "se": 0.023365621407947353
+            }
+          }
+        },
+        "scene": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.83984375,
+                "se": 0.02476115839866145
+              },
+              "coverage": {
+                "mean": 0.78125,
+                "se": 0.03668319762764659
+              },
+              "no_vote_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "tie_fraction": {
+                "mean": 0.2265625,
+                "se": 0.03714537662583591
+              },
+              "votes": {
+                "mean": 13.125,
+                "se": 0.8340384156261375
+              },
+              "identifiable_steps": {
+                "mean": 134.6796875,
+                "se": 1.5350615863978236
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.50390625,
+                "se": 0.03901787559355524
+              },
+              "coverage": {
+                "mean": 0.78125,
+                "se": 0.03668319762764659
+              },
+              "no_vote_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "tie_fraction": {
+                "mean": 0.2265625,
+                "se": 0.03714537662583591
+              },
+              "votes": {
+                "mean": 13.125,
+                "se": 0.8340384156261375
+              },
+              "identifiable_steps": {
+                "mean": 134.6796875,
+                "se": 1.5350615863978236
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.83984375,
+                "se": 0.02476115839866145
+              },
+              "coverage": {
+                "mean": 0.78125,
+                "se": 0.03668319762764659
+              },
+              "no_vote_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "tie_fraction": {
+                "mean": 0.2265625,
+                "se": 0.03714537662583591
+              },
+              "votes": {
+                "mean": 13.125,
+                "se": 0.8340384156261375
+              },
+              "identifiable_steps": {
+                "mean": 134.6796875,
+                "se": 1.5350615863978236
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.33984375,
+            "se": 0.02476115839866145
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.3359375,
+              "se": 0.04610485277665559
+            },
+            "no_demo": {
+              "mean": 0.33984375,
+              "se": 0.02476115839866145
+            },
+            "scene_only": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          }
+        }
+      },
+      "demonstration": {
+        "visible_frames": 14711,
+        "teacher_alive_at_demo_start": 101
+      },
+      "gate": {
+        "passed": true,
+        "coverage_passed": true,
+        "accuracy_passed": true,
+        "chance_passed": true,
+        "yoked_passed": true
+      }
+    },
+    {
+      "run": "runs/20261121-220626_E121-A1",
+      "source_commit": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+      "measurements": {
+        "families": 128,
+        "rule_counts": {
+          "0": 64,
+          "1": 64
+        },
+        "track": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.84375,
+                "se": 0.02464686616612797
+              },
+              "coverage": {
+                "mean": 0.8125,
+                "se": 0.03463462265730888
+              },
+              "no_vote_fraction": {
+                "mean": 0.1875,
+                "se": 0.03463462265730888
+              },
+              "tie_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "votes": {
+                "mean": 14.3203125,
+                "se": 0.9361988078888321
+              },
+              "identifiable_steps": {
+                "mean": 108.1875,
+                "se": 4.879285290981396
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.484375,
+                "se": 0.03919147016458323
+              },
+              "coverage": {
+                "mean": 0.8125,
+                "se": 0.03463462265730888
+              },
+              "no_vote_fraction": {
+                "mean": 0.1875,
+                "se": 0.03463462265730888
+              },
+              "tie_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "votes": {
+                "mean": 14.3203125,
+                "se": 0.9361988078888321
+              },
+              "identifiable_steps": {
+                "mean": 108.1875,
+                "se": 4.879285290981396
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.34375,
+            "se": 0.02464686616612797
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.359375,
+              "se": 0.04537460955125822
+            },
+            "no_demo": {
+              "mean": 0.34375,
+              "se": 0.02464686616612797
+            },
+            "scene_only": {
+              "mean": 0.34375,
+              "se": 0.02464686616612797
+            }
+          }
+        },
+        "scene": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.8359375,
+                "se": 0.02548096341979991
+              },
+              "coverage": {
+                "mean": 0.8125,
+                "se": 0.03463462265730888
+              },
+              "no_vote_fraction": {
+                "mean": 0.1875,
+                "se": 0.03463462265730888
+              },
+              "tie_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "votes": {
+                "mean": 14.4765625,
+                "se": 1.3714595096046365
+              },
+              "identifiable_steps": {
+                "mean": 128.5703125,
+                "se": 2.3999334491303452
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.4921875,
+                "se": 0.03920985984425226
+              },
+              "coverage": {
+                "mean": 0.8125,
+                "se": 0.03463462265730888
+              },
+              "no_vote_fraction": {
+                "mean": 0.1875,
+                "se": 0.03463462265730888
+              },
+              "tie_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "votes": {
+                "mean": 14.4765625,
+                "se": 1.3714595096046365
+              },
+              "identifiable_steps": {
+                "mean": 128.5703125,
+                "se": 2.3999334491303452
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.8359375,
+                "se": 0.02548096341979991
+              },
+              "coverage": {
+                "mean": 0.8125,
+                "se": 0.03463462265730888
+              },
+              "no_vote_fraction": {
+                "mean": 0.1875,
+                "se": 0.03463462265730888
+              },
+              "tie_fraction": {
+                "mean": 0.21875,
+                "se": 0.03668319762764659
+              },
+              "votes": {
+                "mean": 14.4765625,
+                "se": 1.3714595096046365
+              },
+              "identifiable_steps": {
+                "mean": 128.5703125,
+                "se": 2.3999334491303452
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.3359375,
+            "se": 0.02548096341979991
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.34375,
+              "se": 0.04631804953361514
+            },
+            "no_demo": {
+              "mean": 0.3359375,
+              "se": 0.02548096341979991
+            },
+            "scene_only": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          }
+        }
+      },
+      "demonstration": {
+        "visible_frames": 15928,
+        "teacher_alive_at_demo_start": 109
+      },
+      "gate": {
+        "passed": true,
+        "coverage_passed": true,
+        "accuracy_passed": true,
+        "chance_passed": true,
+        "yoked_passed": true
+      }
+    },
+    {
+      "run": "runs/20261121-220747_E121-A2",
+      "source_commit": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+      "measurements": {
+        "families": 128,
+        "rule_counts": {
+          "0": 64,
+          "1": 64
+        },
+        "track": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.8984375,
+                "se": 0.019497386982962252
+              },
+              "coverage": {
+                "mean": 0.84375,
+                "se": 0.03221922171672519
+              },
+              "no_vote_fraction": {
+                "mean": 0.15625,
+                "se": 0.03221922171672519
+              },
+              "tie_fraction": {
+                "mean": 0.171875,
+                "se": 0.03347745561491821
+              },
+              "votes": {
+                "mean": 14.6953125,
+                "se": 0.9072758308729332
+              },
+              "identifiable_steps": {
+                "mean": 117.2734375,
+                "se": 4.483575599119572
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.46875,
+                "se": 0.040279993226547454
+              },
+              "coverage": {
+                "mean": 0.84375,
+                "se": 0.03221922171672519
+              },
+              "no_vote_fraction": {
+                "mean": 0.15625,
+                "se": 0.03221922171672519
+              },
+              "tie_fraction": {
+                "mean": 0.171875,
+                "se": 0.03347745561491821
+              },
+              "votes": {
+                "mean": 14.6953125,
+                "se": 0.9072758308729332
+              },
+              "identifiable_steps": {
+                "mean": 117.2734375,
+                "se": 4.483575599119572
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.3984375,
+            "se": 0.019497386982962252
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.4296875,
+              "se": 0.0453057115468865
+            },
+            "no_demo": {
+              "mean": 0.3984375,
+              "se": 0.019497386982962252
+            },
+            "scene_only": {
+              "mean": 0.3984375,
+              "se": 0.019497386982962252
+            }
+          }
+        },
+        "scene": {
+          "arms": {
+            "observed": {
+              "accuracy": {
+                "mean": 0.87890625,
+                "se": 0.022695247119571216
+              },
+              "coverage": {
+                "mean": 0.8515625,
+                "se": 0.0315484639796987
+              },
+              "no_vote_fraction": {
+                "mean": 0.1484375,
+                "se": 0.0315484639796987
+              },
+              "tie_fraction": {
+                "mean": 0.1640625,
+                "se": 0.032861675748836264
+              },
+              "votes": {
+                "mean": 13.6796875,
+                "se": 0.8675819977691448
+              },
+              "identifiable_steps": {
+                "mean": 132.625,
+                "se": 1.8234380113133437
+              }
+            },
+            "yoked": {
+              "accuracy": {
+                "mean": 0.45703125,
+                "se": 0.040385744495456115
+              },
+              "coverage": {
+                "mean": 0.8515625,
+                "se": 0.0315484639796987
+              },
+              "no_vote_fraction": {
+                "mean": 0.1484375,
+                "se": 0.0315484639796987
+              },
+              "tie_fraction": {
+                "mean": 0.1640625,
+                "se": 0.032861675748836264
+              },
+              "votes": {
+                "mean": 13.6796875,
+                "se": 0.8675819977691448
+              },
+              "identifiable_steps": {
+                "mean": 132.625,
+                "se": 1.8234380113133437
+              }
+            },
+            "no_demo": {
+              "accuracy": {
+                "mean": 0.5,
+                "se": 0.0
+              },
+              "coverage": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "no_vote_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "tie_fraction": {
+                "mean": 1.0,
+                "se": 0.0
+              },
+              "votes": {
+                "mean": 0.0,
+                "se": 0.0
+              },
+              "identifiable_steps": {
+                "mean": 0.0,
+                "se": 0.0
+              }
+            },
+            "scene_only": {
+              "accuracy": {
+                "mean": 0.87890625,
+                "se": 0.022695247119571216
+              },
+              "coverage": {
+                "mean": 0.8515625,
+                "se": 0.0315484639796987
+              },
+              "no_vote_fraction": {
+                "mean": 0.1484375,
+                "se": 0.0315484639796987
+              },
+              "tie_fraction": {
+                "mean": 0.1640625,
+                "se": 0.032861675748836264
+              },
+              "votes": {
+                "mean": 13.6796875,
+                "se": 0.8675819977691448
+              },
+              "identifiable_steps": {
+                "mean": 132.625,
+                "se": 1.8234380113133437
+              }
+            }
+          },
+          "chance_difference": {
+            "mean": 0.37890625,
+            "se": 0.022695247119571216
+          },
+          "comparisons": {
+            "yoked": {
+              "mean": 0.421875,
+              "se": 0.045204825571184985
+            },
+            "no_demo": {
+              "mean": 0.37890625,
+              "se": 0.022695247119571216
+            },
+            "scene_only": {
+              "mean": 0.0,
+              "se": 0.0
+            }
+          }
+        }
+      },
+      "demonstration": {
+        "visible_frames": 16321,
+        "teacher_alive_at_demo_start": 112
+      },
+      "gate": {
+        "passed": true,
+        "coverage_passed": true,
+        "accuracy_passed": true,
+        "chance_passed": true,
+        "yoked_passed": true
+      }
+    }
+  ],
+  "status": "passed",
+  "registered_source": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+  "registered_code_trees": {
+    "seed": "ce1ccdced01546301aefc6b6d0f4520761f23bca",
+    "scripts": "11f7488cab5592c5b1af67eb724d4e3988664e79"
+  },
+  "final_evaluation_audited": true,
+  "limitations": [
+    "The audit reconstructs public frames from saved teacher traces and decodes only those frames.",
+    "Teacher neural dynamics and random-key generation are not replayed.",
+    "Half-credit abstentions stay in the denominator for every score and control comparison.",
+    "The gate concerns these fixed readers of the stimulus. Agents' use of observation is measured separately.",
+    "Failure of these two readers cannot rule out every possible decoder."
+  ],
+  "scientific_gate_passed": true,
+  "checked_file_sha256": {
+    "runs/20261121-220410_E121-A0/status.json": "59d5ea8530bbf70dfa93295a03887abfafd1a7161b56d87a55907e6a297d803a",
+    "runs/20261121-220626_E121-A1/status.json": "12c3fcde2980b205b017cc70afa5295882e38370413ef28e3c2251a220f36c83",
+    "runs/20261121-220747_E121-A2/status.json": "b3c27e69ab6157af12c2e46ef2e2d0269f8915849162322afc889ab39bba24ba",
+    "runs/20261121-215143_E120-benchmark/metrics.jsonl": "8c326edf83ef42ab978498c5e8c9475f2fb9ef64a1c1d926e621260cbb26aebc",
+    "runs/20261121-215328_E120-A0/metrics.jsonl": "1816afbe77c9ffa01c748784ac45882f41f2da9de61fe8ec84cdf87ead41a764",
+    "runs/20261121-215420_E120-A1/metrics.jsonl": "eea39ff6a2f67f706e5bd9911326ca3301de1a4a7941a3c31442157cb4bf9a81",
+    "runs/20261121-215547_E120-A2/metrics.jsonl": "33ef21ac75f410d34536e645b41519a0af19a51e74f4d0fcc58e94add5abcccb",
+    "runs/20261121-220258_E121-benchmark/status.json": "f5a5a80c199ea1d358ecaac6c51193daddd15667622e2df014c860568d68d5e8",
+    "runs/20261121-220258_E121-benchmark/config.json": "14dd350b075e664d6027d566fa4ce8632f4f55a8f24f0f3f25c4eba539e6905b",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-220258_E121-benchmark/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-220258_E121-benchmark/summary.json": "ff6f03fd10f62b79f4926ddd518d280711c2d1289b21e426b60a9a0c5bdd3fbd",
+    "runs/20261121-220258_E121-benchmark/metrics.jsonl": "af6de7de1c349bd236e6d79827c81e222cc156e7e470a8577f3c16fe5111010e",
+    "runs/20261121-220258_E121-benchmark/families/family_0000.npz": "9ed6cafeddb2d47d6dca8a2a7cc459fcda829eff0a9138f61c932bdff504b717",
+    "runs/20261121-220258_E121-benchmark/families/family_0001.npz": "5d9d5009b1861d70932760ef4c100f0d961b24a72ddbdd7b8e40816297a3af43",
+    "runs/20261121-220258_E121-benchmark/families/family_0002.npz": "1a3fd1f63c059f74cfa1c31310056faa95fb062bf3c6d53f241e344f59df81e5",
+    "runs/20261121-220258_E121-benchmark/families/family_0003.npz": "8a8a99c47524a906a02f978bc1a805166a522d29fb30b611ce2ec6203cdc227d",
+    "runs/20261121-220410_E121-A0/config.json": "b2d6038c42b85002f7e64cd13bb0305de922a85a4d22a2de5f4b1cc2ee32c935",
+    "runs/20261121-220410_E121-A0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-220410_E121-A0/summary.json": "3b9f41cc7fb78ec2bf09f9bec4b3de947720392f4224169b812728ab2bb0498c",
+    "runs/20261121-220410_E121-A0/metrics.jsonl": "0dff31fd412b57a701facf82fcdd97d4aa3df3096ccc801ce104c41aa4a274de",
+    "runs/20261121-220410_E121-A0/families/family_0000.npz": "3ad448aee286b50593498669f009c6d37f8fb68d5c4e70eac3d3642f81dfc6eb",
+    "runs/20261121-220410_E121-A0/families/family_0001.npz": "523093827a64625a3cee5234db30545a002266f838c4e196d86e0f4968d1547b",
+    "runs/20261121-220410_E121-A0/families/family_0002.npz": "db2532f3f9843f44f6146d20d2988c9fc9daf1e1ff5e19955f9058c59fd0666a",
+    "runs/20261121-220410_E121-A0/families/family_0003.npz": "9142ec33ff4f6bbaa2a4f0d3d35f94ff4a57b4946643806f36c8c360e43900dd",
+    "runs/20261121-220410_E121-A0/families/family_0004.npz": "5b52a82396f0f304ac422dfff37bc56e755cef84f09ea7005470eca18e2d924c",
+    "runs/20261121-220410_E121-A0/families/family_0005.npz": "025256fdd1aea21db0a7ec9d6151063760839bb9317dfd8a1581631c40915de0",
+    "runs/20261121-220410_E121-A0/families/family_0006.npz": "5a49814edca6fcc9d0455530f6b9771467260a15b3e6a7db85ee323a6cca824f",
+    "runs/20261121-220410_E121-A0/families/family_0007.npz": "cf7a49a9653dd1b7e8aac0789596a51c7b2da5383e1b597fc84e9db95d544b7d",
+    "runs/20261121-220410_E121-A0/families/family_0008.npz": "590cd10df0fee590009f23f1a3189ad3622be897ea7922b7f3f68f7f1870efaf",
+    "runs/20261121-220410_E121-A0/families/family_0009.npz": "cc1ec8cc49bbe32ee3c2c81946eb7bfe9b1a4cb6e84c7fe0b08d70d8312e2ce6",
+    "runs/20261121-220410_E121-A0/families/family_0010.npz": "483ba9893bb21cb2f5a8d703851e385552cdef1d9d2488e6404b6cc711d5a48c",
+    "runs/20261121-220410_E121-A0/families/family_0011.npz": "162874b5faf948589ecdbbf50971f320b32a0ef0d73d4343bc6b11a7c2fde680",
+    "runs/20261121-220410_E121-A0/families/family_0012.npz": "b59be95e2acf39cecde6fe965c4420c6c66cfc85b531f1a00500ab661e4307cf",
+    "runs/20261121-220410_E121-A0/families/family_0013.npz": "870da6e675f760a317c05683e4127d2505dcb0a65c8e30e8d81f6eb68c62e55f",
+    "runs/20261121-220410_E121-A0/families/family_0014.npz": "f51473151309ddd50655e0f73e3506516bdb59b9f25933bbd1198f954da0c434",
+    "runs/20261121-220410_E121-A0/families/family_0015.npz": "23fece502a0727d74dcb9a1aa7aa05761f5fee2d9945ada4fa29b81a468944f9",
+    "runs/20261121-220410_E121-A0/families/family_0016.npz": "8a9b75ae168f2084f18af05987b40e564a9648688e5790326f8fc66767c55a30",
+    "runs/20261121-220410_E121-A0/families/family_0017.npz": "cb88d54dd9ef5f7a0536b945cad896b385c4810b30c6ce1e793f42f8d73d17c7",
+    "runs/20261121-220410_E121-A0/families/family_0018.npz": "51952bfdb4d53f42dea59c58b10d98f37b62c815dc4b852064e807452a5717c7",
+    "runs/20261121-220410_E121-A0/families/family_0019.npz": "27a73fa58f5216c5ea2723a909120af86bec09a6052d15c278adaee04fb7343b",
+    "runs/20261121-220410_E121-A0/families/family_0020.npz": "dc3e37d7c65228cc18716e2567a1a6fa9008a1f8fc38fc9dfb8704d1b39b6c1a",
+    "runs/20261121-220410_E121-A0/families/family_0021.npz": "bc1b3f5f9b24459b97db935d8b61f3ccc38d8ea0673afd2713fc44c6b3b1528c",
+    "runs/20261121-220410_E121-A0/families/family_0022.npz": "11bccadf8424bfa9f4c77ff55c982807352549f79588bf25ea33648dfe37c4f7",
+    "runs/20261121-220410_E121-A0/families/family_0023.npz": "3f90f67f96ef076b94eb30b782b8656e3cb18abc75e4aa164868e7c8a5088ab7",
+    "runs/20261121-220410_E121-A0/families/family_0024.npz": "ded6513ca69eb55412ff69b4a997943e7c6b4a70347e6bf83cf424762b747870",
+    "runs/20261121-220410_E121-A0/families/family_0025.npz": "90bf6d3c8c9916519987697271ed7bd34349fa597262f000dddd4deb8338b2ef",
+    "runs/20261121-220410_E121-A0/families/family_0026.npz": "cf7ae44d19c59900f1292c4dcbce0f20831c71aec8474463c0472abd9fb7fbca",
+    "runs/20261121-220410_E121-A0/families/family_0027.npz": "9b2c2117150c08be7656b5925352c7d0a1642d24e00005d6ab75bbef734215c3",
+    "runs/20261121-220410_E121-A0/families/family_0028.npz": "fb2d0194195ad4913c920110d1f0f99e7329de872baa3646b23450efe0726014",
+    "runs/20261121-220410_E121-A0/families/family_0029.npz": "be2880852d581b09b31e8b5e3d31892e27389f7a47b39e2f17d15ae54b17f2d5",
+    "runs/20261121-220410_E121-A0/families/family_0030.npz": "e894c19b41cbdc5c3fb2190f40c2ae45255c53675cfe0c638f3f5d9e657e85c2",
+    "runs/20261121-220410_E121-A0/families/family_0031.npz": "077fbff7d83ad2c3001af1fd003e6a4ec249fa35f05e8d4bea42e973b50ae7b6",
+    "runs/20261121-220410_E121-A0/families/family_0032.npz": "40888a07d7d5977ebeb7ea16c8d85327870353f96e41c215dd60b720a48161d6",
+    "runs/20261121-220410_E121-A0/families/family_0033.npz": "a071f40b4e77e487b5687c7a951ef0aee4b6f2b6580fe2fcee1f6cc09d763461",
+    "runs/20261121-220410_E121-A0/families/family_0034.npz": "6e89f0918b52d25bc68da3f7d123d6f79bc2c8205d0c122bd472dab657ffa1b3",
+    "runs/20261121-220410_E121-A0/families/family_0035.npz": "fd19e41c52e6095ba65c48815465ea49c9a35588790ba17ca6645c96726755e9",
+    "runs/20261121-220410_E121-A0/families/family_0036.npz": "ab1b8a5b78046bf7bf5362c0893d54aa3705205686814a02aeff18b46d6d04ee",
+    "runs/20261121-220410_E121-A0/families/family_0037.npz": "36dcdb413ca1e9ec966e8f221803de1d9541a5b282f9ffb0b1dc424ca8702af9",
+    "runs/20261121-220410_E121-A0/families/family_0038.npz": "3635067dff26bc9f1ded8199878a1d897dbfc863ab97005f7c27b1d6698dc842",
+    "runs/20261121-220410_E121-A0/families/family_0039.npz": "19440170cce5bea03f1ad79947b8a81f1db0b2dd589234f2db6d7f5c6c57e089",
+    "runs/20261121-220410_E121-A0/families/family_0040.npz": "8e6c580f6e6e131736d5e02caaf21b741201dd4b2c512297fa2b62b6b7ed0a4f",
+    "runs/20261121-220410_E121-A0/families/family_0041.npz": "bf8b31f83ed70c9281ac2fa66b133fcd90ab989f658c27d589f79d652a5a48dc",
+    "runs/20261121-220410_E121-A0/families/family_0042.npz": "71a23784f2e72630b8322fa9b3eaf546e05d40a67f5c9c55131184e5abcb8f77",
+    "runs/20261121-220410_E121-A0/families/family_0043.npz": "ee49d3ee3b9686fadd9e6e2888ee82b7a0ea1f6641700ab25d8882475d82e139",
+    "runs/20261121-220410_E121-A0/families/family_0044.npz": "3856be14eb07efacad6e0d3effd729184fc7a001204380f0d039a9616533ce02",
+    "runs/20261121-220410_E121-A0/families/family_0045.npz": "a438a107f3d053f7ea687eaea2cb745741a47ed1caa45eb3bbffeb2738cac6a1",
+    "runs/20261121-220410_E121-A0/families/family_0046.npz": "b45eb99f83b80bd5a236edc59a9b398ca6c1414e01e57b2f2e1cc8a31d015063",
+    "runs/20261121-220410_E121-A0/families/family_0047.npz": "5752d463113674fa1739814a1e1adbfabc1fbc0a65819a9d9a79be221cd244ac",
+    "runs/20261121-220410_E121-A0/families/family_0048.npz": "e019e01445ce684a848d709cbdbb717fa0d0b924479bf211b08368ec1b72d450",
+    "runs/20261121-220410_E121-A0/families/family_0049.npz": "3341ab2d0b6899dc94c50a7fd7fce958d5b3ad3b39da860771105f19631cd4b2",
+    "runs/20261121-220410_E121-A0/families/family_0050.npz": "86eaafceb4df4c7fa11dc541064b755f870c498d21e07f29ff868803e4c76fcc",
+    "runs/20261121-220410_E121-A0/families/family_0051.npz": "25a63aa75706104ffaa91695df3dd891124d6dc8b297fa9315a8895c32f88f3d",
+    "runs/20261121-220410_E121-A0/families/family_0052.npz": "afe3577466fa83ed4f2f2afc30115610d66c0a64936f4afa5dcd1206268c5d88",
+    "runs/20261121-220410_E121-A0/families/family_0053.npz": "033433fbbd89330581a5d3807c4a7cee9f06bd10512ce06fce798faf36c8bb0c",
+    "runs/20261121-220410_E121-A0/families/family_0054.npz": "56d2c7ec3c8c9139da9b258a4cd7813d9937bf16dd2f491711908443c226f800",
+    "runs/20261121-220410_E121-A0/families/family_0055.npz": "f31db77acc7e536927cca2685d0d7423f51c7325a8ae4a534301498bdde348b5",
+    "runs/20261121-220410_E121-A0/families/family_0056.npz": "c17fafbbd2e1ec052a2a599b7a9bdc837ad0c71a17329e1df4b7575013d98707",
+    "runs/20261121-220410_E121-A0/families/family_0057.npz": "865f800dd2d410534a154e600ab5d0b8df69d28582ce9d957a5107483bee9d77",
+    "runs/20261121-220410_E121-A0/families/family_0058.npz": "331f3934cfb32ed0b1f552faae5683bb0376374c0a2ef8a68c6cd0f5991f83a1",
+    "runs/20261121-220410_E121-A0/families/family_0059.npz": "bb37115756461e69890347e07eeb4e98d7393297d1c9de2c44a445c98212813e",
+    "runs/20261121-220410_E121-A0/families/family_0060.npz": "ac4244f8bfec3c01d6ad1d93f6f9c55bc129c8acbe0c472de2e84ff38af6868a",
+    "runs/20261121-220410_E121-A0/families/family_0061.npz": "8dbea6f24382ae5f6da99f6f63d6f5bce1a3f93e57ee8eb335f6cafaad070e16",
+    "runs/20261121-220410_E121-A0/families/family_0062.npz": "cccb1e9dcab4573a6057d5df0d5007b032e989e4e5894d61ad04950a183cb7e2",
+    "runs/20261121-220410_E121-A0/families/family_0063.npz": "8c99ee84423f7ad76eeef554dce7c237e7271f1d617f38b69238ad6f3da4baeb",
+    "runs/20261121-220410_E121-A0/families/family_0064.npz": "f9e203668e319694cc90a1c5b2eeece07ad952e1dbcb830d241005fa970e02f2",
+    "runs/20261121-220410_E121-A0/families/family_0065.npz": "df7b30b8349c3bb3945151d5b25104b5f6a0c5d3c4df84a50064367d7e96f465",
+    "runs/20261121-220410_E121-A0/families/family_0066.npz": "34bb5bfd61b434829c7edc1a78e2dec1d64a68e612bed7638e02c2a02ce82b78",
+    "runs/20261121-220410_E121-A0/families/family_0067.npz": "6f67848c99355571adf1db2cb88eb3f23eb5d0ad733b656e4029cd5c763b11ca",
+    "runs/20261121-220410_E121-A0/families/family_0068.npz": "9a30fd7a3c736762908ead62f441379daf0de9cb268c6ff2df1367380bd04ea3",
+    "runs/20261121-220410_E121-A0/families/family_0069.npz": "66eb1aaf87b165b2bc3added06ab925d3c70ba8adf6a916dd3dbf8946173944b",
+    "runs/20261121-220410_E121-A0/families/family_0070.npz": "729bcf939b893a08d4562a4b57c7057d8f318d9718dc03e1b33c1629f258204c",
+    "runs/20261121-220410_E121-A0/families/family_0071.npz": "89f3223e48ad9e51341e594428b4eb40202619e9b54195815be992521dcec81e",
+    "runs/20261121-220410_E121-A0/families/family_0072.npz": "7f1bc3f180e9a1db6faef6b672079490bb6aff3b89f65f31a20a1d536df2a6cb",
+    "runs/20261121-220410_E121-A0/families/family_0073.npz": "9bb92f2fe477f3fd89e969c17f266b901ef1eeb5a59fafbf75255b418a3c4ec9",
+    "runs/20261121-220410_E121-A0/families/family_0074.npz": "018406b9763f09c9746550dbfcb8c047ecff2bd81f63bee8337fb3b595f6e1eb",
+    "runs/20261121-220410_E121-A0/families/family_0075.npz": "231f6c78fca88fe011293e8aef9e78d3ab80a331317ed3192c752868c166b823",
+    "runs/20261121-220410_E121-A0/families/family_0076.npz": "81293886a2e62252c680b30d7257fef4a68f9d70194604f1b00d1e913760719d",
+    "runs/20261121-220410_E121-A0/families/family_0077.npz": "d2a0e6d26e074200dd293b1ac99149996fffe179c2cb232d0bf79f14cd4e80f4",
+    "runs/20261121-220410_E121-A0/families/family_0078.npz": "d4b956fcdd53420199301071d41b5ff8ec0426c7006de7f084f82849ea7df0ec",
+    "runs/20261121-220410_E121-A0/families/family_0079.npz": "9ae51c0e0a53caf5fad695943616ed3c36995f878ddc160fece509e63e491085",
+    "runs/20261121-220410_E121-A0/families/family_0080.npz": "397d3d9dcbb109f3d8b4cc66a2829ff68810e09b0edb78178f961d3d9f52d2a6",
+    "runs/20261121-220410_E121-A0/families/family_0081.npz": "643e28d44297bb172059be0bb635f8d9e7a39032c45f7dc338944056afb92422",
+    "runs/20261121-220410_E121-A0/families/family_0082.npz": "69271e5854d0fe790c8a8848aba8aca3678688038932a416889658e1aee7365d",
+    "runs/20261121-220410_E121-A0/families/family_0083.npz": "d2ba45cfdfd6b5c111b5165d0f2998e5dfc2b759802c1d7526a22c57b89bf6b6",
+    "runs/20261121-220410_E121-A0/families/family_0084.npz": "768530adfd88e5ce345f5a109781e141b54fb72511fc8b67722c7da3b8b978a0",
+    "runs/20261121-220410_E121-A0/families/family_0085.npz": "87e4d16abdd4e9a4465e3a2b92c6ba4c784e872ac4cb904bca3e1d71b31e81a6",
+    "runs/20261121-220410_E121-A0/families/family_0086.npz": "50810bb8a7729226d42d0f45cafb0a1855cc670bc50353255a7c7479f079276b",
+    "runs/20261121-220410_E121-A0/families/family_0087.npz": "737c0f6127623b25dc5824cec5d39076c9159dab31ef948c67c9e0e1f1e02f12",
+    "runs/20261121-220410_E121-A0/families/family_0088.npz": "88df20b8628671068d7c74471028addec2aa29dd5cc62afef4efbafa9968b0a7",
+    "runs/20261121-220410_E121-A0/families/family_0089.npz": "7af0d6a189e7ab7cf5458ecabcba24c11ea9ee4438d1477e0edbb775b7db95f2",
+    "runs/20261121-220410_E121-A0/families/family_0090.npz": "3aa258b6f56a52ca6f3a32a9ede1a349135a777a55819e41258d0262a28d0eec",
+    "runs/20261121-220410_E121-A0/families/family_0091.npz": "2c1c8a3eecbbc96c27dc2953580474d2f7f225b4c9c774694444941bd21f475e",
+    "runs/20261121-220410_E121-A0/families/family_0092.npz": "0de5f7832b787cf8fba32a8a1ff631422a2f269678ceedbd07fa399dd3c5d21d",
+    "runs/20261121-220410_E121-A0/families/family_0093.npz": "ae91e499880ce7b6cae0839d4a5d1af9e2e8aaa5d11596749709f161aee66fce",
+    "runs/20261121-220410_E121-A0/families/family_0094.npz": "036410db23ccb0c481339aa854be930355a8fa55d696953bd05d24460d7b355c",
+    "runs/20261121-220410_E121-A0/families/family_0095.npz": "f0413c92f33a6be9b3f9710daf887809e5950781643cbf0dcedae3817c0a951f",
+    "runs/20261121-220410_E121-A0/families/family_0096.npz": "657baf9970ae7ea64958a83214522224ca91b6f91320b6bda4714c5d0b50a205",
+    "runs/20261121-220410_E121-A0/families/family_0097.npz": "2cdfe596a9af47f8924edce2583d4b4aaff0dc67fbe874c3a67a6bb01a900546",
+    "runs/20261121-220410_E121-A0/families/family_0098.npz": "88745bfdcef3f88d2b783d2501c40ed90fe99fbfaba8cea9b960e76fa2791140",
+    "runs/20261121-220410_E121-A0/families/family_0099.npz": "9c964b3646bb5350e73b0f8848a78c72141c297a6ae25be00cdc8099c0254658",
+    "runs/20261121-220410_E121-A0/families/family_0100.npz": "c8c5a01b625d8c74b800cb7beb7c11ca1d556d4129245030848dc14d2df8497a",
+    "runs/20261121-220410_E121-A0/families/family_0101.npz": "dcc373ed43be7461775d717c33ff11617ce840f645adba0ac08795556245c8ed",
+    "runs/20261121-220410_E121-A0/families/family_0102.npz": "709977b15e7b20ba811faf92fa5c0a42316edbea0a5d96e8cf5583b4af5e36fe",
+    "runs/20261121-220410_E121-A0/families/family_0103.npz": "5033aee7e7a7b687e67110d220246cd9f274c9d2ee8bb44d15be68bcc00ccee4",
+    "runs/20261121-220410_E121-A0/families/family_0104.npz": "7fb2790bf987ffb10d2a5ebf8792cd7d76e1be2042bf55290cd169a777bfc86c",
+    "runs/20261121-220410_E121-A0/families/family_0105.npz": "8243b5056de21a9dae02a8ec84fa2c6217f0792de812d27c77ff0cc34c171ef5",
+    "runs/20261121-220410_E121-A0/families/family_0106.npz": "82ec04e12c8fc5dfac05de652dfba805afdded27da2e7079279bc4883486bd4a",
+    "runs/20261121-220410_E121-A0/families/family_0107.npz": "aeda6d21b5c2f4c3d144523848efb8a5cfc22df0441310f38cfbcbc2465bf030",
+    "runs/20261121-220410_E121-A0/families/family_0108.npz": "f219c3e9eac3845119a240c16ece088859d76c3e0cc7feafeb56b3466ef3e9bc",
+    "runs/20261121-220410_E121-A0/families/family_0109.npz": "7e0ec3e6c17763d4be3bf223ed3652533e7c5e505b1a7661cb19a952640c7731",
+    "runs/20261121-220410_E121-A0/families/family_0110.npz": "38aed326ef84cccd725950ca8120505d699d660e962bb029a3ebe9ea84533a36",
+    "runs/20261121-220410_E121-A0/families/family_0111.npz": "a9d4b7e63f0e0eb874b78849c5b81f855c9ad01708b73201993dddf8719fdde1",
+    "runs/20261121-220410_E121-A0/families/family_0112.npz": "41c30f9d333d7c7099a2778b09f26feb8e2c1deb61dd4751f443384aedff8fe3",
+    "runs/20261121-220410_E121-A0/families/family_0113.npz": "b0b7f77da95c3ff5302cac5ac6a2d25566980f268bc57b0bbf073153ab5fd472",
+    "runs/20261121-220410_E121-A0/families/family_0114.npz": "cc63a4559560a4eac8371aac6884010a202fdf209a1f46a4426573de24584622",
+    "runs/20261121-220410_E121-A0/families/family_0115.npz": "55652e9da5719b26e023d780429a6bdb107666d4f6c3ebf2f0ea651ef28bd84f",
+    "runs/20261121-220410_E121-A0/families/family_0116.npz": "6f9253382bd13374975b414a2174b5d3b0a76e2089fdeec1bd4426860605da1c",
+    "runs/20261121-220410_E121-A0/families/family_0117.npz": "c43d45e043b11e35125c07a06dd76e3986a6bf6aa7ab47c82d6597c78873d99d",
+    "runs/20261121-220410_E121-A0/families/family_0118.npz": "69813bec76922e03e054b34a1efc8c88e310a2e8ddc2f40518563ecc25ea35a3",
+    "runs/20261121-220410_E121-A0/families/family_0119.npz": "23c767d45dc0e7f37f89454ed45914779ee9b667b26f88eacbed86775021fd14",
+    "runs/20261121-220410_E121-A0/families/family_0120.npz": "fa291def8b50feead91d41a54e086d24417d84a4d42230c565ebd8cf2ae8b71b",
+    "runs/20261121-220410_E121-A0/families/family_0121.npz": "4b03f813034a83a87e5c164dc23cb3c820a0c57b462dc4b672bf9f647feb1803",
+    "runs/20261121-220410_E121-A0/families/family_0122.npz": "f05fea1ea3b392c891bfcdb23c216ec305d635dfed69da68c4fd6788f607275f",
+    "runs/20261121-220410_E121-A0/families/family_0123.npz": "e955f34891e5b0d840619863cac07d13b9c9e2a29f6bf6809f3339af0c1fe528",
+    "runs/20261121-220410_E121-A0/families/family_0124.npz": "dbb5cf0a1af7f584fdaa7d0188a66448ac10f562cca3d0e01f2ba50c40341126",
+    "runs/20261121-220410_E121-A0/families/family_0125.npz": "f823974cc7e2aabbfb1c843b110eeef2d5afaf2f4382363ec9a4e075fa590fd7",
+    "runs/20261121-220410_E121-A0/families/family_0126.npz": "e39d82ec30199ee91de563d8011e882b698f758aed182ee962008d726ebf5339",
+    "runs/20261121-220410_E121-A0/families/family_0127.npz": "d5dc2b575007398a9d884db4de6ab2566fa50b5b888e2d4ac94d14ec39c11516",
+    "runs/20261121-220626_E121-A1/config.json": "5a2544a43ef1dd3e1ec4c069f597f00afea57e6b50e0cf2a7300189b5658fbae",
+    "runs/20261112-050319_E103-A-blank-s1/genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261121-220626_E121-A1/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261121-220626_E121-A1/summary.json": "47f6808caa964100a65b834a8723060f6c6c9278e6b836a913b5fce6051ff6c2",
+    "runs/20261121-220626_E121-A1/metrics.jsonl": "2fd2fae078c9f454d22a968031c73ff88d01ad9ab0ceefe17d51102827749e23",
+    "runs/20261121-220626_E121-A1/families/family_0000.npz": "ce68406b4ffddc709f56cb2bfc63c8c64072cbcb78eaf8a2b45d88efaf870ccb",
+    "runs/20261121-220626_E121-A1/families/family_0001.npz": "dbd42dd8b4993a85d252e0554f9e243034127d621cd5a1f83c038b5a15468ea0",
+    "runs/20261121-220626_E121-A1/families/family_0002.npz": "875b54d0c057a17c40a601be893ec2c2a8ce0aa8568e74e3e4d7a7d74ef1611e",
+    "runs/20261121-220626_E121-A1/families/family_0003.npz": "7926b9d5f414f32df7b5046a17b13e8bd1417e50fef13aeb35570f009856a66c",
+    "runs/20261121-220626_E121-A1/families/family_0004.npz": "d5ea7acdbae4b2fe37c79441aed2bb487bf35a82e6166930ff115072fa4bf3a5",
+    "runs/20261121-220626_E121-A1/families/family_0005.npz": "e1c720eec8a3767f207e119a3e0777a2dbddd822fc67aba1f57848342f2a4a0c",
+    "runs/20261121-220626_E121-A1/families/family_0006.npz": "8425c65903edf6c25e43c0261d1be441ad41e4c36ee2cc284ba9a54c92f99009",
+    "runs/20261121-220626_E121-A1/families/family_0007.npz": "08d50b9f66a6beecb9b54cac2d22b0b720937ad92fdab99df263434850f93367",
+    "runs/20261121-220626_E121-A1/families/family_0008.npz": "7ddaeafe1e6c78564ddf97110abd296d57f324b319f6282cf665db391a5b8fb6",
+    "runs/20261121-220626_E121-A1/families/family_0009.npz": "6bf0296aa012dd12cb4f2b37ad7e0712297a1bddec190e8868dbc4aa1ec3b23f",
+    "runs/20261121-220626_E121-A1/families/family_0010.npz": "4d89b33c06f44723901d26527aeba43a96a5948b2587924ce83661c50bb4214d",
+    "runs/20261121-220626_E121-A1/families/family_0011.npz": "f7d0d16403adff09d3608ee53faa61f682474f90cf7f5af16392206b468c0c8d",
+    "runs/20261121-220626_E121-A1/families/family_0012.npz": "6d580ad16c135f7ab8f760155d25512980424423a67c9966a9987419ef7b7f4d",
+    "runs/20261121-220626_E121-A1/families/family_0013.npz": "5f530bd793ebd3a1b7da3cfaf5ebc4f964db3215d24a662176a6b6db905b3dca",
+    "runs/20261121-220626_E121-A1/families/family_0014.npz": "feaf81ea8fc6310fc39d698202b49bbc24108ade023a2ee9b4e01016ba4f1979",
+    "runs/20261121-220626_E121-A1/families/family_0015.npz": "fa33a731125b29d22b205e61a3c3b46885c2657c08d41f31a4a9aefe7491577d",
+    "runs/20261121-220626_E121-A1/families/family_0016.npz": "d746fc27e82a234811e71a9b9f7f16ca4072b8ff962c6053f79c0bc10567d440",
+    "runs/20261121-220626_E121-A1/families/family_0017.npz": "74ee128f01268af29545999592091b79a9c377bd4adfb8affb3a4e69d689da3c",
+    "runs/20261121-220626_E121-A1/families/family_0018.npz": "043cd250f078adf4f31ede57457e57dfbd5e5edef5829720b3d54e3f71bcab23",
+    "runs/20261121-220626_E121-A1/families/family_0019.npz": "e0ca2c9fa4ae70994638439d42de327863b04e36915f27faa612a0f29356b749",
+    "runs/20261121-220626_E121-A1/families/family_0020.npz": "8666a7700728079a22be5bfe380c6f2b09bb963eef168b442b4472d85af2b246",
+    "runs/20261121-220626_E121-A1/families/family_0021.npz": "7601d72e70893c7c5620b55802fde3086c549be0a515b9bba1cbf8b2ae3f2359",
+    "runs/20261121-220626_E121-A1/families/family_0022.npz": "240e4034516a7e6c737f625677f93886c935c8ba881626901beb0f55dc7d189d",
+    "runs/20261121-220626_E121-A1/families/family_0023.npz": "e4f10010ff8f6f070c64990f02b652b8f83e370ea8725c0df0c13f581ddfa2f2",
+    "runs/20261121-220626_E121-A1/families/family_0024.npz": "dbfbe26264f4d449761115b740bba827c930b4d37508d9dc20c8f9434d6ec1d4",
+    "runs/20261121-220626_E121-A1/families/family_0025.npz": "acf9c16f16c0f52f8aa9d36948d63f00a1219f0878c9d53a79a960ac29ec7da8",
+    "runs/20261121-220626_E121-A1/families/family_0026.npz": "5fa9e682de9ed84dc6107a0351bc325e456d2d746def6574e2ed4169ab3b64ec",
+    "runs/20261121-220626_E121-A1/families/family_0027.npz": "39d88cc700daa5ede44fd65bc07fd55143eb761edbe5bbb1d95d161ad6b0002a",
+    "runs/20261121-220626_E121-A1/families/family_0028.npz": "cb331b9cbe7b90de725a98e06d431b60c4f2a9c6be9ea340d7aa0ab9577a933b",
+    "runs/20261121-220626_E121-A1/families/family_0029.npz": "974aa9c526ebdb80456f94dc48ee57c0ddba14073af0d4b44b83c394ab2d3349",
+    "runs/20261121-220626_E121-A1/families/family_0030.npz": "718f1fc31c981dfe6b1fb0e16569acf143f0bb6eb32032bd95da5706ba5ac171",
+    "runs/20261121-220626_E121-A1/families/family_0031.npz": "a2d012280bad06da0749508494e69f223e8cb5eb8ad10661d763b891dd83eaa0",
+    "runs/20261121-220626_E121-A1/families/family_0032.npz": "f2410b56a2288320807affd5199415c0f3b48a891f41b8222c2e4aaa37975708",
+    "runs/20261121-220626_E121-A1/families/family_0033.npz": "b1695402d4bf1ed2643005fc5dd6a5726923bb328df687f73e733c7b0833720a",
+    "runs/20261121-220626_E121-A1/families/family_0034.npz": "932f37d4fd4be9244e25c658cc6d1dd1a25710faf51cb314ea6512119dae0b30",
+    "runs/20261121-220626_E121-A1/families/family_0035.npz": "83c38e13f55cde422b899b61252b255d4d8b7dbdb26262fcededbb12338bbe38",
+    "runs/20261121-220626_E121-A1/families/family_0036.npz": "6adb5aa2d55679e63d37cd42a0bd59b3471c782c31d80d9094a870e1768d1ba6",
+    "runs/20261121-220626_E121-A1/families/family_0037.npz": "b40d91069dbee1b78ad0cf04ab9feff1a826eda2c8afde85d57e349d9aa79111",
+    "runs/20261121-220626_E121-A1/families/family_0038.npz": "5cfc6b3e77fed4edf04a9b2f3221017ef8757b99094286b55eaf09a149f72a45",
+    "runs/20261121-220626_E121-A1/families/family_0039.npz": "3f2eb8b2c21d590b53afa57d61b5ee710df045d555f333079521e80b69bc1583",
+    "runs/20261121-220626_E121-A1/families/family_0040.npz": "449d14238bff2ed099dcd7fec36f1629846682fe419dbd126c49cd6e29fbb119",
+    "runs/20261121-220626_E121-A1/families/family_0041.npz": "5bba31e041f14a795e27ee88fada54ac14cd73e8267c797720422b8feeb1d696",
+    "runs/20261121-220626_E121-A1/families/family_0042.npz": "2d92930d131ff023c10631ad2a5d8722ec6aedff8193bbd29f23ff795e91f8ab",
+    "runs/20261121-220626_E121-A1/families/family_0043.npz": "ed2409055d6da9e2975ba760dcf4732d268b453db2d6cfbbef64f6dc128c1996",
+    "runs/20261121-220626_E121-A1/families/family_0044.npz": "9754931f98230865885894f3b7fbadd4e656862f62d9dd7102d08f6cbb43a8b0",
+    "runs/20261121-220626_E121-A1/families/family_0045.npz": "5e1eb000fc40a668b4a9dd58237e21acd4048aa4314569f1ed5df659aa9a6d3c",
+    "runs/20261121-220626_E121-A1/families/family_0046.npz": "c4c4919436bbc749d727774341a788ae19725c2e2d304846780070c94fbfdfed",
+    "runs/20261121-220626_E121-A1/families/family_0047.npz": "3a7a649c91350c4a0181e2e36dc102dd22beb63e50db4cdf4b4ac8501a01683d",
+    "runs/20261121-220626_E121-A1/families/family_0048.npz": "90317ec1c94eb5e42931fbb90c6045623a62a1670e5a665254239f0f71a94f28",
+    "runs/20261121-220626_E121-A1/families/family_0049.npz": "74a6aecde24750c3aa982ec6c6487f48743b31df317d969a7621fd3b66b89b68",
+    "runs/20261121-220626_E121-A1/families/family_0050.npz": "dacf5fc96b656b41f5fbe478ee481e15af27f87f40a3ee8042757512539a33f9",
+    "runs/20261121-220626_E121-A1/families/family_0051.npz": "e3153cefd2519c26476f31f6074c4b34694352a0fffeec0203aeb87781af4c85",
+    "runs/20261121-220626_E121-A1/families/family_0052.npz": "2f138639fe30e87419d763124344f1ae4f353d663870192e0d2b8c2943ee0aba",
+    "runs/20261121-220626_E121-A1/families/family_0053.npz": "d1245ae6434d6c9fb0f25530512205e0bd5735723fbe91ff4287de603a433879",
+    "runs/20261121-220626_E121-A1/families/family_0054.npz": "a7db4552ed125ec22514f97b7741ad774e3e15d3b65f8457bee3d851ea6a2bf3",
+    "runs/20261121-220626_E121-A1/families/family_0055.npz": "0cf27be4429e7157c6adbb478c5ffa578be70d62a5f3f8b9e6a0cd7cdddfcefc",
+    "runs/20261121-220626_E121-A1/families/family_0056.npz": "539948c21b52243db846149f0ccad61f73a34bbb73724de3f36f01036aeb20ba",
+    "runs/20261121-220626_E121-A1/families/family_0057.npz": "eefee21ebe7ba2dbd33fb94517140a8284b509c98efdb5ddcd393ec8a88847c8",
+    "runs/20261121-220626_E121-A1/families/family_0058.npz": "6525d79a10458b168017581d6cf7879b2dda87aba38069a5635d92eb2b377f40",
+    "runs/20261121-220626_E121-A1/families/family_0059.npz": "96972af0f5954ac74e41ad214e4ac2ddd38589fd8f3d3b22910992f78462df71",
+    "runs/20261121-220626_E121-A1/families/family_0060.npz": "5ac2f0a8648bb72744e3e06f097167c484177fd24d5cdd3b1c450aab41ad3081",
+    "runs/20261121-220626_E121-A1/families/family_0061.npz": "f65a2a6f26d78c949cc6e531024fd33c1124f5c7ae6b48bbb42cb3a348bf844f",
+    "runs/20261121-220626_E121-A1/families/family_0062.npz": "d8919871d50a895b8294e2855521213b75719dacbd6f5a7b754d2b2b938e3dc8",
+    "runs/20261121-220626_E121-A1/families/family_0063.npz": "ed4aa421c4f0187d53f1a5829bf961605a75b696a651b8eadc948fb8cb82059f",
+    "runs/20261121-220626_E121-A1/families/family_0064.npz": "b65a3847a62607073e73697a7a4b29e92cb0fe159ef3da753273e30f91ca1145",
+    "runs/20261121-220626_E121-A1/families/family_0065.npz": "48a270f320eaa7fc3b34dee8f52e55a6d3bafb3a19d72b7d743be28e4ed75c1a",
+    "runs/20261121-220626_E121-A1/families/family_0066.npz": "44b4ee623f4d557883419594b606aa8a5aa4b2be8524ca7fe793745bf6cf43a0",
+    "runs/20261121-220626_E121-A1/families/family_0067.npz": "80f8f45868eed2cdffcc7c5a5ec6f362d795f6de53e3da5c3f2540bffcd53bbc",
+    "runs/20261121-220626_E121-A1/families/family_0068.npz": "04d9570e09ca1fc94432851b90245503cfe4121fd1ef25864b97ebf469e80d07",
+    "runs/20261121-220626_E121-A1/families/family_0069.npz": "585ef1d4e0a1540795d4b63cf6e34c5be6516092756e607eeed359a1592256c3",
+    "runs/20261121-220626_E121-A1/families/family_0070.npz": "046f10cf8663cf83b7531b5c498b82d6523ddff4bf7a659795e6d27f4a7bf1c9",
+    "runs/20261121-220626_E121-A1/families/family_0071.npz": "1d7e2fbdbc4427f2277fcc289e3614fa04dcedef4e5c02909fbca948a1c2e1be",
+    "runs/20261121-220626_E121-A1/families/family_0072.npz": "2fd683d75c620a6f299d17fb5ccc036f33daa1af539f9c9c28e69e1df3ba065b",
+    "runs/20261121-220626_E121-A1/families/family_0073.npz": "0da718b97e1001a906d2cd51e0ce9b9437d476cebea59a4ecbf76ae0855bec0a",
+    "runs/20261121-220626_E121-A1/families/family_0074.npz": "09605ca13a40b47cb1dc62dbe2a584016767b36d2c2647d3c7de4872f4560bef",
+    "runs/20261121-220626_E121-A1/families/family_0075.npz": "9671e52fefc56015c018a44652563bb4d2d5a8b10328ed116082c9b14fa2af78",
+    "runs/20261121-220626_E121-A1/families/family_0076.npz": "95d5e624370775f65fa8b4255c0b31bf9ecfa1ce9fe0d17afd89a6867b7db766",
+    "runs/20261121-220626_E121-A1/families/family_0077.npz": "5312d05a37388deb8075c24486de0a2e98782bef178c5435d6fdede22fc569f4",
+    "runs/20261121-220626_E121-A1/families/family_0078.npz": "4c46f3e0d0e45a3bdfe49fd6daa1566dd77c67ccb6d9bf362e870253da3aa071",
+    "runs/20261121-220626_E121-A1/families/family_0079.npz": "d57cf6f80d804901ac56f1a83fde1d0bb660cfb86af95bfa494332455284b051",
+    "runs/20261121-220626_E121-A1/families/family_0080.npz": "8fd56dcf8f5bce779272792d9bcf80c784c4c88b45aa9733fdde2901762dee58",
+    "runs/20261121-220626_E121-A1/families/family_0081.npz": "33ad090aaa216f3d90db14436477593f1382c771990ef7ffd5df3304ce646d6c",
+    "runs/20261121-220626_E121-A1/families/family_0082.npz": "c14eac626110c1bccfc4802c079bed6bd256efb1a957857fc5abf2c3aee30642",
+    "runs/20261121-220626_E121-A1/families/family_0083.npz": "a4258491aeb14764f9570935e71fc365f513b2c4496729f9231fc6a0b209ce03",
+    "runs/20261121-220626_E121-A1/families/family_0084.npz": "b0d386550ac1e9b0ce6de9dafea0dc8c925285906ef67b33c95318f12cda7bed",
+    "runs/20261121-220626_E121-A1/families/family_0085.npz": "27fc8aa1620d8f30fde7db56963db80545673ca2712d1c3aaeb04c3ef890b797",
+    "runs/20261121-220626_E121-A1/families/family_0086.npz": "69023779d39f4b8b07bb538047cd983b64a7246de1d6fdff1db63dbdf5117898",
+    "runs/20261121-220626_E121-A1/families/family_0087.npz": "46bbbceafeeef0fa9a4a233c27a75cae1cce05f927c3b5375631857bda4d1fe1",
+    "runs/20261121-220626_E121-A1/families/family_0088.npz": "1d997255e106066c7649135ce1cfaca10448bc6947840b1f642b455e7d82cafe",
+    "runs/20261121-220626_E121-A1/families/family_0089.npz": "22b52d0ebdd2c96388ccb8af7f4508b66858bfa8d6da19320181cbb6612b5383",
+    "runs/20261121-220626_E121-A1/families/family_0090.npz": "4b89e6874edcd6e1191c3aeb01eea5c66d481d92240e81771cbeab1d1e8dea5f",
+    "runs/20261121-220626_E121-A1/families/family_0091.npz": "c4ffc9443898e048c92ebdc17b52e0276a40114e2d060f1afc7df96d133783ae",
+    "runs/20261121-220626_E121-A1/families/family_0092.npz": "5a8de073cdce4e8572829746bdf8ccd3986f63b1b1dff7163a711ed7b6f1bff5",
+    "runs/20261121-220626_E121-A1/families/family_0093.npz": "75f964cca27e95611cca2992b9ca6785e97995bc10107ba68dbcb30b290c82b0",
+    "runs/20261121-220626_E121-A1/families/family_0094.npz": "8a8d73e2825c357eaaf92abce35146ff77d18902b7a18c5d017fc6158c5cc13a",
+    "runs/20261121-220626_E121-A1/families/family_0095.npz": "e65dd7cba1883cadcecfdc6db86cea293c20e7f0f2cdb1fb02213146d72a18d1",
+    "runs/20261121-220626_E121-A1/families/family_0096.npz": "39c4945e041b60035e731c484f67cf0ffbaea8394ad48da5d87d4f615e076b44",
+    "runs/20261121-220626_E121-A1/families/family_0097.npz": "7b0f3342f734f919bda1da3a58748eccb3db6151895251265cb4dd670cb15689",
+    "runs/20261121-220626_E121-A1/families/family_0098.npz": "2a3bb1c9847373213ba4dccebf6e04064fa5d59090b88bb68a42f9f9e867ad3d",
+    "runs/20261121-220626_E121-A1/families/family_0099.npz": "53eaa3fa7684d86d74e99acc39c6afda1717822dcf0098894a6743d5af643c40",
+    "runs/20261121-220626_E121-A1/families/family_0100.npz": "be44d745aa49d2e738afee6f2cceb78176fb46c1e2e4baed82c018caff83a6eb",
+    "runs/20261121-220626_E121-A1/families/family_0101.npz": "5e8c1a6fcc056581aa5a6bad1d62aa67123b6d4ef23fefc3111ad3ad680788b7",
+    "runs/20261121-220626_E121-A1/families/family_0102.npz": "55c7ccf5d701884497eada8561b3369a4194d4f2d46db315c1d5eab4729d7f07",
+    "runs/20261121-220626_E121-A1/families/family_0103.npz": "ca8fb4ee0a6d1fe25e9f6cdc397909e2b0021f8ca8073b899013c643a881d909",
+    "runs/20261121-220626_E121-A1/families/family_0104.npz": "6b41a4e91247ed78bebc347ded774afe9164da96150d0ae99dc1d8262e54550b",
+    "runs/20261121-220626_E121-A1/families/family_0105.npz": "0c40ea67eb51a6a846995f12f82f5724493514df9b7bca6e66cc18cd85bfbb1c",
+    "runs/20261121-220626_E121-A1/families/family_0106.npz": "438b32eb8ce643e61082961773de76fcbaa312e51b59cec8d8c9c36e22f462b6",
+    "runs/20261121-220626_E121-A1/families/family_0107.npz": "ffd495460376c08d3cf114c3f121dad42a234e4e077b32f8eee41b897b1d3a24",
+    "runs/20261121-220626_E121-A1/families/family_0108.npz": "ec217eeb277b28452c313dbee84f5d6001c7bc78cac6ac04761a239f43bbc4a6",
+    "runs/20261121-220626_E121-A1/families/family_0109.npz": "c7ea35c581cd22ccc6d445d36bff1f1eeb3acc0e2e46824cbf35c3a9a8117969",
+    "runs/20261121-220626_E121-A1/families/family_0110.npz": "77da4df851fac480668cc62f3b297cac667d808c0394b23829e93fcfb97f2a4a",
+    "runs/20261121-220626_E121-A1/families/family_0111.npz": "eda972b9309ea58e8fccf064fb39895280c69a24ea559002eba24e6b0f6e4752",
+    "runs/20261121-220626_E121-A1/families/family_0112.npz": "30a6297c7147f71c6af1aaeeb52cff1fe9da75cb1acdb0999aa9c8c57ee78b12",
+    "runs/20261121-220626_E121-A1/families/family_0113.npz": "743fed85e08ba8b5f04b67a14ccffa65105de846621a97ff49a1e1375ac761ee",
+    "runs/20261121-220626_E121-A1/families/family_0114.npz": "a3d2e8d19e99b7a7df7d65832fd40d8c0909a32e580eb3ac8c92b59286615216",
+    "runs/20261121-220626_E121-A1/families/family_0115.npz": "cf0019fe44123f6c20ae8b7de50abd0bc175a4c01e317ea815fbab1053e3f65b",
+    "runs/20261121-220626_E121-A1/families/family_0116.npz": "7b1ba0207e9799055dcf20b27b3582ce391ca9899e971e6b8894783309e7f418",
+    "runs/20261121-220626_E121-A1/families/family_0117.npz": "7054a370943ef13104428ba9cf9b747061578478fc22e2a056d204b0c0da18a7",
+    "runs/20261121-220626_E121-A1/families/family_0118.npz": "59ecffc8f772a9d5269156f5c9539f75039d48c205724af2e8e92ca4853fedc9",
+    "runs/20261121-220626_E121-A1/families/family_0119.npz": "c8d1a1570d740bc43ef1c7e3a8e924892800bba53a1a7471beb031f12dd38220",
+    "runs/20261121-220626_E121-A1/families/family_0120.npz": "9044ad831ca00c8e66fd8191c3314c4392d201e68ab325f7e739135cfe11dcb1",
+    "runs/20261121-220626_E121-A1/families/family_0121.npz": "8ba1132a8ae08af74bade9acd7d0286efa4eabb933c25e504e36e4c0c32b9654",
+    "runs/20261121-220626_E121-A1/families/family_0122.npz": "e3690d40c0fce17239ebc07320714975d4d9987333713ce460febf10a7e460be",
+    "runs/20261121-220626_E121-A1/families/family_0123.npz": "6f50e22c136785a16d7258844509bf0b1d3222bae6e353297db869d4a3496054",
+    "runs/20261121-220626_E121-A1/families/family_0124.npz": "dc50afaf5bc3b08f4d3f89e77ad3e7e7a2db7537362708fbb55e7a6628f2394c",
+    "runs/20261121-220626_E121-A1/families/family_0125.npz": "83320e5687d985d4cbacef03e1814a5d03117494e8a8cb6cf2244cef688091f0",
+    "runs/20261121-220626_E121-A1/families/family_0126.npz": "bea7b8f3b89b523374540177191e0f4df7b5b91e3207565874963650291dcaf6",
+    "runs/20261121-220626_E121-A1/families/family_0127.npz": "0c23d9b5d8fcdc12a1101d3e535fcc25d9cc0a3a1645c1839a82bf250f9e60da",
+    "runs/20261121-220747_E121-A2/config.json": "62b8d3576a7f73d09179ce8b9a4b3c1f465301eed80e4fd533da4e5c6810d564",
+    "runs/20261112-102755_E103-A-blank-s2/genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261121-220747_E121-A2/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261121-220747_E121-A2/summary.json": "c0b52b6c8d11d2e0c21c474da0ea419af49d3b262a0eda6f501ff2a8ad95c282",
+    "runs/20261121-220747_E121-A2/metrics.jsonl": "79b1fb2afc4bb2462e49d9bc8663a6c9a3e866630e476a456aff7d4ac3f6337a",
+    "runs/20261121-220747_E121-A2/families/family_0000.npz": "f7111fe730e344e54631d1c62aa899bce921abbe610f6f7057df3afbc9d6172f",
+    "runs/20261121-220747_E121-A2/families/family_0001.npz": "81e60e6855b0e905cd0b7db3723cfaadcfc53e58505e3ac43fbf63cedf54db97",
+    "runs/20261121-220747_E121-A2/families/family_0002.npz": "4c6570446f0521c05c691a3a273c379ac1c3ed700ecf1cad77afb83cc84b07b4",
+    "runs/20261121-220747_E121-A2/families/family_0003.npz": "8374ec035184ff45317370c2e44adb4b02fe02f97fa8f1d41110671bd2d14ad4",
+    "runs/20261121-220747_E121-A2/families/family_0004.npz": "550866bcba2c673d9eb5a764042c5458f66529e70b42ea6d7c51560c1c04bc59",
+    "runs/20261121-220747_E121-A2/families/family_0005.npz": "1a78875bedabca9f4f9ce3b3bcfa8a1144a13e083d28feb04d18a8da6412695b",
+    "runs/20261121-220747_E121-A2/families/family_0006.npz": "660ee35798fd9a312024ae6247a54392c578b1ffedb718e12f7ac85c3cbc56e9",
+    "runs/20261121-220747_E121-A2/families/family_0007.npz": "4fdad187c1b5a99be7a93908dadc7f68d6cc337ac90e0624a24a4df240719c56",
+    "runs/20261121-220747_E121-A2/families/family_0008.npz": "fdba8e58cfd229a9fcb2f6d26e872b4330fc45a81c307f0beed216d8b22a07f7",
+    "runs/20261121-220747_E121-A2/families/family_0009.npz": "354fcade49e662fe5f220bc91b62f9992bb146671b31662c4a53e9d37d7c4b52",
+    "runs/20261121-220747_E121-A2/families/family_0010.npz": "01d1bab526bfddc540872a61827ef05af4656bd9e626cc81b0db4dc899b39c34",
+    "runs/20261121-220747_E121-A2/families/family_0011.npz": "590f7a417ee75ea7a73de810a5247b87e8e731f903ca9892f127ef7b51f27366",
+    "runs/20261121-220747_E121-A2/families/family_0012.npz": "6faa9aad9839a5ba6cf71ec90531bb12e0fcdb804d022b248b0241243047075a",
+    "runs/20261121-220747_E121-A2/families/family_0013.npz": "0ca2b718be717a6686d6b7d001c4600c33c6824384d43f9ea8d6f41365b6ca33",
+    "runs/20261121-220747_E121-A2/families/family_0014.npz": "33dd3dc02b0f750d338e532a8a6798e7b5039ca834f1183fc0270816c2a1ed86",
+    "runs/20261121-220747_E121-A2/families/family_0015.npz": "2b51858d253108ba734492dfe52c7b7ef24532f28cf44f8f989db551f6ed5404",
+    "runs/20261121-220747_E121-A2/families/family_0016.npz": "64b3580a9af695c9b3d6d58228c7f3fdebd5fceabc81e46b2e58baf1e7a78708",
+    "runs/20261121-220747_E121-A2/families/family_0017.npz": "443ae274e3d2d141afb36bf4cafd1185f57ea35f4a5847b2070b66bd79468710",
+    "runs/20261121-220747_E121-A2/families/family_0018.npz": "b05ac0d02fafdd3d9266fbcab746887c71bd198f102d981e9b2ff65d34900df3",
+    "runs/20261121-220747_E121-A2/families/family_0019.npz": "c94f94dd6e1d3bf92472c9928b772d89df2a40820641230581e9a3646fcc08c3",
+    "runs/20261121-220747_E121-A2/families/family_0020.npz": "09ab599172fd7c276688f809fede87bf1a5b22132e2fa982bb4da652171a1043",
+    "runs/20261121-220747_E121-A2/families/family_0021.npz": "622304143ea1f5ff3e88740e7854daf6646a9ad0a3daca98822052e0465d2cb9",
+    "runs/20261121-220747_E121-A2/families/family_0022.npz": "ed02ebaf409b4aee4fd1e9d4e3ad79f8312fba09d74e608878df6c0ba18fdb70",
+    "runs/20261121-220747_E121-A2/families/family_0023.npz": "8ab065690df4793ae8c041126f31977646994104b20973933d3bc33b51e57dcf",
+    "runs/20261121-220747_E121-A2/families/family_0024.npz": "41b1460de31a9d035838552c3314f4f017790d420be4fa583fd96834ca1c1025",
+    "runs/20261121-220747_E121-A2/families/family_0025.npz": "10126ddeb35246a1e027eb4a48fb03f7bd10850008edc39d8cdc59b6ee3d4519",
+    "runs/20261121-220747_E121-A2/families/family_0026.npz": "6b1436d15ac14ab62a347ffc05e2b31b90a8209511fcaf67be3ad4b2bcd30af4",
+    "runs/20261121-220747_E121-A2/families/family_0027.npz": "269e2a48b4a7b4accb3f4a019ad5cd09932f23a312ea93e279f87664144c1ac6",
+    "runs/20261121-220747_E121-A2/families/family_0028.npz": "d4ae164d6f5fb3ecd6edd82851ca69df1ed8a27b2dbcbc7bf7f12f69ab770541",
+    "runs/20261121-220747_E121-A2/families/family_0029.npz": "dafb8155a4b8d47a6e6ae7aac3abea456a93788823624231f290c8332d3afdc5",
+    "runs/20261121-220747_E121-A2/families/family_0030.npz": "13ba8791d5aba80726bcabef003e37c5b704a768f5f91e493b8cf42087595bfc",
+    "runs/20261121-220747_E121-A2/families/family_0031.npz": "f1a600325436468d2dba00bb244160e68387a5eb180514d6746e194fc2a28c29",
+    "runs/20261121-220747_E121-A2/families/family_0032.npz": "345339f4161f525a575cf9f3e106c392729d6144354960f8db20f2dbc37abca8",
+    "runs/20261121-220747_E121-A2/families/family_0033.npz": "56eccebd3822b2a24782bd516c50ca63c0431813e8ff37c0f0dd08a625f1ffa5",
+    "runs/20261121-220747_E121-A2/families/family_0034.npz": "9be33825c4e73499edf8411206c20746a29c72992525057dfb5211ade0cda28f",
+    "runs/20261121-220747_E121-A2/families/family_0035.npz": "6ad620bc5f91d11c30022e929ab1aacd42c8fff06c4fa534bc3955252b72361a",
+    "runs/20261121-220747_E121-A2/families/family_0036.npz": "74c58bc70c2794528b8984b53f6da711b9400cdcbfa5c3209c0528a9680999bb",
+    "runs/20261121-220747_E121-A2/families/family_0037.npz": "e3e95c43de5967835302faa527992eac63ff2497507ed4fc63daf31e3e9b0688",
+    "runs/20261121-220747_E121-A2/families/family_0038.npz": "31e7435eb5622173801df1c838ae21fd31318931c8b31f6b4a8707baa5478438",
+    "runs/20261121-220747_E121-A2/families/family_0039.npz": "a377904b13ac6df2510fb61aad57ec44ddbbdbfc5674e9b5e5dafdf16480751b",
+    "runs/20261121-220747_E121-A2/families/family_0040.npz": "d0aed265ffa6f0c3467ae7f02ac02b16652b4863735f87eef0bcdae657bd4d50",
+    "runs/20261121-220747_E121-A2/families/family_0041.npz": "c91fb9dec9c5e0fcf2e7f221804246faea87fbf9bbb18edecce42dbbe7ad66ff",
+    "runs/20261121-220747_E121-A2/families/family_0042.npz": "7a532326d585131957f8f38b951ccd4e399780a48f03099076d9d0799e85468e",
+    "runs/20261121-220747_E121-A2/families/family_0043.npz": "6f979129e257a74eeab894a31cbc6f08a4f491d84c0167d967af3a3a585129ab",
+    "runs/20261121-220747_E121-A2/families/family_0044.npz": "676106f9c500afb782d0ce7ad117f270fd4fccee87a64305abe2c21cb3704a34",
+    "runs/20261121-220747_E121-A2/families/family_0045.npz": "e9f69499a88d9248d767e8df578fa7aa22db7bdd557ca22706289419d88875c9",
+    "runs/20261121-220747_E121-A2/families/family_0046.npz": "0ba3f35051a59a29ed36e89a52fbae85784f89592bd01662832cd8f3d4ef763c",
+    "runs/20261121-220747_E121-A2/families/family_0047.npz": "5c98b68e19e88a857a556f1fbba15d1a723cafc4d434d9777fd74b394e1c0e45",
+    "runs/20261121-220747_E121-A2/families/family_0048.npz": "06022ef9285c9afa0c748df1ad6f76ee6ec3f0794bec89bb366d247468531b4d",
+    "runs/20261121-220747_E121-A2/families/family_0049.npz": "38b56a21663ba023aac3b43d80ec34fb78e91a536e1a2e20ce8f0113eb692bdc",
+    "runs/20261121-220747_E121-A2/families/family_0050.npz": "810c4b33a1050b504b047ca6064496bd08ebe596455454ca96a52ca8da1a81d4",
+    "runs/20261121-220747_E121-A2/families/family_0051.npz": "fbe6e2ecc26385aae621c5125f7ac5bde57519fdff74d5f50ba95ac127a8cb29",
+    "runs/20261121-220747_E121-A2/families/family_0052.npz": "ad499bf7af520de88147a7d34b24d923fd8b639b02afe3412a4d5cdac8b71d73",
+    "runs/20261121-220747_E121-A2/families/family_0053.npz": "9544d7ebfe1406a876c7c272c824a113f364788228a20d977c837f7408ed017b",
+    "runs/20261121-220747_E121-A2/families/family_0054.npz": "8d1cb748088c9cf81833d242c4f340d23c970421c176b0f0c4c08de4f5829efa",
+    "runs/20261121-220747_E121-A2/families/family_0055.npz": "e94d59745f2bd0909613e11114f62184efd6c0e2bb6be87b792d1ecaa381d981",
+    "runs/20261121-220747_E121-A2/families/family_0056.npz": "faeff2586659565c3b2ecd42b517bb70b661c9e38a311b97956097784d912e27",
+    "runs/20261121-220747_E121-A2/families/family_0057.npz": "414e4bc0b8eb9c27f99898b51913ffb9333bcd96222cd7db7d0b76440b3958c2",
+    "runs/20261121-220747_E121-A2/families/family_0058.npz": "214855a7204bc9abb10f5aebf0f16dbf51f856a7d077c352a35a2d4d0e7c336c",
+    "runs/20261121-220747_E121-A2/families/family_0059.npz": "d6fd5439f781ba2654069c955ced191ea8828c24f5dbe5248b5342bb77a1b337",
+    "runs/20261121-220747_E121-A2/families/family_0060.npz": "b4c4a758d2adb4b86e229c04136df46daae4a8040ea74fba42b3a2124f3da41f",
+    "runs/20261121-220747_E121-A2/families/family_0061.npz": "51e3b4495732cb5c59c1fbde2895f09dcdef94ccf825c9b78bcdd99f4dcde8c2",
+    "runs/20261121-220747_E121-A2/families/family_0062.npz": "96c886a5bcebf5556ea21d7a7c78f15274fe227c62d7cea69c8f16beb5d585b0",
+    "runs/20261121-220747_E121-A2/families/family_0063.npz": "e89ebcd8f701ecb88f6b485fd67286cf4e9003783586877980e13ef79f7ef07c",
+    "runs/20261121-220747_E121-A2/families/family_0064.npz": "21990721562144d301fcceb2f42242d9346215b254d245c4cf73900e28cdfc20",
+    "runs/20261121-220747_E121-A2/families/family_0065.npz": "b1e8ed61d9d188a031f67b06eecc68812a8882ba5ad871b28fa60d8736e596ad",
+    "runs/20261121-220747_E121-A2/families/family_0066.npz": "440466d86f2d8596b9ae91089bbd917cece5a61ad81e6ac9555548e24c4ff817",
+    "runs/20261121-220747_E121-A2/families/family_0067.npz": "10ba1084fa002f69a3b418a16c7f99a962f67cd3291e408fb55f5c295b0e51f2",
+    "runs/20261121-220747_E121-A2/families/family_0068.npz": "16981745c3b26c55f6c5680d43d2a6b2a9eb58557d1f72adcea91e3e1b48071a",
+    "runs/20261121-220747_E121-A2/families/family_0069.npz": "e5ef62d1195afccedf42af181fb13845f77cd05212ed8efdf6b10b274be6e50a",
+    "runs/20261121-220747_E121-A2/families/family_0070.npz": "2a6cab07c82084cf25b190785defa5f908e11623b3d0b60183b757846e6eb879",
+    "runs/20261121-220747_E121-A2/families/family_0071.npz": "898b8d1bc0c5388aa057b7d4410988c6cece0f89337cc9dd86c018f310245085",
+    "runs/20261121-220747_E121-A2/families/family_0072.npz": "30df0e4726a930714654a7a82332b98cdec8e39ff4e674d961f2289438a8943a",
+    "runs/20261121-220747_E121-A2/families/family_0073.npz": "417f073e03e7a85063c32c32f3fb97e726d8f161b5c7df6cdf8867094abf26cd",
+    "runs/20261121-220747_E121-A2/families/family_0074.npz": "d4367e9150b60350ac80fd85560780fcd68a5c744b39546a8f1f375a8e2c7361",
+    "runs/20261121-220747_E121-A2/families/family_0075.npz": "c0af6ca33f16d7546359884d58bed82fe89a3c0747865c9e0f1e39ab21155378",
+    "runs/20261121-220747_E121-A2/families/family_0076.npz": "be0630e25419c25ee90de3c5bfeca55305774fe7558d606c79eaad42a72ef029",
+    "runs/20261121-220747_E121-A2/families/family_0077.npz": "0dd49ac4a35a072cd8436ea62fdbbe83bdee05f5a84efa155cd95bc79cca185d",
+    "runs/20261121-220747_E121-A2/families/family_0078.npz": "cc1813b3d6db9998c44fc4cc188e46f4d2cbc36749ef4feb007145d677504412",
+    "runs/20261121-220747_E121-A2/families/family_0079.npz": "198b0a7ea6f2321e33705d2de2ec8620b0aa924dce211eee300d41f1eda1267c",
+    "runs/20261121-220747_E121-A2/families/family_0080.npz": "b55bae64d487eafaac0c9c6823b2cf4a19d09a2a3444d9b5d3bee3dc6fc72949",
+    "runs/20261121-220747_E121-A2/families/family_0081.npz": "785abbdc2bf01bcc965a3552ab8fe76693d34fc354302afee2f5b824548639ce",
+    "runs/20261121-220747_E121-A2/families/family_0082.npz": "b6b40dfc262888867d9de0f22927d999391612d9073e05cb3be03d04f634339e",
+    "runs/20261121-220747_E121-A2/families/family_0083.npz": "6c0fc772b8cfc73079120b97e1dd420f0a003d445c735a9258847c6046a2fd54",
+    "runs/20261121-220747_E121-A2/families/family_0084.npz": "04c02b6ad1b5669b269c917bc5a5a64565042095b3fe59cee56e37e3c386196e",
+    "runs/20261121-220747_E121-A2/families/family_0085.npz": "1bb6c4a435197beab75ad993c66ae5b8a2a8a5ba189dae5a3ee679fc1e20907b",
+    "runs/20261121-220747_E121-A2/families/family_0086.npz": "e83ba9b83774f1c8dbac3e8e138eb506060f7fe29c2b0523d468779d8af7e66d",
+    "runs/20261121-220747_E121-A2/families/family_0087.npz": "72243673ff59109e993b1b41a9491358db4f76344ec1d6b953f1263b225476a7",
+    "runs/20261121-220747_E121-A2/families/family_0088.npz": "5ee316691f453e48f654cb6a9513ddefd8a8cf42cb0066862d89709858d96c6f",
+    "runs/20261121-220747_E121-A2/families/family_0089.npz": "ed026b9dad844232d6966034af01a37a292f60a49d2e99a243d2a4fb8d45bbe3",
+    "runs/20261121-220747_E121-A2/families/family_0090.npz": "e2e3cb90028ae8ed4e39d019d93bff5cb203df756bded6c715842ca4fdfe923b",
+    "runs/20261121-220747_E121-A2/families/family_0091.npz": "0cecdbaa92c639625d281dce4dcf2a6c6523f4c8d319845c52eb4cd54bc76fc7",
+    "runs/20261121-220747_E121-A2/families/family_0092.npz": "9fd1a0ec8a298afaf6ebd26a18c9ad48a2fd34bda6ea0154eaedbde7b96ba7b7",
+    "runs/20261121-220747_E121-A2/families/family_0093.npz": "96204283e4be18becd4eacd031d078160a5e2dfd63f72ffa1fd0b61db88c4ca2",
+    "runs/20261121-220747_E121-A2/families/family_0094.npz": "1bec9a019498c9950f1da1d39468c0ae1fdf7fde185df8dbb0107c4ed5d221b5",
+    "runs/20261121-220747_E121-A2/families/family_0095.npz": "d82b197276bf806179c550d921e77414135c786218b030ba300613034fdce0f2",
+    "runs/20261121-220747_E121-A2/families/family_0096.npz": "17382fafe4677865e7193b1fff1c5e7b488dff1f7bcfe8138890b049063e9773",
+    "runs/20261121-220747_E121-A2/families/family_0097.npz": "ed248095bc5d458dcdc0cbc5600c36140d9ee9ea3c30bba770b387cc0165f32f",
+    "runs/20261121-220747_E121-A2/families/family_0098.npz": "8146aa145fb01076a68440e7fc53f6b5fd565a7bbae967506d6e8ebf30ea7e13",
+    "runs/20261121-220747_E121-A2/families/family_0099.npz": "01e80bf2d9fb8f2de7527a9cef296577d783ca7ec007bc2ca3c3df220dd4c766",
+    "runs/20261121-220747_E121-A2/families/family_0100.npz": "4f93ef41b16174341cd4169f84a345c50ce19dc9994d9933d2ff9918e7264592",
+    "runs/20261121-220747_E121-A2/families/family_0101.npz": "9b0044428f80a365379f822d0c88f2f8f5dd3128b44f1746dae1e1ac96a850a7",
+    "runs/20261121-220747_E121-A2/families/family_0102.npz": "7c6d081bb95b39bcf8ad70005b8780006dba85f2560cc29e13f1ef8fd3a8012b",
+    "runs/20261121-220747_E121-A2/families/family_0103.npz": "6ae376473616785fa1f9ac8ea8a35a41441b2a5c222a4030183f1a2c76150565",
+    "runs/20261121-220747_E121-A2/families/family_0104.npz": "18a3cae8c1925b732a45f271c5f40570bc40ffd9c6bea8ff1ab20fb9a9cc872b",
+    "runs/20261121-220747_E121-A2/families/family_0105.npz": "8eee2894638fa81eccd1ffdfd19be1e7824063971bd1a6216da248ec6d98dfc3",
+    "runs/20261121-220747_E121-A2/families/family_0106.npz": "4d2f8c268b6eac1497cf008719766343c95f4032d406ad4bc58da43eac3b65c9",
+    "runs/20261121-220747_E121-A2/families/family_0107.npz": "09e07b5aea69c6273a5d74a0ca4d4d4ff569814c3742f3aac38e156a0f320412",
+    "runs/20261121-220747_E121-A2/families/family_0108.npz": "332baec19c94a80f6b0a7cc7966c7e371a572e20c88c2c01224b470bf9b8a8dc",
+    "runs/20261121-220747_E121-A2/families/family_0109.npz": "36c7708c7a7f567462132a3a4b2598ca31f087c5b2c4ff2118216e78853e8015",
+    "runs/20261121-220747_E121-A2/families/family_0110.npz": "bce8c8b66dc54c45e763a59259c412184b79fa001f0482b8de8d5c21815c56a8",
+    "runs/20261121-220747_E121-A2/families/family_0111.npz": "cae12fc2a335f128536808fa0cea47ca3153d535885abdb560ed31bf0745ad52",
+    "runs/20261121-220747_E121-A2/families/family_0112.npz": "8512c67c97a1f05dd03f05c2592f2cb470a358243dc68144e76330992b2fac36",
+    "runs/20261121-220747_E121-A2/families/family_0113.npz": "56ef1a0d1bdc0dbd1200c5599575573d8d0a904a67dd274baf572865f1229b41",
+    "runs/20261121-220747_E121-A2/families/family_0114.npz": "38d5c7586d89b31443c70294c227a0559fa7c4b776c0236bbf7db86b536bc356",
+    "runs/20261121-220747_E121-A2/families/family_0115.npz": "9ec8de58f95857869d5a6c02df7c2439be4dce9a39fac93165b6548ab3c89e66",
+    "runs/20261121-220747_E121-A2/families/family_0116.npz": "8f5fbea2637da765165a6ae0d06081cb5692ab6eb61d665cce5d18ee8c0c82b1",
+    "runs/20261121-220747_E121-A2/families/family_0117.npz": "d1f825d84747f2aac2e243734a8a2de28d86cdfff23444df35db1ce529fbced1",
+    "runs/20261121-220747_E121-A2/families/family_0118.npz": "1731149baf4ef2d529d0e177b0b2e223b21501058b56ee754ad7d4ac4a041155",
+    "runs/20261121-220747_E121-A2/families/family_0119.npz": "4c0baf81fc5d0801323f555d18f70a2b9eab72c5555ba489344c2783e6d10054",
+    "runs/20261121-220747_E121-A2/families/family_0120.npz": "2be5c8c77301c2d171b997fa03b37985894fedc683e9981d68c0553483e1396c",
+    "runs/20261121-220747_E121-A2/families/family_0121.npz": "11c3218e92929c7a283aad24b89306db798bb192d2ceedd54905a6ab49c4217e",
+    "runs/20261121-220747_E121-A2/families/family_0122.npz": "c9cc76dbd2aaf6de0a46ff3f0e7af4bc9649e1ae90b2a94b7237ad43fa3dbbc0",
+    "runs/20261121-220747_E121-A2/families/family_0123.npz": "0aef58069f2257cbcfd72cf9306f647f29b37ef3aba4b1c7c2e4fde041aaa5f9",
+    "runs/20261121-220747_E121-A2/families/family_0124.npz": "23c6d730d7efc669d7fada7587767f1f0e298500a1c2c00e99dcfc1278018b52",
+    "runs/20261121-220747_E121-A2/families/family_0125.npz": "61c02fb3b72cd6c9dc0d4f426b02a6912bdf2ede26f57021eade26fe48995514",
+    "runs/20261121-220747_E121-A2/families/family_0126.npz": "7ff561316ee9ca362a04e562cfbe69c2e84d98ccb312f6eedd2173d047c09f9c",
+    "runs/20261121-220747_E121-A2/families/family_0127.npz": "bfb4b02553e4a09792f076ed144315530668c8f996142a5dfee27775062012de"
+  }
+}

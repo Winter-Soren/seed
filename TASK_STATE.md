@@ -14,10 +14,12 @@ E119 continued the three saved E118 genomes from generation ten through generati
 
 E120 gave newborns a movie of a practiced forager before they acted alone. Teachers chose food on about 81–83% of late encounters. Newborns chose food first in 67, 66 and 64 of 128 solo lives. Watching beat every control in zero of three lineages. The independent reconstruction confirmed the decision.
 
+E121 showed a reader could infer the food color from the teacher's public movements in all three lineages. Accuracy was 84.4 ± 2.3%, 84.4 ± 2.5% and 89.8 ± 1.9%. Even the moving scenery retained much of the cue. The original newborns' difficulty is using the information available in these movies.
+
 ## What is running
 
-E121 is registered. It asks whether a fixed reader can tell which color is food from the teacher's public movements in new movies. Its decision concerns the movies. Newborn behavior was measured separately in E120. Publication remains on hold at the owner's request.
+E120 and E121 are complete. The next study selects each observer lineage for choosing food first after seeing the same kind of movies. Each teacher keeps its original genome. The laptop runs one job at a time. Publication remains on hold at the owner's request.
 
 ## What is next
 
-Run the E121 benchmark and all three held-out panels on the laptop. If the movies reliably reveal food color, train observers to use them. If the reader fails, test a controlled demonstration whose visible choices can be verified. Register each comparison before opening its worlds.
+Benchmark the observer training, then run ten evolutionary rounds per lineage. Compare the final newborns with all three movie controls and their own original observer on new matched worlds. If training falls short, test a calibrated food-color memory with a control that erases just that memory before the newborn acts.

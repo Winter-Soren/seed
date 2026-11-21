@@ -1,0 +1,296 @@
+{
+  "status": "finished",
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 7.171999999991385,
+  "protocol": "social-channel-v1",
+  "condition_split": "development",
+  "generation": 0,
+  "source_label": "A0",
+  "eval_seed": 48,
+  "eval_worlds": 4,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "9ed6cafeddb2d47d6dca8a2a7cc459fcda829eff0a9138f61c932bdff504b717"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "5d9d5009b1861d70932760ef4c100f0d961b24a72ddbdd7b8e40816297a3af43"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "1a3fd1f63c059f74cfa1c31310056faa95fb062bf3c6d53f241e344f59df81e5"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "8a8a99c47524a906a02f978bc1a805166a522d29fb30b611ce2ec6203cdc227d"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "rule_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "track": {
+      "arms": {
+        "observed": {
+          "accuracy": {
+            "mean": 0.875,
+            "se": 0.125
+          },
+          "coverage": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "no_vote_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "tie_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "votes": {
+            "mean": 19.25,
+            "se": 6.992555565266059
+          },
+          "identifiable_steps": {
+            "mean": 104.0,
+            "se": 35.06185011281255
+          }
+        },
+        "yoked": {
+          "accuracy": {
+            "mean": 0.375,
+            "se": 0.23935677693908453
+          },
+          "coverage": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "no_vote_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "tie_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "votes": {
+            "mean": 19.25,
+            "se": 6.992555565266059
+          },
+          "identifiable_steps": {
+            "mean": 104.0,
+            "se": 35.06185011281255
+          }
+        },
+        "no_demo": {
+          "accuracy": {
+            "mean": 0.5,
+            "se": 0.0
+          },
+          "coverage": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "no_vote_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "tie_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "votes": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "identifiable_steps": {
+            "mean": 0.0,
+            "se": 0.0
+          }
+        },
+        "scene_only": {
+          "accuracy": {
+            "mean": 0.5,
+            "se": 0.0
+          },
+          "coverage": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "no_vote_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "tie_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "votes": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "identifiable_steps": {
+            "mean": 0.0,
+            "se": 0.0
+          }
+        }
+      },
+      "chance_difference": {
+        "mean": 0.375,
+        "se": 0.125
+      },
+      "comparisons": {
+        "yoked": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "no_demo": {
+          "mean": 0.375,
+          "se": 0.125
+        },
+        "scene_only": {
+          "mean": 0.375,
+          "se": 0.125
+        }
+      }
+    },
+    "scene": {
+      "arms": {
+        "observed": {
+          "accuracy": {
+            "mean": 0.875,
+            "se": 0.125
+          },
+          "coverage": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "no_vote_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "tie_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "votes": {
+            "mean": 17.75,
+            "se": 6.329494450586082
+          },
+          "identifiable_steps": {
+            "mean": 135.0,
+            "se": 6.867799259345505
+          }
+        },
+        "yoked": {
+          "accuracy": {
+            "mean": 0.375,
+            "se": 0.23935677693908453
+          },
+          "coverage": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "no_vote_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "tie_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "votes": {
+            "mean": 17.75,
+            "se": 6.329494450586082
+          },
+          "identifiable_steps": {
+            "mean": 135.0,
+            "se": 6.867799259345505
+          }
+        },
+        "no_demo": {
+          "accuracy": {
+            "mean": 0.5,
+            "se": 0.0
+          },
+          "coverage": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "no_vote_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "tie_fraction": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "votes": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "identifiable_steps": {
+            "mean": 0.0,
+            "se": 0.0
+          }
+        },
+        "scene_only": {
+          "accuracy": {
+            "mean": 0.875,
+            "se": 0.125
+          },
+          "coverage": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "no_vote_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "tie_fraction": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "votes": {
+            "mean": 17.75,
+            "se": 6.329494450586082
+          },
+          "identifiable_steps": {
+            "mean": 135.0,
+            "se": 6.867799259345505
+          }
+        }
+      },
+      "chance_difference": {
+        "mean": 0.375,
+        "se": 0.125
+      },
+      "comparisons": {
+        "yoked": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "no_demo": {
+          "mean": 0.375,
+          "se": 0.125
+        },
+        "scene_only": {
+          "mean": 0.0,
+          "se": 0.0
+        }
+      }
+    }
+  }
+}

@@ -33,6 +33,65 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Information in public demonstrations (social-channel-v1)
+
+E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. The track reader uses consecutive visible teacher positions; the scene reader uses item-image motion only. Both predict the most frequently contacted visible item color as food. Ties and no votes earn expected accuracy of one half. Every family is retained. Means use independent families; all ± values are standard errors of the mean (SEM), and control contrasts use paired within-family differences. Fractions are proportions, while votes and identifiable steps are mean counts per family. The tie fraction includes movies with no votes.
+
+The channel gate uses only the track reader's observed arm: coverage at least 0.50, expected accuracy at least 0.60, accuracy minus chance (0.50) strictly greater than two family SEM, and observed-minus-yoked accuracy strictly greater than two paired SEM. All four criteria must pass separately in all three lineages. A pass shows this fixed reader can use the public stimulus; it does not show an agent learned socially. A failure does not establish that every possible reader would fail. The scene reader and other control comparisons are diagnostics. Development and incomplete attempts have no scientific verdict.
+
+| Run | Status | Split | Families | Coverage ≥ 0.50 | Accuracy ≥ 0.60 | Above chance > 2 SEM | Above yoked > 2 paired SEM | Lineage decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261121-220258_E121-benchmark | finished | development | 4/4 | not applicable | not applicable | not applicable | not applicable | not applicable | 4274b0f |
+| 20261121-220410_E121-A0 | finished | final | 128/128 | PASS | PASS | PASS | PASS | PASS | 4274b0f |
+| 20261121-220626_E121-A1 | finished | final | 128/128 | PASS | PASS | PASS | PASS | PASS | 4274b0f |
+| 20261121-220747_E121-A2 | finished | final | 128/128 | PASS | PASS | PASS | PASS | PASS | 4274b0f |
+
+| Run | Split | Reader | Movie | Expected accuracy ± SEM | Coverage ± SEM | No-vote fraction ± SEM | Tie fraction ± SEM | Votes ± SEM | Identifiable steps ± SEM |
+|---|---|---|---|---|---|---|---|---|---|
+| 20261121-220258_E121-benchmark | development | track | observed | 0.875000 ± 0.125000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 19.250000 ± 6.992556 | 104.000000 ± 35.061850 |
+| 20261121-220258_E121-benchmark | development | track | yoked | 0.375000 ± 0.239357 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 19.250000 ± 6.992556 | 104.000000 ± 35.061850 |
+| 20261121-220258_E121-benchmark | development | track | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220258_E121-benchmark | development | track | scene_only | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220258_E121-benchmark | development | scene | observed | 0.875000 ± 0.125000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 17.750000 ± 6.329494 | 135.000000 ± 6.867799 |
+| 20261121-220258_E121-benchmark | development | scene | yoked | 0.375000 ± 0.239357 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 17.750000 ± 6.329494 | 135.000000 ± 6.867799 |
+| 20261121-220258_E121-benchmark | development | scene | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220258_E121-benchmark | development | scene | scene_only | 0.875000 ± 0.125000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 17.750000 ± 6.329494 | 135.000000 ± 6.867799 |
+| 20261121-220410_E121-A0 | final | track | observed | 0.843750 ± 0.023366 | 0.773438 ± 0.037145 | 0.226562 ± 0.037145 | 0.250000 ± 0.038424 | 13.984375 ± 0.875491 | 104.234375 ± 5.216905 |
+| 20261121-220410_E121-A0 | final | track | yoked | 0.500000 ± 0.038424 | 0.773438 ± 0.037145 | 0.226562 ± 0.037145 | 0.250000 ± 0.038424 | 13.984375 ± 0.875491 | 104.234375 ± 5.216905 |
+| 20261121-220410_E121-A0 | final | track | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220410_E121-A0 | final | track | scene_only | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220410_E121-A0 | final | scene | observed | 0.839844 ± 0.024761 | 0.781250 ± 0.036683 | 0.218750 ± 0.036683 | 0.226562 ± 0.037145 | 13.125000 ± 0.834038 | 134.679688 ± 1.535062 |
+| 20261121-220410_E121-A0 | final | scene | yoked | 0.503906 ± 0.039018 | 0.781250 ± 0.036683 | 0.218750 ± 0.036683 | 0.226562 ± 0.037145 | 13.125000 ± 0.834038 | 134.679688 ± 1.535062 |
+| 20261121-220410_E121-A0 | final | scene | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220410_E121-A0 | final | scene | scene_only | 0.839844 ± 0.024761 | 0.781250 ± 0.036683 | 0.218750 ± 0.036683 | 0.226562 ± 0.037145 | 13.125000 ± 0.834038 | 134.679688 ± 1.535062 |
+| 20261121-220626_E121-A1 | final | track | observed | 0.843750 ± 0.024647 | 0.812500 ± 0.034635 | 0.187500 ± 0.034635 | 0.218750 ± 0.036683 | 14.320312 ± 0.936199 | 108.187500 ± 4.879285 |
+| 20261121-220626_E121-A1 | final | track | yoked | 0.484375 ± 0.039191 | 0.812500 ± 0.034635 | 0.187500 ± 0.034635 | 0.218750 ± 0.036683 | 14.320312 ± 0.936199 | 108.187500 ± 4.879285 |
+| 20261121-220626_E121-A1 | final | track | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220626_E121-A1 | final | track | scene_only | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220626_E121-A1 | final | scene | observed | 0.835938 ± 0.025481 | 0.812500 ± 0.034635 | 0.187500 ± 0.034635 | 0.218750 ± 0.036683 | 14.476562 ± 1.371460 | 128.570312 ± 2.399933 |
+| 20261121-220626_E121-A1 | final | scene | yoked | 0.492188 ± 0.039210 | 0.812500 ± 0.034635 | 0.187500 ± 0.034635 | 0.218750 ± 0.036683 | 14.476562 ± 1.371460 | 128.570312 ± 2.399933 |
+| 20261121-220626_E121-A1 | final | scene | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220626_E121-A1 | final | scene | scene_only | 0.835938 ± 0.025481 | 0.812500 ± 0.034635 | 0.187500 ± 0.034635 | 0.218750 ± 0.036683 | 14.476562 ± 1.371460 | 128.570312 ± 2.399933 |
+| 20261121-220747_E121-A2 | final | track | observed | 0.898438 ± 0.019497 | 0.843750 ± 0.032219 | 0.156250 ± 0.032219 | 0.171875 ± 0.033477 | 14.695312 ± 0.907276 | 117.273438 ± 4.483576 |
+| 20261121-220747_E121-A2 | final | track | yoked | 0.468750 ± 0.040280 | 0.843750 ± 0.032219 | 0.156250 ± 0.032219 | 0.171875 ± 0.033477 | 14.695312 ± 0.907276 | 117.273438 ± 4.483576 |
+| 20261121-220747_E121-A2 | final | track | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220747_E121-A2 | final | track | scene_only | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220747_E121-A2 | final | scene | observed | 0.878906 ± 0.022695 | 0.851562 ± 0.031548 | 0.148438 ± 0.031548 | 0.164062 ± 0.032862 | 13.679688 ± 0.867582 | 132.625000 ± 1.823438 |
+| 20261121-220747_E121-A2 | final | scene | yoked | 0.457031 ± 0.040386 | 0.851562 ± 0.031548 | 0.148438 ± 0.031548 | 0.164062 ± 0.032862 | 13.679688 ± 0.867582 | 132.625000 ± 1.823438 |
+| 20261121-220747_E121-A2 | final | scene | no_demo | 0.500000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 0.000000 ± 0.000000 |
+| 20261121-220747_E121-A2 | final | scene | scene_only | 0.878906 ± 0.022695 | 0.851562 ± 0.031548 | 0.148438 ± 0.031548 | 0.164062 ± 0.032862 | 13.679688 ± 0.867582 | 132.625000 ± 1.823438 |
+
+| Run | Split | Reader | Observed minus chance ± SEM | Observed minus yoked ± paired SEM | Observed minus no demo ± paired SEM | Observed minus scene only ± paired SEM |
+|---|---|---|---|---|---|---|
+| 20261121-220258_E121-benchmark | development | track | 0.375000 ± 0.125000 | 0.500000 ± 0.288675 | 0.375000 ± 0.125000 | 0.375000 ± 0.125000 |
+| 20261121-220258_E121-benchmark | development | scene | 0.375000 ± 0.125000 | 0.500000 ± 0.288675 | 0.375000 ± 0.125000 | 0.000000 ± 0.000000 |
+| 20261121-220410_E121-A0 | final | track | 0.343750 ± 0.023366 | 0.343750 ± 0.044970 | 0.343750 ± 0.023366 | 0.343750 ± 0.023366 |
+| 20261121-220410_E121-A0 | final | scene | 0.339844 ± 0.024761 | 0.335938 ± 0.046105 | 0.339844 ± 0.024761 | 0.000000 ± 0.000000 |
+| 20261121-220626_E121-A1 | final | track | 0.343750 ± 0.024647 | 0.359375 ± 0.045375 | 0.343750 ± 0.024647 | 0.343750 ± 0.024647 |
+| 20261121-220626_E121-A1 | final | scene | 0.335938 ± 0.025481 | 0.343750 ± 0.046318 | 0.335938 ± 0.025481 | 0.000000 ± 0.000000 |
+| 20261121-220747_E121-A2 | final | track | 0.398438 ± 0.019497 | 0.429688 ± 0.045306 | 0.398438 ± 0.019497 | 0.398438 ± 0.019497 |
+| 20261121-220747_E121-A2 | final | scene | 0.378906 ± 0.022695 | 0.421875 ± 0.045205 | 0.378906 ± 0.022695 | 0.000000 ± 0.000000 |
+
 ## Observational learning and solo transfer (social-learning-v1)
 
 E120 tests one newborn per independent world family after 150 observation frames from an experienced teacher. Its solo test lasts 300 turns in a fresh world. The primary measure is first solo meal being food per assigned newborn; poison and no meal both count as zero. The observed movie is compared with yoked item colors, a time-matched blank movie and a scene-only movie. Each lineage must exceed every control by more than two paired family standard errors, with each all-assigned survival difference at least minus two SE. The table shows proportions and observed-minus-control differences. All three lineages must pass; development and incomplete attempts have no scientific verdict.

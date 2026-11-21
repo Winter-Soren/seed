@@ -1,0 +1,106 @@
+{
+  "protocol": "social-channel-v1",
+  "args": {
+    "name": "E121-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026112702,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "social-channel-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "4274b0f2b43558e6b3549de9cc48ef028ccacbc5",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "condition_split": "final",
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": null,
+  "persistence": "off",
+  "plastic": true,
+  "controller": "rules-v0",
+  "genome_size": 155,
+  "generation": 0,
+  "seed": 2026112702,
+  "eval_seed": 2026112702,
+  "eval_worlds": 128,
+  "expected_families": 128,
+  "key_order": [
+    "teacher_world",
+    "teacher_birth"
+  ],
+  "arms": [
+    "observed",
+    "yoked",
+    "no_demo",
+    "scene_only"
+  ],
+  "methods": [
+    "track",
+    "scene"
+  ],
+  "practice_steps": 150,
+  "watch_steps": 150,
+  "rule_assignment": "family index modulo 2",
+  "yoked_assignment": "item channels swapped when (family index // 2) modulo 2 is one",
+  "decoder": "majority contacted visible item color; tie or no vote scores one half",
+  "track": "consecutive teacher offsets infer movement with the lagged external camera",
+  "scene": "unique minimum normalized overlapping item mismatch; consecutive camera shifts infer contact",
+  "gate": {
+    "minimum_coverage": 0.5,
+    "minimum_accuracy": 0.6,
+    "standard_errors": 2.0,
+    "all_seeds": 3
+  },
+  "max_seconds": 3600,
+  "scientific_result": true,
+  "raw_schema": "social-channel-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

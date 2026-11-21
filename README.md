@@ -183,11 +183,25 @@ The table reports 128 unseen families per lineage. Teacher accuracy is the fract
 
 A0 passed the first-food comparison against scenery alone. The registered gate required an advantage above two paired standard errors against all three controls, together with the survival safeguard. A2 also failed that safeguard against the color-reassigned movie. Its survival fell by **8.6 ± 3.3 percentage points**, from 99/128 to 88/128 newborns. All deaths and missed meals remained in the assigned groups. [Independent movie and event audit](results/diagnostics/E120-independent-audit.json) · [Full results](results/RESULTS.md)
 
-The teachers made useful food choices, and watching changed newborns' own synaptic weights. These observations were insufficient to establish transfer of the food rule. The next diagnostic asks whether the visible movies contain a readable clue that the current newborns fail to use.
+The teachers made useful food choices, and watching changed newborns' own synaptic weights. These observations were insufficient to establish transfer of the food rule. E121 then tested whether the visible movies contained a readable clue.
+
+## What information the demonstration films contain
+
+**E121's readability gate passed in all three lineages.** A hand-engineered reader tracked the teacher's visible approaches to items and predicted the food color from 128 independent films per lineage. A second reader used only the item images and their movement across frames. Both readers use known camera geometry and fixed analysis rules. Their scores measure information available in the films.
+
+| Teacher lineage | Tracking-reader accuracy (%) | Gain vs color-reassigned movie, percentage points | Films yielding an item-visit vote (%) | Item-only reader accuracy (%) |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | 84.4 ± 2.3 | +34.4 ± 4.5 | 77.3 ± 3.7 | 84.0 ± 2.5 |
+| A1 | 84.4 ± 2.5 | +35.9 ± 4.5 | 81.2 ± 3.5 | 83.6 ± 2.5 |
+| A2 | 89.8 ± 1.9 | +43.0 ± 4.5 | 84.4 ± 3.2 | 87.9 ± 2.3 |
+
+Every film remains in the denominator. Ties and films without a vote receive half credit. The ± values are one family-level standard error, paired for the gains. All three tracking readers met the registered requirements for coverage, accuracy and advantages above two standard errors over chance and the color-reassigned control. [Independent film reconstruction and reader audit](results/diagnostics/E121-independent-audit.json) · [Full results](results/RESULTS.md)
+
+The item-only reader performed nearly as well. The camera follows the teacher, so scenery changes also reveal its route. Removing the teacher's visible body therefore leaves useful information in these films. The successful readers are hand-engineered analysis programs. The evolved newborns still failed E120's first solo-choice test despite this readable signal. E122 will test whether selection can produce observers that use it.
 
 ## Human-inspired research direction
 
-The next registered test, E121, asks whether a reader can **identify the food color from a teacher's visible choices**. It uses independent films and a reader with known camera geometry. The result will help decide whether to improve the demonstrations or train observers to use their information. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next experiment, E122, will **evolve the original observer genomes for the first food choice they make alone after watching**. Its teachers use the original A0/A1/A2 genomes. Selection will act on the observers, with fresh films and solo worlds used to check their descendants. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 
