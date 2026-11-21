@@ -24,6 +24,7 @@ def main():
     shelter_evolution_rows = []
     inherited_evolution_rows = []
     social_learning_rows = []
+    social_observer_rows = []
     social_channel_rows = []
     social_channel_contrasts = []
     social_channel_gates = []
@@ -42,6 +43,32 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "social-observer-train-v1":
+            split = a.get("condition_split", "")
+            expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
+            complete = (s.get("status") == "finished" and s.get("artifact_validity") == "passed"
+                        and s.get("attempted_rounds") == s.get("expected_attempts") == expected[0]
+                        and s.get("completed_families") == s.get("expected_families") == expected[1])
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and all(type(gate.get(name)) is bool for name in ("passed", "first_food_passed", "survival_passed")))
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            social_observer_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('attempted_rounds', '?')}/{cfg.get('expected_attempts', '?')}",
+                str(s.get("optimizer_updates", "?")),
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                estimate(measurements.get("arms", {}).get("observed", {}).get("first_food", {})),
+                estimate(measurements.get("arms", {}).get("starting_observed", {}).get("first_food", {})),
+                *[estimate(measurements.get("contrasts", {}).get(control, {}).get("first_food_difference", {}))
+                  for control in ("yoked", "no_demo", "scene_only", "starting_observed")], outcome, commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "social-channel-v1":
             split = a.get("condition_split", "")
             expected = 128 if split == "final" else 4 if split == "development" else None
@@ -351,6 +378,20 @@ def main():
                     "| Run | Split | Reader | Observed minus chance ± SEM | Observed minus yoked ± paired SEM | "
                     "Observed minus no demo ± paired SEM | Observed minus scene only ± paired SEM |",
                     "|---" * 7 + "|", *social_channel_contrasts, ""]
+    if social_observer_rows:
+        out += ["## Observer evolution with fixed teachers (social-observer-train-v1)", "",
+                "E122 branch O attempts ten observer ES rounds from each original genome while its demonstrator "
+                "stays fixed. Equal scores receive average ranks. All-tied rounds consume their worlds and "
+                "advance the random stream while preserving genome, moments and optimizer-update count. The "
+                "table reports informative updates separately from attempted rounds. Held-out gains are observed "
+                "minus each comparator, in first-food probability with paired family standard errors. A lineage "
+                "passes only if all four gains exceed two SE and every survival difference is at least minus "
+                "two SE. All assigned families contribute, including no-meal outcomes. All three lineages must "
+                "pass. Development and incomplete records have no scientific verdict.", "",
+                "| Run | Status | Split | Attempted rounds | Informative updates | Families | Evolved observed ± SE | "
+                "Original observed ± SE | Gain over yoked ± SE | Gain over no demo ± SE | Gain over scene only ± SE | "
+                "Gain over original ± SE | Decision | Commit |",
+                "|---" * 14 + "|", *social_observer_rows, ""]
     if social_learning_rows:
         out += ["## Observational learning and solo transfer (social-learning-v1)", "",
                 "E120 tests one newborn per independent world family after 150 observation frames from "

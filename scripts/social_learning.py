@@ -119,7 +119,42 @@ def first_meal(food, poison):
                 no_meal=np.asarray(not exists, bool), first_meal_step=np.asarray(index + 1, np.int32))
 
 
-def evaluate_family(flat, keys, index, c=CFG):
+def record_pupil(flat, solo_key, pupil_key, rule, frames, c=CFG):
+    """Record one newborn watching a supplied public movie and then acting alone."""
+    row = {}
+    g = shelter_evolution._unravel(c)(flat)
+    observer = jax.tree.map(np.asarray, watch(flat, pupil_key, frames, c))
+    initial, final = observer["initial"], observer["final"]
+    if any(not np.isfinite(value).all() for value in (*initial.values(), *final.values())):
+        raise ValueError("observer neural state must be finite")
+    solo = seed.rollout(g, solo_key, pupil_key, rule, c, plastic=True, diagnostics=True,
+                        _initial_weights=final["W"][None], _return_weights=True,
+                        _initial_brain=dict(x=final["x"][None], Wp=final["Wp"][None]))
+    solo = jax.tree.map(np.asarray, solo)
+    prefix = ""
+    row[prefix + "frames"] = frames
+    row[prefix + "watch_motor"] = observer["trace"]["motor"]
+    row[prefix + "watch_denergy"] = observer["trace"]["denergy"]
+    row[prefix + "birth_sha256"] = _hash(initial["W"])
+    for name in ("W", "x", "Wp"):
+        row[prefix + "watch_initial_" + name + "_sha256"] = _hash(initial[name])
+        row[prefix + "watch_final_" + name + "_sha256"] = _hash(final[name])
+    actual_initial = dict(W=solo["_weight_state"]["initial_W"][0],
+                          x=solo["_initial_brain"]["x"][0], Wp=solo["_initial_brain"]["Wp"][0])
+    for name, value in actual_initial.items():
+        row[prefix + "solo_initial_" + name + "_sha256"] = _hash(value)
+    for name in ("energy", "alive", "denergy"):
+        row[prefix + "solo_initial_" + name] = solo["_initial_brain"][name]
+    for event in EVENTS:
+        row[prefix + event] = np.asarray(solo["events"][event], bool)
+    row[prefix + "fitness"] = np.asarray(solo["fitness"])
+    row[prefix + "weight_change_count"] = np.asarray(np.count_nonzero(final["W"] != initial["W"]), np.int32)
+    row.update({prefix + name: value for name, value in first_meal(
+        row[prefix + "food"], row[prefix + "poison"]).items()})
+    return row
+
+
+def evaluate_family(flat, keys, index, c=CFG, *, teacher_flat=None):
     _config(c)
     flat, keys = np.asarray(flat), np.asarray(keys)
     if (flat.shape != (seed.genome_size(c),) or flat.dtype != np.float32 or not np.isfinite(flat).all()
@@ -134,41 +169,14 @@ def evaluate_family(flat, keys, index, c=CFG):
                radius=np.asarray(c.R, np.int32), grid_size=np.asarray(c.G, np.int32),
                hidden_units=np.asarray(c.H, np.int32),
                initial_energy=np.asarray(c.e0, np.float32))
-    row.update(_record_teacher(flat, keys, rule, c))
+    row.update(_record_teacher(flat if teacher_flat is None else teacher_flat, keys, rule, c))
     movie, row["camera_positions"] = make_movie(row, c)
     conditions = movie_conditions(movie, swap, c)
     grid, position = seed.init_world(keys[2], c)
     row.update(solo_initial_grid=np.asarray(grid, np.uint8), solo_initial_position=np.asarray(position, np.int32))
-    g = shelter_evolution._unravel(c)(flat)
     for arm, frames in conditions.items():
-        observer = jax.tree.map(np.asarray, watch(flat, keys[3], frames, c))
-        initial, final = observer["initial"], observer["final"]
-        if any(not np.isfinite(value).all() for value in (*initial.values(), *final.values())):
-            raise ValueError("observer neural state must be finite")
-        solo = seed.rollout(g, keys[2], keys[3], rule, c, plastic=True, diagnostics=True,
-                            _initial_weights=final["W"][None], _return_weights=True,
-                            _initial_brain=dict(x=final["x"][None], Wp=final["Wp"][None]))
-        solo = jax.tree.map(np.asarray, solo)
-        prefix = arm + "_"
-        row[prefix + "frames"] = frames
-        row[prefix + "watch_motor"] = observer["trace"]["motor"]
-        row[prefix + "watch_denergy"] = observer["trace"]["denergy"]
-        row[prefix + "birth_sha256"] = _hash(initial["W"])
-        for name in ("W", "x", "Wp"):
-            row[prefix + "watch_initial_" + name + "_sha256"] = _hash(initial[name])
-            row[prefix + "watch_final_" + name + "_sha256"] = _hash(final[name])
-        actual_initial = dict(W=solo["_weight_state"]["initial_W"][0],
-                              x=solo["_initial_brain"]["x"][0], Wp=solo["_initial_brain"]["Wp"][0])
-        for name, value in actual_initial.items():
-            row[prefix + "solo_initial_" + name + "_sha256"] = _hash(value)
-        for name in ("energy", "alive", "denergy"):
-            row[prefix + "solo_initial_" + name] = solo["_initial_brain"][name]
-        for event in EVENTS:
-            row[prefix + event] = np.asarray(solo["events"][event], bool)
-        row[prefix + "fitness"] = np.asarray(solo["fitness"])
-        row[prefix + "weight_change_count"] = np.asarray(np.count_nonzero(final["W"] != initial["W"]), np.int32)
-        row.update({prefix + name: value for name, value in first_meal(
-            row[prefix + "food"], row[prefix + "poison"]).items()})
+        row.update({arm + "_" + name: value for name, value in
+                    record_pupil(flat, keys[2], keys[3], rule, frames, c).items()})
     validate_family(row, c)
     return row
 
