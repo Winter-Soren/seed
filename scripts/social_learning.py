@@ -119,17 +119,19 @@ def first_meal(food, poison):
                 no_meal=np.asarray(not exists, bool), first_meal_step=np.asarray(index + 1, np.int32))
 
 
-def record_pupil(flat, solo_key, pupil_key, rule, frames, c=CFG):
+def record_pupil(flat, solo_key, pupil_key, rule, frames, c=CFG, *,
+                 _observer=None, _belief_q=None, _record_solo=False):
     """Record one newborn watching a supplied public movie and then acting alone."""
     row = {}
     g = shelter_evolution._unravel(c)(flat)
-    observer = jax.tree.map(np.asarray, watch(flat, pupil_key, frames, c))
+    observer = jax.tree.map(np.asarray, watch(flat, pupil_key, frames, c) if _observer is None else _observer)
     initial, final = observer["initial"], observer["final"]
     if any(not np.isfinite(value).all() for value in (*initial.values(), *final.values())):
         raise ValueError("observer neural state must be finite")
     solo = seed.rollout(g, solo_key, pupil_key, rule, c, plastic=True, diagnostics=True,
                         _initial_weights=final["W"][None], _return_weights=True,
-                        _initial_brain=dict(x=final["x"][None], Wp=final["Wp"][None]))
+                        _initial_brain=dict(x=final["x"][None], Wp=final["Wp"][None]),
+                        _belief_q=_belief_q, record=_record_solo)
     solo = jax.tree.map(np.asarray, solo)
     prefix = ""
     row[prefix + "frames"] = frames
@@ -151,6 +153,11 @@ def record_pupil(flat, solo_key, pupil_key, rule, frames, c=CFG):
     row[prefix + "weight_change_count"] = np.asarray(np.count_nonzero(final["W"] != initial["W"]), np.int32)
     row.update({prefix + name: value for name, value in first_meal(
         row[prefix + "food"], row[prefix + "poison"]).items()})
+    if _record_solo:
+        for name, source in (("grid", "grid"), ("position", "pos"), ("energy", "energy")):
+            row["solo_" + name] = solo["traj"][source]
+    if _belief_q is not None:
+        row.update({"belief_" + name: value for name, value in solo["_belief"].items()})
     return row
 
 

@@ -165,16 +165,31 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
     return W, x, Wp, surprise
 
 
+def social_action_bias(observation, q, c):
+    """E123's fixed, local readout; q never receives a world rule or reward."""
+    side = 2 * c.R + 1
+    area = side * side
+    destinations = (c.R + MOVES[:, 0]) * side + c.R + MOVES[:, 1]
+    colors = observation[:, :area] - observation[:, area:2 * area]
+    return 3.0 * (2.0 * q[:, None] - 1.0) * colors[:, destinations]
+
+
 # ----------------------------------------------------------------------------- one lifetime
 @partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
             persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False,
-            _initial_brain=None):
+            _initial_brain=None, _belief_q=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
     validate_persistence(persistence, ecology)
+    if _belief_q is not None:
+        if (structural or direct_weights is not None or ecology is not None
+                or persistence is not None or flip_step is not None or c.R < 1):
+            raise ValueError("social belief requires the unchanged stationary rules world")
+        if _belief_q.shape != (c.M,) or not jnp.issubdtype(_belief_q.dtype, jnp.floating):
+            raise ValueError("social belief must be one floating-point probability per agent")
     V, D, O, n, K = dims(c, ecology=ecology)
     pl = 1.0 if plastic else 0.0
     pp = pl if predictor_plastic is None else float(predictor_plastic)
@@ -283,6 +298,10 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
             stats['invalid_weights'] += ((~jnp.isfinite(W)) | (jnp.abs(W) > c.wmax) |
                                          ((new_mask == 0) & (W != 0))).sum((1, 2))
         logits = 3.0 * x[:, n - O:n - 1]
+        if _belief_q is not None:
+            unbiased_logits = logits
+            belief_bias = social_action_bias(obs, _belief_q, c)
+            logits = jnp.where(_belief_q[:, None] == .5, logits, logits + belief_bias)
         if persistence is not None:
             local_shelter = obs[:, D - V * V - 1:D - 1].reshape(M, V, V)
             logits, pursuit, pursuit_events = bias_logits(
@@ -319,6 +338,10 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
         out = dict(surprise=jnp.mean(surprise))
+        if _belief_q is not None and (record or diagnostics):
+            out["_belief"] = dict(q=_belief_q, action=act, bias=belief_bias,
+                                  unbiased_logits=unbiased_logits, biased_logits=logits,
+                                  efference=x[:, n - O:n - 1], denergy=denergy)
         if persistence is not None:
             pursuit["last_action"] = act
             ns["persistence"] = pursuit
@@ -364,6 +387,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
                                     terminal_W=s["last_alive_W"], alive=s["alive"])
     if _initial_brain is not None:
         res["_initial_brain"] = {name: carry[name] for name in ("x", "Wp", "energy", "alive", "denergy")}
+    if _belief_q is not None and (record or diagnostics):
+        res["_belief"] = traj["_belief"]
     if ecology is not None and (record or diagnostics):
         res["ecology"] = dict(shelter=shelter,
                               initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),

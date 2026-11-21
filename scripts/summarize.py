@@ -25,6 +25,11 @@ def main():
     inherited_evolution_rows = []
     social_learning_rows = []
     social_observer_rows = []
+    social_belief_gates = []
+    social_belief_arms = []
+    social_belief_contrasts = []
+    social_belief_calibrations = []
+    social_belief_losses = []
     social_channel_rows = []
     social_channel_contrasts = []
     social_channel_gates = []
@@ -43,6 +48,61 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "social-belief-readout-v1":
+            split = a.get("condition_split", "")
+            expected = (32, 128) if split == "final" else (4, 4) if split == "development" else (None, None)
+            calibration = s.get("calibration") or {}
+            frozen = s.get("frozen_calibration") or {}
+            calibrated = (expected[0] is not None and calibration.get("status") == "frozen"
+                          and calibration.get("completed_families") == calibration.get("expected_families") == expected[0]
+                          and s.get("completed_calibration_families") == s.get("expected_calibration_families") == expected[0]
+                          and frozen.get("path") == "calibration/selection.json"
+                          and len(frozen.get("sha256", "")) == 64)
+            complete = (calibrated and s.get("status") == "finished" and s.get("artifact_validity") == "passed"
+                        and s.get("completed_families") == s.get("expected_families") == expected[1])
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None else
+                                       f"{metric['mean']:.6f} ± " +
+                                       ("undefined" if metric.get("se") is None else f"{metric['se']:.6f}"))
+            gate = s.get("gate", {})
+            gate_fields = ("passed", "first_food_passed", "survival_passed")
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and all(type(gate.get(field)) is bool for field in gate_fields))
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            social_belief_gates.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_calibration_families', '?')}/{cfg.get('expected_calibration_families', '?')}",
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                *[("PASS" if gate[field] else "FAIL") if decided else "not applicable" if complete and split == "development"
+                  else "undecided" for field in gate_fields[1:]], outcome, commit,
+            ]) + " |")
+            if calibrated:
+                social_belief_calibrations.append("| " + " | ".join([
+                    d.name, split, str(calibration.get("selected_lambda", "undefined")),
+                    f"{calibration.get('contacts', '?')}/{calibration.get('families', '?')}",
+                    estimate(calibration.get("contact_coverage", {})), estimate(calibration.get("vote_coverage", {})),
+                ]) + " |")
+                for loss in calibration.get("losses", []):
+                    social_belief_losses.append("| " + " | ".join([
+                        d.name, str(loss.get("lambda", "undefined")),
+                        estimate(dict(mean=loss.get("mean_log_loss"), se=loss.get("se_log_loss"))),
+                    ]) + " |")
+            if complete:
+                for arm in ("observed", "yoked", "scene_only", "no_demo", "belief_reset", "birth_parent"):
+                    metrics = measurements.get("arms", {}).get(arm, {})
+                    social_belief_arms.append("| " + " | ".join([
+                        d.name, split, arm, *[estimate(metrics.get(metric, {})) for metric in
+                                            ("first_food", "no_meal", "survival", "fitness", "first_meal_step")],
+                    ]) + " |")
+                for control in ("yoked", "scene_only", "no_demo", "belief_reset", "birth_parent"):
+                    metrics = measurements.get("contrasts", {}).get(control, {})
+                    social_belief_contrasts.append("| " + " | ".join([
+                        d.name, split, control, estimate(metrics.get("first_food_difference", {})),
+                        estimate(metrics.get("survival_difference", {})),
+                    ]) + " |")
+            continue
         if a.get("eval_protocol") == "social-observer-train-v1":
             split = a.get("condition_split", "")
             expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
@@ -350,6 +410,41 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if social_belief_gates:
+        out += ["## Calibrated engineered social readout (social-belief-readout-v1)", "",
+                "E123 retains the original E103 genomes and adds an engineered scalar belief with a fixed "
+                "local action readout. There are zero ES generations and no genome mutation. One scalar lambda "
+                "is selected from nine fixed values using public movie contacts and an unassisted pupil's own "
+                "first outcome on calibration worlds. The complete calibration evidence and selection are "
+                "frozen before opening disjoint evaluation worlds. Calibration losses and coverage below are "
+                "fitting diagnostics, not held-out performance.", "",
+                "Each held-out family has six paired arms. First food is one for food and zero for poison or "
+                "no meal, across all assigned families. No-meal first-choice latency is capped at step 301. "
+                "Means and ± SEM use families as the independent unit; "
+                "contrasts use paired family differences. The observed arm must beat every one of the five "
+                "controls by strictly more than two paired SEM on first food, with survival differences "
+                "at least minus two paired SEM. All three lineages must pass the complete intersection gate. "
+                "A parent-only benefit cannot override a failed control or survival comparison. Development "
+                "and incomplete attempts have no scientific verdict.", "",
+                "The belief-reset control changes only the added belief; birth-parent uses the original "
+                "unassisted birth state. A pass supports useful public information through this calibrated "
+                "engineered readout; it does not show the unchanged hidden network invented social learning. "
+                "A failed gate ends this version without retuning on its evaluation worlds.", "",
+                "| Run | Status | Split | Calibration families | Evaluation families | All first-food contrasts | "
+                "All survival safeguards | Lineage decision | Commit |", "|---" * 9 + "|",
+                *social_belief_gates, ""]
+        if social_belief_calibrations:
+            out += ["Calibration diagnostics (fresh fitting worlds only):", "",
+                    "| Run | Split | Frozen lambda | Own contacts / assigned | Contact coverage ± SEM | "
+                    "Decoder vote coverage ± SEM |", "|---" * 6 + "|", *social_belief_calibrations, "",
+                    "| Run | Candidate lambda | Calibration log loss ± SEM |", "|---" * 3 + "|",
+                    *social_belief_losses, ""]
+        if social_belief_arms:
+            out += ["Held-out family outcomes:", "",
+                    "| Run | Split | Arm | First food ± SEM | No-meal fraction ± SEM | Survival ± SEM | "
+                    "Fitness ± SEM | First-meal step ± SEM |", "|---" * 8 + "|", *social_belief_arms, "",
+                    "| Run | Split | Control | Observed first-food difference ± paired SEM | "
+                    "Observed survival difference ± paired SEM |", "|---" * 5 + "|", *social_belief_contrasts, ""]
     if social_channel_gates:
         out += ["## Information in public demonstrations (social-channel-v1)", "",
                 "E121 uses fixed readers of 150 public frames after a teacher's 150 practice turns. "
