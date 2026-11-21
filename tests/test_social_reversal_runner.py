@@ -263,15 +263,34 @@ class SocialReversalRunnerTests(unittest.TestCase):
         folder = self.folder()
         result = self.result()
         result.update(status="failed", gate={field: True for field in entry.GATE_FIELDS}, gate_status="passed")
-        (folder / "summary.json").write_text(json.dumps(result))
-        (self.root / "results").mkdir()
-        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()):
+        # The source-loading fixtures intentionally contain unreadable prior summaries.
+        # Reporting needs its own run tree containing only the partial E125 fixture.
+        report_root = self.root / "partial-report"
+        report_folder = report_root / "runs" / folder.name
+        report_folder.mkdir(parents=True)
+        (report_folder / "config.json").write_bytes((folder / "config.json").read_bytes())
+        (report_folder / "summary.json").write_text(json.dumps(result), encoding="utf-8")
+        with patch.object(summarize, "ROOT", report_root), contextlib.redirect_stdout(io.StringIO()):
             summarize.main()
-        report = (self.root / "results/RESULTS.md").read_text(encoding="utf-8")
+        report = (report_root / "results/RESULTS.md").read_text(encoding="utf-8")
         row = next(line for line in report.splitlines() if folder.name in line)
         self.assertIn("undecided", row)
         self.assertNotIn("PASS", row)
         self.assertIn("formal rung", report)
+
+    def test_malformed_summary_aborts_without_overwriting_report_or_evidence(self):
+        evidence = {self.root / pin["folder"] / "summary.json" for pin in self.pins.values()}
+        before = {path: path.read_bytes() for path in evidence}
+        report_path = self.root / "results" / "RESULTS.md"
+        report_path.parent.mkdir()
+        previous_report = b"previous verified report\n"
+        report_path.write_bytes(previous_report)
+        with patch.object(summarize, "ROOT", self.root), contextlib.redirect_stdout(io.StringIO()):
+            with self.assertRaises(json.JSONDecodeError) as error:
+                summarize.main()
+        self.assertEqual(error.exception.doc, "forbidden prior evaluation")
+        self.assertEqual(report_path.read_bytes(), previous_report)
+        self.assertEqual({path: path.read_bytes() for path in evidence}, before)
 
 
 if __name__ == "__main__":

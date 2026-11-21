@@ -2290,3 +2290,7 @@ Benchmark master 2026120300, final masters 2026120301, 2026120302 and 2026120303
     python scripts/run_experiment.py --eval-protocol reversal-random-v1 --name E125-A0 --condition-split final --seed 2026120301 --generations 0 --eval-worlds 128 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
     python scripts/run_experiment.py --eval-protocol reversal-random-v1 --name E125-A1 --condition-split final --seed 2026120302 --generations 0 --eval-worlds 128 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
     python scripts/run_experiment.py --eval-protocol reversal-random-v1 --name E125-A2 --condition-split final --seed 2026120303 --generations 0 --eval-worlds 128 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+
+#### E125 preflight correction · 21 November 2026
+
+Before the benchmark, the six synthetic audit groups and ten engine tests passed. One of eleven runner tests failed. Its report generator scanned an intentionally malformed E123 summary that a different part of the same fixture uses to detect accidental reads of historical evaluation data. The error occurred inside a temporary test directory. Isolate the E125 report fixture and verify that malformed input still raises an error while preserving an existing report. Repeat the runner tests before the benchmark. No registered world, controller, outcome, gate or seed changes.
