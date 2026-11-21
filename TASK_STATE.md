@@ -20,10 +20,12 @@ E122 selected the observers for first-food success after watching. All ten round
 
 E123 added one calibrated food-color memory to the original newborns. Keeping that memory improved the first independent choice versus erasing it by 32.8 ± 4.3, 24.2 ± 4.1 and 36.7 ± 4.3 percentage points. All three lineages beat five controls and met the survival safeguards. The readout was engineered and its reliability calibrated from each lineage's own experience.
 
+E124 found that the same lesson survived three behavioral handoffs in all three lineages. Third-cohort first-food rates were 86.7 ± 3.0%, 83.6 ± 3.3% and 86.7 ± 3.0%. Only the third lineage improved beyond both the first cohort and replaying the original teacher. Cumulative improvement failed to replicate.
+
 ## What is running
 
-E120–E123 are complete. The next study gives three successive newborns in each chain a chance to watch the preceding pupil. Only visible behavior moves between cohorts. The laptop runs one job at a time. Publication remains on hold at the owner's request.
+The social transmission studies are complete. The next study changes the world: the food and poison colors switch once at a hidden randomized time. Each reversal is paired with a stationary copy of the same world. Local publication is on hold at the owner's request.
 
 ## What is next
 
-Keep the successful genome and calibration fixed. Test whether the benefit survives all three handoffs and whether the third cohort improves over both the first cohort and a repeated demonstration from the original teacher. These are separate decisions.
+Measure the successful social observer and its memory-reset sibling on both versions. Compare the unassisted original and fixed recurrent controllers on equal terms separately. Count deaths and missed contacts when measuring recovery. Complete this measurement before selecting new genomes for a changing world.

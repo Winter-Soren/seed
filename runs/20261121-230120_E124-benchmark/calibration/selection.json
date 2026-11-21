@@ -1,0 +1,92 @@
+{
+  "selected_lambda": 4.0,
+  "families": 4,
+  "contacts": 4,
+  "losses": [
+    {
+      "lambda": -4.0,
+      "mean_log_loss": 2.844604699035705,
+      "se_log_loss": 0.44534305384509093
+    },
+    {
+      "lambda": -2.0,
+      "mean_log_loss": 1.6185842264666666,
+      "se_log_loss": 0.18786253799870703
+    },
+    {
+      "lambda": -1.0,
+      "mean_log_loss": 1.1010139535452088,
+      "se_log_loss": 0.07932713112349041
+    },
+    {
+      "lambda": -0.5,
+      "mean_log_loss": 0.8815471123858396,
+      "se_log_loss": 0.035360780364647876
+    },
+    {
+      "lambda": 0.0,
+      "mean_log_loss": 0.6931471805599453,
+      "se_log_loss": 0.0
+    },
+    {
+      "lambda": 0.5,
+      "mean_log_loss": 0.5370530647667919,
+      "se_log_loss": 0.02631755205033615
+    },
+    {
+      "lambda": 1.0,
+      "mean_log_loss": 0.4120258583071135,
+      "se_log_loss": 0.044061957967305214
+    },
+    {
+      "lambda": 2.0,
+      "mean_log_loss": 0.2406080359904761,
+      "se_log_loss": 0.059082637835242625
+    },
+    {
+      "lambda": 4.0,
+      "mean_log_loss": 0.08865231808332408,
+      "se_log_loss": 0.04876288804277856
+    }
+  ],
+  "contact_coverage": {
+    "mean": 1.0,
+    "se": 0.0
+  },
+  "vote_coverage": {
+    "mean": 1.0,
+    "se": 0.0
+  },
+  "vote_tie_fraction": {
+    "mean": 0.0,
+    "se": 0.0
+  },
+  "calibration_inputs_sha256": "9007bba1e8ab7b788d1b0e22ae4ccf96ca94e3cf5964f6a5a781f33be9d76647",
+  "status": "frozen",
+  "calibration_seed": 51,
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 10.202999999979511,
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "calibration/family_0000.npz",
+      "sha256": "2c7a805ee7bf74d77957bff51ed45ef40ad46b8bded3cb7387d6623d28956d98"
+    },
+    {
+      "index": 1,
+      "path": "calibration/family_0001.npz",
+      "sha256": "26e19ed7854a6534f10669e809602a77aabf91897c51596395c852370c7a93eb"
+    },
+    {
+      "index": 2,
+      "path": "calibration/family_0002.npz",
+      "sha256": "31ac72b7745553be57701b01982da4cf8e92ad78d827d40a37b15548b08b01b3"
+    },
+    {
+      "index": 3,
+      "path": "calibration/family_0003.npz",
+      "sha256": "0a5007fdf822eee47e2c8d94919125c1453bd0c3261a4fb190de2fe9a4208395"
+    }
+  ]
+}

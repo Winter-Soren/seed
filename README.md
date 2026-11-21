@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Latest audited result — E123 passed in all three lineages.** An engineered food-color belief helped original observers choose food on their first meal alone, across 384 unseen world families. [E123 results and controls](#using-a-calibrated-food-belief) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
+**Latest audited result — E124 retained a useful lesson through three successive pupils in all three lineages.** The test covered 384 independent teaching chains. Further improvement passed in A2 alone, so the study-wide cumulative-improvement gate failed. [E124 retention and limits](#learning-passed-through-three-pupils) · [E123 calibrated readout](#using-a-calibrated-food-belief) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
 
 ## What the creatures do
 
@@ -249,9 +249,25 @@ The figure uses the same within-study contrast for the original observers in E12
 
 [Vector figure](results/figures/social-learning-comparison.svg) · [Plotted values and audit fingerprints](results/figures/social-learning-comparison.json) · [Reproduce the figure](tools/build_social_learning_figure.py)
 
+## Learning passed through three pupils
+
+**E124 passed its retention gate in all three lineages.** Each founder's public behavior taught a first pupil (C1), whose own subsequent behavior taught C2, whose behavior taught C3. There were 128 independent chains per lineage, or 384 in total. Every pupil developed a fresh brain and acted alone on a new layout. The original genome and E123 calibration stayed fixed, and pupils inherited no learned weights, neural state or food belief. They received only a movie of their predecessor's visible behavior.
+
+The table measures whether each pupil's first meal was food. Poison, death before eating and no meal count as failures. Rates are percentages ± one standard error across chains. Gains are percentage points ± one paired chain standard error. The repeated-founder control gave the same C3 newborn the original founder's movie instead of C2's movie.
+
+| Lineage | C1 first food (%) | C2 first food (%) | C3 first food (%) | C3 − C1, points | C3 − repeated founder, points |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A0 | 83.6 ± 3.3 | 86.7 ± 3.0 | 86.7 ± 3.0 | +3.1 ± 3.8 | +1.6 ± 3.7 |
+| A1 | 78.9 ± 3.6 | 90.6 ± 2.6 | 83.6 ± 3.3 | +4.7 ± 4.6 | +1.6 ± 3.8 |
+| A2 | 76.6 ± 3.8 | 79.7 ± 3.6 | 86.7 ± 3.0 | +10.2 ± 4.0 | +10.2 ± 3.5 |
+
+At every cohort, the predecessor-movie pupil beat both the color-reassigned movie and belief-reset controls by more than two paired standard errors. All **30 registered survival screens** passed: the paired survival difference minus two standard errors remained strictly above **−10 percentage points** against the three within-cohort controls and for C3 versus C1. The lowest bounds were −1.2, −4.4 and −1.9 points for A0, A1 and A2. This permitted-loss margin does not establish equal survival or absence of harm.
+
+Only A2 exceeded two paired standard errors on both improvement contrasts. **The three-lineage cumulative-improvement gate failed.** The verified result is repeated transmission of a useful lesson under a stationary two-color rule, using the engineered reader. This experiment involved no genome evolution and does not establish a generally improving chain. [Independent transmission and outcome audit](results/diagnostics/E124-independent-audit.json) · [Full results](results/RESULTS.md)
+
 ## Human-inspired research direction
 
-The next prospective experiment, E124, will put **three successive pupils in a teaching chain**. Each actual pupil will become the demonstrator for the next, carrying the behavior it acquired through its own life. The study will measure retention of the first-food skill and further improvement separately. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next experiment, **E125**, asks what happens when a useful lesson becomes obsolete. In fresh worlds, the hidden food rule will reverse at an unpredictable time, without a change signal. Paired stationary worlds will show how much behavior changes because of the reversal. Social memory will be compared with its reset, alongside separate paired benchmarks for the original birth parent and the directly encoded recurrent controller. The study will measure whether the saved controllers revise their behavior after the change, before any new training. These are specific capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

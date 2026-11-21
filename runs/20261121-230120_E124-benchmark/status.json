@@ -1,0 +1,14 @@
+{
+  "status": "finished",
+  "phase": "evaluation",
+  "completed_chains": 4,
+  "expected_chains": 4,
+  "elapsed_seconds": 32.344000000011874,
+  "setup_seconds": 0.625,
+  "chain_seconds": [
+    21.671999999991385,
+    2.625,
+    4.297000000020489,
+    3.0309999999881256
+  ]
+}

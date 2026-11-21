@@ -1,0 +1,1294 @@
+{
+  "status": "finished",
+  "phase": "evaluation",
+  "completed_chains": 4,
+  "expected_chains": 4,
+  "elapsed_seconds": 32.344000000011874,
+  "setup_seconds": 0.625,
+  "chain_seconds": [
+    21.671999999991385,
+    2.625,
+    4.297000000020489,
+    3.0309999999881256
+  ],
+  "protocol": "social-transmission-v1",
+  "condition_split": "development",
+  "generation": 0,
+  "source_label": "A0",
+  "eval_seed": 2026120200,
+  "eval_worlds": 4,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "retained_efficacy_status": "not_applicable",
+  "cumulative_improvement_status": "not_applicable",
+  "selected_lambda": 4.0,
+  "calibration_source": {
+    "name": "E123-benchmark",
+    "folder": "runs/20261121-223900_E123-benchmark",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 51,
+    "expected_calibration_families": 4,
+    "config": {
+      "path": "runs/20261121-223900_E123-benchmark/config.json",
+      "sha256": "c4c0093600edbdb35c8b330d72a2b61d938b4fb756a2947e78316c116547a15c"
+    },
+    "selection": {
+      "path": "runs/20261121-223900_E123-benchmark/calibration/selection.json",
+      "sha256": "a79e663b8889067defe53c16c2e649ae398027426f61ebf3b2cfe0cb35200bdc"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0000.npz",
+        "sha256": "2c7a805ee7bf74d77957bff51ed45ef40ad46b8bded3cb7387d6623d28956d98"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0001.npz",
+        "sha256": "26e19ed7854a6534f10669e809602a77aabf91897c51596395c852370c7a93eb"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0002.npz",
+        "sha256": "31ac72b7745553be57701b01982da4cf8e92ad78d827d40a37b15548b08b01b3"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0003.npz",
+        "sha256": "0a5007fdf822eee47e2c8d94919125c1453bd0c3261a4fb190de2fe9a4208395"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "a79e663b8889067defe53c16c2e649ae398027426f61ebf3b2cfe0cb35200bdc"
+  },
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "chains/chain_0000.npz",
+      "sha256": "7b825661476c9ba9208297d683596063f46948e725627c96e3d5264c4ff31e2b"
+    },
+    {
+      "index": 1,
+      "path": "chains/chain_0001.npz",
+      "sha256": "76fed244bf99db394889d29fb037ff1c4c0c38b6bc4d30583920707c41c443b7"
+    },
+    {
+      "index": 2,
+      "path": "chains/chain_0002.npz",
+      "sha256": "d2ef2b8488436ae212435287eb9dd798c1481a13cbe7375273e191a3ec1c8b80"
+    },
+    {
+      "index": 3,
+      "path": "chains/chain_0003.npz",
+      "sha256": "21c7722bc7ae494f2873a53a63d5338cc45227c1cb94beba2e07e73401f8b788"
+    }
+  ],
+  "measurements": {
+    "protocol": "social-transmission-v1",
+    "chains": 4,
+    "cohorts": {
+      "1": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 34.75,
+              "se": 10.011451776174455,
+              "lower_2se": 14.727096447651089,
+              "upper_2se": 54.77290355234891
+            },
+            "first_meal_step": {
+              "mean": 10.0,
+              "se": 4.02077936060494,
+              "lower_2se": 1.9584412787901204,
+              "upper_2se": 18.04155872120988
+            },
+            "changed_weights": {
+              "mean": 3216.0,
+              "se": 12.987173159185437,
+              "lower_2se": 3190.025653681629,
+              "upper_2se": 3241.974346318371
+            },
+            "belief_probability": {
+              "mean": 0.4826362654566765,
+              "se": 0.2315348940176371,
+              "lower_2se": 0.019566477421402273,
+              "upper_2se": 0.9457060534919507
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 34.75,
+              "se": 10.011451776174455,
+              "lower_2se": 14.727096447651089,
+              "upper_2se": 54.77290355234891
+            },
+            "first_meal_step": {
+              "mean": 10.0,
+              "se": 4.02077936060494,
+              "lower_2se": 1.9584412787901204,
+              "upper_2se": 18.04155872120988
+            },
+            "changed_weights": {
+              "mean": 3216.0,
+              "se": 12.987173159185437,
+              "lower_2se": 3190.025653681629,
+              "upper_2se": 3241.974346318371
+            },
+            "belief_probability": {
+              "mean": 0.4826362654566765,
+              "se": 0.2315348940176371,
+              "lower_2se": 0.019566477421402273,
+              "upper_2se": 0.9457060534919507
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "fitness": {
+              "mean": 20.75,
+              "se": 15.975893297924427,
+              "lower_2se": -11.201786595848855,
+              "upper_2se": 52.70178659584886
+            },
+            "first_meal_step": {
+              "mean": 5.25,
+              "se": 2.6575364531836625,
+              "lower_2se": -0.06507290636732499,
+              "upper_2se": 10.565072906367325
+            },
+            "changed_weights": {
+              "mean": 3216.0,
+              "se": 12.987173159185437,
+              "lower_2se": 3190.025653681629,
+              "upper_2se": 3241.974346318371
+            },
+            "belief_probability": {
+              "mean": 0.5250407308340073,
+              "se": 0.23130044538017383,
+              "lower_2se": 0.0624398400736596,
+              "upper_2se": 0.9876416215943549
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 2,
+            "first_poison_count": 2,
+            "no_meal_count": 0,
+            "survivors": 2
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 16.5,
+              "se": 2.9011491975882016,
+              "lower_2se": 10.697701604823596,
+              "upper_2se": 22.302298395176404
+            },
+            "first_meal_step": {
+              "mean": 10.5,
+              "se": 6.006940430313366,
+              "lower_2se": -1.5138808606267329,
+              "upper_2se": 22.513880860626735
+            },
+            "changed_weights": {
+              "mean": 3216.0,
+              "se": 12.987173159185437,
+              "lower_2se": 3190.025653681629,
+              "upper_2se": 3241.974346318371
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 2,
+            "first_poison_count": 2,
+            "no_meal_count": 0,
+            "survivors": 4
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "survival_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          }
+        }
+      },
+      "2": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 44.5,
+              "se": 6.664583007710735,
+              "lower_2se": 31.17083398457853,
+              "upper_2se": 57.82916601542147
+            },
+            "first_meal_step": {
+              "mean": 6.75,
+              "se": 2.954516316872639,
+              "lower_2se": 0.8409673662547217,
+              "upper_2se": 12.659032633745278
+            },
+            "changed_weights": {
+              "mean": 3206.75,
+              "se": 24.72978972818006,
+              "lower_2se": 3157.29042054364,
+              "upper_2se": 3256.20957945636
+            },
+            "belief_probability": {
+              "mean": 0.46275870874524117,
+              "se": 0.24488034410658624,
+              "lower_2se": -0.027001979467931314,
+              "upper_2se": 0.9525193969584136
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.25,
+              "se": 5.807681694675309,
+              "lower_2se": 10.634636610649382,
+              "upper_2se": 33.86536338935062
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 0.75,
+              "se": 0.25,
+              "lower_2se": 0.25,
+              "upper_2se": 1.25
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "lower_2se": -0.25,
+              "upper_2se": 0.75
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 44.5,
+              "se": 3.068658773253661,
+              "lower_2se": 38.36268245349268,
+              "upper_2se": 50.63731754650732
+            },
+            "first_meal_step": {
+              "mean": 6.25,
+              "se": 3.0379543555930306,
+              "lower_2se": 0.17409128881393876,
+              "upper_2se": 12.325908711186061
+            },
+            "changed_weights": {
+              "mean": 3206.75,
+              "se": 24.72978972818006,
+              "lower_2se": 3157.29042054364,
+              "upper_2se": 3256.20957945636
+            },
+            "belief_probability": {
+              "mean": 0.4826362654566765,
+              "se": 0.2315348940176371,
+              "lower_2se": 0.019566477421402273,
+              "upper_2se": 0.9457060534919507
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 3,
+            "first_poison_count": 1,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "fitness": {
+              "mean": 22.0,
+              "se": 15.668439615992398,
+              "lower_2se": -9.336879231984796,
+              "upper_2se": 53.336879231984796
+            },
+            "first_meal_step": {
+              "mean": 3.75,
+              "se": 1.8874586088176875,
+              "lower_2se": -0.02491721763537491,
+              "upper_2se": 7.524917217635375
+            },
+            "changed_weights": {
+              "mean": 3206.75,
+              "se": 24.72978972818006,
+              "lower_2se": 3157.29042054364,
+              "upper_2se": 3256.20957945636
+            },
+            "belief_probability": {
+              "mean": 0.5506730917841196,
+              "se": 0.24407532745792054,
+              "lower_2se": 0.06252243686827852,
+              "upper_2se": 1.0388237466999608
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.25,
+              "se": 5.807681694675309,
+              "lower_2se": 10.634636610649382,
+              "upper_2se": 33.86536338935062
+            },
+            "first_food_count": 2,
+            "first_poison_count": 2,
+            "no_meal_count": 0,
+            "survivors": 2
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "lower_2se": 0.25,
+              "upper_2se": 1.25
+            },
+            "fitness": {
+              "mean": 16.75,
+              "se": 8.25,
+              "lower_2se": 0.25,
+              "upper_2se": 33.25
+            },
+            "first_meal_step": {
+              "mean": 4.5,
+              "se": 2.598076211353316,
+              "lower_2se": -0.696152422706632,
+              "upper_2se": 9.696152422706632
+            },
+            "changed_weights": {
+              "mean": 3206.75,
+              "se": 24.72978972818006,
+              "lower_2se": 3157.29042054364,
+              "upper_2se": 3256.20957945636
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.25,
+              "se": 5.807681694675309,
+              "lower_2se": 10.634636610649382,
+              "upper_2se": 33.86536338935062
+            },
+            "first_food_count": 2,
+            "first_poison_count": 2,
+            "no_meal_count": 0,
+            "survivors": 3
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.25,
+              "se": 0.25,
+              "lower_2se": -0.25,
+              "upper_2se": 0.75
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "survival_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "survival_difference": {
+              "mean": 0.25,
+              "se": 0.25,
+              "lower_2se": -0.25,
+              "upper_2se": 0.75
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": false,
+              "passed": false
+            }
+          }
+        }
+      },
+      "3": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 46.25,
+              "se": 4.110454151712841,
+              "lower_2se": 38.02909169657432,
+              "upper_2se": 54.47090830342568
+            },
+            "first_meal_step": {
+              "mean": 5.0,
+              "se": 3.366501646120693,
+              "lower_2se": -1.7330032922413858,
+              "upper_2se": 11.733003292241385
+            },
+            "changed_weights": {
+              "mean": 3215.75,
+              "se": 20.40169519100476,
+              "lower_2se": 3174.9466096179904,
+              "upper_2se": 3256.5533903820096
+            },
+            "belief_probability": {
+              "mean": 0.5053662471473217,
+              "se": 0.2728529806879878,
+              "lower_2se": -0.0403397142286539,
+              "upper_2se": 1.0510722085232973
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.0,
+              "se": 3.3416562759605704,
+              "lower_2se": 15.31668744807886,
+              "upper_2se": 28.68331255192114
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 39.5,
+              "se": 1.6583123951777,
+              "lower_2se": 36.1833752096446,
+              "upper_2se": 42.8166247903554
+            },
+            "first_meal_step": {
+              "mean": 2.25,
+              "se": 0.9464847243000456,
+              "lower_2se": 0.3570305513999088,
+              "upper_2se": 4.142969448600091
+            },
+            "changed_weights": {
+              "mean": 3215.75,
+              "se": 20.40169519100476,
+              "lower_2se": 3174.9466096179904,
+              "upper_2se": 3256.5533903820096
+            },
+            "belief_probability": {
+              "mean": 0.4826362654566765,
+              "se": 0.2315348940176371,
+              "lower_2se": 0.019566477421402273,
+              "upper_2se": 0.9457060534919507
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 18.5,
+              "se": 4.051748593714406,
+              "lower_2se": 10.396502812571187,
+              "upper_2se": 26.603497187428815
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "fitness": {
+              "mean": 23.25,
+              "se": 16.02797034353799,
+              "lower_2se": -8.805940687075982,
+              "upper_2se": 55.30594068707598
+            },
+            "first_meal_step": {
+              "mean": 5.25,
+              "se": 3.06526235962492,
+              "lower_2se": -0.8805247192498404,
+              "upper_2se": 11.380524719249841
+            },
+            "changed_weights": {
+              "mean": 3215.75,
+              "se": 20.40169519100476,
+              "lower_2se": 3174.9466096179904,
+              "upper_2se": 3256.5533903820096
+            },
+            "belief_probability": {
+              "mean": 0.5020305085927248,
+              "se": 0.27286804844280793,
+              "lower_2se": -0.04370558829289106,
+              "upper_2se": 1.0477666054783406
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.0,
+              "se": 3.3416562759605704,
+              "lower_2se": 15.31668744807886,
+              "upper_2se": 28.68331255192114
+            },
+            "first_food_count": 2,
+            "first_poison_count": 2,
+            "no_meal_count": 0,
+            "survivors": 2
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "fitness": {
+              "mean": 18.5,
+              "se": 3.068658773253661,
+              "lower_2se": 12.362682453492678,
+              "upper_2se": 24.637317546507322
+            },
+            "first_meal_step": {
+              "mean": 16.5,
+              "se": 8.025999418556339,
+              "lower_2se": 0.44800116288732283,
+              "upper_2se": 32.55199883711268
+            },
+            "changed_weights": {
+              "mean": 3215.75,
+              "se": 20.40169519100476,
+              "lower_2se": 3174.9466096179904,
+              "upper_2se": 3256.5533903820096
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_strict_coverage": {
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "decoder_votes": {
+              "mean": 22.0,
+              "se": 3.3416562759605704,
+              "lower_2se": 15.31668744807886,
+              "upper_2se": 28.68331255192114
+            },
+            "first_food_count": 4,
+            "first_poison_count": 0,
+            "no_meal_count": 0,
+            "survivors": 4
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "survival_difference": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "lower_2se": -0.07735026918962573,
+              "upper_2se": 1.0773502691896257
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          }
+        }
+      }
+    },
+    "selected_lambda": 4.0,
+    "agents_per_chain": 13,
+    "assigned_agents": 52,
+    "rule_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "founder": {
+      "first_food": {
+        "mean": 0.75,
+        "se": 0.25,
+        "lower_2se": 0.25,
+        "upper_2se": 1.25
+      },
+      "first_poison": {
+        "mean": 0.25,
+        "se": 0.25,
+        "lower_2se": -0.25,
+        "upper_2se": 0.75
+      },
+      "no_meal": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "survival": {
+        "mean": 1.0,
+        "se": 0.0,
+        "lower_2se": 1.0,
+        "upper_2se": 1.0
+      },
+      "fitness": {
+        "mean": 20.75,
+        "se": 4.819664580307085,
+        "lower_2se": 11.11067083938583,
+        "upper_2se": 30.389329160614167
+      },
+      "first_meal_step": {
+        "mean": 6.5,
+        "se": 3.662876829305985,
+        "lower_2se": -0.82575365861197,
+        "upper_2se": 13.82575365861197
+      },
+      "changed_weights": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "belief_probability": {
+        "mean": 0.5,
+        "se": 0.0,
+        "lower_2se": 0.5,
+        "upper_2se": 0.5
+      },
+      "decoder_coverage": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "decoder_strict_coverage": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "decoder_votes": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "first_food_count": 3,
+      "first_poison_count": 1,
+      "no_meal_count": 0,
+      "survivors": 4
+    },
+    "cross_cohort": {
+      "c3_vs_c1": {
+        "first_food_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      }
+    },
+    "cumulative_contrasts": {
+      "c3_vs_c1": {
+        "first_food_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      },
+      "c3_vs_repeated_founder": {
+        "first_food_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0,
+          "lower_2se": 0.0,
+          "upper_2se": 0.0
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      }
+    },
+    "survival_floor": -0.1
+  },
+  "safeguards": {
+    "world_keys_disjoint": true,
+    "calibration_source_unchanged": true,
+    "original_genome_unchanged": true,
+    "three_cohort_four_arm_evidence_validated": true
+  }
+}

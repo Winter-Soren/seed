@@ -33,6 +33,115 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Three public-behavior handoffs (social-transmission-v1)
+
+E124 freezes each original E103 genotype and its E123 training-calibrated scalar. A solitary founder supplies its last 150 public frames to a newborn. Three successive cohorts watch, act alone, and supply their last 150 public frames to the next newborn. Only the predecessor arm teaches the next cohort. All assigned chains remain, including dead teachers and empty late footage. Fresh bodies, brains and solo layouts are drawn for each cohort. No weights, internal beliefs, rewards or hidden labels cross the handoff.
+
+First-food accuracy scores one for food and zero for first poison or no meal. Each mean and standard error uses independent chains; paired comparisons keep entire chains intact. Intervals show mean minus/plus two paired standard errors. Retained efficacy requires first-food gains over yoked and belief-reset movies strictly above two SE in every cohort. The survival lower two-SE bound must strictly exceed -0.10 against every same-cohort control, and for cohort 3 versus cohort 1. This ten-percentage-point tolerance is a confidence screen; it does not prove equal survival.
+
+Cumulative improvement additionally requires cohort 3 to beat both cohort 1 and the cohort 3 repeated-founder control by more than two paired SE. All gates must hold in all three lineages. Retention alone supports persistence through these three handoffs. Both gates support net improvement over these three cohorts, not perpetual or monotonic improvement. The genotype and engineered readout remain fixed. Development and incomplete attempts have no scientific decision.
+
+| Run | Status | Split | Chains | Frozen lambda | Retained efficacy | Cumulative improvement | Commit |
+|---|---|---|---|---|---|---|---|
+| 20261121-230120_E124-benchmark | finished | development | 4/4 | 4.0 | not applicable | not applicable | 271d386 |
+| 20261121-230322_E124-A0 | finished | final | 128/128 | 4.0 | PASS | FAIL | 271d386 |
+| 20261121-231257_E124-A1 | finished | final | 128/128 | 4.0 | PASS | FAIL | 271d386 |
+| 20261121-232344_E124-A2 | finished | final | 128/128 | 4.0 | PASS | PASS | 271d386 |
+
+| Run | Split | Cohort | Arm | First food ± SEM | No-meal fraction ± SEM | Survival ± SEM | Fitness ± SEM | Decoder coverage ± SEM |
+|---|---|---|---|---|---|---|---|---|
+| 20261121-230120_E124-benchmark | development | 1 | predecessor | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 34.750000 ± 10.011452 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 1 | repeated_founder | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 34.750000 ± 10.011452 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 1 | yoked | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 | 20.750000 ± 15.975893 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 1 | belief_reset | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 16.500000 ± 2.901149 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 2 | predecessor | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 44.500000 ± 6.664583 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 2 | repeated_founder | 0.750000 ± 0.250000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 44.500000 ± 3.068659 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 2 | yoked | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 | 22.000000 ± 15.668440 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 2 | belief_reset | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.750000 ± 0.250000 | 16.750000 ± 8.250000 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 3 | predecessor | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 46.250000 ± 4.110454 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 3 | repeated_founder | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 39.500000 ± 1.658312 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 3 | yoked | 0.500000 ± 0.288675 | 0.000000 ± 0.000000 | 0.500000 ± 0.288675 | 23.250000 ± 16.027970 | 1.000000 ± 0.000000 |
+| 20261121-230120_E124-benchmark | development | 3 | belief_reset | 1.000000 ± 0.000000 | 0.000000 ± 0.000000 | 1.000000 ± 0.000000 | 18.500000 ± 3.068659 | 1.000000 ± 0.000000 |
+| 20261121-230322_E124-A0 | final | 1 | predecessor | 0.835938 ± 0.032862 | 0.000000 ± 0.000000 | 0.906250 ± 0.025865 | 29.148438 ± 1.553709 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 1 | repeated_founder | 0.835938 ± 0.032862 | 0.000000 ± 0.000000 | 0.906250 ± 0.025865 | 29.148438 ± 1.553709 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 1 | yoked | 0.437500 ± 0.044020 | 0.000000 ± 0.000000 | 0.460938 ± 0.044232 | 10.390625 ± 1.675408 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 1 | belief_reset | 0.476562 ± 0.044319 | 0.000000 ± 0.000000 | 0.773438 ± 0.037145 | 11.679688 ± 1.006801 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 2 | predecessor | 0.867188 ± 0.030114 | 0.000000 ± 0.000000 | 0.953125 ± 0.018756 | 32.429688 ± 1.419237 | 0.921875 ± 0.023814 |
+| 20261121-230322_E124-A0 | final | 2 | repeated_founder | 0.789062 ± 0.036202 | 0.000000 ± 0.000000 | 0.914062 ± 0.024870 | 29.640625 ± 1.539256 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 2 | yoked | 0.460938 ± 0.044232 | 0.000000 ± 0.000000 | 0.468750 ± 0.044281 | 13.023438 ± 1.829684 | 0.921875 ± 0.023814 |
+| 20261121-230322_E124-A0 | final | 2 | belief_reset | 0.429688 ± 0.043927 | 0.000000 ± 0.000000 | 0.789062 ± 0.036202 | 12.343750 ± 1.070844 | 0.921875 ± 0.023814 |
+| 20261121-230322_E124-A0 | final | 3 | predecessor | 0.867188 ± 0.030114 | 0.000000 ± 0.000000 | 0.960938 ± 0.017192 | 33.875000 ± 1.292962 | 0.976562 ± 0.013425 |
+| 20261121-230322_E124-A0 | final | 3 | repeated_founder | 0.851562 ± 0.031548 | 0.000000 ± 0.000000 | 0.921875 ± 0.023814 | 29.695312 ± 1.516338 | 0.882812 ± 0.028541 |
+| 20261121-230322_E124-A0 | final | 3 | yoked | 0.468750 ± 0.044281 | 0.000000 ± 0.000000 | 0.492188 ± 0.044362 | 14.070312 ± 1.886324 | 0.976562 ± 0.013425 |
+| 20261121-230322_E124-A0 | final | 3 | belief_reset | 0.500000 ± 0.044368 | 0.000000 ± 0.000000 | 0.812500 ± 0.034635 | 11.546875 ± 0.993821 | 0.976562 ± 0.013425 |
+| 20261121-231257_E124-A1 | final | 1 | predecessor | 0.789062 ± 0.036202 | 0.000000 ± 0.000000 | 0.898438 ± 0.026805 | 30.023438 ± 1.506035 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 1 | repeated_founder | 0.789062 ± 0.036202 | 0.000000 ± 0.000000 | 0.898438 ± 0.026805 | 30.023438 ± 1.506035 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 1 | yoked | 0.492188 ± 0.044362 | 0.000000 ± 0.000000 | 0.531250 ± 0.044281 | 14.296875 ± 1.810653 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 1 | belief_reset | 0.515625 ± 0.044346 | 0.000000 ± 0.000000 | 0.789062 ± 0.036202 | 12.937500 ± 1.210079 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 2 | predecessor | 0.906250 ± 0.025865 | 0.000000 ± 0.000000 | 0.953125 ± 0.018756 | 34.671875 ± 1.496843 | 0.914062 ± 0.024870 |
+| 20261121-231257_E124-A1 | final | 2 | repeated_founder | 0.835938 ± 0.032862 | 0.000000 ± 0.000000 | 0.945312 ± 0.020176 | 29.687500 ± 1.630659 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 2 | yoked | 0.523438 ± 0.044319 | 0.000000 ± 0.000000 | 0.554688 ± 0.044102 | 17.187500 ± 1.998977 | 0.914062 ± 0.024870 |
+| 20261121-231257_E124-A1 | final | 2 | belief_reset | 0.500000 ± 0.044368 | 0.000000 ± 0.000000 | 0.812500 ± 0.034635 | 12.132812 ± 1.070208 | 0.914062 ± 0.024870 |
+| 20261121-231257_E124-A1 | final | 3 | predecessor | 0.835938 ± 0.032862 | 0.000000 ± 0.000000 | 0.984375 ± 0.011005 | 35.335938 ± 1.313509 | 0.960938 ± 0.017192 |
+| 20261121-231257_E124-A1 | final | 3 | repeated_founder | 0.820312 ± 0.034068 | 0.000000 ± 0.000000 | 0.929688 ± 0.022687 | 30.539062 ± 1.518744 | 0.882812 ± 0.028541 |
+| 20261121-231257_E124-A1 | final | 3 | yoked | 0.484375 ± 0.044346 | 0.000000 ± 0.000000 | 0.546875 ± 0.044172 | 16.546875 ± 1.891621 | 0.960938 ± 0.017192 |
+| 20261121-231257_E124-A1 | final | 3 | belief_reset | 0.531250 ± 0.044281 | 0.000000 ± 0.000000 | 0.820312 ± 0.034068 | 11.164062 ± 0.939403 | 0.960938 ± 0.017192 |
+| 20261121-232344_E124-A2 | final | 1 | predecessor | 0.765625 ± 0.037589 | 0.000000 ± 0.000000 | 0.875000 ± 0.029347 | 24.984375 ± 1.614289 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 1 | repeated_founder | 0.765625 ± 0.037589 | 0.000000 ± 0.000000 | 0.875000 ± 0.029347 | 24.984375 ± 1.614289 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 1 | yoked | 0.484375 ± 0.044346 | 0.000000 ± 0.000000 | 0.593750 ± 0.043581 | 13.765625 ± 1.740182 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 1 | belief_reset | 0.468750 ± 0.044281 | 0.000000 ± 0.000000 | 0.734375 ± 0.039191 | 8.359375 ± 0.878700 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 2 | predecessor | 0.796875 ± 0.035701 | 0.000000 ± 0.000000 | 0.929688 ± 0.022687 | 29.828125 ± 1.474317 | 0.921875 ± 0.023814 |
+| 20261121-232344_E124-A2 | final | 2 | repeated_founder | 0.710938 ± 0.040226 | 0.000000 ± 0.000000 | 0.882812 ± 0.028541 | 25.953125 ± 1.661828 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 2 | yoked | 0.460938 ± 0.044232 | 0.000000 ± 0.000000 | 0.531250 ± 0.044281 | 13.828125 ± 1.745181 | 0.921875 ± 0.023814 |
+| 20261121-232344_E124-A2 | final | 2 | belief_reset | 0.468750 ± 0.044281 | 0.000000 ± 0.000000 | 0.710938 ± 0.040226 | 9.312500 ± 1.008987 | 0.921875 ± 0.023814 |
+| 20261121-232344_E124-A2 | final | 3 | predecessor | 0.867188 ± 0.030114 | 0.000000 ± 0.000000 | 0.929688 ± 0.022687 | 34.992188 ± 1.522934 | 0.953125 ± 0.018756 |
+| 20261121-232344_E124-A2 | final | 3 | repeated_founder | 0.765625 ± 0.037589 | 0.000000 ± 0.000000 | 0.835938 ± 0.032862 | 25.406250 ± 1.765554 | 0.773438 ± 0.037145 |
+| 20261121-232344_E124-A2 | final | 3 | yoked | 0.515625 ± 0.044346 | 0.000000 ± 0.000000 | 0.531250 ± 0.044281 | 16.554688 ± 1.980739 | 0.953125 ± 0.018756 |
+| 20261121-232344_E124-A2 | final | 3 | belief_reset | 0.554688 ± 0.044102 | 0.000000 ± 0.000000 | 0.812500 ± 0.034635 | 12.437500 ± 1.005506 | 0.953125 ± 0.018756 |
+
+| Run | Split | Cohort | Paired comparison | First-food difference ± SEM | First-food two-SE interval | Survival difference ± SEM | Survival two-SE interval |
+|---|---|---|---|---|---|---|---|
+| 20261121-230120_E124-benchmark | development | 1 | predecessor minus repeated_founder | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230120_E124-benchmark | development | 1 | predecessor minus yoked | 0.500000 ± 0.288675 | [-0.077350, 1.077350] | 0.500000 ± 0.288675 | [-0.077350, 1.077350] |
+| 20261121-230120_E124-benchmark | development | 1 | predecessor minus belief_reset | 0.500000 ± 0.288675 | [-0.077350, 1.077350] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230120_E124-benchmark | development | 2 | predecessor minus repeated_founder | 0.250000 ± 0.250000 | [-0.250000, 0.750000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230120_E124-benchmark | development | 2 | predecessor minus yoked | 0.500000 ± 0.288675 | [-0.077350, 1.077350] | 0.500000 ± 0.288675 | [-0.077350, 1.077350] |
+| 20261121-230120_E124-benchmark | development | 2 | predecessor minus belief_reset | 0.500000 ± 0.288675 | [-0.077350, 1.077350] | 0.250000 ± 0.250000 | [-0.250000, 0.750000] |
+| 20261121-230120_E124-benchmark | development | 3 | predecessor minus repeated_founder | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230120_E124-benchmark | development | 3 | predecessor minus yoked | 0.500000 ± 0.288675 | [-0.077350, 1.077350] | 0.500000 ± 0.288675 | [-0.077350, 1.077350] |
+| 20261121-230120_E124-benchmark | development | 3 | predecessor minus belief_reset | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230120_E124-benchmark | development | 3 versus 1 | c3 versus c1 predecessor | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230322_E124-A0 | final | 1 | predecessor minus repeated_founder | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-230322_E124-A0 | final | 1 | predecessor minus yoked | 0.398438 ± 0.043443 | [0.311552, 0.485323] | 0.445312 ± 0.044102 | [0.357109, 0.533516] |
+| 20261121-230322_E124-A0 | final | 1 | predecessor minus belief_reset | 0.359375 ± 0.043998 | [0.271379, 0.447371] | 0.132812 ± 0.033955 | [0.064903, 0.200722] |
+| 20261121-230322_E124-A0 | final | 2 | predecessor minus repeated_founder | 0.078125 ± 0.036129 | [0.005867, 0.150383] | 0.039062 ± 0.025781 | [-0.012499, 0.090624] |
+| 20261121-230322_E124-A0 | final | 2 | predecessor minus yoked | 0.406250 ± 0.043581 | [0.319088, 0.493412] | 0.484375 ± 0.044346 | [0.395683, 0.573067] |
+| 20261121-230322_E124-A0 | final | 2 | predecessor minus belief_reset | 0.437500 ± 0.044020 | [0.349460, 0.525540] | 0.164062 ± 0.034683 | [0.094696, 0.233429] |
+| 20261121-230322_E124-A0 | final | 3 | predecessor minus repeated_founder | 0.015625 ± 0.036762 | [-0.057898, 0.089148] | 0.039062 ± 0.023273 | [-0.007483, 0.085608] |
+| 20261121-230322_E124-A0 | final | 3 | predecessor minus yoked | 0.398438 ± 0.043443 | [0.311552, 0.485323] | 0.468750 ± 0.044281 | [0.380188, 0.557312] |
+| 20261121-230322_E124-A0 | final | 3 | predecessor minus belief_reset | 0.367188 ± 0.045560 | [0.276068, 0.458307] | 0.148438 ± 0.038567 | [0.071303, 0.225572] |
+| 20261121-230322_E124-A0 | final | 3 versus 1 | c3 versus c1 predecessor | 0.031250 ± 0.038323 | [-0.045397, 0.107897] | 0.054688 ± 0.023024 | [0.008640, 0.100735] |
+| 20261121-231257_E124-A1 | final | 1 | predecessor minus repeated_founder | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-231257_E124-A1 | final | 1 | predecessor minus yoked | 0.296875 ± 0.044863 | [0.207148, 0.386602] | 0.367188 ± 0.049445 | [0.268298, 0.466077] |
+| 20261121-231257_E124-A1 | final | 1 | predecessor minus belief_reset | 0.273438 ± 0.043971 | [0.185496, 0.361379] | 0.109375 ± 0.031829 | [0.045717, 0.173033] |
+| 20261121-231257_E124-A1 | final | 2 | predecessor minus repeated_founder | 0.070312 ± 0.029729 | [0.010855, 0.129770] | 0.007812 ± 0.026004 | [-0.044195, 0.059820] |
+| 20261121-231257_E124-A1 | final | 2 | predecessor minus yoked | 0.382812 ± 0.045896 | [0.291021, 0.474604] | 0.398438 ± 0.046188 | [0.306061, 0.490814] |
+| 20261121-231257_E124-A1 | final | 2 | predecessor minus belief_reset | 0.406250 ± 0.043581 | [0.319088, 0.493412] | 0.140625 ± 0.032781 | [0.075063, 0.206187] |
+| 20261121-231257_E124-A1 | final | 3 | predecessor minus repeated_founder | 0.015625 ± 0.038399 | [-0.061172, 0.092422] | 0.054688 ± 0.023024 | [0.008640, 0.100735] |
+| 20261121-231257_E124-A1 | final | 3 | predecessor minus yoked | 0.351562 ± 0.043795 | [0.263972, 0.439153] | 0.437500 ± 0.045396 | [0.346708, 0.528292] |
+| 20261121-231257_E124-A1 | final | 3 | predecessor minus belief_reset | 0.304688 ± 0.042322 | [0.220043, 0.389332] | 0.164062 ± 0.032862 | [0.098339, 0.229786] |
+| 20261121-231257_E124-A1 | final | 3 versus 1 | c3 versus c1 predecessor | 0.046875 ± 0.045544 | [-0.044213, 0.137963] | 0.085938 ± 0.027231 | [0.031475, 0.140400] |
+| 20261121-232344_E124-A2 | final | 1 | predecessor minus repeated_founder | 0.000000 ± 0.000000 | [0.000000, 0.000000] | 0.000000 ± 0.000000 | [0.000000, 0.000000] |
+| 20261121-232344_E124-A2 | final | 1 | predecessor minus yoked | 0.281250 ± 0.044281 | [0.192688, 0.369812] | 0.281250 ± 0.048269 | [0.184712, 0.377788] |
+| 20261121-232344_E124-A2 | final | 1 | predecessor minus belief_reset | 0.296875 ± 0.040542 | [0.215792, 0.377958] | 0.140625 ± 0.034607 | [0.071411, 0.209839] |
+| 20261121-232344_E124-A2 | final | 2 | predecessor minus repeated_founder | 0.085938 ± 0.045770 | [-0.005603, 0.177478] | 0.046875 ± 0.033015 | [-0.019155, 0.112905] |
+| 20261121-232344_E124-A2 | final | 2 | predecessor minus yoked | 0.335938 ± 0.047420 | [0.241097, 0.430778] | 0.398438 ± 0.046188 | [0.306061, 0.490814] |
+| 20261121-232344_E124-A2 | final | 2 | predecessor minus belief_reset | 0.328125 ± 0.043115 | [0.241894, 0.414356] | 0.218750 ± 0.042869 | [0.133011, 0.304489] |
+| 20261121-232344_E124-A2 | final | 3 | predecessor minus repeated_founder | 0.101562 ± 0.034794 | [0.031975, 0.171150] | 0.093750 ± 0.032219 | [0.029312, 0.158188] |
+| 20261121-232344_E124-A2 | final | 3 | predecessor minus yoked | 0.351562 ± 0.046520 | [0.258523, 0.444602] | 0.398438 ± 0.050024 | [0.298389, 0.498486] |
+| 20261121-232344_E124-A2 | final | 3 | predecessor minus belief_reset | 0.312500 ± 0.044020 | [0.224460, 0.400540] | 0.117188 ± 0.034405 | [0.048378, 0.185997] |
+| 20261121-232344_E124-A2 | final | 3 versus 1 | c3 versus c1 predecessor | 0.101562 ± 0.039746 | [0.022071, 0.181054] | 0.054688 ± 0.025556 | [0.003575, 0.105800] |
+
 ## Calibrated engineered social readout (social-belief-readout-v1)
 
 E123 retains the original E103 genomes and adds an engineered scalar belief with a fixed local action readout. There are zero ES generations and no genome mutation. One scalar lambda is selected from nine fixed values using public movie contacts and an unassisted pupil's own first outcome on calibration worlds. The complete calibration evidence and selection are frozen before opening disjoint evaluation worlds. Calibration losses and coverage below are fitting diagnostics, not held-out performance.

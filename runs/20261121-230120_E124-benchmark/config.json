@@ -1,0 +1,153 @@
+{
+  "protocol": "social-transmission-v1",
+  "args": {
+    "name": "E124-benchmark",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120200,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 4,
+    "eval_protocol": "social-transmission-v1",
+    "memory_condition": null,
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "271d3869f531fd556554015249c02d08b0f2cbd5",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "calibration_source": {
+    "name": "E123-benchmark",
+    "folder": "runs/20261121-223900_E123-benchmark",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 51,
+    "expected_calibration_families": 4,
+    "config": {
+      "path": "runs/20261121-223900_E123-benchmark/config.json",
+      "sha256": "c4c0093600edbdb35c8b330d72a2b61d938b4fb756a2947e78316c116547a15c"
+    },
+    "selection": {
+      "path": "runs/20261121-223900_E123-benchmark/calibration/selection.json",
+      "sha256": "a79e663b8889067defe53c16c2e649ae398027426f61ebf3b2cfe0cb35200bdc"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0000.npz",
+        "sha256": "2c7a805ee7bf74d77957bff51ed45ef40ad46b8bded3cb7387d6623d28956d98"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0001.npz",
+        "sha256": "26e19ed7854a6534f10669e809602a77aabf91897c51596395c852370c7a93eb"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0002.npz",
+        "sha256": "31ac72b7745553be57701b01982da4cf8e92ad78d827d40a37b15548b08b01b3"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-223900_E123-benchmark/calibration/family_0003.npz",
+        "sha256": "0a5007fdf822eee47e2c8d94919125c1453bd0c3261a4fb190de2fe9a4208395"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "a79e663b8889067defe53c16c2e649ae398027426f61ebf3b2cfe0cb35200bdc"
+  },
+  "selected_lambda": 4.0,
+  "condition_split": "development",
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": null,
+  "persistence": "off",
+  "plastic": true,
+  "controller": "rules-v0",
+  "genome_size": 155,
+  "generation": 0,
+  "seed": 2026120200,
+  "eval_seed": 2026120200,
+  "eval_worlds": 4,
+  "expected_chains": 4,
+  "cohorts": 3,
+  "stages": [
+    "founder",
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "key_order": [
+    "solo_world",
+    "pupil_birth"
+  ],
+  "arms": [
+    "predecessor",
+    "repeated_founder",
+    "yoked",
+    "belief_reset"
+  ],
+  "controls": [
+    "repeated_founder",
+    "yoked",
+    "belief_reset"
+  ],
+  "founder_steps": 300,
+  "watch_steps": 150,
+  "solo_steps": 300,
+  "max_seconds": 900,
+  "raw_schema": "social-transmission-v1",
+  "raw_pattern": "chains/chain_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "mechanism": "fixed E103 genome plus engineered E123 calibrated public-contact belief and action readout",
+  "transmission": "only last 150 public frames of predecessor arm; no inherited internal state or selection",
+  "rule_assignment": "chain index modulo 2; same rule throughout a chain; independent births and layouts",
+  "yoked_assignment": "item channels swapped when (chain index // 2) modulo 2 is one",
+  "statistical_unit": "independent chain; never pooled cohorts or movie frames",
+  "retention": "each cohort first-food gain >2 paired SE versus yoked and reset; survival lower2SE >-0.10 versus all controls and c3 versus c1",
+  "improvement": "retention passes and c3 first-food gain >2 paired SE versus c1 and repeated founder; same survival bounds",
+  "scientific_result": false
+}

@@ -1,0 +1,2188 @@
+{
+  "status": "finished",
+  "phase": "evaluation",
+  "completed_chains": 128,
+  "expected_chains": 128,
+  "elapsed_seconds": 614.984999999986,
+  "setup_seconds": 0.26600000000325963,
+  "chain_seconds": [
+    16.296999999991385,
+    2.625,
+    3.35999999998603,
+    4.01600000000326,
+    4.937000000005355,
+    2.859000000025844,
+    2.0940000000118744,
+    3.937999999994645,
+    5.828000000008615,
+    4.4689999999827705,
+    4.14000000001397,
+    2.764999999984866,
+    3.812000000005355,
+    3.577999999979511,
+    4.594000000011874,
+    4.5789999999979045,
+    4.280999999988126,
+    5.73399999999674,
+    3.7809999999881256,
+    6.875,
+    4.422000000020489,
+    4.25,
+    5.655999999988126,
+    5.296999999991385,
+    8.64100000000326,
+    5.796999999991385,
+    4.203000000008615,
+    4.3289999999979045,
+    4.812000000005355,
+    5.14000000001397,
+    9.375,
+    5.546999999991385,
+    6.171999999991385,
+    5.48499999998603,
+    7.032000000006519,
+    4.469000000011874,
+    3.9530000000086147,
+    4.467999999993481,
+    6.375,
+    7.187999999994645,
+    5.23399999999674,
+    3.4059999999881256,
+    3.7960000000020955,
+    3.062999999994645,
+    3.2969999999913853,
+    3.312000000005355,
+    3.5,
+    3.437000000005355,
+    3.125,
+    3.4530000000086147,
+    2.735000000015134,
+    3.485000000015134,
+    3.25,
+    3.64000000001397,
+    3.2030000000086147,
+    2.39000000001397,
+    2.7339999999967404,
+    2.4839999999967404,
+    2.3589999999967404,
+    2.2660000000032596,
+    3.014999999984866,
+    4.812999999994645,
+    5.453000000008615,
+    4.469000000011874,
+    3.687000000005355,
+    3.9060000000172295,
+    3.5469999999913853,
+    4.312000000005355,
+    4.797000000020489,
+    4.23399999999674,
+    4.125,
+    3.687000000005355,
+    5.578000000008615,
+    3.937999999994645,
+    4.453000000008615,
+    4.48399999999674,
+    5.937000000005355,
+    6.625,
+    5.389999999984866,
+    6.35899999999674,
+    4.75,
+    6.39000000001397,
+    4.85999999998603,
+    5.48499999998603,
+    5.51600000000326,
+    4.75,
+    4.562000000005355,
+    5.25,
+    5.547000000020489,
+    4.51600000000326,
+    5.75,
+    4.062000000005355,
+    6.562000000005355,
+    3.702999999979511,
+    3.875,
+    3.765999999974156,
+    2.6089999999967404,
+    3.0309999999881256,
+    3.0460000000020955,
+    3.9689999999827705,
+    4.0789999999979045,
+    3.640999999974156,
+    4.2039999999979045,
+    4.687999999994645,
+    5.547000000020489,
+    3.3440000000118744,
+    2.765999999974156,
+    2.6719999999913853,
+    2.7190000000118744,
+    3.062999999994645,
+    3.4690000000118744,
+    4.219000000011874,
+    5.797000000020489,
+    6.187000000005355,
+    6.60899999999674,
+    6.594000000011874,
+    4.407000000006519,
+    5.046999999991385,
+    4.48399999999674,
+    8.28200000000652,
+    5.35899999999674,
+    8.780999999988126,
+    6.140999999974156,
+    11.98499999998603,
+    11.312000000005355,
+    8.047000000020489,
+    5.9060000000172295,
+    5.625
+  ],
+  "protocol": "social-transmission-v1",
+  "condition_split": "final",
+  "generation": 0,
+  "source_label": "A1",
+  "eval_seed": 2026120202,
+  "eval_worlds": 128,
+  "scientific_result": true,
+  "artifact_validity": "passed",
+  "retained_efficacy_status": "passed",
+  "cumulative_improvement_status": "failed",
+  "selected_lambda": 4.0,
+  "calibration_source": {
+    "name": "E123-A1",
+    "folder": "runs/20261121-224439_E123-A1",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 2026113002,
+    "expected_calibration_families": 32,
+    "config": {
+      "path": "runs/20261121-224439_E123-A1/config.json",
+      "sha256": "8a03cf06c3615d0d8d08f57d2fcc4a9f4bfa1ad00ff9697f37b387e3f4f2d88b"
+    },
+    "selection": {
+      "path": "runs/20261121-224439_E123-A1/calibration/selection.json",
+      "sha256": "3fe92f620be735d9a3843faf3cd651e7dfa5498e588b89fb87dbe51ae39027d9"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0000.npz",
+        "sha256": "34ab310ca7d5a747f508559f51491b9a6f5a5b7c20a002d00e87526754e7364b"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0001.npz",
+        "sha256": "7785d01c7c3581270c42f7668076bceffff62b7bacf00f78a486924dec5836ec"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0002.npz",
+        "sha256": "d93fd7cca3fe341d6a2993ec2a5e566695d86f5105925f75f43f2baf9452f475"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0003.npz",
+        "sha256": "ea3df92b8ca572ae6bce4cb757dc067857775d17592b50f379e3749785023e75"
+      },
+      {
+        "index": 4,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0004.npz",
+        "sha256": "0d049c1ee9eb2133f308eb38311412f7e4b341c19a7eb8ea58577f98382e1130"
+      },
+      {
+        "index": 5,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0005.npz",
+        "sha256": "6d02c2e51a29a1998cf5b8c7cc1dad594daede771958314ee9cfb83051fe21c8"
+      },
+      {
+        "index": 6,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0006.npz",
+        "sha256": "72aa2a2a3a86e0de57b32dfb4d50d113b45e75d04bfeda21c0df007896c8c368"
+      },
+      {
+        "index": 7,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0007.npz",
+        "sha256": "2a4f94777c148a42a42be943e7ad19809d11d0fae773957d80c4b784ff39b8a1"
+      },
+      {
+        "index": 8,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0008.npz",
+        "sha256": "c81e363789d4b72fb6ce27f3933aacaec1cf0b086a2230c604893985d9d2be7d"
+      },
+      {
+        "index": 9,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0009.npz",
+        "sha256": "c58a08412899661336bfc5acce2c4a214391d1cfed2ebcaae8ed3e739acce927"
+      },
+      {
+        "index": 10,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0010.npz",
+        "sha256": "1b85ae40edf309034b406ee616d93baf85776d6050590c3a7c53715fd882ea18"
+      },
+      {
+        "index": 11,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0011.npz",
+        "sha256": "df0f92f1b06e62f1fbc122cf64b16a586fe14e5ab8e129c46fa77d80f8b7e46a"
+      },
+      {
+        "index": 12,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0012.npz",
+        "sha256": "2b2070ca5251f15ad23f16c450839d650a8e346e563c775e3dbf3d6a2dc8782b"
+      },
+      {
+        "index": 13,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0013.npz",
+        "sha256": "34088aa59aec8b1d6636969cf83e2f4eaf9b60b450603d3165f622dca6e31c04"
+      },
+      {
+        "index": 14,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0014.npz",
+        "sha256": "79f71f94014e1258ef221adcb46d6c0def4db0fec0213925ff6a83df13ec6945"
+      },
+      {
+        "index": 15,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0015.npz",
+        "sha256": "c060afa4e3bea040311fb461586966f22546cde3e6c6214c8feca8ae01d69962"
+      },
+      {
+        "index": 16,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0016.npz",
+        "sha256": "fb86ddb1a3fb1be008d91d8040b72471a5e94291eb6efdc15670e895e4071b28"
+      },
+      {
+        "index": 17,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0017.npz",
+        "sha256": "810beec9d06d77bf1840a0667e3c038652dc438d14844e27a2e89e4c8b804d77"
+      },
+      {
+        "index": 18,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0018.npz",
+        "sha256": "f295252270ae3844d1d1f4ebdeb09d10d32d5efb5f3ad7d01eee36d66843b8b3"
+      },
+      {
+        "index": 19,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0019.npz",
+        "sha256": "aeb6f94d0de5ba2c1bd3e38a422caf38a5ec4c997a8aaaa5be267e53dd4192f2"
+      },
+      {
+        "index": 20,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0020.npz",
+        "sha256": "196cb69ee1d5fa0f70222346c5fd98d3a636011bf9cecacd5742c574eaec6210"
+      },
+      {
+        "index": 21,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0021.npz",
+        "sha256": "9d08dd363a558f32de40773ea9cdd29cb05350e0bd376cfd4c589cc42e8fa841"
+      },
+      {
+        "index": 22,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0022.npz",
+        "sha256": "baa00bb1140f4b75ff436e31c3ed97be15570bb294da056d010ecaac53c76b6d"
+      },
+      {
+        "index": 23,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0023.npz",
+        "sha256": "9a0f778e2b655f2d119b36ddadd28cd42440f6c514a1ccf26428c3869213a1e3"
+      },
+      {
+        "index": 24,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0024.npz",
+        "sha256": "d5faed1e1f9593d9200bf0feb7828d88a8b24038f0944375289b4d481e3771ed"
+      },
+      {
+        "index": 25,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0025.npz",
+        "sha256": "255a05e1eba8733274d3184fbc7ca930dc2c7530b7c7da62b75fdfe57b41e674"
+      },
+      {
+        "index": 26,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0026.npz",
+        "sha256": "54c652cf204b773744d0e2d15cbc57d48293f6bbdcb5b230cb5cae729c591200"
+      },
+      {
+        "index": 27,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0027.npz",
+        "sha256": "1c381105cc2a8ad86a38dd5ede10c65596f8c1c99a78c935e04e0f987488ab3e"
+      },
+      {
+        "index": 28,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0028.npz",
+        "sha256": "774731485ee9da0d0c3aacdb577eae7b54b47333b8bc4bf1f063953440be9fe4"
+      },
+      {
+        "index": 29,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0029.npz",
+        "sha256": "e67a96e798e52846a57b2979ca0f6ede022b021a0243a8cee5ee5db04df3d260"
+      },
+      {
+        "index": 30,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0030.npz",
+        "sha256": "0ade70f62d5ce59714dcfaacf44dee748301ff60a701d08e9d6873304c14b2d9"
+      },
+      {
+        "index": 31,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0031.npz",
+        "sha256": "3d287df8df11b036ab76a1041838a8f7479396cd27e8b773e353f3116534a524"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "3fe92f620be735d9a3843faf3cd651e7dfa5498e588b89fb87dbe51ae39027d9"
+  },
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "chains/chain_0000.npz",
+      "sha256": "c01d70fea5f437789259b8c979f7a2455085d070df0e8a0d155789aa217af034"
+    },
+    {
+      "index": 1,
+      "path": "chains/chain_0001.npz",
+      "sha256": "c7080267dedc9c22befdc7bd1c47d29c1ca77aaa1f93bbcc0c82fc35e28dd62c"
+    },
+    {
+      "index": 2,
+      "path": "chains/chain_0002.npz",
+      "sha256": "76bc120d15fd8aa0dba4897266109c0cd0356d85808a5db4c17d2a5699215be9"
+    },
+    {
+      "index": 3,
+      "path": "chains/chain_0003.npz",
+      "sha256": "d2d10e188552a69f4060f01d85786842423727da61c1c690597ce2995e8fbfe6"
+    },
+    {
+      "index": 4,
+      "path": "chains/chain_0004.npz",
+      "sha256": "7cbe3469ee769096752870eab0a39a0d368d17f3fdf7ffbf81384170d9bcea40"
+    },
+    {
+      "index": 5,
+      "path": "chains/chain_0005.npz",
+      "sha256": "8cb8a300bf7d6ab6f35dc1bfbb55614d1c34dcdcbae119e0775964c913ed56e3"
+    },
+    {
+      "index": 6,
+      "path": "chains/chain_0006.npz",
+      "sha256": "dd1d074cf6e21cc11f2dcc8bc7988a210a274a98e5a9ccf2f28724ab0fb5bf99"
+    },
+    {
+      "index": 7,
+      "path": "chains/chain_0007.npz",
+      "sha256": "d7fdeca67ab97a18d2fbb5cf2cc6f473de46a1ea12a45343a485247f25e8a49e"
+    },
+    {
+      "index": 8,
+      "path": "chains/chain_0008.npz",
+      "sha256": "b94e51e351992eb154e932c890db8c2bfce76e4fddbc0a660dee09f2162e9189"
+    },
+    {
+      "index": 9,
+      "path": "chains/chain_0009.npz",
+      "sha256": "5ff97520abded0b1b8d82ce447ab09e45c50ef00cee11b073d9f7b7e5322c52d"
+    },
+    {
+      "index": 10,
+      "path": "chains/chain_0010.npz",
+      "sha256": "6fd19aff3ef4bf4bfe6925a8c65149c56522d06b8312acaea927991114bf8ca2"
+    },
+    {
+      "index": 11,
+      "path": "chains/chain_0011.npz",
+      "sha256": "f42be3b40aab6d3110884c367807b99e69e300ca608a0f251e5b60b9b9bbca1b"
+    },
+    {
+      "index": 12,
+      "path": "chains/chain_0012.npz",
+      "sha256": "3d593aba5f787abeec74722cbb5b2311dbc02ee7777e47f2765262f3e90c4c8f"
+    },
+    {
+      "index": 13,
+      "path": "chains/chain_0013.npz",
+      "sha256": "7c5e1b1f32c9ae911cac1c43bbfba5650155d916276cf1044814036ce724648e"
+    },
+    {
+      "index": 14,
+      "path": "chains/chain_0014.npz",
+      "sha256": "609e743bdc3d864168410f929bdf56ae0434b4f007822471c6e700749e0b846d"
+    },
+    {
+      "index": 15,
+      "path": "chains/chain_0015.npz",
+      "sha256": "888a72f22777f8cb79d5e2749c5e821dfc4f27dba4c34ac2972dc8754665ed6b"
+    },
+    {
+      "index": 16,
+      "path": "chains/chain_0016.npz",
+      "sha256": "af07a5fc9010400c363dd74545cba6859daa98581ef15f1038cd8d54e2f5f24b"
+    },
+    {
+      "index": 17,
+      "path": "chains/chain_0017.npz",
+      "sha256": "5857b844c193f4039b28bd5be9a3bc7d47a173e0e54e592e695819c42ba9492d"
+    },
+    {
+      "index": 18,
+      "path": "chains/chain_0018.npz",
+      "sha256": "096d672ba4b536190673e7c83118fb271159567dd206d240529bd04516a25401"
+    },
+    {
+      "index": 19,
+      "path": "chains/chain_0019.npz",
+      "sha256": "78408738dcfedd093df396c0d1f0e71dc729b9615520d7c80c7275e48c2ca1ac"
+    },
+    {
+      "index": 20,
+      "path": "chains/chain_0020.npz",
+      "sha256": "a62bcab59cedc5317c675f556a9fd3dc6183678dd65d5b8f324f858dc00f610d"
+    },
+    {
+      "index": 21,
+      "path": "chains/chain_0021.npz",
+      "sha256": "3abca0f367ca80e0dcc3b2b4d33ec9fabd497d3bc9aa4aaa31447e92533d32a5"
+    },
+    {
+      "index": 22,
+      "path": "chains/chain_0022.npz",
+      "sha256": "9fc3be9d1d4d88e245d6c5299327723faead8931d7d2f1b73f69197f9097e7cf"
+    },
+    {
+      "index": 23,
+      "path": "chains/chain_0023.npz",
+      "sha256": "450fa38d24fe74636796830b4190ef24540d726f47a52f298706498e3124ad95"
+    },
+    {
+      "index": 24,
+      "path": "chains/chain_0024.npz",
+      "sha256": "a0a8622883898333022f700f69dab65498a0993f65ed42d2d3366bff84c2501e"
+    },
+    {
+      "index": 25,
+      "path": "chains/chain_0025.npz",
+      "sha256": "0b06249cbbf0ea39c255bee5711ec30061ae1849a369d80353f33d1a3ec8f989"
+    },
+    {
+      "index": 26,
+      "path": "chains/chain_0026.npz",
+      "sha256": "82d8fa052a9f6fca45d06ffa471fc9196c2df11955080ed87b4d6d5b6c0bd3dd"
+    },
+    {
+      "index": 27,
+      "path": "chains/chain_0027.npz",
+      "sha256": "ae39f864f462b55217a5ea70d6a00355896a3ef61d6cb851dd105f5ac273278c"
+    },
+    {
+      "index": 28,
+      "path": "chains/chain_0028.npz",
+      "sha256": "c6e56c88383d517f7e30b8f3131d13c65f2c9be9a283a9ff2f3f8e997577c242"
+    },
+    {
+      "index": 29,
+      "path": "chains/chain_0029.npz",
+      "sha256": "4ad8167c78c99ca7a547a9c57f91d053ca847dedae19f1dae359de09797e6ffe"
+    },
+    {
+      "index": 30,
+      "path": "chains/chain_0030.npz",
+      "sha256": "ca4c4dd6dcd556592e26d916c41cea299d241333cb0133e76cbae5c6915dc5e1"
+    },
+    {
+      "index": 31,
+      "path": "chains/chain_0031.npz",
+      "sha256": "0d3c9af79d09b71f1907580999fd8fd1e7906d29694a27e69084f0116506eca5"
+    },
+    {
+      "index": 32,
+      "path": "chains/chain_0032.npz",
+      "sha256": "d77e6d58a9ed4376fbf96d19308b95a3f721aaf4a77243905a814820328c6cca"
+    },
+    {
+      "index": 33,
+      "path": "chains/chain_0033.npz",
+      "sha256": "374f20ff14cc7c685deb72337b58ffa67e9cf7365eafb6d622a7bf75652c661d"
+    },
+    {
+      "index": 34,
+      "path": "chains/chain_0034.npz",
+      "sha256": "d6c6e31bad332d9109d4e042d6733307fd65e96189f39d03a721bba25ac2b097"
+    },
+    {
+      "index": 35,
+      "path": "chains/chain_0035.npz",
+      "sha256": "2026f434a1477b65a6598de454fad3db171ce48800d4f85b0f851d2f99fc503e"
+    },
+    {
+      "index": 36,
+      "path": "chains/chain_0036.npz",
+      "sha256": "251d2c943e08038e66a911154e11d0cbe1bedfef3c3362736617c461788af196"
+    },
+    {
+      "index": 37,
+      "path": "chains/chain_0037.npz",
+      "sha256": "079452177728cd58fe52297a951119ed5011099057ff760ceb3fc136a2de11de"
+    },
+    {
+      "index": 38,
+      "path": "chains/chain_0038.npz",
+      "sha256": "bddcbb0296910c23727de88388f85db9d7f1c82b8f8214b04687c8bdaf4d062d"
+    },
+    {
+      "index": 39,
+      "path": "chains/chain_0039.npz",
+      "sha256": "909fbc510813cc1ffe2cc717bbd8fa7d49dd6f997a3165f951394baf89456f72"
+    },
+    {
+      "index": 40,
+      "path": "chains/chain_0040.npz",
+      "sha256": "dedddc3dab1682841d07a3fbf7710d821718442b2d1ac75e0b15438dfcc0f103"
+    },
+    {
+      "index": 41,
+      "path": "chains/chain_0041.npz",
+      "sha256": "a5e5a7a7045798a13d7bc670c59dd8c789fd9e9991fbf620bc46cda7deffc9ac"
+    },
+    {
+      "index": 42,
+      "path": "chains/chain_0042.npz",
+      "sha256": "e0a9966a6f8c4b5cbd13dda15d3afd5a7b34af14373b985b0e56c457e3795210"
+    },
+    {
+      "index": 43,
+      "path": "chains/chain_0043.npz",
+      "sha256": "568ce66a05285ec16639bb20e54b3d1b04087a9f546686e1d9c3d03a6d7d9a3b"
+    },
+    {
+      "index": 44,
+      "path": "chains/chain_0044.npz",
+      "sha256": "2b500a2ed3f134934765170aed0ad879532a27bd93beb146b22528619d26f03d"
+    },
+    {
+      "index": 45,
+      "path": "chains/chain_0045.npz",
+      "sha256": "46142f5ae1a425447af17c3a1f825656ef6e9a96b6ffc3ada768724a95c510b0"
+    },
+    {
+      "index": 46,
+      "path": "chains/chain_0046.npz",
+      "sha256": "e70670f4224dbacd0f544649c2ae51e6f645ac6f7da9c1fb327ce84bf1ae8df4"
+    },
+    {
+      "index": 47,
+      "path": "chains/chain_0047.npz",
+      "sha256": "e1396de59b7890f8a4ed5f1130b70b7a6e94935b90e657bb27d8a4845d442053"
+    },
+    {
+      "index": 48,
+      "path": "chains/chain_0048.npz",
+      "sha256": "a5a907b58f45b1f7d891ea73ebe63e17b7f1b5f9f2ffeba8cf750e83cbf66956"
+    },
+    {
+      "index": 49,
+      "path": "chains/chain_0049.npz",
+      "sha256": "f622c484a06b3ca8677dc6cd0e3cd99e96d30139617c2eeafbe5de9c8513edc9"
+    },
+    {
+      "index": 50,
+      "path": "chains/chain_0050.npz",
+      "sha256": "d49c149468cbd288499373b7b3ed0abe7bea8e62df1ef12c70a68a1aa9602838"
+    },
+    {
+      "index": 51,
+      "path": "chains/chain_0051.npz",
+      "sha256": "7fdb68bc257ae400fc87218330d3d1a3974f128fa3dc60f505ca6d86c888b0a7"
+    },
+    {
+      "index": 52,
+      "path": "chains/chain_0052.npz",
+      "sha256": "4bae06372f995560e45261804a489c2cac9bf4d3a809a8e30ba091361a3f39dd"
+    },
+    {
+      "index": 53,
+      "path": "chains/chain_0053.npz",
+      "sha256": "0e1c4e47b5150eb9db9783df3e35232940e37d7fe2d4ea056cf748b108bb2709"
+    },
+    {
+      "index": 54,
+      "path": "chains/chain_0054.npz",
+      "sha256": "4663bc6c55ec45a0ad0272c20a15386ba74503b9d99e2f3c3d6ed8afa987ce06"
+    },
+    {
+      "index": 55,
+      "path": "chains/chain_0055.npz",
+      "sha256": "1cc651c4fad699e037b8ae2d136005ff63e3b7690db0ff11add17da372d0c2b7"
+    },
+    {
+      "index": 56,
+      "path": "chains/chain_0056.npz",
+      "sha256": "074f815639272fe7ab5e5c84e6c7eff481b9fb38a72e9280d7b4f95c10a0897a"
+    },
+    {
+      "index": 57,
+      "path": "chains/chain_0057.npz",
+      "sha256": "578540412aca5af647341e699a4d5848b0d523cd986ffba1e2cb6b4f4f2de117"
+    },
+    {
+      "index": 58,
+      "path": "chains/chain_0058.npz",
+      "sha256": "660a5e9e7bc5bcdcfad31f4d247fbe37b126eae1cb0ff93a9de2af9040761578"
+    },
+    {
+      "index": 59,
+      "path": "chains/chain_0059.npz",
+      "sha256": "ffe59d9505887a147d8714e2f9917d34f9cd1fc95d02afced0c1e805fe5a8bfd"
+    },
+    {
+      "index": 60,
+      "path": "chains/chain_0060.npz",
+      "sha256": "315d39030a7a800097a1a4ae2eaa0883bd6e1194f66867b9c718c43c324ff262"
+    },
+    {
+      "index": 61,
+      "path": "chains/chain_0061.npz",
+      "sha256": "13cf48cdaff9be3dfc598a1d27c9e871ccf840e87e7cce597f0afdbe5157abc9"
+    },
+    {
+      "index": 62,
+      "path": "chains/chain_0062.npz",
+      "sha256": "05e1ca49bf41b455a4afe250121eb45e4b56ba8b910af6db0f76dee6ce7276ae"
+    },
+    {
+      "index": 63,
+      "path": "chains/chain_0063.npz",
+      "sha256": "09f216c9a688db084525fe51c03fbf0e2c340248611a640509880dffceb646a4"
+    },
+    {
+      "index": 64,
+      "path": "chains/chain_0064.npz",
+      "sha256": "c7d798ae50f6616acfbc42c4489241b8dea971e3e6727df61b1abfd73856b147"
+    },
+    {
+      "index": 65,
+      "path": "chains/chain_0065.npz",
+      "sha256": "6f7945f18b5f36d49e119d4a882737433cd39507e3472e09690541ef302dee8f"
+    },
+    {
+      "index": 66,
+      "path": "chains/chain_0066.npz",
+      "sha256": "f2339dc356a9d30f171a86be35433b9831e1393a7071ec8324fe6c821d13473d"
+    },
+    {
+      "index": 67,
+      "path": "chains/chain_0067.npz",
+      "sha256": "6197d13cb627fc3d1e812770c541974e8219a78dee30f520e0281a74b43ff9d7"
+    },
+    {
+      "index": 68,
+      "path": "chains/chain_0068.npz",
+      "sha256": "ddddcf39094e4dbfed4e27d204ba5e4c8e934948b10949d2644ca90c5f4ea82b"
+    },
+    {
+      "index": 69,
+      "path": "chains/chain_0069.npz",
+      "sha256": "2bc2d734d491926c839fdae6908c9fb41a6fe52f95679ee44d6f653f16e2c694"
+    },
+    {
+      "index": 70,
+      "path": "chains/chain_0070.npz",
+      "sha256": "8c3928b6b00c357e810e74880981898aff71893c55d15a5430e7b9a99ccad684"
+    },
+    {
+      "index": 71,
+      "path": "chains/chain_0071.npz",
+      "sha256": "db4eb0a38f21ce798fa07718a55139a5bdf4aa9d2882081fcb0a56e3e8370e76"
+    },
+    {
+      "index": 72,
+      "path": "chains/chain_0072.npz",
+      "sha256": "1c9ce1c901a8a70f58048c2245c229d9d85cf068355940c4c3fd89a5c3162158"
+    },
+    {
+      "index": 73,
+      "path": "chains/chain_0073.npz",
+      "sha256": "ee9d1ea3ed598b33633d5ca3bba1080655255fce3faac260c8ebf3ba77a645de"
+    },
+    {
+      "index": 74,
+      "path": "chains/chain_0074.npz",
+      "sha256": "6911c2717083105cd753716d11ab508a32eebc07d855d2094551d61e0b2cb905"
+    },
+    {
+      "index": 75,
+      "path": "chains/chain_0075.npz",
+      "sha256": "c44abde4963c7cf5cdf068c62e2b9200454f3018907667be4ff08b8fa7146d27"
+    },
+    {
+      "index": 76,
+      "path": "chains/chain_0076.npz",
+      "sha256": "e751f152b13fec082fda428230120645e91001b3c01a3a84e6a9019b9d7d96ef"
+    },
+    {
+      "index": 77,
+      "path": "chains/chain_0077.npz",
+      "sha256": "32cede869d433bd214f1158195e382bab87e52f9b2c7e3b7a6d480a012b8ac9c"
+    },
+    {
+      "index": 78,
+      "path": "chains/chain_0078.npz",
+      "sha256": "563d0f020bdd7161c30550a5878739f252dacea9d8137644684efcc6c38fceca"
+    },
+    {
+      "index": 79,
+      "path": "chains/chain_0079.npz",
+      "sha256": "5a3aa5238cb6a02460b36fc1ef50cb51953595e013c0dda28736dd262e272418"
+    },
+    {
+      "index": 80,
+      "path": "chains/chain_0080.npz",
+      "sha256": "16d78c32ed4cd9d692311fe568a2e33c7a8d3c7ec771e962f41a46a02b017c56"
+    },
+    {
+      "index": 81,
+      "path": "chains/chain_0081.npz",
+      "sha256": "316b776539b44e7db1042455e7ca1f73ddef21fcecdaca74d8f1fa16230d49ee"
+    },
+    {
+      "index": 82,
+      "path": "chains/chain_0082.npz",
+      "sha256": "1e1e8642560e283df747b70ea2c29f72ffdc995023847fcc39994b7857a2d1a8"
+    },
+    {
+      "index": 83,
+      "path": "chains/chain_0083.npz",
+      "sha256": "086fb7eeb045a945a2d2e40532450874cb91a0b8e924f3a8ddc5166fcd810804"
+    },
+    {
+      "index": 84,
+      "path": "chains/chain_0084.npz",
+      "sha256": "757f46a5781e36520187c3c2ee78bee07ae71b563c8e0b7c321722c6e808888e"
+    },
+    {
+      "index": 85,
+      "path": "chains/chain_0085.npz",
+      "sha256": "4e50f6d0c88415306d6db807cfd2a7b416aff3ed79f68eb4a1f367a0233e9e9e"
+    },
+    {
+      "index": 86,
+      "path": "chains/chain_0086.npz",
+      "sha256": "51121453d383d1108d3beead2cb338eb341b8a56a4a0c3ae7fdcfb47daed3dcb"
+    },
+    {
+      "index": 87,
+      "path": "chains/chain_0087.npz",
+      "sha256": "da424749d08224512efc0d54ebfcf357a9803ceef527fe846c76ff1b5ccff02d"
+    },
+    {
+      "index": 88,
+      "path": "chains/chain_0088.npz",
+      "sha256": "628b39eb624bcf030f1c252a34d4e13a4225615bc0cad293fa80ad49f35f0c23"
+    },
+    {
+      "index": 89,
+      "path": "chains/chain_0089.npz",
+      "sha256": "51a741749694520e0694cb84263222c4ba6505c38edc6dae64d17d864a587c02"
+    },
+    {
+      "index": 90,
+      "path": "chains/chain_0090.npz",
+      "sha256": "02684408047553e14c7471b0d772b95240f844295bdde060709c69a73dd87a34"
+    },
+    {
+      "index": 91,
+      "path": "chains/chain_0091.npz",
+      "sha256": "a631d433ac0f3b962074ec9e904cd5d2ffe2fe665b87186d1c1b945053cd861f"
+    },
+    {
+      "index": 92,
+      "path": "chains/chain_0092.npz",
+      "sha256": "a1710f64dd43d9963177383f5e7b3e2d8c5213c7b803f15513eeb016f7c4fdc6"
+    },
+    {
+      "index": 93,
+      "path": "chains/chain_0093.npz",
+      "sha256": "16d0dc77ca86ece868d9a06a1874273e930b657a065f00fb75ca36d87b830203"
+    },
+    {
+      "index": 94,
+      "path": "chains/chain_0094.npz",
+      "sha256": "385f96e349dace00b1e91355730e066588506ecc1fc9589af855d723aaa61fb2"
+    },
+    {
+      "index": 95,
+      "path": "chains/chain_0095.npz",
+      "sha256": "f7214b4c6db306a22566a811cc4bad1f70573e95bc4194cae76e9582c01fc3c6"
+    },
+    {
+      "index": 96,
+      "path": "chains/chain_0096.npz",
+      "sha256": "4a43787bc2eca810837e3cbe852ead75c6d5500faab444d4dc5556589c163e70"
+    },
+    {
+      "index": 97,
+      "path": "chains/chain_0097.npz",
+      "sha256": "0d7aa6fa912007493ea9a55a5f82b78d5619ea937b849a29f2e324d05df28ab1"
+    },
+    {
+      "index": 98,
+      "path": "chains/chain_0098.npz",
+      "sha256": "560d5f2e4e139a6e53484e7dae897e81df6f5eed78960ea1aa0a5bea3e48e84e"
+    },
+    {
+      "index": 99,
+      "path": "chains/chain_0099.npz",
+      "sha256": "330d1c7b9e0778a70566e1219daf3ec8a5e6a70e8051de094a1771d0566eff9d"
+    },
+    {
+      "index": 100,
+      "path": "chains/chain_0100.npz",
+      "sha256": "b6cda47be2d14cdba34d035c9f3056006125325c2393bda6f95c8b9b7f308d25"
+    },
+    {
+      "index": 101,
+      "path": "chains/chain_0101.npz",
+      "sha256": "c6717450abdf3ce61a03b3752b676b8b6fc4f7bba8ea556fa3e7aa2652fa00e9"
+    },
+    {
+      "index": 102,
+      "path": "chains/chain_0102.npz",
+      "sha256": "7c443036245b650dced2daef115bc9418c5a956da0134ddb9d2582e085b30f11"
+    },
+    {
+      "index": 103,
+      "path": "chains/chain_0103.npz",
+      "sha256": "a9dc313fa45211cf0ff3caecd2f0c43ef9e29165ee8f99ec131d5eb6dd8045bb"
+    },
+    {
+      "index": 104,
+      "path": "chains/chain_0104.npz",
+      "sha256": "1c2ab2ab786fe513670c1811c062381d9cfc37dff577f83387160064d82b986e"
+    },
+    {
+      "index": 105,
+      "path": "chains/chain_0105.npz",
+      "sha256": "7125b9b32dfba2cecf0566c12917d19257d2d385b77dce7a2f7a34cff482a613"
+    },
+    {
+      "index": 106,
+      "path": "chains/chain_0106.npz",
+      "sha256": "99fbd7a7a5506bc6bc2fadcd2540c3236adae137e16c40220104fdc827a66efa"
+    },
+    {
+      "index": 107,
+      "path": "chains/chain_0107.npz",
+      "sha256": "b6ec63a9839e2d87c38625faff96412eb110fd4fad3222ddc6138bed20dc20ae"
+    },
+    {
+      "index": 108,
+      "path": "chains/chain_0108.npz",
+      "sha256": "bb4233e3adfdf2cd0e54a842461ac1f1c7531c7aeaf693bd03d9a3a2116fc80c"
+    },
+    {
+      "index": 109,
+      "path": "chains/chain_0109.npz",
+      "sha256": "68bade3bf8ac9ca745342f37827af2bb9647572ded4cc4bd2c2b9a80843750ea"
+    },
+    {
+      "index": 110,
+      "path": "chains/chain_0110.npz",
+      "sha256": "89bf1852a5a08db4d88e5310169fa93191b0ee096dbd2a88e4cbfdd3ee323a51"
+    },
+    {
+      "index": 111,
+      "path": "chains/chain_0111.npz",
+      "sha256": "454c546c5519bf579d43c634e4ca8483e9f65e9699a345db6933efcfda74ad6e"
+    },
+    {
+      "index": 112,
+      "path": "chains/chain_0112.npz",
+      "sha256": "ed19e8861c7569cb6616cc8dca66b70d28469ba7bcd193992bafa6f92f7009a4"
+    },
+    {
+      "index": 113,
+      "path": "chains/chain_0113.npz",
+      "sha256": "910e64aa609b65c0291a9bb8046c96197c3ea58042016f9cb62a245352bebd5c"
+    },
+    {
+      "index": 114,
+      "path": "chains/chain_0114.npz",
+      "sha256": "2a448e5340cc8f1478cd7a2d9642e113ca900b5702ec837a6cd2e8db2433ea20"
+    },
+    {
+      "index": 115,
+      "path": "chains/chain_0115.npz",
+      "sha256": "83c0087cfb2cee34792cf78bfacff941925254350e1eb64c015f4ef933391fa3"
+    },
+    {
+      "index": 116,
+      "path": "chains/chain_0116.npz",
+      "sha256": "133f4d522640c0d53f22fc6f85b21a5d1cb37612ef5f8edecb90a436fbb10d1e"
+    },
+    {
+      "index": 117,
+      "path": "chains/chain_0117.npz",
+      "sha256": "bfc22456bcd56e501abd83801bda78d08d1130780c1f6c68f14b32d37bf6f9e4"
+    },
+    {
+      "index": 118,
+      "path": "chains/chain_0118.npz",
+      "sha256": "593ab7dc59ec17708fe55e7332a6fe73ea83a9b5bde4112da7fae7bd54c5934a"
+    },
+    {
+      "index": 119,
+      "path": "chains/chain_0119.npz",
+      "sha256": "cbdf77447e6ab8b588ee6539317b38c7708da7aa986a7df0550b505f2696ffb6"
+    },
+    {
+      "index": 120,
+      "path": "chains/chain_0120.npz",
+      "sha256": "07d89cbdab2463f688d980f2da0a772d12c41932d8befad7227700ac2678e078"
+    },
+    {
+      "index": 121,
+      "path": "chains/chain_0121.npz",
+      "sha256": "d3d74548ddc8933824c15cc5fea42dbc246d2cc1c2d58f443acf6c5d343ff011"
+    },
+    {
+      "index": 122,
+      "path": "chains/chain_0122.npz",
+      "sha256": "67ba635c4f5901335597afc6594ab6ec854b4c32f3f649422a2cc3b5f05efdcb"
+    },
+    {
+      "index": 123,
+      "path": "chains/chain_0123.npz",
+      "sha256": "88fe8297564463c7e049e6e2b66e81c554ef1127d93ed87974e3630cb0da8991"
+    },
+    {
+      "index": 124,
+      "path": "chains/chain_0124.npz",
+      "sha256": "2eb20120799d3302097273569489852782d6b352de95c7e5f8a6e1e35d2eed84"
+    },
+    {
+      "index": 125,
+      "path": "chains/chain_0125.npz",
+      "sha256": "3d8ea67d13abf41f55b00297e2fa4a69440efb8f93d03689afea98a213e26813"
+    },
+    {
+      "index": 126,
+      "path": "chains/chain_0126.npz",
+      "sha256": "f43511d9f97cb6185d0c90a9d2f82bab31bdca2ab482b9ffa32e7b0560b09e2c"
+    },
+    {
+      "index": 127,
+      "path": "chains/chain_0127.npz",
+      "sha256": "c6c186309024992fda9bd64b40622ff045aa494c5eb8be836e912089fbc0acb3"
+    }
+  ],
+  "measurements": {
+    "protocol": "social-transmission-v1",
+    "chains": 128,
+    "cohorts": {
+      "1": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 0.7890625,
+              "se": 0.03620184785532036,
+              "lower_2se": 0.7166588042893592,
+              "upper_2se": 0.8614661957106408
+            },
+            "first_poison": {
+              "mean": 0.2109375,
+              "se": 0.03620184785532036,
+              "lower_2se": 0.1385338042893593,
+              "upper_2se": 0.2833411957106407
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.8984375,
+              "se": 0.02680456515850638,
+              "lower_2se": 0.8448283696829872,
+              "upper_2se": 0.9520466303170128
+            },
+            "fitness": {
+              "mean": 30.0234375,
+              "se": 1.506035464503827,
+              "lower_2se": 27.011366570992347,
+              "upper_2se": 33.035508429007656
+            },
+            "first_meal_step": {
+              "mean": 8.171875,
+              "se": 0.8567492994346088,
+              "lower_2se": 6.458376401130782,
+              "upper_2se": 9.885373598869217
+            },
+            "changed_weights": {
+              "mean": 1964.7109375,
+              "se": 2.55491248347132,
+              "lower_2se": 1959.6011125330574,
+              "upper_2se": 1969.8207624669426
+            },
+            "belief_probability": {
+              "mean": 0.5069951405457687,
+              "se": 0.034442417524339734,
+              "lower_2se": 0.4381103054970892,
+              "upper_2se": 0.5758799755944481
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 101,
+            "first_poison_count": 27,
+            "no_meal_count": 0,
+            "survivors": 115
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 0.7890625,
+              "se": 0.03620184785532036,
+              "lower_2se": 0.7166588042893592,
+              "upper_2se": 0.8614661957106408
+            },
+            "first_poison": {
+              "mean": 0.2109375,
+              "se": 0.03620184785532036,
+              "lower_2se": 0.1385338042893593,
+              "upper_2se": 0.2833411957106407
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.8984375,
+              "se": 0.02680456515850638,
+              "lower_2se": 0.8448283696829872,
+              "upper_2se": 0.9520466303170128
+            },
+            "fitness": {
+              "mean": 30.0234375,
+              "se": 1.506035464503827,
+              "lower_2se": 27.011366570992347,
+              "upper_2se": 33.035508429007656
+            },
+            "first_meal_step": {
+              "mean": 8.171875,
+              "se": 0.8567492994346088,
+              "lower_2se": 6.458376401130782,
+              "upper_2se": 9.885373598869217
+            },
+            "changed_weights": {
+              "mean": 1964.7109375,
+              "se": 2.55491248347132,
+              "lower_2se": 1959.6011125330574,
+              "upper_2se": 1969.8207624669426
+            },
+            "belief_probability": {
+              "mean": 0.5069951405457687,
+              "se": 0.034442417524339734,
+              "lower_2se": 0.4381103054970892,
+              "upper_2se": 0.5758799755944481
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 101,
+            "first_poison_count": 27,
+            "no_meal_count": 0,
+            "survivors": 115
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.4921875,
+              "se": 0.0443624091458791,
+              "lower_2se": 0.4034626817082418,
+              "upper_2se": 0.5809123182917582
+            },
+            "first_poison": {
+              "mean": 0.5078125,
+              "se": 0.0443624091458791,
+              "lower_2se": 0.4190876817082418,
+              "upper_2se": 0.5965373182917582
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.53125,
+              "se": 0.044281084771084105,
+              "lower_2se": 0.4426878304578318,
+              "upper_2se": 0.6198121695421682
+            },
+            "fitness": {
+              "mean": 14.296875,
+              "se": 1.8106530562298366,
+              "lower_2se": 10.675568887540326,
+              "upper_2se": 17.918181112459674
+            },
+            "first_meal_step": {
+              "mean": 6.5703125,
+              "se": 0.7444581666080896,
+              "lower_2se": 5.08139616678382,
+              "upper_2se": 8.05922883321618
+            },
+            "changed_weights": {
+              "mean": 1964.7109375,
+              "se": 2.55491248347132,
+              "lower_2se": 1959.6011125330574,
+              "upper_2se": 1969.8207624669426
+            },
+            "belief_probability": {
+              "mean": 0.5081490631273482,
+              "se": 0.03444041975117201,
+              "lower_2se": 0.4392682236250042,
+              "upper_2se": 0.5770299026296922
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 63,
+            "first_poison_count": 65,
+            "no_meal_count": 0,
+            "survivors": 68
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 0.515625,
+              "se": 0.04434615620188394,
+              "lower_2se": 0.42693268759623215,
+              "upper_2se": 0.6043173124037678
+            },
+            "first_poison": {
+              "mean": 0.484375,
+              "se": 0.04434615620188394,
+              "lower_2se": 0.39568268759623215,
+              "upper_2se": 0.5730673124037678
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.7890625,
+              "se": 0.03620184785532036,
+              "lower_2se": 0.7166588042893592,
+              "upper_2se": 0.8614661957106408
+            },
+            "fitness": {
+              "mean": 12.9375,
+              "se": 1.210078554585493,
+              "lower_2se": 10.517342890829013,
+              "upper_2se": 15.357657109170987
+            },
+            "first_meal_step": {
+              "mean": 9.25,
+              "se": 0.8977635160267214,
+              "lower_2se": 7.454472967946558,
+              "upper_2se": 11.045527032053442
+            },
+            "changed_weights": {
+              "mean": 1964.7109375,
+              "se": 2.55491248347132,
+              "lower_2se": 1959.6011125330574,
+              "upper_2se": 1969.8207624669426
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 66,
+            "first_poison_count": 62,
+            "no_meal_count": 0,
+            "survivors": 101
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.296875,
+              "se": 0.044863330024704044,
+              "lower_2se": 0.2071483399505919,
+              "upper_2se": 0.3866016600494081
+            },
+            "survival_difference": {
+              "mean": 0.3671875,
+              "se": 0.049444619449142004,
+              "lower_2se": 0.268298261101716,
+              "upper_2se": 0.466076738898284
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.2734375,
+              "se": 0.04397068042410376,
+              "lower_2se": 0.18549613915179247,
+              "upper_2se": 0.36137886084820753
+            },
+            "survival_difference": {
+              "mean": 0.109375,
+              "se": 0.03182903509994767,
+              "lower_2se": 0.045716929800104666,
+              "upper_2se": 0.17303307019989533
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          }
+        }
+      },
+      "2": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 0.90625,
+              "se": 0.025864720370468334,
+              "lower_2se": 0.8545205592590633,
+              "upper_2se": 0.9579794407409367
+            },
+            "first_poison": {
+              "mean": 0.09375,
+              "se": 0.025864720370468334,
+              "lower_2se": 0.04202055925906333,
+              "upper_2se": 0.14547944074093666
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.953125,
+              "se": 0.018756150566017486,
+              "lower_2se": 0.915612698867965,
+              "upper_2se": 0.990637301132035
+            },
+            "fitness": {
+              "mean": 34.671875,
+              "se": 1.4968433556565066,
+              "lower_2se": 31.678188288686986,
+              "upper_2se": 37.66556171131301
+            },
+            "first_meal_step": {
+              "mean": 9.2890625,
+              "se": 1.1714572336052615,
+              "lower_2se": 6.946148032789477,
+              "upper_2se": 11.631976967210523
+            },
+            "changed_weights": {
+              "mean": 1967.765625,
+              "se": 2.7204362106210227,
+              "lower_2se": 1962.3247525787579,
+              "upper_2se": 1973.2064974212421
+            },
+            "belief_probability": {
+              "mean": 0.4891769371170085,
+              "se": 0.03850320703210255,
+              "lower_2se": 0.4121705230528034,
+              "upper_2se": 0.5661833511812135
+            },
+            "decoder_coverage": {
+              "mean": 0.9140625,
+              "se": 0.02487009494926453,
+              "lower_2se": 0.864322310101471,
+              "upper_2se": 0.963802689898529
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8984375,
+              "se": 0.02680456515850638,
+              "lower_2se": 0.8448283696829872,
+              "upper_2se": 0.9520466303170128
+            },
+            "decoder_votes": {
+              "mean": 18.1171875,
+              "se": 0.84935862597055,
+              "lower_2se": 16.4184702480589,
+              "upper_2se": 19.8159047519411
+            },
+            "first_food_count": 116,
+            "first_poison_count": 12,
+            "no_meal_count": 0,
+            "survivors": 122
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 0.8359375,
+              "se": 0.032861675748836264,
+              "lower_2se": 0.7702141485023275,
+              "upper_2se": 0.9016608514976725
+            },
+            "first_poison": {
+              "mean": 0.1640625,
+              "se": 0.032861675748836264,
+              "lower_2se": 0.09833914850232747,
+              "upper_2se": 0.22978585149767253
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.9453125,
+              "se": 0.020175758695205624,
+              "lower_2se": 0.9049609826095888,
+              "upper_2se": 0.9856640173904112
+            },
+            "fitness": {
+              "mean": 29.6875,
+              "se": 1.6306590589499184,
+              "lower_2se": 26.426181882100163,
+              "upper_2se": 32.94881811789983
+            },
+            "first_meal_step": {
+              "mean": 10.125,
+              "se": 1.1563863241618957,
+              "lower_2se": 7.812227351676208,
+              "upper_2se": 12.437772648323792
+            },
+            "changed_weights": {
+              "mean": 1967.765625,
+              "se": 2.7204362106210227,
+              "lower_2se": 1962.3247525787579,
+              "upper_2se": 1973.2064974212421
+            },
+            "belief_probability": {
+              "mean": 0.5069951405457687,
+              "se": 0.034442417524339734,
+              "lower_2se": 0.4381103054970892,
+              "upper_2se": 0.5758799755944481
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 107,
+            "first_poison_count": 21,
+            "no_meal_count": 0,
+            "survivors": 121
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5234375,
+              "se": 0.04431905471661607,
+              "lower_2se": 0.43479939056676786,
+              "upper_2se": 0.6120756094332321
+            },
+            "first_poison": {
+              "mean": 0.4765625,
+              "se": 0.04431905471661607,
+              "lower_2se": 0.38792439056676786,
+              "upper_2se": 0.5652006094332321
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.5546875,
+              "se": 0.04410164327680508,
+              "lower_2se": 0.46648421344638985,
+              "upper_2se": 0.6428907865536102
+            },
+            "fitness": {
+              "mean": 17.1875,
+              "se": 1.9989770390767136,
+              "lower_2se": 13.189545921846573,
+              "upper_2se": 21.185454078153427
+            },
+            "first_meal_step": {
+              "mean": 7.5625,
+              "se": 0.9520201014800302,
+              "lower_2se": 5.6584597970399395,
+              "upper_2se": 9.466540202960061
+            },
+            "changed_weights": {
+              "mean": 1967.765625,
+              "se": 2.7204362106210227,
+              "lower_2se": 1962.3247525787579,
+              "upper_2se": 1973.2064974212421
+            },
+            "belief_probability": {
+              "mean": 0.4745428740279749,
+              "se": 0.03844888067842918,
+              "lower_2se": 0.3976451126711166,
+              "upper_2se": 0.5514406353848332
+            },
+            "decoder_coverage": {
+              "mean": 0.9140625,
+              "se": 0.02487009494926453,
+              "lower_2se": 0.864322310101471,
+              "upper_2se": 0.963802689898529
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8984375,
+              "se": 0.02680456515850638,
+              "lower_2se": 0.8448283696829872,
+              "upper_2se": 0.9520466303170128
+            },
+            "decoder_votes": {
+              "mean": 18.1171875,
+              "se": 0.84935862597055,
+              "lower_2se": 16.4184702480589,
+              "upper_2se": 19.8159047519411
+            },
+            "first_food_count": 67,
+            "first_poison_count": 61,
+            "no_meal_count": 0,
+            "survivors": 71
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.044367825470805686,
+              "lower_2se": 0.4112643490583886,
+              "upper_2se": 0.5887356509416114
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.044367825470805686,
+              "lower_2se": 0.4112643490583886,
+              "upper_2se": 0.5887356509416114
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.8125,
+              "se": 0.03463462265730887,
+              "lower_2se": 0.7432307546853822,
+              "upper_2se": 0.8817692453146178
+            },
+            "fitness": {
+              "mean": 12.1328125,
+              "se": 1.0702083222763854,
+              "lower_2se": 9.99239585544723,
+              "upper_2se": 14.27322914455277
+            },
+            "first_meal_step": {
+              "mean": 9.1484375,
+              "se": 0.9697751334801723,
+              "lower_2se": 7.208887233039656,
+              "upper_2se": 11.087987766960344
+            },
+            "changed_weights": {
+              "mean": 1967.765625,
+              "se": 2.7204362106210227,
+              "lower_2se": 1962.3247525787579,
+              "upper_2se": 1973.2064974212421
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 0.9140625,
+              "se": 0.02487009494926453,
+              "lower_2se": 0.864322310101471,
+              "upper_2se": 0.963802689898529
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8984375,
+              "se": 0.02680456515850638,
+              "lower_2se": 0.8448283696829872,
+              "upper_2se": 0.9520466303170128
+            },
+            "decoder_votes": {
+              "mean": 18.1171875,
+              "se": 0.84935862597055,
+              "lower_2se": 16.4184702480589,
+              "upper_2se": 19.8159047519411
+            },
+            "first_food_count": 64,
+            "first_poison_count": 64,
+            "no_meal_count": 0,
+            "survivors": 104
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.0703125,
+              "se": 0.02972891330289857,
+              "lower_2se": 0.01085467339420286,
+              "upper_2se": 0.12977032660579713
+            },
+            "survival_difference": {
+              "mean": 0.0078125,
+              "se": 0.026003704285446728,
+              "lower_2se": -0.044194908570893456,
+              "upper_2se": 0.059819908570893456
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.3828125,
+              "se": 0.04589590154139303,
+              "lower_2se": 0.29102069691721394,
+              "upper_2se": 0.47460430308278606
+            },
+            "survival_difference": {
+              "mean": 0.3984375,
+              "se": 0.046188168593926986,
+              "lower_2se": 0.306061162812146,
+              "upper_2se": 0.490813837187854
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.40625,
+              "se": 0.04358094446512651,
+              "lower_2se": 0.319088111069747,
+              "upper_2se": 0.493411888930253
+            },
+            "survival_difference": {
+              "mean": 0.140625,
+              "se": 0.0327811412770391,
+              "lower_2se": 0.0750627174459218,
+              "upper_2se": 0.2061872825540782
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          }
+        }
+      },
+      "3": {
+        "arms": {
+          "predecessor": {
+            "first_food": {
+              "mean": 0.8359375,
+              "se": 0.032861675748836264,
+              "lower_2se": 0.7702141485023275,
+              "upper_2se": 0.9016608514976725
+            },
+            "first_poison": {
+              "mean": 0.1640625,
+              "se": 0.032861675748836264,
+              "lower_2se": 0.09833914850232747,
+              "upper_2se": 0.22978585149767253
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.984375,
+              "se": 0.011004959288293975,
+              "lower_2se": 0.962365081423412,
+              "upper_2se": 1.0063849185765879
+            },
+            "fitness": {
+              "mean": 35.3359375,
+              "se": 1.313508580599238,
+              "lower_2se": 32.708920338801526,
+              "upper_2se": 37.962954661198474
+            },
+            "first_meal_step": {
+              "mean": 8.5,
+              "se": 1.04547205176591,
+              "lower_2se": 6.40905589646818,
+              "upper_2se": 10.59094410353182
+            },
+            "changed_weights": {
+              "mean": 1965.875,
+              "se": 2.6783112922049885,
+              "lower_2se": 1960.51837741559,
+              "upper_2se": 1971.23162258441
+            },
+            "belief_probability": {
+              "mean": 0.5153111094405176,
+              "se": 0.03948256836098087,
+              "lower_2se": 0.43634597271855585,
+              "upper_2se": 0.5942762461624793
+            },
+            "decoder_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_votes": {
+              "mean": 19.9296875,
+              "se": 0.8556050428723135,
+              "lower_2se": 18.21847741425537,
+              "upper_2se": 21.64089758574463
+            },
+            "first_food_count": 107,
+            "first_poison_count": 21,
+            "no_meal_count": 0,
+            "survivors": 126
+          },
+          "repeated_founder": {
+            "first_food": {
+              "mean": 0.8203125,
+              "se": 0.03406800775380022,
+              "lower_2se": 0.7521764844923996,
+              "upper_2se": 0.8884485155076004
+            },
+            "first_poison": {
+              "mean": 0.1796875,
+              "se": 0.03406800775380022,
+              "lower_2se": 0.11155148449239956,
+              "upper_2se": 0.24782351550760046
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.9296875,
+              "se": 0.022687304775629108,
+              "lower_2se": 0.8843128904487418,
+              "upper_2se": 0.9750621095512582
+            },
+            "fitness": {
+              "mean": 30.5390625,
+              "se": 1.5187437155078003,
+              "lower_2se": 27.5015750689844,
+              "upper_2se": 33.5765499310156
+            },
+            "first_meal_step": {
+              "mean": 8.5390625,
+              "se": 0.9996863646790165,
+              "lower_2se": 6.539689770641967,
+              "upper_2se": 10.538435229358033
+            },
+            "changed_weights": {
+              "mean": 1965.875,
+              "se": 2.6783112922049885,
+              "lower_2se": 1960.51837741559,
+              "upper_2se": 1971.23162258441
+            },
+            "belief_probability": {
+              "mean": 0.5069951405457687,
+              "se": 0.034442417524339734,
+              "lower_2se": 0.4381103054970892,
+              "upper_2se": 0.5758799755944481
+            },
+            "decoder_coverage": {
+              "mean": 0.8828125,
+              "se": 0.02854125206846796,
+              "lower_2se": 0.8257299958630641,
+              "upper_2se": 0.9398950041369359
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.8671875,
+              "se": 0.030114393430435732,
+              "lower_2se": 0.8069587131391285,
+              "upper_2se": 0.9274162868608715
+            },
+            "decoder_votes": {
+              "mean": 15.796875,
+              "se": 0.8197818282567384,
+              "lower_2se": 14.157311343486523,
+              "upper_2se": 17.436438656513477
+            },
+            "first_food_count": 105,
+            "first_poison_count": 23,
+            "no_meal_count": 0,
+            "survivors": 119
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.484375,
+              "se": 0.04434615620188394,
+              "lower_2se": 0.39568268759623215,
+              "upper_2se": 0.5730673124037678
+            },
+            "first_poison": {
+              "mean": 0.515625,
+              "se": 0.04434615620188394,
+              "lower_2se": 0.42693268759623215,
+              "upper_2se": 0.6043173124037678
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.546875,
+              "se": 0.04417241936858356,
+              "lower_2se": 0.45853016126283286,
+              "upper_2se": 0.6352198387371671
+            },
+            "fitness": {
+              "mean": 16.546875,
+              "se": 1.8916211909872254,
+              "lower_2se": 12.76363261802555,
+              "upper_2se": 20.33011738197445
+            },
+            "first_meal_step": {
+              "mean": 9.125,
+              "se": 1.023169096484056,
+              "lower_2se": 7.078661807031888,
+              "upper_2se": 11.171338192968111
+            },
+            "changed_weights": {
+              "mean": 1965.875,
+              "se": 2.6783112922049885,
+              "lower_2se": 1960.51837741559,
+              "upper_2se": 1971.23162258441
+            },
+            "belief_probability": {
+              "mean": 0.4683776021847734,
+              "se": 0.03940615800196982,
+              "lower_2se": 0.3895652861808338,
+              "upper_2se": 0.5471899181887131
+            },
+            "decoder_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_votes": {
+              "mean": 19.9296875,
+              "se": 0.8556050428723135,
+              "lower_2se": 18.21847741425537,
+              "upper_2se": 21.64089758574463
+            },
+            "first_food_count": 62,
+            "first_poison_count": 66,
+            "no_meal_count": 0,
+            "survivors": 70
+          },
+          "belief_reset": {
+            "first_food": {
+              "mean": 0.53125,
+              "se": 0.044281084771084105,
+              "lower_2se": 0.4426878304578318,
+              "upper_2se": 0.6198121695421682
+            },
+            "first_poison": {
+              "mean": 0.46875,
+              "se": 0.044281084771084105,
+              "lower_2se": 0.3801878304578318,
+              "upper_2se": 0.5573121695421682
+            },
+            "no_meal": {
+              "mean": 0.0,
+              "se": 0.0,
+              "lower_2se": 0.0,
+              "upper_2se": 0.0
+            },
+            "survival": {
+              "mean": 0.8203125,
+              "se": 0.03406800775380022,
+              "lower_2se": 0.7521764844923996,
+              "upper_2se": 0.8884485155076004
+            },
+            "fitness": {
+              "mean": 11.1640625,
+              "se": 0.9394027504368385,
+              "lower_2se": 9.285256999126323,
+              "upper_2se": 13.042868000873677
+            },
+            "first_meal_step": {
+              "mean": 10.9296875,
+              "se": 1.2585917128381046,
+              "lower_2se": 8.412504074323792,
+              "upper_2se": 13.446870925676208
+            },
+            "changed_weights": {
+              "mean": 1965.875,
+              "se": 2.6783112922049885,
+              "lower_2se": 1960.51837741559,
+              "upper_2se": 1971.23162258441
+            },
+            "belief_probability": {
+              "mean": 0.5,
+              "se": 0.0,
+              "lower_2se": 0.5,
+              "upper_2se": 0.5
+            },
+            "decoder_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_strict_coverage": {
+              "mean": 0.9609375,
+              "se": 0.017191973290465488,
+              "lower_2se": 0.926553553419069,
+              "upper_2se": 0.995321446580931
+            },
+            "decoder_votes": {
+              "mean": 19.9296875,
+              "se": 0.8556050428723135,
+              "lower_2se": 18.21847741425537,
+              "upper_2se": 21.64089758574463
+            },
+            "first_food_count": 68,
+            "first_poison_count": 60,
+            "no_meal_count": 0,
+            "survivors": 105
+          }
+        },
+        "contrasts": {
+          "repeated_founder": {
+            "first_food_difference": {
+              "mean": 0.015625,
+              "se": 0.03839864041382091,
+              "lower_2se": -0.061172280827641826,
+              "upper_2se": 0.09242228082764183
+            },
+            "survival_difference": {
+              "mean": 0.0546875,
+              "se": 0.023023742853631714,
+              "lower_2se": 0.008640014292736573,
+              "upper_2se": 0.10073498570726343
+            },
+            "gate": {
+              "first_food_passed": false,
+              "survival_passed": true,
+              "passed": false
+            }
+          },
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.3515625,
+              "se": 0.04379545410143371,
+              "lower_2se": 0.2639715917971326,
+              "upper_2se": 0.4391534082028674
+            },
+            "survival_difference": {
+              "mean": 0.4375,
+              "se": 0.04539578789992655,
+              "lower_2se": 0.3467084242001469,
+              "upper_2se": 0.5282915757998531
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          },
+          "belief_reset": {
+            "first_food_difference": {
+              "mean": 0.3046875,
+              "se": 0.04232216404717304,
+              "lower_2se": 0.22004317190565392,
+              "upper_2se": 0.3893318280943461
+            },
+            "survival_difference": {
+              "mean": 0.1640625,
+              "se": 0.032861675748836264,
+              "lower_2se": 0.09833914850232747,
+              "upper_2se": 0.22978585149767253
+            },
+            "gate": {
+              "first_food_passed": true,
+              "survival_passed": true,
+              "passed": true
+            }
+          }
+        }
+      }
+    },
+    "selected_lambda": 4.0,
+    "agents_per_chain": 13,
+    "assigned_agents": 1664,
+    "rule_counts": {
+      "0": 64,
+      "1": 64
+    },
+    "founder": {
+      "first_food": {
+        "mean": 0.4609375,
+        "se": 0.044232218376094055,
+        "lower_2se": 0.3724730632478119,
+        "upper_2se": 0.5494019367521881
+      },
+      "first_poison": {
+        "mean": 0.5390625,
+        "se": 0.044232218376094055,
+        "lower_2se": 0.4505980632478119,
+        "upper_2se": 0.6275269367521881
+      },
+      "no_meal": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "survival": {
+        "mean": 0.875,
+        "se": 0.02934655810211727,
+        "lower_2se": 0.8163068837957654,
+        "upper_2se": 0.9336931162042346
+      },
+      "fitness": {
+        "mean": 19.8515625,
+        "se": 1.2165348000582255,
+        "lower_2se": 17.41849289988355,
+        "upper_2se": 22.28463210011645
+      },
+      "first_meal_step": {
+        "mean": 7.7109375,
+        "se": 0.6750758509210658,
+        "lower_2se": 6.360785798157869,
+        "upper_2se": 9.061089201842131
+      },
+      "changed_weights": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "belief_probability": {
+        "mean": 0.5,
+        "se": 0.0,
+        "lower_2se": 0.5,
+        "upper_2se": 0.5
+      },
+      "decoder_coverage": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "decoder_strict_coverage": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "decoder_votes": {
+        "mean": 0.0,
+        "se": 0.0,
+        "lower_2se": 0.0,
+        "upper_2se": 0.0
+      },
+      "first_food_count": 59,
+      "first_poison_count": 69,
+      "no_meal_count": 0,
+      "survivors": 112
+    },
+    "cross_cohort": {
+      "c3_vs_c1": {
+        "first_food_difference": {
+          "mean": 0.046875,
+          "se": 0.04554376059282991,
+          "lower_2se": -0.044212521185659825,
+          "upper_2se": 0.13796252118565983
+        },
+        "survival_difference": {
+          "mean": 0.0859375,
+          "se": 0.027231472946728848,
+          "lower_2se": 0.031474554106542305,
+          "upper_2se": 0.14040044589345768
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      }
+    },
+    "cumulative_contrasts": {
+      "c3_vs_c1": {
+        "first_food_difference": {
+          "mean": 0.046875,
+          "se": 0.04554376059282991,
+          "lower_2se": -0.044212521185659825,
+          "upper_2se": 0.13796252118565983
+        },
+        "survival_difference": {
+          "mean": 0.0859375,
+          "se": 0.027231472946728848,
+          "lower_2se": 0.031474554106542305,
+          "upper_2se": 0.14040044589345768
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      },
+      "c3_vs_repeated_founder": {
+        "first_food_difference": {
+          "mean": 0.015625,
+          "se": 0.03839864041382091,
+          "lower_2se": -0.061172280827641826,
+          "upper_2se": 0.09242228082764183
+        },
+        "survival_difference": {
+          "mean": 0.0546875,
+          "se": 0.023023742853631714,
+          "lower_2se": 0.008640014292736573,
+          "upper_2se": 0.10073498570726343
+        },
+        "gate": {
+          "first_food_passed": false,
+          "survival_passed": true,
+          "passed": false
+        }
+      }
+    },
+    "survival_floor": -0.1
+  },
+  "safeguards": {
+    "world_keys_disjoint": true,
+    "calibration_source_unchanged": true,
+    "original_genome_unchanged": true,
+    "three_cohort_four_arm_evidence_validated": true
+  },
+  "retained_efficacy": {
+    "passed": true,
+    "first_food_passed": true,
+    "survival_passed": true
+  },
+  "cumulative_improvement": {
+    "passed": false,
+    "first_food_passed": false,
+    "survival_passed": true
+  }
+}

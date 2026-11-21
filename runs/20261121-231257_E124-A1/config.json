@@ -1,0 +1,293 @@
+{
+  "protocol": "social-transmission-v1",
+  "args": {
+    "name": "E124-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120202,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "social-transmission-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "271d3869f531fd556554015249c02d08b0f2cbd5",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "calibration_source": {
+    "name": "E123-A1",
+    "folder": "runs/20261121-224439_E123-A1",
+    "commit": "b7a6dfc91b08b8cc44dd66510752e8f6b8b5e758",
+    "calibration_seed": 2026113002,
+    "expected_calibration_families": 32,
+    "config": {
+      "path": "runs/20261121-224439_E123-A1/config.json",
+      "sha256": "8a03cf06c3615d0d8d08f57d2fcc4a9f4bfa1ad00ff9697f37b387e3f4f2d88b"
+    },
+    "selection": {
+      "path": "runs/20261121-224439_E123-A1/calibration/selection.json",
+      "sha256": "3fe92f620be735d9a3843faf3cd651e7dfa5498e588b89fb87dbe51ae39027d9"
+    },
+    "raw_files": [
+      {
+        "index": 0,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0000.npz",
+        "sha256": "34ab310ca7d5a747f508559f51491b9a6f5a5b7c20a002d00e87526754e7364b"
+      },
+      {
+        "index": 1,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0001.npz",
+        "sha256": "7785d01c7c3581270c42f7668076bceffff62b7bacf00f78a486924dec5836ec"
+      },
+      {
+        "index": 2,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0002.npz",
+        "sha256": "d93fd7cca3fe341d6a2993ec2a5e566695d86f5105925f75f43f2baf9452f475"
+      },
+      {
+        "index": 3,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0003.npz",
+        "sha256": "ea3df92b8ca572ae6bce4cb757dc067857775d17592b50f379e3749785023e75"
+      },
+      {
+        "index": 4,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0004.npz",
+        "sha256": "0d049c1ee9eb2133f308eb38311412f7e4b341c19a7eb8ea58577f98382e1130"
+      },
+      {
+        "index": 5,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0005.npz",
+        "sha256": "6d02c2e51a29a1998cf5b8c7cc1dad594daede771958314ee9cfb83051fe21c8"
+      },
+      {
+        "index": 6,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0006.npz",
+        "sha256": "72aa2a2a3a86e0de57b32dfb4d50d113b45e75d04bfeda21c0df007896c8c368"
+      },
+      {
+        "index": 7,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0007.npz",
+        "sha256": "2a4f94777c148a42a42be943e7ad19809d11d0fae773957d80c4b784ff39b8a1"
+      },
+      {
+        "index": 8,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0008.npz",
+        "sha256": "c81e363789d4b72fb6ce27f3933aacaec1cf0b086a2230c604893985d9d2be7d"
+      },
+      {
+        "index": 9,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0009.npz",
+        "sha256": "c58a08412899661336bfc5acce2c4a214391d1cfed2ebcaae8ed3e739acce927"
+      },
+      {
+        "index": 10,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0010.npz",
+        "sha256": "1b85ae40edf309034b406ee616d93baf85776d6050590c3a7c53715fd882ea18"
+      },
+      {
+        "index": 11,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0011.npz",
+        "sha256": "df0f92f1b06e62f1fbc122cf64b16a586fe14e5ab8e129c46fa77d80f8b7e46a"
+      },
+      {
+        "index": 12,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0012.npz",
+        "sha256": "2b2070ca5251f15ad23f16c450839d650a8e346e563c775e3dbf3d6a2dc8782b"
+      },
+      {
+        "index": 13,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0013.npz",
+        "sha256": "34088aa59aec8b1d6636969cf83e2f4eaf9b60b450603d3165f622dca6e31c04"
+      },
+      {
+        "index": 14,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0014.npz",
+        "sha256": "79f71f94014e1258ef221adcb46d6c0def4db0fec0213925ff6a83df13ec6945"
+      },
+      {
+        "index": 15,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0015.npz",
+        "sha256": "c060afa4e3bea040311fb461586966f22546cde3e6c6214c8feca8ae01d69962"
+      },
+      {
+        "index": 16,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0016.npz",
+        "sha256": "fb86ddb1a3fb1be008d91d8040b72471a5e94291eb6efdc15670e895e4071b28"
+      },
+      {
+        "index": 17,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0017.npz",
+        "sha256": "810beec9d06d77bf1840a0667e3c038652dc438d14844e27a2e89e4c8b804d77"
+      },
+      {
+        "index": 18,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0018.npz",
+        "sha256": "f295252270ae3844d1d1f4ebdeb09d10d32d5efb5f3ad7d01eee36d66843b8b3"
+      },
+      {
+        "index": 19,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0019.npz",
+        "sha256": "aeb6f94d0de5ba2c1bd3e38a422caf38a5ec4c997a8aaaa5be267e53dd4192f2"
+      },
+      {
+        "index": 20,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0020.npz",
+        "sha256": "196cb69ee1d5fa0f70222346c5fd98d3a636011bf9cecacd5742c574eaec6210"
+      },
+      {
+        "index": 21,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0021.npz",
+        "sha256": "9d08dd363a558f32de40773ea9cdd29cb05350e0bd376cfd4c589cc42e8fa841"
+      },
+      {
+        "index": 22,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0022.npz",
+        "sha256": "baa00bb1140f4b75ff436e31c3ed97be15570bb294da056d010ecaac53c76b6d"
+      },
+      {
+        "index": 23,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0023.npz",
+        "sha256": "9a0f778e2b655f2d119b36ddadd28cd42440f6c514a1ccf26428c3869213a1e3"
+      },
+      {
+        "index": 24,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0024.npz",
+        "sha256": "d5faed1e1f9593d9200bf0feb7828d88a8b24038f0944375289b4d481e3771ed"
+      },
+      {
+        "index": 25,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0025.npz",
+        "sha256": "255a05e1eba8733274d3184fbc7ca930dc2c7530b7c7da62b75fdfe57b41e674"
+      },
+      {
+        "index": 26,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0026.npz",
+        "sha256": "54c652cf204b773744d0e2d15cbc57d48293f6bbdcb5b230cb5cae729c591200"
+      },
+      {
+        "index": 27,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0027.npz",
+        "sha256": "1c381105cc2a8ad86a38dd5ede10c65596f8c1c99a78c935e04e0f987488ab3e"
+      },
+      {
+        "index": 28,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0028.npz",
+        "sha256": "774731485ee9da0d0c3aacdb577eae7b54b47333b8bc4bf1f063953440be9fe4"
+      },
+      {
+        "index": 29,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0029.npz",
+        "sha256": "e67a96e798e52846a57b2979ca0f6ede022b021a0243a8cee5ee5db04df3d260"
+      },
+      {
+        "index": 30,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0030.npz",
+        "sha256": "0ade70f62d5ce59714dcfaacf44dee748301ff60a701d08e9d6873304c14b2d9"
+      },
+      {
+        "index": 31,
+        "path": "runs/20261121-224439_E123-A1/calibration/family_0031.npz",
+        "sha256": "3d287df8df11b036ab76a1041838a8f7479396cd27e8b773e353f3116534a524"
+      }
+    ]
+  },
+  "frozen_calibration": {
+    "path": "calibration/selection.json",
+    "sha256": "3fe92f620be735d9a3843faf3cd651e7dfa5498e588b89fb87dbe51ae39027d9"
+  },
+  "selected_lambda": 4.0,
+  "condition_split": "final",
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": null,
+  "persistence": "off",
+  "plastic": true,
+  "controller": "rules-v0",
+  "genome_size": 155,
+  "generation": 0,
+  "seed": 2026120202,
+  "eval_seed": 2026120202,
+  "eval_worlds": 128,
+  "expected_chains": 128,
+  "cohorts": 3,
+  "stages": [
+    "founder",
+    "c1",
+    "c2",
+    "c3"
+  ],
+  "key_order": [
+    "solo_world",
+    "pupil_birth"
+  ],
+  "arms": [
+    "predecessor",
+    "repeated_founder",
+    "yoked",
+    "belief_reset"
+  ],
+  "controls": [
+    "repeated_founder",
+    "yoked",
+    "belief_reset"
+  ],
+  "founder_steps": 300,
+  "watch_steps": 150,
+  "solo_steps": 300,
+  "max_seconds": 3600,
+  "raw_schema": "social-transmission-v1",
+  "raw_pattern": "chains/chain_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "mechanism": "fixed E103 genome plus engineered E123 calibrated public-contact belief and action readout",
+  "transmission": "only last 150 public frames of predecessor arm; no inherited internal state or selection",
+  "rule_assignment": "chain index modulo 2; same rule throughout a chain; independent births and layouts",
+  "yoked_assignment": "item channels swapped when (chain index // 2) modulo 2 is one",
+  "statistical_unit": "independent chain; never pooled cohorts or movie frames",
+  "retention": "each cohort first-food gain >2 paired SE versus yoked and reset; survival lower2SE >-0.10 versus all controls and c3 versus c1",
+  "improvement": "retention passes and c3 first-food gain >2 paired SE versus c1 and repeated founder; same survival bounds",
+  "scientific_result": true
+}
