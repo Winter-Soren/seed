@@ -2013,3 +2013,9 @@ Decision: the development check passed. The trait changes action preferences usi
 Read-only reproduction:
 
     python tools/audit_persistence_pair.py --root . --off runs/20261121-074522_ecology-persistence-a0-off --on runs/20261121-074534_ecology-persistence-a0-on --off-guard results/diagnostics/persistence-off-guard.jsonl --on-guard results/diagnostics/persistence-on-guard.jsonl --source-commit 2db4fe6d3b96f6a09624689d636222df6fedc4a6
+
+### E116 hosted verification and publication · 21 November 2026
+
+GitHub confirmed the repository is private and credits both author and committer of the gate commit to Winter-Soren. The E116 milestone is tagged v0.6-evalv6. The full Windows suite passed 172 tests in 1016.356 seconds at that commit. Hosted workflow 44854937369 used 1091 seconds from creation to completion. Including that verification, E116 used 5190.8136706 of its registered 10800-second total; software and hosted verification used 1849.8102507 of 2400 seconds. The integrated ecology/trait software checks and paired fixtures used a separate 90.5555001 seconds after the final E116 evaluation. Cumulative supervised time for the day through E116 hosted verification was 5455.325 seconds.
+
+The expanded integration suite has 208 test methods. The hosted runner timeout for this software job is now 30 minutes, since the 172-test workflow already used more than 18 minutes. Scientific run settings and time limits are unchanged.
