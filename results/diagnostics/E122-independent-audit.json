@@ -1,0 +1,1686 @@
+{
+  "protocol": "social-observer-train-v1",
+  "mode": "final",
+  "development_audit": {
+    "run": "runs/20261121-221526_E122-benchmark",
+    "source_commit": "7e073fe0085d69c443a02d4645961e7587708a35",
+    "training": {
+      "attempts": [
+        {
+          "attempt": 1,
+          "informative": true,
+          "optimizer_updates": 1,
+          "changed_parameters": 155,
+          "maximum_adam_roundoff": 8.940696716308594e-08
+        }
+      ],
+      "last_training_elapsed": 25.17200000002049
+    },
+    "measurements": {
+      "families": 4,
+      "assigned_newborns": 4,
+      "arms": {
+        "observed": {
+          "first_food": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "first_food_count": 3,
+          "first_poison_count": 1,
+          "no_meal_count": 0,
+          "survivors": 4,
+          "survival": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "fitness": {
+            "mean": 25.25,
+            "se": 2.3935677693908453
+          },
+          "changed_weights": {
+            "mean": 3231.25,
+            "se": 18.789957424113553
+          }
+        },
+        "yoked": {
+          "first_food": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "first_food_count": 2,
+          "first_poison_count": 2,
+          "no_meal_count": 0,
+          "survivors": 4,
+          "survival": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "fitness": {
+            "mean": 16.0,
+            "se": 3.6285901761795403
+          },
+          "changed_weights": {
+            "mean": 3231.25,
+            "se": 18.789957424113553
+          }
+        },
+        "no_demo": {
+          "first_food": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "first_food_count": 2,
+          "first_poison_count": 2,
+          "no_meal_count": 0,
+          "survivors": 2,
+          "survival": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "fitness": {
+            "mean": 0.5,
+            "se": 1.3228756555322954
+          },
+          "changed_weights": {
+            "mean": 3231.25,
+            "se": 18.789957424113553
+          }
+        },
+        "scene_only": {
+          "first_food": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "first_food_count": 3,
+          "first_poison_count": 1,
+          "no_meal_count": 0,
+          "survivors": 3,
+          "survival": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "fitness": {
+            "mean": 9.0,
+            "se": 4.301162633521313
+          },
+          "changed_weights": {
+            "mean": 3231.25,
+            "se": 18.789957424113553
+          }
+        },
+        "starting_observed": {
+          "first_food": {
+            "mean": 0.75,
+            "se": 0.25
+          },
+          "survival": {
+            "mean": 1.0,
+            "se": 0.0
+          },
+          "fitness": {
+            "mean": 22.5,
+            "se": 6.7638746292343415
+          },
+          "changed_weights": {
+            "mean": 3214.5,
+            "se": 18.02544497832624
+          },
+          "first_food_count": 3,
+          "first_poison_count": 1,
+          "no_meal_count": 0,
+          "survivors": 4
+        }
+      },
+      "contrasts": {
+        "yoked": {
+          "first_food_difference": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "survival_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "gate": {
+            "passed": false,
+            "first_food_passed": false,
+            "survival_passed": true
+          }
+        },
+        "no_demo": {
+          "first_food_difference": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "survival_difference": {
+            "mean": 0.5,
+            "se": 0.28867513459481287
+          },
+          "gate": {
+            "passed": false,
+            "first_food_passed": false,
+            "survival_passed": true
+          }
+        },
+        "scene_only": {
+          "first_food_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "survival_difference": {
+            "mean": 0.25,
+            "se": 0.25
+          },
+          "gate": {
+            "passed": false,
+            "first_food_passed": false,
+            "survival_passed": true
+          }
+        },
+        "starting_observed": {
+          "first_food_difference": {
+            "mean": 0.0,
+            "se": 0.408248290463863
+          },
+          "survival_difference": {
+            "mean": 0.0,
+            "se": 0.0
+          },
+          "gate": {
+            "passed": false,
+            "first_food_passed": false,
+            "survival_passed": true
+          }
+        }
+      },
+      "teacher": {
+        "practice": {
+          "food": {
+            "mean": 14.75,
+            "se": 2.358495283014151
+          },
+          "poison": {
+            "mean": 4.75,
+            "se": 0.75
+          },
+          "accuracy": {
+            "mean": 0.7564102564102564,
+            "se": 0.016759913712136094
+          },
+          "encounters": 78
+        },
+        "demonstration": {
+          "food": {
+            "mean": 19.0,
+            "se": 1.35400640077266
+          },
+          "poison": {
+            "mean": 2.5,
+            "se": 0.5
+          },
+          "accuracy": {
+            "mean": 0.8837209302325582,
+            "se": 0.013401310647229709
+          },
+          "encounters": 86
+        },
+        "survival": {
+          "mean": 1.0,
+          "se": 0.0
+        },
+        "visible_frames": {
+          "mean": 150.0,
+          "se": 0.0
+        }
+      }
+    }
+  },
+  "runs": [
+    {
+      "run": "runs/20261121-221709_E122-A0",
+      "source_commit": "7e073fe0085d69c443a02d4645961e7587708a35",
+      "training": {
+        "attempts": [
+          {
+            "attempt": 1,
+            "informative": true,
+            "optimizer_updates": 1,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 2,
+            "informative": true,
+            "optimizer_updates": 2,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 3,
+            "informative": true,
+            "optimizer_updates": 3,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          },
+          {
+            "attempt": 4,
+            "informative": true,
+            "optimizer_updates": 4,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 5,
+            "informative": true,
+            "optimizer_updates": 5,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 6,
+            "informative": true,
+            "optimizer_updates": 6,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 2.9802322387695312e-08
+          },
+          {
+            "attempt": 7,
+            "informative": true,
+            "optimizer_updates": 7,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 8,
+            "informative": true,
+            "optimizer_updates": 8,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 9,
+            "informative": true,
+            "optimizer_updates": 9,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          },
+          {
+            "attempt": 10,
+            "informative": true,
+            "optimizer_updates": 10,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          }
+        ],
+        "last_training_elapsed": 42.062000000005355
+      },
+      "measurements": {
+        "families": 128,
+        "assigned_newborns": 128,
+        "arms": {
+          "observed": {
+            "first_food": {
+              "mean": 0.4921875,
+              "se": 0.044362409145879106
+            },
+            "first_food_count": 63,
+            "first_poison_count": 65,
+            "no_meal_count": 0,
+            "survivors": 92,
+            "survival": {
+              "mean": 0.71875,
+              "se": 0.0398963655025738
+            },
+            "fitness": {
+              "mean": 9.1328125,
+              "se": 1.0116430400448622
+            },
+            "changed_weights": {
+              "mean": 3202.625,
+              "se": 2.931195068152076
+            }
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5078125,
+              "se": 0.044362409145879106
+            },
+            "first_food_count": 65,
+            "first_poison_count": 63,
+            "no_meal_count": 0,
+            "survivors": 95,
+            "survival": {
+              "mean": 0.7421875,
+              "se": 0.038815657085642094
+            },
+            "fitness": {
+              "mean": 8.34375,
+              "se": 0.8973137336047788
+            },
+            "changed_weights": {
+              "mean": 3202.625,
+              "se": 2.931195068152076
+            }
+          },
+          "no_demo": {
+            "first_food": {
+              "mean": 0.484375,
+              "se": 0.044346156201883945
+            },
+            "first_food_count": 62,
+            "first_poison_count": 65,
+            "no_meal_count": 1,
+            "survivors": 72,
+            "survival": {
+              "mean": 0.5625,
+              "se": 0.04401983715317591
+            },
+            "fitness": {
+              "mean": 0.2109375,
+              "se": 0.23231025397752117
+            },
+            "changed_weights": {
+              "mean": 3202.625,
+              "se": 2.931195068152076
+            }
+          },
+          "scene_only": {
+            "first_food": {
+              "mean": 0.4765625,
+              "se": 0.044319054716616076
+            },
+            "first_food_count": 61,
+            "first_poison_count": 67,
+            "no_meal_count": 0,
+            "survivors": 92,
+            "survival": {
+              "mean": 0.71875,
+              "se": 0.0398963655025738
+            },
+            "fitness": {
+              "mean": 8.3984375,
+              "se": 0.9612535289496008
+            },
+            "changed_weights": {
+              "mean": 3202.625,
+              "se": 2.931195068152076
+            }
+          },
+          "starting_observed": {
+            "first_food": {
+              "mean": 0.5390625,
+              "se": 0.044232218376094055
+            },
+            "survival": {
+              "mean": 0.78125,
+              "se": 0.03668319762764659
+            },
+            "fitness": {
+              "mean": 12.1796875,
+              "se": 1.1733084654670165
+            },
+            "changed_weights": {
+              "mean": 3200.8125,
+              "se": 2.935949917708294
+            },
+            "first_food_count": 69,
+            "first_poison_count": 59,
+            "no_meal_count": 0,
+            "survivors": 100
+          }
+        },
+        "contrasts": {
+          "yoked": {
+            "first_food_difference": {
+              "mean": -0.015625,
+              "se": 0.03996857617795402
+            },
+            "survival_difference": {
+              "mean": -0.0234375,
+              "se": 0.03755711488774058
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "no_demo": {
+            "first_food_difference": {
+              "mean": 0.0078125,
+              "se": 0.05021618342237732
+            },
+            "survival_difference": {
+              "mean": 0.15625,
+              "se": 0.058100573777100914
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "scene_only": {
+            "first_food_difference": {
+              "mean": 0.015625,
+              "se": 0.04571228572216535
+            },
+            "survival_difference": {
+              "mean": 0.0,
+              "se": 0.03137279025690793
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "starting_observed": {
+            "first_food_difference": {
+              "mean": -0.046875,
+              "se": 0.046875
+            },
+            "survival_difference": {
+              "mean": -0.0625,
+              "se": 0.04929373233225594
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          }
+        },
+        "teacher": {
+          "practice": {
+            "food": {
+              "mean": 11.3984375,
+              "se": 0.6262133737295508
+            },
+            "poison": {
+              "mean": 5.328125,
+              "se": 0.15091150831376457
+            },
+            "accuracy": {
+              "mean": 0.6814572629612331,
+              "se": 0.012142780970045095
+            },
+            "encounters": 2141
+          },
+          "demonstration": {
+            "food": {
+              "mean": 12.671875,
+              "se": 0.8073625720279669
+            },
+            "poison": {
+              "mean": 2.734375,
+              "se": 0.1783303657966233
+            },
+            "accuracy": {
+              "mean": 0.8225152129817445,
+              "se": 0.009613308738742662
+            },
+            "encounters": 1972
+          },
+          "survival": {
+            "mean": 0.796875,
+            "se": 0.035700551879873775
+          },
+          "visible_frames": {
+            "mean": 120.2421875,
+            "se": 5.276749743546911
+          }
+        }
+      },
+      "gate": {
+        "passed": false,
+        "first_food_passed": false,
+        "survival_passed": true
+      }
+    },
+    {
+      "run": "runs/20261121-222033_E122-A1",
+      "source_commit": "7e073fe0085d69c443a02d4645961e7587708a35",
+      "training": {
+        "attempts": [
+          {
+            "attempt": 1,
+            "informative": true,
+            "optimizer_updates": 1,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 2,
+            "informative": true,
+            "optimizer_updates": 2,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          },
+          {
+            "attempt": 3,
+            "informative": true,
+            "optimizer_updates": 3,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 7.450580596923828e-08
+          },
+          {
+            "attempt": 4,
+            "informative": true,
+            "optimizer_updates": 4,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 5,
+            "informative": true,
+            "optimizer_updates": 5,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 6,
+            "informative": true,
+            "optimizer_updates": 6,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 7.450580596923828e-08
+          },
+          {
+            "attempt": 7,
+            "informative": true,
+            "optimizer_updates": 7,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 8,
+            "informative": true,
+            "optimizer_updates": 8,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 9,
+            "informative": true,
+            "optimizer_updates": 9,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 10,
+            "informative": true,
+            "optimizer_updates": 10,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          }
+        ],
+        "last_training_elapsed": 85.09299999999348
+      },
+      "measurements": {
+        "families": 128,
+        "assigned_newborns": 128,
+        "arms": {
+          "observed": {
+            "first_food": {
+              "mean": 0.53125,
+              "se": 0.04428108477108411
+            },
+            "first_food_count": 68,
+            "first_poison_count": 60,
+            "no_meal_count": 0,
+            "survivors": 99,
+            "survival": {
+              "mean": 0.7734375,
+              "se": 0.03714537662583591
+            },
+            "fitness": {
+              "mean": 11.7265625,
+              "se": 1.0805817164536002
+            },
+            "changed_weights": {
+              "mean": 1991.234375,
+              "se": 2.6509191963367895
+            }
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.5234375,
+              "se": 0.044319054716616076
+            },
+            "first_food_count": 67,
+            "first_poison_count": 61,
+            "no_meal_count": 0,
+            "survivors": 108,
+            "survival": {
+              "mean": 0.84375,
+              "se": 0.03221922171672519
+            },
+            "fitness": {
+              "mean": 12.703125,
+              "se": 1.0266718274188453
+            },
+            "changed_weights": {
+              "mean": 1991.234375,
+              "se": 2.6509191963367895
+            }
+          },
+          "no_demo": {
+            "first_food": {
+              "mean": 0.484375,
+              "se": 0.044346156201883945
+            },
+            "first_food_count": 62,
+            "first_poison_count": 65,
+            "no_meal_count": 1,
+            "survivors": 78,
+            "survival": {
+              "mean": 0.609375,
+              "se": 0.04329327832163609
+            },
+            "fitness": {
+              "mean": 3.3515625,
+              "se": 0.5747078429881367
+            },
+            "changed_weights": {
+              "mean": 1991.234375,
+              "se": 2.6509191963367895
+            }
+          },
+          "scene_only": {
+            "first_food": {
+              "mean": 0.4609375,
+              "se": 0.044232218376094055
+            },
+            "first_food_count": 59,
+            "first_poison_count": 69,
+            "no_meal_count": 0,
+            "survivors": 95,
+            "survival": {
+              "mean": 0.7421875,
+              "se": 0.038815657085642094
+            },
+            "fitness": {
+              "mean": 9.9765625,
+              "se": 1.0534126700463233
+            },
+            "changed_weights": {
+              "mean": 1991.234375,
+              "se": 2.6509191963367895
+            }
+          },
+          "starting_observed": {
+            "first_food": {
+              "mean": 0.4609375,
+              "se": 0.044232218376094055
+            },
+            "survival": {
+              "mean": 0.8046875,
+              "se": 0.03517845700641747
+            },
+            "fitness": {
+              "mean": 11.671875,
+              "se": 1.0597381528627126
+            },
+            "changed_weights": {
+              "mean": 1971.3515625,
+              "se": 2.5784108459706045
+            },
+            "first_food_count": 59,
+            "first_poison_count": 69,
+            "no_meal_count": 0,
+            "survivors": 103
+          }
+        },
+        "contrasts": {
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.0078125,
+              "se": 0.03233090046308542
+            },
+            "survival_difference": {
+              "mean": -0.0703125,
+              "se": 0.03361355795355862
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": false
+            }
+          },
+          "no_demo": {
+            "first_food_difference": {
+              "mean": 0.046875,
+              "se": 0.05185934447379728
+            },
+            "survival_difference": {
+              "mean": 0.1640625,
+              "se": 0.05293704447646792
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "scene_only": {
+            "first_food_difference": {
+              "mean": 0.0703125,
+              "se": 0.04462165114311873
+            },
+            "survival_difference": {
+              "mean": 0.03125,
+              "se": 0.04564916170716533
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "starting_observed": {
+            "first_food_difference": {
+              "mean": 0.0703125,
+              "se": 0.043221062627788284
+            },
+            "survival_difference": {
+              "mean": -0.03125,
+              "se": 0.04564916170716533
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          }
+        },
+        "teacher": {
+          "practice": {
+            "food": {
+              "mean": 12.4921875,
+              "se": 0.6482862870363676
+            },
+            "poison": {
+              "mean": 5.3671875,
+              "se": 0.16107074886676961
+            },
+            "accuracy": {
+              "mean": 0.699475065616798,
+              "se": 0.010398741208071018
+            },
+            "encounters": 2286
+          },
+          "demonstration": {
+            "food": {
+              "mean": 14.3125,
+              "se": 0.8270576523049772
+            },
+            "poison": {
+              "mean": 3.15625,
+              "se": 0.20435631491314843
+            },
+            "accuracy": {
+              "mean": 0.8193202146690519,
+              "se": 0.008964736831381374
+            },
+            "encounters": 2236
+          },
+          "survival": {
+            "mean": 0.828125,
+            "se": 0.03347745561491821
+          },
+          "visible_frames": {
+            "mean": 125.7734375,
+            "se": 4.828164567005902
+          }
+        }
+      },
+      "gate": {
+        "passed": false,
+        "first_food_passed": false,
+        "survival_passed": false
+      }
+    },
+    {
+      "run": "runs/20261121-222537_E122-A2",
+      "source_commit": "7e073fe0085d69c443a02d4645961e7587708a35",
+      "training": {
+        "attempts": [
+          {
+            "attempt": 1,
+            "informative": true,
+            "optimizer_updates": 1,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          },
+          {
+            "attempt": 2,
+            "informative": true,
+            "optimizer_updates": 2,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 3,
+            "informative": true,
+            "optimizer_updates": 3,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 4,
+            "informative": true,
+            "optimizer_updates": 4,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 8.940696716308594e-08
+          },
+          {
+            "attempt": 5,
+            "informative": true,
+            "optimizer_updates": 5,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 6,
+            "informative": true,
+            "optimizer_updates": 6,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 7,
+            "informative": true,
+            "optimizer_updates": 7,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 8,
+            "informative": true,
+            "optimizer_updates": 8,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          },
+          {
+            "attempt": 9,
+            "informative": true,
+            "optimizer_updates": 9,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 5.960464477539063e-08
+          },
+          {
+            "attempt": 10,
+            "informative": true,
+            "optimizer_updates": 10,
+            "changed_parameters": 155,
+            "maximum_adam_roundoff": 1.1920928955078125e-07
+          }
+        ],
+        "last_training_elapsed": 53.703999999997905
+      },
+      "measurements": {
+        "families": 128,
+        "assigned_newborns": 128,
+        "arms": {
+          "observed": {
+            "first_food": {
+              "mean": 0.515625,
+              "se": 0.044346156201883945
+            },
+            "first_food_count": 66,
+            "first_poison_count": 62,
+            "no_meal_count": 0,
+            "survivors": 100,
+            "survival": {
+              "mean": 0.78125,
+              "se": 0.03668319762764659
+            },
+            "fitness": {
+              "mean": 8.8984375,
+              "se": 0.8378532164242086
+            },
+            "changed_weights": {
+              "mean": 2506.796875,
+              "se": 3.3476832572425144
+            }
+          },
+          "yoked": {
+            "first_food": {
+              "mean": 0.4453125,
+              "se": 0.04410164327680508
+            },
+            "first_food_count": 57,
+            "first_poison_count": 70,
+            "no_meal_count": 1,
+            "survivors": 96,
+            "survival": {
+              "mean": 0.75,
+              "se": 0.038423663968391995
+            },
+            "fitness": {
+              "mean": 8.8046875,
+              "se": 0.8606142080955526
+            },
+            "changed_weights": {
+              "mean": 2506.796875,
+              "se": 3.3476832572425144
+            }
+          },
+          "no_demo": {
+            "first_food": {
+              "mean": 0.46875,
+              "se": 0.04428108477108411
+            },
+            "first_food_count": 60,
+            "first_poison_count": 68,
+            "no_meal_count": 0,
+            "survivors": 81,
+            "survival": {
+              "mean": 0.6328125,
+              "se": 0.042773974706069945
+            },
+            "fitness": {
+              "mean": 1.6328125,
+              "se": 0.37432207320295535
+            },
+            "changed_weights": {
+              "mean": 2506.796875,
+              "se": 3.3476832572425144
+            }
+          },
+          "scene_only": {
+            "first_food": {
+              "mean": 0.484375,
+              "se": 0.044346156201883945
+            },
+            "first_food_count": 62,
+            "first_poison_count": 66,
+            "no_meal_count": 0,
+            "survivors": 89,
+            "survival": {
+              "mean": 0.6953125,
+              "se": 0.04084279708311901
+            },
+            "fitness": {
+              "mean": 6.6015625,
+              "se": 0.7850519570477598
+            },
+            "changed_weights": {
+              "mean": 2506.796875,
+              "se": 3.3476832572425144
+            }
+          },
+          "starting_observed": {
+            "first_food": {
+              "mean": 0.453125,
+              "se": 0.04417241936858356
+            },
+            "survival": {
+              "mean": 0.7890625,
+              "se": 0.036201847855320365
+            },
+            "fitness": {
+              "mean": 10.3359375,
+              "se": 0.9274412709130774
+            },
+            "changed_weights": {
+              "mean": 2532.4140625,
+              "se": 3.4527449592905426
+            },
+            "first_food_count": 58,
+            "first_poison_count": 70,
+            "no_meal_count": 0,
+            "survivors": 101
+          }
+        },
+        "contrasts": {
+          "yoked": {
+            "first_food_difference": {
+              "mean": 0.0703125,
+              "se": 0.03709358799608402
+            },
+            "survival_difference": {
+              "mean": 0.03125,
+              "se": 0.03496606200483526
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "no_demo": {
+            "first_food_difference": {
+              "mean": 0.046875,
+              "se": 0.05185934447379728
+            },
+            "survival_difference": {
+              "mean": 0.1484375,
+              "se": 0.053298949524575326
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "scene_only": {
+            "first_food_difference": {
+              "mean": 0.03125,
+              "se": 0.04697741436722461
+            },
+            "survival_difference": {
+              "mean": 0.0859375,
+              "se": 0.04440572124713601
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          },
+          "starting_observed": {
+            "first_food_difference": {
+              "mean": 0.0625,
+              "se": 0.05843050586592616
+            },
+            "survival_difference": {
+              "mean": -0.0078125,
+              "se": 0.04639580357447068
+            },
+            "gate": {
+              "passed": false,
+              "first_food_passed": false,
+              "survival_passed": true
+            }
+          }
+        },
+        "teacher": {
+          "practice": {
+            "food": {
+              "mean": 11.3515625,
+              "se": 0.6147375812234476
+            },
+            "poison": {
+              "mean": 5.140625,
+              "se": 0.1466213885143702
+            },
+            "accuracy": {
+              "mean": 0.6882993841781146,
+              "se": 0.01183848111824625
+            },
+            "encounters": 2111
+          },
+          "demonstration": {
+            "food": {
+              "mean": 14.1015625,
+              "se": 0.8660140274481463
+            },
+            "poison": {
+              "mean": 2.953125,
+              "se": 0.18916887706543287
+            },
+            "accuracy": {
+              "mean": 0.8268437929454878,
+              "se": 0.009194254900477802
+            },
+            "encounters": 2183
+          },
+          "survival": {
+            "mean": 0.8125,
+            "se": 0.03463462265730888
+          },
+          "visible_frames": {
+            "mean": 124.4609375,
+            "se": 4.875717975896581
+          }
+        }
+      },
+      "gate": {
+        "passed": false,
+        "first_food_passed": false,
+        "survival_passed": true
+      }
+    }
+  ],
+  "status": "passed",
+  "registered_source": "7e073fe0085d69c443a02d4645961e7587708a35",
+  "registered_code_trees": {
+    "seed": "ce1ccdced01546301aefc6b6d0f4520761f23bca",
+    "scripts": "459952b8e301700f060ca8c56d1f59f214a594b4"
+  },
+  "final_evaluation_audited": true,
+  "limitations": [
+    "Neural dynamics, random-key derivation and noise generation are not replayed.",
+    "Training teacher films and candidate events are checked; per-candidate watch states are not saved.",
+    "Saved state hashes verify solo carry and body resets; they do not establish a successful mechanism.",
+    "This conditional branch is authorized only after the E120 failure and E121 pass decisions."
+  ],
+  "scientific_gate_passed": false,
+  "checked_file_sha256": {
+    "runs/20261121-221709_E122-A0/status.json": "57c63150a5e2290da970bf1c9aa5f12418d9d3f4d0d3fab1f1caa5aeed9324c9",
+    "runs/20261121-222033_E122-A1/status.json": "5c4811e65d40e81c38648f4bbc8060df24070a8fb5dc36ca13979b05b9955cb4",
+    "runs/20261121-222537_E122-A2/status.json": "e664c691bb16d000399536b4c3136373922df7cc60c1ee3f77996962c762ff43",
+    "runs/20261121-221526_E122-benchmark/status.json": "4a091bc50d80ea0232b92785ff8e88bf095e81c34af9b9adf8cba4b26d4fc21d",
+    "runs/20261121-221526_E122-benchmark/config.json": "9c6022e35cf19ad0e469465a22552157e05f4e00fd01d59d4f9284851acd31f4",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-221526_E122-benchmark/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-221526_E122-benchmark/teacher_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-221526_E122-benchmark/summary.json": "42bc22d6984e8c2605883ef35b82ef8f499a3bfa2fdff74d70a94c1dd208e1cf",
+    "runs/20261121-221526_E122-benchmark/metrics.jsonl": "0bf69ca0e26570608c5ad80d4cd956073f0e2a88befdb931fdea59d486a93130",
+    "runs/20261121-221526_E122-benchmark/genome_trajectory.npy": "b32e921cf2da8c91326775346fccb72346b1bee48ea3deae02e524251bbc309b",
+    "runs/20261121-221526_E122-benchmark/generations/attempt_0000.npz": "cff4377be8076362e564e7137e0d46950fc16854801bb13b29dc8279df3eb1e3",
+    "runs/20261121-221526_E122-benchmark/generations/attempt_0001.npz": "136020044eab0feed4524324eb42ece4271127228b92cf174b9151a8b333bc52",
+    "runs/20261121-221526_E122-benchmark/generations/samples_0001.npz": "3dd5667e8316e7325d5c7b470fefbd1ab6a91b3f603490c8fd0fa73618df8717",
+    "runs/20261121-221526_E122-benchmark/teachers/teacher_0001.npz": "bc3e9bacad744dc09b7b45de464c655ef7ad84d819b38dfcc5d33a617cb4a900",
+    "runs/20261121-221526_E122-benchmark/genome_final.npy": "5532e72c267a40b795eabd560d5b7e31d741f205b63b7743eeca982d0239ee37",
+    "runs/20261121-221526_E122-benchmark/evaluation.jsonl": "019a078e67a56f3da16f571278f6126b34f04a1b0c0d3ee433cad64d9f7ce9a1",
+    "runs/20261121-221526_E122-benchmark/families/family_0000.npz": "57b292ae3a17fb3edc5dc96b5ba342f6002981f759836ca0b66ce1e5c4802508",
+    "runs/20261121-221526_E122-benchmark/families/family_0001.npz": "1cedc3ed82c6f39f3f65c812f9aa83ce215cb54ee287bf16bcea47c1671281e9",
+    "runs/20261121-221526_E122-benchmark/families/family_0002.npz": "aaee4de70ca561354007ded3607eb4722d15a3f0a4a6d77e93c75793fe41d996",
+    "runs/20261121-221526_E122-benchmark/families/family_0003.npz": "fdff96ae11659bab544f4267f1fb3479550b58dfdcf9be9f4fc431d0d75447d8",
+    "runs/20261121-221709_E122-A0/config.json": "61ecf8047e6d7662bcdb3dcc45a7e7ae5c71389407ebbf0bac59621c307b21e2",
+    "runs/20261121-221709_E122-A0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-221709_E122-A0/teacher_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261121-221709_E122-A0/summary.json": "a405ca436d032ce71fbc27b18b4a20878767b0b0e289c0078bfeec87f1e7ad81",
+    "runs/20261121-221709_E122-A0/metrics.jsonl": "4098f9f60f871cd1d4538cfd923045fec72724c81ccc582e825ca3d63b617230",
+    "runs/20261121-221709_E122-A0/genome_trajectory.npy": "dbfa460dd7b9dfa1e08760e64cd199ad2b977735a8f4db173ebc99d8b671e460",
+    "runs/20261121-221709_E122-A0/generations/attempt_0000.npz": "effed6f20eeb6287e4c8f147d21b7535ec3cdd76cd4da4e97f0e2abae7300eef",
+    "runs/20261121-221709_E122-A0/generations/attempt_0001.npz": "09963552639409761ad210e35596334cb6882e277528ea5a7c53649e912939b7",
+    "runs/20261121-221709_E122-A0/generations/samples_0001.npz": "536dcd6aed1f1a3094d27d5bfa14ab2014317fbc6e7df0f48396ab038269b632",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0001.npz": "c43c57f2efd57d9bf8b4a571bab7e94b01ec5da7ba647b0bf92eb231245f0c63",
+    "runs/20261121-221709_E122-A0/generations/attempt_0002.npz": "df071799baac333d477419788c27b90a090e2fc29cd06da38de48bb4009f38fb",
+    "runs/20261121-221709_E122-A0/generations/samples_0002.npz": "8ad22d769a150902a24eb9bc9600fcea9773db9445d4b7fb0b96d501712d190b",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0002.npz": "6ef44f0515f1a77148f7f9943f2421867a59b996829701bfbbc387eba16e82e7",
+    "runs/20261121-221709_E122-A0/generations/attempt_0003.npz": "9cfd76433c96ac4f444e95af2c444b47751464cf244c7e0d3d5a1917d0a74b73",
+    "runs/20261121-221709_E122-A0/generations/samples_0003.npz": "54f492987fb64afddf17991c1055bef6a388238e676d5dc842cf6a6b778058cf",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0003.npz": "3fa56edd71ace54b9c8a483502f75ec8081d6d4ef1b2c4e04270c7785d58600d",
+    "runs/20261121-221709_E122-A0/generations/attempt_0004.npz": "fd69b43ac21b4b443b8bdd9a406718ddd8dc348c033951432a2bb333190eacdd",
+    "runs/20261121-221709_E122-A0/generations/samples_0004.npz": "631d25f6ad13e9777e7ac343083b2df0f77afbb61237945d81030feca4b259de",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0004.npz": "5744df10a26966444b61127fde5ad76524ade12412dbe1bd2cf7fcd1d8bc536c",
+    "runs/20261121-221709_E122-A0/generations/attempt_0005.npz": "eae4588499061bfab523fc25c29a6065a9c4cc04298b539333c082297b5ec65b",
+    "runs/20261121-221709_E122-A0/generations/samples_0005.npz": "6d0d3d8200cd31683cb703356258d9754f5a16a699fef407ffe0981962f5ae3d",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0005.npz": "a64ab43dce64b18291dd243f9d424fdb4e71e7e706491ce1239d7445072f8b40",
+    "runs/20261121-221709_E122-A0/generations/attempt_0006.npz": "f0376b999389fed7b1ec5107515591932cc735db05ae50ffaa6ed657edb5c6b1",
+    "runs/20261121-221709_E122-A0/generations/samples_0006.npz": "37c1169231d0e4fdbe2eefe93ea2da3e536ae99c905597282fd3f1994f94df59",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0006.npz": "bdcdf9b8f8f147c8ac69e00ded35ce3f54aa20b650e260bcac4376128bfa5f38",
+    "runs/20261121-221709_E122-A0/generations/attempt_0007.npz": "9f1ca8bd42315a0927c9447fa9579affb7b5227bc236a305d39e06586c0f8174",
+    "runs/20261121-221709_E122-A0/generations/samples_0007.npz": "78998310005f312394f61462c03a2c21e73f1537858e0f3c53cde8c047314545",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0007.npz": "858cee024cd2590922c45816c542f5ce019f3bf336f1f4847c9850bbdcec1bd7",
+    "runs/20261121-221709_E122-A0/generations/attempt_0008.npz": "2b8d498ebccdd907043542770f241924da089b87edcfcddf8116ad340f74be69",
+    "runs/20261121-221709_E122-A0/generations/samples_0008.npz": "d346cebc41d0ee62bf652a36c460e30f6e2c7ac01c6fd0f025df7f8e8b08defe",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0008.npz": "9cbc352f118a7ff22fc1e08f11963f6ed3effc798f93a242db760575dd2d954f",
+    "runs/20261121-221709_E122-A0/generations/attempt_0009.npz": "37d357f695e6475036941febe43aedf4030147e955cc5b6ad4deee3b42b1740b",
+    "runs/20261121-221709_E122-A0/generations/samples_0009.npz": "329ed32d7c04d8f4b93701494e807854be92c1ad69e14d839dbeb3cb87632b14",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0009.npz": "e7f518228e2906ef0539159d1e54c9c8f949efe3e2e2af6f359e6c9cbfc4d595",
+    "runs/20261121-221709_E122-A0/generations/attempt_0010.npz": "6be116008c7e4984a1d776598792a912f39f2c5805666b05a86110a71e64e0c1",
+    "runs/20261121-221709_E122-A0/generations/samples_0010.npz": "dbc3a5f3a6ea506dd39120492babc8bdb0ab63f295bc53cb143f71be82f87218",
+    "runs/20261121-221709_E122-A0/teachers/teacher_0010.npz": "20c4136fb759670534808602fe5713fbb85d7048246465773400effea4b40791",
+    "runs/20261121-221709_E122-A0/genome_final.npy": "f435eb8d75c1a9a10d56fb40b6cd6f775939643ec34a34802468bd82f15da4a2",
+    "runs/20261121-221709_E122-A0/evaluation.jsonl": "9a349a61ad8bb71713f35f0dd7ac451001c4c75d75a309f2270cfeae382ff593",
+    "runs/20261121-221709_E122-A0/families/family_0000.npz": "5dcb83e0ac0f1211b7a76d5bbdf85ae69d2624603e36c84c3d0ae61a033f6506",
+    "runs/20261121-221709_E122-A0/families/family_0001.npz": "517c3c6b0f3b0a26ebb5d7283dea93abdbde0ff083ae074656697b3b991335f1",
+    "runs/20261121-221709_E122-A0/families/family_0002.npz": "76a019f20801c4e42b2968c5d2b30fc0d37d0d03e2df7e478313d3982a3114f6",
+    "runs/20261121-221709_E122-A0/families/family_0003.npz": "bcd519539cbfad3d88baf03749bcac44fa3ee16ea64a5235fe8d59e1183541db",
+    "runs/20261121-221709_E122-A0/families/family_0004.npz": "7e78f83993eb2149f8b9a69a6d5fb2212291bb60376f861cdd3bb71d70c3aa82",
+    "runs/20261121-221709_E122-A0/families/family_0005.npz": "cd293dc31b8a2efab91b41fc82edb31b95b6772008a94973be715a4b0a40e685",
+    "runs/20261121-221709_E122-A0/families/family_0006.npz": "6438dd6f60324fbc1ab0601254de229b35ded2d869ac71969adeb51726276dca",
+    "runs/20261121-221709_E122-A0/families/family_0007.npz": "0e02bf414602ba1e92133aebf6c87077e3eff3dc113933c28536ba53af0cd831",
+    "runs/20261121-221709_E122-A0/families/family_0008.npz": "d192bb75324d36d53a4fa10e72dbe552e7726876db031e7980c9b7807b1531f2",
+    "runs/20261121-221709_E122-A0/families/family_0009.npz": "b29741345fa7e162cccdf41a4d0b1bfc8964236cc9f3d122e7ef11c174b06877",
+    "runs/20261121-221709_E122-A0/families/family_0010.npz": "390177c2d9ab58119173a2e44a6039d8731da9da8e8e67924bf563a87828223f",
+    "runs/20261121-221709_E122-A0/families/family_0011.npz": "36de8cd5a16e5f57620e92df17f686c4a92c8b54d3b1c441514e2c47fce4169a",
+    "runs/20261121-221709_E122-A0/families/family_0012.npz": "8a9273480915b3673abfb65ad0e2de1e5176d2d464dbb7b75cc85365002355fe",
+    "runs/20261121-221709_E122-A0/families/family_0013.npz": "9409e2abdb4ebd3450b6c7b2a182a936d82b2d9c75251cffd0da6a08625015d7",
+    "runs/20261121-221709_E122-A0/families/family_0014.npz": "ac09a4756c821b4006ea55deb2ea95767341d036898e725bfa634783bcff7835",
+    "runs/20261121-221709_E122-A0/families/family_0015.npz": "4a105dae557f36791e9b508447da17afed3f39b0050acf735865c7080e5e70bf",
+    "runs/20261121-221709_E122-A0/families/family_0016.npz": "fd1a712870210cc17c38599c7cbc090696ba1ed400463a4be05bfc2f8c10d139",
+    "runs/20261121-221709_E122-A0/families/family_0017.npz": "6e04785c5ffab2e0650642bef20dad5b8cbfb9be0423f57d5f500467e5c4a4cb",
+    "runs/20261121-221709_E122-A0/families/family_0018.npz": "5839ccbe7c590e7b63f7a7770757452e5f3595591c942a07b7207249007ac96b",
+    "runs/20261121-221709_E122-A0/families/family_0019.npz": "c822f3121a9d5b239bc35dcc9e7a93505c59d83a7f794df67f7226e0049f68a7",
+    "runs/20261121-221709_E122-A0/families/family_0020.npz": "7354f0d4670a327b3f274e3af496c8ef5429d8a2997610173de8c40002e2ef60",
+    "runs/20261121-221709_E122-A0/families/family_0021.npz": "92208a74465d2e5c6abc02be0083f7b53e4dd37c74ac3654cd6dad511728852f",
+    "runs/20261121-221709_E122-A0/families/family_0022.npz": "a8b27a75519c6c1fd2270ffa5f4ff59571ef5013eb4cc76ad371f521262fb914",
+    "runs/20261121-221709_E122-A0/families/family_0023.npz": "2e72af11aecb9b775c84e735085afe62dd2bd8ca16dfce7168e7cd322742caf1",
+    "runs/20261121-221709_E122-A0/families/family_0024.npz": "e90589b1f4ffa5771774f7333e33e2f3057684d18b6d1d027741773a388d3da6",
+    "runs/20261121-221709_E122-A0/families/family_0025.npz": "cc9c472285b1264cdbfd6b865e50227625737fb4e742316523d803dc8ec0ebea",
+    "runs/20261121-221709_E122-A0/families/family_0026.npz": "93921ff297d49c0cb03a6900e02e99aad16b315d4ada2744de6ee540d2c38f3a",
+    "runs/20261121-221709_E122-A0/families/family_0027.npz": "88b9a382753a3f8db0b304d1ccdfc5a85a529390203a680fc95e038f1bbbd9e7",
+    "runs/20261121-221709_E122-A0/families/family_0028.npz": "9f6c830241a00696e1618b810270a30388914ea8c1ce5451cb3350bbaf38cb70",
+    "runs/20261121-221709_E122-A0/families/family_0029.npz": "4b3780b55fcf2c3bc0a7f837b01f7a2e1879cd694c67b987c635df53f1a00bd9",
+    "runs/20261121-221709_E122-A0/families/family_0030.npz": "2df5ca29328385f6661571b62637594a469b4d62fae6a9c8bb29b3cee86ae737",
+    "runs/20261121-221709_E122-A0/families/family_0031.npz": "04b84060daf2c216bad31e26603ea63f009fb72e44b3bd421c7d717db1fcf7f9",
+    "runs/20261121-221709_E122-A0/families/family_0032.npz": "1d5ce8cdcd66c0ce0a9d043158725256b98ce2bd6539f8111f9bcb8898326e38",
+    "runs/20261121-221709_E122-A0/families/family_0033.npz": "c2048bf88a7d71f514db91aaac3c9c6f97f18ef541b5d1cd76411ee8d2e804ae",
+    "runs/20261121-221709_E122-A0/families/family_0034.npz": "1cf527aba97f04dda5fdf3cabb8f9196111441af035ac456be9d40145c6b457e",
+    "runs/20261121-221709_E122-A0/families/family_0035.npz": "8d9290c24d3f52b19af2a22d3346cf1fa4f37b2a6009c902965282713ccb4ea8",
+    "runs/20261121-221709_E122-A0/families/family_0036.npz": "23a0448ed1913c3d034088cb3b7e6647cbcc2ef3562cbc6a2eb5809238b48f55",
+    "runs/20261121-221709_E122-A0/families/family_0037.npz": "173a72b1bb9408cb627e5e94a962f6439ea6fbacf82f3310b7c78e96a04d1e02",
+    "runs/20261121-221709_E122-A0/families/family_0038.npz": "b83a6e70bb4efb6a16209f86cbd2a9937638b6e2684e660f9a36fd311c46ab3e",
+    "runs/20261121-221709_E122-A0/families/family_0039.npz": "b80bec77ad4405bbbea1325d37de0f2b78318e026f4834e7c4e6e1de1afbb6b8",
+    "runs/20261121-221709_E122-A0/families/family_0040.npz": "cb480a8398662d4ff5d02a0c8c19f3610670402ad2be2fa0870a914e3e561ba5",
+    "runs/20261121-221709_E122-A0/families/family_0041.npz": "a5eb3baee1cc87e1b2adf480873dde54f9ec34cea28092ed083a84fb69d44477",
+    "runs/20261121-221709_E122-A0/families/family_0042.npz": "2fff7f9665b24b0dff5718a7c1797db4f50d1754c4a73775424f39f71d3e8e4f",
+    "runs/20261121-221709_E122-A0/families/family_0043.npz": "76e9cc910a2dd8988b33412b56533e32eeccfd3e4649f33ff6c35d8434a309db",
+    "runs/20261121-221709_E122-A0/families/family_0044.npz": "90c0d5e0cd533b49eaeb04db1796859faa4095d6050814aa4b63ad2410bde534",
+    "runs/20261121-221709_E122-A0/families/family_0045.npz": "d43c85bc188fa87ac5aec8deb2d54c259a364dfef2efab443f7d4790a5dc2518",
+    "runs/20261121-221709_E122-A0/families/family_0046.npz": "0ea38d3a643d6fefaaad440f0693d31ae59f148d33c1e29508384710d1fa67c4",
+    "runs/20261121-221709_E122-A0/families/family_0047.npz": "383863b55e6364d0f6afa692da98c2f6d6cf705f67e3cedf3bd1e6d1b4a633b2",
+    "runs/20261121-221709_E122-A0/families/family_0048.npz": "f3a1ed11c1698aabfcfb5b8a1f32906a033012543c4ba0c0e41f1eb9596ecf5f",
+    "runs/20261121-221709_E122-A0/families/family_0049.npz": "6177a6ef9bdccf1fe53d55372ad72eb5d012fa48af8384984e416d7804ad7126",
+    "runs/20261121-221709_E122-A0/families/family_0050.npz": "7b6e5cf615304297fd0d94723359714739fb0f99c069a74ef8a1ddabb3761214",
+    "runs/20261121-221709_E122-A0/families/family_0051.npz": "960c8d51f8f0a9ca9f0dff09c3214af02be3638d6d037a51922fd5050db274e0",
+    "runs/20261121-221709_E122-A0/families/family_0052.npz": "7de9128e2e4deccde0870d88f17052f1587abe7fa42db466d858608d9efabe8c",
+    "runs/20261121-221709_E122-A0/families/family_0053.npz": "e2d935982c7087671b2eefe976653f1733a3677b923ea4c655a84e6099489f3c",
+    "runs/20261121-221709_E122-A0/families/family_0054.npz": "fa5c13cad95e109cfbe4c755f8826dd90136c9ea7ada084e48ad5d9eca188894",
+    "runs/20261121-221709_E122-A0/families/family_0055.npz": "dd5077b4339219be5087886c5423bca0eae58faee0b517a62e3ba789f259f0ef",
+    "runs/20261121-221709_E122-A0/families/family_0056.npz": "0e1673eb033ed1855447f932feaac634c7572ff274593f1344ff911d0e505f3a",
+    "runs/20261121-221709_E122-A0/families/family_0057.npz": "e96291ae34aa1390fd35a9c56fcd78e0442f1f3f4e89db0ed9c0fb1f06a96668",
+    "runs/20261121-221709_E122-A0/families/family_0058.npz": "7d20e996960ba30de2ec19f45b234f85815e0acc841db8fb9fc82e2419957121",
+    "runs/20261121-221709_E122-A0/families/family_0059.npz": "05ed670ad05e998605b719bb56f090bd382e122e20d05e5ba1d0b3ea85c6eb35",
+    "runs/20261121-221709_E122-A0/families/family_0060.npz": "0dab72b1ebb2deebb4ac25ac849a8ca02762652a161787bf3265611b33a39f7e",
+    "runs/20261121-221709_E122-A0/families/family_0061.npz": "591ce96f5ccaf66c34881efa99f08c38cbe94a9697f2fab6c8109bdc3a21871d",
+    "runs/20261121-221709_E122-A0/families/family_0062.npz": "5c079707b75776879bab1c153bbdca8e448b4a23e0878e9bea14316b0fd388d0",
+    "runs/20261121-221709_E122-A0/families/family_0063.npz": "8cedb55ee5a66cf53730c5e9fa0a272ef5704295db184ebae80c883cfbc9503c",
+    "runs/20261121-221709_E122-A0/families/family_0064.npz": "194a46c45b5172823887d4adaee32e2e1b4adc326dab4d83bb9e2714fe56da0f",
+    "runs/20261121-221709_E122-A0/families/family_0065.npz": "708d49479819e1ea128a96662bee994d067adb21021eef2c19b324c513c563b9",
+    "runs/20261121-221709_E122-A0/families/family_0066.npz": "4405b76b6bf978106af7f4c563d1cbed3d8b09762328e36162579c08a14df29c",
+    "runs/20261121-221709_E122-A0/families/family_0067.npz": "9ff539663e6058f26543b6da328936f21fbf90030d82baac51c50761db012f77",
+    "runs/20261121-221709_E122-A0/families/family_0068.npz": "2c981d47cc0302d0f7346945b4f2b8d0840ffe44355f2e86892532da8edc01cc",
+    "runs/20261121-221709_E122-A0/families/family_0069.npz": "bf1888d12441b646b5be0800a4bd4018904049d0943b4f4f72ab0cda889f85b7",
+    "runs/20261121-221709_E122-A0/families/family_0070.npz": "915f66be2bacb0f253f5ba40208dcc49d97058e9d4b7e45495dd7fb9cb48de40",
+    "runs/20261121-221709_E122-A0/families/family_0071.npz": "a9302677bd1c7de696e6e828e08e61c0fb5e7549719b528aa48d0ae89d547f00",
+    "runs/20261121-221709_E122-A0/families/family_0072.npz": "278c9cdf61904ddd3bf04910c3ada292e903cadc833471dcdb80ef2b49b2ebaa",
+    "runs/20261121-221709_E122-A0/families/family_0073.npz": "6537d46ca0feed318d8307ffddfe4583433dcbb20f2a06ef61170b642028e452",
+    "runs/20261121-221709_E122-A0/families/family_0074.npz": "b8869edd1707add90369ae4ec32a67e7a3e0935b97cd67cd0783278233c372ef",
+    "runs/20261121-221709_E122-A0/families/family_0075.npz": "49a81d2054bfd9f740acfc0342405f9e805c14f3f37031570da2c1a1ec134dd1",
+    "runs/20261121-221709_E122-A0/families/family_0076.npz": "967864cd6c81959f7df9528a239ac17bf450e345d1e14021416318b99bdff547",
+    "runs/20261121-221709_E122-A0/families/family_0077.npz": "06d0ff74e17a866a2898cc0a099c5c8a0ba21a595131a0385cdd9b847bc2e34f",
+    "runs/20261121-221709_E122-A0/families/family_0078.npz": "e1ce5a50229aa8eb6c6c7646ef48fded3cc8188111b81237a3fcea841882d6b1",
+    "runs/20261121-221709_E122-A0/families/family_0079.npz": "b0ed86abdeeb20f9f9cf5cbb8d8929e8a7f724b4359ded11858cf94861c3111e",
+    "runs/20261121-221709_E122-A0/families/family_0080.npz": "5fbc615fe39076017a460a85659c1dc9cd4ffeadaf862efcea7aa6c23adabb83",
+    "runs/20261121-221709_E122-A0/families/family_0081.npz": "29e8525e9a5b84142bf47b4a992006b2bce8836451421a2f9448f6f650c95ae3",
+    "runs/20261121-221709_E122-A0/families/family_0082.npz": "b68fc65e9fb84ea47bd0ad113b23c711d58c3e3a3d76bd6760b5e82f9a48a0b4",
+    "runs/20261121-221709_E122-A0/families/family_0083.npz": "56458e77d5a3bcfac6b4ebbfae623f723155158bc2e97820a6ce93360b5ede8e",
+    "runs/20261121-221709_E122-A0/families/family_0084.npz": "97eb80c519904d91b9de284221f6af5e82422d7477c58ffe1fffbf641fe31a91",
+    "runs/20261121-221709_E122-A0/families/family_0085.npz": "e598e3ae2f1c9c927313ea9543fa54fc2c33c9ac175817c436544fdc611bb296",
+    "runs/20261121-221709_E122-A0/families/family_0086.npz": "89efbbfbcd415b9b6d51258976585edb188180200d28ba6fdbdbacdf4a4362de",
+    "runs/20261121-221709_E122-A0/families/family_0087.npz": "24666e0e13dbc086fd1169906cc44c29a15e34a08bbcedffff5b7581e2894092",
+    "runs/20261121-221709_E122-A0/families/family_0088.npz": "1afd2a750c534727aa5a780d06c8201197e33ae0cc2464b62694a0b746405da0",
+    "runs/20261121-221709_E122-A0/families/family_0089.npz": "b9c01de198097bd0d38c63d4ed7e0954ae6d6dc9ef7bc6d468ca2788353d8efe",
+    "runs/20261121-221709_E122-A0/families/family_0090.npz": "b2f869135651b13c0c0441bbb7ac71623153f9be6e803663ccc44340c9d0877a",
+    "runs/20261121-221709_E122-A0/families/family_0091.npz": "0d4bfc9c3f708c0c5f9c5f14967614433b82f4d37928d63f81a5a74fa0570ce1",
+    "runs/20261121-221709_E122-A0/families/family_0092.npz": "29eb433d1d69db386b2bac12f32e4e66af9019e350d6b39105ab3ebc59bcc051",
+    "runs/20261121-221709_E122-A0/families/family_0093.npz": "0e59be5817331cacc94151f5fdcc09f37e56d37bd72e4710053760583495d8ad",
+    "runs/20261121-221709_E122-A0/families/family_0094.npz": "fa5f2cfbcd857d84288baab40b1d0403206e7c3dded678d2bac439e7652a5d80",
+    "runs/20261121-221709_E122-A0/families/family_0095.npz": "d3f46cbb6a7dda2ff3eef3f99463fc088df58941ba310c10294a132bb9ffb56c",
+    "runs/20261121-221709_E122-A0/families/family_0096.npz": "68ef228190b6e06dd955a67e2d18c2dc2cd9ad8633cd585489c2f0c70fed00ab",
+    "runs/20261121-221709_E122-A0/families/family_0097.npz": "122c9e3b87195fb36bff1fc2b91f13dd41a6d690bbbfdb7b6a1a958abec50964",
+    "runs/20261121-221709_E122-A0/families/family_0098.npz": "bd05c418cdac1f9886edf9c0cd70f0da3e50b3e5481d029c5c406b63064fe58e",
+    "runs/20261121-221709_E122-A0/families/family_0099.npz": "e4bf36fdc5f2f5601c33460d995444cdfbedbf7747ca783f926de6b3d2b14548",
+    "runs/20261121-221709_E122-A0/families/family_0100.npz": "34211b256192bc373f0b863d53548b5adf432aebd9f09a9b0f62cb1a29278edd",
+    "runs/20261121-221709_E122-A0/families/family_0101.npz": "7181b0f4bf169740623923e8b58e6b466d85a757be08b8d039911a5362096a13",
+    "runs/20261121-221709_E122-A0/families/family_0102.npz": "2db58355581ff357e28c33ee79621f2e14114801fd9d94d4ac49f60fa39b9eba",
+    "runs/20261121-221709_E122-A0/families/family_0103.npz": "7e7312e731b2c408f088bba1eff1a506583f5f143705f4380309cf0c38ce9349",
+    "runs/20261121-221709_E122-A0/families/family_0104.npz": "554418b48f08c39c6680a85f78127e22c58f6782f31a9dfa170eeca293f6e21d",
+    "runs/20261121-221709_E122-A0/families/family_0105.npz": "b6337d7b1473d6c69633abd0c8d0e6f508d074f93b65fd944c33c87d80de969c",
+    "runs/20261121-221709_E122-A0/families/family_0106.npz": "590b41ae44b3c040b08953caa85e7499fe269d913a204aeee5d02c668a40a76a",
+    "runs/20261121-221709_E122-A0/families/family_0107.npz": "7c9666a71534d52ade1c32487aeeda4ea6b823d1d340d39cae187b9c2d9d50f8",
+    "runs/20261121-221709_E122-A0/families/family_0108.npz": "f030f39055180d592214f6c0c5925afa73b7674b19fdba842e4d71780d3e615c",
+    "runs/20261121-221709_E122-A0/families/family_0109.npz": "abcd35461fa7edbbb5bb61fe346fed6c2d0693cea8e6afd353531243e957c21e",
+    "runs/20261121-221709_E122-A0/families/family_0110.npz": "d981f89136b1d7ebfb3323026e5161dc884e184bc6a11045d64ac1f7db897a39",
+    "runs/20261121-221709_E122-A0/families/family_0111.npz": "e566290f7cd957603f397481953671cf816e4ef5b9a2f6189f8515a75dfaed81",
+    "runs/20261121-221709_E122-A0/families/family_0112.npz": "5167c070c20fbe4c39e35a8c1140a46f7de5ec555a90ff9bfb55848e0254d207",
+    "runs/20261121-221709_E122-A0/families/family_0113.npz": "1396b68c7e8b91cded9b7e80eab06bb2f85d05dbe73302d8ce59ed10fe114493",
+    "runs/20261121-221709_E122-A0/families/family_0114.npz": "736166509c15a0785b5d5f739adc2270bca473849884bcd0e9371cb7932b3ff7",
+    "runs/20261121-221709_E122-A0/families/family_0115.npz": "ac1bc6fdcff281c1a2d24d94c0f1d5509e5aa995cc0979b5f6822eff63dce094",
+    "runs/20261121-221709_E122-A0/families/family_0116.npz": "a55cde0a261f7f6438b006703d27fc5f01c38885a61e6ddbd741073b884094c1",
+    "runs/20261121-221709_E122-A0/families/family_0117.npz": "eb4a63ea991294fd0ec93a36e914dacc5f2298aae0533295fc344c6cebfa0ef0",
+    "runs/20261121-221709_E122-A0/families/family_0118.npz": "b3ed88574d016bb388dfc4e4bf747773a0ac0ccc6240989d9848aaaf292fe5c0",
+    "runs/20261121-221709_E122-A0/families/family_0119.npz": "a522e99b5e8e0499bf6361392b8216c5e82824a746099e943de8612d52f08ff3",
+    "runs/20261121-221709_E122-A0/families/family_0120.npz": "04d13f2747a9278c10c1e8bd7f0ed61e8e68c06826a0811f6ef56c9a16d7bc2c",
+    "runs/20261121-221709_E122-A0/families/family_0121.npz": "59e537007d487d9c143045dc5c5b6260278d3f196818a4ddb34f2ff9d2af3194",
+    "runs/20261121-221709_E122-A0/families/family_0122.npz": "a510f1277370cd35b1c39be12c02793b0ecee26a6b9f7e30d7a9550fbbedf7a8",
+    "runs/20261121-221709_E122-A0/families/family_0123.npz": "5110ff51c3f4dd57448908b1dc9919b36380e20e3b9c7da52f18cbe57111da58",
+    "runs/20261121-221709_E122-A0/families/family_0124.npz": "d2c9e9e3e79d625d1e9215e50c2ffca0aae0526e72a03908424e3fdc2df220ed",
+    "runs/20261121-221709_E122-A0/families/family_0125.npz": "4024395954831786e9c99646e3a539f8aad23a396d695235eba3456e9bc669c9",
+    "runs/20261121-221709_E122-A0/families/family_0126.npz": "5788ec023688b067c1699283357bbfd22a8367458fce33b5b813646864eeb66e",
+    "runs/20261121-221709_E122-A0/families/family_0127.npz": "0a06b2a723743a68f6b844f5e6441586e61df58b6e0ea51d60066c773b81100a",
+    "runs/20261121-222033_E122-A1/config.json": "30468959b538e64eda616d7bba8c3b0e52f781fadbdc2b0a01038cef741e297c",
+    "runs/20261112-050319_E103-A-blank-s1/genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261121-222033_E122-A1/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261121-222033_E122-A1/teacher_genome.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261121-222033_E122-A1/summary.json": "a1e742c51fdd038424bdcece8d500010c54d762430b160220d40c7d2987f125d",
+    "runs/20261121-222033_E122-A1/metrics.jsonl": "ec8425203900c7cc47813cb1c79a78e657765dcfb070ad298a3960af6ef2dc76",
+    "runs/20261121-222033_E122-A1/genome_trajectory.npy": "44828e1b177028c16553ba71db261c169c1aee7cdda066ee87906c88c223ab03",
+    "runs/20261121-222033_E122-A1/generations/attempt_0000.npz": "0ff930f7626a7dc430a60c9856d5943091812303e6651285ff9488c11a739f6c",
+    "runs/20261121-222033_E122-A1/generations/attempt_0001.npz": "a4a6769150b580d071652b5f8f208bd125f4f5d9a9c511c89dc28331d13952a1",
+    "runs/20261121-222033_E122-A1/generations/samples_0001.npz": "90d6e96eee15f7ecbd0a08e7a5cad181246d70a268a2fd927c8c72e9f41c4ae9",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0001.npz": "5751842579806aace9136b1eea06b9e47974c8143345541dc9857953d1c711db",
+    "runs/20261121-222033_E122-A1/generations/attempt_0002.npz": "5151ddac9be3497e515d30b0bd3b67d03f8e0811d2ff3eeb6dbd5fb028b4e88a",
+    "runs/20261121-222033_E122-A1/generations/samples_0002.npz": "e94b05cace39ee69e27aa03dad072afaccbf4b70bbfc415d3a8ba351a79158d4",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0002.npz": "f1840a2944b9b7033934bb26614f5b25f0a2846eaadbae3054a178ae7bdb787d",
+    "runs/20261121-222033_E122-A1/generations/attempt_0003.npz": "353570b7f52f3385415a98a891308c30f95f764e29bb9cd738b4a293eb053e00",
+    "runs/20261121-222033_E122-A1/generations/samples_0003.npz": "4683625dc4975c619aba096e4241fd2aba9ff38a0786430e5a358428eb5cf3b1",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0003.npz": "1c60e8a7304146954fc482af28c75573a60214556c8876c3c9845fa092e90d8d",
+    "runs/20261121-222033_E122-A1/generations/attempt_0004.npz": "d44ed42944221647aea7b511c7ea9e6dcc13536d2143bf62aad99dc41286c445",
+    "runs/20261121-222033_E122-A1/generations/samples_0004.npz": "45efd8b244d96c9e60bc339e8e29585091b086aa456f88706408e23d60cfd756",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0004.npz": "5860f3a58c3a9d72d8f75f5e9beb1a9b65e9b126def375128c4300f1f5254461",
+    "runs/20261121-222033_E122-A1/generations/attempt_0005.npz": "cea4caa69a227a9cac59f5aa8522d1cd74bd0f77d56001b9894cf549b6e3b0db",
+    "runs/20261121-222033_E122-A1/generations/samples_0005.npz": "8b3933ead715418c54d67758a6f9a8aafaac6dd574db5254bf620aea6b3e14c3",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0005.npz": "f0cd7a1514d26c17a90ffa4a1957651d3245fba567d2cf7cb8c9201e290bc428",
+    "runs/20261121-222033_E122-A1/generations/attempt_0006.npz": "27909277beb25794287a9cd01748dce2b4caf8c57f97c3ceadb4e00164eeccdd",
+    "runs/20261121-222033_E122-A1/generations/samples_0006.npz": "41a4f3bacd16333b9c29b8472b186d70be549c0ba06dbe0f8c9fb552e8255f79",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0006.npz": "10ecaa23f9fc1c46913ba3796cb9c2b13f11b4f514d3fd8e158013e3d6e8f1b4",
+    "runs/20261121-222033_E122-A1/generations/attempt_0007.npz": "79a4be8213fa1be2ed8258152bd75cf0bca9007f5bb6d42b3da73e951315a215",
+    "runs/20261121-222033_E122-A1/generations/samples_0007.npz": "0351753877ab687879106d7c33e8e3d28beeebc373a661a2352a6e0b59a2fcf3",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0007.npz": "9a5784557e6cd0d68e4ba3868f4ee1632e37c98c37944bc04af6864e63a9b67e",
+    "runs/20261121-222033_E122-A1/generations/attempt_0008.npz": "f2d2d9b2424405b39535e2aae3739c68fb2c70967640576212cf6b498ed25712",
+    "runs/20261121-222033_E122-A1/generations/samples_0008.npz": "074331048f112f20f583d0be030e8909ae37d6419689678e9901ad12f7d11ed1",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0008.npz": "093108d11f07efea508a3ea776afcc0991934a3fbcad85313741653704ffd696",
+    "runs/20261121-222033_E122-A1/generations/attempt_0009.npz": "a2ba28d9e05cfc4d104ea89973a83cfa7aded6681165dda9dfaa4bb130230bda",
+    "runs/20261121-222033_E122-A1/generations/samples_0009.npz": "180ae858b452839081adc5f907b7c12c03ddd147031f7437346b56a808c72d8c",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0009.npz": "72c106c213a8577fcfcc19d4e60f97855ce243f25439ad9158f1dd5c36a3b03d",
+    "runs/20261121-222033_E122-A1/generations/attempt_0010.npz": "e283dd46a95b0c5fcbbbf968292d67bfed49a376340db2c7b2c96d8477f72e08",
+    "runs/20261121-222033_E122-A1/generations/samples_0010.npz": "f803d33d749c7a77684338e9f929ca80ad6f36080c8fd37a616cd80a35949be9",
+    "runs/20261121-222033_E122-A1/teachers/teacher_0010.npz": "5f479886a5e82ca63b7d971dbaaa2d53d9cdc042909ae1b3a3315449a6e04286",
+    "runs/20261121-222033_E122-A1/genome_final.npy": "ee59a781ac798fe4ade8b85a5186015006768152270c5381fca6ca063f935113",
+    "runs/20261121-222033_E122-A1/evaluation.jsonl": "ff81cb576c0bf4837ea3ef85a4c01008d60c7203d1b806e0800331a06b1bc7d1",
+    "runs/20261121-222033_E122-A1/families/family_0000.npz": "f80c1622216575fb48bcbfb822ca0800057222a88da4abb27ffd283b1ab55ac1",
+    "runs/20261121-222033_E122-A1/families/family_0001.npz": "7687b0ab0c341aee0ca011be3b3441a31fd38650d4ad13785eb014e899fbfa33",
+    "runs/20261121-222033_E122-A1/families/family_0002.npz": "263f0b50abbae767de91fd8e8546b3a3d5a918f24af5616bed4788b99bc01e71",
+    "runs/20261121-222033_E122-A1/families/family_0003.npz": "87c92cd32046b06546f971116d083b6c2083d85653cb42999188e030de9a63ed",
+    "runs/20261121-222033_E122-A1/families/family_0004.npz": "325a01476d215265be2a0d99078ce8ebaea613ea346d0d2ce7e3e18a4863984d",
+    "runs/20261121-222033_E122-A1/families/family_0005.npz": "4ea07d6d7063f5ddf33ff4f5a89cc7156fe128282461441c0048587cde7fe95c",
+    "runs/20261121-222033_E122-A1/families/family_0006.npz": "3e43c94b3c94fe18f43ad7cb6916a598bb480ba0d2d29664e1b6c26b431857db",
+    "runs/20261121-222033_E122-A1/families/family_0007.npz": "4df9345e6ac4ece5c4cc5e2863afc0529a7f4169ec2ef3dbae163018664078dd",
+    "runs/20261121-222033_E122-A1/families/family_0008.npz": "11521e6fd07e57be53e77b0e1417a4663a0ce45cbb86d0f2c2e1274628b732e8",
+    "runs/20261121-222033_E122-A1/families/family_0009.npz": "877c8a1b768efd9ac397fc4179223f1853d3b3444e910c970276780eb2812eda",
+    "runs/20261121-222033_E122-A1/families/family_0010.npz": "45895aabd9d8aec5ad7eeac7abe952b31a65e080f6fd480b9c8b109acef71e83",
+    "runs/20261121-222033_E122-A1/families/family_0011.npz": "95d033e4f6888012b4058ca9f24e87cf357dfe44a437e2113769c9e92635fab6",
+    "runs/20261121-222033_E122-A1/families/family_0012.npz": "2cb4bd04e5afb3a61571ee623cae68fef0dfc2e47f66f6289eb87a984e99ae7c",
+    "runs/20261121-222033_E122-A1/families/family_0013.npz": "3993f7ff18aaaf2d7e62c4a610e47b292f8ef9946244137126a0338ca6b683fe",
+    "runs/20261121-222033_E122-A1/families/family_0014.npz": "1f3fa7d60a5327611c9971df85da1683904cda4ed4fd2e8de75274f6d8417550",
+    "runs/20261121-222033_E122-A1/families/family_0015.npz": "d2b5767cc5e11b35fa1c2eb439e2280da072651d554a76cdf9084c16c54e1a6f",
+    "runs/20261121-222033_E122-A1/families/family_0016.npz": "4157fbf08610a36055f3bfdc8a34072679041f36be45d4b3d0532e8180c2acf8",
+    "runs/20261121-222033_E122-A1/families/family_0017.npz": "d1d5a0f9413483ac1cbccad0839ca76fe3173006bc4adad702c63a809b556d93",
+    "runs/20261121-222033_E122-A1/families/family_0018.npz": "d5450a4af616b125e4615965de82051f26655ca35e8ab5e33ca1289ab7bc56d9",
+    "runs/20261121-222033_E122-A1/families/family_0019.npz": "27c73e6b1dd61debe3a572e25206cfea5005ca9b056259473d3328ad7a1e93a2",
+    "runs/20261121-222033_E122-A1/families/family_0020.npz": "716da80c48ab399dafec7403d2bfd75d41f040b47c966525612c81028b2bce1f",
+    "runs/20261121-222033_E122-A1/families/family_0021.npz": "ba861b80f20c76764dbd41e973d85cf814649698dd27f76dde26b81bd7dd1b04",
+    "runs/20261121-222033_E122-A1/families/family_0022.npz": "8f04e03001f1f371df97f85cf1e2a4c324cd921cd1c73f33f35c8a84fbd23dd0",
+    "runs/20261121-222033_E122-A1/families/family_0023.npz": "3210e295c45c56459194fbe5c5ad700a0988147c7294cc730cdad00abfe305fd",
+    "runs/20261121-222033_E122-A1/families/family_0024.npz": "fe4742ecaff0c8b517cabbb184f272918dc796c30c82b3cbbd1150a801332ef9",
+    "runs/20261121-222033_E122-A1/families/family_0025.npz": "0a36722e944f19fccce519e5c8c50b3277c29b1d1eaffcb56e524eca7b7ad05e",
+    "runs/20261121-222033_E122-A1/families/family_0026.npz": "60228cbef1dbeab19cecbde57d3729dbd58760cedd5201747bb00f6c893ed049",
+    "runs/20261121-222033_E122-A1/families/family_0027.npz": "c03ded96f9fdd50639c3b726a75c34d7d0c9c1762219ad5a8f9f10539c5e1e92",
+    "runs/20261121-222033_E122-A1/families/family_0028.npz": "42ba607b3885375230a8865e54dac93589feeb302ea74035f4fd21c2e9f375da",
+    "runs/20261121-222033_E122-A1/families/family_0029.npz": "7e0e2f109796080933c029ab5274b2a2c0a55c0d0c4b30b3386ae678638a7324",
+    "runs/20261121-222033_E122-A1/families/family_0030.npz": "23b689b38a6ff9a910210efac34cfa25f4c475605770c94133f080c9c3fb7fd9",
+    "runs/20261121-222033_E122-A1/families/family_0031.npz": "006b7b5fac271846e8618cac4424ee195a7852d1edc1588b1ed5dc8693c77271",
+    "runs/20261121-222033_E122-A1/families/family_0032.npz": "ebaff4a3a30acf3b4c10cc535aca70c26a92de734b5a4353d9787a593f8d90bd",
+    "runs/20261121-222033_E122-A1/families/family_0033.npz": "9c156d414c12c1e3f1b27f89e89fce25e6f09229377e9a70cd0290b5d4133d3e",
+    "runs/20261121-222033_E122-A1/families/family_0034.npz": "beb36caaa0dd1d8404d644e36560d30059545ecc849190e21545587dd9270328",
+    "runs/20261121-222033_E122-A1/families/family_0035.npz": "f3a41ff2f19e02b9b66311e548710323c4951d3cc93605a0127a95260de4bcf3",
+    "runs/20261121-222033_E122-A1/families/family_0036.npz": "79a3c3badf388f8c61da7e71da5fa6738a2578abda8d6507c72e67ffcaddbbe9",
+    "runs/20261121-222033_E122-A1/families/family_0037.npz": "ae44af548540c3b84b60237e4f30c7fbe124ad4365c820675bc78ddc3c8691fe",
+    "runs/20261121-222033_E122-A1/families/family_0038.npz": "a9fb3d1012f9d42040e41c7afc545276d571494ae6f41d97d35b49dfb8b2357d",
+    "runs/20261121-222033_E122-A1/families/family_0039.npz": "26566d972b8d9352afe03838764bcf85dd38fcfc34674a92af4765c616997fd1",
+    "runs/20261121-222033_E122-A1/families/family_0040.npz": "e8a52fee241297a881651c611508742e30812b9bee702f45d4d5439649168b73",
+    "runs/20261121-222033_E122-A1/families/family_0041.npz": "2bea5ef4b6a6e8f9521776518d94574782fcf047e73449656854688ca0ac2bb8",
+    "runs/20261121-222033_E122-A1/families/family_0042.npz": "db5d1880c24ed96baf4a8001e9eec6d029d7324fe31de797b4e8f912cf66245b",
+    "runs/20261121-222033_E122-A1/families/family_0043.npz": "d1df67d1dc3ed204264d6ee233f6d526abc21aface36d35a5bc69696b744f80c",
+    "runs/20261121-222033_E122-A1/families/family_0044.npz": "12d12a828465c42c6afe482285404a26b78a2d700ed5b5a6021c4fae6ddf3281",
+    "runs/20261121-222033_E122-A1/families/family_0045.npz": "b7b434e98ea863e633b35b488091aa37fc76c041fddeab6547ff0544faabdfbb",
+    "runs/20261121-222033_E122-A1/families/family_0046.npz": "f4bd30e37b55b75f96ffc00bae98454827d599de7dafe71585ed4956e7e3fae0",
+    "runs/20261121-222033_E122-A1/families/family_0047.npz": "f30f16bc33e16c500a45110ce40803b3cf763b48859a4e0c58bcaeb8c02d949c",
+    "runs/20261121-222033_E122-A1/families/family_0048.npz": "54c49486cb2ba4bfca64d1decd06596079297e24e0c160f91c06e00871740caf",
+    "runs/20261121-222033_E122-A1/families/family_0049.npz": "c813d932c866a514921103d9e8e3a6157277ab38d9cbf89b32c7ec387198816d",
+    "runs/20261121-222033_E122-A1/families/family_0050.npz": "c0870f3d01a34b30dbb41157e22e7dd6122765fb99fbf3a73784c1446c7d5164",
+    "runs/20261121-222033_E122-A1/families/family_0051.npz": "6dc204d48f8986fe68a60e3115ea79ccce8ee7caae7d013f87e60e0b6f27ab28",
+    "runs/20261121-222033_E122-A1/families/family_0052.npz": "e7a8a87eabdd82ad3d379ba243627973623e84a78f25fbbf97e24006f572b5a8",
+    "runs/20261121-222033_E122-A1/families/family_0053.npz": "7807888029d0c01ff619b7ff4bcc6da664dd3553d390dfddbc1645cc36753236",
+    "runs/20261121-222033_E122-A1/families/family_0054.npz": "9700225964b4f8631cc197cbb9de69a98c818638d72aa35091fef270266723fc",
+    "runs/20261121-222033_E122-A1/families/family_0055.npz": "250e11282338e0b58b1cea20eea31c5320089430804549a1da7b66e7d903c4dc",
+    "runs/20261121-222033_E122-A1/families/family_0056.npz": "ca4fdb24449e3e59bdb085aea2aacc54b99b77a981c3f693e32d6c190691226d",
+    "runs/20261121-222033_E122-A1/families/family_0057.npz": "c6b392e8036aa339bbbeb771f93d082bb39fdc08b76a16b0bbb30333253a3a4b",
+    "runs/20261121-222033_E122-A1/families/family_0058.npz": "f611e1a463de80691a74a13316b684868d87110a939b3cfa3ef65b5d7dd79940",
+    "runs/20261121-222033_E122-A1/families/family_0059.npz": "5faaad1b72d2a7907029e8248205dd3b8cf25ff2cdd44a19c6b79e10cf3ecaee",
+    "runs/20261121-222033_E122-A1/families/family_0060.npz": "29bc208bc447e05e654a5e12580f7f859c3bc50f0a1fc217bd42f13b6c50fdfe",
+    "runs/20261121-222033_E122-A1/families/family_0061.npz": "90a153dae09495f4f17f401fc6aacebd670b2523e4118e1dd66f11166f0dae8e",
+    "runs/20261121-222033_E122-A1/families/family_0062.npz": "0b3e7c30c4b582f7539f8785985332c72680d3cd4ae5263ec218710e9d8c6c66",
+    "runs/20261121-222033_E122-A1/families/family_0063.npz": "087a54ff576c06d1bc76e1f2ef9b0609466237c630bf419151735f6c46ae69b2",
+    "runs/20261121-222033_E122-A1/families/family_0064.npz": "2af9635954d2adeabd499b750c15659b7da17244db5aee3cd919d6e43c7961a3",
+    "runs/20261121-222033_E122-A1/families/family_0065.npz": "d3793a37aa7c54e721ec991240620bc98ecf05273f5007f4ef53727acd71e518",
+    "runs/20261121-222033_E122-A1/families/family_0066.npz": "f67b38d4101b028ef96ccb4e3d7af87d8e8d7c6aef1364b0d0e52c71dd79835a",
+    "runs/20261121-222033_E122-A1/families/family_0067.npz": "c6205723d6f85606567dfcb6784b299de15bafb4decbc9fedaf7d92c0edf44c8",
+    "runs/20261121-222033_E122-A1/families/family_0068.npz": "492c4442eb7fdb0c72df8914f1b2ddef0029090c723b042dab35bdc02c62769c",
+    "runs/20261121-222033_E122-A1/families/family_0069.npz": "6ef9bc29b4efbcb8f05f9b864a4ff9d102adf46435752b1722a1266fdd977f15",
+    "runs/20261121-222033_E122-A1/families/family_0070.npz": "9826b5910224bf56deae28a9d1905a3b925f6827568741f8877cf3b756f9bb88",
+    "runs/20261121-222033_E122-A1/families/family_0071.npz": "dbfc628f01bf31f39602b37812bcdae1b96b96e5047401b522191c86f730844d",
+    "runs/20261121-222033_E122-A1/families/family_0072.npz": "ba87a70d189ba5488e6647971a5e14094d0502d6f2b7ef312650abe84a736c57",
+    "runs/20261121-222033_E122-A1/families/family_0073.npz": "0a4dde1fb1e008aad7eb98a5be1819f629760e788ee075bc9240bc01c95a0b9f",
+    "runs/20261121-222033_E122-A1/families/family_0074.npz": "75aece1d9ce7e3145391c19a4970dca2c38ff1990671b16b4505df276ca8b7af",
+    "runs/20261121-222033_E122-A1/families/family_0075.npz": "18b7358fca2da3cdedc91b6552d237b902cb78f84c1840fd7a8d6052ec65828e",
+    "runs/20261121-222033_E122-A1/families/family_0076.npz": "e645244c86c959220e2f190a2fead114b1dc908d1d77adb045dd971315c872e9",
+    "runs/20261121-222033_E122-A1/families/family_0077.npz": "cb1af7962ebc266f8c9a87a41c6131c91658ee7a4883b7a6357fe53c78388a66",
+    "runs/20261121-222033_E122-A1/families/family_0078.npz": "18440fd5aeb68360f1fdd6ba42c49e24af51d9f5c8484669eb9fbc86f178c847",
+    "runs/20261121-222033_E122-A1/families/family_0079.npz": "077f5abdd4a10ad6d05fd8d6ad9ff6f4bed535bed52e6e076b4bff21fac5c213",
+    "runs/20261121-222033_E122-A1/families/family_0080.npz": "a5ef0e0f5e304ac204e305c7b67264f2cdf4664dede77f3a5c7f2b1c5542449a",
+    "runs/20261121-222033_E122-A1/families/family_0081.npz": "732fdafbfeb18a1fc50ed1004cb8d42664c9216c6089f4cbb4502b5e3f6a904a",
+    "runs/20261121-222033_E122-A1/families/family_0082.npz": "45329736e2276b242b5121bdd9289b12582a403021b25365d659be9f2b986ffd",
+    "runs/20261121-222033_E122-A1/families/family_0083.npz": "8aced7a19a3fb9327a93f2039caad95ce9dfae5d85b11457ab71bccefeb251ef",
+    "runs/20261121-222033_E122-A1/families/family_0084.npz": "eb0a67caae33a36900a3c97e078a99b3f397fd08849e1c0be0f0999e7467f90b",
+    "runs/20261121-222033_E122-A1/families/family_0085.npz": "53580e9b664059a89a140bee66de3874b62fae5272101ebb3024e37daa2caf7e",
+    "runs/20261121-222033_E122-A1/families/family_0086.npz": "e0fb7f29010e0e3cd73fed48c97b534ed0cc9293e6986faaf252a9b8cf88fe2f",
+    "runs/20261121-222033_E122-A1/families/family_0087.npz": "4f269b4fbc76ea413a4d7a8e76cbf72dbe2f0413dac562d1cd8880e16491a40a",
+    "runs/20261121-222033_E122-A1/families/family_0088.npz": "45ff7208771581ee5a08969fb97967bf8116d0ea53b9235e8b4d1e685f43d01f",
+    "runs/20261121-222033_E122-A1/families/family_0089.npz": "22bf419b0908d4f07b2eb37005f28bd07dfdce4cfa0d6a6f8ff88ace4ce66012",
+    "runs/20261121-222033_E122-A1/families/family_0090.npz": "c0a4e6deaa5a9df53b01f5aa3c168b87fbcf955198a2cbc2e66f70950e52ab37",
+    "runs/20261121-222033_E122-A1/families/family_0091.npz": "b1dce909831203c32dbea0b0597ce4f346dad6766aae95336e23ef04a6c987e4",
+    "runs/20261121-222033_E122-A1/families/family_0092.npz": "5925b75df8b16b5724ed41dea22927de34edf4af0ba4f1b0f788a1f1200462f1",
+    "runs/20261121-222033_E122-A1/families/family_0093.npz": "57a583d2f1ab4385943a5bc9070c5839d0b1f67fbea619ebe8c846c0d57bedfa",
+    "runs/20261121-222033_E122-A1/families/family_0094.npz": "6437f947c9a789383dc888fba530cbdaa3bebf463a514f3d7e789ae86800f234",
+    "runs/20261121-222033_E122-A1/families/family_0095.npz": "5a3d79edff117529799bead5038ad350222561ef386f51b11b009afb64d381f8",
+    "runs/20261121-222033_E122-A1/families/family_0096.npz": "9a06b3d5796156930fa28f93c5c69067de35af1bcc3085a09435c44182ca970d",
+    "runs/20261121-222033_E122-A1/families/family_0097.npz": "4e19af8084511786ec10baf75bb2728ff6e699b237889743d4447b598204a5bd",
+    "runs/20261121-222033_E122-A1/families/family_0098.npz": "282fa92e83eff3be8d0caa0dd2517a7d22d2bf6c8f8e8d32e861aa9624de4ec8",
+    "runs/20261121-222033_E122-A1/families/family_0099.npz": "c088d1945e13484bf6f9feb01ab8a756befcecc745b9afbbbc01da16340986d9",
+    "runs/20261121-222033_E122-A1/families/family_0100.npz": "ea903b2e8a4a12e281f525ad68164a40624fbfc304c8db201b39fe796a5cc413",
+    "runs/20261121-222033_E122-A1/families/family_0101.npz": "bc7226cbf089165fe80b7985242b8fe93e951edf0ec95eafac3f041b1f861e94",
+    "runs/20261121-222033_E122-A1/families/family_0102.npz": "c93ac4d74cb3458e377edfd94a83daeabcebaa20f48aad3f1131852a47a20cea",
+    "runs/20261121-222033_E122-A1/families/family_0103.npz": "305e1838214d4e391dd716240df1d18e297367073e275ab2acfe432ca662d13d",
+    "runs/20261121-222033_E122-A1/families/family_0104.npz": "802a11c8e1e0d4a1f144a652765eb470f5cf9f86e3e6f371c08060eb1c583ae4",
+    "runs/20261121-222033_E122-A1/families/family_0105.npz": "2037469b9d09b8394c20e38e85e80324273a503eae8c10ef3c7d9ea4b8ec9917",
+    "runs/20261121-222033_E122-A1/families/family_0106.npz": "435e2d1e2fe7dd3041dca0a749c9618ad41551788caae214c342ef9859fcebc6",
+    "runs/20261121-222033_E122-A1/families/family_0107.npz": "5e07599082bf67bf15f4b98ddf888d5442fb35a8ec667282c66bef16f6185500",
+    "runs/20261121-222033_E122-A1/families/family_0108.npz": "7ac39ac8e4cd1349a0794fb734fb89e4b87c76aadf9508f62fc20609f2629984",
+    "runs/20261121-222033_E122-A1/families/family_0109.npz": "7623c185dbdaa6de7fff468d9466a13f0f8d7e22ff6e9dcc5978e80a5090a726",
+    "runs/20261121-222033_E122-A1/families/family_0110.npz": "e974b2cfcac86f70800ab240bf669d2ae9fce92408d2b2bd669729a5610a6203",
+    "runs/20261121-222033_E122-A1/families/family_0111.npz": "e5282057fd9b68ed3ee53179c70db82d538db1f06afc747ad6cba81a3112c762",
+    "runs/20261121-222033_E122-A1/families/family_0112.npz": "fd75568421fe5ef46ddf4ccc8238b82bf2c677a54e26953daee76d3ba26b7fc3",
+    "runs/20261121-222033_E122-A1/families/family_0113.npz": "2899baeac5cf6883d30f302d868160d5c4fb46cfa25b4b2119eb18e68ada4293",
+    "runs/20261121-222033_E122-A1/families/family_0114.npz": "d2c6224c426a0afd7d53e92f97e5d1a257b97d781df88d3e0036757c69bb0728",
+    "runs/20261121-222033_E122-A1/families/family_0115.npz": "a76eabdd9032669a593a1f78b529f68f7e325f01e338dd8fe33eb768bd4893ba",
+    "runs/20261121-222033_E122-A1/families/family_0116.npz": "760c2496d0af274a37707c045555cc6e102918a4602736b078085b843b0d624b",
+    "runs/20261121-222033_E122-A1/families/family_0117.npz": "8b0db77a221ddff73f79e02c0cf0e3fcd5c92823e3d2e862615e5ab168d06dc3",
+    "runs/20261121-222033_E122-A1/families/family_0118.npz": "498b919a3d221a16933c8cc7c1d20f8c97a27aec78e25fe8cbb67d0116647dc9",
+    "runs/20261121-222033_E122-A1/families/family_0119.npz": "c4e071a128b19631a9f3051211d6149fc4e394cf9e6d422b26e99d2320cd617b",
+    "runs/20261121-222033_E122-A1/families/family_0120.npz": "38b7a310b4bde8bef147d5aee9354174a990da522403cff27825a50740eb56d2",
+    "runs/20261121-222033_E122-A1/families/family_0121.npz": "f0fe921512afc7c2e6381c62a4ef2f9cd5ccba090748d4ccbc947b8e4dfb69c8",
+    "runs/20261121-222033_E122-A1/families/family_0122.npz": "d162fca987047e21b827afd9df26b84f7f92b5795c504be525f17c6fe166da8c",
+    "runs/20261121-222033_E122-A1/families/family_0123.npz": "0f3245bdabb8d11d4e948dedfb458b9ac3282d17ea34e6851c7ba76672207e23",
+    "runs/20261121-222033_E122-A1/families/family_0124.npz": "a8ccde2464a7d0c42f297e0d5bd50a91c035e0bc5c1f270ae40e57657eea53e1",
+    "runs/20261121-222033_E122-A1/families/family_0125.npz": "9a08318d707966b5d59b9ef08659bc2726e443b0cc4007502cfdbf97e48219a6",
+    "runs/20261121-222033_E122-A1/families/family_0126.npz": "12cc10edb595bd60f670372504aa78c7d687f299820edfbf977eb33da2841f15",
+    "runs/20261121-222033_E122-A1/families/family_0127.npz": "b6ddad8443d2bc836a23229b15bb353a2171390519d9777561cf27a852473bfc",
+    "runs/20261121-222537_E122-A2/config.json": "2f04fc5f72a647209baa06465fa8ace2e6cca9c24229a9554aa867b7fd003b8c",
+    "runs/20261112-102755_E103-A-blank-s2/genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261121-222537_E122-A2/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261121-222537_E122-A2/teacher_genome.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261121-222537_E122-A2/summary.json": "4318ffdd8e98a7b8eb2dc5ac63f6ba44a16966757173a0b14ec72e01c14117c0",
+    "runs/20261121-222537_E122-A2/metrics.jsonl": "4d4f803421e304f884a66897654e8ec03b98561684824df07b9404a7127c8680",
+    "runs/20261121-222537_E122-A2/genome_trajectory.npy": "2e379828d34c8a923e5cf22dc0e74f52517a93563a3047073ecad69076b11267",
+    "runs/20261121-222537_E122-A2/generations/attempt_0000.npz": "d25db61b912c4662c94ffe186a9572ffe63df4db0914166e0d2cdcf4c7a5cf79",
+    "runs/20261121-222537_E122-A2/generations/attempt_0001.npz": "b4b0d5411cae441b417ed2a23d63f6efeb9c13d3564c0cfbdbdadc8d0746a562",
+    "runs/20261121-222537_E122-A2/generations/samples_0001.npz": "d2c5345495e0d1c6406e39c076d79841a8ead2b54408e8453275479e4f176c2b",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0001.npz": "53b6e9fa1594b8e0addf866b0ce4d03c30447f014753d42872dc2d954d075e6b",
+    "runs/20261121-222537_E122-A2/generations/attempt_0002.npz": "ff7e23df37bfb5749cbf3677077d74328f9941bf88522468e523f835036a02b2",
+    "runs/20261121-222537_E122-A2/generations/samples_0002.npz": "5bc76b1310558d886706e65178553ed2f9232634daa7ed44963221ac3b4bacb1",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0002.npz": "3d6a21493913077ddc8467f97f387c495be1a23fb8fb649d8380a3a012bed776",
+    "runs/20261121-222537_E122-A2/generations/attempt_0003.npz": "e28c409598a676b90abb664b2d5336c8d0b8b3effd781219ed21df67acf5f10e",
+    "runs/20261121-222537_E122-A2/generations/samples_0003.npz": "2023f738de6ffb8c7de5e2d2d624f43b52ae71127bf60cf0088d5e2bf8508697",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0003.npz": "abfac2691ceaa88f7b8d9f7903ecdeb2b90452e08f8f76ee89ceb53ab751364c",
+    "runs/20261121-222537_E122-A2/generations/attempt_0004.npz": "163072bcf314be91fad56590fdb1f86dfc422ee29f344627c15a27917c432cff",
+    "runs/20261121-222537_E122-A2/generations/samples_0004.npz": "05ae84a10cde57badc9fe28576ed62654766c99f45b1d25a35c839d8a6cd47da",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0004.npz": "fccc1f3202ff7f6472662c924baf9cbee59b6e08c7b18fd2083ff7203b2149ed",
+    "runs/20261121-222537_E122-A2/generations/attempt_0005.npz": "63f2a8cceb8160eaf601dba97e1306d5fb74df72114f9fc5f6d843b80c40d5be",
+    "runs/20261121-222537_E122-A2/generations/samples_0005.npz": "a53bb35ae09b4e1516c66cf4d0d734ea5364d7119336563e300715d9b4abe3ba",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0005.npz": "c83e67caa5516e2a5887d4a4f76da90ca767a22f16a40b454d5afac1671a9f2c",
+    "runs/20261121-222537_E122-A2/generations/attempt_0006.npz": "b87d10618c51250c7bfc8a30ad9f4624cc302629d451752bcb4bc2220c7c10e8",
+    "runs/20261121-222537_E122-A2/generations/samples_0006.npz": "32ef1ca6a7bf8543d0aa0fffccc3f7e005529f56fc2b52500903e3727e1998ea",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0006.npz": "ee664f46a02641ab9a85b3dda36fd2c25986c0657dcd26542fc866d233b2a194",
+    "runs/20261121-222537_E122-A2/generations/attempt_0007.npz": "2114d98b1e0f8c30b460e6d734efe34172de1ec7fcf72a93e842bbb0b4f9b041",
+    "runs/20261121-222537_E122-A2/generations/samples_0007.npz": "216c52dad9780f13edeedc6c2e34c94e2cbef7099bb5796d2887f4172a63f400",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0007.npz": "87291b55a0db3cff236ed204933f7e8e8e80bafa81b5db8e03e943a8ed8d5eea",
+    "runs/20261121-222537_E122-A2/generations/attempt_0008.npz": "1e657bbf1a026f1ca3cf2364817b69098d656c07049adf608d2d610d68fc6f5d",
+    "runs/20261121-222537_E122-A2/generations/samples_0008.npz": "639b420e144eb7deed457fb716d5755a1dadecd0d69068641ce3914f24922e7e",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0008.npz": "42bf8b5bd18902ab9ee66db06592272ce7b9fbda106249a101a22b3df06b1333",
+    "runs/20261121-222537_E122-A2/generations/attempt_0009.npz": "a7efd02b95f63c8a0a8f6b863f4bbc4c3616ec887b4ae7cfc54ffe7f67f89ee4",
+    "runs/20261121-222537_E122-A2/generations/samples_0009.npz": "c17f290539d8dc2434551665c885219f27e1cac20558878feaf3fb37cc1d4b2d",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0009.npz": "428152f7d99c1a61aa45cbd748b8d73c16ff25c51390fc2023e49012e225cb95",
+    "runs/20261121-222537_E122-A2/generations/attempt_0010.npz": "8ab5f2d61324bf8b81f10da9425ad3ec6cef05253262f36487c6fb1f52f9d6b1",
+    "runs/20261121-222537_E122-A2/generations/samples_0010.npz": "2f39f0325eabc7ba682bcc355afb56f3ac11c649eeb85e145b5917db293d34e8",
+    "runs/20261121-222537_E122-A2/teachers/teacher_0010.npz": "3da30a51ca08cf6fca6bae91f2ee972fc35250f934cb5eda8e406703454f9609",
+    "runs/20261121-222537_E122-A2/genome_final.npy": "7fafa8d43239bd0fca4ffe1205b8e0ec2daa95b2517a335b967a37f095474b5d",
+    "runs/20261121-222537_E122-A2/evaluation.jsonl": "38f89f44b97cca5300a4ac57dcb8cdccdaca81b5c3234b17119bfe2fbe6a5c19",
+    "runs/20261121-222537_E122-A2/families/family_0000.npz": "a09957e47cb6b2c93e722a0a4a44aa4dfc80a6789fd0cc02da3175eae046bbb9",
+    "runs/20261121-222537_E122-A2/families/family_0001.npz": "a939f2c301f124adcc4d68f942c484dee3f03ee48f7d35bcd6722c553a12c02e",
+    "runs/20261121-222537_E122-A2/families/family_0002.npz": "61cc38047afc1ad11944503760807fe9cd8d186c9d670bebde0d101bf9952c45",
+    "runs/20261121-222537_E122-A2/families/family_0003.npz": "50cc5d12a8c110d0859e1fd79d233f0ab5cbe410f2857565ea3488c2725c860c",
+    "runs/20261121-222537_E122-A2/families/family_0004.npz": "e08b9bc29a1e6498d710fb1d27f778dec424e59bec9e5f506df94c845133818f",
+    "runs/20261121-222537_E122-A2/families/family_0005.npz": "0106bb700cdd6d83a5f7d39e797e4118e70f79fc380d7e9a7b8e30d275674750",
+    "runs/20261121-222537_E122-A2/families/family_0006.npz": "d9fbb97b7013e94edb07548545b17ba0eb39ed7fd6be62455cb995b6ba505c8a",
+    "runs/20261121-222537_E122-A2/families/family_0007.npz": "f2dd8cb0a5cb06518ad9fb8e2e5268617aee892a81ffd2169f8ae7a7e9c3ba4f",
+    "runs/20261121-222537_E122-A2/families/family_0008.npz": "d2d1061b5dc0f5574a43d38db0116bedc9458e063e969a7cc0d91c65955d6bb2",
+    "runs/20261121-222537_E122-A2/families/family_0009.npz": "82ef38b2172e20a548d58f8e669bc0141bd625f519ef089bbe3a44122616df18",
+    "runs/20261121-222537_E122-A2/families/family_0010.npz": "28f4ec05c1f6f13b86e7ba1d2e8757b6f5aa946b6494dc95264e9d113fbe0aa4",
+    "runs/20261121-222537_E122-A2/families/family_0011.npz": "aa832c63152e8a4d66a7bb119dc384ae0c0ab657dcc94c3fdae65322b08458e8",
+    "runs/20261121-222537_E122-A2/families/family_0012.npz": "c2922de766e6d37d00e2ef02331e137fd14276d07937e35b1211ee1b338a3fa4",
+    "runs/20261121-222537_E122-A2/families/family_0013.npz": "b819fe01d702d3d82fe7ba749d37914376f5acfd9f7bb23f8bbc23692c9878c7",
+    "runs/20261121-222537_E122-A2/families/family_0014.npz": "41d788a27c66068c42997923c5cb0aef054a78d273d01a6aee0c5f7cb60cfcc0",
+    "runs/20261121-222537_E122-A2/families/family_0015.npz": "cd8d5e4c0c7191d61cf4c8fd028df04322ec1867a5bdc955b6e3c3f3dbb9d970",
+    "runs/20261121-222537_E122-A2/families/family_0016.npz": "07a4fa6623bbeede99f7a2e6bc56726bc9549568f743517acbfe69f09b72b3a3",
+    "runs/20261121-222537_E122-A2/families/family_0017.npz": "60afdc8210da10a7bee3598ebc47f4f3166f37c7f889136c04e589cc1cd4289c",
+    "runs/20261121-222537_E122-A2/families/family_0018.npz": "a2d4a7fbeebdf5d6ba84518ef642b7cfc89d3bc0653302cbc31ac86e9e5d0f3f",
+    "runs/20261121-222537_E122-A2/families/family_0019.npz": "5548107c24db5d44ff531dcdb12afdf7069bc82a58eaf62006bb77dd702ae10c",
+    "runs/20261121-222537_E122-A2/families/family_0020.npz": "b6ec5751db9c5371d09be2fe587a5649a58fc10461ad8000fb8aa8ead117cb3d",
+    "runs/20261121-222537_E122-A2/families/family_0021.npz": "eb7ca55a97115588a6352c0fd33fc7d23d07c60942194c680dc57d2ee4e9b2cf",
+    "runs/20261121-222537_E122-A2/families/family_0022.npz": "98d1fb2dde0f4c1721f25fae07de89c65f53a199b99e30aa88d37babe898b346",
+    "runs/20261121-222537_E122-A2/families/family_0023.npz": "7c60b5e03a52924810a9b8f8adb4ca1f72e04960f41feba1a61142dc33eac123",
+    "runs/20261121-222537_E122-A2/families/family_0024.npz": "c173599c32e0762d39d2e8d45c6d02879d68323ecd200cfdce825a18973381b1",
+    "runs/20261121-222537_E122-A2/families/family_0025.npz": "3e22e745f0611b8ba142a910c2bd7af7e2c06ee1bcc6daca5b4fbd53e0405d8e",
+    "runs/20261121-222537_E122-A2/families/family_0026.npz": "6a496c00e0a83530f9b240a52396d6b75bf034780d988af363577d378155a7ef",
+    "runs/20261121-222537_E122-A2/families/family_0027.npz": "0fdf77a7807fbd59ecde5712f6cde53151d4060e016d4144db1311d7e6602c1a",
+    "runs/20261121-222537_E122-A2/families/family_0028.npz": "05389c0f2efe105eb2f6deaa08b4aab8a5aa7b22b808b6374f88fbce6a237322",
+    "runs/20261121-222537_E122-A2/families/family_0029.npz": "567a0a4b1f6d5bb098e8b263ca307b430f28e2caf9bcda908c956975cc0241e7",
+    "runs/20261121-222537_E122-A2/families/family_0030.npz": "2e7b129e59f5a0ac9fa646f05e6e947ea1aa2ccb27d99ee345e90f2b78612da0",
+    "runs/20261121-222537_E122-A2/families/family_0031.npz": "c1966bbb5d2b9c51cae053d0e19c4e8792e91cfbb46a6132b082e666a6daf5fb",
+    "runs/20261121-222537_E122-A2/families/family_0032.npz": "1466444f430a1c0b1dce9b94397604ccb7a6d8a70f5017080cab220e1fcd3701",
+    "runs/20261121-222537_E122-A2/families/family_0033.npz": "38b991d7afc374e6151b74f1273888881a1c6b5834ae1c8748ed84f8defc18ea",
+    "runs/20261121-222537_E122-A2/families/family_0034.npz": "4710560d96a0910ff1f649dd8aadf27efe9e74448557491115a482e9eca05ebe",
+    "runs/20261121-222537_E122-A2/families/family_0035.npz": "0d744e537538849363e0bb57947697bbdda3b203cada267053265e5d361f2f1c",
+    "runs/20261121-222537_E122-A2/families/family_0036.npz": "cb6c4476de0d7d918164dd4c4f3770312c0206d397cf3c00b96c42bf3b89cc2f",
+    "runs/20261121-222537_E122-A2/families/family_0037.npz": "3dc22d9d78f1fe01993af25556b9dd92b8ecd42f6e90ef3387ac7692da47b7d2",
+    "runs/20261121-222537_E122-A2/families/family_0038.npz": "0660a8744678a27cc4f38875df131ad1a371ad319ee8c386bbf6b4dfe82194ea",
+    "runs/20261121-222537_E122-A2/families/family_0039.npz": "32dc5c2298d8d135f718ee96a9540550f9abe18c30ff02c4f9d67acb2da6a8b0",
+    "runs/20261121-222537_E122-A2/families/family_0040.npz": "b3dd34902383454ec2814b3be26e661ff9fb47061ea1ea81d30d31f653731bd9",
+    "runs/20261121-222537_E122-A2/families/family_0041.npz": "aaf5dd010bbcf80d2085a5cfc491f06b2027eea49f8a34951bdea8dec058783b",
+    "runs/20261121-222537_E122-A2/families/family_0042.npz": "69229f1b7fd796b3ffa84fa943162f251b04cb146e446cc9b69207b784067a2a",
+    "runs/20261121-222537_E122-A2/families/family_0043.npz": "020cbc1d3ef0de664abea52dee798994b9e1aeaea48d397eb8d136127806520d",
+    "runs/20261121-222537_E122-A2/families/family_0044.npz": "1220d9e8976ddc608c8e525c2031de7008bdc478f82617cd0e1a133fd0581b48",
+    "runs/20261121-222537_E122-A2/families/family_0045.npz": "da9585c360ccca1cac172c8a88c2e85c22333baa86e574f439de80e6372d47c2",
+    "runs/20261121-222537_E122-A2/families/family_0046.npz": "9555942c21f942ce7d82c3fb4d502aba3951b943efd5902b3beff9668c999f60",
+    "runs/20261121-222537_E122-A2/families/family_0047.npz": "afe9034d7fabf3e1288785a437438f4a1b90fcba71861fe1770031e7adba0231",
+    "runs/20261121-222537_E122-A2/families/family_0048.npz": "ee066353e194ead9eaa0fcef477b1e052b87b234be08c19a09f2b12182f52378",
+    "runs/20261121-222537_E122-A2/families/family_0049.npz": "3c801c40d702d41b61f0673f0afe91eeb857fe35241372ce4616930d3fb0ab3d",
+    "runs/20261121-222537_E122-A2/families/family_0050.npz": "97a0053080bf0cc5ef9312fb5528673a2b4e01364ffb7aa7f100099e59fdbad5",
+    "runs/20261121-222537_E122-A2/families/family_0051.npz": "cc81fd5c228cb46e7f3d3ed75910b8f388bc9a71d77adb1341ae4fc6fd42c2b2",
+    "runs/20261121-222537_E122-A2/families/family_0052.npz": "42b1b900d899c623206594fd9f2c82775af9f736a66ff80be635b52d640fee46",
+    "runs/20261121-222537_E122-A2/families/family_0053.npz": "ef8e760e308ab6669cc3fb423e3ed30b4db94b98ce69abb7e720892856b8914b",
+    "runs/20261121-222537_E122-A2/families/family_0054.npz": "ff09e0c1531c81c91fa274b43d5908859c0c7486d4bd15c0602e25d02758377e",
+    "runs/20261121-222537_E122-A2/families/family_0055.npz": "18be1c7c67d178663b570f9c0ab771fcb168883c01e4eac1a7df1636a400cf26",
+    "runs/20261121-222537_E122-A2/families/family_0056.npz": "f3d2e225d98bc1c42a9654d000013ebc60c5144f24ae4bf6e619d49aa070b222",
+    "runs/20261121-222537_E122-A2/families/family_0057.npz": "2d64ce394c573414f696f276b9803bfffc6a6381e9381ce26fbfa08e28f9d443",
+    "runs/20261121-222537_E122-A2/families/family_0058.npz": "009a3abb087dc9ea10937660965604eb99324cd8dee16f8b58ecf7a9c2a2c058",
+    "runs/20261121-222537_E122-A2/families/family_0059.npz": "29bee5be142ecabb8a8ccb8a51f5bd5942a43ac4fe0f4bc0353194c49bad7473",
+    "runs/20261121-222537_E122-A2/families/family_0060.npz": "c1437764ea2c40b93cbb4d5283585e101b278115eee39b300b739c550c4fed71",
+    "runs/20261121-222537_E122-A2/families/family_0061.npz": "391145ef31b45884819d866e9b8150c3a4633dbb33807aca1bfaee6def9ab69d",
+    "runs/20261121-222537_E122-A2/families/family_0062.npz": "2303970c9e8ea174a656753f21336dd7b2161e89cb4fbf49ea5e34687f6cd26d",
+    "runs/20261121-222537_E122-A2/families/family_0063.npz": "88ecad638e6e79ce87de7b3006d864420b39a2b4277ef105f4ec9a84647e66e4",
+    "runs/20261121-222537_E122-A2/families/family_0064.npz": "44cffbc4f6e056ab7c171aa4c95fbf9c77fbb326f527e27a330aadc5b7454149",
+    "runs/20261121-222537_E122-A2/families/family_0065.npz": "7736de8f98a79debffd06bc0c6d0f12be87e1c20d1493c66c05c1bd0b6c7d6a1",
+    "runs/20261121-222537_E122-A2/families/family_0066.npz": "bc423c05b4c53480898eefd8e4b1a775a8f240617e38caa8132541201d0e931f",
+    "runs/20261121-222537_E122-A2/families/family_0067.npz": "fed9209af9222a7f67101c723bb241ae8e4043f9016de6aa9da4cbec0ed6b526",
+    "runs/20261121-222537_E122-A2/families/family_0068.npz": "cc58acc108a7dc547e136ca41a3c2a9a5c702c1efe24d20b2e018d5184ac0b0c",
+    "runs/20261121-222537_E122-A2/families/family_0069.npz": "65ff70a5f41908bf8e3a15f17bdcd579b36402963ca617db7fc87b81e5958cc7",
+    "runs/20261121-222537_E122-A2/families/family_0070.npz": "6966437830b2edd4af4b5c9d1767d406d06dcbb3ec72f0a9c92ccb646c33ec62",
+    "runs/20261121-222537_E122-A2/families/family_0071.npz": "d57dcafafedcd66227ee8255e48fdb6e699736a29f423a6b3c282be50fa3ae5c",
+    "runs/20261121-222537_E122-A2/families/family_0072.npz": "724a3fa31b8bc38dc65d01186bc06ff1f89752ebece8e325b77ba2a5bfbaacf0",
+    "runs/20261121-222537_E122-A2/families/family_0073.npz": "599e164193856c920b47baa96bdcb1b36d3bb6e67d20dc9a7a04d3c544e31909",
+    "runs/20261121-222537_E122-A2/families/family_0074.npz": "21cf301f71f114369eaad80cbe26186ebf5e1c9e17620935693853eb3c6347b9",
+    "runs/20261121-222537_E122-A2/families/family_0075.npz": "0788533b55ea04db1f19e969a248160d80bcb323f80de0a64dac29f1f3c25c33",
+    "runs/20261121-222537_E122-A2/families/family_0076.npz": "ca8b4fe828fdf4fe7a1b65a3afbf2bdafddb319e3975e0f482228063ebcee748",
+    "runs/20261121-222537_E122-A2/families/family_0077.npz": "93e40546c192a96ed7b483b9f5bc5e99922218a7ea3ee9f6950610a085dbd0e5",
+    "runs/20261121-222537_E122-A2/families/family_0078.npz": "2f725d52706e8e8f3d76a0dd9d443ef941eb4c9c2517308f933fd09738654b94",
+    "runs/20261121-222537_E122-A2/families/family_0079.npz": "12241233941e875033f853f006a040d255ca3651fef9b3d9f18dc189bef54b63",
+    "runs/20261121-222537_E122-A2/families/family_0080.npz": "9ebc5a82556cde07ae097a4486535b0a46968a8b075303561796039e82e7e79c",
+    "runs/20261121-222537_E122-A2/families/family_0081.npz": "780eb3427077b5021b13ee035bbb37f45de77fa5ba0a3f35b46798e35d3e2df8",
+    "runs/20261121-222537_E122-A2/families/family_0082.npz": "5a441d9ba145fb4b69a09a2aa8625fc71e0c479d63a170529d11f3aeaabb1924",
+    "runs/20261121-222537_E122-A2/families/family_0083.npz": "4d890f0e8629c666a59f269766727c265ce46b9e863d164fd15c014feaa5be1c",
+    "runs/20261121-222537_E122-A2/families/family_0084.npz": "e9c0b93eb6b14d084afa4f6f15cbd24a021771caf11e2cf3afa2a340a9ea47e8",
+    "runs/20261121-222537_E122-A2/families/family_0085.npz": "068cbe826a909420caa550827b7463dfa812046b6a992a37b0391ad71ffdbec3",
+    "runs/20261121-222537_E122-A2/families/family_0086.npz": "43a3d7039054b9976b5362bb440dc6724881ad8069f8aca158b1edbfa9f04d5f",
+    "runs/20261121-222537_E122-A2/families/family_0087.npz": "99f09e584009e92d86150ceece16a9625fcfda36fb6041b063b2f221fe0d54fa",
+    "runs/20261121-222537_E122-A2/families/family_0088.npz": "90991404f3fd9fdb004364d0fc45c7707d4ff9096c35cd0746a6a0ff0174c07f",
+    "runs/20261121-222537_E122-A2/families/family_0089.npz": "66e94002c5be07102f409411809fa2b5d924bf82d112a87313fccfbff39931ef",
+    "runs/20261121-222537_E122-A2/families/family_0090.npz": "8b4745a8ad44a1b837e84fb6dca9e6ff27c0e44c7cd0cf362d3a460ad8df6940",
+    "runs/20261121-222537_E122-A2/families/family_0091.npz": "9ba466af4c433b183ab17a79b536483a4576ba0c07f64c2b7c08b5432b27b1bc",
+    "runs/20261121-222537_E122-A2/families/family_0092.npz": "59e3f596361e4e9d80d9da59e18c9718de790cbe499b6d9aa021b8269668a06e",
+    "runs/20261121-222537_E122-A2/families/family_0093.npz": "c621c50fc00e8dbcfc97ca81564a4145a21ba02986a0cd442f140e0e54c47d00",
+    "runs/20261121-222537_E122-A2/families/family_0094.npz": "e10dfe7df9f93ab32389f29b2d130e0085f5fb819d864830a4c160b2f1785492",
+    "runs/20261121-222537_E122-A2/families/family_0095.npz": "34b1b1984a10b14804ff11a37c91f50db43ff9ea9a613f21ad54601d2029984a",
+    "runs/20261121-222537_E122-A2/families/family_0096.npz": "fc5013df2ec7f1a275be874b55c93880aaccf2a42895d7ca955c245162ce0fb4",
+    "runs/20261121-222537_E122-A2/families/family_0097.npz": "c54034a5d5efadc6758a20418d75765db70ea6408a40dd56ef1fd62ea2f13a90",
+    "runs/20261121-222537_E122-A2/families/family_0098.npz": "f4f1e7cc8b7ee4f2773137ae9ef1a731a34a8edc8a5e7372247320edf0cca402",
+    "runs/20261121-222537_E122-A2/families/family_0099.npz": "9be5b04a3ac76f1c73bbbe16ee54557deee248c4b1bf7ba62f6f9ea4179e6d2b",
+    "runs/20261121-222537_E122-A2/families/family_0100.npz": "8063631da7addc741f6f4c459dc72f6972fc3a7b17a4aaaacab2d57a87dda674",
+    "runs/20261121-222537_E122-A2/families/family_0101.npz": "4a439ccf6e604fe027d3823f6f42c679286f182b23124a1c725f23171eb94531",
+    "runs/20261121-222537_E122-A2/families/family_0102.npz": "6baeadfffaf444532fb8809c38f064e613a24898e2544de73afd1934ba398c73",
+    "runs/20261121-222537_E122-A2/families/family_0103.npz": "119a8f4294ff2850139c8c3948a31843d0be3afc07081eb7b091684181abb852",
+    "runs/20261121-222537_E122-A2/families/family_0104.npz": "11c2377727a40c40b9f74baf6838f21b5e183f952e6cea1bd653eda7d9178d44",
+    "runs/20261121-222537_E122-A2/families/family_0105.npz": "f64f21baa10edb51d6938166178b3c76057c3ec09b3565a704a6f69ff2f92ed6",
+    "runs/20261121-222537_E122-A2/families/family_0106.npz": "fa6ed229f6d83e1c480400742e25c99cd06686571826fa47267c18fb49f48eac",
+    "runs/20261121-222537_E122-A2/families/family_0107.npz": "cf116ea51bafe365039b25e40b8eac3ac883ca028efdab203d6aa4f466f83d7b",
+    "runs/20261121-222537_E122-A2/families/family_0108.npz": "e5e4e1cbefac4d4be4b15cb75b26d5969c81fce41ebb576b145b6116f5f0bae0",
+    "runs/20261121-222537_E122-A2/families/family_0109.npz": "856701062c1c7e8aa1e4f8d5f43ed0a2bfb7e2bad63496c73bfaec66294c84b6",
+    "runs/20261121-222537_E122-A2/families/family_0110.npz": "4843cdd102adc24299088ec37559326d3f09055c1c743c31e0857f6ebe40d15f",
+    "runs/20261121-222537_E122-A2/families/family_0111.npz": "1e1a2d76f59970d8f98c00c60c2273bec4f9d14f9db00415d54990db604d293e",
+    "runs/20261121-222537_E122-A2/families/family_0112.npz": "7abb0cb402716af72ca4a400491a7bb950fad4836b48fd4e3e80b9c711836753",
+    "runs/20261121-222537_E122-A2/families/family_0113.npz": "2bcacf4c1f54c29b86a8aff53cf4ca20894276fc14d0e3d57b0e3a379536acd7",
+    "runs/20261121-222537_E122-A2/families/family_0114.npz": "50f7e750d4d4ee6a0860d4bc1d116dd7b44e5a6ba9098040e97f14cd27e0b33a",
+    "runs/20261121-222537_E122-A2/families/family_0115.npz": "ba1f7967bbb2f930cc154825f6a08d2896efd8366d2b972814e3614508908311",
+    "runs/20261121-222537_E122-A2/families/family_0116.npz": "ba6a79c3676dcdca66035fdd875a300c03851bad9ac6709825f84b30f81449ee",
+    "runs/20261121-222537_E122-A2/families/family_0117.npz": "b66e469dcd8f7b6c80a8d76fefc196efcdf53505f40ee957551055ac83be633e",
+    "runs/20261121-222537_E122-A2/families/family_0118.npz": "b5f50a8438f848bd759ae7b70afda54dbc179402420542b7b9e1724a1a4e643c",
+    "runs/20261121-222537_E122-A2/families/family_0119.npz": "5847f1acdcec2ba9035d87693120370a92d982c42af77e1b1d39a0dd885d04d3",
+    "runs/20261121-222537_E122-A2/families/family_0120.npz": "05d0b08b6dbf689d431c0269b17724d2d6d27620acb90737ff664e9b067dfa40",
+    "runs/20261121-222537_E122-A2/families/family_0121.npz": "6dbb8c080d311ec7f7e4b2a490d852e564ea02a31e23aeaadedfa9000f17c628",
+    "runs/20261121-222537_E122-A2/families/family_0122.npz": "1113095191ac3d26fc1aa0a71a338b635e1085500fe26d28be7c731a472e3c48",
+    "runs/20261121-222537_E122-A2/families/family_0123.npz": "b13af2fa2ee7692be3f5777779952a90e2d16a641d1c3ecf77f8a85b7d637de7",
+    "runs/20261121-222537_E122-A2/families/family_0124.npz": "e51861005e512b6b4f206f20c30a0aae8b58c5031bba2e6f93693ee3568fd884",
+    "runs/20261121-222537_E122-A2/families/family_0125.npz": "5c2d832b81b65491f12c77117b8f158589738863c2ab674b6bf3261a970878d7",
+    "runs/20261121-222537_E122-A2/families/family_0126.npz": "c9774edc072a67de3ff99eb67069ea06aa0d75d00fe36c370164b3b9c232878c",
+    "runs/20261121-222537_E122-A2/families/family_0127.npz": "3aba5498259ac21840d65c1fbda38ddb563846d4a44e544146745856fdf5d387"
+  }
+}

@@ -197,11 +197,33 @@ The teachers made useful food choices, and watching changed newborns' own synapt
 
 Every film remains in the denominator. Ties and films without a vote receive half credit. The ± values are one family-level standard error, paired for the gains. All three tracking readers met the registered requirements for coverage, accuracy and advantages above two standard errors over chance and the color-reassigned control. [Independent film reconstruction and reader audit](results/diagnostics/E121-independent-audit.json) · [Full results](results/RESULTS.md)
 
-The item-only reader performed nearly as well. The camera follows the teacher, so scenery changes also reveal its route. Removing the teacher's visible body therefore leaves useful information in these films. The successful readers are hand-engineered analysis programs. The evolved newborns still failed E120's first solo-choice test despite this readable signal. E122 will test whether selection can produce observers that use it.
+The item-only reader performed nearly as well. The camera follows the teacher, so scenery changes also reveal its route. Removing the teacher's visible body therefore leaves useful information in these films. The successful readers are hand-engineered analysis programs. The evolved newborns still failed E120's first solo-choice test despite this readable signal. E122 tested whether selection could produce observers that use it.
+
+## Evolving observers to use a demonstration
+
+**E122 changed all 155 genome parameters in every selection round, but its held-out improvement gate failed in all three lineages.** Each original A0/A1/A2 observer completed ten rounds of evolution for its first solo food choice after watching. Candidate scores differed in every round, providing a selection signal. The teachers used the original genomes. The independent audit reconstructed all 30 genetic updates.
+
+Each final descendant and its own ancestral observer then faced the same 128 new demonstration-and-solo-world families. These first-food rates include every assigned newborn. The ± values are one family-level standard error, paired for the differences.
+
+| Lineage | Ancestral observer first food (%) | Evolved observer first food (%) | Gain over ancestor, percentage points |
+| --- | ---: | ---: | ---: |
+| A0 | 53.9 ± 4.4 | 49.2 ± 4.4 | −4.7 ± 4.7 |
+| A1 | 46.1 ± 4.4 | 53.1 ± 4.4 | +7.0 ± 4.3 |
+| A2 | 45.3 ± 4.4 | 51.6 ± 4.4 | +6.2 ± 5.8 |
+
+The evolved observer also faced the three movie controls. The table gives its intact-movie first-food rate minus each control, in percentage points ± one paired family standard error.
+
+| Lineage | Gain vs color-reassigned movie | Gain vs blank view | Gain vs scenery alone |
+| --- | ---: | ---: | ---: |
+| A0 | −1.6 ± 4.0 | +0.8 ± 5.0 | +1.6 ± 4.6 |
+| A1 | +0.8 ± 3.2 | +4.7 ± 5.2 | +7.0 ± 4.5 |
+| A2 | +7.0 ± 3.7 | +4.7 ± 5.2 | +3.1 ± 4.7 |
+
+The registered gate required gains above two paired standard errors over the ancestor and all three controls, together with the survival safeguard. A1 also failed that safeguard against the color-reassigned movie. Its survival was 99/128 after the intact movie and 108/128 after the control, a difference of **−7.0 ± 3.4 percentage points**. This ten-round budget produced genetic change without a verified improvement in using the demonstration. [Independent genetic-update and outcome audit](results/diagnostics/E122-independent-audit.json) · [Full results](results/RESULTS.md)
 
 ## Human-inspired research direction
 
-The next experiment, E122, will **evolve the original observer genomes for the first food choice they make alone after watching**. Its teachers use the original A0/A1/A2 genomes. Selection will act on the observers, with fresh films and solo worlds used to check their descendants. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+The next experiment, E123, will test an **engineered, calibrated value representing which color is food**. It will use that value together with currently visible items to guide an original observer's movements, and compare it with the same observer after that value is reset. This tests an explicit route from demonstrated information to action. If observational learning succeeds, a later experiment can test whether successive cohorts preserve and improve the behavior. These are proposed capabilities in a simulation. Human ancestry itself is a branching tree. [Research plan and study design](PLAN.md#human-inspired-research-direction--21-november-2026) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
 
 ## Try it locally
 

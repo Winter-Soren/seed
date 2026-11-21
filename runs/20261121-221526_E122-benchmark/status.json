@@ -1,0 +1,9 @@
+{
+  "status": "finished",
+  "attempted_rounds": 1,
+  "expected_attempts": 1,
+  "optimizer_updates": 1,
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 34.625
+}

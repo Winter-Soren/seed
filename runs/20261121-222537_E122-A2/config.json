@@ -1,0 +1,118 @@
+{
+  "protocol": "social-observer-train-v1",
+  "branch": "O",
+  "args": {
+    "name": "E122-A2",
+    "start": "file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+    "generations": 10,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026112803,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "social-observer-train-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "7e073fe0085d69c443a02d4645961e7587708a35",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A2",
+    "training_seed": 2,
+    "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+    "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+  },
+  "teacher_source": {
+    "label": "A2",
+    "training_seed": 2,
+    "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+    "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+  },
+  "condition_split": "final",
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": null,
+  "persistence": "off",
+  "plastic": true,
+  "controller": "rules-v0",
+  "genome_size": 155,
+  "seed": 2026112803,
+  "evaluation_seed": 2026112903,
+  "eval_worlds": 128,
+  "expected_families": 128,
+  "expected_attempts": 10,
+  "arms": [
+    "observed",
+    "yoked",
+    "no_demo",
+    "scene_only",
+    "starting_observed"
+  ],
+  "controls": [
+    "yoked",
+    "no_demo",
+    "scene_only",
+    "starting_observed"
+  ],
+  "practice_steps": 150,
+  "watch_steps": 150,
+  "solo_steps": 300,
+  "l2": 0.005,
+  "initial_optimizer": "zero moments and update counter",
+  "objective": "absolute observed first-food success over all assigned training families",
+  "selection": "endpoint after all registered attempted rounds",
+  "tie_rule": "average tied ranks; all-tied batch advances RNG and preserves mu, m, v and t",
+  "rule_assignment": "family index modulo 2",
+  "teacher": "fixed original genome for every attempted round",
+  "training_key_order": [
+    "teacher_world",
+    "teacher_birth",
+    "solo_world"
+  ],
+  "evaluation_key_order": [
+    "teacher_world",
+    "teacher_birth",
+    "solo_world",
+    "pupil_birth"
+  ],
+  "max_seconds": 3600,
+  "scientific_result": true,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

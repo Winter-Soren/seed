@@ -1,0 +1,268 @@
+{
+  "status": "finished",
+  "attempted_rounds": 1,
+  "expected_attempts": 1,
+  "optimizer_updates": 1,
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 34.625,
+  "protocol": "social-observer-train-v1",
+  "condition_split": "development",
+  "source_label": "A0",
+  "training_seed": 49,
+  "evaluation_seed": 50,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "attempts": [
+    {
+      "path": "generations/attempt_0000.npz",
+      "sha256": "cff4377be8076362e564e7137e0d46950fc16854801bb13b29dc8279df3eb1e3"
+    },
+    {
+      "path": "generations/attempt_0001.npz",
+      "sha256": "136020044eab0feed4524324eb42ece4271127228b92cf174b9151a8b333bc52"
+    }
+  ],
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "57b292ae3a17fb3edc5dc96b5ba342f6002981f759836ca0b66ce1e5c4802508"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "1cedc3ed82c6f39f3f65c812f9aa83ce215cb54ee287bf16bcea47c1671281e9"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "aaee4de70ca561354007ded3607eb4722d15a3f0a4a6d77e93c75793fe41d996"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "fdff96ae11659bab544f4267f1fb3479550b58dfdcf9be9f4fc431d0d75447d8"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "assigned_newborns": 4,
+    "arms": {
+      "observed": {
+        "first_food": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "survival": {
+          "mean": 1.0,
+          "se": 0.0
+        },
+        "fitness": {
+          "mean": 25.25,
+          "se": 2.3935677693908453
+        },
+        "first_food_count": 3,
+        "first_poison_count": 1,
+        "no_meal_count": 0,
+        "survivors": 4,
+        "changed_weights": {
+          "mean": 3231.25,
+          "se": 18.789957424113553
+        }
+      },
+      "yoked": {
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival": {
+          "mean": 1.0,
+          "se": 0.0
+        },
+        "fitness": {
+          "mean": 16.0,
+          "se": 3.6285901761795403
+        },
+        "first_food_count": 2,
+        "first_poison_count": 2,
+        "no_meal_count": 0,
+        "survivors": 4,
+        "changed_weights": {
+          "mean": 3231.25,
+          "se": 18.789957424113553
+        }
+      },
+      "no_demo": {
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "survival": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "fitness": {
+          "mean": 0.5,
+          "se": 1.3228756555322954
+        },
+        "first_food_count": 2,
+        "first_poison_count": 2,
+        "no_meal_count": 0,
+        "survivors": 2,
+        "changed_weights": {
+          "mean": 3231.25,
+          "se": 18.789957424113553
+        }
+      },
+      "scene_only": {
+        "first_food": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "survival": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "fitness": {
+          "mean": 9.0,
+          "se": 4.301162633521313
+        },
+        "first_food_count": 3,
+        "first_poison_count": 1,
+        "no_meal_count": 0,
+        "survivors": 3,
+        "changed_weights": {
+          "mean": 3231.25,
+          "se": 18.789957424113553
+        }
+      },
+      "starting_observed": {
+        "first_food": {
+          "mean": 0.75,
+          "se": 0.25
+        },
+        "survival": {
+          "mean": 1.0,
+          "se": 0.0
+        },
+        "fitness": {
+          "mean": 22.5,
+          "se": 6.7638746292343415
+        },
+        "first_food_count": 3,
+        "first_poison_count": 1,
+        "no_meal_count": 0,
+        "survivors": 4,
+        "changed_weights": {
+          "mean": 3214.5,
+          "se": 18.02544497832624
+        }
+      }
+    },
+    "contrasts": {
+      "yoked": {
+        "first_food_difference": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "no_demo": {
+        "first_food_difference": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "survival_difference": {
+          "mean": 0.5,
+          "se": 0.28867513459481287
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "scene_only": {
+        "first_food_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "survival_difference": {
+          "mean": 0.25,
+          "se": 0.25
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      },
+      "starting_observed": {
+        "first_food_difference": {
+          "mean": 0.0,
+          "se": 0.408248290463863
+        },
+        "survival_difference": {
+          "mean": 0.0,
+          "se": 0.0
+        },
+        "gate": {
+          "passed": false,
+          "first_food_passed": false,
+          "survival_passed": true
+        }
+      }
+    },
+    "teacher": {
+      "practice": {
+        "food": {
+          "mean": 14.75,
+          "se": 2.358495283014151
+        },
+        "poison": {
+          "mean": 4.75,
+          "se": 0.75
+        },
+        "accuracy": {
+          "mean": 0.7564102564102564,
+          "se": 0.016759913712136094
+        },
+        "encounters": 78
+      },
+      "demonstration": {
+        "food": {
+          "mean": 19.0,
+          "se": 1.35400640077266
+        },
+        "poison": {
+          "mean": 2.5,
+          "se": 0.5
+        },
+        "accuracy": {
+          "mean": 0.8837209302325582,
+          "se": 0.013401310647229709
+        },
+        "encounters": 86
+      },
+      "survival": {
+        "mean": 1.0,
+        "se": 0.0
+      },
+      "visible_frames": {
+        "mean": 150.0,
+        "se": 0.0
+      }
+    }
+  },
+  "changed_parameters": 155
+}

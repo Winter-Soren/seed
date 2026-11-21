@@ -92,6 +92,17 @@ The channel gate uses only the track reader's observed arm: coverage at least 0.
 | 20261121-220747_E121-A2 | final | track | 0.398438 ± 0.019497 | 0.429688 ± 0.045306 | 0.398438 ± 0.019497 | 0.398438 ± 0.019497 |
 | 20261121-220747_E121-A2 | final | scene | 0.378906 ± 0.022695 | 0.421875 ± 0.045205 | 0.378906 ± 0.022695 | 0.000000 ± 0.000000 |
 
+## Observer evolution with fixed teachers (social-observer-train-v1)
+
+E122 branch O attempts ten observer ES rounds from each original genome while its demonstrator stays fixed. Equal scores receive average ranks. All-tied rounds consume their worlds and advance the random stream while preserving genome, moments and optimizer-update count. The table reports informative updates separately from attempted rounds. Held-out gains are observed minus each comparator, in first-food probability with paired family standard errors. A lineage passes only if all four gains exceed two SE and every survival difference is at least minus two SE. All assigned families contribute, including no-meal outcomes. All three lineages must pass. Development and incomplete records have no scientific verdict.
+
+| Run | Status | Split | Attempted rounds | Informative updates | Families | Evolved observed ± SE | Original observed ± SE | Gain over yoked ± SE | Gain over no demo ± SE | Gain over scene only ± SE | Gain over original ± SE | Decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-221526_E122-benchmark | finished | development | 1/1 | 1 | 4/4 | 0.750000 ± 0.250000 | 0.750000 ± 0.250000 | 0.250000 ± 0.250000 | 0.250000 ± 0.250000 | 0.000000 ± 0.000000 | 0.000000 ± 0.408248 | not applicable | 7e073fe |
+| 20261121-221709_E122-A0 | finished | final | 10/10 | 10 | 128/128 | 0.492188 ± 0.044362 | 0.539062 ± 0.044232 | -0.015625 ± 0.039969 | 0.007812 ± 0.050216 | 0.015625 ± 0.045712 | -0.046875 ± 0.046875 | FAIL | 7e073fe |
+| 20261121-222033_E122-A1 | finished | final | 10/10 | 10 | 128/128 | 0.531250 ± 0.044281 | 0.460938 ± 0.044232 | 0.007812 ± 0.032331 | 0.046875 ± 0.051859 | 0.070312 ± 0.044622 | 0.070312 ± 0.043221 | FAIL | 7e073fe |
+| 20261121-222537_E122-A2 | finished | final | 10/10 | 10 | 128/128 | 0.515625 ± 0.044346 | 0.453125 ± 0.044172 | 0.070312 ± 0.037094 | 0.046875 ± 0.051859 | 0.031250 ± 0.046977 | 0.062500 ± 0.058431 | FAIL | 7e073fe |
+
 ## Observational learning and solo transfer (social-learning-v1)
 
 E120 tests one newborn per independent world family after 150 observation frames from an experienced teacher. Its solo test lasts 300 turns in a fresh world. The primary measure is first solo meal being food per assigned newborn; poison and no meal both count as zero. The observed movie is compared with yoked item colors, a time-matched blank movie and a scene-only movie. Each lineage must exceed every control by more than two paired family standard errors, with each all-assigned survival difference at least minus two SE. The table shows proportions and observed-minus-control differences. All three lineages must pass; development and incomplete attempts have no scientific verdict.

@@ -16,10 +16,12 @@ E120 gave newborns a movie of a practiced forager before they acted alone. Teach
 
 E121 showed a reader could infer the food color from the teacher's public movements in all three lineages. Accuracy was 84.4 ± 2.3%, 84.4 ± 2.5% and 89.8 ± 1.9%. Even the moving scenery retained much of the cue. The original newborns' difficulty is using the information available in these movies.
 
+E122 selected the observers for first-food success after watching. All ten rounds changed every genome parameter in each lineage. Descendants' gains over their own starting observers were −4.7 ± 4.7, +7.0 ± 4.3 and +6.3 ± 5.8 percentage points. Zero lineages passed.
+
 ## What is running
 
-E120 and E121 are complete. The next study selects each observer lineage for choosing food first after seeing the same kind of movies. Each teacher keeps its original genome. The laptop runs one job at a time. Publication remains on hold at the owner's request.
+E120–E122 are complete. The next study couples the teacher's publicly visible item choices to a two-color memory. A matched sibling receives the same movie and same acquired neural state, then has just that memory cleared. The laptop runs one job at a time. Publication remains on hold at the owner's request.
 
 ## What is next
 
-Benchmark the observer training, then run ten evolutionary rounds per lineage. Compare the final newborns with all three movie controls and their own original observer on new matched worlds. If training falls short, test a calibrated food-color memory with a control that erases just that memory before the newborn acts.
+Calibrate one scalar per original lineage on its own exploration outcomes. Freeze it before testing first food and survival on 128 fresh families. Compare against five controls, then decide whether to test transmission to another newborn cohort.
