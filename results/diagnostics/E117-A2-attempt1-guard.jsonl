@@ -1,0 +1,2 @@
+{"dailyUsedSeconds":7862.4793233,"expectedCommit":"95a254bcbe5c35c5f8ec343e056c579d562645ac","studyLimitSeconds":28800,"waiverScope":"Owner-approved A2 startup physical RAM only; all other safeguards unchanged","time":"2026-11-21T17:47:25.7600921+05:30","studyUsedSeconds":989.1543233,"mode":"A2","physicalStartupWaived":true,"event":"invoked","fullLimitSeconds":9900}
+{"processStarted":false,"event":"stopped","wallSeconds":22.7824817,"error":"Cannot verify hosted CI state","time":"2026-11-21T17:47:48.4953261+05:30"}
