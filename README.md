@@ -299,7 +299,14 @@ The unprepared birth-state comparison was separate: original plastic agents exce
 
 ## Human-inspired research direction
 
-**E126 tests whether selection in changing worlds is enough.** The original plastic architecture and a fixed-weight recurrent control each start from blank in three matched training seeds. Both completed the three-generation laptop benchmark. The first training block allows up to 50 of the planned 200 generations in each lineage, followed by a cost check. The comparison on fresh worlds opens only after all six reach generation 200. The capabilities under study belong to this simulation. Human ancestry itself is a branching tree. [Research plan](PLAN.md#human-inspired-research-direction--21-november-2026) · [Experiment registration and budget](experiments/LOG.md) · [Smithsonian Human Origins Program](https://humanorigins.si.edu/education/frequently-asked-questions)
+**E126 remains undecided.** We trained two kinds of controller from blank on the same changing worlds. One can change its connections during life. The other can retain information through recurrent activity while its weights stay fixed during life. Evolution changed the inherited genome in both designs.
+
+| Controller | Independent lineages | Generations completed per lineage | Inherited values that changed from the founder by generation 50 |
+| --- | ---: | ---: | ---: |
+| Plastic wiring and learning rules | 3 | 50 of 200 | 155 of 155 in each lineage |
+| Direct recurrent weights | 3 | 50 of 200 | 8,424 of 8,424 in each lineage |
+
+The independent audit reconstructed all 300 optimizer updates and checked 480 file hashes. Under the registered timing rule, completing the comparison on this laptop projects to **16 hours 53 minutes** against a **12-hour ceiling**. The plastic lineages also exceeded the projected time for a 50-generation segment. We stopped training and preserved all six checkpoints. The evaluation on fresh worlds remains sealed. The change in genome values establishes that selection updated the lineages. Whether the descendants recover better when food changes remains an open question. [Training audit](results/benchmarks/E126/prefix-audit-pass.json) · [Cost decision](results/benchmarks/E126/prefix-cost-decision.json) · [Registration and lab notes](experiments/LOG.md)
 
 ## Try it locally
 

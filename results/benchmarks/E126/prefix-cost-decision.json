@@ -1,0 +1,204 @@
+{
+  "study": "E126",
+  "block": "first-balanced-block",
+  "recordedAt": "2026-11-22T03:07:09.3426854+05:30",
+  "scienceRemainsUndecided": true,
+  "scientificSource": "df304221d920c5d1da20f67f7f1aa04d0845e317",
+  "trainingHead": "992719a86a1fa737d08072232ad53e362842ebc9",
+  "audit": {
+    "path": ".tmp\\E126-audit-training-all-attempt2.audit.json",
+    "sha256": "e275dd5a3a43be8f43a2435619cfd4b2ad8dbb19a669d730440d9a40d63bb915",
+    "status": "passed",
+    "guardResult": ".tmp\\E126-audit-training-all-attempt2.result.json",
+    "guardResultSha256": "fac3806a0c4a5bdcdb619bb2845cb90cb4f504c98e5baf8b2cbcf2f8d258de0d",
+    "checkerCommit": "33af6c8af17cd90ff1a2f8e6803647bf30fac426",
+    "scientificSource": "df304221d920c5d1da20f67f7f1aa04d0845e317"
+  },
+  "arms": [
+    {
+      "architecture": "direct",
+      "observations": [
+        {
+          "run": "runs/20261122-004945_E126-benchmark-direct",
+          "attempts": 3,
+          "coldSeconds": 16.687999999994645,
+          "warmMaximumSeconds": 7.405999999988126,
+          "residualGuardSeconds": 7.6719792000107105,
+          "guardSeconds": 38.4229792
+        },
+        {
+          "run": "runs/20261122-010213_E126-direct-s0-part001",
+          "attempts": 50,
+          "coldSeconds": 24.469000000011874,
+          "warmMaximumSeconds": 11.062999999994645,
+          "residualGuardSeconds": 12.017800800093823,
+          "guardSeconds": 454.4858008
+        },
+        {
+          "run": "runs/20261122-013955_E126-direct-s1-part001",
+          "attempts": 50,
+          "coldSeconds": 18.85899999999674,
+          "warmMaximumSeconds": 10.98499999998603,
+          "residualGuardSeconds": 9.54057240002237,
+          "guardSeconds": 443.5915724
+        },
+        {
+          "run": "runs/20261122-021920_E126-direct-s2-part001",
+          "attempts": 50,
+          "coldSeconds": 23.905999999988126,
+          "warmMaximumSeconds": 12.828999999997905,
+          "residualGuardSeconds": 15.436987100154113,
+          "guardSeconds": 371.8589871
+        }
+      ],
+      "coldMaximumSeconds": 24.469000000011874,
+      "warmMaximumSeconds": 12.828999999997905,
+      "residualMaximumSeconds": 15.436987100154113,
+      "bufferedWarmSeconds": 19.243499999996857,
+      "futureCapacityAttempts": 50,
+      "fiftyAttemptCapacityPass": true,
+      "fiftyAttemptSegmentSeconds": 982.8374871000119,
+      "futurePartsPerSeed": [
+        {
+          "attempts": 50,
+          "seconds": 982.8374871000119,
+          "secondsIncludingCloseoutMargin": 1102.837487100012
+        },
+        {
+          "attempts": 50,
+          "seconds": 982.8374871000119,
+          "secondsIncludingCloseoutMargin": 1102.837487100012
+        },
+        {
+          "attempts": 50,
+          "seconds": 982.8374871000119,
+          "secondsIncludingCloseoutMargin": 1102.837487100012
+        }
+      ],
+      "futureProcessCount": 9,
+      "futureSecondsPerSeed": 2948.5124613000357,
+      "futureSecondsAllThree": 8845.537383900108
+    },
+    {
+      "architecture": "plastic",
+      "observations": [
+        {
+          "run": "runs/20261122-004707_E126-benchmark-plastic",
+          "attempts": 3,
+          "coldSeconds": 50.10899999999674,
+          "warmMaximumSeconds": 37.21799999999348,
+          "residualGuardSeconds": 9.554072500018407,
+          "guardSeconds": 133.4280725
+        },
+        {
+          "run": "runs/20261122-011009_E126-plastic-s0-part001",
+          "attempts": 50,
+          "coldSeconds": 50.10899999999674,
+          "warmMaximumSeconds": 43.51600000000326,
+          "residualGuardSeconds": 9.42285499997729,
+          "guardSeconds": 1771.409855
+        },
+        {
+          "run": "runs/20261122-014745_E126-plastic-s1-part001",
+          "attempts": 50,
+          "coldSeconds": 63.09299999999348,
+          "warmMaximumSeconds": 59.312999999994645,
+          "residualGuardSeconds": 15.075962200032336,
+          "guardSeconds": 1873.4349622
+        },
+        {
+          "run": "runs/20261122-022550_E126-plastic-s2-part001",
+          "attempts": 50,
+          "coldSeconds": 53.875,
+          "warmMaximumSeconds": 50.235000000015134,
+          "residualGuardSeconds": 7.503974200105404,
+          "guardSeconds": 1778.5219742
+        }
+      ],
+      "coldMaximumSeconds": 63.09299999999348,
+      "warmMaximumSeconds": 59.312999999994645,
+      "residualMaximumSeconds": 15.075962200032336,
+      "bufferedWarmSeconds": 88.96949999999197,
+      "futureCapacityAttempts": 32,
+      "fiftyAttemptCapacityPass": false,
+      "fiftyAttemptSegmentSeconds": 4437.674462199632,
+      "futurePartsPerSeed": [
+        {
+          "attempts": 50,
+          "seconds": 4437.674462199632,
+          "secondsIncludingCloseoutMargin": 4557.674462199632
+        },
+        {
+          "attempts": 50,
+          "seconds": 4437.674462199632,
+          "secondsIncludingCloseoutMargin": 4557.674462199632
+        },
+        {
+          "attempts": 50,
+          "seconds": 4437.674462199632,
+          "secondsIncludingCloseoutMargin": 4557.674462199632
+        }
+      ],
+      "futureProcessCount": 9,
+      "futureSecondsPerSeed": 13313.023386598896,
+      "futureSecondsAllThree": 39939.07015979669
+    }
+  ],
+  "blockStartStudySeconds": 1579.2666371,
+  "chargedAdditionalBlockSeconds": 6836.039585400002,
+  "measuredAdditionalBlockSeconds": 6755.646854200002,
+  "untimedVerificationAllowanceSeconds": 80.3927312,
+  "blockCapSeconds": 10800.0,
+  "blockFits": true,
+  "cumulativeStudySeconds": 8415.306222500001,
+  "remainingStudySeconds": 34784.6937775,
+  "futureTrainingSeconds": 48784.607543696795,
+  "futureEvaluationReserveSeconds": 1800.0,
+  "futureVerificationReserveSeconds": 1800.0,
+  "projectedTotalStudySeconds": 60799.9137661968,
+  "hardStudyLimitSeconds": 43200.0,
+  "projectedExcessSeconds": 17599.913766196798,
+  "fiftyAttemptCapacityPassBothArms": false,
+  "capacityAndStudyFit": false,
+  "currentLocalDate": "2026-11-22",
+  "currentDayUsedSeconds": 8991.1843084,
+  "currentDayRemainingSeconds": 19808.8156916,
+  "projectedFutureFitsCurrentDay": false,
+  "prefixArtifactsBytes": 29336731.0,
+  "futureStorageReservationBytes": 3397245858.0,
+  "currentDFreeBytes": 48369008640,
+  "DFreeAfterReservationBytes": 44971762782.0,
+  "diskReservationFits": true,
+  "calculation": "Retain maximum cold, maximum warm and maximum guarded residual across the original benchmark and all three final first parts per architecture. Future training is exactly nine times the sum of maxCold+49*1.5*maxWarm+maxOverhead across both architectures. Capacity >=50 is required for both arms with120s closeout inside3000s. No shorter parts are substituted. Add charged study once and the unchanged3600s reserve.",
+  "decision": "No further production release is implied. Return this sole block reforecast to root for the committed decision.",
+  "accountingConfidence": {
+    "guardAndTimedVerification": "Actual monotonic wall seconds charged once",
+    "earlierUntimedVerification": "Conservative upper bounds from terminated-guard time to file-receipt completion, potentially including review/dispatch idle; not claimed as measured compute",
+    "upperBoundEvidence": ".tmp/E126-untimed-prefix-verification-bounds.json",
+    "currentLedgerSha256": "9a6587ff8eb7e995b18c8162a2b28661134c1a0b2c66d9105e2c9dd862751b8d"
+  },
+  "limitations": [
+    "Timing maxima are conservative scheduling inputs, not confidence intervals.",
+    "Continuation-specific overhead is not separately benchmarked; actual guards remain authoritative.",
+    "The storage allowance includes twofold variation for scaled remaining prefix artifacts plus2GiB unmeasured evaluation and1GiB scratch.",
+    "No heldout evaluations or rank-dependent scientific outcome comparisons were opened during this block.",
+    "Budget totals include a separately identified upper bound for four initially untimed file checks, which may overstate their actual compute."
+  ],
+  "reforecastCalculationBaselineStudySeconds": 8414.840883400002,
+  "reforecastTiming": {
+    "evidence": ".tmp\\E126-block1-reforecast-corrected-timing.json",
+    "sha256": "7bcc40693b3ff883e7f2425ba4581d2881780b3e3e40df4ab4954a4bde1bc785",
+    "measuredSeconds": 0.4653391
+  },
+  "reforecastCalculation": {
+    "evidence": ".tmp\\E126-block1-reforecast-corrected-calculation.json",
+    "sha256": "7a659686c1d9ba52e001dd10de054924b0def26f9b55bca61e9a78cac3d7cdde",
+    "note": "Same sole calculation with its measured execution charge added once to the final budget totals."
+  },
+  "correction": {
+    "priorReport": ".tmp/E126-block1-reforecast.json",
+    "priorReportSha256": "8b4053924ef1dd9f9aa270f3a6c764c68c7fa120ce5ce06091e1f96b38b89c46",
+    "reason": "Force the Math.Max double overload for nonnegative residual time; the prior PowerShell call selected an integer overload. All timing inputs, maxima inclusion, fixed50 requirement and nine-process-per-architecture formula are unchanged.",
+    "singleCostReview": true
+  }
+}

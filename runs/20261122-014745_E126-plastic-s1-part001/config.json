@@ -1,0 +1,138 @@
+{
+  "protocol": "reversal-evolution-v1",
+  "args": {
+    "name": "E126-plastic-s1-part001",
+    "start": "blank",
+    "generations": 200,
+    "pop": 128,
+    "worlds": 4,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120402,
+    "no_plastic": false,
+    "controller": "rules-v0",
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "reversal-evolution-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": 3000.0,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "992719a86a1fa737d08072232ad53e362842ebc9",
+    "branch": "main",
+    "dirty": false
+  },
+  "condition_split": "final",
+  "stage": "training",
+  "architecture": "plastic",
+  "controller": "rules-v0",
+  "seed_index": 1,
+  "part": 1,
+  "target": "E126-plastic-s1",
+  "expected_attempts": 200,
+  "seed": 2026120402,
+  "genome_size": 155,
+  "settings": {
+    "protocol": "reversal-evolution-v1",
+    "cfg": {
+      "G": 16,
+      "M": 1,
+      "T": 300,
+      "R": 2,
+      "n_items": 24,
+      "H": 48,
+      "n_htypes": 3,
+      "e0": 1.0,
+      "decay": 0.003,
+      "gain": 0.25,
+      "e_max": 2.0,
+      "micro": 2,
+      "wmax": 3.0
+    },
+    "pop": 128,
+    "base_world_pairs": 4,
+    "actual_lifetimes": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "l2": 0.005,
+    "total_attempts": 200,
+    "flip_steps": [
+      100,
+      125,
+      150,
+      175
+    ],
+    "objective": "mean of individual paired-rule minimum late food-minus-poison",
+    "late_window": [
+      50,
+      100
+    ],
+    "tie_rule": "average centered ranks; all ties consume attempt without optimizer update",
+    "runtime": {
+      "python": "3.12.10",
+      "platform": "Windows",
+      "platform_release": "11",
+      "machine": "AMD64",
+      "numpy": "2.5.4",
+      "jax": "0.12.0.1",
+      "jaxlib": "0.12.0.1"
+    },
+    "prng": {
+      "implementation": "threefry2x32",
+      "threefry_partitionable": true,
+      "enable_x64": false,
+      "backend": "cpu"
+    },
+    "code": {
+      "scripts/reversal_evolution.py": "33e207b15e0003ea507c77dd5a7bdc3a2481f26475f7d293ff8a97479f4b8225",
+      "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+      "scripts/run_reversal_evolution.py": "dcf39cec94d6ad9e64fbea4668ae991e9b505cd118b989f1c96550d22f8ebd7c",
+      "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4",
+      "scripts/social_learning.py": "d5da03911825c21e605ed324f21bc1afeb45f03f853df5ed0f7cb34b1e867f5f",
+      "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+      "scripts/social_reversal.py": "38d9ef5669190cd4a7af2e46124709add7eb920f7f65b92527d03919467f0a3c",
+      "seed/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+      "seed/ecology.py": "46281384944377d60404b087e04c9ca6620e912b9c1ab8268438e0a171f439a6",
+      "seed/lineage.py": "692f0c534ffd1513c4db4400315c2e91b7469ba19eff19a33df193619952a7e4",
+      "seed/paired.py": "361e276d139a82fd05e072a5a97df3cbda74e19bf2840804743f511f9dc653d2",
+      "seed/persistence.py": "a20034d0997f6a5555bedd357562566973ed56ac6f8c9b0424efda4a9cf4be23",
+      "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+      "seed/structural.py": "56b89b2d82d2eb978840e2565763c254ab28623efa9c339f6b4f4c621c140630"
+    }
+  },
+  "parent": null,
+  "founder": {
+    "folder": "runs/20261122-014745_E126-plastic-s1-part001",
+    "genome": {
+      "path": "genome_start.npy",
+      "sha256": "13d9390572368c47ecf646ef004acc167380d2948d1d373fa8f9596858a9c0be"
+    },
+    "checkpoint": {
+      "path": "checkpoints/start.npz",
+      "sha256": "c1151ac085c79cee944a5ebd5e097e0a49f577454e63a6d818a66a3277fd80c6"
+    },
+    "master_seed": 2026120402,
+    "initialization": "blank rules",
+    "development_stream_tag": null
+  },
+  "start_checkpoint": {
+    "path": "checkpoints/start.npz",
+    "sha256": "c1151ac085c79cee944a5ebd5e097e0a49f577454e63a6d818a66a3277fd80c6"
+  },
+  "start_attempt": 0,
+  "max_segment_attempts": 50,
+  "soft_seconds": 3000,
+  "max_seconds": 3600,
+  "sealing_recovery": false,
+  "scientific_result": false,
+  "evaluation": "locked until all six target endpoints reach attempt 200"
+}

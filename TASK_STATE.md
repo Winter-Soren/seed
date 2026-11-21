@@ -26,8 +26,8 @@ E125 changed which color was food once during a pupil's life. In the late window
 
 ## What is running
 
-The published source passed all 429 tests. Both kinds of brain completed their laptop timing checks. At the conservative speed estimate, completing the entire study would take about 12 hours 39 minutes against a 12-hour ceiling. The council released one training block for all six lineages within that ceiling. GitHub publication has resumed on the private repository.
+Training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-Run up to 50 of the planned 200 generations in each of the three plastic and three recurrent lineages. Then recheck the cost once, keeping the slowest measured timings. If the full study fits, finish evolution and compare the six saved endpoints on fresh worlds. Until then, the result is open.
+Keep all six generation-50 checkpoints. Review whether the laptop can avoid computing neuron outputs that observations immediately overwrite. Any faster implementation must reproduce the same brain dynamics and optimizer updates and save enough time to justify the switch. The question of which controller adapts better remains open.

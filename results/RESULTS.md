@@ -35,6 +35,12 @@ Complete three-seed rung decision: **undecided**.
 |---|---|---|---|---|---|---|---|---|---|
 | 20261122-004707_E126-benchmark-plastic | target_finished | development | E126-benchmark-plastic | rules-v0 | 0 | 3/3 | 3 | undecided | c65038b |
 | 20261122-004945_E126-benchmark-direct | target_finished | development | E126-benchmark-direct | direct-rnn-v1 | 0 | 3/3 | 3 | undecided | c65038b |
+| 20261122-010213_E126-direct-s0-part001 | segment_finished | final | E126-direct-s0 | direct-rnn-v1 | 0 | 50/200 | 50 | undecided | 992719a |
+| 20261122-011009_E126-plastic-s0-part001 | segment_finished | final | E126-plastic-s0 | rules-v0 | 0 | 50/200 | 50 | undecided | 992719a |
+| 20261122-013955_E126-direct-s1-part001 | segment_finished | final | E126-direct-s1 | direct-rnn-v1 | 0 | 50/200 | 50 | undecided | 992719a |
+| 20261122-014745_E126-plastic-s1-part001 | segment_finished | final | E126-plastic-s1 | rules-v0 | 0 | 50/200 | 50 | undecided | 992719a |
+| 20261122-021920_E126-direct-s2-part001 | segment_finished | final | E126-direct-s2 | direct-rnn-v1 | 0 | 50/200 | 50 | undecided | 992719a |
+| 20261122-022550_E126-plastic-s2-part001 | segment_finished | final | E126-plastic-s2 | rules-v0 | 0 | 50/200 | 50 | undecided | 992719a |
 
 ## Ecology/lineage development fixtures
 

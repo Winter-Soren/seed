@@ -1,0 +1,198 @@
+{
+  "study": "E126",
+  "block": "first-balanced-block",
+  "recordedAt": "2026-11-22T03:06:02.6645916+05:30",
+  "scienceRemainsUndecided": true,
+  "scientificSource": "df304221d920c5d1da20f67f7f1aa04d0845e317",
+  "trainingHead": "992719a86a1fa737d08072232ad53e362842ebc9",
+  "audit": {
+    "path": ".tmp\\E126-audit-training-all-attempt2.audit.json",
+    "sha256": "e275dd5a3a43be8f43a2435619cfd4b2ad8dbb19a669d730440d9a40d63bb915",
+    "status": "passed",
+    "guardResult": ".tmp\\E126-audit-training-all-attempt2.result.json",
+    "guardResultSha256": "fac3806a0c4a5bdcdb619bb2845cb90cb4f504c98e5baf8b2cbcf2f8d258de0d",
+    "checkerCommit": "33af6c8af17cd90ff1a2f8e6803647bf30fac426",
+    "scientificSource": "df304221d920c5d1da20f67f7f1aa04d0845e317"
+  },
+  "arms": [
+    {
+      "architecture": "direct",
+      "observations": [
+        {
+          "run": "runs/20261122-004945_E126-benchmark-direct",
+          "attempts": 3,
+          "coldSeconds": 16.687999999994645,
+          "warmMaximumSeconds": 7.405999999988126,
+          "residualGuardSeconds": 8,
+          "guardSeconds": 38.4229792
+        },
+        {
+          "run": "runs/20261122-010213_E126-direct-s0-part001",
+          "attempts": 50,
+          "coldSeconds": 24.469000000011874,
+          "warmMaximumSeconds": 11.062999999994645,
+          "residualGuardSeconds": 12,
+          "guardSeconds": 454.4858008
+        },
+        {
+          "run": "runs/20261122-013955_E126-direct-s1-part001",
+          "attempts": 50,
+          "coldSeconds": 18.85899999999674,
+          "warmMaximumSeconds": 10.98499999998603,
+          "residualGuardSeconds": 10,
+          "guardSeconds": 443.5915724
+        },
+        {
+          "run": "runs/20261122-021920_E126-direct-s2-part001",
+          "attempts": 50,
+          "coldSeconds": 23.905999999988126,
+          "warmMaximumSeconds": 12.828999999997905,
+          "residualGuardSeconds": 15,
+          "guardSeconds": 371.8589871
+        }
+      ],
+      "coldMaximumSeconds": 24.469000000011874,
+      "warmMaximumSeconds": 12.828999999997905,
+      "residualMaximumSeconds": 15.0,
+      "bufferedWarmSeconds": 19.243499999996857,
+      "futureCapacityAttempts": 50,
+      "fiftyAttemptCapacityPass": true,
+      "fiftyAttemptSegmentSeconds": 982.4004999998579,
+      "futurePartsPerSeed": [
+        {
+          "attempts": 50,
+          "seconds": 982.4004999998579,
+          "secondsIncludingCloseoutMargin": 1102.4004999998579
+        },
+        {
+          "attempts": 50,
+          "seconds": 982.4004999998579,
+          "secondsIncludingCloseoutMargin": 1102.4004999998579
+        },
+        {
+          "attempts": 50,
+          "seconds": 982.4004999998579,
+          "secondsIncludingCloseoutMargin": 1102.4004999998579
+        }
+      ],
+      "futureProcessCount": 9,
+      "futureSecondsPerSeed": 2947.2014999995736,
+      "futureSecondsAllThree": 8841.60449999872
+    },
+    {
+      "architecture": "plastic",
+      "observations": [
+        {
+          "run": "runs/20261122-004707_E126-benchmark-plastic",
+          "attempts": 3,
+          "coldSeconds": 50.10899999999674,
+          "warmMaximumSeconds": 37.21799999999348,
+          "residualGuardSeconds": 10,
+          "guardSeconds": 133.4280725
+        },
+        {
+          "run": "runs/20261122-011009_E126-plastic-s0-part001",
+          "attempts": 50,
+          "coldSeconds": 50.10899999999674,
+          "warmMaximumSeconds": 43.51600000000326,
+          "residualGuardSeconds": 9,
+          "guardSeconds": 1771.409855
+        },
+        {
+          "run": "runs/20261122-014745_E126-plastic-s1-part001",
+          "attempts": 50,
+          "coldSeconds": 63.09299999999348,
+          "warmMaximumSeconds": 59.312999999994645,
+          "residualGuardSeconds": 15,
+          "guardSeconds": 1873.4349622
+        },
+        {
+          "run": "runs/20261122-022550_E126-plastic-s2-part001",
+          "attempts": 50,
+          "coldSeconds": 53.875,
+          "warmMaximumSeconds": 50.235000000015134,
+          "residualGuardSeconds": 8,
+          "guardSeconds": 1778.5219742
+        }
+      ],
+      "coldMaximumSeconds": 63.09299999999348,
+      "warmMaximumSeconds": 59.312999999994645,
+      "residualMaximumSeconds": 15.0,
+      "bufferedWarmSeconds": 88.96949999999197,
+      "futureCapacityAttempts": 32,
+      "fiftyAttemptCapacityPass": false,
+      "fiftyAttemptSegmentSeconds": 4437.5984999996,
+      "futurePartsPerSeed": [
+        {
+          "attempts": 50,
+          "seconds": 4437.5984999996,
+          "secondsIncludingCloseoutMargin": 4557.5984999996
+        },
+        {
+          "attempts": 50,
+          "seconds": 4437.5984999996,
+          "secondsIncludingCloseoutMargin": 4557.5984999996
+        },
+        {
+          "attempts": 50,
+          "seconds": 4437.5984999996,
+          "secondsIncludingCloseoutMargin": 4557.5984999996
+        }
+      ],
+      "futureProcessCount": 9,
+      "futureSecondsPerSeed": 13312.7954999988,
+      "futureSecondsAllThree": 39938.3864999964
+    }
+  ],
+  "blockStartStudySeconds": 1579.2666371,
+  "chargedAdditionalBlockSeconds": 6835.574246300002,
+  "measuredAdditionalBlockSeconds": 6755.181515100003,
+  "untimedVerificationAllowanceSeconds": 80.3927312,
+  "blockCapSeconds": 10800.0,
+  "blockFits": true,
+  "cumulativeStudySeconds": 8414.840883400002,
+  "remainingStudySeconds": 34785.1591166,
+  "futureTrainingSeconds": 48779.99099999512,
+  "futureEvaluationReserveSeconds": 1800.0,
+  "futureVerificationReserveSeconds": 1800.0,
+  "projectedTotalStudySeconds": 60794.83188339512,
+  "hardStudyLimitSeconds": 43200.0,
+  "projectedExcessSeconds": 17594.83188339512,
+  "fiftyAttemptCapacityPassBothArms": false,
+  "capacityAndStudyFit": false,
+  "currentLocalDate": "2026-11-22",
+  "currentDayUsedSeconds": 8990.7189693,
+  "currentDayRemainingSeconds": 19809.2810307,
+  "projectedFutureFitsCurrentDay": false,
+  "prefixArtifactsBytes": 29336731.0,
+  "futureStorageReservationBytes": 3397245858.0,
+  "currentDFreeBytes": 48369053696,
+  "DFreeAfterReservationBytes": 44971807838.0,
+  "diskReservationFits": true,
+  "calculation": "Retain maximum cold, maximum warm and maximum guarded residual across the original benchmark and all three final first parts per architecture. Future training is exactly nine times the sum of maxCold+49*1.5*maxWarm+maxOverhead across both architectures. Capacity >=50 is required for both arms with120s closeout inside3000s. No shorter parts are substituted. Add charged study once and the unchanged3600s reserve.",
+  "decision": "No further production release is implied. Return this sole block reforecast to root for the committed decision.",
+  "accountingConfidence": {
+    "guardAndTimedVerification": "Actual monotonic wall seconds charged once",
+    "earlierUntimedVerification": "Conservative upper bounds from terminated-guard time to file-receipt completion, potentially including review/dispatch idle; not claimed as measured compute",
+    "upperBoundEvidence": ".tmp/E126-untimed-prefix-verification-bounds.json",
+    "currentLedgerSha256": "54e9f0fd3bbf7cf6ade48783dbe254c6e45e46c3b4de6f09901947e9627c97fb"
+  },
+  "limitations": [
+    "Timing maxima are conservative scheduling inputs, not confidence intervals.",
+    "Continuation-specific overhead is not separately benchmarked; actual guards remain authoritative.",
+    "The storage allowance includes twofold variation for scaled remaining prefix artifacts plus2GiB unmeasured evaluation and1GiB scratch.",
+    "No heldout evaluations or rank-dependent scientific outcome comparisons were opened during this block.",
+    "Budget totals include a separately identified upper bound for four initially untimed file checks, which may overstate their actual compute."
+  ],
+  "reforecastCalculationBaselineStudySeconds": 8414.395050400002,
+  "reforecastTiming": {
+    "evidence": ".tmp\\E126-block1-reforecast-timing.json",
+    "sha256": "426d48d874a2458b6bbad5aff9e6960b200a78317a8620bed457b286b38c2355",
+    "measuredSeconds": 0.445833
+  },
+  "reforecastCalculation": {
+    "evidence": ".tmp\\E126-block1-reforecast-calculation.json",
+    "sha256": "cd049274b9f08737dfff013cfb3f7a6ea1da14c94e894cd29a39c88cd8af31dc",
+    "note": "Same sole calculation with its measured execution charge added once to the final budget totals."
+  }
+}

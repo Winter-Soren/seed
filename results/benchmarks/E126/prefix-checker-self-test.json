@@ -1,0 +1,16 @@
+{
+  "protocol": "reversal-evolution-v1",
+  "mode": "self-check",
+  "status": "passed",
+  "tests": 6,
+  "checks": [
+    "exact source and uniform Git CRLF checkout accepted; content edits, mixed endings, filters and artifact normalization rejected",
+    "cancellation update matches device bytes; one-bit corruption of genome, moments and counter rejected",
+    "both genome dimensions: same-runtime candidate arithmetic, informative Adam, exact all-tie skip",
+    "paired specialist cannot hide negative replay; exact f+50/f+100 boundaries",
+    "combined uncertainty, absolute utility, two qualifying seeds and all-three survival",
+    "prefix endpoint timing and unclipped direct encoding"
+  ],
+  "simulator_imported": false,
+  "prng_replayed": true
+}
