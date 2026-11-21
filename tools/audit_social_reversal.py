@@ -41,6 +41,16 @@ def identical(left, right, label):
             and left.tobytes() == right.tobytes(), label)
 
 
+def camera_evidence(raw, reconstructed):
+    recorded = typed(raw, "camera_positions", (150, 2), "i")
+    require(recorded.dtype == np.int32 and np.all((recorded >= 0) & (recorded < CFG["G"])),
+            "recorded camera int32 coordinates")
+    require(reconstructed.shape == recorded.shape and reconstructed.dtype.kind in "iu"
+            and np.all((reconstructed >= 0) & (reconstructed < CFG["G"])), "reconstructed camera coordinates")
+    # The E120 NumPy helper promotes offsets to int64; the movie writer stores int32.
+    identical(recorded, reconstructed.astype(np.int32), "public camera reconstruction")
+
+
 def direct_weights(flat):
     require(flat.shape == (8424,) and flat.dtype == np.float32 and np.isfinite(flat).all(), "fixed recurrent genome")
     weights = np.zeros((157, 157), np.float32)
@@ -197,7 +207,7 @@ def family(raw, index, rule, boundary, original, direct_flat, weights, reliabili
     require(typed(raw, "keys", (4, 2), "u").dtype == np.uint32, "family random-key dtype")
     movie, cameras, _, _ = film.reconstruct_movie(raw)
     identical(raw["observed_frames"], movie, "natural initial-rule demonstration")
-    identical(raw["camera_positions"], cameras, "public camera reconstruction")
+    camera_evidence(raw, cameras)
     _, _, q = prior.decoder(raw, "", movie, reliability)
     prior.close(raw["q"], np.float32(q), "calibrated initial-rule belief", 1e-8)
     zero_hash = dict(x=film.fingerprint(np.zeros(157, np.float32)),
@@ -542,6 +552,15 @@ def self_check():
     rejected(lambda: identical(np.array([0.], np.float32), np.array([-0.], np.float32), "changed bits"),
              "signed-zero bit mismatch")
     checks.append("direct genotype layout and exact recorded-trace identity")
+
+    coordinates = np.column_stack((np.arange(150) % 16, np.arange(150) * 3 % 16)).astype(np.int64)
+    recorded = dict(camera_positions=coordinates.astype(np.int32))
+    camera_evidence(recorded, coordinates)
+    rejected(lambda: camera_evidence(dict(camera_positions=coordinates), coordinates), "wrong recorded camera dtype")
+    rejected(lambda: camera_evidence(recorded, np.roll(coordinates, 1, axis=0)), "shifted camera timing")
+    rejected(lambda: camera_evidence(recorded, coordinates[:, ::-1]), "swapped camera axes")
+    rejected(lambda: camera_evidence(recorded, coordinates + 16), "out-of-bounds camera reconstruction")
+    checks.append("int32 camera schema with exact reconstructed coordinates, axes and timing")
     return dict(status="passed", tests=len(checks), checks=checks)
 
 
