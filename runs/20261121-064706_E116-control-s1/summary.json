@@ -1,0 +1,14 @@
+{
+  "status": "finished",
+  "generation": 20,
+  "train_minutes": 7.97,
+  "final_genome_hash": "104a91028c124c7b",
+  "controller": "rules-v0",
+  "eval_protocol": "paired-train-v2",
+  "objective": "paired-min",
+  "condition_split": "final",
+  "training_complete": true,
+  "evaluation_status": "deferred",
+  "eval_worlds": 256,
+  "final_genome_sha256": "f43231e7b4e13423f32f17f999baeb9d43d82633f149f41d668afa24d7054516"
+}
