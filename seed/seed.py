@@ -169,7 +169,8 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
 @partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
-            persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False):
+            persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False,
+            _initial_brain=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
@@ -208,6 +209,16 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         denergy=jnp.zeros(M), counts=jnp.zeros((M, 2, 2)), key=wkey, t=0)
     if _initial_alive is not None:
         carry.update(alive=_initial_alive, energy=carry["energy"] * _initial_alive)
+    if _initial_brain is not None:
+        if structural or direct_weights is not None or _initial_weights is None:
+            raise ValueError("continued neural state requires own initial weights and fixed rules topology")
+        if (set(_initial_brain) != {"x", "Wp"}
+                or _initial_brain["x"].shape != (M, n)
+                or _initial_brain["Wp"].shape != (M, D, c.H)
+                or not all(jnp.issubdtype(value.dtype, jnp.floating)
+                           for value in _initial_brain.values())):
+            raise ValueError("initial neural state must match the family's activity and predictor shapes")
+        carry.update(_initial_brain)
     if _return_weights:
         carry["last_alive_W"] = W
     if persistence is not None:
@@ -351,6 +362,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
     if _return_weights:
         res["_weight_state"] = dict(birth_W=birth_W, mask=mask, initial_W=W,
                                     terminal_W=s["last_alive_W"], alive=s["alive"])
+    if _initial_brain is not None:
+        res["_initial_brain"] = {name: carry[name] for name in ("x", "Wp", "energy", "alive", "denergy")}
     if ecology is not None and (record or diagnostics):
         res["ecology"] = dict(shelter=shelter,
                               initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),

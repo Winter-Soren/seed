@@ -39,6 +39,7 @@ ECOLOGY_LINEAGE_PROTOCOL = "ecology-lineage-v1"
 COLD_DONOR_PROTOCOL = "cold-donor-v1"
 SHELTER_EVOLUTION_PROTOCOL = "shelter-evolution-v1"
 INHERITED_EVOLUTION_PROTOCOL = "inherited-evolution-v1"
+SOCIAL_LEARNING_PROTOCOL = "social-learning-v1"
 PAIRED_V2_PROTOCOL = "paired-train-v2"
 PAIRED_PROTOCOLS = (PAIRED_PROTOCOL, PAIRED_V2_PROTOCOL)
 PAIRED_OBJECTIVES = ("paired-mean", "paired-min")
@@ -709,7 +710,7 @@ def main():
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS, ECOLOGY_LINEAGE_PROTOCOL, COLD_DONOR_PROTOCOL, SHELTER_EVOLUTION_PROTOCOL, INHERITED_EVOLUTION_PROTOCOL), default=None,
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS, ECOLOGY_LINEAGE_PROTOCOL, COLD_DONOR_PROTOCOL, SHELTER_EVOLUTION_PROTOCOL, INHERITED_EVOLUTION_PROTOCOL, SOCIAL_LEARNING_PROTOCOL), default=None,
                     help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, v4, v5, v6, direct-v1 or paired-train-v1/v2; ecology-lineage-v1 runs a development fixture; cold-donor-v1 runs the registered saved-genome comparison")
     ap.add_argument("--memory-condition", choices=("shared", "empty"), default=None,
                     help="ecology-lineage-v1 selected trace; both paired memory conditions are retained")
@@ -740,6 +741,13 @@ def main():
         ap.error("--memory-condition is only valid for ecology-lineage-v1")
     if getattr(a, "persistence", False) and a.eval_protocol != ECOLOGY_LINEAGE_PROTOCOL:
         ap.error("--persistence is only valid for the ecology-lineage-v1 development fixture")
+    if a.eval_protocol == SOCIAL_LEARNING_PROTOCOL:
+        from scripts import run_social_learning
+        try:
+            run_social_learning.run_tracked(a, git, ROOT, explicit=explicit)
+        except ValueError as error:
+            ap.error(str(error))
+        return
     if a.eval_protocol == INHERITED_EVOLUTION_PROTOCOL:
         from scripts import run_inherited_evolution
         try:
@@ -808,6 +816,8 @@ def main():
             ap.error("Shelter evolution attempts cannot resume; preserve all evidence and preregister any recovery")
         if args.get("eval_protocol") == INHERITED_EVOLUTION_PROTOCOL:
             ap.error("Inherited evolution attempts cannot resume; preserve all evidence and preregister any recovery")
+        if args.get("eval_protocol") == SOCIAL_LEARNING_PROTOCOL:
+            ap.error("Social-learning attempts cannot resume; preserve all evidence and preregister any recovery")
         if args.get("eval_protocol") in PAIRED_PROTOCOLS:
             if a.cfg or a.quick or a.allow_dirty:
                 ap.error("Cannot change paired training configuration, use quick mode or dirty code on resume")

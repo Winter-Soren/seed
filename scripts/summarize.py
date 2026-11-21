@@ -23,6 +23,7 @@ def main():
     cold_donor_rows = []
     shelter_evolution_rows = []
     inherited_evolution_rows = []
+    social_learning_rows = []
     paired_v2_training_rows = []
     direct_rows = []
     reversals = []
@@ -38,6 +39,30 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "social-learning-v1":
+            split = a.get("condition_split", "")
+            expected = 128 if split == "final" else 4 if split == "development" else None
+            complete = (expected is not None and s.get("status") == "finished"
+                        and s.get("artifact_validity") == "passed"
+                        and s.get("completed_families") == s.get("expected_families") == expected)
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and type(gate.get("passed")) is bool)
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            social_learning_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                estimate(measurements.get("arms", {}).get("observed", {}).get("first_food", {})),
+                *[estimate(measurements.get("contrasts", {}).get(control, {}).get("first_food_difference", {}))
+                  for control in ("yoked", "no_demo", "scene_only")],
+                outcome, commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "inherited-evolution-v1":
             split = a.get("condition_split", "")
             expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
@@ -259,6 +284,19 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if social_learning_rows:
+        out += ["## Observational learning and solo transfer (social-learning-v1)", "",
+                "E120 tests one newborn per independent world family after 150 observation frames from "
+                "an experienced teacher. Its solo test lasts 300 turns in a fresh world. The primary measure "
+                "is first solo meal being food per assigned newborn; poison and no meal both count as zero. "
+                "The observed movie is compared with yoked item colors, a time-matched blank movie and a "
+                "scene-only movie. Each lineage must exceed every control by more than two paired family "
+                "standard errors, with each all-assigned survival difference at least minus two SE. "
+                "The table shows proportions and observed-minus-control differences. All three lineages "
+                "must pass; development and incomplete attempts have no scientific verdict.", "",
+                "| Run | Status | Split | Families | Observed first-food ± SE | Difference vs yoked ± SE | "
+                "Difference vs no demo ± SE | Difference vs scene only ± SE | Seed decision | Commit |",
+                "|---" * 10 + "|", *social_learning_rows, ""]
     if inherited_evolution_rows:
         out += ["## Evolution with inherited experience (inherited-evolution-v1)", "",
                 "E119 continues each E118 optimizer for ten updates. Before each update, the current mean genome "
