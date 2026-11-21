@@ -1,0 +1,91 @@
+{
+  "protocol": "cold-donor-v1",
+  "args": {
+    "name": "E117-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026112102,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 256,
+    "eval_protocol": "cold-donor-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "95a254bcbe5c35c5f8ec343e056c579d562645ac",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "condition_split": "final",
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "ecology": {
+    "version": "ecology-v1",
+    "movement_energy_cost": 0.01,
+    "seasonal_energy_cost": 0.02
+  },
+  "persistence": "off",
+  "plastic": true,
+  "controller": "rules-v0",
+  "genome_size": 155,
+  "seed": 2026112102,
+  "eval_seed": 2026112102,
+  "eval_worlds": 256,
+  "expected_families": 256,
+  "key_order": [
+    "donor_world",
+    "donor_development",
+    "target_world",
+    "target_development"
+  ],
+  "cold_start": 150,
+  "rule_assignment": "family_index modulo 2; donor and recipient share rule",
+  "max_seconds": 9900,
+  "scientific_result": true,
+  "purpose": "paired inherited-versus-fresh recipient weights after a cold donor life",
+  "raw_schema": "cold-donor-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

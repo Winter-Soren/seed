@@ -6,9 +6,47 @@ Seed is a small simulation about learning from experience. We evolve simple brai
 
 Four creatures move around a 16 × 16 grid. Each sees a small patch around itself and can move one square or stay put. There are two kinds of items, A and B. In one world, A is food and B is poison. In another world, B is food and A is poison. The rule is hidden from the creatures. Food adds energy, poison drains it, and staying alive uses a little energy each turn. A life lasts up to 300 turns and ends early if energy reaches zero. In some tests, the food rule switches halfway through.
 
-## How a creature gets its brain
+## The genome and the brain it builds
 
-The **genome** is a set of 155 numbers. It tells Seed how likely different kinds of brain cells are to connect, how strong those connections start out, and how experience can change them. Each of the four creatures in a world starts from the same genome. Seed draws the wiring separately for each one, so they can start with different brains from the same instructions.
+We chose the genome format, cell types, observations, actions and learning equations. Evolution can change all **155 numerical parameters** within that design. There are five cell types. All inputs share a type, the hidden units use three types with 16 units each, and the six outputs share the last type. Each pair of types has its own wiring and learning parameters. [Genome and development code](seed/seed.py#L44)
+
+| Inherited field | Shape | Numbers | What it controls |
+| --- | --- | ---: | --- |
+| `conn` | 5 × 5 | 25 | Probability of a connection from one cell type to another, stored as a logit |
+| `wscale` | 5 × 5 | 25 | Scale of the random starting connection strengths, stored as a logarithm |
+| `hebb` | 5 × 5 × 4 | 100 | Four coefficients combining source activity, destination activity, their product and a constant in the learning update |
+| `log_eta` | Scalar | 1 | Overall rate of connection-strength learning, stored as a logarithm |
+| `mod` | Vector | 3 | How energy change, prediction error and a bias gate learning |
+| `log_plr` | Scalar | 1 | Prediction-learning rate, stored as a logarithm |
+| **Total** | | **155** | |
+
+In the shelter world, each brain has **183 units**. Its 129 inputs describe five local 5 × 5 maps — item A, item B, other creatures, their signals and shelter — plus energy, energy change, a constant and the cold-season cue. There are 48 hidden units, five movement outputs and one signaling output. The original food-world brain has 103 inputs and 157 units overall. Inputs receive the current observations directly. The sampled network can connect inputs to hidden units or outputs, and connect hidden and output units recurrently. The engine excludes connections into inputs and connections from a unit to itself. [Dimensions and wiring](seed/seed.py#L44) · [Observations](seed/seed.py#L108)
+
+```mermaid
+flowchart LR
+    G[155 inherited parameters] --> B[Birth samples wiring and starting weights]
+    B --> L[Creatures act and learn during a life]
+    L --> S[Measure outcomes on training worlds]
+    S --> E[Rank mutated genomes and update the population mean]
+    E --> G
+    G --> V[Check saved descendants on held-out worlds]
+```
+
+Evolution changes the inherited parameters across generations. Development draws each newborn's particular connections from those parameters. Lifetime learning changes the strengths of its connections and its observation predictor. The collective-memory mechanism also lets a later newborn receive acquired changes on matching sensor-to-output connections. These are distinct places where experience can affect a creature. [Learning update](seed/seed.py#L147) · [Evolution update](seed/seed.py#L401) · [Memory transfer](seed/lineage.py#L217)
+
+## How the saved genomes evolved
+
+The original A0, A1 and A2 runs each completed **200 generations**. Comparing their saved starting and final genome files shows changes in all 155 coordinates. The table follows three interpretable parameters from the beginning to generation 200. The wiring probability applies to each permitted sensor-to-output connection. The Hebbian coefficient multiplies source activity by destination activity, with the evolved learning rate and modulator also affecting the update. [A0 files](runs/20261112-023245_E103-A-blank-s0) · [A1 files](runs/20261112-050319_E103-A-blank-s1) · [A2 files](runs/20261112-102755_E103-A-blank-s2)
+
+| Genome | Sensor-to-output wiring probability | Sensor-to-output Hebbian coefficient | Prediction-error contribution to the modulator |
+| --- | ---: | ---: | ---: |
+| A0 | 26.89% → 97.80% | −0.163 → 6.533 | 0.000 → 0.427 |
+| A1 | 26.89% → 97.44% | 0.068 → 6.142 | 0.000 → 0.525 |
+| A2 | 26.89% → 96.14% | −0.078 → 4.975 | 0.000 → 0.664 |
+
+These are exact saved parameter values rounded for display. Error bars apply to performance measured across worlds. The table documents what changed genetically, while the learning and survival evaluations establish what those changes achieve. Moving every parameter can include changes to entries that the architecture masks out.
+
+For a concrete newborn, the first recipient in the E117 development benchmark has **746 present connections out of 774 possible** in its 6 × 129 sensor-to-output block. Its paired inherited-memory version receives changed starting strengths on those 746 connections. Both versions share the same sampled wiring. That record illustrates the relationship between the evolved connection probabilities, one newborn's actual connections and inherited lifetime experience. [Saved development arrays](runs/20261121-172316_E117-benchmark/families/family_0000.npz)
 
 ## How a creature learns during its life
 

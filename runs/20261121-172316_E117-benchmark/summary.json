@@ -1,0 +1,172 @@
+{
+  "status": "finished",
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 17.578000000008615,
+  "protocol": "cold-donor-v1",
+  "condition_split": "development",
+  "generation": 0,
+  "source_label": "A0",
+  "eval_seed": 42,
+  "eval_worlds": 4,
+  "persistence": "off",
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "8c7fbe9e75dc9376c57e506c3ec25bf5393c5f0ed43e75248a124fd9e20c351d"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "9723aa6e30608dcba54a5b2677730e83c348aecbcdf2f7d313fac39bfc60a315"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "ffc54af4bf8e0b5495dd879021b7268ce229e2152cbd08903b64ba3cf18fa0db"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "efc5495b09654a0745d6c7d133dba72b75958114c65c09b82c551b41e818ed4f"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "agents_per_family": 4,
+    "assigned_agents": 16,
+    "outside_born_agents": 15,
+    "rule_counts": {
+      "0": 2,
+      "1": 2
+    },
+    "donor": {
+      "latency": {
+        "mean": 150.71428571428572,
+        "se": 24.41077386899001
+      },
+      "shelter_arrival": {
+        "mean": 0.5714285714285714,
+        "se": 0.08973405413791102
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 2.8125,
+        "se": 1.511673327805978
+      },
+      "cold_sheltered_fraction": {
+        "mean": 0.0008333333333333334,
+        "se": 0.0008333333333333334
+      },
+      "outdoor_cold_agent_steps": {
+        "mean": 62.25,
+        "se": 22.25
+      },
+      "extra_energy_lost": {
+        "mean": 4.909995686844923,
+        "se": 0.9627003946274335
+      },
+      "deaths": 16,
+      "cold_exposed_agents": 4,
+      "cold_exposed_agent_steps": 249,
+      "living_arrivals": 8,
+      "outside_born_agents": 14
+    },
+    "inherited": {
+      "latency": {
+        "mean": 103.73333333333333,
+        "se": 24.478447461459986
+      },
+      "shelter_arrival": {
+        "mean": 0.8,
+        "se": 0.07221367470787521
+      },
+      "survival": {
+        "mean": 0.0625,
+        "se": 0.0625
+      },
+      "fitness": {
+        "mean": 10.6875,
+        "se": 2.9375
+      },
+      "cold_sheltered_fraction": {
+        "mean": 0.05708333333333333,
+        "se": 0.035187164905318445
+      },
+      "outdoor_cold_agent_steps": {
+        "mean": 172.75,
+        "se": 58.11966821423995
+      },
+      "extra_energy_lost": {
+        "mean": 9.539740831125528,
+        "se": 1.5590033285500289
+      },
+      "deaths": 15,
+      "cold_exposed_agents": 12,
+      "cold_exposed_agent_steps": 691,
+      "living_arrivals": 12,
+      "outside_born_agents": 15
+    },
+    "fresh": {
+      "latency": {
+        "mean": 203.53333333333333,
+        "se": 38.324231834167435
+      },
+      "shelter_arrival": {
+        "mean": 0.4,
+        "se": 0.16724344641979358
+      },
+      "survival": {
+        "mean": 0.0,
+        "se": 0.0
+      },
+      "fitness": {
+        "mean": 2.625,
+        "se": 0.414578098794425
+      },
+      "cold_sheltered_fraction": {
+        "mean": 0.007083333333333334,
+        "se": 0.004103690750748378
+      },
+      "outdoor_cold_agent_steps": {
+        "mean": 81.0,
+        "se": 15.138251770487457
+      },
+      "extra_energy_lost": {
+        "mean": 5.368995441123843,
+        "se": 0.4880063295797498
+      },
+      "deaths": 16,
+      "cold_exposed_agents": 4,
+      "cold_exposed_agent_steps": 324,
+      "living_arrivals": 6,
+      "outside_born_agents": 15
+    },
+    "latency_improvement": {
+      "mean": 99.8,
+      "se": 33.25231754663458
+    },
+    "survival_difference": {
+      "mean": 0.0625,
+      "se": 0.0625
+    },
+    "archive": {
+      "changed_entries": {
+        "mean": 774.0,
+        "se": 0.0
+      },
+      "mean_abs_update": {
+        "mean": 0.2866807297216271,
+        "se": 0.021146539707852977
+      },
+      "recipients_changed": 16
+    }
+  }
+}
