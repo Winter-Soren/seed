@@ -49,6 +49,31 @@ E116 compares control learning rate 0.1 with candidate 0.02, both using paired i
 | 20261121-071247_E116-control-s2 | finished | paired-min | final | 2002 | 20/20 | 64 | 4 | 0.1 | 0.1 | deferred | fa28652 |
 | 20261121-072125_E116-candidate-s2 | finished | paired-min | final | 2002 | 20/20 | 64 | 4 | 0.1 | 0.02 | deferred | 455da59 |
 
+## EVAL v6 paired learning-rate comparison
+
+Original starts, six fixed E116 final genomes and five references share fresh v6 worlds. Values are independent base-world means ± SE, never pooled across training seeds. The gate requires candidate individual-minimum return to exceed both control and unchanged start by strictly more than two paired SE in every seed, with candidate-minus-start joint survival at least minus two paired SE. Equality fails return checks and is allowed at the survival boundary; this does not prove equivalent survival. Incomplete or invalid attempts remain undecided. All 30 registered contrasts and per-rule survival/encounter data remain in the aggregate summary and raw files. Reversal outcomes cannot substitute for the gate, and E115's failed gate is unchanged.
+
+| Run | Split | Status | E116 gate | Commit |
+|---|---|---|---|---|
+| 20261121-072924_E116-v6 | final | finished | FAIL | 4590062 |
+
+| Run | Run status | Panel | Controller | Panel status | Conditions | Split | Stationary fitness ± SE | Individual minimum return ± SE | Joint survival ± SE | Post-flip return ± SE | Reversal survival ± SE | Eval seed | Base worlds | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-072924_E116-v6 | finished | start0 | rules-v0 | finished | 4/4 | final | 15.326660 ± 0.258805 | 8.705078 ± 0.300632 | 0.717773 ± 0.014137 | -2.709473 ± 0.087139 | 0.414062 ± 0.011421 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | control0 | rules-v0 | finished | 4/4 | final | 14.071777 ± 0.262994 | 7.368164 ± 0.304496 | 0.658203 ± 0.013820 | -2.504883 ± 0.089357 | 0.406250 ± 0.011803 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | candidate0 | rules-v0 | finished | 4/4 | final | 15.240234 ± 0.268026 | 8.671875 ± 0.304347 | 0.725586 ± 0.013578 | -2.538574 ± 0.086514 | 0.424805 ± 0.010371 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | start1 | rules-v0 | finished | 4/4 | final | 15.440430 ± 0.286531 | 8.427734 ± 0.339632 | 0.690430 ± 0.016328 | -2.581055 ± 0.090675 | 0.418945 ± 0.011766 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | control1 | rules-v0 | finished | 4/4 | final | 13.342285 ± 0.242180 | 7.013672 ± 0.277289 | 0.673828 ± 0.014455 | -2.538574 ± 0.072876 | 0.441406 ± 0.010421 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | candidate1 | rules-v0 | finished | 4/4 | final | 14.799316 ± 0.261482 | 7.892578 ± 0.305978 | 0.668945 ± 0.014115 | -2.537109 ± 0.084630 | 0.399902 ± 0.010525 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | start2 | rules-v0 | finished | 4/4 | final | 15.310059 ± 0.242607 | 8.817383 ± 0.278456 | 0.737305 ± 0.013987 | -2.744629 ± 0.087734 | 0.441895 ± 0.011981 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | control2 | rules-v0 | finished | 4/4 | final | 13.481445 ± 0.243266 | 7.364258 ± 0.288369 | 0.699219 ± 0.015638 | -2.297363 ± 0.091732 | 0.472656 ± 0.011387 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | candidate2 | rules-v0 | finished | 4/4 | final | 15.329590 ± 0.263710 | 8.518555 ± 0.303901 | 0.702148 ± 0.014368 | -2.573242 ± 0.096327 | 0.431641 ± 0.012098 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | fixed_A | fixed_A | finished | 4/4 | final | 38.784180 ± 0.676067 | -3.857422 ± 0.022026 | 0.009766 ± 0.003033 | -3.732422 ± 0.044847 | 0.043945 ± 0.006423 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | fixed_B | fixed_B | finished | 4/4 | final | 39.420898 ± 0.748269 | -3.888672 ± 0.016115 | 0.007812 ± 0.002724 | -3.716797 ± 0.048259 | 0.044922 ± 0.006866 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | mixture | mixture | finished | 4/4 | final | 35.154785 ± 1.223632 | -3.981445 ± 0.005323 | 0.000000 ± 0.000000 | -2.531738 ± 0.074757 | 0.193848 ± 0.009554 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | random_walk | random_walk | finished | 4/4 | final | 0.008301 ± 0.057255 | -2.847656 ± 0.030426 | 0.020508 ± 0.004296 | -0.004883 ± 0.044673 | 0.382324 ± 0.007518 | 2026112001 | 256 | 4590062 |
+| 20261121-072924_E116-v6 | finished | greedy | greedy | finished | 4/4 | final | 82.078125 ± 0.994793 | 67.937500 ± 1.155355 | 1.000000 ± 0.000000 | 24.962402 ± 0.456302 | 1.000000 ± 0.000000 | 2026112001 | 256 | 4590062 |
+
 ## EVAL v5 paired objective comparison
 
 Original A starts and all six registered paired-mean/paired-min continuations are evaluated together only after training completes. Every value is a base-world mean ± SE on fresh v5 worlds; development uses seed 41 only. The fixed gate requires minimum-return improvements over both start and paired mean beyond two paired SE in all three seeds, with no clear joint-survival regression against start. The complete gate decision, 30 contrasts, per-rule results and raw observations remain in the aggregate summary and panel files. E113's failed gate remains unchanged.

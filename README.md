@@ -53,9 +53,21 @@ The numbers below show how much the harder-rule score changed when we trained sp
 
 This experiment, **E115**, passed none of its six required score comparisons. Two of the three brains also missed the target for keeping creatures alive under both rules. The original three brains are still our benchmark for this test. [See the chart for both training versions and all three original brains](results/figures/e115-objective-comparison.svg)
 
-## What comes next
+## Smaller training steps helped, but the original brains still set the benchmark
 
-**E116 is underway.** It tests whether smaller changes to the genome between generations help the three original brains. Each trained brain has to beat its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
+E116 trained each original genome for 20 more generations at two update sizes. The smaller step (0.02) beat the larger one (0.10) on all three lineages, on 256 fresh paired worlds. The score measures each creature's lower food-minus-poison return under the two food rules. Each ± below is one standard error across paired worlds.
+
+| Lineage | Smaller step minus larger step | Smaller step minus original brain |
+| --- | ---: | ---: |
+| A0 | +1.30 ± 0.42 | −0.03 ± 0.41 |
+| A1 | +0.88 ± 0.41 | −0.54 ± 0.41 |
+| A2 | +1.15 ± 0.41 | −0.30 ± 0.41 |
+
+**E116 failed its improvement gate.** All three survival safeguards passed. None of the smaller-step descendants beat its own starting brain by the required margin. We will keep A0, A1 and A2 as the reference genomes for the next question. [Full evidence](results/EVAL_V6.md) · [Registered comparison](experiments/E116_PROPOSAL.md)
+
+![Return differences for the three lineages, with two paired standard errors and survival differences](results/figures/e116-paired-gate.svg)
+
+## What comes next
 
 The next world in development gives creatures a reason to move beyond finding food. They can see nearby shelter, moving costs energy, and cold weather makes staying outside costly. We want to find out whether a newborn can use what earlier creatures learned before they died. We will compare newborns with matching genomes and wiring, give one group shared experience, and measure how soon they reach shelter and how long they survive. The food experiments above establish the starting point for that question.
 

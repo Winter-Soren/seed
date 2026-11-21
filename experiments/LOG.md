@@ -1954,3 +1954,17 @@ The bounded control-0 segment at source 861405d7651421abd216fec28683be54b0c4edf5
 - Supervised segment wall 428.8983823 seconds; cold generation 21.968, warm maximum 22.188. Peak private memory 1.49663925170898 GiB; minimum commit/C:/D: headroom 19.6673278808594/17.6343307495117/46.2240333557129 GiB.
 - E116 actual 3683.8956095/10800 seconds; current-day actual 3857.8510011/28800. Conservative E116 forecast 6525.0853588 seconds retains 1641.1897493 software/CI and 1200 final-evaluation seconds, using 1.5 times the slowest measured warm generation plus startup/compilation for every projected invocation. Hosted checks remain pending; no public write was made.
 - Decision: Timing remains feasible; continue only the next registered segment or arm. Final evaluation still waits for all six valid committed finals and the coordinator release.
+
+### E116 gate decision · 21 November 2026 · FAIL
+
+Question: does reducing the ES update size from 0.10 to 0.02 improve the worse-rule score beyond both a matched continuation and its unchanged ancestor? All six arms completed twenty generations at the registered budget. The final diagnostic at 45900623e368eec3d44344f57a3bdd4008c8eb9a completed all fourteen panels on 256 fresh paired base worlds, in runs/20261121-072924_E116-v6. The underlying scientific implementation is 861405d7651421abd216fec28683be54b0c4edf5.
+
+In A0/A1/A2 order, candidate individual minimum returns were 8.672 ± 0.304, 7.893 ± 0.306 and 8.519 ± 0.304 (mean ± world-family SE). Candidate minus matched control was +1.304 ± 0.419, +0.879 ± 0.407 and +1.154 ± 0.413. Candidate minus unchanged original was −0.033 ± 0.407, −0.535 ± 0.411 and −0.299 ± 0.409. Candidate minus original joint survival was +0.008 ± 0.018, −0.021 ± 0.021 and −0.035 ± 0.020. All differences use paired-world SE. Three of six superiority checks passed, all against the larger-step controls. All three survival safeguards passed. No candidate cleared its original brain. The overall gate failed.
+
+The independent audit verified the six generation-20 finals and matched inputs, all nine copied genome files, 70 raw archives and 30 prespecified contrasts. See results/EVAL_V6.md, results/figures/e116-paired-gate.svg and results/diagnostics/E116-independent-audit.json. The evaluation took 409.734 seconds internally and 415.9180611 seconds under supervision. Through the final evaluation the study used 4099.8136706 of 10800 supervised seconds, including the failed memory preflight; the day used 4273.7690622 seconds. Hosted verification retains its allowance. Repository privacy was confirmed before publication.
+
+Decision: smaller steps improved continuation relative to larger steps at this budget. Retain the original genomes as benchmarks. The evidence does not establish further improvement above them. Return this decision to the owner before scheduling a new scientific study. The separately requested shelter, inheritance and persistence work has development-only verification.
+
+    python tools/audit_e116.py --source-commit 861405d7651421abd216fec28683be54b0c4edf5 --evaluation runs/20261121-072924_E116-v6
+
+The final evaluator's minimum available commit was 20.0147 GiB. Minimum free space was 17.6232 GiB on C and 46.2203 GiB on D. Peak private memory for its owned process tree was 1.037 GiB, and the supervisor exited successfully.
