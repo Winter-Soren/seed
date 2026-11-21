@@ -175,19 +175,23 @@ def social_action_bias(observation, q, c):
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights", "_world_protocol"))
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights", "_world_protocol", "_hebbian_off_step", "_reversal_probe_step"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
             persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False,
-            _initial_brain=None, _belief_q=None, _world_protocol=None):
+            _initial_brain=None, _belief_q=None, _world_protocol=None,
+            _hebbian_off_step=None, _reversal_probe_step=None):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
     validate_persistence(persistence, ecology)
-    if _world_protocol not in (None, "reversal-random-v1"):
+    if _world_protocol not in (None, "reversal-random-v1", "reversal-evolution-v1"):
         raise ValueError("unknown versioned world protocol")
     if _world_protocol is not None and (structural or ecology is not None or persistence is not None):
         raise ValueError("randomized reversal preserves the original foraging world and controller")
+    if _world_protocol == "reversal-evolution-v1" and any(value is not None for value in
+            (_initial_weights, _initial_alive, _initial_brain, _belief_q)):
+        raise ValueError("reversal evolution starts both controllers from their own unassisted birth")
     if _belief_q is not None:
         if (structural or direct_weights is not None or ecology is not None
                 or persistence is not None or (flip_step is not None and _world_protocol is None) or c.R < 1):
@@ -197,6 +201,13 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
     V, D, O, n, K = dims(c, ecology=ecology)
     pl = 1.0 if plastic else 0.0
     pp = pl if predictor_plastic is None else float(predictor_plastic)
+    for boundary in (_hebbian_off_step, _reversal_probe_step):
+        if boundary is not None and (_world_protocol != "reversal-evolution-v1"
+                                     or type(boundary) is not int or not 0 < boundary < c.T):
+            raise ValueError("reversal intervention/probe requires its version and an interior neural tick")
+    if _hebbian_off_step is not None and (direct_weights is not None or not plastic or pp != 1.
+                                         or (flip_step is not None and _hebbian_off_step != flip_step + 1)):
+        raise ValueError("reversal lesion disables only Hebbian updates after the first changed outcome")
     if direct_weights is None:
         types = neuron_types(c, ecology=ecology)
         hebb = g["hebb"][types[:, None], types[None, :]]
@@ -238,6 +249,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
                            for value in _initial_brain.values())):
             raise ValueError("initial neural state must match the family's activity and predictor shapes")
         carry.update(_initial_brain)
+    if _reversal_probe_step is not None:
+        carry["reversal_probe"] = {name: carry[name] for name in ("W", "x", "Wp")}
     if _return_weights:
         carry["last_alive_W"] = W
     if persistence is not None:
@@ -264,11 +277,19 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         else:
             obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c,
                           ecology=ecology, shelter=shelter, step=s["t"])
+        hebbian = pl if _hebbian_off_step is None else jnp.where(s["t"] < _hebbian_off_step, pl, 0.)
         if direct_weights is None:
-            W, x, Wp, surprise = jax.vmap(
-                lambda W, x, Wp, o, de, mk: brain_step(
-                    W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp, ecology=ecology)
-            )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
+            def neural_tick(update):
+                return jax.vmap(
+                    lambda W, x, Wp, o, de, mk: brain_step(
+                        W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], update, c,
+                        predictor_plastic=pp, ecology=ecology)
+                )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
+            if _hebbian_off_step is None:
+                W, x, Wp, surprise = neural_tick(pl)
+            else:
+                W, x, Wp, surprise = jax.lax.cond(s["t"] < _hebbian_off_step,
+                    lambda _: neural_tick(pl), lambda _: neural_tick(0.), operand=None)
         else:
             # Fixed direct weights bypass even the clipping performed by a frozen plastic brain.
             W, Wp = s["W"], s["Wp"]
@@ -341,10 +362,16 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         counts = s["counts"].at[:, half, 0].add(is_food).at[:, half, 1].add(is_pois)
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
+        if _reversal_probe_step is not None:
+            ns["reversal_probe"] = {name: jnp.where(s["t"] == _reversal_probe_step, s[name], saved)
+                                     for name, saved in s["reversal_probe"].items()}
         out = dict(surprise=jnp.mean(surprise))
         if _world_protocol is not None and (record or diagnostics):
             out["_world"] = dict(observation=obs, action=act, action_key=ka,
                                   efference=x[:, n - O:n - 1], activity=x, denergy=denergy)
+            if _world_protocol == "reversal-evolution-v1":
+                out["_world"].update(hebbian_enabled=jnp.asarray(hebbian != 0.),
+                                     predictor_enabled=jnp.asarray(pp != 0.))
         if _belief_q is not None and (record or diagnostics):
             out["_belief"] = dict(q=_belief_q, action=act, bias=belief_bias,
                                   unbiased_logits=unbiased_logits, biased_logits=logits,
@@ -400,6 +427,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         res["_world"] = traj["_world"]
         res["_world_initial"] = {name: carry[name] for name in ("W", "x", "Wp", "energy", "alive", "denergy")}
         res["_world_final"] = {name: s[name] for name in ("W", "x", "Wp")}
+    if _reversal_probe_step is not None:
+        res["_reversal_probe"] = s["reversal_probe"]
     if ecology is not None and (record or diagnostics):
         res["ecology"] = dict(shelter=shelter,
                               initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),

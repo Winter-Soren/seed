@@ -21,11 +21,11 @@ md(r"""
 
 **What this is.** A first experiment in an AI architecture that is never trained with labels. There are three loops:
 
-1. **Evolution (generations).** A population of tiny genomes (155 numbers each) improves over generations.
+1. **Evolution (generations).** Selection changes a population of tiny genomes (155 numbers each) across generations.
 2. **Development (birth).** Each genome *grows* a brain from wiring rules. It holds rules, not weights, and siblings come out slightly different.
 3. **Learning (lifetime).** There's no teacher and no backprop. Synapses change by a local Hebbian rule, gated by a "that mattered" neuromodulator that reacts to felt energy change and to surprise. A local prediction loop learns to guess the next sensation.
 
-**The world.** A small 2D world with two kinds of blobs, A and B. In every new world, a hidden rule decides which is food and which is poison. No inborn instinct can beat chance, so **the only way to win is to learn during life.** Agents live in families of four relatives, see each other, and can emit a signal the others can sense. Energy runs out and agents die.
+**The world.** A small 2D world with two kinds of blobs, A and B. In every new world, a hidden rule decides which is food and which is poison. A creature that always pursues one color can earn a positive average score because death stops its losses. The registered studies also measure choices within a life and replay the same newborn under both rules. Agents live in families of four relatives, see each other, and can emit a signal the others can sense. Energy runs out and agents die.
 
 **Status.** This is an exploratory notebook with historical examples, not the current registered research workflow. Follow `PLAN.md` and run tracked experiments through `scripts/run_experiment.py`. The owner chose laptop-only research; the proposed GPU benchmark was cancelled before execution. Notebook runtime has not been established for the current environment. `QUICK = True` selects a smaller exploratory workload, not a timed guarantee.
 

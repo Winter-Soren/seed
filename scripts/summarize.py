@@ -4,9 +4,11 @@
 Only the generated table is overwritten; nothing in runs/ is changed.
 """
 import json
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT))
 
 
 def main():
@@ -30,6 +32,9 @@ def main():
     random_reversal_pairs = []
     random_reversal_controls = []
     random_reversal_subgroups = []
+    reversal_training_rows = []
+    reversal_endpoint_rows = []
+    reversal_window_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -57,6 +62,45 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "reversal-evolution-v1":
+            split, stage = a.get("condition_split", ""), cfg.get("stage", "")
+            if stage == "training":
+                reversal_training_rows.append("| " + " | ".join([
+                    d.name, s.get("status", "no summary"), split, str(cfg.get("target", "?")),
+                    str(cfg.get("controller", "?")), str(cfg.get("start_attempt", "?")),
+                    f"{s.get('attempted_rounds', '?')}/{cfg.get('expected_attempts', '?')}",
+                    str(s.get("optimizer_updates", "?")), "undecided", commit,
+                ]) + " |")
+            elif stage == "evaluation":
+                complete = (s.get("status") == "finished" and s.get("artifact_validity") == "passed"
+                            and s.get("completed_worlds") == s.get("expected_worlds") == 128
+                            and len(s.get("raw_files", [])) == 128)
+                measurement = s.get("measurements", {}) if complete else {}
+                estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                           else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+                arms = measurement.get("arms", {})
+                contrast = measurement.get("plastic_vs_direct", {})
+                comparison = ("undefined" if contrast.get("difference") is None or contrast.get("combined_se") is None
+                              else f"{contrast['difference']:.6f} ± {contrast['combined_se']:.6f}")
+                reversal_endpoint_rows.append("| " + " | ".join([
+                    d.name, s.get("status", "no summary"), str(cfg.get("seed_index", "?")),
+                    f"{s.get('completed_worlds', '?')}/128",
+                    estimate(arms.get("plastic_reversal", {}).get("late_min_return", {})),
+                    estimate(arms.get("direct_reversal", {}).get("late_min_return", {})), comparison,
+                    estimate(contrast.get("paired_difference", {})),
+                    estimate(measurement.get("plastic_vs_lesion", {}).get("difference", {})),
+                    estimate(arms.get("plastic_reversal", {}).get("late_first_food", {})),
+                    estimate(arms.get("plastic_reversal", {}).get("joint_survival", {})),
+                    estimate(measurement.get("survival", {}).get("difference", {})), commit,
+                ]) + " |")
+                for arm, metrics in arms.items():
+                    for window, values in metrics.get("windows", {}).items():
+                        reversal_window_rows.append("| " + " | ".join([
+                            d.name, arm, window, estimate(values.get("first_food", {})),
+                            estimate(values.get("no_meal", {})), estimate(values.get("fitness", {})),
+                            estimate(metrics.get("whole_return", {})), estimate(metrics.get("joint_survival", {})),
+                        ]) + " |")
+            continue
         if a.get("eval_protocol") == "reversal-random-v1":
             split = a.get("condition_split", "")
             expected = 128 if split == "final" else 4 if split == "development" else None
@@ -534,6 +578,44 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if reversal_training_rows or reversal_endpoint_rows:
+        from scripts.run_reversal_evolution import build_comparison
+        study = build_comparison(ROOT)
+        outcome = ("PASS" if study["passed"] else "FAIL") if study["status"] == "complete" else "undecided"
+        out += ["## Matched from-blank reversal evolution (reversal-evolution-v1)", "",
+                "E126 targets 200 attempted rounds in each of three plastic and three direct recurrent lineages. "
+                "Both use population 128 and four base worlds replayed under both initial rules: eight actual lives "
+                "per candidate. The objective is mean individual minimum late return across those rule replays. "
+                "Genomes start from their original blank initializers. There is no social readout or new mechanism. "
+                "Equal scores receive average ranks; all-tied attempts consume worlds and advance RNG without "
+                "changing the genome, Adam moments or informative-update counter. Immutable segments preserve "
+                "both counters. Development benchmarks measure throughput only.", "",
+                "No held-out world opens before all six targets reach attempt 200. Final panels use 128 independent "
+                "base worlds per seed pair, each under both rules and stationary/reversal interventions. Errors use "
+                "base-world units. The formal architecture comparison uses combined standard errors; the paired "
+                "difference is reported separately. At least two same seeds must pass the architecture, positive "
+                "late return, late first-food and postflip Hebbian-lesion criteria. All three plastic seeds must "
+                "pass the joint-survival floor and relative lower-two-SE screen. Partial panels and short training "
+                "segments cannot decide the rung or authorize an added mechanism.", "",
+                f"Complete three-seed rung decision: **{outcome}**.", "",
+                "| Run | Status | Split | Target | Controller | Start attempt | Attempted / target | "
+                "Informative updates | Scientific decision | Commit |", "|---" * 10 + "|",
+                *reversal_training_rows, ""]
+        if study["status"] == "complete":
+            diagnostic = ROOT / "results/diagnostics/E126-comparison.json"
+            diagnostic.parent.mkdir(parents=True, exist_ok=True)
+            diagnostic.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n")
+            out += [f"Conjunctive performance criteria passed in {study['passing_seeds']}/3 seed pairs; "
+                    f"all-seed survival safeguard: {'PASS' if study['all_seed_survival_passed'] else 'FAIL'}.", ""]
+        if reversal_endpoint_rows:
+            out += ["| Run | Status | Seed pair | Base worlds | Plastic late-min return ± SE | "
+                    "Direct late-min return ± SE | Plastic minus direct ± combined SE | Paired difference ± SE | "
+                    "Intact minus lesion ± paired SE | Plastic late first food ± SE | Plastic joint survival ± SE | "
+                    "Joint-survival difference ± paired SE | Commit |", "|---" * 13 + "|",
+                    *reversal_endpoint_rows, "",
+                    "| Run | Arm | Window | First food ± SE | No contact ± SE | Window return ± SE | "
+                    "Whole-life return ± SE | Joint survival ± SE |", "|---" * 8 + "|",
+                    *reversal_window_rows, ""]
     if ecology_fixture_rows:
         out += ["## Ecology/lineage development fixtures", "",
                 "Engineering exercises of a fixed cohort schedule and saved memory. Completion records mechanism "
@@ -857,7 +939,7 @@ def main():
                 "| Run | Status | Split | Seed | Worlds | Condition | Post fitness | Window hits | At risk | Commit |",
                 "|---" * 10 + "|", *reversals, ""]
     (ROOT / "results").mkdir(exist_ok=True)
-    (ROOT / "results" / "RESULTS.md").write_text("\n".join(out))
+    (ROOT / "results" / "RESULTS.md").write_text("\n".join(out), encoding="utf-8")
     print(f"wrote results/RESULTS.md with {n_runs} runs")
 
 
