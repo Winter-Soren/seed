@@ -21,6 +21,7 @@ def main():
     paired_training_rows = []
     ecology_fixture_rows = []
     cold_donor_rows = []
+    shelter_evolution_rows = []
     paired_v2_training_rows = []
     direct_rows = []
     reversals = []
@@ -36,6 +37,32 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "shelter-evolution-v1":
+            split = a.get("condition_split", "")
+            expected = (10, 128) if split == "final" else (1, 4) if split == "development" else (None, None)
+            complete = (s.get("status") == "finished" and s.get("artifact_validity") == "passed"
+                        and s.get("generation") == s.get("expected_generations") == expected[0]
+                        and s.get("completed_families") == s.get("expected_families") == expected[1])
+            measurements = s.get("measurements", {}) if complete else {}
+            estimate = lambda metric: ("undefined" if metric.get("mean") is None or metric.get("se") is None
+                                       else f"{metric['mean']:.6f} ± {metric['se']:.6f}")
+            gate = s.get("gate", {})
+            decided = (complete and split == "final" and s.get("scientific_result") is True
+                       and type(gate.get("passed")) is bool)
+            outcome = ("PASS" if gate["passed"] else "FAIL") if decided else "undecided"
+            if complete and split == "development":
+                outcome = "not applicable"
+            shelter_evolution_rows.append("| " + " | ".join([
+                d.name, s.get("status", "no summary"), split,
+                f"{s.get('generation', '?')}/{cfg.get('expected_generations', '?')}",
+                f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                str(s.get("changed_parameters", "undefined")),
+                estimate(measurements.get("parent", {}).get("latency", {})),
+                estimate(measurements.get("descendant", {}).get("latency", {})),
+                estimate(measurements.get("latency_improvement", {})),
+                estimate(measurements.get("survival_difference", {})), outcome, commit,
+            ]) + " |")
+            continue
         if a.get("eval_protocol") == "cold-donor-v1":
             split = a.get("condition_split", "")
             expected = 256 if split == "final" else 4 if split == "development" else None
@@ -205,6 +232,20 @@ def main():
                 "completed cohort evidence; paired observations remain in each run folder.", "",
                 "| Run | Status | Cohorts completed/expected | Split | Commit |", "|---" * 5 + "|",
                 *ecology_fixture_rows, ""]
+    if shelter_evolution_rows:
+        out += ["## Shelter evolution (shelter-evolution-v1)", "",
+                "E118 evolves each original A genome for ten generations and compares its final descendant "
+                "with its parent on 128 paired unseen worlds. Both use the same shelter ecology and persistence "
+                "trait. Births outside shelter contribute to the capped first living arrival time. Death and "
+                "nonarrival count as 301 turns. The reported reduction is parent minus descendant, with a "
+                "family-cluster standard error. The survival difference is descendant minus parent among all "
+                "assigned creatures. Each seed passes if latency improves by more than two paired standard "
+                "errors and survival falls by at most two paired standard errors. All three seeds must pass. "
+                "The development benchmark and incomplete runs have no scientific decision. Genome changes "
+                "describe mutation and selection; the paired test measures their outcome.", "",
+                "| Run | Status | Split | Generations | Families | Changed parameters | Parent latency ± SE | "
+                "Descendant latency ± SE | Latency reduction ± SE | Survival difference ± SE | Seed decision | Commit |",
+                "|---" * 12 + "|", *shelter_evolution_rows, ""]
     if cold_donor_rows:
         out += ["## Cold donor inheritance (cold-donor-v1)", "",
                 "E117 uses fixed original A genomes in the same full ecology for both splits. Each independent "
