@@ -121,9 +121,23 @@ In a matched check with the original A0 genome, newborns with shared memory spen
 
 All 208 software tests passed on Windows, including the paired persistence checks and compatibility with earlier experiments. [Verification run](https://github.com/Winter-Soren/seed/actions/runs/44856721457)
 
+## What newborns gained from earlier lives
+
+**Newborns reached shelter sooner with inherited experience in all three lineages.** In each of 768 unseen world families, a donor cohort lived through a cold season. Newborns then faced a different world in two matched groups. One group received the donors' acquired changes on connections it also possessed. The other started fresh. Both had ordinary lifetime learning active and the optional persistence trait off.
+
+| Original genome | Fresh start, turns | Inherited experience, turns | Turns saved | Survival gain, percentage points |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | 161.6 ± 4.5 | 123.2 ± 3.8 | **38.4 ± 5.3** | **9.0 ± 1.2** |
+| A1 | 160.0 ± 4.1 | 115.4 ± 3.8 | **44.6 ± 5.4** | **10.7 ± 1.5** |
+| A2 | 145.2 ± 4.3 | 107.9 ± 3.3 | **37.3 ± 5.4** | **6.8 ± 1.0** |
+
+Times are measured from birth to the first turn ending alive in shelter. Outside-born creatures that died or never arrived count as 301 turns. Each lineage had 256 paired worlds. The ± values are one world-level standard error, paired for the differences. With inherited weights, 726 of 960 outside-born A0 newborns arrived, 759 of 955 A1s and 793 of 958 A2s. The corresponding fresh-start counts were 543, 544 and 607. Survival at the end of life remained low even with inheritance: 12.2%, 15.9% and 7.7%, respectively. [Full estimates](results/RESULTS.md) · [Independent event audit](results/diagnostics/E117-independent-audit.json)
+
+The comparison establishes that an earlier cohort's experience helped its successors on new worlds. Most first arrivals in the inherited groups came before the cold started (650, 690 and 702). Better foraging or exploration could explain some of the gain. Identifying what information the archive carried requires a separate experiment.
+
 ## What comes next
 
-E117 will test whether newborns that inherit weight changes from cold-experienced donors reach shelter sooner. Each of the three original genomes has 256 unseen world families. In each family, newborns with inherited weights and newborns starting fresh share their world and wiring. Deaths and missed arrivals count in the comparison. Both groups have the optional persistence trait off so the comparison isolates inherited experience. [Preregistered experiment](experiments/LOG.md#e117-preregistration--21-november-2026--can-newborns-inherit-faster-shelter-finding)
+E118 lets the 155-number genomes evolve. Each original lineage gets ten generations of mutation and selection for reaching shelter alive, with the persistence trait available to every creature. Each final descendant faces its original parent on 128 fresh matched worlds. We measure both shelter arrival and survival. [Experiment registrations](experiments/LOG.md)
 
 ## Try it locally
 

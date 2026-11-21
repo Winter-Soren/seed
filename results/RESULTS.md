@@ -33,6 +33,18 @@ Engineering exercises of a fixed cohort schedule and saved memory. Completion re
 | 20261121-074522_ecology-persistence-a0-off | finished | 3/3 | development | 2db4fe6 |
 | 20261121-074534_ecology-persistence-a0-on | finished | 3/3 | development | 2db4fe6 |
 
+## Cold donor inheritance (cold-donor-v1)
+
+E117 uses fixed original A genomes in the same full ecology for both splits. Each independent family has one cold donor life and paired newborn recipient arms, with persistence off. Restricted first-shelter-arrival latency excludes agents born inside shelter; nonarrival, including death before a living arrival, counts as 301 steps. Latency reduction is fresh minus inherited, and survival difference is inherited minus fresh. Estimates are means ± paired family SE; pooled outside-born latency uses a family-cluster ratio SE. Each seed requires latency improvement strictly above two SE and survival difference at least minus two SE. All three final seed decisions must pass for the study gate. The four-family development benchmark has no gate; incomplete attempts have no pooled estimates or decision. Other registered metrics and compressed family evidence remain in each run folder.
+
+| Run | Status | Split | Families completed/expected | Source | Evaluation seed | Inherited latency ± SE | Fresh latency ± SE | Latency reduction ± SE | Inherited survival ± SE | Fresh survival ± SE | Survival difference ± SE | Seed decision | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-172316_E117-benchmark | finished | development | 4/4 | A0 | 42 | 103.733333 ± 24.478447 | 203.533333 ± 38.324232 | 99.800000 ± 33.252318 | 0.062500 ± 0.062500 | 0.000000 ± 0.000000 | 0.062500 ± 0.062500 | not applicable | 95a254b |
+| 20261121-172551_E117-A0 | finished | final | 256/256 | A0 | 2026112101 | 123.212500 ± 3.836566 | 161.609375 ± 4.502696 | 38.396875 ± 5.296667 | 0.122070 ± 0.010894 | 0.032227 ± 0.005599 | 0.089844 ± 0.012021 | PASS | 95a254b |
+| 20261121-173231_E117-A1 | finished | final | 256/256 | A1 | 2026112102 | 115.431414 ± 3.756572 | 160.037696 ± 4.113494 | 44.606283 ± 5.367500 | 0.159180 ± 0.013099 | 0.051758 ± 0.007192 | 0.107422 ± 0.015182 | PASS | 95a254b |
+| 20261121-174842_E117-A2 | no summary | final | ?/256 | A2 | 2026112103 | undefined | undefined | undefined | undefined | undefined | undefined | undecided | 95a254b |
+| 20261121-181108_E117-A2-recovery | finished | final | 256/256 | A2 | 2026112103 | 107.891441 ± 3.275851 | 145.232777 ± 4.296794 | 37.341336 ± 5.375881 | 0.077148 ± 0.009518 | 0.008789 ± 0.002883 | 0.068359 ± 0.010020 | PASS | 4a271c2 |
+
 ## Paired objective continuation (paired-train-v1)
 
 Both arms continue the same saved plastic A genomes with fresh zero Adam moments and matched training keys. Paired mean averages both rule returns; paired minimum takes each individual's minimum before averaging. Training completion saves the genome and defers evaluation to the separate EVAL v5 aggregate. Training population variation is not held-out uncertainty; no scientific fitness estimate or SE is reported here.

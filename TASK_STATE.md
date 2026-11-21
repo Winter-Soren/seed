@@ -20,6 +20,6 @@ The optional persistence trait passed its local checks. In the cold world, the s
 ## What is next
 
 Keep the three original A genomes as the reference learners.
-Two cold-donor panels finished. A Windows monitoring call stopped the third after 181 of 256 families. Its evidence is preserved. The registered recovery checks the original files and evaluates only the remaining 75 families. All three panels will be audited together before reporting a decision.
+E117 passed in all three lineages. Inherited donor experience reduced the time to shelter by 38.4, 44.6 and 37.3 turns, each with a standard error near five turns. Survival rose in all three. An independent audit verified all 768 families, including the 75 recovered from the interrupted third panel. Shelter-specific content remains untested.
 The owner requested active genome evolution. E118 is registered before reading E117's results. It will evolve each original genome for ten generations with shelter, cold and persistence, then compare the final descendant with its parent on fresh paired worlds. An improved genome must reach shelter sooner and meet the survival safeguard.
 Keep one laptop job at a time and check both drives and memory before each launch.

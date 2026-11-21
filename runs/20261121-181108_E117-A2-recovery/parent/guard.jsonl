@@ -1,0 +1,36 @@
+{"physicalStartupWaived":true,"event":"invoked","expectedCommit":"95a254bcbe5c35c5f8ec343e056c579d562645ac","studyLimitSeconds":28800,"fullLimitSeconds":9900,"dailyUsedSeconds":7885.261805,"mode":"A2","waiverScope":"Owner-approved A2 startup physical RAM only; all other safeguards unchanged","studyUsedSeconds":1011.936805,"time":"2026-11-21T17:48:24.1755423+05:30"}
+{"time":"2026-11-21T17:48:34.3726112+05:30","freeD":49597169664,"availableCommitBytes":20688195584,"event":"capacity","freeC":18692915200,"availablePhysicalBytes":5713825792}
+{"arguments":["-X","utf8","scripts/run_experiment.py","--eval-protocol","cold-donor-v1","--name","E117-A2","--condition-split","final","--seed","2026112103","--generations","0","--eval-worlds","256","--start","file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy"],"sourceFiles":48,"commit":"95a254bcbe5c35c5f8ec343e056c579d562645ac","time":"2026-11-21T17:48:34.6787417+05:30","event":"preflight"}
+{"pid":39596,"time":"2026-11-21T17:48:34.7766953+05:30","event":"started"}
+{"privateBytes":696111104,"availableCommitBytes":20794195968,"freeD":49597157376,"seconds":12.6170783,"event":"sample","freeC":18692829184,"availablePhysicalBytes":5821501440}
+{"privateBytes":792879104,"availableCommitBytes":20211281920,"freeD":49597149184,"seconds":24.6618777,"event":"sample","freeC":18689302528,"availablePhysicalBytes":5870669824}
+{"privateBytes":812138496,"availableCommitBytes":19698905088,"freeD":49597149184,"seconds":36.5606228,"event":"sample","freeC":18687381504,"availablePhysicalBytes":5451526144}
+{"privateBytes":934055936,"availableCommitBytes":19661074432,"freeD":49597149184,"seconds":48.4321356,"event":"sample","freeC":18694881280,"availablePhysicalBytes":5337272320}
+{"privateBytes":900157440,"availableCommitBytes":19568623616,"freeD":49597034496,"seconds":60.2710624,"event":"sample","freeC":18694725632,"availablePhysicalBytes":5311299584}
+{"privateBytes":908115968,"availableCommitBytes":19883106304,"freeD":49596801024,"seconds":72.2278599,"event":"sample","freeC":18694463488,"availablePhysicalBytes":5619810304}
+{"privateBytes":909074432,"availableCommitBytes":19737886720,"freeD":49596555264,"seconds":84.8695515,"event":"sample","freeC":18694352896,"availablePhysicalBytes":5493997568}
+{"privateBytes":909393920,"availableCommitBytes":19831607296,"freeD":49596416000,"seconds":97.3159759,"event":"sample","freeC":18694246400,"availablePhysicalBytes":5581250560}
+{"privateBytes":909668352,"availableCommitBytes":19963240448,"freeD":49596030976,"seconds":109.6442806,"event":"sample","freeC":18694123520,"availablePhysicalBytes":5757370368}
+{"privateBytes":910737408,"availableCommitBytes":21050679296,"freeD":49595793408,"seconds":121.8415563,"event":"sample","freeC":18693947392,"availablePhysicalBytes":6609207296}
+{"privateBytes":905158656,"availableCommitBytes":21108555776,"freeD":49595424768,"seconds":133.87943,"event":"sample","freeC":18693926912,"availablePhysicalBytes":6658355200}
+{"privateBytes":914407424,"availableCommitBytes":21022253056,"freeD":49595240448,"seconds":146.3534375,"event":"sample","freeC":18693312512,"availablePhysicalBytes":6563024896}
+{"privateBytes":907493376,"availableCommitBytes":21039972352,"freeD":49594966016,"seconds":158.3416326,"event":"sample","freeC":18693222400,"availablePhysicalBytes":6593220608}
+{"privateBytes":916365312,"availableCommitBytes":21045178368,"freeD":49594597376,"seconds":170.5849669,"event":"sample","freeC":18693054464,"availablePhysicalBytes":6570704896}
+{"privateBytes":919519232,"availableCommitBytes":20986896384,"freeD":49594228736,"seconds":183.1900824,"event":"sample","freeC":18692993024,"availablePhysicalBytes":6520422400}
+{"privateBytes":921788416,"availableCommitBytes":20919525376,"freeD":49593974784,"seconds":196.344374,"event":"sample","freeC":18692616192,"availablePhysicalBytes":6559481856}
+{"privateBytes":922836992,"availableCommitBytes":21036654592,"freeD":49593655296,"seconds":208.3535288,"event":"sample","freeC":18692403200,"availablePhysicalBytes":7416025088}
+{"privateBytes":924897280,"availableCommitBytes":20983054336,"freeD":49593331712,"seconds":220.5622449,"event":"sample","freeC":18692071424,"availablePhysicalBytes":7773085696}
+{"privateBytes":927289344,"availableCommitBytes":21032722432,"freeD":49592872960,"seconds":232.2692862,"event":"sample","freeC":18691895296,"availablePhysicalBytes":7982870528}
+{"privateBytes":927789056,"availableCommitBytes":21013839872,"freeD":49592381440,"seconds":244.8571215,"event":"sample","freeC":18691432448,"availablePhysicalBytes":7964078080}
+{"privateBytes":927752192,"availableCommitBytes":20775006208,"freeD":49591537664,"seconds":257.3775064,"event":"sample","freeC":18690826240,"availablePhysicalBytes":7722713088}
+{"privateBytes":925507584,"availableCommitBytes":19917860864,"freeD":49591296000,"seconds":269.7408547,"event":"sample","freeC":18695733248,"availablePhysicalBytes":6900224000}
+{"privateBytes":932675584,"availableCommitBytes":20060000256,"freeD":49590931456,"seconds":283.4512797,"event":"sample","freeC":18695004160,"availablePhysicalBytes":7111307264}
+{"privateBytes":927526912,"availableCommitBytes":19807416320,"freeD":49590456320,"seconds":296.914973,"event":"sample","freeC":18694627328,"availablePhysicalBytes":6841065472}
+{"privateBytes":932872192,"availableCommitBytes":20216676352,"freeD":49590087680,"seconds":309.4111995,"event":"sample","freeC":18694197248,"availablePhysicalBytes":7188897792}
+{"privateBytes":935370752,"availableCommitBytes":20460011520,"freeD":49589764096,"seconds":321.9266764,"event":"sample","freeC":18694123520,"availablePhysicalBytes":7357255680}
+{"privateBytes":940191744,"availableCommitBytes":20289695744,"freeD":49589436416,"seconds":334.2770662,"event":"sample","freeC":18693619712,"availablePhysicalBytes":7231176704}
+{"privateBytes":941035520,"availableCommitBytes":19979411456,"freeD":49589006336,"seconds":346.86614,"event":"sample","freeC":18693566464,"availablePhysicalBytes":6890225664}
+{"privateBytes":942329856,"availableCommitBytes":20242792448,"freeD":49588506624,"seconds":363.8105089,"event":"sample","freeC":18692837376,"availablePhysicalBytes":7197421568}
+{"privateBytes":941449216,"availableCommitBytes":19980099584,"freeD":49588178944,"seconds":377.0757475,"event":"sample","freeC":18692161536,"availablePhysicalBytes":7019868160}
+{"privateBytes":943202304,"availableCommitBytes":19502706688,"freeD":49588043776,"seconds":389.9046581,"event":"sample","freeC":18686308352,"availablePhysicalBytes":6569267200}
+{"wallSeconds":400.7536469,"processStarted":true,"error":"Call cancelled ","time":"2026-11-21T17:55:04.8593107+05:30","event":"stopped"}
