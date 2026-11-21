@@ -31,14 +31,17 @@ from seed.seed import (Cfg, init_genome, biology_prior, make_evaluator, es_init,
                        format_row, test_genome, genome_size)
 from seed.structural import MODE, INTERVAL, PRUNE_FRACTION, STREAM_TAG, StructuralValidationError
 from seed import direct, paired
-from scripts import broader_eval, reversal_eval, eval_v3, eval_v4, eval_v5
+from scripts import broader_eval, reversal_eval, eval_v3, eval_v4, eval_v5, eval_v6
 
 DIRECT_PROTOCOL = "direct-v1"
 PAIRED_PROTOCOL = "paired-train-v1"
 ECOLOGY_LINEAGE_PROTOCOL = "ecology-lineage-v1"
+PAIRED_V2_PROTOCOL = "paired-train-v2"
+PAIRED_PROTOCOLS = (PAIRED_PROTOCOL, PAIRED_V2_PROTOCOL)
 PAIRED_OBJECTIVES = ("paired-mean", "paired-min")
 V4_MAX_SECONDS = 1740
 V5_MAX_SECONDS = 1140
+V6_MAX_SECONDS = 1140
 V4_SOURCES = (
     dict(label="A0", controller="rules-v0", seed=0, run="runs/20261112-023245_E103-A-blank-s0",
          sha256="477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"),
@@ -95,10 +98,10 @@ def start_genome(spec, c):
 
 def validate_eval_protocol(args, cfg_overrides):
     protocol = args.get("eval_protocol", "v1")
-    if protocol not in ("v1", "v2", "structural-v1", broader_eval.PROTOCOL, DIRECT_PROTOCOL, PAIRED_PROTOCOL):
+    if protocol not in ("v1", "v2", "structural-v1", broader_eval.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS):
         raise SystemExit(f"Unknown evaluation protocol: {protocol!r}")
-    if args.get("objective") is not None and protocol != PAIRED_PROTOCOL:
-        raise SystemExit("--objective is only valid for paired-train-v1")
+    if args.get("objective") is not None and protocol not in PAIRED_PROTOCOLS:
+        raise SystemExit("--objective is only valid for paired-train-v1/v2")
     controller = args.get("controller") or "rules-v0"
     if controller not in ("rules-v0", direct.FORMAT):
         raise SystemExit(f"Unknown controller: {controller!r}")
@@ -142,19 +145,25 @@ def validate_eval_protocol(args, cfg_overrides):
               or not 2 <= args["eval_worlds"] <= 4):
             raise SystemExit("direct-v1 development requires tiny fixtures: T<=30, M<=2, H<=6, R<=1, "
                              "G<=8, population<=8, worlds<=4, generations<=4, evaluation worlds 2..4")
-    if protocol == PAIRED_PROTOCOL:
+    if protocol in PAIRED_PROTOCOLS:
         validate_paired_args(args, Cfg(**cfg_overrides), cfg_overrides)
     return protocol
 
 
 def validate_paired_args(args, c, overrides):
+    protocol = args.get("eval_protocol", PAIRED_PROTOCOL)
+    if protocol not in PAIRED_PROTOCOLS:
+        raise SystemExit("unknown paired training protocol")
+    e116 = protocol == PAIRED_V2_PROTOCOL
     split = args.get("condition_split") or "final"
     if (args.get("objective") not in PAIRED_OBJECTIVES or args.get("controller", "rules-v0") != "rules-v0"
             or args["no_plastic"] or args.get("quick") or args.get("allow_dirty")
             or (args.get("structural_plasticity") or "off") != "off" or not args["start"].startswith("file:")
             or split not in ("final", "development")):
-        raise SystemExit("paired-train-v1 requires an explicit paired objective, saved rules-v0 source, "
+        raise SystemExit(f"{protocol} requires an explicit paired objective, saved rules-v0 source, "
                          "both learning rules, clean code, and no quick or structural changes")
+    if e116 and (args["objective"] != "paired-min" or args["lr"] not in (.1, .02)):
+        raise SystemExit("paired-train-v2 fixes paired-min and learning rate 0.1 (control) or 0.02 (candidate)")
     if (any(not math.isfinite(value) for value in c) or c.G < 1 or c.M < 1 or c.R < 0
             or c.H < 1 or c.n_htypes != 3 or c.H % c.n_htypes or c.T < 4 or c.T % 2
             or c.micro < 1 or min(c.e0, c.e_max, c.wmax) <= 0 or c.e0 > c.e_max or min(c.decay, c.gain) < 0
@@ -162,34 +171,38 @@ def validate_paired_args(args, c, overrides):
             or args["worlds"] < 1 or args["checkpoint_every"] < 1
             or not math.isfinite(args["sigma"]) or args["sigma"] <= 0
             or not math.isfinite(args["lr"]) or args["lr"] <= 0):
-        raise SystemExit("paired-train-v1 requires finite valid settings and the 155-number genome format")
+        raise SystemExit(f"{protocol} requires finite valid settings and the 155-number genome format")
     if split == "final":
-        if (overrides or c != Cfg() or args["generations"] != 50 or args["seed"] not in (1000, 1001, 1002)
+        generations, seed_base = (20, 2000) if e116 else (50, 1000)
+        if (overrides or c != Cfg() or args["generations"] != generations or args["seed"] not in range(seed_base, seed_base+3)
                 or (args["pop"], args["worlds"], args["sigma"], args["lr"], args["checkpoint_every"], args["eval_worlds"])
-                != (64, 4, .1, .1, 10, 256)):
-            raise SystemExit("paired-train-v1 final fixes 50 generations, seeds 1000/1001/1002, population 64, "
-                             "four base-world pairs, sigma/lr 0.1, checkpoint 10, default Cfg and deferred evaluation")
-        arm = args["objective"].removeprefix("paired-")
-        if args["name"] != f"E115-{arm}-s{args['seed'] - 1000}":
-            raise SystemExit("paired-train-v1 final requires its registered canonical run name")
+                != (64, 4, .1, args["lr"] if e116 else .1, 10, 256)):
+            raise SystemExit(f"{protocol} final fixes {generations} generations, seeds {seed_base}..{seed_base+2}, "
+                             "population 64, four base-world pairs, sigma 0.1, registered learning rate, "
+                             "checkpoint 10, default Cfg and deferred evaluation")
+        arm = ("control" if args["lr"] == .1 else "candidate") if e116 else args["objective"].removeprefix("paired-")
+        experiment = "E116" if e116 else "E115"
+        if args["name"] != f"{experiment}-{arm}-s{args['seed'] - seed_base}":
+            raise SystemExit(f"{protocol} final requires its registered canonical run name")
     elif (c.T > 30 or c.M > 2 or c.H > 6 or c.R > 1 or c.G > 8 or args["seed"] != 41
           or args["pop"] > 4 or args["worlds"] > 4 or not 1 <= args["generations"] <= 4
           or not 2 <= args["eval_worlds"] <= 4):
-        raise SystemExit("paired-train-v1 development requires tiny fixtures, seed 41, at most four generations/population/worlds")
+        raise SystemExit(f"{protocol} development requires tiny fixtures, seed 41, at most four generations/population/worlds")
     if not args["name"] or any(ch not in "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_.-" for ch in args["name"]):
-        raise SystemExit("paired-train-v1 run names require letters, numbers, dots, hyphens or underscores")
+        raise SystemExit(f"{protocol} run names require letters, numbers, dots, hyphens or underscores")
 
 
 def paired_source(args, c):
+    protocol = args.get("eval_protocol", PAIRED_PROTOCOL)
     path = (ROOT / args["start"][5:]).resolve()
     data = path.read_bytes()
-    flat = diagnostic_genome(data, c, protocol=PAIRED_PROTOCOL)
+    flat = diagnostic_genome(data, c, protocol=protocol)
     digest = hashlib.sha256(data).hexdigest()
     if args["condition_split"] == "final":
-        source = V4_SOURCES[args["seed"] - 1000]
+        source = V4_SOURCES[args["seed"] - (2000 if protocol == PAIRED_V2_PROTOCOL else 1000)]
         if (path != (ROOT / source["run"] / "genome_final.npy").resolve()
                 or digest != source["sha256"]):
-            raise SystemExit("paired-train-v1 requires the pinned original A genome matching its seed")
+            raise SystemExit(f"{protocol} requires the pinned original A genome matching its seed")
     try:
         recorded_path = path.relative_to(ROOT.resolve()).as_posix()
     except ValueError:
@@ -480,46 +493,63 @@ def load_saved_sources(c, manifest):
 
 
 def load_v5_sources(c, split):
+    return load_paired_sources(c, split, PAIRED_PROTOCOL)
+
+
+def load_v6_sources(c, split):
+    return load_paired_sources(c, split, PAIRED_V2_PROTOCOL)
+
+
+def load_paired_sources(c, split, training_protocol):
+    e116 = training_protocol == PAIRED_V2_PROTOCOL
+    title, experiment, seed_base = ("EVAL v6", "E116", 2000) if e116 else ("EVAL v5", "E115", 1000)
+    arms = ("control", "candidate") if e116 else ("mean", "min")
     originals = load_saved_sources(c, V4_SOURCES[:3])
     loaded = {}
     shared_budget = None
     for index in range(3):
         original = originals[f"A{index}"]
         loaded[f"start{index}"] = dict(original, provenance=dict(original["provenance"], label=f"start{index}"))
-        for arm in ("mean", "min"):
-            name = f"E115-{arm}-s{index}"
+        matched = []
+        for arm in arms:
+            name = f"{experiment}-{arm}-s{index}"
+            objective = "paired-min" if e116 else "paired-" + arm
             folders = list((ROOT / "runs").glob(f"*_{name}"))
             if len(folders) != 1:
-                raise ValueError(f"EVAL v5 requires exactly one registered {name} run, including failed attempts")
+                raise ValueError(f"{title} requires exactly one registered {name} run, including failed attempts")
             folder = folders[0]
             config_data, summary_data = (folder / "config.json").read_bytes(), (folder / "summary.json").read_bytes()
             config, summary = json.loads(config_data), json.loads(summary_data)
             args = config["args"]
-            if (args.get("eval_protocol") != PAIRED_PROTOCOL or args.get("objective") != "paired-" + arm
+            if (args.get("eval_protocol") != training_protocol or args.get("objective") != objective
                     or args.get("name") != name or args.get("condition_split") != split
                     or config.get("cfg") != c._asdict() or Cfg(**config["cfg_overrides"]) != c
                     or config.get("controller") != "rules-v0"
                     or config.get("genome_size") != 155 or config.get("objective") != args["objective"]
-                    or config.get("eval_protocol") != PAIRED_PROTOCOL or config.get("evaluation_status") != "deferred"):
-                raise ValueError(f"EVAL v5 source {name} has inconsistent training metadata")
+                    or config.get("eval_protocol") != training_protocol or config.get("evaluation_status") != "deferred"
+                    or (e116 and args.get("lr") != (.1 if arm == "control" else .02))):
+                raise ValueError(f"{title} source {name} has inconsistent training metadata")
             validate_paired_args(args, c, config["cfg_overrides"])
-            budget = tuple(args[key] for key in ("generations", "pop", "worlds", "sigma", "lr", "checkpoint_every", "eval_worlds"))
+            budget = tuple(args[key] for key in ("generations", "pop", "worlds", "sigma", "lr", "checkpoint_every", "eval_worlds")
+                           if not (e116 and key == "lr"))
             if shared_budget is None:
                 shared_budget = budget
-            if budget != shared_budget or (split == "final" and args["seed"] != 1000 + index):
-                raise ValueError("EVAL v5 continuation budgets and mapped seeds must match")
+            if budget != shared_budget or (split == "final" and args["seed"] != seed_base + index):
+                raise ValueError(f"{title} continuation budgets and mapped seeds must match")
             source_flat, source_bytes, source_metadata = paired_source(args, c)
             if (source_bytes != original["data"] or config.get("input_genome") != source_metadata
                     or (folder / "genome_start.npy").read_bytes() != source_bytes
                     or config.get("start_genome_hash") != genome_hash(source_flat)
                     or config.get("initial_optimizer") != paired_initial_optimizer(c, source_flat, args["seed"])):
-                raise ValueError(f"EVAL v5 source {name} does not preserve its original A input and fresh optimizer")
+                raise ValueError(f"{title} source {name} does not preserve its original A input and fresh optimizer")
             data = (folder / "genome_final.npy").read_bytes()
-            flat = diagnostic_genome(data, c, protocol="EVAL v5")
+            flat = diagnostic_genome(data, c, protocol=title)
             with np.load(folder / "checkpoint.npz", allow_pickle=False) as checkpoint:
-                validate_es_state(checkpoint, 155, PAIRED_PROTOCOL)
+                validate_es_state(checkpoint, 155, training_protocol)
                 if int(checkpoint["t"]) != args["generations"] or not np.array_equal(checkpoint["mu"], flat):
-                    raise ValueError(f"EVAL v5 source {name} checkpoint disagrees with its completed genome")
+                    raise ValueError(f"{title} source {name} checkpoint disagrees with its completed genome")
+                if e116:
+                    matched.append((config["initial_optimizer"], checkpoint["key"].copy()))
             metrics = (folder / "metrics.jsonl").read_text()
             history = [json.loads(line) for line in metrics.splitlines()]
             if (not metrics.endswith("\n") or len(history) != args["generations"]
@@ -530,11 +560,15 @@ def load_v5_sources(c, split):
                     or summary.get("objective") != args["objective"] or summary.get("final_genome_hash") != genome_hash(flat)
                     or summary.get("final_genome_sha256") != hashlib.sha256(data).hexdigest()
                     or (folder / "events.npz").exists()):
-                raise ValueError(f"EVAL v5 source {name} has incomplete training or unexpected evaluation evidence")
+                raise ValueError(f"{title} source {name} has incomplete training or unexpected evaluation evidence")
+            if e116 and (summary.get("eval_protocol") != training_protocol or summary.get("controller") != "rules-v0"
+                         or summary.get("condition_split") != split or summary.get("eval_worlds") != args["eval_worlds"]
+                         or any(key in summary for key in ("evaluations", "final_learning", "final_frozen", "start_learning"))):
+                raise ValueError(f"{title} source {name} has inconsistent deferred evaluation metadata")
             provenance = [config.get("git", {})] + [entry.get("git", {}) for entry in config.get("resumes", [])]
             if any(git.get("dirty") is not False or len(git.get("commit", "")) != 40
                    or any(ch not in "0123456789abcdef" for ch in git.get("commit", "")) for git in provenance):
-                raise ValueError(f"EVAL v5 source {name} lacks clean committed provenance")
+                raise ValueError(f"{title} source {name} lacks clean committed provenance")
             label = arm + str(index)
             loaded[label] = dict(flat=flat, data=data, provenance=dict(
                 label=label, controller="rules-v0", seed=index, training_seed=args["seed"], objective=args["objective"],
@@ -542,6 +576,8 @@ def load_v5_sources(c, split):
                 genome_hash=genome_hash(flat), genome_size=155, input_genome=source_metadata,
                 config_sha256=hashlib.sha256(config_data).hexdigest(), summary_sha256=hashlib.sha256(summary_data).hexdigest(),
                 source_commits=provenance))
+        if e116 and (matched[0][0] != matched[1][0] or not np.array_equal(matched[0][1], matched[1][1])):
+            raise ValueError("EVAL v6 matched arms must share initial optimizer and final RNG position")
     return loaded
 
 
@@ -553,8 +589,12 @@ def run_paired_diagnostic(a, git, module):
     started = time.monotonic()
     c = Cfg(**parse_cfg(a.cfg))
     validate_v4_request(a, c)
-    sources = load_v4_sources(c) if module is eval_v4 else load_v5_sources(c, a.condition_split)
+    if module is eval_v6 and a.condition_split == "final" and a.name != "E116-v6":
+        raise ValueError("EVAL v6 final requires the registered E116-v6 name")
+    sources = (load_v4_sources(c) if module is eval_v4 else load_v6_sources(c, a.condition_split)
+               if module is eval_v6 else load_v5_sources(c, a.condition_split))
     title = "EVAL " + module.PROTOCOL
+    seconds_limit = V4_MAX_SECONDS if module is eval_v4 else V6_MAX_SECONDS if module is eval_v6 else V5_MAX_SECONDS
     expected_panels = len(sources) + len(V4_REFERENCES)
     if any((ROOT / "runs").glob(f"*_{a.name}")):
         raise ValueError(f"An {title} attempt with this name already exists; preserve it and preregister a new attempt")
@@ -567,7 +607,7 @@ def run_paired_diagnostic(a, git, module):
     config = dict(args=vars(a).copy(), cfg=c._asdict(), git=git, created=datetime.datetime.now().isoformat(),
                   eval_protocol=module.PROTOCOL, eval_seed=seed, eval_worlds=a.eval_worlds,
                   input_genomes=manifest, reference_policies=V4_REFERENCES,
-                  internal_seconds_limit=V4_MAX_SECONDS if module is eval_v4 else V5_MAX_SECONDS,
+                  internal_seconds_limit=seconds_limit,
                   machine=dict(platform=platform.platform(), python=sys.version.split()[0],
                                jax=jax.__version__, devices=[str(d) for d in jax.devices()]))
     write_json(run_dir / "config.json", config)
@@ -580,7 +620,8 @@ def run_paired_diagnostic(a, git, module):
     raw_by_panel = {}
 
     def check_deadline():
-        if time.monotonic() - started >= (V4_MAX_SECONDS if module is eval_v4 else V5_MAX_SECONDS):
+        limit = V4_MAX_SECONDS if module is eval_v4 else V6_MAX_SECONDS if module is eval_v6 else V5_MAX_SECONDS
+        if time.monotonic() - started >= limit:
             raise TimeoutError(f"{title} internal time limit reached; completed panels and conditions are preserved")
 
     try:
@@ -661,12 +702,12 @@ def main():
     ap.add_argument("--controller", choices=("rules-v0", direct.FORMAT), default=None,
                     help="rules-v0 (default) or directly encoded fixed-weight recurrent controller; inherited on resume")
     ap.add_argument("--objective", choices=PAIRED_OBJECTIVES, default=None,
-                    help="paired-train-v1 only; inherited and immutable on resume")
+                    help="paired-train-v1/v2 only; inherited and immutable on resume")
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, DIRECT_PROTOCOL, PAIRED_PROTOCOL, ECOLOGY_LINEAGE_PROTOCOL), default=None,
-                    help="versioned training/diagnostics; ecology-lineage-v1 is a development-only mechanism fixture")
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS, ECOLOGY_LINEAGE_PROTOCOL), default=None,
+                    help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, v4, v5, v6, direct-v1 or paired-train-v1/v2; ecology-lineage-v1 runs a development fixture")
     ap.add_argument("--memory-condition", choices=("shared", "empty"), default=None,
                     help="ecology-lineage-v1 selected trace; both paired memory conditions are retained")
     ap.add_argument("--condition-split", choices=tuple(broader_eval.SPLIT_SEEDS), default=None,
@@ -699,12 +740,13 @@ def main():
         except ValueError as error:
             ap.error(str(error))
         return
-    if a.objective is not None and not a.resume and a.eval_protocol != PAIRED_PROTOCOL:
-        ap.error("--objective is only valid for paired-train-v1")
-    if a.eval_protocol in (eval_v4.PROTOCOL, eval_v5.PROTOCOL):
+    if a.objective is not None and not a.resume and a.eval_protocol not in PAIRED_PROTOCOLS:
+        ap.error("--objective is only valid for paired-train-v1/v2")
+    if a.eval_protocol in (eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL):
         a.condition_split = a.condition_split or "final"
         try:
-            run_paired_diagnostic(a, git, eval_v4 if a.eval_protocol == eval_v4.PROTOCOL else eval_v5)
+            module = {item.PROTOCOL: item for item in (eval_v4, eval_v5, eval_v6)}[a.eval_protocol]
+            run_paired_diagnostic(a, git, module)
         except ValueError as error:
             ap.error(str(error))
         return
@@ -731,15 +773,20 @@ def main():
         args = config["args"]
         if args.get("eval_protocol") == ECOLOGY_LINEAGE_PROTOCOL:
             ap.error("Development lineage attempts cannot resume; preserve all evidence and use a new run name")
-        if args.get("eval_protocol") == PAIRED_PROTOCOL:
+        if args.get("eval_protocol") in PAIRED_PROTOCOLS:
             if a.cfg or a.quick or a.allow_dirty:
                 ap.error("Cannot change paired training configuration, use quick mode or dirty code on resume")
             for field in ("name", "start", "generations", "pop", "worlds", "sigma", "lr", "seed",
                           "no_plastic", "controller", "objective", "checkpoint_every", "eval_worlds"):
                 if "--" + field.replace("_", "-") in explicit and getattr(a, field) != args.get(field):
                     ap.error(f"Cannot change paired training {field} on resume")
+            if args["eval_protocol"] == PAIRED_V2_PROTOCOL:
+                provenance = [config.get("git", {})] + [entry.get("git", {}) for entry in config.get("resumes", [])]
+                if any(item.get("dirty") is not False or len(item.get("commit", "")) != 40
+                       or any(ch not in "0123456789abcdef" for ch in item.get("commit", "")) for item in provenance):
+                    ap.error("Cannot resume paired-train-v2 without clean committed provenance")
         elif a.objective is not None:
-            ap.error("--objective is only valid for paired-train-v1")
+            ap.error("--objective is only valid for paired-train-v1/v2")
         saved_controller = args.get("controller") or "rules-v0"
         if a.controller is not None and a.controller != saved_controller:
             raise SystemExit("Cannot change controller on resume")
@@ -747,7 +794,7 @@ def main():
             ap.error("Cannot change direct-v1 configuration or use --quick on resume")
         if args.get("eval_protocol") == eval_v3.PROTOCOL:
             ap.error("EVAL v3 panels cannot resume; preserve this folder and start a new run")
-        if args.get("eval_protocol") in (eval_v4.PROTOCOL, eval_v5.PROTOCOL):
+        if args.get("eval_protocol") in (eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL):
             ap.error("Paired diagnostic attempts cannot resume; preserve all evidence and preregister a new attempt")
         if args.get("eval_protocol") == reversal_eval.PROTOCOL:
             ap.error("reversal-v1 does not resume; preserve the folder and use a new run name")
@@ -756,7 +803,7 @@ def main():
         if args.get("eval_protocol", "v1") == broader_eval.PROTOCOL:
             ap.error("broader-v1 panels cannot be resumed; preserve this folder and start a new run")
         if a.condition_split is not None:
-            if args.get("eval_protocol") not in (DIRECT_PROTOCOL, PAIRED_PROTOCOL) or a.condition_split != args.get("condition_split", "final"):
+            if args.get("eval_protocol") not in (DIRECT_PROTOCOL, *PAIRED_PROTOCOLS) or a.condition_split != args.get("condition_split", "final"):
                 ap.error("Cannot change condition split on resume")
         if a.structural_plasticity is not None and a.structural_plasticity != args.get("structural_plasticity", "off"):
             raise SystemExit("Cannot change structural mode on resume")
@@ -770,9 +817,9 @@ def main():
         args["eval_protocol"] = a.eval_protocol or "v1"
         args["structural_plasticity"] = a.structural_plasticity or "off"
         args["controller"] = a.controller or "rules-v0"
-        if args["eval_protocol"] in (DIRECT_PROTOCOL, PAIRED_PROTOCOL):
+        if args["eval_protocol"] in (DIRECT_PROTOCOL, *PAIRED_PROTOCOLS):
             args["condition_split"] = a.condition_split or "final"
-        if a.condition_split is not None and args["eval_protocol"] not in (broader_eval.PROTOCOL, DIRECT_PROTOCOL, PAIRED_PROTOCOL):
+        if a.condition_split is not None and args["eval_protocol"] not in (broader_eval.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS):
             ap.error("--condition-split requires a versioned training or diagnostic protocol")
         if a.quick:
             args.update(generations=3, pop=8, worlds=2, eval_worlds=4, checkpoint_every=1)
@@ -789,7 +836,7 @@ def main():
         if protocol == "v2":
             source_bytes = Path(args["start"][5:]).read_bytes()
             file_mean = diagnostic_genome(source_bytes, Cfg())
-        if protocol == PAIRED_PROTOCOL:
+        if protocol in PAIRED_PROTOCOLS:
             file_mean, source_bytes, source_metadata = paired_source(args, Cfg(**overrides))
             if any((ROOT / "runs").glob(f"*_{a.name}")):
                 ap.error("A paired training attempt with this name already exists; preserve it and use its resume path")
@@ -803,8 +850,8 @@ def main():
         if protocol == "v2":
             config.update(eval_protocol="v2", eval_seed=123, eval_worlds=128,
                           source_genome_sha256=hashlib.sha256(source_bytes).hexdigest())
-        if protocol == PAIRED_PROTOCOL:
-            config.update(controller="rules-v0", eval_protocol=PAIRED_PROTOCOL, objective=args["objective"],
+        if protocol in PAIRED_PROTOCOLS:
+            config.update(controller="rules-v0", eval_protocol=protocol, objective=args["objective"],
                           input_genome=source_metadata, evaluation_status="deferred",
                           initial_optimizer=paired_initial_optimizer(Cfg(**overrides), file_mean, args["seed"]))
         if protocol == "structural-v1":
@@ -816,11 +863,11 @@ def main():
 
     c = Cfg(**config["cfg_overrides"])
     is_direct = protocol == DIRECT_PROTOCOL
-    is_paired = protocol == PAIRED_PROTOCOL
+    is_paired = protocol in PAIRED_PROTOCOLS
     if is_paired and a.resume:
         file_mean, source_bytes, source_metadata = paired_source(args, c)
         if (config.get("cfg") != c._asdict() or config.get("controller") != "rules-v0"
-                or config.get("genome_size") != 155 or config.get("eval_protocol") != PAIRED_PROTOCOL
+                or config.get("genome_size") != 155 or config.get("eval_protocol") != protocol
                 or config.get("objective") != args["objective"] or config.get("evaluation_status") != "deferred"
                 or config.get("input_genome") != source_metadata
                 or config.get("initial_optimizer") != paired_initial_optimizer(c, file_mean, args["seed"])
@@ -898,7 +945,7 @@ def main():
         if not a.resume:
             config["initial_weights"] = direct_weight_stats(state["mu"], c)
     if is_paired:
-        validate_es_state(state, 155, PAIRED_PROTOCOL)
+        validate_es_state(state, 155, protocol)
     if protocol == "v2" and (genome_hash(file_mean) != config["start_genome_hash"]
                              or not np.array_equal(np.asarray(state["mu"]), file_mean)):
         raise SystemExit("Cannot resume EVAL v2: checkpoint differs from saved source genome")
@@ -929,7 +976,7 @@ def main():
         if is_direct:
             validate_direct_state(recovered, c)
         if is_paired:
-            validate_es_state(recovered, 155, PAIRED_PROTOCOL)
+            validate_es_state(recovered, 155, protocol)
         if {k: v for k, v in previous.items() if k != "seconds"} != row:
             raise SystemExit(f"Cannot resume: metric mismatch at generation {previous['gen']}; existing artifacts unchanged")
         state = recovered
@@ -986,7 +1033,7 @@ def main():
                        eval_worlds=args["eval_worlds"], initial_weights=config["initial_weights"],
                        final_weights=direct_weight_stats(state["mu"], c))
     if is_paired:
-        summary.update(controller="rules-v0", eval_protocol=PAIRED_PROTOCOL, objective=args["objective"],
+        summary.update(controller="rules-v0", eval_protocol=protocol, objective=args["objective"],
                        condition_split=args["condition_split"], training_complete=status == "finished",
                        evaluation_status="deferred")
     if status == "finished":

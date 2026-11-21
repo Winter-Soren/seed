@@ -4,9 +4,35 @@ Seed is a small simulation about learning from experience. We evolve simple brai
 
 ## What the creatures do
 
-Four creatures move around a grid. They can only see what is nearby. Each world has two kinds of items. In one world, the first kind is food and the second is poison. In another world, their roles are reversed. The creatures get feedback through changes in their energy after eating. In some tests, the rule switches halfway through their lives.
+Four creatures move around a 16 × 16 grid. Each sees a small patch around itself and can move one square or stay put. There are two kinds of items, A and B. In one world, A is food and B is poison. In another world, B is food and A is poison. The rule is hidden from the creatures. Food adds energy, poison drains it, and staying alive uses a little energy each turn. A life lasts up to 300 turns and ends early if energy reaches zero. In some tests, the food rule switches halfway through.
 
-Each creature starts with a brain built from a **genome**, a set of 155 numbers that describes how to wire the brain and how it should learn. During a life, experience changes the strength of connections. Between generations, evolution tries small changes to the genome and uses the creatures' scores to decide which changes to keep. Each new life starts with a freshly built brain.
+## How a creature gets its brain
+
+The **genome** is a set of 155 numbers. It tells Seed how likely different kinds of brain cells are to connect, how strong those connections start out, and how experience can change them. Each of the four creatures in a world starts from the same genome. Seed draws the wiring separately for each one, so they can start with different brains from the same instructions.
+
+## How a creature learns during its life
+
+1. **Look and act.** The brain takes in nearby items, other creatures and their signals, and its own energy. Brain activity carries over from one turn to the next. The brain uses that activity to choose a move and keeps track of the move it actually made.
+2. **Get feedback.** If the creature lands on an item, it eats it. On the next turn, the brain gets the change in energy and compares what it sees with what it expected to see.
+3. **Adjust the brain.** One update helps the brain make a better prediction next time. The other changes the strength of existing connections using the activity from the last move. The genome controls how the energy change and the size of the prediction error influence that update.
+
+For example, one starting genome is designed to strengthen the link between seeing an item on the right and moving right when that move gains energy. If the move loses energy, the same rule can weaken that link. That gives the next decision a chance to use the last experience. This example comes from Seed's hand-written starting rule. Evolution can discover different ways to use the feedback. [Brain update code](seed/seed.py#L135) · [Example starting genome](seed/seed.py#L71)
+
+## What a generation means
+
+A **turn** is one action in the grid. A **life** is one creature's time in that world. A **generation** is one round of training that tests many slightly different genomes, each across several fresh lives.
+
+1. **Make candidates.** Start with the genome that training has reached so far. Make copies with small random changes to its numbers. The candidates come in pairs, with one copy adding a change and the other subtracting it.
+2. **Let them live.** Try each candidate on the same set of training worlds for that round. Build new brains from the candidate, then let the creatures act and learn through a full life.
+3. **Score and update.** In the original experiment, a creature's score was food eaten minus poison eaten. Seed averages scores across creatures and worlds, ranks the candidates, and uses those ranks to update the genome. The next generation tries new changes around that updated genome.
+
+In the original A runs, one generation tested **128 candidate genomes in 8 worlds each**, with 4 creatures per world. Each run repeated that process **200 times**. A new creature inherits the instructions for building and updating a brain. It starts life with fresh wiring and no memory of the lives that came before it. [One run's settings](runs/20261112-023245_E103-A-blank-s0/config.json) · [Evolution code](seed/seed.py#L332)
+
+A **random seed** is a number that sets the sequence of random choices in a training run. We repeat experiments with different seeds to see whether the same pattern shows up across runs.
+
+## How we check whether learning helps
+
+We test saved genomes on worlds set aside from training. To check learning during a life, we look at food choices over time and compare a genome with its brain updates on and off. To check flexibility, we can switch the food rule halfway through a life or replay the same starting creature in two separate lives, one under each rule. We track survival alongside food choices because some creatures die before they have many chances to eat. [Learning and rule-switch tests](results/EVAL_V3.md) · [Paired-rule tests](results/EVAL_V4.md)
 
 ## What we found
 
@@ -29,7 +55,7 @@ This experiment, **E115**, passed none of its six required score comparisons. Tw
 
 ## What comes next
 
-**E116 is awaiting approval.** It would start from the original brains and test whether making smaller changes to the genome each generation helps. A new brain would have to beat both its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
+**E116 is underway.** It tests whether smaller changes to the genome between generations help the three original brains. Each trained brain has to beat its starting brain and a version trained with the original step size while meeting the survival target. [Read the proposal](experiments/E116_PROPOSAL.md)
 
 ## A world with shelter and memory across lives
 

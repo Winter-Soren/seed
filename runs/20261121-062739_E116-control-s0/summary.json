@@ -1,0 +1,12 @@
+{
+  "status": "interrupted",
+  "generation": 5,
+  "train_minutes": 2.23,
+  "final_genome_hash": "9c198467e2982335",
+  "controller": "rules-v0",
+  "eval_protocol": "paired-train-v2",
+  "objective": "paired-min",
+  "condition_split": "final",
+  "training_complete": false,
+  "evaluation_status": "deferred"
+}

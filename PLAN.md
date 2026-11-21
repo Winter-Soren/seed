@@ -213,6 +213,25 @@ as success.
   findings as review comments: fix them or answer them in the LOG before moving
   on. The reviewer cannot change the plan; only the owner can.
 - Never claim AGI, general intelligence, novelty or state of the art.
+
+## Owner direction, 21 November 2026
+
+Develop a world where a creature can see shelter and choose whether to spend
+energy reaching it when the weather changes. Retain the food task as a benchmark.
+The owner asked to reuse both evolved genomes and acquired experience, including
+experience left by creatures that die. Test three questions separately.
+
+1. Does starting from an evolved genome help in a different environment?
+2. Does the same individual benefit from keeping its learned connections for a
+   second life?
+3. Can independently wired newborns benefit from what earlier creatures learned,
+   and does keeping lessons from several cohorts help more than keeping one?
+
+E116 finishes its registered comparison on the original world. Build the new
+environment and transfer controls separately. In the new world, register each
+scientific comparison before running it and measure survival and useful actions
+on held-out lineages. A sequence of harder worlds can test transfer or forgetting.
+Showing that the sequence itself helps requires a comparison with equal exposure.
 - Owner workflow update, 15 November 2026: create no new pull requests until the
   owner re-enables them, and do not request routine pull-request reviews. This
   changes publication workflow only, not gates or approval requirements.

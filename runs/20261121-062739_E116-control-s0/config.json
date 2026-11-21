@@ -1,0 +1,94 @@
+{
+  "args": {
+    "name": "E116-control-s0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 20,
+    "pop": 64,
+    "worlds": 4,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2000,
+    "no_plastic": false,
+    "controller": "rules-v0",
+    "objective": "paired-min",
+    "structural_plasticity": "off",
+    "eval_worlds": 256,
+    "eval_protocol": "paired-train-v2",
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": 120.0,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "cfg_overrides": {},
+  "git": {
+    "commit": "861405d7651421abd216fec28683be54b0c4edf5",
+    "branch": "main",
+    "dirty": false
+  },
+  "created": "2026-11-21T06:27:39.609569",
+  "machine": {
+    "platform": "Windows-11-10.0.26200-SP0",
+    "python": "3.12.10",
+    "jax": "0.12.0.1",
+    "devices": [
+      "cpu:0"
+    ]
+  },
+  "controller": "rules-v0",
+  "eval_protocol": "paired-train-v2",
+  "objective": "paired-min",
+  "input_genome": {
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "genome_hash": "ee8eaa10a7429cc5",
+    "controller": "rules-v0",
+    "source_run": "runs/20261112-023245_E103-A-blank-s0",
+    "source_config_sha256": "bf5e1b9981bb44f77ab335626308f7aa81a9fdcdac9792ad9745fbe8f7dc3561",
+    "source_summary_sha256": "664f2ec93e0558d5b4632325bf5387c01204942ac168bf7d09d8b0e3f2f5f16d",
+    "source_commits": [
+      {
+        "commit": "71126a6bacefaeef84cca226896030aa59fc8b72",
+        "branch": "main",
+        "dirty": false
+      },
+      {
+        "commit": "55a459b63873adc159fd953ae75c9c2ff32efee4",
+        "branch": "main",
+        "dirty": false
+      }
+    ]
+  },
+  "evaluation_status": "deferred",
+  "initial_optimizer": {
+    "method": "es_init",
+    "generation": 0,
+    "adam_m_zero": true,
+    "adam_v_zero": true,
+    "key": [
+      2132485035,
+      2185393884
+    ],
+    "l2": 0.005
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "genome_size": 155,
+  "start_genome_hash": "ee8eaa10a7429cc5"
+}

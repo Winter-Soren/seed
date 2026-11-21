@@ -1860,6 +1860,48 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
 
 **Decision.** Retain the original three A genomes as the starting benchmarks. E113 and E115 keep their failed gate decisions. The council recommends a prospective matched learning-rate comparison under the same stationary world physics. The proposed E116 study is awaiting the owner's failed-gate decision. No E116 job has started.
 
+### E116 preregistration · 21 November 2026 · Size of evolutionary updates
+
+The owner asked us to continue after reviewing the E116 proposal and to reuse prior learning. E116 reuses the original three E103 genomes. It compares evolutionary learning rates 0.1 (control) and 0.02 (candidate) with paired-min selection, from fresh zero Adam moments. Both arms inherit the same genome per seed. Within-life weights reset at birth. The separately requested environmental parameters will be developed under ecology-v1 and remain disabled in this comparison.
+
+Hypothesis: the smaller step improves worse-rule return beyond both the original genome and its matched control while preserving joint survival. EVAL v6 evaluates the generation-20 finals and original starts on 256 new paired base worlds (seed 2026112001), with four conditions per panel and the same five references as v5. The 30 contrasts consist of candidate minus control and candidate minus start for all five v5 paired measures, in all three seeds. For each seed, both minimum-return differences must exceed two paired world standard errors strictly, and candidate-minus-start joint survival must be at least minus two paired standard errors. All six finals and 14 panels must pass validity. Any other valid completed result fails. Incomplete evidence leaves the scientific decision open. No best checkpoint selection or intermediate held-out evaluation. Report original outcomes, survival, counts and reversal regardless.
+
+Commit the code and this registration before execution. Full local software suite and hosted CI share a 2,400-second reserve. The total cap is 10,800 seconds, including the 1,200 seconds reserved for final evaluation. Training and setup share 7,200 seconds. Startup floors for physical memory, commit headroom and both drives are 8, 10, 10 and 10 GiB respectively. Runtime floors for commit and C/D are 3, 5 and 10 GiB. One low-priority job, temporary files on D, and no more than eight hours for the day. Record benchmark wall, slowest warm generation and startup/compile overhead. Before releasing the remaining work, budget 1.5 times the slowest measured warm generation plus every expected setup and full reserves. Stop if infeasible. No automatic retries or relaxation of thresholds.
+
+Original input NPY files and SHA-256, in A0/A1/A2 order:
+- runs/20261112-023245_E103-A-blank-s0/genome_final.npy 477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53
+- runs/20261112-050319_E103-A-blank-s1/genome_final.npy 35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899
+- runs/20261112-102755_E103-A-blank-s2/genome_final.npy f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6
+
+Exact initial commands in run order:
+
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-control-s0 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --seed 2000 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.1 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 120
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-candidate-s0 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy --seed 2000 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.02 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 900
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-control-s1 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --seed 2001 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.1 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 900
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-candidate-s1 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy --seed 2001 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.02 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 900
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-control-s2 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --seed 2002 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.1 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 900
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-candidate-s2 --eval-protocol paired-train-v2 --condition-split final --objective paired-min --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy --seed 2002 --generations 20 --pop 64 --worlds 4 --sigma 0.1 --lr 0.02 --checkpoint-every 10 --eval-worlds 256 --max-train-seconds 900
+
+The first control-0 invocation is a benchmark that counts toward its 20 generations, with a 600-second supervisor limit. Resume only its unique recorded folder (or any later normally bounded training segment) with a 900-second training and 1,200-second full-process limit:
+
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --resume runs/<same-registered-run-folder> --max-train-seconds 900
+
+After all six valid finals are committed, run once under a 1,200-second full-process limit:
+
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --name E116-v6 --eval-protocol v6 --condition-split final --generations 0 --eval-worlds 256
+
+Software fixtures use tiny worlds and seed 41. E116 uses the default world physics and original controller. New environmental features carry no scientific claim until separately tested.
+
+### E116 local verification · 21 November 2026
+
+The initial full suite ran 172 tests in 657.769 seconds; 170 passed. One new test captured the first panel before its paired archive was written. One legacy timeout test exposed a change in when the runner read its configured deadline. We moved the new fixture's snapshot to the completed-panel boundary and restored the per-check deadline lookup. The complete E116 runner file then passed 8/8 and the legacy v4 runner file passed 11/11. The initial supervisor and both focused reruns charged 758.8102507 seconds against the 2,400-second software/CI allowance. This verifies the affected local paths and preserves the original test expectations. Hosted verification remains pending while the owner restores repository privacy. No held-out comparison or evolutionary generation contributed to these checks.
+
+### E116 benchmark and release · 21 November 2026
+
+The bounded control-0 segment at source 861405d7651421abd216fec28683be54b0c4edf5 stopped normally at generation 5 of 20 in runs/20261121-062739_E116-control-s0. Original A0 source bytes, clean commit, zero starting moments, contiguous history and generation-5 checkpoint were verified. No held-out data was evaluated. The supervisor charged 140.8053056 seconds. Cold generation took 30.078 seconds; the four warm generations averaged 25.8595, maximum 27.844. Other process overhead was 7.2893056 seconds. Conservative cost for 115 remaining generations plus six process setups is 5027.2938336 seconds. Retaining both the full software allocation and evaluation reserve gives 8768.0991392 of the fixed 10800-second allowance. Proceed in registered order, recomputing feasibility on actual elapsed time. Today's cumulative charge at this boundary was 1073.5709479 seconds. Private publication and hosted verification are pending; they retain their full outstanding allowance. These are timing and integrity checks.
+
+    .venv/Scripts/python.exe -X utf8 scripts/run_experiment.py --resume runs/20261121-062739_E116-control-s0 --max-train-seconds 900
+
 ### Engineering verification registered · 21 November 2026 · Successive newborn cohorts
 
 The owner requested a perceivable environment and reusable experience across deaths. Verify the new ecological and inheritance mechanisms on a development fixture with three cohorts of two newborns, twelve turns each, random seed 41 and the original A0 rule genome. The fixed schedule adds a movement cost of 0.01, then an outdoor cold cost of 0.02 per exposed turn in the second half. The visible shelter moves between worlds. All three cohorts have the same sensor layout. This is a software check with zero evolutionary generations.
