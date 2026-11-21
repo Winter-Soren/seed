@@ -1,0 +1,1045 @@
+{
+  "protocol": "encounter-diagnostic-v1",
+  "mode": "development",
+  "status": "passed",
+  "registered_source": "760d13dfdfdb47953c52e35117139fe2eb4242bf",
+  "registered_code_trees": {
+    "seed": "326a440356fcf3571f54a31a2900ac9c1e1f1e64",
+    "scripts": "0669cfa0732383c8f1d5f251939cc70ed1895238"
+  },
+  "panels": [
+    {
+      "index": 0,
+      "run": "runs/20261122-051733_E127-benchmark-recovery2",
+      "measurements": {
+        "families": 4,
+        "initial_rule_replays": 8,
+        "arms": {
+          "plastic_stationary": {
+            "local": [
+              {
+                "contacts": 0,
+                "p_food": {
+                  "mean": 0.005245637392363278,
+                  "se": 0.0013401414702015665,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6420223313907627,
+                  "se": 0.0454070652945028,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.647267968783126,
+                  "se": 0.044088561629964176,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.352732031216874,
+                  "se": 0.04408856162996417,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6367766939983994,
+                  "se": 0.04672680011556153,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 2,
+                "p_food": {
+                  "mean": 0.003944498530472629,
+                  "se": 0.0007459795533147118,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6720206949588222,
+                  "se": 0.029649413119421184,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.6759651934892948,
+                  "se": 0.028954614272018123,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.32403480651070515,
+                  "se": 0.02895461427201813,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6680761964283495,
+                  "se": 0.030346641988839244,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 8,
+                "p_food": {
+                  "mean": 0.0022430118957951586,
+                  "se": 0.00015316630987506437,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.7167055651467914,
+                  "se": 0.026626880705490578,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.7189485770425865,
+                  "se": 0.026643419248628706,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.2810514229574134,
+                  "se": 0.026643419248628696,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.7144625532509963,
+                  "se": 0.02661121347829927,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 16,
+                "p_food": {
+                  "mean": 0.0018736497537853816,
+                  "se": 7.800758116417717e-05,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.7106521434616297,
+                  "se": 0.050176589090312924,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.7125257932154151,
+                  "se": 0.05025171458798651,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.2874742067845849,
+                  "se": 0.0502517145879865,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.7087784937078443,
+                  "se": 0.05010147240160909,
+                  "n": 4
+                }
+              }
+            ],
+            "grid": {
+              "first_food": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "first_poison": {
+                "mean": 1.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "no_contact": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": -1.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "latency": {
+                "mean": 7.625,
+                "se": 6.2927703226268585,
+                "n": 4
+              },
+              "net_return": {
+                "mean": -3.5,
+                "se": 0.5,
+                "n": 4
+              },
+              "survival": {
+                "mean": 0.25,
+                "se": 0.25,
+                "n": 4
+              }
+            }
+          },
+          "plastic_reversal": {
+            "local": [
+              {
+                "contacts": 0,
+                "p_food": {
+                  "mean": 0.005245637392363278,
+                  "se": 0.0013401414702015665,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6420223313907627,
+                  "se": 0.0454070652945028,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.647267968783126,
+                  "se": 0.044088561629964176,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.352732031216874,
+                  "se": 0.04408856162996417,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6367766939983994,
+                  "se": 0.04672680011556153,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 2,
+                "p_food": {
+                  "mean": 0.018918457591401722,
+                  "se": 0.00836995686888576,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.5546776754878616,
+                  "se": 0.059897481803791494,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.5735961330792634,
+                  "se": 0.0525142786545777,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.4264038669207366,
+                  "se": 0.0525142786545777,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.5357592178964599,
+                  "se": 0.06751132902139056,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 8,
+                "p_food": {
+                  "mean": 0.07664816876300998,
+                  "se": 0.033583854423079554,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.2930679998292665,
+                  "se": 0.08024428489094952,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.3697161685922765,
+                  "se": 0.050270730370677225,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.6302838314077235,
+                  "se": 0.05027073037067723,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.21641983106625653,
+                  "se": 0.11228042901209281,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 16,
+                "p_food": {
+                  "mean": 0.3035217255358778,
+                  "se": 0.0987473805797904,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.08160040542376616,
+                  "se": 0.03892762203920969,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.385122130959644,
+                  "se": 0.06767310430530561,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.614877869040356,
+                  "se": 0.06767310430530563,
+                  "n": 4
+                },
+                "S": {
+                  "mean": 0.22192132011211166,
+                  "se": 0.1339894055949137,
+                  "n": 4
+                }
+              }
+            ],
+            "grid": {
+              "first_food": {
+                "mean": 0.75,
+                "se": 0.14433756729740643,
+                "n": 4
+              },
+              "first_poison": {
+                "mean": 0.25,
+                "se": 0.14433756729740643,
+                "n": 4
+              },
+              "no_contact": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": 0.5,
+                "se": 0.28867513459481287,
+                "n": 4
+              },
+              "latency": {
+                "mean": 9.5,
+                "se": 3.662876829305985,
+                "n": 4
+              },
+              "net_return": {
+                "mean": 3.25,
+                "se": 1.506928443335427,
+                "n": 4
+              },
+              "survival": {
+                "mean": 1.0,
+                "se": 0.0,
+                "n": 4
+              }
+            }
+          },
+          "plastic_frozen": {
+            "local": [
+              {
+                "contacts": 0,
+                "p_food": {
+                  "mean": 0.005245637392363278,
+                  "se": 0.0013401414702015665,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6420223313907627,
+                  "se": 0.0454070652945028,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.647267968783126,
+                  "se": 0.044088561629964176,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.352732031216874,
+                  "se": 0.04408856162996417,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6367766939983994,
+                  "se": 0.04672680011556153,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 2,
+                "p_food": {
+                  "mean": 0.005083893584621061,
+                  "se": 0.0012791153325973238,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6534133202900799,
+                  "se": 0.04652099705574621,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.6584972138747011,
+                  "se": 0.04528306815973194,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.34150278612529894,
+                  "se": 0.04528306815973196,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6483294267054589,
+                  "se": 0.04776109655599144,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 8,
+                "p_food": {
+                  "mean": 0.0051322059844096666,
+                  "se": 0.001290363328262401,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6420585546196282,
+                  "se": 0.05012000077924983,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.647190760604038,
+                  "se": 0.04889128765100079,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.352809239395962,
+                  "se": 0.04889128765100077,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6369263486352186,
+                  "se": 0.051351738267452575,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 16,
+                "p_food": {
+                  "mean": 0.0052007296969046974,
+                  "se": 0.0013081867369659293,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.6532740484011204,
+                  "se": 0.05488745039309607,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.6584747780980251,
+                  "se": 0.05363752619280621,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.3415252219019749,
+                  "se": 0.05363752619280621,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.6480733187042158,
+                  "se": 0.05614002948256023,
+                  "n": 4
+                }
+              }
+            ],
+            "grid": {
+              "first_food": {
+                "mean": 0.125,
+                "se": 0.125,
+                "n": 4
+              },
+              "first_poison": {
+                "mean": 0.875,
+                "se": 0.125,
+                "n": 4
+              },
+              "no_contact": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": -0.75,
+                "se": 0.25,
+                "n": 4
+              },
+              "latency": {
+                "mean": 2.5,
+                "se": 0.8416254115301732,
+                "n": 4
+              },
+              "net_return": {
+                "mean": -3.25,
+                "se": 0.4330127018922193,
+                "n": 4
+              },
+              "survival": {
+                "mean": 0.375,
+                "se": 0.23935677693908453,
+                "n": 4
+              }
+            }
+          },
+          "direct_stationary": {
+            "local": [
+              {
+                "contacts": 0,
+                "p_food": {
+                  "mean": 0.23143104264575715,
+                  "se": 0.008615207576206957,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.23814063472794567,
+                  "se": 0.01669087975151096,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4695716773737028,
+                  "se": 0.025187164195879536,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5304283226262971,
+                  "se": 0.025187164195879543,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.006709592082188465,
+                  "se": 0.008439271099500722,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 2,
+                "p_food": {
+                  "mean": 0.21098203702786125,
+                  "se": 0.0169767669615259,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.19234863218177148,
+                  "se": 0.02890434311042977,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4033306692096327,
+                  "se": 0.03887266984051081,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5966693307903672,
+                  "se": 0.03887266984051081,
+                  "n": 4
+                },
+                "S": {
+                  "mean": 0.018633404846089743,
+                  "se": 0.02713409061850891,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 8,
+                "p_food": {
+                  "mean": 0.2362936400046844,
+                  "se": 0.0061119095918075305,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.22507679758200536,
+                  "se": 0.009710265049873846,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4613704375866898,
+                  "se": 0.012339141964728075,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5386295624133103,
+                  "se": 0.012339141964728058,
+                  "n": 4
+                },
+                "S": {
+                  "mean": 0.011216842422679008,
+                  "se": 0.010537312179524128,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 16,
+                "p_food": {
+                  "mean": 0.23819010013418546,
+                  "se": 0.0108079789455337,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.2292182343456564,
+                  "se": 0.01471108653120961,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4674083344798418,
+                  "se": 0.0255143202868699,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5325916655201581,
+                  "se": 0.025514320286869927,
+                  "n": 4
+                },
+                "S": {
+                  "mean": 0.008971865788529015,
+                  "se": 0.003934007108622366,
+                  "n": 4
+                }
+              }
+            ],
+            "grid": {
+              "first_food": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              },
+              "first_poison": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              },
+              "no_contact": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "latency": {
+                "mean": 5.5,
+                "se": 2.327373340628157,
+                "n": 4
+              },
+              "net_return": {
+                "mean": 3.0,
+                "se": 0.408248290463863,
+                "n": 4
+              },
+              "survival": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              }
+            }
+          },
+          "direct_reversal": {
+            "local": [
+              {
+                "contacts": 0,
+                "p_food": {
+                  "mean": 0.23143104264575715,
+                  "se": 0.008615207576206957,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.23814063472794567,
+                  "se": 0.01669087975151096,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4695716773737028,
+                  "se": 0.025187164195879536,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5304283226262971,
+                  "se": 0.025187164195879543,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.006709592082188465,
+                  "se": 0.008439271099500722,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 2,
+                "p_food": {
+                  "mean": 0.18809546726091259,
+                  "se": 0.027645559525083557,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.21098418590311968,
+                  "se": 0.01780896533601427,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.39907965316403227,
+                  "se": 0.038851832096920634,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.6009203468359676,
+                  "se": 0.03885183209692065,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.022888718642207095,
+                  "se": 0.025561837928859483,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 8,
+                "p_food": {
+                  "mean": 0.2250747381634331,
+                  "se": 0.009709912760147446,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.23628579495076943,
+                  "se": 0.006111297797498498,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.46136053311420255,
+                  "se": 0.01233363619234586,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5386394668857976,
+                  "se": 0.01233363619234586,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.011211056787336339,
+                  "se": 0.010542397802854167,
+                  "n": 4
+                }
+              },
+              {
+                "contacts": 16,
+                "p_food": {
+                  "mean": 0.22921822865343225,
+                  "se": 0.014711086419720253,
+                  "n": 4
+                },
+                "p_poison": {
+                  "mean": 0.23819009409635328,
+                  "se": 0.010807976304571297,
+                  "n": 4
+                },
+                "approach": {
+                  "mean": 0.4674083227497855,
+                  "se": 0.02551431761068581,
+                  "n": 4
+                },
+                "other": {
+                  "mean": 0.5325916772502145,
+                  "se": 0.025514317610685816,
+                  "n": 4
+                },
+                "S": {
+                  "mean": -0.008971865442921022,
+                  "se": 0.003934009120268075,
+                  "n": 4
+                }
+              }
+            ],
+            "grid": {
+              "first_food": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              },
+              "first_poison": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              },
+              "no_contact": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "latency": {
+                "mean": 5.5,
+                "se": 2.327373340628157,
+                "n": 4
+              },
+              "net_return": {
+                "mean": 2.625,
+                "se": 0.23935677693908453,
+                "n": 4
+              },
+              "survival": {
+                "mean": 0.5,
+                "se": 0.0,
+                "n": 4
+              }
+            }
+          }
+        },
+        "architectures": {
+          "plastic": {
+            "local": {
+              "pre_old": {
+                "mean": 0.6367766939983994,
+                "se": 0.04672680011556153,
+                "n": 4
+              },
+              "post_target": {
+                "mean": 0.22192132011211166,
+                "se": 0.1339894055949137,
+                "n": 4
+              },
+              "reversal_minus_stationary": {
+                "mean": 0.9306998138199563,
+                "se": 0.16284190755171546,
+                "n": 4
+              }
+            },
+            "transfer": {
+              "reversal_minus_stationary": {
+                "mean": 0.75,
+                "se": 0.14433756729740643,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": 0.5,
+                "se": 0.28867513459481287,
+                "n": 4
+              }
+            },
+            "local_pass": false,
+            "transfer_pass": false
+          },
+          "direct": {
+            "local": {
+              "pre_old": {
+                "mean": 0.006709592082188465,
+                "se": 0.008439271099500722,
+                "n": 4
+              },
+              "post_target": {
+                "mean": -0.008971865442921022,
+                "se": 0.003934009120268075,
+                "n": 4
+              },
+              "reversal_minus_stationary": {
+                "mean": -0.017943731231450037,
+                "se": 0.007868016228884847,
+                "n": 4
+              }
+            },
+            "transfer": {
+              "reversal_minus_stationary": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "food_minus_poison": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              }
+            },
+            "local_pass": false,
+            "transfer_pass": false
+          }
+        },
+        "hebbian": {
+          "local_difference": {
+            "mean": 0.8699946388163275,
+            "se": 0.07926737108900753,
+            "n": 4
+          },
+          "transfer_difference": {
+            "mean": 0.625,
+            "se": 0.23935677693908453,
+            "n": 4
+          },
+          "hebbian_local_pass": true
+        },
+        "by_initial_rule": {
+          "0": {
+            "plastic": {
+              "S": {
+                "mean": 0.27513056565415656,
+                "se": 0.11550628204566386,
+                "n": 4
+              },
+              "delta_S": {
+                "mean": 1.0340261646997535,
+                "se": 0.12208553292077126,
+                "n": 4
+              },
+              "G": {
+                "mean": 0.5,
+                "se": 0.28867513459481287,
+                "n": 4
+              },
+              "delta_G": {
+                "mean": 0.5,
+                "se": 0.28867513459481287,
+                "n": 4
+              }
+            },
+            "direct": {
+              "S": {
+                "mean": 0.4351935891487907,
+                "se": 0.023866707779817236,
+                "n": 4
+              },
+              "delta_S": {
+                "mean": -0.017943729384569465,
+                "se": 0.007868018866913235,
+                "n": 4
+              },
+              "G": {
+                "mean": 1.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "delta_G": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              }
+            }
+          },
+          "1": {
+            "plastic": {
+              "S": {
+                "mean": 0.16871207457006676,
+                "se": 0.15256720880421307,
+                "n": 4
+              },
+              "delta_S": {
+                "mean": 0.8273734629401588,
+                "se": 0.22127551953639996,
+                "n": 4
+              },
+              "G": {
+                "mean": 1.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "delta_G": {
+                "mean": 1.0,
+                "se": 0.0,
+                "n": 4
+              }
+            },
+            "direct": {
+              "S": {
+                "mean": -0.45313732003463275,
+                "se": 0.016505623349875886,
+                "n": 4
+              },
+              "delta_S": {
+                "mean": -0.01794373307833061,
+                "se": 0.007868013590858407,
+                "n": 4
+              },
+              "G": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              },
+              "delta_G": {
+                "mean": 0.0,
+                "se": 0.0,
+                "n": 4
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "development_recovery": {
+    "run": "runs/20261122-041408_E127-benchmark",
+    "files": {
+      "assignments.npz": "7752a6522480c550c770f0d6afdccbd738e67bc695a434a9a871b60977300756",
+      "config.json": "05bf94ee101158b20a32dabb36c13c2b83700059b8c74678f2d31d0f08661e4d",
+      "direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+      "metrics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+      "status.json": "f5963171f9017a940d2b4ebcd564ca4ec4f459636743f70ca2d251903200ada1",
+      "summary.json": "751ef391308eab43bd9bc667669acc2ddc2e0daed80edb0e3a27f8b7fae79a5f"
+    }
+  },
+  "recovery_provenance": {
+    "E127-benchmark-recovery2": {
+      "run": "runs/20261122-045153_E127-benchmark-retry1",
+      "files": {
+        "assignments.npz": "7752a6522480c550c770f0d6afdccbd738e67bc695a434a9a871b60977300756",
+        "config.json": "5d92a2c17c553c45293680c701bda63f65b974bc6944e4682f92854953b7ed54",
+        "direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+        "families/family_0000.npz": "51021259bc0d5de9effcd8f316985d378a0e63a92907c859bac13cb46831033d",
+        "families/family_0001.npz": "57b7a657eb3a62bd38560d7e9fa283ca5b623037d0c58cf1e25b8e791881bf14",
+        "families/family_0002.npz": "6587cefc2507b2e83a0aa26153a74f47103d32ee0cfebd3f445e961ef9be44ca",
+        "families/family_0003.npz": "54957f272b0d66c6ff1a855ad2e221f12a39ec0e0d7f0fa76e171d9e2e9dff95",
+        "metrics.jsonl": "3705c56bd7efa6aa8c6b50221dbab9a7d2cefb48bf091037b7aaca6505c0b3c1",
+        "plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+        "status.json": "3c449d113e501803689953ea2a4f65c4c2e791cf625d756c0d691807f567200d",
+        "summary.json": "3f86015f1a08aded50288d0204fa8a9ce3fe57f9abd8152a8a42c3464775708b"
+      }
+    }
+  },
+  "excluded_partial_runs": [],
+  "replicated_gates": null,
+  "limitations": [
+    "Events, body feedback, cloned-state fingerprints and probabilities are reconstructed; neural weight updates are not independently replayed.",
+    "Key assignment uses the archived JAX random primitives; action sampling and neural matrix operations are not rerun.",
+    "Guided exposure and fresh-body readouts are explicit interventions; weak grid transfer does not isolate navigation.",
+    "Only original E103/E113 controllers are assessed. This does not decide E126 or demonstrate broader adaptation."
+  ],
+  "checked_file_sha256": {
+    "runs/20261122-051733_E127-benchmark-recovery2/status.json": "63112689df294544033a1d41bf3eb6103f8ed98c797df51121426c13e8888564",
+    "runs/20261122-051733_E127-benchmark-recovery2/config.json": "6ebdf71771847ab8fb9d30c105dee5b6630af365847e769b97799dc6f7486fe3",
+    "runs/20261122-045153_E127-benchmark-retry1/assignments.npz": "7752a6522480c550c770f0d6afdccbd738e67bc695a434a9a871b60977300756",
+    "runs/20261122-045153_E127-benchmark-retry1/config.json": "5d92a2c17c553c45293680c701bda63f65b974bc6944e4682f92854953b7ed54",
+    "runs/20261122-045153_E127-benchmark-retry1/direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+    "runs/20261122-045153_E127-benchmark-retry1/families/family_0000.npz": "51021259bc0d5de9effcd8f316985d378a0e63a92907c859bac13cb46831033d",
+    "runs/20261122-045153_E127-benchmark-retry1/families/family_0001.npz": "57b7a657eb3a62bd38560d7e9fa283ca5b623037d0c58cf1e25b8e791881bf14",
+    "runs/20261122-045153_E127-benchmark-retry1/families/family_0002.npz": "6587cefc2507b2e83a0aa26153a74f47103d32ee0cfebd3f445e961ef9be44ca",
+    "runs/20261122-045153_E127-benchmark-retry1/families/family_0003.npz": "54957f272b0d66c6ff1a855ad2e221f12a39ec0e0d7f0fa76e171d9e2e9dff95",
+    "runs/20261122-045153_E127-benchmark-retry1/metrics.jsonl": "3705c56bd7efa6aa8c6b50221dbab9a7d2cefb48bf091037b7aaca6505c0b3c1",
+    "runs/20261122-045153_E127-benchmark-retry1/plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-045153_E127-benchmark-retry1/status.json": "3c449d113e501803689953ea2a4f65c4c2e791cf625d756c0d691807f567200d",
+    "runs/20261122-045153_E127-benchmark-retry1/summary.json": "3f86015f1a08aded50288d0204fa8a9ce3fe57f9abd8152a8a42c3464775708b",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261119-033803_E113-direct-s0/genome_final.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+    "runs/20261122-041408_E127-benchmark/config.json": "05bf94ee101158b20a32dabb36c13c2b83700059b8c74678f2d31d0f08661e4d",
+    "runs/20261122-041408_E127-benchmark/status.json": "f5963171f9017a940d2b4ebcd564ca4ec4f459636743f70ca2d251903200ada1",
+    "runs/20261122-041408_E127-benchmark/summary.json": "751ef391308eab43bd9bc667669acc2ddc2e0daed80edb0e3a27f8b7fae79a5f",
+    "runs/20261122-041408_E127-benchmark/metrics.jsonl": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/20261122-041408_E127-benchmark/plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-041408_E127-benchmark/direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+    "runs/20261122-041408_E127-benchmark/assignments.npz": "7752a6522480c550c770f0d6afdccbd738e67bc695a434a9a871b60977300756",
+    "runs/20261122-051733_E127-benchmark-recovery2/plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-051733_E127-benchmark-recovery2/direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+    "runs/20261122-051733_E127-benchmark-recovery2/assignments.npz": "7752a6522480c550c770f0d6afdccbd738e67bc695a434a9a871b60977300756",
+    "runs/20261122-051733_E127-benchmark-recovery2/metrics.jsonl": "1ff163cd12e41485a37d2f96bfc0d09d336fa32454a10a092c3d62d7ea8d3d32",
+    "runs/20261122-051733_E127-benchmark-recovery2/summary.json": "3bc4f85c834bdc6fa4217d102ec278153b9a2c54a64e9710c6aae540c3be1d57",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0000.npz": "ec5b8a9e9961f05d1049cc26fd22bb5d32f158d1249b6e7542c922c25ea11d82",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0001.npz": "b9d47b89c22d2dbcd0d88cb6c34dcb1b46136427ff6704e0f803fd67c8ce983a",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0002.npz": "40e23b0690194d0b35a8042627ddc41ed739967af602126d5b5d913f1fe71b56",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0003.npz": "c01add9d4ab7083d99c00315d112c0bbeb7102ed0d699412f9dd682922b1d03f"
+  },
+  "timing": {
+    "elapsed_seconds": 8.60899999999674,
+    "setup_and_summary_seconds": 6.827999999979511,
+    "reconstruction_seconds": 1.7810000000172295,
+    "family_seconds": [
+      0.35899999999674037,
+      0.485000000015134,
+      0.4370000000053551,
+      0.5
+    ],
+    "completed_families": 4
+  }
+}

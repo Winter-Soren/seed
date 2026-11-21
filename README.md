@@ -314,6 +314,8 @@ Fruit flies can switch an established preference when experience contradicts it.
 
 E127's four-family laptop rehearsal passed independent verification. The owner approved a 100-minute study budget against a forecast of 98 minutes 29 seconds. The first evaluation stopped after 11 of 128 families when a discarded choice probe failed its frozen-weight check. Those families remain archived and unscored. Whether the creatures can reverse a learned choice and use it in a fresh grid is still open. [Rehearsal audit](results/diagnostics/E127-development-audit.json) · [Lab log](experiments/LOG.md)
 
+The corrected probe reads frozen weights directly. All 47 focused tests passed, and an independent check accepted the corrected four-family rehearsal. The first lineage will start again from its first assigned world. The comparison still requires 128 families in each of three lineages, with the same controls and thresholds. [Corrected rehearsal](results/diagnostics/E127-recovery-development-audit.json) · [Full test suite](https://github.com/Winter-Soren/seed/actions/runs/44963740710)
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.

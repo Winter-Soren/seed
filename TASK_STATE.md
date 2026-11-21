@@ -30,4 +30,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E127's four-family rehearsal passed. Its first evaluation stopped after eleven families when a discarded choice probe failed its frozen-weight check. All eleven are archived and unscored. Diagnose the failure on synthetic inputs. A rerun must start the first lineage from the beginning, use one verified implementation for all three lineages and fit the owner's one-hundred-minute total. E126 remains stopped.
+E127's first evaluation stopped after eleven families when a discarded choice probe changed frozen weights. The eleven families are archived and excluded. The corrected probe passed its focused checks and four-family rehearsal. The full software suite is running. If it passes, run all three lineages from their first assigned world, then check the choices and uncertainty independently. The entire study has a one-hundred-minute limit. E126 remains stopped.

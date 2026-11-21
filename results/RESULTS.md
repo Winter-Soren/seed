@@ -31,10 +31,14 @@ All uncertainties use independent families after averaging both rule replays and
 
 Development, incomplete panels and panels awaiting independent verification have no replicated scientific decision. Local reversal, transfer in the same lineages, and Hebbian contribution are separate decisions. A failed threshold means this assay did not establish that effect.
 
-| Run | Status | Split | Families completed/assigned | Commit |
-|---|---|---|---|---|
-| 20261122-041408_E127-benchmark | failed | development | 0/4 | e096042 |
-| 20261122-045153_E127-benchmark-retry1 | finished | development | 4/4 | d99bcc8 |
+The registered comparison uses E127-A0-recovery1, E127-A1 and E127-A2. The failed original A0 prefix remains preserved and is excluded from inference; its eleven families are not added to the recovery's 128-family denominator. The corrected four-family rehearsal is for verification and timing only.
+
+| Run | Status | Split | Families completed/assigned | Role | Commit |
+|---|---|---|---|---|---|
+| 20261122-041408_E127-benchmark | failed | development | 0/4 | development only | e096042 |
+| 20261122-045153_E127-benchmark-retry1 | finished | development | 4/4 | development only | d99bcc8 |
+| 20261122-050231_E127-A0 | failed | final | 11/128 | preserved partial; excluded | 5e6398e |
+| 20261122-051733_E127-benchmark-recovery2 | finished | development | 4/4 | development only | 760d13d |
 
 Replicated diagnostic decisions: **undecided**; all three complete final panels are required.
 

@@ -1,0 +1,121 @@
+{
+  "study": "E127",
+  "scientificResult": false,
+  "sourceCommit": "760d13dfdfdb47953c52e35117139fe2eb4242bf",
+  "registeredAtCommit": "760d13dfdfdb47953c52e35117139fe2eb4242bf",
+  "createdAt": "2026-11-22T05:23:03.5640971+05:30",
+  "developmentFolder": "20261122-051733_E127-benchmark-recovery2",
+  "checkedPins": {
+    ".tmp/E127-benchmark-recovery2-attempt1.result.json": "8d1a4b8392672e915dab40532bcede90dbe7efb8f47f5c45778bf787843fcdba",
+    ".tmp/E127-audit-development-recovery2-attempt1.result.json": "61f5f7ccf95d01e55583c316d667691bbff1f91fb562634a1751d6a5509a716f",
+    ".tmp/E127-status-summary-recovery2-attempt1.result.json": "970287f2292bd9ea755a3399f9ab572fec54a81cadabf5d5bea9b9e8b2d55e60",
+    ".tmp/E127-audit-development-recovery2-attempt1.audit.json": "170580a6411174223c96ca8a0ceaebcd4060af4994eb6e93f8c0b744014d367a",
+    "runs/20261122-051733_E127-benchmark-recovery2/status.json": "63112689df294544033a1d41bf3eb6103f8ed98c797df51121426c13e8888564",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0000.npz": "ec5b8a9e9961f05d1049cc26fd22bb5d32f158d1249b6e7542c922c25ea11d82",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0001.npz": "b9d47b89c22d2dbcd0d88cb6c34dcb1b46136427ff6704e0f803fd67c8ce983a",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0002.npz": "40e23b0690194d0b35a8042627ddc41ed739967af602126d5b5d913f1fe71b56",
+    "runs/20261122-051733_E127-benchmark-recovery2/families/family_0003.npz": "c01add9d4ab7083d99c00315d112c0bbeb7102ed0d699412f9dd682922b1d03f",
+    ".tmp/E127-development-forecast.json": "0721f308e3cdabd914440d9162fb4b7299ec56c1743afe0fd8f1cb9965af979d"
+  },
+  "ledgerUnchangedSha256": "3d415ee512aac3dac9bf054b02fbf01c66ebc03ae433ead4585486f72eb0cfa3",
+  "canonicalLedgerUsedSeconds": 2955.6560778,
+  "pendingSummaryChargeSeconds": 4.5641354,
+  "pendingForecastChargeSeconds": 0.3060598,
+  "knownStudyUsedIncludingPendingSeconds": 2960.526273,
+  "pendingChargeOrder": [
+    ".tmp/E127-status-summary-recovery2-attempt1.result.json",
+    ".tmp/E127-recovery2-cost-forecast.charge.json",
+    "future source-bound hosted receipt"
+  ],
+  "familyPreContacts": [
+    8,
+    8,
+    16,
+    16
+  ],
+  "allFamilyWallSeconds": [
+    16.35999999998603,
+    0.5310000000172295,
+    4.48399999999674,
+    0.5629999999946449
+  ],
+  "allOriginalFamilySeconds": [
+    16.35999999998603,
+    0.5150000000139698,
+    4.48399999999674,
+    0.5629999999946449
+  ],
+  "shapeGroups": {
+    "8": {
+      "indices": [
+        0,
+        1
+      ],
+      "allWallSeconds": [
+        16.35999999998603,
+        0.5310000000172295
+      ],
+      "coldSeconds": 16.35999999998603,
+      "maxRepeatSeconds": 0.5310000000172295
+    },
+    "16": {
+      "indices": [
+        2,
+        3
+      ],
+      "allWallSeconds": [
+        4.48399999999674,
+        0.5629999999946449
+      ],
+      "coldSeconds": 4.48399999999674,
+      "maxRepeatSeconds": 0.5629999999946449
+    }
+  },
+  "nonfamilyGuardSeconds": 6.157717200005354,
+  "maxAllShapeRepeatSeconds": 0.5629999999946449,
+  "forecastPerComplete128FamilyPanelSeconds": 133.408717198976,
+  "forecastThreePanelsSeconds": 400.22615159692805,
+  "originalComparatorPerPanelSeconds": 876.7357171993737,
+  "originalComparatorWithCurrentScopeSeconds": 7787.06533459812,
+  "originalFrozenForecastSeconds": 5908.556362491387,
+  "audit": {
+    "allDevelopmentFamilySeconds": [
+      0.35899999999674037,
+      0.485000000015134,
+      0.4370000000053551,
+      0.5
+    ],
+    "maxFamilySeconds": 0.5,
+    "oneExternalProcessSeconds": 4.1427514000032595,
+    "perPanelAdministrativeSeconds": 6.827999999979511,
+    "threePanelAdministrativeSeconds": 20.483999999938533,
+    "familyReconstructionProjectionSeconds": 288.0,
+    "modeledTotalSeconds": 312.6267513999418,
+    "reservedHardSeconds": 350.0,
+    "cleanupSeconds": 30,
+    "workingSeconds": 320,
+    "checkedHashes": 31
+  },
+  "futureHostedReserveSeconds": 1800.0,
+  "remainingReportingReserveSeconds": 46.33191,
+  "futurePanelHardCapsSeconds": [
+    210,
+    210,
+    210
+  ],
+  "futurePanelWorkingSeconds": 190,
+  "projectedTotalStudySeconds": 5557.084334596927,
+  "hardAdmissionTotalSeconds": 5786.858182999999,
+  "approvedStudyLimitSeconds": 6000.0,
+  "hardMarginSeconds": 213.14181700000063,
+  "fitsStudy": true,
+  "dailyUsedIncludingPendingSeconds": 11972.2150959,
+  "futureDiskReserveBytes": 2167183624.0,
+  "currentCFreeBytes": 26086166528.0,
+  "currentDFreeBytes": 48315998208.0,
+  "DFreeAfterReservationBytes": 46148814584.0,
+  "diskFits": true,
+  "limitations": "Only one repeat per chamber length; timing allowances are scheduling estimates, not confidence intervals. No final outcome used. Old prefix is wholly excluded; all three complete128-family panels remain budgeted.",
+  "hostedStatus": "Third source-bound hosted suite running; local heavy queue idle",
+  "finalPanelsReleased": false
+}
