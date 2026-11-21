@@ -30,6 +30,16 @@ ECOLOGY = dict(version="ecology-v1", movement_energy_cost=.01, seasonal_energy_c
 KEY_ORDER = ["donor_world", "donor_development", "target_world", "target_development"]
 ARMS = ("donor", "inherited", "fresh")
 EVENTS = ("food", "poison", "alive_before", "alive_after", "sheltered")
+RECOVERY_NAME = "E117-A2-recovery"
+RECOVERY_PARENT = "runs/20261121-174842_E117-A2"
+RECOVERY_COUNT = 181
+RECOVERY_CHARGE = 400.7536469
+RECOVERY_CAP = 9499
+RECOVERY_GUARD = "results/diagnostics/E117-A2-attempt2-guard.jsonl"
+RECOVERY_GUARD_SHA = "d12ecdd94f49e2afec4e3f39c752ac359a250c81c31f145a0917ad6a88b2d213"
+RECOVERY_CONFIG_SHA = "1d6f834be2e7497feb1181df66e15a9c2629dc96622e5056449466d28ae60232"
+RECOVERY_STATUS_SHA = "e7a4d6b53fb5e80f0fcb5db245fe8923cfeee030f107357d50d8582f986dca8d"
+RECOVERY_METRICS_SHA = "b14eae112dcdbc227a73b8d141fbe31c007c9e4f8613aeb052035fc6acb33ed2"
 
 
 class AuditError(Exception):
@@ -270,12 +280,13 @@ def competing_outcomes(families):
 
 
 class Auditor:
-    def __init__(self, root, source):
+    def __init__(self, root, source, a2_recovery=None):
         self.root = root.resolve()
         self.hashes = {}
         self.source = source
         self.expected_trees = self.code_trees(source)
         self.used_keys = set()
+        self.a2_recovery = None if a2_recovery is None else self.path(a2_recovery).relative_to(self.root).as_posix()
 
     def git(self, *args):
         result = subprocess.run(["git", *args], cwd=self.root, capture_output=True,
@@ -284,6 +295,13 @@ class Auditor:
 
     def code_trees(self, commit):
         return {name: self.git("rev-parse", f"{commit}:{name}") for name in ("seed", "scripts")}
+
+    def scientific_code(self, commit):
+        return dict(seed=self.git("rev-parse", f"{commit}:seed"),
+                    cold_donor=self.git("rev-parse", f"{commit}:scripts/cold_donor.py"))
+
+    def is_recovery(self, folder):
+        return folder == getattr(self, "a2_recovery", None)
 
     def path(self, relative):
         path = (self.root / relative).resolve()
@@ -317,8 +335,13 @@ class Auditor:
         folders, incomplete = [], []
         # Only operational status and filenames are read until the ENTIRE bundle is ready.
         for name in names:
+            selected = None
+            if name == "E117-A2" and getattr(self, "a2_recovery", None) is not None:
+                name, selected = RECOVERY_NAME, self.path(self.a2_recovery)
             candidates = sorted(self.path("runs").glob("*_" + name))
             require(len(candidates) <= 1, "duplicate canonical attempt: " + name)
+            if selected is not None and candidates:
+                require(candidates == [selected], "recovery must be the unique canonical A2 recovery folder")
             if not candidates:
                 incomplete.append(name + " missing")
                 continue
@@ -346,14 +369,16 @@ class Auditor:
     def config(self, folder, index, development):
         config = self.json(folder + "/config.json")
         source_path, digest = ORIGINALS[index]
-        name = "E117-benchmark" if development else f"E117-A{index}"
+        recovered = self.is_recovery(folder)
+        require(not recovered or (index == 2 and not development), "recovery may only replace final A2")
+        name = RECOVERY_NAME if recovered else "E117-benchmark" if development else f"E117-A{index}"
         split = "development" if development else "final"
         seed = 42 if development else 2026112101 + index
         count = 4 if development else 256
         subset(config, dict(protocol=PROTOCOL, cfg=CFG, cfg_overrides={}, ecology=ECOLOGY,
             persistence="off", plastic=True, controller="rules-v0", genome_size=155,
             condition_split=split, seed=seed, eval_seed=seed, eval_worlds=count, expected_families=count,
-            cold_start=150, key_order=KEY_ORDER, max_seconds=600 if development else 9900,
+            cold_start=150, key_order=KEY_ORDER, max_seconds=RECOVERY_CAP if recovered else 600 if development else 9900,
             scientific_result=not development, raw_schema=PROTOCOL,
             raw_pattern="families/family_{index:04d}.npz",
             rule_assignment="family_index modulo 2; donor and recipient share rule",
@@ -362,7 +387,8 @@ class Auditor:
             seed=seed, eval_worlds=count, generations=0, start="file:" + source_path,
             quick=False, allow_dirty=False, no_plastic=False, pop=128, worlds=8,
             sigma=.1, lr=.1, checkpoint_every=10), name + " arguments")
-        for field in ("resume", "cfg", "objective", "memory_condition", "max_train_seconds"):
+        same(config["args"].get("resume"), RECOVERY_PARENT if recovered else None, name + " resume argument")
+        for field in ("cfg", "objective", "memory_condition", "max_train_seconds"):
             require(not config["args"].get(field), name + " forbidden argument " + field)
         require(config["args"].get("controller") in (None, "rules-v0")
                 and config["args"].get("structural_plasticity") in (None, "off")
@@ -371,7 +397,11 @@ class Auditor:
         commit = provenance.get("commit", "")
         require(provenance.get("dirty") is False and len(commit) == 40
                 and all(ch in "0123456789abcdef" for ch in commit), name + " dirty/malformed source")
-        require(self.code_trees(commit) == self.expected_trees, name + " unregistered scientific source")
+        if recovered:
+            require(self.scientific_code(commit) == self.scientific_code(self.source),
+                    name + " changed scientific engine or measurement source")
+        else:
+            require(self.code_trees(commit) == self.expected_trees, name + " unregistered scientific source")
         source = self.read(source_path)
         require(hashlib.sha256(source).hexdigest() == digest, name + " original E103 source changed")
         require(self.read(folder + "/genome_start.npy") == source, name + " input genome bytes")
@@ -397,6 +427,97 @@ class Auditor:
                 self.register_keys(keys, relative)
         return dict(run=folder, keys_checked=16, scores_opened=False)
 
+    def recovery_provenance(self, folder, config, summary):
+        """Verify the sole registered continuation only after all panels finish."""
+        require(self.is_recovery(folder), "unselected recovery")
+        parent = RECOVERY_PARENT
+        require(sorted(self.path("runs").glob("*_E117-A2")) == [self.path(parent)],
+                "recovery parent must be the unique original A2")
+        parent_config = self.config(parent, 2, False)
+        parent_status = self.json(parent + "/status.json")
+        subset(parent_status, dict(status="running", completed_families=RECOVERY_COUNT,
+                                   expected_families=256), "preserved parent status")
+        expected_parent_files = {"config.json", "status.json", "metrics.jsonl", "genome_start.npy"}
+        expected_parent_files.update(f"families/family_{i:04d}.npz" for i in range(RECOVERY_COUNT))
+        actual_parent_files = {path.relative_to(self.path(parent)).as_posix()
+                               for path in self.path(parent).rglob("*") if path.is_file()}
+        require(actual_parent_files == expected_parent_files,
+                "interrupted parent file set changed or terminal summary appeared")
+        same(config["args"], dict(parent_config["args"], name=RECOVERY_NAME, resume=parent),
+             "recovery arguments differ beyond its registered identity and source folder")
+        same(config["runtime"], parent_config["runtime"], "recovery runtime versions")
+        same(config.get("cumulative_max_seconds"), 9900, "recovery cumulative wall cap")
+        parent_bytes = {}
+        for name, digest in (("config.json", RECOVERY_CONFIG_SHA), ("status.json", RECOVERY_STATUS_SHA),
+                             ("metrics.jsonl", RECOVERY_METRICS_SHA)):
+            parent_bytes[name] = self.read(parent + "/" + name)
+            require(hashlib.sha256(parent_bytes[name]).hexdigest() == digest, "registered parent " + name + " changed")
+        for name in ("config.json", "status.json"):
+            require(self.read(folder + "/parent/" + name) == parent_bytes[name], "copied parent " + name + " changed")
+        guard = self.read(RECOVERY_GUARD)
+        require(hashlib.sha256(guard).hexdigest() == RECOVERY_GUARD_SHA, "registered supervisor ledger changed")
+        require(self.read(folder + "/parent/guard.jsonl") == guard, "copied supervisor ledger changed")
+        guard_rows = [json.loads(line) for line in guard.decode("utf-8").splitlines()]
+        stopped = [row for row in guard_rows if row.get("event") == "stopped"]
+        preflight = [row for row in guard_rows if row.get("event") == "preflight"]
+        invoked = [row for row in guard_rows if row.get("event") == "invoked"]
+        require(len(stopped) == len(preflight) == len(invoked) == 1, "original supervisor event counts")
+        subset(stopped[0], dict(processStarted=True, wallSeconds=RECOVERY_CHARGE), "original stopped event")
+        same(stopped[0]["error"].strip(), "Call cancelled", "recorded interruption cause")
+        same(preflight[0]["commit"], parent_config["git"]["commit"], "supervisor source commit")
+        subset(invoked[0], dict(expectedCommit=parent_config["git"]["commit"], mode="A2",
+                               fullLimitSeconds=9900), "supervisor invocation")
+        require(0 <= parent_status["elapsed_seconds"] <= RECOVERY_CHARGE, "parent status exceeds supervisor charge")
+        prefix = parent_bytes["metrics.jsonl"]
+        require(prefix.endswith(b"\n"), "parent metric prefix must end at a complete line")
+        parent_lines = prefix.decode("utf-8").splitlines()
+        require(len(parent_lines) == RECOVERY_COUNT, "parent metric prefix length")
+        recovered_metrics = self.read(folder + "/metrics.jsonl")
+        require(recovered_metrics.startswith(prefix), "copied metric prefix is not byte-identical")
+        manifest, last_elapsed = [], 0.
+        for index, line in enumerate(parent_lines):
+            record = json.loads(line)
+            relative = f"families/family_{index:04d}.npz"
+            original = self.read(parent + "/" + relative)
+            require(self.read(folder + "/" + relative) == original, "copied family changed: " + relative)
+            artifact = dict(index=index, path=relative, sha256=hashlib.sha256(original).hexdigest())
+            subset(record, dict(family=index, rule=index % 2, raw_file=artifact), "preserved family record")
+            require(last_elapsed <= record["elapsed_seconds"] <= RECOVERY_CHARGE, "parent metric elapsed order")
+            last_elapsed = record["elapsed_seconds"]
+            manifest.append(artifact)
+        require(last_elapsed <= parent_status["elapsed_seconds"], "parent status predates its durable metrics")
+        parent_commit = parent_config["git"]["commit"]
+        expected_recovery = dict(version="cold-donor-recovery-v1", parent_run=parent,
+            parent_source_commit=parent_commit, parent_config_sha256=RECOVERY_CONFIG_SHA,
+            parent_status_sha256=RECOVERY_STATUS_SHA, parent_metrics_sha256=RECOVERY_METRICS_SHA,
+            parent_genome_sha256=ORIGINALS[2][1], guard_path=RECOVERY_GUARD,
+            guard_sha256=RECOVERY_GUARD_SHA, completed_families=RECOVERY_COUNT,
+            first_new_family=RECOVERY_COUNT, parent_elapsed_seconds=RECOVERY_CHARGE,
+            parent_last_metric_elapsed_seconds=last_elapsed,
+            scientific_source=self.scientific_code(parent_commit), copied_raw_files=manifest)
+        same(config.get("recovery"), expected_recovery, "recovery config provenance")
+        same(summary.get("recovery"), expected_recovery, "recovery summary provenance")
+        invocation = summary.get("invocation_elapsed_seconds")
+        require(isinstance(invocation, (int, float)) and math.isfinite(invocation)
+                and 0 <= invocation < RECOVERY_CAP, "recovery invocation wall cap")
+        same(summary["elapsed_seconds"], RECOVERY_CHARGE + invocation, "cumulative recovery time")
+        require(summary["elapsed_seconds"] < 9900, "cumulative A2 wall cap")
+        expected_segments = [
+            dict(kind="preserved_parent", source_commit=parent_commit, first_family=0,
+                 stop_family=RECOVERY_COUNT, elapsed_seconds=RECOVERY_CHARGE, timing_basis="supervisor_wall"),
+            dict(kind="recovery", source_commit=config["git"]["commit"], first_family=RECOVERY_COUNT,
+                 stop_family=256, elapsed_seconds=invocation, timing_basis="runner_monotonic")]
+        same(summary.get("segments"), expected_segments, "recovery timing segments")
+        status = self.json(folder + "/status.json")
+        require(status["invocation_elapsed_seconds"] >= invocation, "final status precedes summary")
+        same(status["elapsed_seconds"], RECOVERY_CHARGE + status["invocation_elapsed_seconds"],
+             "recovery status cumulative time")
+        return dict(parent_run=parent, source_commits=[parent_commit, config["git"]["commit"]],
+                    copied_families=RECOVERY_COUNT, new_families=256 - RECOVERY_COUNT,
+                    copied_metrics_sha256=RECOVERY_METRICS_SHA, guard_sha256=RECOVERY_GUARD_SHA,
+                    preserved_parent_elapsed_seconds=RECOVERY_CHARGE,
+                    invocation_elapsed_seconds=invocation, scientific_source=expected_recovery["scientific_source"])
+
     def run(self, folder, index, development=False):
         config = self.config(folder, index, development)
         summary = self.json(folder + "/summary.json")
@@ -405,7 +526,10 @@ class Auditor:
             expected_families=count, condition_split="development" if development else "final",
             generation=0, source_label=f"A{index}", eval_seed=config["seed"], eval_worlds=count,
             persistence="off", scientific_result=not development, artifact_validity="passed"), folder + " summary")
-        require(0 <= summary["elapsed_seconds"] < config["max_seconds"], folder + " completed after wall cap")
+        recovered = self.is_recovery(folder)
+        recovery = self.recovery_provenance(folder, config, summary) if recovered else None
+        if not recovered:
+            require(0 <= summary["elapsed_seconds"] < config["max_seconds"], folder + " completed after wall cap")
         require(len(summary["raw_files"]) == count, folder + " raw manifest size")
         lines = self.read(folder + "/metrics.jsonl").decode("utf-8").splitlines()
         require(len(lines) == count, folder + " metrics length")
@@ -421,6 +545,12 @@ class Auditor:
             subset(record, dict(family=number, rule=number % 2, keys=raw["keys"].tolist(),
                                  raw_file=artifact), relative + " record")
             require(elapsed <= record["elapsed_seconds"] <= summary["elapsed_seconds"], relative + " elapsed order")
+            if recovered and number >= RECOVERY_COUNT:
+                same(record.get("source_commit"), config["git"]["commit"], relative + " recovery source")
+                require(0 <= record["invocation_elapsed_seconds"] <= summary["invocation_elapsed_seconds"],
+                        relative + " recovery invocation elapsed order")
+                same(record["elapsed_seconds"], RECOVERY_CHARGE + record["invocation_elapsed_seconds"],
+                     relative + " cumulative recovery time")
             elapsed = record["elapsed_seconds"]
             same(record["measurements"], measurements([family], [raw]), relative + " family measurement")
             families.append(family)
@@ -429,6 +559,8 @@ class Auditor:
         same(summary["measurements"], recalculated, folder + " pooled measurements")
         result = dict(run=folder, source_commit=config["git"]["commit"], measurements=recalculated,
                       competing_outcomes=competing_outcomes(families), elapsed_seconds=summary["elapsed_seconds"])
+        if recovered:
+            result["recovery_provenance"] = recovery
         if development:
             require("gate" not in summary and summary["gate_status"] == "not_applicable", "development must not decide science")
         else:
@@ -462,9 +594,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--root", type=Path, default=ROOT)
     parser.add_argument("--source-commit", help="full preregistered scientific source SHA")
+    parser.add_argument("--a2-recovery", help="the sole registered immutable E117-A2-recovery folder")
     parser.add_argument("--development", action="store_true", help="audit the benchmark only; no scientific verdict")
     parser.add_argument("--self-check", action="store_true")
     arguments = parser.parse_args()
+    if arguments.development and arguments.a2_recovery:
+        parser.error("--a2-recovery replaces only the final A2 panel")
     if arguments.self_check:
         self_check()
         require(not any(name == "seed" or name.startswith(("seed.", "jax", "scripts.")) for name in sys.modules),
@@ -479,7 +614,7 @@ def main():
                   helper_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest())
     auditor = None
     try:
-        auditor = Auditor(arguments.root, arguments.source_commit)
+        auditor = Auditor(arguments.root, arguments.source_commit, arguments.a2_recovery)
         folders = auditor.completed_bundle(arguments.development)
         report["registered_source"] = auditor.source
         report["registered_code_trees"] = auditor.expected_trees

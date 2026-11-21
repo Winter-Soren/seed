@@ -35,6 +35,7 @@ class ColdDonorRunnerTests(unittest.TestCase):
         self.nonfinite = False
         self.now = 0.
         self.expire_after_family = False
+        self.called_indices = []
 
     @staticmethod
     def fake_keys(seed, index):
@@ -48,6 +49,7 @@ class ColdDonorRunnerTests(unittest.TestCase):
         self.assertEqual(ecology, entry.ECOLOGY)
         if self.calls == self.fail_before:
             raise RuntimeError("deliberate family interruption")
+        self.called_indices.append(int(keys[0, 0]) // 8)
         self.calls += 1
         if self.expire_after_family:
             self.now = 601.
@@ -91,6 +93,139 @@ class ColdDonorRunnerTests(unittest.TestCase):
     @staticmethod
     def snapshot(folder):
         return {p.relative_to(folder).as_posix(): p.read_bytes() for p in folder.rglob("*") if p.is_file()}
+
+    def recovery_fixture(self):
+        """Synthetic interrupted artifacts, never actual held-out evidence."""
+        source = entry.SOURCES[2]
+        args = dict(name="E117-A2", start="file:" + source["path"], generations=0, pop=128, worlds=8,
+            sigma=.1, lr=.1, seed=2026112103, no_plastic=False, controller=None, objective=None,
+            structural_plasticity=None, eval_worlds=256, eval_protocol=entry.PROTOCOL, memory_condition=None,
+            condition_split="final", checkpoint_every=10, max_train_seconds=None, cfg=None,
+            hypothesis="", quick=False, resume=None, allow_dirty=False)
+        cfg = dict(protocol=entry.PROTOCOL, args=args, source=dict(source),
+            git=dict(commit=entry.RECOVERY_COMMIT, dirty=False), condition_split="final", cfg=Cfg()._asdict(),
+            cfg_overrides={}, ecology=dict(version="ecology-v1", movement_energy_cost=.01, seasonal_energy_cost=.02),
+            persistence="off", plastic=True, controller="rules-v0", genome_size=155, seed=2026112103,
+            eval_seed=2026112103, eval_worlds=256, expected_families=256, key_order=list(entry.KEY_ORDER),
+            cold_start=150, max_seconds=9900, raw_schema=entry.PROTOCOL,
+            raw_pattern="families/family_{index:04d}.npz", runtime=entry._runtime())
+        parent = self.root / entry.RECOVERY_PARENT
+        (parent / "families").mkdir(parents=True)
+        (parent / "config.json").write_text(json.dumps(cfg))
+        (parent / "status.json").write_text(json.dumps(dict(status="running", completed_families=181,
+            expected_families=256, elapsed_seconds=190.)))
+        (parent / "genome_start.npy").write_bytes((self.root / source["path"]).read_bytes())
+        records = []
+        for index in range(181):
+            keys = self.fake_keys(2026112103, index)
+            row = dict(keys=keys, rule=np.asarray(index % 2, np.int32), observation=np.asarray(index, np.float32))
+            path = f"families/family_{index:04d}.npz"
+            np.savez_compressed(parent / path, **row)
+            artifact = dict(index=index, path=path, sha256=hashlib.sha256((parent / path).read_bytes()).hexdigest())
+            record = dict(family=index, rule=index % 2, keys=keys.tolist(), raw_file=artifact,
+                          elapsed_seconds=float(index + 1), measurements=dict(families=1))
+            records.append((json.dumps(record) + "\r\n").encode())
+        (parent / "metrics.jsonl").write_bytes(b"".join(records))
+        guard = self.root / entry.RECOVERY_GUARD
+        guard.parent.mkdir(parents=True)
+        guard.write_text(json.dumps(dict(event="stopped", processStarted=True, error="Call cancelled ",
+                                         wallSeconds=entry.RECOVERY_PARENT_SECONDS)) + "\n")
+        hashes = {name: hashlib.sha256(path.read_bytes()).hexdigest() for name, path in dict(
+            config=parent / "config.json", status=parent / "status.json", metrics=parent / "metrics.jsonl",
+            guard=guard).items()}
+        return parent, hashes
+
+    def invoke_recovery(self, hashes, *extra):
+        with patch.object(entry, "RECOVERY_HASHES", hashes), patch.object(entry, "_scientific_source",
+                return_value=dict(seed="b" * 40, cold_donor="c" * 40)):
+            self.invoke("--condition-split", "final", "--name", entry.RECOVERY_NAME, "--seed", "2026112103",
+                        "--eval-worlds", "256", "--start", "file:" + entry.SOURCES[2]["path"],
+                        "--resume", entry.RECOVERY_PARENT, *extra)
+
+    def test_recovery_copies_exact_prefix_and_evaluates_only_the_remaining_families(self):
+        parent, hashes = self.recovery_fixture()
+        before = self.snapshot(parent)
+        self.invoke_recovery(hashes)
+        folder = self.folder(entry.RECOVERY_NAME)
+        result = json.loads((folder / "summary.json").read_text())
+        cfg = json.loads((folder / "config.json").read_text())
+        self.assertEqual(self.called_indices, list(range(181, 256)))
+        self.assertEqual(self.calls, 75)
+        self.assertEqual(before, self.snapshot(parent))
+        self.assertEqual((result["status"], result["completed_families"]), ("finished", 256))
+        self.assertEqual((cfg["max_seconds"], cfg["cumulative_max_seconds"]), (9499, 9900))
+        self.assertEqual(cfg["recovery"], result["recovery"])
+        self.assertEqual(cfg["recovery"]["parent_source_commit"], entry.RECOVERY_COMMIT)
+        self.assertEqual(cfg["git"]["commit"], "a" * 40)
+        self.assertEqual(cfg["args"]["resume"], entry.RECOVERY_PARENT)
+        for relative in ("config.json", "status.json"):
+            self.assertEqual((folder / "parent" / relative).read_bytes(), before[relative])
+        self.assertEqual((folder / "parent/guard.jsonl").read_bytes(), (self.root / entry.RECOVERY_GUARD).read_bytes())
+        copied_metrics = (folder / "metrics.jsonl").read_bytes()
+        self.assertTrue(copied_metrics.startswith(before["metrics.jsonl"]))
+        for index in range(181):
+            relative = f"families/family_{index:04d}.npz"
+            self.assertEqual((folder / relative).read_bytes(), before[relative])
+        history = [json.loads(line) for line in copied_metrics.splitlines()]
+        self.assertEqual(len(history), 256)
+        self.assertEqual([record["family"] for record in history], list(range(256)))
+        self.assertTrue(all(history[i]["elapsed_seconds"] <= history[i + 1]["elapsed_seconds"] for i in range(255)))
+        for record in history[181:]:
+            self.assertEqual(record["elapsed_seconds"], entry.RECOVERY_PARENT_SECONDS + record["invocation_elapsed_seconds"])
+            self.assertEqual(record["source_commit"], "a" * 40)
+        self.assertEqual(result["elapsed_seconds"], entry.RECOVERY_PARENT_SECONDS + result["invocation_elapsed_seconds"])
+        self.assertEqual([(s["first_family"], s["stop_family"]) for s in result["segments"]], [(0, 181), (181, 256)])
+        saved = self.snapshot(folder)
+        with self.assertRaises(SystemExit):
+            self.invoke_recovery(hashes)
+        self.assertEqual(saved, self.snapshot(folder))
+
+    def test_recovery_rejects_tampered_or_extra_prefix_artifacts_before_new_folder(self):
+        parent, hashes = self.recovery_fixture()
+        paths = [parent / "config.json", parent / "status.json", parent / "metrics.jsonl",
+                 parent / "genome_start.npy", parent / "families/family_0007.npz", self.root / entry.RECOVERY_GUARD]
+        for path in paths:
+            original = path.read_bytes()
+            path.write_bytes(original + b" ")
+            with self.subTest(path=path.name), self.assertRaises(SystemExit):
+                self.invoke_recovery(hashes)
+            path.write_bytes(original)
+            self.assertFalse(list((self.root / "runs").glob("*_" + entry.RECOVERY_NAME)))
+        (parent / "summary.json").write_text("{}")
+        with self.assertRaises(SystemExit):
+            self.invoke_recovery(hashes)
+        self.assertEqual(self.calls, 0)
+
+    def test_recovery_failure_retains_prefix_and_never_recreates_old_families(self):
+        parent, hashes = self.recovery_fixture()
+        before = self.snapshot(parent)
+        self.fail_before = 1
+        with self.assertRaisesRegex(RuntimeError, "family interruption"):
+            self.invoke_recovery(hashes)
+        folder = self.folder(entry.RECOVERY_NAME)
+        result = json.loads((folder / "summary.json").read_text())
+        self.assertEqual(self.called_indices, [181])
+        self.assertEqual((result["status"], result["completed_families"]), ("failed", 182))
+        self.assertNotIn("gate", result)
+        self.assertNotIn("measurements", result)
+        self.assertEqual(result["gate_status"], "undecided")
+        self.assertEqual(before, self.snapshot(parent))
+        self.assertTrue((folder / "metrics.jsonl").read_bytes().startswith(before["metrics.jsonl"]))
+
+    def test_recovery_requires_exact_parent_identity_and_unchanged_scientific_source(self):
+        parent, hashes = self.recovery_fixture()
+        for extra in (("--resume", "runs/wrong"), ("--name", "E117-A2"), ("--seed", "2026112102"),
+                      ("--condition-split", "development"), ("--eval-worlds", "75"), ("--cfg", "T=300")):
+            with self.subTest(extra=extra), self.assertRaises(SystemExit):
+                self.invoke_recovery(hashes, *extra)
+        with patch.object(entry, "RECOVERY_HASHES", hashes), patch.object(entry, "_scientific_source",
+                side_effect=[dict(seed="b" * 40, cold_donor="c" * 40), dict(seed="d" * 40, cold_donor="c" * 40)]):
+            with self.assertRaises(SystemExit):
+                self.invoke("--condition-split", "final", "--name", entry.RECOVERY_NAME, "--seed", "2026112103",
+                            "--eval-worlds", "256", "--start", "file:" + entry.SOURCES[2]["path"],
+                            "--resume", entry.RECOVERY_PARENT)
+        self.assertFalse(list((self.root / "runs").glob("*_" + entry.RECOVERY_NAME)))
+        self.assertEqual(self.calls, 0)
 
     def test_benchmark_keeps_exact_source_full_ecology_and_exclusive_family_files(self):
         self.invoke()

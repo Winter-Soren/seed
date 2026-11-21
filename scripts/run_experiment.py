@@ -786,7 +786,8 @@ def main():
         if args.get("eval_protocol") == ECOLOGY_LINEAGE_PROTOCOL:
             ap.error("Development lineage attempts cannot resume; preserve all evidence and use a new run name")
         if args.get("eval_protocol") == COLD_DONOR_PROTOCOL:
-            ap.error("Cold-donor attempts cannot resume; preserve all evidence and preregister any recovery")
+            ap.error("Cold-donor recovery requires its explicitly registered --eval-protocol cold-donor-v1 "
+                     "and --name E117-A2-recovery command; generic resume cannot modify an attempt")
         if args.get("eval_protocol") in PAIRED_PROTOCOLS:
             if a.cfg or a.quick or a.allow_dirty:
                 ap.error("Cannot change paired training configuration, use quick mode or dirty code on resume")

@@ -20,6 +20,6 @@ The optional persistence trait passed its local checks. In the cold world, the s
 ## What is next
 
 Keep the three original A genomes as the reference learners.
-The owner approved the three-seed cold-donor test, E117. Its notebook entry fixes the comparison before evaluation.
-Benchmark the full life on development worlds, then run each original genome on 256 new world families and independently check first living shelter entries and survival. The two newborn groups share their world, wiring and random stream. Only their starting weights differ. Both have the optional persistence trait off.
+Two cold-donor panels finished. A Windows monitoring call stopped the third after 181 of 256 families. Its evidence is preserved. The registered recovery checks the original files and evaluates only the remaining 75 families. All three panels will be audited together before reporting a decision.
+The owner requested active genome evolution. E118 is registered before reading E117's results. It will evolve each original genome for ten generations with shelter, cold and persistence, then compare the final descendant with its parent on fresh paired worlds. An improved genome must reach shelter sooner and meet the survival safeguard.
 Keep one laptop job at a time and check both drives and memory before each launch.
