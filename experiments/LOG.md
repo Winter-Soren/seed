@@ -1859,3 +1859,13 @@ D:\cool-projects\general-intelligence\.venv\Scripts\python.exe -X utf8 scripts/r
     .venv/Scripts/python.exe -X utf8 tools/audit_e115.py --evaluation runs/20261120-060829_E115-v5-recovery1 --interrupted-manifest results/diagnostics/E115-interrupted-files.json
 
 **Decision.** Retain the original three A genomes as the starting benchmarks. E113 and E115 keep their failed gate decisions. The council recommends a prospective matched learning-rate comparison under the same stationary world physics. The proposed E116 study is awaiting the owner's failed-gate decision. No E116 job has started.
+
+### Engineering verification registered · 21 November 2026 · Successive newborn cohorts
+
+The owner requested a perceivable environment and reusable experience across deaths. Verify the new ecological and inheritance mechanisms on a development fixture with three cohorts of two newborns, twelve turns each, random seed 41 and the original A0 rule genome. The fixed schedule adds a movement cost of 0.01, then an outdoor cold cost of 0.02 per exposed turn in the second half. The visible shelter moves between worlds. All three cohorts have the same sensor layout. This is a software check with zero evolutionary generations.
+
+From the clean development checkout, using the project's Python interpreter, run exactly once:
+
+    python -X utf8 scripts/run_experiment.py --name ecology-transfer-smoke-a0 --eval-protocol ecology-lineage-v1 --quick --condition-split development --seed 41 --generations 0 --memory-condition shared --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+
+Pass the engineering check only if the fixture finishes within its 120-second process budget, the source genome fingerprint matches its original, three paired cohort records can be reconstructed from disk, birth keys differ between cohorts, shared and fresh arms use matched starts apart from inherited weights, and recomputing the shared archive from donors reproduces every transition. Preserve any incomplete attempt. Check deaths and the shelter action separately on controlled software fixtures. A difference in fitness on this one fixture cannot establish a scientific result. E116 uses its own unchanged default world.

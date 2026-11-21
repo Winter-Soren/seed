@@ -7,6 +7,7 @@ from jax.flatten_util import ravel_pytree
 import numpy as np
 
 from seed.seed import Cfg, MOVES, init_genome, init_world, observe, rollout
+from seed.ecology import apply_costs, make_shelter
 from seed import direct
 
 PROTOCOL = "v3"
@@ -136,13 +137,14 @@ def specialist_logits(obs, c, policy):
                      greedy_logits(obs, 0, c), greedy_logits(obs, 1, c))
 
 
-@partial(jax.jit, static_argnames=("c", "policy", "flip_step"))
-def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
+@partial(jax.jit, static_argnames=("c", "policy", "flip_step", "ecology"))
+def reference_rollout(wkey, rule, c, *, policy, flip_step=None, ecology=None):
     if policy not in ("random_walk", "greedy", "fixed_A", "fixed_B", "mixture"):
         raise ValueError("unknown reference policy")
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an interior integer")
     grid, pos = init_world(wkey, c)
+    shelter = make_shelter(wkey, c) if ecology is not None else None
     carry = dict(grid=grid, pos=pos, energy=jnp.full((c.M,), c.e0), alive=jnp.ones(c.M),
                  denergy=jnp.zeros(c.M), key=wkey, t=0)
 
@@ -151,7 +153,7 @@ def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
         current_rule = rule if flip_step is None else jnp.where(s["t"] >= flip_step, 1-rule, rule)
         if policy != "random_walk":
             obs = observe(s["grid"], s["pos"], s["alive"], jnp.zeros(c.M),
-                          s["energy"], s["denergy"], c)
+                          s["energy"], s["denergy"], c, ecology=ecology, shelter=shelter, step=s["t"])
             logits = (greedy_logits(obs, current_rule, c) if policy == "greedy"
                       else specialist_logits(obs, c, policy))
         else:
@@ -162,7 +164,10 @@ def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
         item = s["grid"][pos[:, 0], pos[:, 1]]
         eat = (alive > 0) & (item > 0)
         food, poison = eat & (item == 1 + current_rule), eat & (item == 2 - current_rule)
-        energy = jnp.clip(s["energy"] - c.decay * alive + c.gain * food - c.gain * poison, 0., c.e_max)
+        energy = s["energy"] - c.decay * alive + c.gain * food - c.gain * poison
+        before_ecology = energy
+        exposed = ~shelter[pos[:, 0], pos[:, 1]] if ecology is not None else True
+        energy = jnp.clip(apply_costs(energy, act, alive, s["t"], c.T // 2, ecology, exposed=exposed), 0., c.e_max)
         denergy = (energy - s["energy"]) * alive
         alive_after = alive * (energy > 0)
         grid = s["grid"].at[pos[:, 0], pos[:, 1]].set(jnp.where(eat, 0, item))
@@ -170,11 +175,19 @@ def reference_rollout(wkey, rule, c, *, policy, flip_step=None):
         grid = grid.at[newc[:, 0], newc[:, 1]].set(jnp.where(eat, item, grid[newc[:, 0], newc[:, 1]]))
         state = dict(grid=grid, pos=pos, energy=energy, alive=alive_after,
                      denergy=denergy, key=key, t=s["t"] + 1)
-        return state, dict(food=food, poison=poison, alive_before=alive, alive_after=alive_after)
+        events = dict(food=food, poison=poison, alive_before=alive, alive_after=alive_after)
+        if ecology is not None:
+            events.update(sheltered=(~exposed) & (alive > 0),
+                          energy_lost=jnp.clip(before_ecology, 0., c.e_max) - energy)
+        return state, events
 
     _, events = jax.lax.scan(step, carry, None, length=c.T)
     fitness = (events["food"].sum() - events["poison"].sum()) / c.M
-    return dict(events=events, fitness=fitness)
+    result = dict(events={key: events[key] for key in EVENT_KEYS}, fitness=fitness)
+    if ecology is not None:
+        result["ecology"] = dict(shelter=shelter, initial_sheltered=shelter[pos[:, 0], pos[:, 1]],
+                                 sheltered=events["sheltered"], energy_lost=events["energy_lost"])
+    return result
 
 
 def evaluate_conditions(mu, c, n_worlds=N_WORLDS, eval_seed=EVAL_SEED, *, controller="rules-v0"):

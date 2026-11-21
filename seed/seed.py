@@ -20,6 +20,7 @@ import jax.numpy as jnp
 from jax.flatten_util import ravel_pytree
 
 from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure
+from seed.ecology import EcologyV1, apply_costs, make_shelter
 
 
 class Cfg(NamedTuple):
@@ -38,17 +39,21 @@ class Cfg(NamedTuple):
     wmax: float = 3.0    # synapse weight bound
 
 
-def dims(c):
+def dims(c, *, ecology=None):
     V = 2 * c.R + 1
     D = 4 * V * V + 3          # 4 visual channels + energy + energy change + bias
+    if ecology is not None:
+        if not isinstance(ecology, EcologyV1):
+            raise ValueError("ecology must be an EcologyV1 instance or None")
+        D += V * V + 1         # visible shelter patch and current cold-season bit
     O = 6                      # 5 movement logits + 1 signal
     n = D + c.H + O
     K = 2 + c.n_htypes         # sensor, hidden types..., motor
     return V, D, O, n, K
 
 
-def neuron_types(c):
-    V, D, O, n, K = dims(c)
+def neuron_types(c, *, ecology=None):
+    V, D, O, n, K = dims(c, ecology=ecology)
     assert c.H % c.n_htypes == 0
     ht = np.repeat(np.arange(1, 1 + c.n_htypes), c.H // c.n_htypes)
     return jnp.array(np.concatenate([np.zeros(D, int), ht, np.full(O, K - 1)]))
@@ -85,10 +90,10 @@ def genome_size(c):
 
 
 # ----------------------------------------------------------------------------- development
-def develop(g, key, c):
+def develop(g, key, c, *, ecology=None):
     """Grow one brain from the genome's wiring rules. Different keys -> different twins."""
-    V, D, O, n, K = dims(c)
-    types = neuron_types(c)
+    V, D, O, n, K = dims(c, ecology=ecology)
+    types = neuron_types(c, ecology=ecology)
     k1, k2 = jax.random.split(key)
     tp, tq = types[:, None], types[None, :]
     P = jax.nn.sigmoid(g["conn"])[tp, tq]
@@ -100,7 +105,7 @@ def develop(g, key, c):
 
 
 # ----------------------------------------------------------------------------- the world
-def observe(grid, pos, alive, sig, energy, denergy, c):
+def observe(grid, pos, alive, sig, energy, denergy, c, *, ecology=None, shelter=None, step=0):
     G, R, M = c.G, c.R, c.M
     offs = jnp.arange(-R, R + 1)
     rows = (pos[:, 0, None] + offs[None, :]) % G
@@ -114,9 +119,15 @@ def observe(grid, pos, alive, sig, energy, denergy, c):
     po = po.at[:, R, R].add(-alive)                          # don't see yourself
     ps = ps.at[:, R, R].add(-alive * sig)
     flat = lambda a: a.reshape(M, -1)
-    return jnp.concatenate(
+    obs = jnp.concatenate(
         [flat(pa), flat(pb), flat(po), flat(ps),
          energy[:, None] - 1.0, 4.0 * denergy[:, None], jnp.ones((M, 1))], axis=1)
+    if ecology is not None:
+        dims(c, ecology=ecology)
+        if shelter is None or shelter.shape != (c.G, c.G):
+            raise ValueError("ecology observations require the current world's shelter map")
+        obs = jnp.concatenate([obs, flat(patch(shelter)), jnp.full((M, 1), step >= c.T // 2)], axis=1)
+    return obs
 
 
 MOVES = jnp.array([[0, 0], [-1, 0], [1, 0], [0, -1], [0, 1]])
@@ -132,8 +143,8 @@ def init_world(key, c):
 
 
 # ----------------------------------------------------------------------------- one brain tick
-def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *, predictor_plastic=None):
-    V, D, O, n, K = dims(c)
+def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *, predictor_plastic=None, ecology=None):
+    V, D, O, n, K = dims(c, ecology=ecology)
     h = x[D:D + c.H]
     # prediction loop: the brain predicted this observation last step; learn from the miss
     err = obs - Wp @ h
@@ -154,33 +165,49 @@ def brain_step(W, x, Wp, obs, denergy, mask, hebb, eta, plr, modw, plastic, c, *
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics"))
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "_return_weights"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
-            structural=False, flip_step=None, diagnostics=False, direct_weights=None):
+            structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
+            _initial_weights=None, _initial_alive=None, _return_weights=False):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
-    V, D, O, n, K = dims(c)
+    V, D, O, n, K = dims(c, ecology=ecology)
     pl = 1.0 if plastic else 0.0
     pp = pl if predictor_plastic is None else float(predictor_plastic)
     if direct_weights is None:
-        types = neuron_types(c)
+        types = neuron_types(c, ecology=ecology)
         hebb = g["hebb"][types[:, None], types[None, :]]
         eta, plr = jnp.exp(g["log_eta"]), jnp.exp(g["log_plr"])
-        W, mask = jax.vmap(lambda k: develop(g, k, c))(jax.random.split(dkey, c.M))
+        W, mask = jax.vmap(lambda k: develop(g, k, c, ecology=ecology))(jax.random.split(dkey, c.M))
     else:
         if plastic or pp or structural:
             raise ValueError("direct weights require frozen weights/predictor and no structural updates")
         if direct_weights.shape != (n, n) or not jnp.issubdtype(direct_weights.dtype, jnp.floating):
             raise ValueError("direct weights must be a floating-point (neurons, neurons) matrix")
         W = jnp.broadcast_to(direct_weights, (c.M, n, n))
+    if _initial_weights is not None or _initial_alive is not None or _return_weights:
+        if structural or direct_weights is not None:
+            raise ValueError("lineage hooks require the unchanged rules controller and fixed topology")
+        birth_W = W
+        if _initial_weights is not None:
+            if _initial_weights.shape != W.shape or not jnp.issubdtype(_initial_weights.dtype, jnp.floating):
+                raise ValueError("lineage weights must match the family's floating-point weight shape")
+            W = _initial_weights
+        if _initial_alive is not None and _initial_alive.shape != (c.M,):
+            raise ValueError("lineage eligibility must match the original family slots")
     grid, pos = init_world(wkey, c)
+    shelter = make_shelter(wkey, c) if ecology is not None else None
     food_t, poison_t = 1 + rule, 2 - rule
     M = c.M
     carry = dict(
         grid=grid, pos=pos, W=W, x=jnp.zeros((M, n)), Wp=jnp.zeros((M, D, c.H)),
         energy=jnp.full((M,), c.e0), alive=jnp.ones(M), sig=jnp.zeros(M),
         denergy=jnp.zeros(M), counts=jnp.zeros((M, 2, 2)), key=wkey, t=0)
+    if _initial_alive is not None:
+        carry.update(alive=_initial_alive, energy=carry["energy"] * _initial_alive)
+    if _return_weights:
+        carry["last_alive_W"] = W
     if structural:
         legal = (types[:, None] != 0) & ~jnp.eye(n, dtype=bool)
         caps = birth_caps(mask, legal)
@@ -198,11 +225,15 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
 
     def step(s, _):
         key, ka, kr = jax.random.split(s["key"], 3)
-        obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
+        if ecology is None:
+            obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
+        else:
+            obs = observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c,
+                          ecology=ecology, shelter=shelter, step=s["t"])
         if direct_weights is None:
             W, x, Wp, surprise = jax.vmap(
                 lambda W, x, Wp, o, de, mk: brain_step(
-                    W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp)
+                    W, x, Wp, o, de, mk, hebb, eta, plr, g["mod"], pl, c, predictor_plastic=pp, ecology=ecology)
             )(s["W"], s["x"], s["Wp"], obs, s["denergy"], s['mask'] if structural else mask)
         else:
             # Fixed direct weights bypass even the clipping performed by a frozen plastic brain.
@@ -254,17 +285,26 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         is_food = eat & (item == current_food)
         is_pois = eat & (item == current_poison)
         e_new = s["energy"] - c.decay * alive + c.gain * is_food - c.gain * is_pois
+        before_ecology = e_new
+        exposed = ~shelter[pos[:, 0], pos[:, 1]] if ecology is not None else True
+        e_new = apply_costs(e_new, act, alive, s["t"], c.T // 2, ecology, exposed=exposed)
         e_new = jnp.clip(e_new, 0.0, c.e_max)
         denergy = (e_new - s["energy"]) * alive
         alive_new = alive * (e_new > 0)
         grid = s["grid"].at[pos[:, 0], pos[:, 1]].set(jnp.where(eat, 0, item))
         newc = jax.random.randint(kr, (M, 2), 0, c.G)       # eaten blobs regrow elsewhere
         grid = grid.at[newc[:, 0], newc[:, 1]].set(jnp.where(eat, item, grid[newc[:, 0], newc[:, 1]]))
-        half = (s["t"] >= c.T // 2).astype(jnp.int32)
+        half = jnp.asarray(s["t"] >= c.T // 2, dtype=jnp.int32)
         counts = s["counts"].at[:, half, 0].add(is_food).at[:, half, 1].add(is_pois)
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
         out = dict(surprise=jnp.mean(surprise))
+        if _return_weights:
+            # No post-death credit: the fatal transition's delayed reward is not learned after death.
+            ns["last_alive_W"] = jnp.where(alive[:, None, None] > 0, W, s["last_alive_W"])
+        if ecology is not None and (record or diagnostics):
+            out.update(sheltered=(~exposed) & (alive > 0),
+                       ecology_energy_lost=jnp.clip(before_ecology, 0.0, c.e_max) - e_new)
         if structural:
             ns.update(mask=new_mask, structure=stats)
             if record:
@@ -291,11 +331,19 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
             res["direct_state"] = dict(W=s["W"], x=s["x"], Wp=s["Wp"])
     if diagnostics:
         res["events"] = {key: traj[key] for key in ("food", "poison", "alive_before", "alive_after")}
+    if _return_weights:
+        res["_weight_state"] = dict(birth_W=birth_W, mask=mask, initial_W=W,
+                                    terminal_W=s["last_alive_W"], alive=s["alive"])
+    if ecology is not None and (record or diagnostics):
+        res["ecology"] = dict(shelter=shelter,
+                              initial_sheltered=shelter[pos[:, 0], pos[:, 1]] & (carry["alive"] > 0),
+                              sheltered=traj["sheltered"],
+                              energy_lost=traj["ecology_energy_lost"])
     return res
 
 
 # ----------------------------------------------------------------------------- evolution
-def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=False):
+def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=False, ecology=None):
     """Evaluate a population of flat genomes in E worlds each (half with each rule)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
     rules = jnp.arange(E) % 2
@@ -304,7 +352,7 @@ def make_evaluator(c, E, plastic=True, *, predictor_plastic=None, structural=Fal
         g = unravel(flat)
         r = jax.vmap(lambda wk, dk, ru: rollout(
             g, wk, dk, ru, c, plastic, predictor_plastic=predictor_plastic,
-            structural=structural))(wkeys, dkeys, rules)
+            structural=structural, ecology=ecology))(wkeys, dkeys, rules)
         return r
 
     @jax.jit
@@ -368,10 +416,10 @@ def format_row(row):
 
 
 def evolve(c, generations=200, pop=128, E=4, sigma=0.1, lr=0.1, seed=0, plastic=True,
-           log_every=10, mean=None, *, structural=False):
+           log_every=10, mean=None, *, structural=False, ecology=None):
     """Run ES for a number of generations. Returns (mean genome, unravel, history)."""
     _, unravel = ravel_pytree(init_genome(c, jax.random.PRNGKey(0)))
-    evaluate, _ = make_evaluator(c, E, plastic, structural=structural)
+    evaluate, _ = make_evaluator(c, E, plastic, structural=structural, ecology=ecology)
     state = es_init(c, mean, seed)
     hist = []
     for gen in range(generations):
