@@ -23,14 +23,15 @@ The E115 gate failed. The original A genomes remain our stationary robustness be
 The interrupted evaluation is preserved. Its registered recovery finished every panel.
 Independent reconstruction confirmed every gate component and all overlapping raw arrays.
 Software verification passed all 156 tests locally and in hosted CI before training.
-E116 implementation and verification are in progress.
+E116's first continuation reached generation five and passed its runtime benchmark.
+Local checks are complete. The owner is restoring repository privacy before publication.
 
 ## What comes next
 
 The council proposes testing the size of evolutionary updates from the original genomes.
 The owner directed us to proceed. Reuse A0, A1 and A2 in both E116 arms.
 Keep E116 training and evaluation worlds separate and measure against both controls.
-In a separate development checkout, add visible shelter, cold exposure and a cost to moving.
-Test the plumbing for genome reuse, an individual's second life and what independently wired newborns can inherit from earlier creatures, including those that die.
+In a separate development checkout, three newborn cohorts ran with shelter, cold exposure and a cost to moving.
+The two later cohorts received earlier agents' learned changes. An independent check reconstructed their saved memory. All agents survived this one development fixture. Controlled tests also cover dead donors and reloading memory in another session.
 The next scientific question is whether that shared experience helps a newborn on a fresh world.
 One laptop job at a time. Check both drives and available memory before each launch.

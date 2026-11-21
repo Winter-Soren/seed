@@ -36,6 +36,14 @@ Both arms continue the same saved plastic A genomes with fresh zero Adam moments
 | 20261119-073315_E115-mean-s2 | finished | paired-mean | final | 1002 | 50/50 | 64 | 4 | deferred | 8ea83fc |
 | 20261119-075548_E115-min-s2 | finished | paired-min | final | 1002 | 50/50 | 64 | 4 | deferred | d74c262 |
 
+## Paired-min learning-rate continuation (paired-train-v2)
+
+E116 compares control learning rate 0.1 with candidate 0.02, both using paired individual-minimum selection from the same original A genomes. Fresh optimizer states and matched seeds 2000/2001/2002 give both arms the same 20-generation exposure. The run name identifies the arm; sigma and learning rate are shown explicitly. Evaluation remains deferred until all six final genomes are valid. Training variation is not held-out uncertainty or a scientific improvement estimate.
+
+| Run | Status | Objective | Split | Training seed | Gens | Population | Base-world pairs | Sigma | Learning rate | Evaluation | Commit |
+|---|---|---|---|---|---|---|---|---|---|---|---|
+| 20261121-062739_E116-control-s0 | interrupted | paired-min | final | 2000 | 5/20 | 64 | 4 | 0.1 | 0.1 | deferred | 861405d |
+
 ## EVAL v5 paired objective comparison
 
 Original A starts and all six registered paired-mean/paired-min continuations are evaluated together only after training completes. Every value is a base-world mean ± SE on fresh v5 worlds; development uses seed 41 only. The fixed gate requires minimum-return improvements over both start and paired mean beyond two paired SE in all three seeds, with no clear joint-survival regression against start. The complete gate decision, 30 contrasts, per-rule results and raw observations remain in the aggregate summary and panel files. E113's failed gate remains unchanged.
