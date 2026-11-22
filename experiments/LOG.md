@@ -2488,3 +2488,21 @@ All three original E103 plastic lineages **passed local reversal, transfer to a 
 The fixed-weight controls' paired first-food differences were −0.008 ± 0.018, −0.008 ± 0.012 and 0.000 ± 0.016. Keeping the original plastic controller's Hebbian updates enabled while the rule changed also improved first-food success versus freezing them by 0.566 ± 0.032, 0.562 ± 0.034 and 0.578 ± 0.033. This latter contrast was descriptive. The sizable primary grid gains reflect both success after changed feedback and a strong preference for the obsolete food in the stationary-history copies. Exposure was guided and immediate transfer used a fresh body. E125's freely encountered reversals and E126's uncompleted training comparison remain distinct. The next research question is whether this revised preference lasts through a cue-free interval.
 
 Full software verification passed 476 tests in 1,583.564 seconds on `760d13d`, with 1,674 seconds of hosted job time. The three full runs recorded docs-and-data-only descendant `a035f30`, whose scientific source and tests match `760d13d`. The first A0 run's 11 unscored families were preserved and excluded. The full A0 recovery, A1 and A2 took 105.581, 111.822 and 121.208 seconds of guarded wall time. The independent audit verified 453 hashes and reconstructed all 384 families in 111.474 seconds. It checked the observed transitions, choices, state fingerprints and uncertainty; it did not re-run each neural matrix operation. Rendering and normal summarization took 9.171 seconds. E127 totaled 5,093.783 seconds (84 minutes 54 seconds) against the 100-minute ceiling. Local-day all-Seed usage reached 14,105.472 seconds. [Full software suite](https://github.com/Winter-Soren/seed/actions/runs/44963740710)
+
+### E128 preregistration · 22 November 2026 · Retention through an active empty-world interval
+
+The published animal-learning decision calls for testing retention after an immediate local and grid pass. The owner delegated the choice of follow-up to the council. Test one change on new world families: after matched acquisition of the reversed rule, let the same creature act for zero, one or 33 turns without either cue. Keep ordinary hunger feedback, actions and lifetime plasticity. Compare the same history before and after the interval, and compare reversed against stationary feedback. Use the [frozen E128 protocol](E128_PROTOCOL.md) for all thresholds, including the all-three-lineages decision and the strict −0.05 paired lower bound. A small observed decline with large uncertainty does not pass noninferiority. No architecture changes or generations are part of E128.
+
+Exact tracked invocations from the project root, once committed code and checks admit them:
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','retention-diagnostic-v1','--generations',0)
+& $python $entry @common --name E128-benchmark --condition-split development --seed 2026120700 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E128-A0 --condition-split final --seed 2026120701 --eval-worlds 128 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E128-A1 --condition-split final --seed 2026120702 --eval-worlds 128 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --name E128-A2 --condition-split final --seed 2026120703 --eval-worlds 128 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+The 3,600-second E128 ceiling is separate from closed E127. Previously charged study time remains in the common daily ledger. Use `python -m unittest discover -s tests -p "test_retention_diagnostic*.py"` for focused readiness, then an isolated `python tools/audit_retention_diagnostic.py --self-check`. For the development audit run `python tools/audit_retention_diagnostic.py --source-commit <scientific commit> --development`; for the three-panel audit drop `--development`. Preserve all runs and commit sources before any run. No final worlds may be used for development. Record time and disk forecasts before final release, and complete independent verification before reading or reporting scientific outcomes.

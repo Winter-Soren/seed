@@ -32,4 +32,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E127's three full panels and independent audit are complete. The first eleven-family attempt is archived and excluded. The next question is how long the revised preference survives when neither food cue is present. Use fresh worlds, the same three lineages and a paired immediate test before adding any new mechanism.
+E128 tests whether the revised preference survives 33 active turns without food or poison. It uses fresh worlds and the same three lineages. The success criteria are registered, including how large a loss is acceptable and how uncertainty counts. Verify the implementation and measure its cost before running the three formal panels. E127 is complete and tagged.
