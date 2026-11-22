@@ -1,0 +1,115 @@
+{
+  "study": "E130",
+  "kind": "development-only prospective forecast",
+  "status": "passed",
+  "sourceCommit": "bed8af17423df829c6ec1707a19c1982e4f1981f",
+  "registrationCommit": "7c0569a1d483371413858684b58c0cc36c24d211",
+  "createdAt": "2026-11-22T19:03:22.1682609+05:30",
+  "pins": {
+    ".tmp/E130-readiness-attempt1.result.json": "18b2d8ca9dfd1361908906934fba517bce88585714452a7f162967f21157ad29",
+    ".tmp/E130-benchmark-attempt1.result.json": "d782acbd06fedd9ac0e01fd12fd5ada2ef39c0275204bbaac74f69b57c696e1d",
+    ".tmp/E130-audit-development-attempt1.result.json": "0e570db187f44bbee0b04faee5b4cd9a55138fded0a390f36a6e3dcfe942746a",
+    ".tmp/E130-audit-development-attempt1.audit.json": "72f253105f77b1515e1cb1ef19836bd90d7633984fc210b047f9cb3fd045450b",
+    "runs/20261122-190019_E130-benchmark/status.json": "17b66cc3125c58af8e0cb730e98b94bd234d5830c4c88f3425aaa8c329fff889"
+  },
+  "staticShapeEvidence": "Engine author source review: every family covers both genotypes, both rule schedules and both initial rules at Cfg(M4,T300,G16,R2,H48). The only static scientific variants are flip_step=None or150, with plastic/predictor=True, record=False, diagnostics=True. Genomes, rules and keys are dynamic. Assignments use a Python evaluation_keys list and NumPy stack;4 to64 adds host/key-generation/I/O work but no count-sized JAX permutation or new neural shape. No new probe was run.",
+  "development": {
+    "run": "runs/20261122-190019_E130-benchmark",
+    "guardSeconds": 29.4278188,
+    "familySeconds": [
+      10.297000000020489,
+      1.3119999999762513,
+      1.1560000000172295,
+      1.172000000020489
+    ],
+    "fullFamilySeconds": [
+      10.313000000023749,
+      1.3119999999762513,
+      1.172000000020489,
+      1.1869999999762513
+    ],
+    "nonFamilyOverheadSeconds": 15.44381880000326,
+    "firstFamilySeconds": 10.313000000023749,
+    "maximumOfAllLaterFamiliesSeconds": 1.3119999999762513
+  },
+  "panelForecast": {
+    "formula": "guard_overhead + first_full_family + 63 * 1.5 * max(all_three_later_full_families)",
+    "seconds": 149.74081879778277,
+    "threePanelsSeconds": 449.2224563933483,
+    "hardSlotSeconds": 450,
+    "cleanupSeconds": 30,
+    "includesAllObservations": true,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 11.896422,
+    "timing": {
+      "elapsed_seconds": 5.8439999999827705,
+      "setup_and_summary_seconds": 5.76600000000326,
+      "reconstruction_seconds": 0.0779999999795109,
+      "family_seconds": [
+        0.01600000000325963,
+        0.014999999955762178,
+        0.03200000000651926,
+        0.015000000013969839
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 6.052422000017229,
+    "formula": "external + 3*setup_and_summary + 192*1.5*max(family_seconds)",
+    "seconds": 32.566422001904556,
+    "hardSlotSeconds": 240,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeThisCosting": 82.7805974,
+    "oneCiReserveSeconds": 2100,
+    "operationalReserveBeforeCostingSeconds": 500,
+    "reportingReserveSeconds": 60,
+    "costingChargedFromOperationalReserve": true,
+    "measuredScheduleWithCiAndReservesSeconds": 3224.5694757952524,
+    "allHardSlotsSeconds": 4332.7805974,
+    "studyLimitSeconds": 4800,
+    "hardMarginSeconds": 467.21940259999974,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 18787.0115176,
+    "dailyLimitSeconds": 28800,
+    "projectedDayWithAllHardSlotsSeconds": 23037.0115176,
+    "noDuplicateBaselineSuite": true,
+    "ciAfterLocalPanelsAndAudit": true
+  },
+  "storage": {
+    "observedRawLengths": [
+      9719,
+      9769,
+      9788,
+      9867
+    ],
+    "observedMaxRawBytes": 9867,
+    "observedOtherBytes": 76861,
+    "futureReserveBytes": 16761243.0,
+    "reserveFormula": "2 copies * 1.5 size allowance * (192*max_raw + 3*(64/4)*observed_metadata) + one_max_raw_atomic_write",
+    "freeCBytes": 25885343744,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 46439792640,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 46423031397.0,
+    "minimumDFreeBytes": 10737418240,
+    "noArbitraryScratchReserve": true
+  },
+  "memory": {
+    "source": "native GetPerformanceInfo",
+    "availablePhysicalBytes": 5381554176,
+    "availableCommitBytes": 15544922112.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Four development families; the1.5 factor is a scheduling allowance, not statistical confidence.",
+    "Future source preflight and startup guards remain authoritative.",
+    "All64 final assignment keys add host work; generous fixed hard slots preserve measured headroom.",
+    "No held-out behavior observed; formal release remains with the coordinator.",
+    "Costing wall is charged from the existing500-second operational reserve, so admission does not gain uncharged time.",
+    "Scientific publication requires the later single full hosted suite as well as the joint audit."
+  ]
+}
