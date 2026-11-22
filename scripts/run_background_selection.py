@@ -21,6 +21,9 @@ TRAIN_SEED = 2026121600
 EVAL_SEED = 2026121700
 VIEWS = ("isolated", "background")
 DEVELOPMENT_TRAINING_NAMES = ("E136-benchmark-isolated-recovery", "E136-benchmark-background")
+DEVELOPMENT_EVAL_NAME = "E136-benchmark-eval-continuation"
+DEVELOPMENT_PREFIX = "runs/20261122-225702_E136-benchmark-eval"
+DEVELOPMENT_TRAINING_COMMIT = "73d91f0287e91dd2919248815eb744de136a99ff"
 SETTINGS = (16, 4, .05, .02)
 MAX_SECONDS = {"development-training": 105, "development-evaluation": 100, "training": 240, "evaluation": 300}
 ALLOWED_FLAGS = {"--eval-protocol", "--condition-split", "--name", "--start", "--seed",
@@ -35,7 +38,7 @@ KEY_ROLES = ("script", "birth", "chamber", "background", "probe", "solo_layout",
 def _requests():
     requests = {name: ("development", "development-training", 0, view, TRAIN_SEED, 2, 0)
                 for view, name in zip(VIEWS, DEVELOPMENT_TRAINING_NAMES)}
-    requests["E136-benchmark-eval"] = ("development", "development-evaluation", 0, None, EVAL_SEED, 0, 4)
+    requests[DEVELOPMENT_EVAL_NAME] = ("development", "development-evaluation", 0, None, EVAL_SEED, 0, 4)
     for index in range(3):
         for view in VIEWS:
             requests[f"E136-A{index}-{view}"] = ("final", "training", index, view, TRAIN_SEED+index+1, 10, 0)
@@ -128,15 +131,49 @@ def _endpoint_receipts(root, source_code, commit, *, development=False):
     return receipts, endpoints
 
 
+def _development_prefix(root, source_code):
+    folder = root / DEVELOPMENT_PREFIX
+    pins = {
+        "config.json": "6cc2aef5a78ebe9f26f72e65a4923261ad86568953d3fdeca3665e16f2fa879c",
+        "status.json": "480c3ccd4ecc41fa3744ef39ffb366f3d7cce937674a11de5bd61c9e0391e7ae",
+        "evaluation.jsonl": "d8ec2942264c15178a01df678020d374c72d745f6bf36a05b9616ba0832c1b22",
+    }
+    frozen = {}
+    for name, digest in pins.items():
+        content = (folder / name).read_bytes()
+        if _sha(content) != digest:
+            raise ValueError("stopped development evaluation prefix changed")
+        frozen[name] = json.loads(content)
+    config, status, row = (frozen[name] for name in pins)
+    if (status["completed_families"] != 1 or config["evaluation_seed"] != EVAL_SEED
+            or config["git"]["commit"] != DEVELOPMENT_TRAINING_COMMIT
+            or set(config["source_code"]) != set(source_code)
+            or any(digest != source_code[name] for name, digest in config["source_code"].items()
+                   if name != "scripts/run_background_selection.py")
+            or row["index"] != 0 or row["raw_file"]["path"] != "families/family_0000.npz"
+            or row["raw_file"] != _ref(folder, row["raw_file"]["path"])
+            or config["assignments"] != _ref(folder, "assignments.npz")):
+        raise ValueError("development continuation must retain the exact stopped assignment and first family")
+    receipts, endpoints = _endpoint_receipts(root, config["source_code"], DEVELOPMENT_TRAINING_COMMIT, development=True)
+    if receipts != config["train_receipts"]:
+        raise ValueError("development continuation cannot change the frozen endpoints")
+    return folder, config, status, row, receipts, endpoints[0]
+
+
 def run_tracked(args, git, root, *, explicit=None):
     started, root = time.monotonic(), Path(root).resolve()
     mode, index, view, source, parent_bytes, parent = _validate(args, git, root, explicit)
     source_code = {name: _sha((root / name).read_bytes()) for name in SOURCE_PATHS}
-    pair, receipts, assignments = None, [], None
+    pair, receipts, assignments, prefix = None, [], None, None
     training_seed = args.seed if args.generations else None
     evaluation_seed = args.seed if args.eval_worlds else None
-    if evaluation_seed is not None:
-        receipts, endpoints = _endpoint_receipts(root, source_code, git["commit"], development=mode == "development-evaluation")
+    if mode == "development-evaluation":
+        prefix = _development_prefix(root, source_code)
+        prefix_folder, prefix_config, _, _, receipts, pair = prefix
+        with np.load(prefix_folder / prefix_config["assignments"]["path"], allow_pickle=False) as saved:
+            assignments = {name: saved[name] for name in saved.files}
+    elif evaluation_seed is not None:
+        receipts, endpoints = _endpoint_receipts(root, source_code, git["commit"])
         pair = endpoints[index]
         assignments = evaluation_assignments(evaluation_seed, args.eval_worlds)
 
@@ -146,32 +183,42 @@ def run_tracked(args, git, root, *, explicit=None):
         (folder / "generations").mkdir()
     if args.eval_worlds:
         (folder / "families").mkdir()
-    manifest = _save(folder, "assignments.npz", assignments) if assignments is not None else None
+    if prefix is not None:
+        _write_bytes(folder / "assignments.npz", (prefix[0] / "assignments.npz").read_bytes())
+        manifest = _ref(folder, "assignments.npz")
+    else:
+        manifest = _save(folder, "assignments.npz", assignments) if assignments is not None else None
     endpoint_sha = [_sha(content) for content in pair] if pair is not None else None
     config = dict(protocol=PROTOCOL, mode=mode, view=view, args=dict(vars(args), start="file:"+source["path"]), git=dict(git),
         source=source, seed_index=index, training_seed=training_seed, evaluation_seed=evaluation_seed,
         expected_attempts=args.generations, expected_families=args.eval_worlds, source_code=source_code, l2=.005,
         cfg=engine.CFG._asdict(), train_receipts=receipts, assignments=manifest, key_roles=list(KEY_ROLES),
         endpoint_sha256=endpoint_sha, max_seconds=MAX_SECONDS[mode], scientific_result=False, runtime=_runtime())
+    if prefix is not None:
+        config["max_seconds"] = 140
+        config["copied_development_prefix"] = DEVELOPMENT_PREFIX
     _write_json(folder / "config.json", config)
     _write_bytes(folder / "genome_start.npy", parent_bytes)
     setup = time.monotonic()-started
     attempts, samples, raw_files = [], [], []
-    attempt_walls, family_walls = [], []
+    attempt_walls, family_walls, timing_replay_walls = [], [], []
     updates = 0
 
     def status(value):
-        return dict(status=value, protocol=PROTOCOL, mode=mode, view=view, seed_index=index, elapsed_seconds=time.monotonic()-started,
+        record = dict(status=value, protocol=PROTOCOL, mode=mode, view=view, seed_index=index, elapsed_seconds=time.monotonic()-started,
             setup_seconds=setup, completed_attempts=len(samples), completed_families=len(raw_files),
             expected_attempts=args.generations, expected_families=args.eval_worlds, optimizer_updates=updates,
             attempt_wall_seconds=attempt_walls, family_wall_seconds=family_walls)
+        if prefix is not None:
+            record["warm_timing_replay_seconds"] = timing_replay_walls
+        return record
 
     def summary(value):
         return dict(**status(value), scientific_result=False, gate_status="undecided", endpoint_sha256=endpoint_sha,
             attempts=attempts, samples=samples, raw_files=raw_files)
 
     def deadline():
-        if time.monotonic()-started >= MAX_SECONDS[mode]:
+        if time.monotonic()-started >= config["max_seconds"]:
             raise TimeoutError("background selection exceeded its registered process allowance")
 
     _write_status(folder, status("running"))
@@ -235,16 +282,34 @@ def run_tracked(args, git, root, *, explicit=None):
                 _write_bytes(folder / f"genome_{label}.npy", content)
             isolated, background = (np.load(io.BytesIO(content), allow_pickle=False) for content in pair)
             with (folder / "evaluation.jsonl").open("x", encoding="utf-8") as stream:
-                for family, keys in enumerate(assignments["family_keys"]):
+                if prefix is not None:
+                    origin, _, past_status, first, _, _ = prefix
+                    relative = first["raw_file"]["path"]
+                    _write_bytes(folder / relative, (origin / relative).read_bytes())
+                    raw_files.append(_ref(folder, relative))
+                    _journal(stream, first)
+                    # Status was persisted just after family zero. It is an
+                    # upper bound on that family's measured execution time.
+                    family_walls.append(past_status["elapsed_seconds"])
+                for family in range(len(raw_files), args.eval_worlds):
                     deadline()
                     since = time.monotonic()
                     pre, gap = (int(assignments[name][family]) for name in ("pre_contacts", "gap"))
-                    row = engine.evaluate_family(parent, isolated, background, keys, family, pre, gap)
+                    row = engine.evaluate_family(parent, isolated, background, assignments["family_keys"][family], family, pre, gap)
                     raw_files.append(_save(folder, f"families/family_{family:04d}.npz", row))
                     _journal(stream, dict(index=family, raw_file=raw_files[-1]))
                     _write_status(folder, status("running"))
                     family_walls.append(time.monotonic()-since)
                     print(f"E136 family {family+1}/{args.eval_worlds} saved", flush=True)
+            if prefix is not None:
+                # Warm compile shapes can differ after a fresh process. Time
+                # two already archived inputs only for the runtime forecast.
+                for family in (2, 3):
+                    deadline()
+                    since = time.monotonic()
+                    pre, gap = (int(assignments[name][family]) for name in ("pre_contacts", "gap"))
+                    engine.evaluate_family(parent, isolated, background, assignments["family_keys"][family], family, pre, gap)
+                    timing_replay_walls.append(time.monotonic()-since)
         deadline()
         _write_json(folder / "summary.json", summary("finished"))
     except BaseException as error:

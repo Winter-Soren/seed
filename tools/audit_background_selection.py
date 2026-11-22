@@ -31,6 +31,10 @@ CFG, MOVES, NEURAL, PLACEMENTS = replay.CFG, replay.MOVES, replay.NEURAL, replay
 PROTOCOL = "background-selection-v1"
 VIEWS, GENOTYPES = ("isolated", "background"), ("parent", "isolated", "background")
 DEVELOPMENT_TRAINING_RUNS = ("E136-benchmark-isolated-recovery", "E136-benchmark-background")
+DEVELOPMENT_EVAL_NAME = "E136-benchmark-eval-continuation"
+DEVELOPMENT_PREFIX = "runs/20261122-225702_E136-benchmark-eval"
+DEVELOPMENT_TRAINING_COMMIT = "73d91f0287e91dd2919248815eb744de136a99ff"
+CONTINUATION_RUNNER = "scripts/run_background_selection.py"
 HISTORIES = ("stationary", "reversal")
 KEY_ROLES = ("script", "birth", "chamber", "background", "probe", "solo_layout", "solo_action")
 CELLS = ((8, 16), (16, 32), (8, 32), (16, 16))
@@ -342,7 +346,7 @@ class Auditor(replay.Auditor):
         attempts, families = (2 if development else 10, 0) if training else (0, 4 if development else 128)
         train_seed = 2026121600+(0 if development else index+1)
         eval_seed = 2026121700+(0 if development else index+1)
-        name = DEVELOPMENT_TRAINING_RUNS[VIEWS.index(view)] if development and training else "E136-benchmark-eval" if development else (
+        name = DEVELOPMENT_TRAINING_RUNS[VIEWS.index(view)] if development and training else DEVELOPMENT_EVAL_NAME if development else (
             f"E136-A{index}-{view}" if training else f"E136-A{index}")
         require(Path(folder).name.endswith("_"+name), "registered run name selects the objective")
         subset(config, dict(protocol=PROTOCOL, mode=mode, seed_index=index, cfg=CFG, l2=.005, view=view,
@@ -364,8 +368,14 @@ class Auditor(replay.Auditor):
         require(args.get("controller") in (None, "rules-v0") and args.get("structural_plasticity") in (None, "off")
             and not args.get("persistence", False), "unchanged native controller")
         commit = config["git"]["commit"]
-        require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", commit)
-                and self.code_trees(commit) == self.expected_trees, "clean frozen scientific source")
+        require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", commit), "clean frozen scientific source")
+        if development and training:
+            same(commit, DEVELOPMENT_TRAINING_COMMIT, "exact prior audited-development training source")
+            code_changes = base.subprocess.run(["git", "diff", "--name-only", commit, self.source, "--", "seed", "scripts"],
+                cwd=self.root, check=True, timeout=15, capture_output=True, text=True).stdout.splitlines()
+            same(code_changes, [CONTINUATION_RUNNER], "only the prospective prefix handoff changes the runner source")
+        else:
+            same(self.code_trees(commit), self.expected_trees, "clean frozen current scientific source")
         require(set(config["source_code"]) == SOURCE_PATHS, "complete frozen transitive source manifest")
         if commit not in self.checked_source_commits:
             context = type("SourceContext", (), {"root": self.root, "source": commit})()
@@ -377,7 +387,11 @@ class Auditor(replay.Auditor):
             self.checked_source_commits.add(commit)
         if self.source_manifest is None:
             self.source_manifest = config["source_code"]
-        same(config["source_code"], self.source_manifest, "same development and final scientific source bytes")
+        same({path: digest for path, digest in config["source_code"].items() if path != CONTINUATION_RUNNER},
+             {path: digest for path, digest in self.source_manifest.items() if path != CONTINUATION_RUNNER},
+             "same development and final scientific kernels")
+        if not (development and training):
+            self.source_manifest = config["source_code"]
         path, digest = base.ORIGINALS[index]
         subset(config["source"], dict(path=path, sha256=digest, training_seed=index), "original E103 parent lineage")
         same(args["start"], "file:"+path, "original parent start")
@@ -515,6 +529,19 @@ class Auditor(replay.Auditor):
 
     def evaluation(self, folder, index, development):
         config, report, parent = self.metadata(folder, index, "development-evaluation" if development else "evaluation")
+        if development:
+            same(config["copied_development_prefix"], DEVELOPMENT_PREFIX, "registered stopped development prefix")
+            stopped = self.json(DEVELOPMENT_PREFIX+"/status.json")
+            prior_config = self.json(DEVELOPMENT_PREFIX+"/config.json")
+            first = self.json(DEVELOPMENT_PREFIX+"/evaluation.jsonl")
+            require(stopped["completed_families"] == 1 and prior_config["git"]["commit"] == DEVELOPMENT_TRAINING_COMMIT
+                    and first["index"] == 0, "exactly one retained family from the interrupted run")
+            same(config["assignments"], prior_config["assignments"], "same development assignment bytes")
+            same(self.read(folder+"/assignments.npz"), self.read(DEVELOPMENT_PREFIX+"/assignments.npz"), "raw assignment equivalence")
+            same(config["train_receipts"], prior_config["train_receipts"], "same frozen endpoints across continuation")
+            same(report["raw_files"][0], first["raw_file"], "same prefix manifest")
+            relative = "/"+first["raw_file"]["path"]
+            require(self.read(folder+relative) == self.read(DEVELOPMENT_PREFIX+relative), "byte-identical saved family zero")
         receipts = config["train_receipts"]
         require(len(receipts) == (2 if development else 6), "both arms of every required lineage pinned before evaluation")
         endpoints = []
@@ -635,7 +662,7 @@ def main():
         auditor = Auditor(args.root, args.source_commit)
         # Read only statuses and filenames until the entire requested bundle is complete.
         dev_train = [auditor.completed(name, 2, 0) for name in DEVELOPMENT_TRAINING_RUNS]
-        dev_eval = auditor.completed("E136-benchmark-eval", 0, 4)
+        dev_eval = auditor.completed(DEVELOPMENT_EVAL_NAME, 0, 4)
         final_train = [] if args.development else [(i, view, auditor.completed(f"E136-A{i}-{view}", 10, 0)) for i in range(3) for view in VIEWS]
         final_eval = [] if args.development or args.training else [auditor.completed(f"E136-A{i}", 0, 128) for i in range(3)]
         report["training"] = [auditor.training(folder, 0, True, view) for view, folder in zip(VIEWS, dev_train)]

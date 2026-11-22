@@ -1,0 +1,42 @@
+{
+  "auditReportSha256": null,
+  "mode": "benchmark-eval",
+  "runName": "E136-benchmark-eval",
+  "wallSeconds": 71.0950504,
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-attempt1.stdout",
+  "childExitCode": null,
+  "study": "E136",
+  "priorStageSeconds": 0.0,
+  "stageUsedSecondsAfter": 71.0950504,
+  "stageHardLimitSeconds": 100.0,
+  "studyUsedSecondsBefore": 191.85458649999998,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:56:44.9344344+05:30",
+      "end": "2026-11-22T22:57:56.0294848+05:30",
+      "seconds": 71.0950504
+    }
+  ],
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-attempt1.guard.jsonl",
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-attempt1.stderr",
+  "timeZoneId": "India Standard Time",
+  "studyLimitSeconds": 3600.0,
+  "attempt": 1,
+  "sourceCommit": "73d91f0287e91dd2919248815eb744de136a99ff",
+  "status": "stopped",
+  "retryEligible": false,
+  "processStarted": true,
+  "auditOutcome": null,
+  "wallStartedAt": "2026-11-22T22:56:44.9344344+05:30",
+  "dailyLedgerSha256": "298453f3f47fd29fa237f4377cc44657a85a5393cd464089c24e428625136a93",
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "reservedSeconds": 2976.7628031,
+  "error": "Full-process wall limit reached",
+  "studyUsedSecondsAfter": 262.9496369,
+  "commit": "73d91f0287e91dd2919248815eb744de136a99ff",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25217.581939299987
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "status": "running",
+  "protocol": "background-selection-v1",
+  "mode": "development-evaluation",
+  "view": null,
+  "seed_index": 0,
+  "elapsed_seconds": 35.23399999999674,
+  "setup_seconds": 1.5,
+  "completed_attempts": 0,
+  "completed_families": 1,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "optimizer_updates": 0,
+  "attempt_wall_seconds": [],
+  "family_wall_seconds": []
+}
