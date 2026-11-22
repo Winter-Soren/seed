@@ -1,0 +1,121 @@
+{
+  "protocol": "founder-reversal-v1",
+  "args": {
+    "name": "E130-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_start.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120901,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 64,
+    "eval_protocol": "founder-reversal-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "366876e5c2ddcfcdfba181526fc67c4ba0fa2f81",
+    "branch": "main",
+    "dirty": false
+  },
+  "source_start": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_start.npy",
+    "sha256": "621e5a735e408e487653f7ffc15561be773fbd1053af847ef1bb633fd5243e07"
+  },
+  "source_final": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "source_generations": [
+    0,
+    200
+  ],
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "seed_index": 0,
+  "eval_seed": 2026120901,
+  "expected_families": 64,
+  "statistical_unit": "independent family averaging four original animals and both rules",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "8d192377bcd2b2901fd7d24d289184147d305c4d9a73b69292cb87cc21a9497b"
+  },
+  "arms": [
+    "gen0_stationary",
+    "gen0_reversal",
+    "gen200_stationary",
+    "gen200_reversal"
+  ],
+  "key_roles": [
+    "world_action",
+    "development"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "bin_edges": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300
+  ],
+  "flip_step": 150,
+  "source_code": {
+    "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed/founder_reversal.py": "3952c053a0fb9192664863fd07ea54795bdc6640db4cd5fda1b09ffa736c1826",
+    "scripts/run_founder_reversal.py": "65c6c322826ca74286da0099126e91a6213f9018886996d40b22a7bae2438a14",
+    "scripts/run_retention_diagnostic.py": "92c3222c2faf1e004e9d75b7547ff0290abed0c4ca15992dc32f80e9c9b3e3e0",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "raw_schema": "founder-reversal-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 450,
+  "scientific_result": false
+}

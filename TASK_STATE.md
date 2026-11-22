@@ -30,10 +30,12 @@ E128 found that all three still preferred the changed food after 33 empty turns.
 
 E129 found that pausing changes to connection strengths for those empty turns preserved local food preference in all three lineages. With ordinary learning restored, their solo first-food gains over continued updating were 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points. A0 and A1 also retained immediate foraging performance within five points. A2's lower bound was a loss of 5.03 points. The full three-lineage transfer claim failed.
 
+E130 tested each founder against its generation-200 descendant when all four creatures foraged freely. All three descendants learned the old rule and recovered some ground after the switch. Their late first-item scores relative to their founders were −0.096 ± 0.048, −0.064 ± 0.038 and −0.111 ± 0.041. None met the evolutionary recovery criterion. Two lineages crossed the council's threshold for long gaps without contact.
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-The retention investigation is closed. E130 compares each original founder with its descendant after 200 generations. It asks whether the descendants recover better when they find every item themselves and the rule changes without warning. Stationary worlds, missed meals and survival are part of this comparison. The thresholds and fresh test worlds are registered before running.
+The architecture roundtable selected a small exploration controller for comparison with the unchanged controller and an equal-budget control that explores at unrelated times. The open question is whether better-timed exploration improves both access to feedback and late choice without costing survival. The public README tracks this alongside the later external memory benchmark.

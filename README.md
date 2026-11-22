@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**All three evolved lineages learned when the safe food changed. Pausing changes to connection strengths during 33 turns without food cues helped them remember.** Back in a fresh grid, the pause improved their chance of finding food before poison by **9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points** over allowing updates throughout. All three met the local memory criterion. Only two met the stricter criterion for retaining immediate foraging performance. We imposed the pause in the experiment. [Reversal learning](#learning-a-changed-rule-and-using-it-alone) · [Memory intervention](#when-should-a-learned-connection-keep-changing) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
+**After guided encounters, all three evolved lineages learned a reversed food rule and used it alone. When they had to find every item themselves, none met the test for better recovery than its founder.** They learned the old rule, initially sought the wrong food after the switch, and recovered some ground. By the final 50 turns, poison was still more often their first item than food in the observed sample. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Genome design](#how-the-saved-genomes-evolved)
 
 ## Table of contents
 
@@ -38,6 +38,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [Learning a changed rule and using it alone](#learning-a-changed-rule-and-using-it-alone)
   - [What survives 33 turns without food cues?](#what-survives-33-turns-without-food-cues)
   - [When should a learned connection keep changing?](#when-should-a-learned-connection-keep-changing)
+  - [Can descendants relearn the rule on their own?](#can-descendants-relearn-the-rule-on-their-own)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -54,7 +55,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Reverse a food preference after matched experiences | **Achieved** | After sixteen guided encounters with the reversal, all three lineages switched their local preference. Compared with creatures given the old-rule experience, they found the newly safe food first in a fresh grid 58.6 ± 3.2, 58.6 ± 3.4 and 59.0 ± 3.3 percentage points more often. Zero of three matched fixed-weight controls met the combined criterion. [E127 result](#learning-a-changed-rule-and-using-it-alone) |
 | Retain the new preference through a gap | **Failed** | All three lineages still showed a new-food preference after 33 active turns without food cues. First-food success fell by 9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 points. Zero of three cleared the registered preservation criteria for local choice or independent foraging. [E128 result](#what-survives-33-turns-without-food-cues) |
 | Preserve the new preference by controlling when weights change | **Partial** | An imposed pause preserved local preference in all three lineages. Solo first-food success rose by 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 points versus continued updating. Two of three met the stricter transfer criterion. A controller that can decide when to pause remains open. [E129 result](#when-should-a-learned-connection-keep-changing) |
-| Recover from an unannounced reversal through self-directed foraging | **In progress** | E130 compares the original founders with their own generation-200 descendants, using stationary controls and counting all assigned creatures, including missed meals and deaths. All three held-out panels finished and the audit checked 192 families. The registered decision awaits software verification and final reporting. [E130 protocol](experiments/E130_PROTOCOL.md) · [Architecture roundtable](experiments/ARCHITECTURE_COUNCIL_E130.md) |
+| Recover from an unannounced reversal through self-directed foraging | **Failed · 0/3** | All three generation-200 lineages recovered some of their lost preference. None established a positive late preference for food or the required late advantage over its founder. The comparison includes all assigned creatures. [E130 results and graph](#can-descendants-relearn-the-rule-on-their-own) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -443,6 +444,24 @@ Local preference is the probability of moving toward the safe color minus the pr
 **Solo foraging improved over continued updating in all three lineages. Only A0 and A1 also met the full transfer criterion.** For A2, first-food success was 68.4 ± 3.0% immediately and 68.0 ± 3.0% after the pause. Its paired change was −0.39 ± 2.32 points. The lower bound was −5.03 points, just below the required −5.00. The three-lineage transfer claim therefore failed. [Preregistered criteria](experiments/E129_PROTOCOL.md) · [Independent audit](results/diagnostics/E129-independent-audit.json)
 
 This closes the retention experiment. The result identifies a cost of updating connection strengths during this particular gap. Whether a creature can learn when to pause its own updates remains open. These experiments evaluated three saved genomes. They measured learning within a life and did not train new descendants. [Research comparisons](experiments/ANIMAL_LEARNING_BENCHMARKS.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44973658522)
+
+## Can descendants relearn the rule on their own?
+
+E130 put each founder and its own generation-200 descendant in matched four-creature worlds. Animals chose every move. In half the replays, food and poison exchanged roles at turn 150. The other replays kept the original rule. We also reversed the initial colors, so a fixed color preference could not earn a consistent advantage. Each lineage had 64 independent world families.
+
+In each 50-turn window, the first food counted +1, the first poison −1, and no contact counted zero, including after death. The score is therefore the probability of finding food first minus the probability of finding poison first. A value near zero can include many creatures that found nothing. Each ± is one family-level standard error. The last column pairs descendants with founders in the same worlds.
+
+| Lineage | Descendant before switch | First 50 turns after switch | Last 50 turns after switch | Late descendant minus founder |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | +0.414 ± 0.043 | −0.412 ± 0.043 | −0.068 ± 0.034 | −0.096 ± 0.048 |
+| A1 | +0.354 ± 0.044 | −0.436 ± 0.039 | −0.059 ± 0.035 | −0.064 ± 0.038 |
+| A2 | +0.395 ± 0.033 | −0.506 ± 0.038 | −0.072 ± 0.031 | −0.111 ± 0.041 |
+
+![First-item scores across all six age windows for founders and descendants, comparing stationary and reversal worlds for each lineage](results/figures/e130-founder-descendant.png)
+
+All three descendants showed an early-to-late improvement beyond the matched founder and stationary-world changes. All three also met the survival safeguards. **None met the two remaining requirements**: a positive late preference supported by the data and a late advantage of at least 0.05 over its founder exceeding two paired standard errors. The two endpoints show what changed over 200 generations; they leave the trajectory between generations unresolved. [Registered criteria](experiments/E130_PROTOCOL.md) · [Full estimates](results/diagnostics/E130-comparison.json) · [Independent audit](results/diagnostics/E130-independent-audit.json)
+
+Among descendants alive at the switch, **21.1 ± 2.3%, 18.1 ± 1.9% and 25.9 ± 2.0%** experienced a registered 25-turn gap without any item contact. A0 and A2 crossed the council's 20% threshold. This selects an **exploration controller** for the next comparison: does changing when a creature tries a different move help it find feedback and recover? A control will receive the same allowance of exploratory moves at times unrelated to its own outcomes. The saved events cannot tell us whether a creature saw an item and avoided it. [Architecture roundtable](experiments/ARCHITECTURE_COUNCIL_E130.md) · [Encounter counts](results/diagnostics/E130-architecture-feedback.json)
 
 ## Try it locally
 
