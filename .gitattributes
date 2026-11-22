@@ -22,3 +22,5 @@ results/diagnostics/E129-*.json -text
 results/diagnostics/E129-development-*.json text eol=crlf
 runs/*_E130-*/** -text
 results/diagnostics/E130-*.json -text
+runs/*_E131-*/** -text
+results/diagnostics/E131-*.json -text

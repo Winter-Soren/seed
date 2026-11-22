@@ -2612,3 +2612,21 @@ All three final panels completed their 64 independent families from checkout `36
 **Decision.** Zero of three lineages passed. Each met previous-rule acquisition, direct early-to-late recovery, the adjusted recovery contrast, both Q safeguards and both survival safeguards. Each failed the absolute late preference and the required late advantage over its founder. This leaves autonomous mastery of the reversed rule unestablished. [Registered comparison](../results/diagnostics/E130-comparison.json) · [Independent audit](../results/diagnostics/E130-independent-audit.json)
 
 The previously recorded architecture-selection rule picks exploration. Among creatures alive at the switch, the long-gap counts were 96/454, 82/452 and 120/464, corresponding to 21.1 ± 2.3%, 18.1 ± 1.9% and 25.9 ± 2.0%. Both food and poison were recorded for 62.3 ± 2.4%, 61.9 ± 2.7% and 55.8 ± 2.3%. Both candidate explanations remain plausible. A0 and A2 meet the first routing condition. The next causal comparison should distinguish timing exploration from adding more random movement. These event labels measure opportunity to receive outcomes and cannot establish what the controller inferred. [Architecture evidence](../results/diagnostics/E130-architecture-feedback.json) · [53-file historical check](../results/diagnostics/E130-historical-diagnostics-proof.json)
+
+### E131 · Preregistration · 22 November 2026
+
+Test one architectural change to the action policy. Can an agent that spends its limited exploration after a prolonged absence of observed energy gain find the newly safe food sooner and choose it more often? Keep both a native control and an outcome-independent exploration control. The same three original E103 generation-200 genomes, ordinary brain, food worlds and observations are used throughout. The [protocol](E131_PROTOCOL.md) freezes the 12-turn counter, one move per phased 25-turn block, independently assigned control offsets, fresh development and held-out seeds, family-level estimators, survival tolerances, cost limit and stopping rule.
+
+Pass only if adaptive exploration meets every behavioral condition against both controls in all three lineages plus its rehearsal cost criterion. Record each component when a gate misses. A separate architecture critic identified a possible false win from lower stationary performance. The registration therefore requires **both** direct late reversal superiority and an improvement adjusted for stationary differences. A death or missed food receives a waiting time of 50, and all originally assigned animals contribute. No future-schedule input, hidden item label, new generation or parameter search is permitted.
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','timed-exploration-v1','--generations',0)
+& $python $entry @common --condition-split development --name E131-benchmark --seed 2026121000 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E131-A0 --seed 2026121001 --eval-worlds 64 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E131-A1 --seed 2026121002 --eval-worlds 64 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --condition-split final --name E131-A2 --seed 2026121003 --eval-worlds 64 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+Run the new targeted fixtures, a fresh independent synthetic audit and the rehearsal before final release. Verify the original rollout against its historical implementation. Use `python -B tools/audit_timed_exploration.py --source-commit <source SHA> --development` and repeat without `--development` to check the complete triplet. Run `python scripts/summarize.py` after audit and hosted verification. Cap E131 at 5,400 seconds and spend no more than the current local day's allowance.
