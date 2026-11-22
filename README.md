@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**All three evolved lineages learned a reversed food rule from guided encounters. None cleared the autonomous recovery gate.** A follow-up gave the same brains one exploratory move per block, timed by their own energy feedback. The move schedule missed the behavioral criteria in all three lineages. Late first contacts still favored poison in the observed sample. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Timed exploration](#does-it-help-to-explore-after-a-long-stretch-without-food)
+**All three evolved lineages learned a reversed food rule after 16 guided encounters. None cleared the autonomous recovery gate.** In E133, eight spaced reversed contacts left both native and contact-gated brains favoring the obsolete food. The gate missed adoption in all three lineages. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Contact-gate result](#can-a-contact-gate-protect-relearning)
 
 ## Table of contents
 
@@ -41,6 +41,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [Can descendants relearn the rule on their own?](#can-descendants-relearn-the-rule-on-their-own)
   - [Does it help to explore after a long stretch without food?](#does-it-help-to-explore-after-a-long-stretch-without-food)
   - [What if both items are within reach?](#what-if-both-items-are-within-reach)
+  - [Can a contact gate protect relearning?](#can-a-contact-gate-protect-relearning)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -60,6 +61,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Recover from an unannounced reversal through self-directed foraging | **Failed · 0/3** | All three generation-200 lineages recovered some of their lost preference. None established a positive late preference for food or the required late advantage over its founder. The comparison includes all assigned creatures. [E130 results and graph](#can-descendants-relearn-the-rule-on-their-own) |
 | Decide when to explore | **Failed · 0/3** | E131's adaptive policy passed the laptop cost criterion. It did not produce a reliable first-food speedup over equal-quota exploration in any lineage. Late choice scores were −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting. [E131 results](#does-it-help-to-explore-after-a-long-stretch-without-food) |
 | Use feedback when both items are easy to reach | **Access increased in 3/3. Reversal gate failed in 3/3.** | Nearby offers increased the fraction sampling both colors by 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points. Survival fell in every lineage after the switch. None established a positive preference for the newly safe food. [E132 results](#what-if-both-items-are-within-reach) |
+| Time weight updates from contact feedback | **Failed · 0/3** | Native and contact-gated brains still chose the old food after eight matched reversed contacts. Reopening updates during the empty gap weakened this obsolete preference. Delayed solo choice was worse with the contact gate than with native updating. [E133 results](#can-a-contact-gate-protect-relearning) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -497,7 +499,27 @@ In E132, each creature first experienced a stable food rule while choosing every
 
 Each difference compares nearby with random-distance offers and gives one paired family standard error. The first-item score counts food as +1, poison as −1 and no contact as zero. More animals tried both colors, and all three lineages improved their solo score relative to the random-distance condition. Nearby offers also helped when the old rule stayed in force. None established the required reversal-specific gain, absolute preference for the new food, or survival safeguard. The full gate failed in all three lineages. [Full estimates](results/diagnostics/E132-comparison.json) · [Independent audit](results/diagnostics/E132-independent-audit.json)
 
-The next question is what the controller learns from the same sequence of choices and outcomes. Nearby items change sensory experience, feedback and energy together. Matching those histories would let us test how a brain uses the evidence it receives. [Architecture decisions](experiments/ARCHITECTURE_COUNCIL_E130.md)
+Nearby items changed sensory experience, feedback and energy together. E133 matched those histories to test when a brain should update its weights. [Architecture decisions](experiments/ARCHITECTURE_COUNCIL_E130.md)
+
+## Can a contact gate protect relearning?
+
+**E133 failed the adoption gate in all three lineages.** After 16 common contacts established the old preference, copies of each brain received identical actions, observations and outcomes for eight further contacts. One copy updated normally. The contact gate updated on feedback from the item at the previously observed destination. An equal-dose control updated once at an independently drawn time in each block. A fourth copy shared the contact-trained state and reopened ordinary updating only during the 33 empty turns. We used both initial rules and 64 fresh families per lineage. [Registered protocol](experiments/E133_PROTOCOL.md)
+
+| Lineage | Native immediate S | Contact immediate S | Native delayed S | Contact delayed S | Delayed solo gain vs native |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A0 | −0.467 ± 0.008 | −0.471 ± 0.008 | −0.253 ± 0.012 | −0.466 ± 0.008 | −0.484 ± 0.080 |
+| A1 | −0.405 ± 0.012 | −0.454 ± 0.009 | −0.363 ± 0.013 | −0.457 ± 0.008 | −0.125 ± 0.085 |
+| A2 | −0.455 ± 0.011 | −0.450 ± 0.008 | −0.259 ± 0.014 | −0.460 ± 0.009 | −0.516 ± 0.079 |
+
+S is the probability of choosing the newly safe color minus the probability of choosing the other color in the adjacent-item probe. The solo score counts food as +1, poison as −1 and no contact or death before contact as 0. Each ± is one family standard error, paired for differences.
+
+**Acquisition.** Both native and contact-gated agents still favored the obsolete food immediately after reversal. The contact gate nevertheless weakened that preference relative to the equal-dose control. The control processed actual contact feedback on 26.0 ± 1.7%, 25.6 ± 1.7% and 23.0 ± 1.7% of its update ticks.
+
+**Delay.** The gated preference barely changed. Reopening ordinary updates from the same acquired state weakened the obsolete preference by 0.113 ± 0.013, 0.095 ± 0.016 and 0.128 ± 0.014. Because the immediate preference was for the old food, the registered retention claim was unearned.
+
+**Solo choice.** The contact-gated states scored worse than native after the delay. Final solo survival also fell by 24.2 ± 4.6, 25.8 ± 4.9 and 35.2 ± 5.2 percentage points relative to native. All animals survived the matched replay. The solo probes used ordinary updating for all arms, so the comparison measures what each exposure left in the brain. [Full estimates](results/diagnostics/E133-comparison.json) · [Independent audit](results/diagnostics/E133-independent-audit.json)
+
+Retire this gate setting. A candidate next study is short evolutionary selection on the unchanged 155-parameter genome. Score each candidate's own choices after matched experience, then compare frozen descendants with their parents on fresh ordinary grids. A budget-matched stationary training objective is needed to claim the reversal objective caused a gain. E122 gives a laptop timing precedent for a short selection study on a different task. The proposed study needs a fresh preregistration and full-generation benchmark. [E122 selection study](#evolving-observers-to-use-a-demonstration)
 
 ## Try it locally
 

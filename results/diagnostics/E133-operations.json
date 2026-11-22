@@ -1,0 +1,281 @@
+{
+  "study": "E133",
+  "date": "2026-11-22",
+  "time_zone": "India Standard Time",
+  "registration_commit": "f504f4bd7caef760b59e84448d47086309523766",
+  "scientific_commit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+  "study_seconds": 415.77374419999995,
+  "study_limit_seconds": 3600,
+  "daily_seconds": 23629.6175052,
+  "daily_limit_seconds": 28800,
+  "focused_checks": {
+    "status": "passed",
+    "fixture_tests": 40,
+    "independent_synthetic_groups": 7,
+    "fresh_auditor_process": true,
+    "simulator_imported_by_self_check": false
+  },
+  "historical_diagnostics_unchanged": 69,
+  "capacity": {
+    "sample_count": 181,
+    "minimum_free_c_bytes": 25897660416.0,
+    "minimum_free_d_bytes": 46201200640.0,
+    "minimum_available_commit_bytes": 10956124160.0
+  },
+  "charges": [
+    {
+      "evidence": ".tmp/E133-tdd-red.charge.json",
+      "sha256": "6b44e76d572f8e609f470519f8bb2f6dab8d80bb6458434d3c169c6d6c107c5e",
+      "study": "E133",
+      "sourceKind": "Local preimplementation synthetic unit test",
+      "localGuard": false,
+      "measured": true,
+      "mode": "tdd-red",
+      "status": "expected-missing-implementation",
+      "processStarted": null,
+      "wallSeconds": 1.404822,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:07:42.0896252+05:30",
+          "seconds": 1.404822,
+          "end": "2026-11-22T21:07:43.4944472+05:30"
+        }
+      ],
+      "sourceCommit": "b43f2de1d011338517e4b5c634c1d59c5270b5a5",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-tdd-green.charge.json",
+      "sha256": "ff67b62d7c980933697a6548713622ece29b33854bd9f62d1c84b466a391b4fb",
+      "study": "E133",
+      "sourceKind": "Guarded local synthetic unit checks",
+      "localGuard": false,
+      "measured": true,
+      "mode": "tdd-green",
+      "status": "passed",
+      "processStarted": null,
+      "wallSeconds": 16.4465324,
+      "calendarSegments": [
+        {
+          "seconds": 16.4465324,
+          "date": "2026-11-22",
+          "end": "2026-11-22T21:11:09.8964240+05:30",
+          "start": "2026-11-22T21:10:53.4498917+05:30"
+        }
+      ],
+      "sourceCommit": "f504f4bd7caef760b59e84448d47086309523766",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-readiness-attempt1.result.json",
+      "sha256": "aa07fac540eb238afe97f9855dfdd0946f55bd98db27d9381b84034212cfa7c8",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "readiness",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 38.064997,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:18:05.9749013+05:30",
+          "end": "2026-11-22T21:18:44.0398982+05:30",
+          "seconds": 38.0649969
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-benchmark-attempt1.result.json",
+      "sha256": "009998ad5309215f3b7f8763cd7093f81a4cff24f59b1a6e03c234f42975e4ab",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "benchmark",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 21.2127678,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:18:44.1885030+05:30",
+          "end": "2026-11-22T21:19:05.4012708+05:30",
+          "seconds": 21.2127678
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-audit-development-attempt1.result.json",
+      "sha256": "a7be352227b12e0d3b9fb1116449c6882abf0cdf8dc28496303ac694e7e7071a",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "audit-development",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 13.920243,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:19:05.4527232+05:30",
+          "end": "2026-11-22T21:19:19.3729661+05:30",
+          "seconds": 13.9202429
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-development-forecast.charge.json",
+      "sha256": "3926c2aa45aef38411826e2925d639e377fb2de85c5b2c9b430d9bc4db0b35c7",
+      "study": "E133",
+      "sourceKind": "PowerShell metadata calculation",
+      "localGuard": false,
+      "measured": true,
+      "mode": "development-cost-forecast",
+      "status": "passed",
+      "processStarted": null,
+      "wallSeconds": 0.7539264,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:19:30.5883351+05:30",
+          "end": "2026-11-22T21:19:31.3422615+05:30",
+          "seconds": 0.7539264
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-A0-attempt1.result.json",
+      "sha256": "33803a615da5ace8eef2f6ae8ba2a4b9a9c492b97259a897b4e278817357e9f1",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A0",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 93.9488121,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:19:43.9854141+05:30",
+          "end": "2026-11-22T21:21:17.9342261+05:30",
+          "seconds": 93.948812
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-A1-attempt1.result.json",
+      "sha256": "32a49da45a739d6352adf5aa4222c7d4dbbe222cda78a731407850b3027aa423",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A1",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 63.8156685,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:21:18.1994652+05:30",
+          "end": "2026-11-22T21:22:22.0151337+05:30",
+          "seconds": 63.8156685
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-A2-attempt1.result.json",
+      "sha256": "23354eca7ab662d76feca22c3d304381d590f215a9d5359d36d3312537116699",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A2",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 80.7919584,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:22:22.1022258+05:30",
+          "end": "2026-11-22T21:23:42.8941841+05:30",
+          "seconds": 80.7919583
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-audit-final-attempt1.result.json",
+      "sha256": "c1674230089effcc5c357a4cd611528f231a17d96df4eeab2af077f5bda704c0",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "audit-final",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 76.0189875,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:23:43.0876585+05:30",
+          "end": "2026-11-22T21:24:59.1066459+05:30",
+          "seconds": 76.0189874
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E133-status-summary-attempt1.result.json",
+      "sha256": "9f11568763bd66cddf5617be215a760dd7872161e959e7d356b227e533da0b4e",
+      "study": "E133",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "status-summary",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 9.3950291,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T21:25:17.8044387+05:30",
+          "end": "2026-11-22T21:25:27.1994678+05:30",
+          "seconds": 9.3950291
+        }
+      ],
+      "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+      "jobId": null,
+      "runId": null
+    }
+  ],
+  "local_only": true
+}

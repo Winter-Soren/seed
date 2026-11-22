@@ -36,10 +36,12 @@ E131 compared feedback-timed exploration with ordinary foraging and the same quo
 
 E132 made both colors easier to reach while keeping every action voluntary. The three lineages sampled both colors 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points more often. Solo first-item scores improved relative to random-distance offers. Stationary worlds showed similar gains, and survival during reversed exposure fell by 13 to 16 points. None met the reversal criterion.
 
+E133 compared native updates with a locally observed contact gate, an equal-dose random schedule and reopening updates during the empty gap. All three gated lineages still favored the old food immediately after eight reversed contacts (S −0.471 ± 0.008, −0.454 ± 0.009, −0.450 ± 0.008). Native brains still favored it too. Reopening weakened that preference. After the gap, gated solo scores fell by 0.484 ± 0.080, 0.125 ± 0.085 and 0.516 ± 0.079 versus native. The gate failed in all three lineages. Retire this setting.
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-The research council selected a test of when to update connection strengths. Give each controller identical experiences and compare updates triggered by locally observed contact with ordinary updating and an equally sparse schedule. Test the new preference immediately, after a gap and in a fresh solo world. A future selection experiment can then compare descendants with their parents on any capability the mechanism demonstrates.
+For the next council decision, consider short evolutionary selection on the unchanged 155-parameter genome. Score candidates' own choices after matched histories and compare frozen descendants with their parents on fresh ordinary grids. To attribute a gain to the reversal objective, include an equal-budget stationary-objective training arm. This is a candidate pending preregistration and a full-generation benchmark.

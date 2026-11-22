@@ -1,0 +1,123 @@
+{
+  "study": "E133",
+  "kind": "development-only complete local admission",
+  "status": "passed",
+  "sourceCommit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+  "registrationCommit": "f504f4bd7caef760b59e84448d47086309523766",
+  "createdAt": "2026-11-22T21:19:31.2960095+05:30",
+  "pins": {
+    ".tmp/E133-readiness-attempt1.result.json": "aa07fac540eb238afe97f9855dfdd0946f55bd98db27d9381b84034212cfa7c8",
+    ".tmp/E133-benchmark-attempt1.result.json": "009998ad5309215f3b7f8763cd7093f81a4cff24f59b1a6e03c234f42975e4ab",
+    ".tmp/E133-audit-development-attempt1.result.json": "a7be352227b12e0d3b9fb1116449c6882abf0cdf8dc28496303ac694e7e7071a",
+    ".tmp/E133-audit-development-attempt1.audit.json": "304db04ffc1b1a8c85ff115c8b9dc070a5b5b203daab8dba3442b05d225335d7",
+    ".tmp/E133-readiness-proof.json": "8b4d23c8842f44d7752a54368f01b23b2bc0741cfe5e8a926d3a0f8959f38eba",
+    "runs/20261122-211855_E133-benchmark/status.json": "57175e946cdd9357ae3a145b59ef3c13880978aaf822ddadc727571bc1629a72"
+  },
+  "development": {
+    "run": "runs/20261122-211855_E133-benchmark",
+    "guardSeconds": 21.2127678,
+    "setupSeconds": 0.3130000000237487,
+    "elapsedSeconds": 9.938000000023749,
+    "innerFamilySeconds": [
+      8.061999999976251,
+      0.5160000000032596,
+      0.48399999999674037,
+      0.5320000000065193
+    ],
+    "fullFamilySeconds": [
+      8.061999999976251,
+      0.5160000000032596,
+      0.48399999999674037,
+      0.5470000000204891
+    ],
+    "guardedNonFamilySeconds": 11.603767800003261,
+    "maximumOfAllThreeLaterFamiliesSeconds": 0.5470000000204891,
+    "timingCoverage": "Every family executes both initial rules, both histories and the registered policy paths. Fixed static lengths are 32 common chamber ticks, 32 matched acquisition ticks, 33 delay ticks, 12 local placements and 50 solo ticks. Policy and offsets are dynamic; the panel count adds calls, not simulator compilation shapes.",
+    "scientificBehaviorNotReadForAdmission": true
+  },
+  "readiness": {
+    "fixtureTests": 40,
+    "freshSyntheticGroups": 7,
+    "freshAuditorProcess": true
+  },
+  "panelForecast": {
+    "formula": "guarded_nonfamily + first_full_family + 63*1.5*max(all_three_later_full_families)",
+    "seconds": 71.35726780191573,
+    "threePanelsSeconds": 214.07180340574718,
+    "hardSlotSeconds": 600,
+    "cleanupSeconds": 30,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 13.920243,
+    "timing": {
+      "elapsed_seconds": 8.188000000023749,
+      "setup_and_summary_seconds": 6.35899999999674,
+      "reconstruction_seconds": 1.8290000000270084,
+      "family_seconds": [
+        0.4690000000409782,
+        0.5629999999655411,
+        0.4220000000204891,
+        0.375
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 5.7322429999762505,
+    "expectedReconstructions": 196,
+    "finalFamilies": 192,
+    "developmentFamilies": 4,
+    "administrativePanelCosts": 4,
+    "formula": "external + 4*setup_and_summary +196*1.5*max(development_family_seconds)",
+    "seconds": 196.69024298983229,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeCosting": 91.04936219999999,
+    "newHostedCiSeconds": 0,
+    "localOnly": true,
+    "operatingMarginBeforeCostingSeconds": 827.1486456,
+    "reportingReserveSeconds": 75,
+    "costingChargedFromOperatingMargin": true,
+    "measuredScheduleWithMarginSeconds": 1403.9600541955795,
+    "allFutureHardSlotsAndKnownSeconds": 3093.1980077999997,
+    "studyLimitSeconds": 3600,
+    "hardMarginSeconds": 506.8019922000003,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 23304.893123500002,
+    "dailyLimitSeconds": 28800,
+    "projectedDayAllHardSlotsSeconds": 26307.041769100004
+  },
+  "storage": {
+    "observedRawLengths": [
+      114818,
+      115339,
+      114852,
+      114414
+    ],
+    "observedMaxRawBytes": 115339,
+    "observedOtherBytes": 27130,
+    "futureAllowanceBytes": 70457323.0,
+    "formula": "2 copies *1.5 size allowance *(192*max_raw +3*(64/4)*metadata) +one_max_raw_atomic_write",
+    "optionalLocalGitCopyIncluded": true,
+    "freeCBytes": 25917460480,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 46224494592,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 46154037269.0,
+    "minimumDFreeBytes": 10737418240
+  },
+  "memory": {
+    "source": "cim",
+    "availablePhysicalBytes": 6454157312,
+    "availableCommitBytes": 12491759616.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Four development families only. All full-family timings retained. No additional pilot or final behavior is used for admission.",
+    "Timing includes complete acquisition, immediate/delayed retention and solo paths as confirmed from source; no development scientific effect threshold is applied.",
+    "The factor1.5 is a scheduling allowance, not a statistical confidence interval.",
+    "No new hosted CI, uploads or publication. Costing is charged from the remaining845-second operating allocation."
+  ]
+}

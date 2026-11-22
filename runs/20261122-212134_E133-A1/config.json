@@ -1,0 +1,125 @@
+{
+  "protocol": "contact-gate-v1",
+  "args": {
+    "name": "E133-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026121202,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 64,
+    "eval_protocol": "contact-gate-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "6c8a2f3845b691abef1cb8a9a3a3d505b5a90887",
+    "branch": "main",
+    "dirty": false
+  },
+  "source_genome": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "source_generations": [
+    200
+  ],
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "seed_index": 1,
+  "eval_seed": 2026121202,
+  "expected_families": 64,
+  "statistical_unit": "independent family averaging both initially assigned rule replays",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "06693c1b6013ad893effbca15efb9986cbb58da984ad93864453475102fb9a5d"
+  },
+  "arms": [
+    "native_stationary",
+    "native_reversal",
+    "contact_stationary",
+    "contact_reversal",
+    "sparse_stationary",
+    "sparse_reversal",
+    "reopened_stationary",
+    "reopened_reversal"
+  ],
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe",
+    "sparse"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "assignment_tag": 57651,
+  "apparatus": {
+    "pre_contacts": 16,
+    "post_contacts": 8,
+    "block_steps": 4,
+    "delay_ticks": 33,
+    "grid_steps": 50,
+    "local_placements": 12
+  },
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/exploration.py": "862a293a83b0d13815461ded8591df0da83c8efd6301ba47afd1a8a769edefc9",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/contact_gate.py": "fcf0eaf6ce0a8ae6b01d3aa8b5a42b7f33ac29e1b65eab64f3f1e71b8db359eb",
+    "scripts/run_contact_gate.py": "d0ad1302086e8e6e3333d96e45384e80ccc2a209f459dfd3802b9b9d0d09eb66",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_retention_diagnostic.py": "92c3222c2faf1e004e9d75b7547ff0290abed0c4ca15992dc32f80e9c9b3e3e0",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "raw_schema": "contact-gate-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 600,
+  "scientific_result": false
+}

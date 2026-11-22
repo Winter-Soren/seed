@@ -23,6 +23,279 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Contact-timed Hebbian updating (contact-gate-v1)
+
+E133 uses the three original saved controllers with zero training. Each family replays both initial rules with identical observations, imposed actions and received feedback across native updating, a locally observed contact gate, equally sparse randomly timed updates and a reopened-delay ablation. After sixteen common contacts and eight stationary or reversed contacts, local choice and fresh fifty-turn solo behavior are measured immediately and after 33 empty turns. All solo readouts use ordinary learning, so this measures transfer of the carried state, not live use of the gate.
+
+Every assigned life counts. Two rule replays are averaged within each of 64 independent families before sample standard errors and paired contrasts. A dead exposure state gets no fresh body: local and signed solo choice are zero, with no contact retained. Solo Y is first food minus first poison. The sparse schedule draws one offset independently in each four-turn block and can coincide with contact feedback by chance; its overlap is descriptive.
+
+Retention requires verified immediate acquisition plus the registered delayed comparison. Every acquisition, retention, transfer, stationary and survival criterion must pass in each of the three lineages. Stationary-adjusted solo differences are descriptive.
+
+| Run | Status | Split | Families completed/assigned | Commit |
+|---|---|---|---|---|
+| 20261122-211855_E133-benchmark | finished | development | 4/4 | 6c8a2f3 |
+| 20261122-212004_E133-A0 | finished | final | 64/64 | 6c8a2f3 |
+| 20261122-212134_E133-A1 | finished | final | 64/64 | 6c8a2f3 |
+| 20261122-212228_E133-A2 | finished | final | 64/64 | 6c8a2f3 |
+
+Replicated contact gate: **FAIL** (0/3 lineages).
+
+A full pass would justify a separately registered autonomous deployment check before bounded equal-budget selection of a heritable between-contact learning gain. Failed immediate acquisition points to feedback use. A local retention effect without transfer does not advance this design into evolutionary training. Failure to distinguish equal sparsity or the reopened delay retires this setting without tuning on these assignments.
+
+One ± is one family SE, paired for comparisons. All rates use fractions. Immediate and delayed solo probes are separate clones; neither changes the source state.
+
+| Lineage | Joint decision | Failed criteria |
+|---|---|---|
+| 0 | FAIL | gate_immediate, native_immediate, gate_delayed, gate_solo_delayed, retention_advantage, delay_ablation, gate_solo_vs_native, gate_solo_vs_sparse, solo_survival_reversal_native |
+| 1 | FAIL | gate_immediate, native_immediate, gate_delayed, gate_solo_delayed, retention_advantage, delay_ablation, gate_solo_vs_native, gate_solo_vs_sparse, acquisition_vs_native, solo_survival_reversal_native |
+| 2 | FAIL | gate_immediate, native_immediate, gate_delayed, gate_solo_delayed, retention_advantage, delay_ablation, gate_solo_vs_native, gate_solo_vs_sparse, stationary_local_sparse, solo_survival_reversal_native |
+
+| Lineage | Component | Mean ± family SE |
+|---|---|---|
+| 0 | pre_old | 0.708877 ± 0.006910 (n=64) |
+| 0 | gate_immediate | -0.470858 ± 0.007537 (n=64) |
+| 0 | native_immediate | -0.466698 ± 0.008429 (n=64) |
+| 0 | gate_delayed | -0.466306 ± 0.008335 (n=64) |
+| 0 | gate_solo_delayed | -0.765625 ± 0.053370 (n=64) |
+| 0 | retention_advantage | -0.208781 ± 0.013500 (n=64) |
+| 0 | gate_local_vs_sparse | 0.187352 ± 0.009776 (n=64) |
+| 0 | delay_ablation | -0.113142 ± 0.012520 (n=64) |
+| 0 | gate_solo_vs_native | -0.484375 ± 0.079502 (n=64) |
+| 0 | gate_solo_vs_sparse | 0.062500 ± 0.062500 (n=64) |
+| 0 | adjusted_solo_vs_native | -0.976562 ± 0.110481 (n=64) |
+| 0 | adjusted_solo_vs_sparse | -0.046875 ± 0.082375 (n=64) |
+| 0 | sparse_feedback_overlap | 0.259766 ± 0.016774 (n=64) |
+| 1 | pre_old | 0.695451 ± 0.008291 (n=64) |
+| 1 | gate_immediate | -0.454363 ± 0.008652 (n=64) |
+| 1 | native_immediate | -0.405476 ± 0.012282 (n=64) |
+| 1 | gate_delayed | -0.457410 ± 0.007968 (n=64) |
+| 1 | gate_solo_delayed | -0.718750 ± 0.064813 (n=64) |
+| 1 | retention_advantage | -0.045870 ± 0.011634 (n=64) |
+| 1 | gate_local_vs_sparse | 0.154763 ± 0.011350 (n=64) |
+| 1 | delay_ablation | -0.095243 ± 0.016194 (n=64) |
+| 1 | gate_solo_vs_native | -0.125000 ± 0.084808 (n=64) |
+| 1 | gate_solo_vs_sparse | 0.070312 ± 0.070312 (n=64) |
+| 1 | adjusted_solo_vs_native | -0.289062 ± 0.106116 (n=64) |
+| 1 | adjusted_solo_vs_sparse | 0.000000 ± 0.092502 (n=64) |
+| 1 | sparse_feedback_overlap | 0.255859 ± 0.017481 (n=64) |
+| 2 | pre_old | 0.679361 ± 0.008957 (n=64) |
+| 2 | gate_immediate | -0.450168 ± 0.008128 (n=64) |
+| 2 | native_immediate | -0.455116 ± 0.010922 (n=64) |
+| 2 | gate_delayed | -0.459829 ± 0.008599 (n=64) |
+| 2 | gate_solo_delayed | -0.765625 ± 0.053370 (n=64) |
+| 2 | retention_advantage | -0.205731 ± 0.016674 (n=64) |
+| 2 | gate_local_vs_sparse | 0.184343 ± 0.012990 (n=64) |
+| 2 | delay_ablation | -0.128203 ± 0.013782 (n=64) |
+| 2 | gate_solo_vs_native | -0.515625 ± 0.078718 (n=64) |
+| 2 | gate_solo_vs_sparse | 0.078125 ± 0.055922 (n=64) |
+| 2 | adjusted_solo_vs_native | -0.820312 ± 0.107025 (n=64) |
+| 2 | adjusted_solo_vs_sparse | 0.000000 ± 0.069544 (n=64) |
+| 2 | sparse_feedback_overlap | 0.230469 ± 0.016755 (n=64) |
+
+| Lineage | Safeguard | Mean ± paired SE | Lower two-SE bound |
+|---|---|---|---|
+| 0 | acquisition_vs_native | -0.004160 ± 0.008676 (n=64) | -0.021511 |
+| 0 | gate_own_retention | 0.004552 ± 0.004435 (n=64) | -0.004318 |
+| 0 | stationary_local_native | 0.175384 ± 0.019234 (n=64) | 0.136917 |
+| 0 | stationary_local_sparse | -0.025678 ± 0.008330 (n=64) | -0.042338 |
+| 0 | stationary_solo_native | 0.492188 ± 0.060475 (n=64) | 0.371237 |
+| 0 | stationary_solo_sparse | 0.109375 ± 0.049135 (n=64) | 0.011104 |
+| 0 | solo_survival_stationary_native | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 0 | solo_survival_stationary_sparse | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 0 | solo_survival_reversal_native | -0.242188 ± 0.045904 (n=64) | -0.333995 |
+| 0 | solo_survival_reversal_sparse | 0.187500 ± 0.068193 (n=64) | 0.051114 |
+| 1 | acquisition_vs_native | -0.048887 ± 0.012321 (n=64) | -0.073529 |
+| 1 | gate_own_retention | -0.003047 ± 0.006380 (n=64) | -0.015808 |
+| 1 | stationary_local_native | 0.055142 ± 0.014594 (n=64) | 0.025954 |
+| 1 | stationary_local_sparse | 0.051649 ± 0.011212 (n=64) | 0.029225 |
+| 1 | stationary_solo_native | 0.164062 ± 0.044620 (n=64) | 0.074823 |
+| 1 | stationary_solo_sparse | 0.070312 ± 0.045735 (n=64) | -0.021157 |
+| 1 | solo_survival_stationary_native | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 1 | solo_survival_stationary_sparse | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 1 | solo_survival_reversal_native | -0.257812 ± 0.048530 (n=64) | -0.354873 |
+| 1 | solo_survival_reversal_sparse | 0.101562 ± 0.056978 (n=64) | -0.012393 |
+| 2 | acquisition_vs_native | 0.004948 ± 0.010306 (n=64) | -0.015663 |
+| 2 | gate_own_retention | -0.009661 ± 0.006699 (n=64) | -0.023059 |
+| 2 | stationary_local_native | 0.145564 ± 0.015389 (n=64) | 0.114785 |
+| 2 | stationary_local_sparse | -0.040484 ± 0.011220 (n=64) | -0.062924 |
+| 2 | stationary_solo_native | 0.304688 ± 0.061618 (n=64) | 0.181452 |
+| 2 | stationary_solo_sparse | 0.078125 ± 0.038926 (n=64) | 0.000273 |
+| 2 | solo_survival_stationary_native | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 2 | solo_survival_stationary_sparse | 0.000000 ± 0.000000 (n=64) | 0.000000 |
+| 2 | solo_survival_reversal_native | -0.351562 ± 0.051850 (n=64) | -0.455263 |
+| 2 | solo_survival_reversal_sparse | 0.078125 ± 0.061216 (n=64) | -0.044306 |
+
+| Lineage | Condition | Endpoint | Immediate mean ± family SE | Delayed mean ± family SE |
+|---|---|---|---|---|
+| 0 | native_stationary | local_S | 0.742386 ± 0.010101 (n=64) | 0.522623 ± 0.018409 (n=64) |
+| 0 | native_stationary | solo_Y | 0.804688 ± 0.048049 (n=64) | 0.468750 ± 0.056645 (n=64) |
+| 0 | native_stationary | first_food | 0.890625 ± 0.026042 (n=64) | 0.671875 ± 0.031925 (n=64) |
+| 0 | native_stationary | first_poison | 0.085938 ± 0.023766 (n=64) | 0.203125 ± 0.030938 (n=64) |
+| 0 | native_stationary | no_contact | 0.023438 ± 0.013315 (n=64) | 0.125000 ± 0.027277 (n=64) |
+| 0 | native_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | native_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | native_reversal | local_S | -0.466698 ± 0.008429 (n=64) | -0.253365 ± 0.012403 (n=64) |
+| 0 | native_reversal | solo_Y | -0.609375 ± 0.060451 (n=64) | -0.281250 ± 0.067622 (n=64) |
+| 0 | native_reversal | first_food | 0.187500 ± 0.030497 (n=64) | 0.320312 ± 0.035855 (n=64) |
+| 0 | native_reversal | first_poison | 0.796875 ± 0.030938 (n=64) | 0.601562 ± 0.035530 (n=64) |
+| 0 | native_reversal | no_contact | 0.015625 ± 0.010961 (n=64) | 0.078125 ± 0.022873 (n=64) |
+| 0 | native_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | native_reversal | solo_survival | 0.726562 ± 0.040042 (n=64) | 0.945312 ± 0.019661 (n=64) |
+| 0 | contact_stationary | local_S | 0.700989 ± 0.006196 (n=64) | 0.698007 ± 0.006838 (n=64) |
+| 0 | contact_stationary | solo_Y | 0.945312 ± 0.027542 (n=64) | 0.960938 ± 0.016906 (n=64) |
+| 0 | contact_stationary | first_food | 0.968750 ± 0.015248 (n=64) | 0.960938 ± 0.016906 (n=64) |
+| 0 | contact_stationary | first_poison | 0.023438 ± 0.013315 (n=64) | 0.000000 ± 0.000000 (n=64) |
+| 0 | contact_stationary | no_contact | 0.007812 ± 0.007812 (n=64) | 0.039062 ± 0.016906 (n=64) |
+| 0 | contact_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | contact_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | contact_reversal | local_S | -0.470858 ± 0.007537 (n=64) | -0.466306 ± 0.008335 (n=64) |
+| 0 | contact_reversal | solo_Y | -0.664062 ± 0.060025 (n=64) | -0.765625 ± 0.053370 (n=64) |
+| 0 | contact_reversal | first_food | 0.156250 ± 0.029199 (n=64) | 0.117188 ± 0.026685 (n=64) |
+| 0 | contact_reversal | first_poison | 0.820312 ± 0.032212 (n=64) | 0.882812 ± 0.026685 (n=64) |
+| 0 | contact_reversal | no_contact | 0.023438 ± 0.013315 (n=64) | 0.000000 ± 0.000000 (n=64) |
+| 0 | contact_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | contact_reversal | solo_survival | 0.734375 ± 0.036881 (n=64) | 0.703125 ± 0.039714 (n=64) |
+| 0 | sparse_stationary | local_S | 0.718733 ± 0.007492 (n=64) | 0.723686 ± 0.007968 (n=64) |
+| 0 | sparse_stationary | solo_Y | 0.875000 ± 0.041667 (n=64) | 0.851562 ± 0.044095 (n=64) |
+| 0 | sparse_stationary | first_food | 0.937500 ± 0.020833 (n=64) | 0.921875 ± 0.022873 (n=64) |
+| 0 | sparse_stationary | first_poison | 0.062500 ± 0.020833 (n=64) | 0.070312 ± 0.021899 (n=64) |
+| 0 | sparse_stationary | no_contact | 0.000000 ± 0.000000 (n=64) | 0.007812 ± 0.007812 (n=64) |
+| 0 | sparse_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | sparse_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | sparse_reversal | local_S | -0.655797 ± 0.008747 (n=64) | -0.653658 ± 0.009265 (n=64) |
+| 0 | sparse_reversal | solo_Y | -0.812500 ± 0.046585 (n=64) | -0.828125 ± 0.044847 (n=64) |
+| 0 | sparse_reversal | first_food | 0.078125 ± 0.022873 (n=64) | 0.070312 ± 0.021899 (n=64) |
+| 0 | sparse_reversal | first_poison | 0.890625 ± 0.026042 (n=64) | 0.898438 ± 0.025344 (n=64) |
+| 0 | sparse_reversal | no_contact | 0.031250 ± 0.015248 (n=64) | 0.031250 ± 0.015248 (n=64) |
+| 0 | sparse_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | sparse_reversal | solo_survival | 0.414062 ± 0.047968 (n=64) | 0.515625 ± 0.047205 (n=64) |
+| 0 | reopened_stationary | local_S | 0.700989 ± 0.006196 (n=64) | 0.639794 ± 0.014538 (n=64) |
+| 0 | reopened_stationary | solo_Y | 0.945312 ± 0.027542 (n=64) | 0.601562 ± 0.059114 (n=64) |
+| 0 | reopened_stationary | first_food | 0.968750 ± 0.015248 (n=64) | 0.765625 ± 0.033350 (n=64) |
+| 0 | reopened_stationary | first_poison | 0.023438 ± 0.013315 (n=64) | 0.164062 ± 0.029578 (n=64) |
+| 0 | reopened_stationary | no_contact | 0.007812 ± 0.007812 (n=64) | 0.070312 ± 0.021899 (n=64) |
+| 0 | reopened_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | reopened_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | reopened_reversal | local_S | -0.470858 ± 0.007537 (n=64) | -0.353165 ± 0.010604 (n=64) |
+| 0 | reopened_reversal | solo_Y | -0.664062 ± 0.060025 (n=64) | -0.390625 ± 0.071711 (n=64) |
+| 0 | reopened_reversal | first_food | 0.156250 ± 0.029199 (n=64) | 0.265625 ± 0.036881 (n=64) |
+| 0 | reopened_reversal | first_poison | 0.820312 ± 0.032212 (n=64) | 0.656250 ± 0.039958 (n=64) |
+| 0 | reopened_reversal | no_contact | 0.023438 ± 0.013315 (n=64) | 0.078125 ± 0.027770 (n=64) |
+| 0 | reopened_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 0 | reopened_reversal | solo_survival | 0.734375 ± 0.036881 (n=64) | 0.937500 ± 0.020833 (n=64) |
+| 1 | native_stationary | local_S | 0.726288 ± 0.011108 (n=64) | 0.692288 ± 0.014967 (n=64) |
+| 1 | native_stationary | solo_Y | 0.898438 ± 0.035530 (n=64) | 0.750000 ± 0.048540 (n=64) |
+| 1 | native_stationary | first_food | 0.937500 ± 0.020833 (n=64) | 0.828125 ± 0.031925 (n=64) |
+| 1 | native_stationary | first_poison | 0.039062 ± 0.016906 (n=64) | 0.078125 ± 0.022873 (n=64) |
+| 1 | native_stationary | no_contact | 0.023438 ± 0.013315 (n=64) | 0.093750 ± 0.026992 (n=64) |
+| 1 | native_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | native_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | native_reversal | local_S | -0.405476 ± 0.012282 (n=64) | -0.362653 ± 0.013388 (n=64) |
+| 1 | native_reversal | solo_Y | -0.609375 ± 0.064424 (n=64) | -0.593750 ± 0.058794 (n=64) |
+| 1 | native_reversal | first_food | 0.187500 ± 0.032466 (n=64) | 0.125000 ± 0.027277 (n=64) |
+| 1 | native_reversal | first_poison | 0.796875 ± 0.032882 (n=64) | 0.718750 ± 0.039958 (n=64) |
+| 1 | native_reversal | no_contact | 0.015625 ± 0.010961 (n=64) | 0.156250 ± 0.034994 (n=64) |
+| 1 | native_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | native_reversal | solo_survival | 0.789062 ± 0.034869 (n=64) | 0.867188 ± 0.029968 (n=64) |
+| 1 | contact_stationary | local_S | 0.744091 ± 0.007142 (n=64) | 0.747430 ± 0.008929 (n=64) |
+| 1 | contact_stationary | solo_Y | 0.867188 ± 0.042026 (n=64) | 0.914062 ± 0.034422 (n=64) |
+| 1 | contact_stationary | first_food | 0.921875 ± 0.025439 (n=64) | 0.953125 ± 0.018362 (n=64) |
+| 1 | contact_stationary | first_poison | 0.054688 ± 0.019661 (n=64) | 0.039062 ± 0.016906 (n=64) |
+| 1 | contact_stationary | no_contact | 0.023438 ± 0.017358 (n=64) | 0.007812 ± 0.007812 (n=64) |
+| 1 | contact_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | contact_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | contact_reversal | local_S | -0.454363 ± 0.008652 (n=64) | -0.457410 ± 0.007968 (n=64) |
+| 1 | contact_reversal | solo_Y | -0.703125 ± 0.058629 (n=64) | -0.718750 ± 0.064813 (n=64) |
+| 1 | contact_reversal | first_food | 0.140625 ± 0.028323 (n=64) | 0.125000 ± 0.031497 (n=64) |
+| 1 | contact_reversal | first_poison | 0.843750 ± 0.031250 (n=64) | 0.843750 ± 0.034994 (n=64) |
+| 1 | contact_reversal | no_contact | 0.015625 ± 0.010961 (n=64) | 0.031250 ± 0.015248 (n=64) |
+| 1 | contact_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | contact_reversal | solo_survival | 0.687500 ± 0.043842 (n=64) | 0.609375 ± 0.045191 (n=64) |
+| 1 | sparse_stationary | local_S | 0.689796 ± 0.009456 (n=64) | 0.695781 ± 0.009620 (n=64) |
+| 1 | sparse_stationary | solo_Y | 0.828125 ± 0.044847 (n=64) | 0.843750 ± 0.044369 (n=64) |
+| 1 | sparse_stationary | first_food | 0.898438 ± 0.025344 (n=64) | 0.914062 ± 0.023766 (n=64) |
+| 1 | sparse_stationary | first_poison | 0.070312 ± 0.021899 (n=64) | 0.070312 ± 0.021899 (n=64) |
+| 1 | sparse_stationary | no_contact | 0.031250 ± 0.015248 (n=64) | 0.015625 ± 0.010961 (n=64) |
+| 1 | sparse_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | sparse_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | sparse_reversal | local_S | -0.612946 ± 0.011744 (n=64) | -0.612173 ± 0.010590 (n=64) |
+| 1 | sparse_reversal | solo_Y | -0.804688 ± 0.049322 (n=64) | -0.789062 ± 0.050793 (n=64) |
+| 1 | sparse_reversal | first_food | 0.093750 ± 0.024587 (n=64) | 0.101562 ± 0.025344 (n=64) |
+| 1 | sparse_reversal | first_poison | 0.898438 ± 0.025344 (n=64) | 0.890625 ± 0.026042 (n=64) |
+| 1 | sparse_reversal | no_contact | 0.007812 ± 0.007812 (n=64) | 0.007812 ± 0.007812 (n=64) |
+| 1 | sparse_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | sparse_reversal | solo_survival | 0.578125 ± 0.043442 (n=64) | 0.507812 ± 0.045223 (n=64) |
+| 1 | reopened_stationary | local_S | 0.744091 ± 0.007142 (n=64) | 0.691041 ± 0.016545 (n=64) |
+| 1 | reopened_stationary | solo_Y | 0.867188 ± 0.042026 (n=64) | 0.726562 ± 0.053324 (n=64) |
+| 1 | reopened_stationary | first_food | 0.921875 ± 0.025439 (n=64) | 0.812500 ± 0.036084 (n=64) |
+| 1 | reopened_stationary | first_poison | 0.054688 ± 0.019661 (n=64) | 0.085938 ± 0.023766 (n=64) |
+| 1 | reopened_stationary | no_contact | 0.023438 ± 0.017358 (n=64) | 0.101562 ± 0.029839 (n=64) |
+| 1 | reopened_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | reopened_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | reopened_reversal | local_S | -0.454363 ± 0.008652 (n=64) | -0.362167 ± 0.017288 (n=64) |
+| 1 | reopened_reversal | solo_Y | -0.703125 ± 0.058629 (n=64) | -0.507812 ± 0.068186 (n=64) |
+| 1 | reopened_reversal | first_food | 0.140625 ± 0.028323 (n=64) | 0.179688 ± 0.034082 (n=64) |
+| 1 | reopened_reversal | first_poison | 0.843750 ± 0.031250 (n=64) | 0.687500 ± 0.042404 (n=64) |
+| 1 | reopened_reversal | no_contact | 0.015625 ± 0.010961 (n=64) | 0.132812 ± 0.035639 (n=64) |
+| 1 | reopened_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 1 | reopened_reversal | solo_survival | 0.687500 ± 0.043842 (n=64) | 0.867188 ± 0.031970 (n=64) |
+| 2 | native_stationary | local_S | 0.746339 ± 0.011400 (n=64) | 0.510379 ± 0.014544 (n=64) |
+| 2 | native_stationary | solo_Y | 0.820312 ± 0.045052 (n=64) | 0.648438 ± 0.057520 (n=64) |
+| 2 | native_stationary | first_food | 0.890625 ± 0.026042 (n=64) | 0.804688 ± 0.030734 (n=64) |
+| 2 | native_stationary | first_poison | 0.070312 ± 0.021899 (n=64) | 0.156250 ± 0.029199 (n=64) |
+| 2 | native_stationary | no_contact | 0.039062 ± 0.016906 (n=64) | 0.039062 ± 0.016906 (n=64) |
+| 2 | native_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | native_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | native_reversal | local_S | -0.455116 ± 0.010922 (n=64) | -0.259046 ± 0.013864 (n=64) |
+| 2 | native_reversal | solo_Y | -0.429688 ± 0.066692 (n=64) | -0.250000 ± 0.062994 (n=64) |
+| 2 | native_reversal | first_food | 0.250000 ± 0.033408 (n=64) | 0.335938 ± 0.033509 (n=64) |
+| 2 | native_reversal | first_poison | 0.679688 ± 0.037545 (n=64) | 0.585938 ± 0.034422 (n=64) |
+| 2 | native_reversal | no_contact | 0.070312 ± 0.024568 (n=64) | 0.078125 ± 0.025439 (n=64) |
+| 2 | native_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | native_reversal | solo_survival | 0.726562 ± 0.038463 (n=64) | 0.914062 ± 0.023766 (n=64) |
+| 2 | contact_stationary | local_S | 0.678083 ± 0.008215 (n=64) | 0.655943 ± 0.008478 (n=64) |
+| 2 | contact_stationary | solo_Y | 0.890625 ± 0.039322 (n=64) | 0.953125 ± 0.026630 (n=64) |
+| 2 | contact_stationary | first_food | 0.945312 ± 0.019661 (n=64) | 0.976562 ± 0.013315 (n=64) |
+| 2 | contact_stationary | first_poison | 0.054688 ± 0.019661 (n=64) | 0.023438 ± 0.013315 (n=64) |
+| 2 | contact_stationary | no_contact | 0.000000 ± 0.000000 (n=64) | 0.000000 ± 0.000000 (n=64) |
+| 2 | contact_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | contact_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | contact_reversal | local_S | -0.450168 ± 0.008128 (n=64) | -0.459829 ± 0.008599 (n=64) |
+| 2 | contact_reversal | solo_Y | -0.820312 ± 0.047725 (n=64) | -0.765625 ± 0.053370 (n=64) |
+| 2 | contact_reversal | first_food | 0.085938 ± 0.023766 (n=64) | 0.117188 ± 0.026685 (n=64) |
+| 2 | contact_reversal | first_poison | 0.906250 ± 0.024587 (n=64) | 0.882812 ± 0.026685 (n=64) |
+| 2 | contact_reversal | no_contact | 0.007812 ± 0.007812 (n=64) | 0.000000 ± 0.000000 (n=64) |
+| 2 | contact_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | contact_reversal | solo_survival | 0.632812 ± 0.046240 (n=64) | 0.562500 ± 0.045234 (n=64) |
+| 2 | sparse_stationary | local_S | 0.696590 ± 0.010669 (n=64) | 0.696427 ± 0.010358 (n=64) |
+| 2 | sparse_stationary | solo_Y | 0.937500 ± 0.028391 (n=64) | 0.875000 ± 0.040151 (n=64) |
+| 2 | sparse_stationary | first_food | 0.960938 ± 0.016906 (n=64) | 0.929688 ± 0.021899 (n=64) |
+| 2 | sparse_stationary | first_poison | 0.023438 ± 0.013315 (n=64) | 0.054688 ± 0.019661 (n=64) |
+| 2 | sparse_stationary | no_contact | 0.015625 ± 0.010961 (n=64) | 0.015625 ± 0.010961 (n=64) |
+| 2 | sparse_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | sparse_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | sparse_reversal | local_S | -0.641487 ± 0.013099 (n=64) | -0.644172 ± 0.013488 (n=64) |
+| 2 | sparse_reversal | solo_Y | -0.796875 ± 0.048180 (n=64) | -0.843750 ± 0.042949 (n=64) |
+| 2 | sparse_reversal | first_food | 0.085938 ± 0.023766 (n=64) | 0.062500 ± 0.020833 (n=64) |
+| 2 | sparse_reversal | first_poison | 0.882812 ± 0.026685 (n=64) | 0.906250 ± 0.024587 (n=64) |
+| 2 | sparse_reversal | no_contact | 0.031250 ± 0.015248 (n=64) | 0.031250 ± 0.015248 (n=64) |
+| 2 | sparse_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | sparse_reversal | solo_survival | 0.484375 ± 0.040103 (n=64) | 0.484375 ± 0.044500 (n=64) |
+| 2 | reopened_stationary | local_S | 0.678083 ± 0.008215 (n=64) | 0.593584 ± 0.013311 (n=64) |
+| 2 | reopened_stationary | solo_Y | 0.890625 ± 0.039322 (n=64) | 0.703125 ± 0.055365 (n=64) |
+| 2 | reopened_stationary | first_food | 0.945312 ± 0.019661 (n=64) | 0.835938 ± 0.029578 (n=64) |
+| 2 | reopened_stationary | first_poison | 0.054688 ± 0.019661 (n=64) | 0.132812 ± 0.027822 (n=64) |
+| 2 | reopened_stationary | no_contact | 0.000000 ± 0.000000 (n=64) | 0.031250 ± 0.015248 (n=64) |
+| 2 | reopened_stationary | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | reopened_stationary | solo_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | reopened_reversal | local_S | -0.450168 ± 0.008128 (n=64) | -0.331626 ± 0.012110 (n=64) |
+| 2 | reopened_reversal | solo_Y | -0.820312 ± 0.047725 (n=64) | -0.343750 ± 0.070319 (n=64) |
+| 2 | reopened_reversal | first_food | 0.085938 ± 0.023766 (n=64) | 0.296875 ± 0.036458 (n=64) |
+| 2 | reopened_reversal | first_poison | 0.906250 ± 0.024587 (n=64) | 0.640625 ± 0.037712 (n=64) |
+| 2 | reopened_reversal | no_contact | 0.007812 ± 0.007812 (n=64) | 0.062500 ± 0.023623 (n=64) |
+| 2 | reopened_reversal | exposure_survival | 1.000000 ± 0.000000 (n=64) | 1.000000 ± 0.000000 (n=64) |
+| 2 | reopened_reversal | solo_survival | 0.632812 ± 0.046240 (n=64) | 0.867188 ± 0.027822 (n=64) |
+
 ## Voluntary access to both alternatives (voluntary-offers-v1)
 
 E132 uses the three original saved controllers with one creature per life. Every family replays both initial rules. After eight common nearby eight-turn offers, copies receive eight further offers crossing nearby versus random-distance placement with stationary versus reversed rules. The creature chooses every action. Local choice and a fresh fifty-turn solo probe measure what transfers beyond the presentation apparatus.
