@@ -335,12 +335,35 @@ def optimizer_transition(previous, samples, view):
 
 
 class Auditor(replay.Auditor):
-    def __init__(self, root, source):
+    def __init__(self, root, source, progress=None):
         super().__init__(root, source)
         self.paired_inputs = {}
         self.paired_configs = {}
         self.checked_source_commits = set()
         self.training_measurements = {}
+        self.progress = progress
+        self.run_timing = []
+        self.assignment_seconds = {}
+
+    def trace(self, event, **fields):
+        if self.progress is not None:
+            self.progress.write(json.dumps(dict(event=event, **fields), allow_nan=False)+"\n")
+            self.progress.flush()
+
+    def reconstruct(self, kind, folder, method, *args):
+        started = time.monotonic()
+        unit_times = self.training_seconds if kind == "training" else self.family_seconds
+        first = len(unit_times)
+        self.trace("run-start", kind=kind, run=folder)
+        result = method(folder, *args)
+        wall = time.monotonic() - started
+        unit_seconds = sum(unit_times[first:])
+        timing = dict(kind=kind, run=folder, wall_seconds=wall, unit_seconds=unit_seconds,
+                      overhead_seconds=max(0., wall-unit_seconds),
+                      assignment_seconds=self.assignment_seconds.get(folder, 0.))
+        self.run_timing.append(timing)
+        self.trace("run-complete", **timing)
+        return result
 
     def metadata(self, folder, index, mode, view=None):
         config = self.json(folder+"/config.json")
@@ -432,6 +455,7 @@ class Auditor(replay.Auditor):
         updates = []
         for attempt in range(1, attempts+1):
             started = time.monotonic()
+            self.trace("attempt-start", run=folder, index=attempt)
             require(report["attempts"][attempt]["path"] == f"generations/attempt_{attempt:04d}.npz"
                 and report["samples"][attempt-1]["path"] == f"generations/samples_{attempt:04d}.npz", "ordered immutable attempt records")
             current = self.artifact(folder, report["attempts"][attempt])
@@ -470,6 +494,7 @@ class Auditor(replay.Auditor):
                 view_rank_difference_norm=float(np.linalg.norm(both_ranks[1].astype(np.float64)-both_ranks[0]))))
             previous = current
             self.training_seconds.append(time.monotonic()-started)
+            self.trace("attempt-complete", run=folder, index=attempt, wall_seconds=self.training_seconds[-1])
         content = self.read(folder+"/genome_final.npy")
         endpoint = np.load(io.BytesIO(content), allow_pickle=False)
         exact(endpoint, previous["mu"], "endpoint is exactly the final attempted mean, not a selected checkpoint")
@@ -568,6 +593,7 @@ class Auditor(replay.Auditor):
             exact(np.load(io.BytesIO(content), allow_pickle=False), endpoint, "held-out genotype identity")
         assignment = self.artifact(folder, config["assignments"])
         require(set(assignment) == {"family_keys", "pre_contacts", "gap", "initial_rules"}, "fixed assignment schema")
+        assignment_started = time.monotonic()
         count, jax = config["expected_families"], random_helpers()[0]
         master = jax.random.fold_in(jax.random.PRNGKey(config["evaluation_seed"]), 0xE136)
         family_keys = np.stack([np.asarray(jax.random.split(jax.random.fold_in(master, family), 7)) for family in range(count)])
@@ -577,14 +603,17 @@ class Auditor(replay.Auditor):
         exact(assignment["family_keys"], family_keys, "genuinely separate final role keys")
         exact(assignment["initial_rules"], np.asarray([0, 1], np.int32), "both initial mappings per family")
         self.register_keys(family_keys, "held-out lineage/family roles distinct from training")
+        self.assignment_seconds[folder] = time.monotonic() - assignment_started
         require(len(report["raw_files"]) == count, "all assigned raw family artifacts")
         rows = []
         for family, manifest in enumerate(report["raw_files"]):
             started = time.monotonic()
+            self.trace("family-start", run=folder, index=family)
             require(manifest["path"] == f"families/family_{family:04d}.npz", "ordered assigned family evidence")
             raw = self.artifact(folder, manifest)
             rows.append(audit_family(raw, family, [parent]+endpoints, family_keys[family], *map(int, table[family])))
             self.family_seconds.append(time.monotonic()-started)
+            self.trace("family-complete", run=folder, index=family, wall_seconds=self.family_seconds[-1])
         return dict(index=index, run=folder, measurements=summarize_rows(rows))
 
 
@@ -652,6 +681,7 @@ def main():
     parser.add_argument("--training", action="store_true")
     parser.add_argument("--self-check", action="store_true")
     parser.add_argument("--output", type=Path)
+    parser.add_argument("--progress", type=Path, help="Exclusive JSONL timing receipt with no scientific outcomes")
     args = parser.parse_args()
     if args.self_check:
         print(json.dumps(self_check(), allow_nan=False))
@@ -659,19 +689,26 @@ def main():
     if not args.source_commit:
         parser.error("--source-commit is required")
     started, auditor = time.monotonic(), None
+    progress = args.progress.open("x", encoding="utf-8", newline="\n") if args.progress else None
+    if progress is not None:
+        progress.write(json.dumps(dict(event="audit-start", source=args.source_commit))+"\n")
+        progress.flush()
     report = dict(protocol=PROTOCOL, mode="development" if args.development else "training" if args.training else "final")
     try:
-        auditor = Auditor(args.root, args.source_commit)
+        auditor = Auditor(args.root, args.source_commit, progress)
         # Read only statuses and filenames until the entire requested bundle is complete.
         dev_train = [auditor.completed(name, 2, 0) for name in DEVELOPMENT_TRAINING_RUNS]
         dev_eval = auditor.completed(DEVELOPMENT_EVAL_NAME, 0, 4)
         final_train = [] if args.development else [(i, view, auditor.completed(f"E136-A{i}-{view}", 10, 0)) for i in range(3) for view in VIEWS]
         final_eval = [] if args.development or args.training else [auditor.completed(f"E136-A{i}", 0, 128) for i in range(3)]
-        report["training"] = [auditor.training(folder, 0, True, view) for view, folder in zip(VIEWS, dev_train)]
-        report["development"] = auditor.evaluation(dev_eval, 0, True)
-        report["training"].extend(auditor.training(folder, i, False, view) for i, view, folder in final_train)
+        report["training"] = [auditor.reconstruct("training", folder, auditor.training, 0, True, view)
+                              for view, folder in zip(VIEWS, dev_train)]
+        report["development"] = auditor.reconstruct("evaluation", dev_eval, auditor.evaluation, 0, True)
+        report["training"].extend(auditor.reconstruct("training", folder, auditor.training, i, False, view)
+                                  for i, view, folder in final_train)
         report["manipulation"] = [auditor.manipulation(True, 0)]+([] if args.development else [auditor.manipulation(False, i) for i in range(3)])
-        report["runs"] = [auditor.evaluation(folder, i, False) for i, folder in enumerate(final_eval)]
+        report["runs"] = [auditor.reconstruct("evaluation", folder, auditor.evaluation, i, False)
+                          for i, folder in enumerate(final_eval)]
         gates_all = {name: dict(passed=all(row["measurements"]["gates"][name]["passed"] for row in report["runs"]),
             count=sum(row["measurements"]["gates"][name]["passed"] for row in report["runs"]),
             lineages=[row["index"] for row in report["runs"] if row["measurements"]["gates"][name]["passed"]])
@@ -696,6 +733,7 @@ def main():
         report["checked_file_sha256"] = auditor.hashes
         report["timing"] = dict(training_attempt_wall_seconds=auditor.training_seconds, family_wall_seconds=auditor.family_seconds,
             elapsed_seconds=elapsed, setup_and_summary_seconds=max(0., elapsed-sum(auditor.training_seconds)-sum(auditor.family_seconds)),
+            runs=auditor.run_timing, non_run_wall_seconds=max(0., elapsed-sum(row["wall_seconds"] for row in auditor.run_timing)),
             training_order="development isolated/background, then lineage 0/1/2 isolated/background; attempts ascending",
             family_order="four development, then final lineage 0/1/2; (8,16),(16,32),(8,32),(16,16) cycle")
     encoded = json.dumps(report, indent=2, allow_nan=False)+"\n"
@@ -706,6 +744,9 @@ def main():
                              error=report.get("error")), allow_nan=False))
     else:
         print(encoded, end="")
+    if progress is not None:
+        progress.write(json.dumps(dict(event="audit-end", status=report["status"], wall_seconds=elapsed))+"\n")
+        progress.close()
     return code
 
 
