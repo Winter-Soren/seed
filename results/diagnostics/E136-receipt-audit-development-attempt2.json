@@ -1,0 +1,42 @@
+{
+  "wallSeconds": 46.7748499,
+  "study": "E136",
+  "childExitCode": null,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt2.stderr",
+  "reservedSeconds": 2848.7205446,
+  "commit": "d37865995ba3d3d07df8e59fd0680730559c85e1",
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "timeZoneId": "India Standard Time",
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt2.guard.jsonl",
+  "stageUsedSecondsAfter": 70.68587339999999,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T23:05:32.6837819+05:30",
+      "end": "2026-11-22T23:06:19.4586317+05:30",
+      "seconds": 46.7748498
+    }
+  ],
+  "studyUsedSecondsBefore": 360.5231012,
+  "auditReportSha256": null,
+  "mode": "audit-development",
+  "sourceCommit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "error": "Full-process wall limit reached",
+  "studyLimitSeconds": 3600.0,
+  "processStarted": true,
+  "studyUsedSecondsAfter": 407.2979511,
+  "status": "stopped",
+  "dailyLedgerSha256": "01caae81aa78ca0d9be0e0ffd6c32021831cfe6127c411b392c62194ea0ae3a4",
+  "wallStartedAt": "2026-11-22T23:05:32.6837819+05:30",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25386.25045379999
+  },
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt2.audit.json",
+  "auditOutcome": null,
+  "retryEligible": false,
+  "runName": null,
+  "stageHardLimitSeconds": 100.0,
+  "priorStageSeconds": 23.9110235,
+  "attempt": 2
+}

@@ -1,0 +1,43 @@
+{
+  "attempt": 1,
+  "exitCode": 0,
+  "priorStageSeconds": 0.0,
+  "processStarted": true,
+  "auditOutcome": null,
+  "studyUsedSecondsBefore": 158.8722249,
+  "reservedSeconds": 3076.7628031,
+  "stageUsedSecondsAfter": 32.9823616,
+  "sourceFilesUnchanged": 174,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-background-attempt1.stderr",
+  "runName": "E136-benchmark-background",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25184.59957779999
+  },
+  "studyLimitSeconds": 3600.0,
+  "mode": "benchmark-background",
+  "auditReportSha256": null,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:56:09.1984370+05:30",
+      "end": "2026-11-22T22:56:42.1807985+05:30",
+      "seconds": 32.9823615
+    }
+  ],
+  "studyUsedSecondsAfter": 191.85458649999998,
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-background-attempt1.guard.jsonl",
+  "retryEligible": false,
+  "childExitCode": 0,
+  "status": "finished",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-background-attempt1.stdout",
+  "wallStartedAt": "2026-11-22T22:56:09.1984370+05:30",
+  "sourceCommit": "73d91f0287e91dd2919248815eb744de136a99ff",
+  "wallSeconds": 32.9823616,
+  "stageHardLimitSeconds": 105.0,
+  "timeZoneId": "India Standard Time",
+  "dailyLedgerSha256": "9ee6046997b91f985d5cdced455e17908f7caabf2e7448986ec7194b5c00a3c0",
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "study": "E136",
+  "commit": "73d91f0287e91dd2919248815eb744de136a99ff"
+}

@@ -1,0 +1,25 @@
+{
+  "status": "finished",
+  "protocol": "background-selection-v1",
+  "mode": "development-evaluation",
+  "view": null,
+  "seed_index": 0,
+  "elapsed_seconds": 42.07799999997951,
+  "setup_seconds": 0.35899999999674037,
+  "completed_attempts": 0,
+  "completed_families": 4,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "optimizer_updates": 0,
+  "attempt_wall_seconds": [],
+  "family_wall_seconds": [
+    35.23399999999674,
+    31.92099999997299,
+    4.0,
+    4.438000000023749
+  ],
+  "warm_timing_replay_seconds": [
+    0.625,
+    0.7029999999795109
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "runName": null,
+  "priorStageSeconds": 10.6132136,
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt3.stdout",
+  "studyLimitSeconds": 3600.0,
+  "study": "E136",
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt3.guard.jsonl",
+  "status": "finished",
+  "reservedSeconds": 3459.7873397000003,
+  "wallStartedAt": "2026-11-22T22:49:29.9212067+05:30",
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:49:29.9212067+05:30",
+      "end": "2026-11-22T22:50:35.6008798+05:30",
+      "seconds": 65.6796731
+    }
+  ],
+  "timeZoneId": "India Standard Time",
+  "wallSeconds": 65.6796732,
+  "attempt": 3,
+  "stageHardLimitSeconds": 130.0,
+  "processStarted": true,
+  "auditReportSha256": null,
+  "auditOutcome": null,
+  "commit": "38db26a87cfb093114e11e2904d4be5abce612cd",
+  "mode": "readiness",
+  "sourceFilesUnchanged": 174,
+  "dailyLedgerSha256": "c5a5604c0b2030515fab0c34147974ab89d24186d9abb946cfce14a5e98e9294",
+  "studyUsedSecondsBefore": 20.825873899999998,
+  "sourceCommit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "exitCode": 0,
+  "childExitCode": 0,
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25046.55322709999
+  },
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt3.stderr",
+  "studyUsedSecondsAfter": 86.5055471,
+  "retryEligible": false,
+  "stageUsedSecondsAfter": 76.29288679999999
+}

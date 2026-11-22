@@ -1,0 +1,125 @@
+{
+  "protocol": "background-selection-v1",
+  "mode": "development-evaluation",
+  "view": null,
+  "args": {
+    "name": "E136-benchmark-eval-continuation",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026121700,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 4,
+    "eval_protocol": "background-selection-v1",
+    "memory_condition": null,
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "seed_index": 0,
+  "training_seed": null,
+  "evaluation_seed": 2026121700,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "111a41d9442cc62ffc06a4815992611f1c39a072931e4b3596834e743db916e3",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "seed/scene_transfer.py": "7125cb96be8a7a9b632f25562374a911f8bdfa51e747b807d7fc45d82521d539",
+    "seed/background_selection.py": "7c25c8bfb7948903eaf9d481fa1f5f74febce66f172d67e7ad7c0422ebb998a4",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_background_selection.py": "71c1fe2710dd6661bcb4ef02e343d15f6026a30efa243a74c979d68b9d096c30",
+    "scripts/run_experiment.py": "acb5593db46963f6406efd98c7f2bd1db386906967a79144099e502b3d6a1204",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "l2": 0.005,
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "train_receipts": [
+    {
+      "seed_index": 0,
+      "view": "isolated",
+      "run": "runs/20261122-225549_E136-benchmark-isolated-recovery",
+      "config_sha256": "415855860ba94b2813cfa02057be369e1b0f34668ad19e261d05fa74ef085129",
+      "summary_sha256": "be3eab308d178d7da54c56e3264ff0f350f68ce09c70c09536d0d4a89575b968",
+      "checkpoint_sha256": "31764f22d7c701a7f961188b08c15cbf527f934161681398fde9677badd6d657",
+      "endpoint_sha256": "b66e9a4785c02e32809e783870d4a0375f421c2ae918c6a3ab3d73f5684237dc"
+    },
+    {
+      "seed_index": 0,
+      "view": "background",
+      "run": "runs/20261122-225619_E136-benchmark-background",
+      "config_sha256": "ad92a1172e5e4e53b666d081732ee753b56cc3c1d8e293ec77051ed4c8672613",
+      "summary_sha256": "3505090e967fe43fb2640a67cd2813a4b90fee3856282b5ff8f8b2c26bbf8120",
+      "checkpoint_sha256": "d82de59a39540e89bd9a683bd8a31677fd5a503d0f4498f47c715414213f0445",
+      "endpoint_sha256": "867464a16d15d3af08b3a564ee22f1985fac98a0bd6d9fcce4e5263d607359cb"
+    }
+  ],
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "6d44a61a88e046eebce058269a1dcb10da808cb87cfbc5794b8419b708ce23f4",
+    "bytes": 1050
+  },
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "background",
+    "probe",
+    "solo_layout",
+    "solo_action"
+  ],
+  "endpoint_sha256": [
+    "b66e9a4785c02e32809e783870d4a0375f421c2ae918c6a3ab3d73f5684237dc",
+    "867464a16d15d3af08b3a564ee22f1985fac98a0bd6d9fcce4e5263d607359cb"
+  ],
+  "max_seconds": 140,
+  "scientific_result": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "copied_development_prefix": "runs/20261122-225702_E136-benchmark-eval"
+}

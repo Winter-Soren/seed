@@ -1,0 +1,43 @@
+{
+  "attempt": 1,
+  "exitCode": 0,
+  "priorStageSeconds": 0.0,
+  "processStarted": true,
+  "auditOutcome": null,
+  "studyUsedSecondsBefore": 117.1664324,
+  "reservedSeconds": 3286.7628031,
+  "stageUsedSecondsAfter": 15.9420221,
+  "sourceFilesUnchanged": 174,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-cold-recovery-attempt1.stderr",
+  "runName": null,
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25142.89378539999
+  },
+  "studyLimitSeconds": 3600.0,
+  "mode": "readiness-cold-recovery",
+  "auditReportSha256": null,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:55:25.2168379+05:30",
+      "end": "2026-11-22T22:55:41.1588600+05:30",
+      "seconds": 15.9420221
+    }
+  ],
+  "studyUsedSecondsAfter": 133.1084545,
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-cold-recovery-attempt1.guard.jsonl",
+  "retryEligible": false,
+  "childExitCode": 0,
+  "status": "finished",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-cold-recovery-attempt1.stdout",
+  "wallStartedAt": "2026-11-22T22:55:25.2168379+05:30",
+  "sourceCommit": "73d91f0287e91dd2919248815eb744de136a99ff",
+  "wallSeconds": 15.9420221,
+  "stageHardLimitSeconds": 65.0,
+  "timeZoneId": "India Standard Time",
+  "dailyLedgerSha256": "adca3a4da898f44b9aaf6a16bfb50590dc01be25ae86899f96bb44cd7bbf96f2",
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "study": "E136",
+  "commit": "73d91f0287e91dd2919248815eb744de136a99ff"
+}

@@ -1,0 +1,43 @@
+{
+  "attempt": 1,
+  "exitCode": 0,
+  "priorStageSeconds": 0.0,
+  "processStarted": true,
+  "auditOutcome": null,
+  "studyUsedSecondsBefore": 133.1084545,
+  "reservedSeconds": 3181.7628031,
+  "stageUsedSecondsAfter": 25.7637704,
+  "sourceFilesUnchanged": 174,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-recovery-attempt1.stderr",
+  "runName": "E136-benchmark-isolated-recovery",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25158.83580749999
+  },
+  "studyLimitSeconds": 3600.0,
+  "mode": "benchmark-isolated-recovery",
+  "auditReportSha256": null,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:55:42.2652487+05:30",
+      "end": "2026-11-22T22:56:08.0290190+05:30",
+      "seconds": 25.7637703
+    }
+  ],
+  "studyUsedSecondsAfter": 158.8722249,
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-recovery-attempt1.guard.jsonl",
+  "retryEligible": false,
+  "childExitCode": 0,
+  "status": "finished",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-recovery-attempt1.stdout",
+  "wallStartedAt": "2026-11-22T22:55:42.2652487+05:30",
+  "sourceCommit": "73d91f0287e91dd2919248815eb744de136a99ff",
+  "wallSeconds": 25.7637704,
+  "stageHardLimitSeconds": 105.0,
+  "timeZoneId": "India Standard Time",
+  "dailyLedgerSha256": "e0493191f6807098844910c191129119044ae37ecc0a3a1a873f7a6ddcbed78c",
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "study": "E136",
+  "commit": "73d91f0287e91dd2919248815eb744de136a99ff"
+}

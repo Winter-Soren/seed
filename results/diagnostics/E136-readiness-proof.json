@@ -1,0 +1,7 @@
+{
+  "status": "passed",
+  "fixture_tests": 9,
+  "independent_synthetic_groups": 12,
+  "fresh_auditor_process": true,
+  "simulator_imported_by_self_check": false
+}

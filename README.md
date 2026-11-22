@@ -571,6 +571,13 @@ From the paired scenes, ordinary perception and learning resumed after the first
 
 The selected next comparison keeps the native first-choice selection score and budget and changes only the training backgrounds. Compare isolated backgrounds with ordinary-density backgrounds, then test both frozen sets on fresh ordinary solo grids. The 50-turn reference measures transfer after guided experience. Recovery after self-directed experience remains open. [Operations and receipts](results/diagnostics/E135-operations.json)
 
+## Can training on ordinary backgrounds repair first-choice transfer?
+
+E136 paired the original native genomes under two equal-work selection objectives. Both computed both first-choice scores from the same experience. Only the assigned training view supplied the score used to rank candidates. The final design compared each endpoint with its own starting genome and its independently retrained control. It reserved separate decisions for stationary repair and reversal advancement. [Registered design](experiments/E136_PROTOCOL.md)
+
+**Stopped at laptop admission.** Both development arms completed two optimizer attempts, and all four development families were saved. The first independent reader stopped at an exact rank-weight check. A checker-only correction used the native float32 scale after independently sorting ties. The corrected readback reached its reserved wall cutoff before it produced a report. E136 therefore has no verified training comparison, no final endpoints and no held-out lineage measurements. The scientific gates remain undecided. [Operational receipts](results/diagnostics/E136-operations.json)
+
+
 ## Try it locally
 
 From the root of a clean checkout, use Python 3.12.10. The commands below create a local Python environment, install the pinned dependencies and run a small check on Windows PowerShell.

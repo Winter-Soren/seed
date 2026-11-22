@@ -1,0 +1,52 @@
+{
+  "status": "finished",
+  "protocol": "background-selection-v1",
+  "mode": "development-training",
+  "view": "isolated",
+  "seed_index": 0,
+  "elapsed_seconds": 17.68800000002375,
+  "setup_seconds": 0.125,
+  "completed_attempts": 2,
+  "completed_families": 0,
+  "expected_attempts": 2,
+  "expected_families": 0,
+  "optimizer_updates": 2,
+  "attempt_wall_seconds": [
+    15.65600000001723,
+    1.3589999999967404
+  ],
+  "family_wall_seconds": [],
+  "scientific_result": false,
+  "gate_status": "undecided",
+  "endpoint_sha256": "b66e9a4785c02e32809e783870d4a0375f421c2ae918c6a3ab3d73f5684237dc",
+  "attempts": [
+    {
+      "path": "generations/attempt_0000.npz",
+      "sha256": "b60d539c72b19f0e9e421eb9341a2378c1d0c4e05dc704c50fdb12d5a021c186",
+      "bytes": 1557
+    },
+    {
+      "path": "generations/attempt_0001.npz",
+      "sha256": "acea0776691f974db8fb71d2d1d54a2899e8a417e03173085d2c02d592e9974a",
+      "bytes": 2816
+    },
+    {
+      "path": "generations/attempt_0002.npz",
+      "sha256": "31764f22d7c701a7f961188b08c15cbf527f934161681398fde9677badd6d657",
+      "bytes": 2804
+    }
+  ],
+  "samples": [
+    {
+      "path": "generations/samples_0001.npz",
+      "sha256": "312abd17faff560c21a2f8b16f3289deea0c5112bd600c0b0ae0d668ef177074",
+      "bytes": 251358
+    },
+    {
+      "path": "generations/samples_0002.npz",
+      "sha256": "b360d13dcb7ccfe1eff50e7f34f1fba07acfdf1044bdbc9b3175dcee1207932c",
+      "bytes": 251201
+    }
+  ],
+  "raw_files": []
+}

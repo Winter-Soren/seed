@@ -48,4 +48,4 @@ No experiment is running. E126 training stopped at generation 50 of 200 in all s
 
 ## What is next
 
-Keep the E103 parents as the reference and retain the E134 endpoints. E135 selects a matched-budget training comparison that changes only the first-choice scenes from isolated to ordinary-density backgrounds. Hold the native controller, matched history and first-choice selection score fixed. Use fresh ordinary solo first-item choice and survival to test whether any gain transfers. The separate unprobed stationary deficit was established in A0 and A2, and the reversal results remain descriptive. The selection comparison awaits registration.
+Keep the E103 parents and E134 endpoints as references. E136 registered the matched-budget ordinary-background comparison and completed its development data. The independent readback exceeded the original cumulative audit allotment. Final ES and evaluation stayed sealed. Both scientific decisions remain open. A later E136 admission would first need a prospectively funded independent check of the preserved development bundle. E136 supplies no evidence to choose an E137 comparison.

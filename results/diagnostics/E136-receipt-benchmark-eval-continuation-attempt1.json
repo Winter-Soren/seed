@@ -1,0 +1,43 @@
+{
+  "auditOutcome": null,
+  "wallStartedAt": "2026-11-22T23:02:11.2837900+05:30",
+  "sourceFilesUnchanged": 174,
+  "processStarted": true,
+  "sourceCommit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "runName": "E136-benchmark-eval-continuation",
+  "reservedSeconds": 2959.4084042,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T23:02:11.2837900+05:30",
+      "end": "2026-11-22T23:03:08.6097647+05:30",
+      "seconds": 57.3259747
+    }
+  ],
+  "timeZoneId": "India Standard Time",
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-continuation-attempt1.guard.jsonl",
+  "childExitCode": 0,
+  "retryEligible": false,
+  "mode": "benchmark-eval-continuation",
+  "priorStageSeconds": 0.0,
+  "stageHardLimitSeconds": 140.0,
+  "studyUsedSecondsBefore": 268.5982433,
+  "status": "finished",
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-continuation-attempt1.stderr",
+  "study": "E136",
+  "attempt": 1,
+  "commit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "wallSeconds": 57.3259748,
+  "auditReportSha256": null,
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "exitCode": 0,
+  "dailyLedgerSha256": "c3a6c4974d2100de664fc81f7775aaf25b3d7cc4cfd38df97ecdef5141924cb6",
+  "studyUsedSecondsAfter": 325.92421809999996,
+  "studyLimitSeconds": 3600.0,
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-eval-continuation-attempt1.stdout",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25294.32559609999
+  },
+  "stageUsedSecondsAfter": 57.3259748
+}
