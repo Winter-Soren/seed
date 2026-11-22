@@ -2630,3 +2630,21 @@ $common = @('--eval-protocol','timed-exploration-v1','--generations',0)
 ```
 
 Run the new targeted fixtures, a fresh independent synthetic audit and the rehearsal before final release. Verify the original rollout against its historical implementation. Use `python -B tools/audit_timed_exploration.py --source-commit <source SHA> --development` and repeat without `--development` to check the complete triplet. Run `python scripts/summarize.py` after audit and hosted verification. Cap E131 at 5,400 seconds and spend no more than the current local day's allowance.
+
+### E132 · Preregistration · 22 November 2026
+
+E131's independent audit found zero of three lineages passed the registered behavioral criteria. The council recommended separating access to personally sampled evidence from its use by the brain. The alternative was a local gate on weight updates. Faster arrival at one food cannot distinguish those causes. First compare voluntary nearby presentations with sham presentations of the same two items at random distances. Both starting rules, stationary continuations and a fresh solo probe help distinguish changes of preference from habitual choices in the apparatus. The [protocol](E132_PROTOCOL.md) freezes what counts as exposure, how to handle deaths and the success criteria.
+
+Pass only if all three fixed E103 lineages gain access to both colors and pass the old/new preference checks, direct and stationary-adjusted solo comparisons and survival safeguards. A failed manipulation leaves the underlying explanation open. No E132 measurement has been made at registration.
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','voluntary-offers-v1','--generations',0)
+& $python $entry @common --condition-split development --name E132-benchmark --seed 2026121100 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E132-A0 --seed 2026121101 --eval-worlds 64 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E132-A1 --seed 2026121102 --eval-worlds 64 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --condition-split final --name E132-A2 --seed 2026121103 --eval-worlds 64 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+Use the committed source and `python -B tools/audit_voluntary_offers.py --source-commit <source SHA> --development` for the independent rehearsal. Omit `--development` for the joint audit. Run `python scripts/summarize.py` on the audited evidence.
