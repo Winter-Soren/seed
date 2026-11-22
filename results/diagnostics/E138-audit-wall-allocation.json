@@ -1,0 +1,14 @@
+{
+  "study": "E138",
+  "kind": "prospective audit wall-slot allocation",
+  "scienceAnchor": "a0fea29e1c91f16b18de68b0025216f7357fcf09",
+  "previousAuditSlotSeconds": 310,
+  "newAuditSlotSeconds": 430,
+  "cleanupSeconds": 30,
+  "nominalScheduleHardSeconds": 3580.0,
+  "inclusiveStudyLimitSeconds": 3600,
+  "stagePlanSha256": "dab33f97743a2cb8b5af310c81f60164ac33eaec32210a9d571e2064e74a759e",
+  "priorForecastSha256": "e9526fee024d67113ee29a84758920ce03af24143153367fb2da85e4503c6621",
+  "finalTrainingReleased": false,
+  "finalKeysDerived": false
+}
