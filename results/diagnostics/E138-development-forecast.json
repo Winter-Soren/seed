@@ -1,0 +1,224 @@
+{
+  "study": "E138",
+  "kind": "complete paired objective schedule from real development",
+  "status": "passed",
+  "sourceCommit": "a0fea29e1c91f16b18de68b0025216f7357fcf09",
+  "releasedHead": "f533a049184c98a1d132aeea751e9d678d5c03e4",
+  "createdAt": "2026-11-22T23:51:29.4455887+05:30",
+  "finalKeysDerived": false,
+  "checks": {
+    "backgroundTrainingSlot": true,
+    "soloTrainingSlot": true,
+    "evaluationSlot": true,
+    "auditSlot": true,
+    "measuredWholeStudy": true,
+    "allHardSlots": true,
+    "freeC": true,
+    "protectedD": true,
+    "availableCommit": true,
+    "dailyFullPhase": true,
+    "dailyMeasuredPhase": true
+  },
+  "pins": {
+    ".tmp/E138-offline-reference.json": "544391c23dbdc22dcdf22b6d2f55a874fceb8851c16577e1f6bce0e3af9d0eee",
+    ".tmp/E138-readiness-attempt1.result.json": "f1a3e7797028d8f6a9f739848bd6b0b50739e7d07ebeabc3c60627bf03fe8b6b",
+    ".tmp/E138-benchmark-background-attempt1.result.json": "4a0fc6adbcf7c3ebf7a7aaa5dcd1080d5b6336000ed7f0d94ae55b94290a0ce3",
+    ".tmp/E138-benchmark-solo-attempt1.result.json": "ac3cdbb931b1a3acf7454c5c37c311eb04192fd7973fbce13b423d37ac484bac",
+    ".tmp/E138-benchmark-eval-attempt1.result.json": "fbd113a8839f14b6d31dc7fa5d170c18d57b6a43b51292b2cbe850ce79d36985",
+    ".tmp/E138-audit-development-attempt1.result.json": "ce48fca672a0765bf1f31b694b49235f6bedfd52ceb5440224ce93fa09b088c2",
+    "runs/20261122-234631_E138-benchmark-background/status.json": "8150edd2e39b452aa90c19d0b5ccc0a535a8babc1c121d01c200aca85e52f97b",
+    "runs/20261122-234720_E138-benchmark-solo/status.json": "9e50874e13b121fbf739a91910274a0c6c05f41267071c9f2dc3b62b5ec4f494",
+    "runs/20261122-234815_E138-benchmark-eval/status.json": "01b3fec34abaef30dfc7a88b603d816a4c066f7734dd0b0f1e19b0a84cf60e88",
+    ".tmp/E138-audit-development-attempt1.audit.json": "d704bba0317d7a6fec499c62c5269890101e6853eacee9084ae356775c627db5",
+    "runs/20261122-234631_E138-benchmark-background/config.json": "2bd570ca3e5ff55de034764a939d2f873883a81ea19d2efccdf90e07acde66ff",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-234631_E138-benchmark-background/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-234631_E138-benchmark-background/summary.json": "4d73b775818d17bdc307e55367b4b59a117c376f0f690604007ef0b3322e9b2e",
+    "runs/20261122-234631_E138-benchmark-background/generations/attempt_0000.npz": "a565692339d9e5bec0aa64f9c555439ee9798b2d7beb05754e7a833b8aded71c",
+    "runs/20261122-234631_E138-benchmark-background/generations/attempt_0001.npz": "1e674d20cd5893becfb31e5fe0685d18b16265089646cdf61dca9c766fd7ea9c",
+    "runs/20261122-234631_E138-benchmark-background/generations/samples_0001.npz": "3e4d0168167ede8cb7b7f83cf4bbbabdb27037ca55ca09472bad945ccf4a8f2d",
+    "runs/20261122-234631_E138-benchmark-background/generations/attempt_0002.npz": "44dd3022b9acbe95bd31b0394c31e89f355b43ebab5345f7fb665728b6920b18",
+    "runs/20261122-234631_E138-benchmark-background/generations/samples_0002.npz": "b04f681b05455ac9d42f8496787489ac0b41cf1cca360e8d936fbda3853c1b32",
+    "runs/20261122-234631_E138-benchmark-background/genome_final.npy": "b0b575f83be2ca3dc4a792dbf51ff3b9dc3f5219dfd6bb36924f5d67a630b387",
+    "runs/20261122-234720_E138-benchmark-solo/config.json": "de06877a2a0f86a68d777c29774cf1e70859ec8d47fe6158998352276538fa1f",
+    "runs/20261122-234720_E138-benchmark-solo/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-234720_E138-benchmark-solo/summary.json": "466875a00ff8b64eb97c6c10cc7248ad9f2b9852a9ae24192b9eebd1d6df48e0",
+    "runs/20261122-234720_E138-benchmark-solo/generations/attempt_0000.npz": "a565692339d9e5bec0aa64f9c555439ee9798b2d7beb05754e7a833b8aded71c",
+    "runs/20261122-234720_E138-benchmark-solo/generations/attempt_0001.npz": "68fdc21c4bd67f2d7585f02ab16a7beee67074561ac931db01c3e63ebaf6e066",
+    "runs/20261122-234720_E138-benchmark-solo/generations/samples_0001.npz": "14cea598bc224bf61f1609353a9391a59926c8b7765e1382401d127643b2aacf",
+    "runs/20261122-234720_E138-benchmark-solo/generations/attempt_0002.npz": "9baa5a503a7e7543e7ba10e40c863beeb8129c1ba1d40f0dcc66a278e7e1b3ac",
+    "runs/20261122-234720_E138-benchmark-solo/generations/samples_0002.npz": "e5b0e9284ae6ea2c2d9a78feb5007b68edf7cf8dcc0007634168e0066ebd779b",
+    "runs/20261122-234720_E138-benchmark-solo/genome_final.npy": "54c0a773381ae9ba9356f3dccb6f112461d11ee379871a24c0dffc8cee799155",
+    "runs/20261122-234815_E138-benchmark-eval/config.json": "97619f6a21d305026bdd76d0ad9c6d79743ce3f41c40c0a64662e9e78196ffb3",
+    "runs/20261122-234815_E138-benchmark-eval/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-234815_E138-benchmark-eval/summary.json": "7e291edec34955cb2f262df09f80999aed1d13d0981c300cd0f28ae750546825",
+    "runs/20261122-234815_E138-benchmark-eval/genome_background.npy": "b0b575f83be2ca3dc4a792dbf51ff3b9dc3f5219dfd6bb36924f5d67a630b387",
+    "runs/20261122-234815_E138-benchmark-eval/genome_solo.npy": "54c0a773381ae9ba9356f3dccb6f112461d11ee379871a24c0dffc8cee799155",
+    "runs/20261122-234815_E138-benchmark-eval/assignments.npz": "651f98ea127e9e49d92c43cf47047653c32f3e84c9b002004cd6091263439639",
+    "runs/20261122-234815_E138-benchmark-eval/families/family_0000.npz": "96464b1605f1b578e9e74f05e647f3fbaec546bd2e1699aa6a3bb0aa67834ba0",
+    "runs/20261122-234815_E138-benchmark-eval/families/family_0001.npz": "ff62b787c1a62d1a3375751fb252d93dfb89e1e6801a69c69164983e1119e863",
+    "runs/20261122-234815_E138-benchmark-eval/families/family_0002.npz": "0430beacda8af3aa773e2856ecdbae3388c87a91049a2d0d2e8556833869aa4e",
+    "runs/20261122-234815_E138-benchmark-eval/families/family_0003.npz": "a150ca4b40f08a54b79866eafb0433bccf6c64e40793ff9c855e8fc714549f4d",
+    ".tmp/E138-warm-schedule-proof.json": "9adf4d66995b348fddac60f5981c51eb193b3a0719a886757261eb6ff876c534",
+    ".tmp/E138-establish-2026-11-23-attempt2.verification.json": "4214b9919b49405ad3fe2c95d9595ff91f14503282020ba2a25f0c96b7c895da",
+    ".tmp/E138-development-forecast.ps1": "2ba10a6a01179075c2d7385d50d8cf7b31e998c7177486b97ac05ec64650217d",
+    ".tmp/E138-stage-plan.ps1": "dab33f97743a2cb8b5af310c81f60164ac33eaec32210a9d571e2064e74a759e"
+  },
+  "stageCaps": {
+    "readiness": 95,
+    "benchmark-background": 140,
+    "benchmark-solo": 140,
+    "benchmark-eval": 110,
+    "audit-development": 110,
+    "A0-background": 215,
+    "A0-solo": 215,
+    "A1-background": 215,
+    "A1-solo": 215,
+    "A2-background": 215,
+    "A2-solo": 215,
+    "A0": 295,
+    "A1": 295,
+    "A2": 295,
+    "audit-final": 430,
+    "status-summary": 70
+  },
+  "trainingForecast": {
+    "background": {
+      "run": "runs/20261122-234631_E138-benchmark-background",
+      "guardSeconds": 48.5138018,
+      "attemptWallSeconds": [
+        30.67200000002049,
+        4.407000000006519
+      ],
+      "nonattemptSeconds": 13.434801799972995,
+      "seconds": 103.6013018000815,
+      "formula": "guard_nonattempt + cold_attempt0 + 9*1.5*warm_attempt1",
+      "bothObjectiveRolloutsCharged": true
+    },
+    "solo": {
+      "run": "runs/20261122-234720_E138-benchmark-solo",
+      "guardSeconds": 49.3760678,
+      "attemptWallSeconds": [
+        31.57800000003772,
+        5.35899999999674
+      ],
+      "nonattemptSeconds": 12.439067799965542,
+      "seconds": 116.36356779995926,
+      "formula": "guard_nonattempt + cold_attempt0 + 9*1.5*warm_attempt1",
+      "bothObjectiveRolloutsCharged": true
+    }
+  },
+  "evaluationForecast": {
+    "familyWallSeconds": [
+      30.34399999998277,
+      6.98399999999674,
+      0.8130000000237487,
+      0.8439999999827705
+    ],
+    "nonfamilySeconds": 15.72906520001397,
+    "warmMaximumSeconds": 0.8439999999827705,
+    "seconds": 214.23006519674362,
+    "formula": "guard_nonfamily + sum(all4) +126*1.5*max(family2,family3)",
+    "hardSlotSeconds": 295,
+    "cleanupSeconds": 30
+  },
+  "auditForecast": {
+    "timing": {
+      "training_attempt_wall_seconds": [
+        10.23399999999674,
+        0.06300000002374873,
+        0.125,
+        0.125
+      ],
+      "family_wall_seconds": [
+        5.39000000001397,
+        1.6559999999590218,
+        1.2040000000270084,
+        0.29599999997299165
+      ],
+      "elapsed_seconds": 32.81199999997625,
+      "setup_and_summary_seconds": 13.71899999998277,
+      "runs": [
+        {
+          "kind": "training",
+          "run": "runs/20261122-234631_E138-benchmark-background",
+          "wall_seconds": 20.90600000001723,
+          "unit_seconds": 10.297000000020489,
+          "overhead_seconds": 10.60899999999674,
+          "assignment_seconds": 0.0
+        },
+        {
+          "kind": "training",
+          "run": "runs/20261122-234720_E138-benchmark-solo",
+          "wall_seconds": 1.0,
+          "unit_seconds": 0.25,
+          "overhead_seconds": 0.75,
+          "assignment_seconds": 0.0
+        },
+        {
+          "kind": "evaluation",
+          "run": "runs/20261122-234815_E138-benchmark-eval",
+          "wall_seconds": 9.796999999962281,
+          "unit_seconds": 8.545999999972992,
+          "overhead_seconds": 1.2509999999892898,
+          "assignment_seconds": 0.25
+        }
+      ],
+      "non_run_wall_seconds": 1.1089999999967404,
+      "training_order": "development background/solo, then lineage 0/1/2 background/solo; attempts ascending",
+      "family_order": "four development, then final lineage 0/1/2; (8,16),(16,32),(8,32),(16,16) cycle"
+    },
+    "seconds": 360.5646147812315,
+    "trainingAttempts": 64,
+    "families": 388,
+    "trainingRuns": 8,
+    "evaluationRuns": 4,
+    "formula": "guard_minus_elapsed +non_run +8*max(train_overhead) +4*eval_nonassignment +97*assignment +attempt0 +63*1.5*max(attempt1..3) +sum(family0..2) +385*1.5*(96/80)*family3",
+    "hardSlotSeconds": 430,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySeconds": 267.7791488,
+    "measuredFutureSeconds": 2325.1026523715846,
+    "futureHardSlotsSeconds": 2966.9532332,
+    "measuredWholeStudySeconds": 2592.8818011715844,
+    "wholeStudyHardSeconds": 3234.7323819999997,
+    "studyLimitSeconds": 3600,
+    "operatingRemainingSeconds": 291.9532332,
+    "costingIncludedInOperatingReserve": true,
+    "preflightLocalDate": "2026-11-22",
+    "finalLocalDate": "2026-11-23",
+    "dailyUsedSeconds": 0.0,
+    "dailyRemainingSeconds": 28800.0,
+    "dailyUncertaintyReserveSeconds": 4.91,
+    "futureDayMustAlreadyBeEstablished": true,
+    "finalGuardMustWaitForDate": true
+  },
+  "storage": {
+    "sampleMaximumBytes": 397444.0,
+    "checkpointMaximumBytes": 2817.0,
+    "familyMaximumBytes": 451481.0,
+    "futureSingleCopyBytes": 209336124.0,
+    "existingDevelopmentBytes": 3414727.0,
+    "futureAllowanceBytes": 643820638.5,
+    "formula": "2*1.5*future_single_copy +1.5*existing +largest_atomic",
+    "localGitCopyIncluded": true,
+    "freeCBytes": 25800626176.0,
+    "temporaryCReserveBytes": 268435456,
+    "freeDBytes": 45191266304.0,
+    "projectedDFreeBytes": 44547445665.5,
+    "minimumFreeCBytes": 10737418240,
+    "minimumFreeDBytes": 10737418240
+  },
+  "memory": {
+    "source": "cim",
+    "availablePhysicalBytes": 7382982656,
+    "availableCommitBytes": 12376420352.0
+  },
+  "limitations": [
+    "Development metadata only; no final worlds or behavioral outcomes enter admission.",
+    "A waiting-day result is operational, not scientific. Recompute metadata on an independently known funded date without changing the registered gates.",
+    "Cold-shape proof is checked against source hashes and must be exercised by readiness.",
+    "No checkpoint choice, started-job replacement, shortened lineage, or reduced final family count is admitted here."
+  ]
+}

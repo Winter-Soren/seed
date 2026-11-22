@@ -1,0 +1,19 @@
+{
+  "status": "finished",
+  "protocol": "solo-selection-v1",
+  "mode": "development-training",
+  "view": "solo",
+  "seed_index": 0,
+  "elapsed_seconds": 38.79700000002049,
+  "setup_seconds": 0.18800000002374873,
+  "completed_attempts": 2,
+  "completed_families": 0,
+  "expected_attempts": 2,
+  "expected_families": 0,
+  "optimizer_updates": 2,
+  "attempt_wall_seconds": [
+    31.57800000003772,
+    5.35899999999674
+  ],
+  "family_wall_seconds": []
+}

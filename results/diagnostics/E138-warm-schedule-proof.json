@@ -1,0 +1,39 @@
+{
+  "study": "E138",
+  "status": "passed",
+  "source_commit": "a0fea29e1c91f16b18de68b0025216f7357fcf09",
+  "evaluation": {
+    "families": 4,
+    "cold_prefix_families": 2,
+    "warm_family_indices": [
+      2,
+      3
+    ],
+    "fixed_solo_ticks": 50,
+    "scored_genotypes": 3,
+    "signature_coverage": "Family 0 compiles pre8 and fixed post16 chamber, gap16, both first-decision views and native solo50. Family 1 uses the existing chamber16 signature as pre/post and compiles gap32. Families 2/3 use the same integer rule and array signatures for both lengths.",
+    "source_sha256": {
+      "seed/background_selection.py": "7c25c8bfb7948903eaf9d481fa1f5f74febce66f172d67e7ad7c0422ebb998a4",
+      "seed/encounter_diagnostic.py": "111a41d9442cc62ffc06a4815992611f1c39a072931e4b3596834e743db916e3",
+      "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+      "seed/scene_transfer.py": "7125cb96be8a7a9b632f25562374a911f8bdfa51e747b807d7fc45d82521d539",
+      "scripts/run_solo_selection.py": "d51e69c26cab887325df6a7345e24ea8831f412c597252cb7d10d137cc6c81f9",
+      "tools/audit_solo_selection.py": "bd48a746ce1ced2b0bfab696509c07b34af3a471cb6e1b5ca5c439bfb628534f",
+      "tools/e138_feedback_opportunities.py": "d83f475a1536836acfac780537eb4de2ff6d1ed4723b4bb0c07d81d9ae19df3b"
+    }
+  },
+  "audit": {
+    "cold_prefix_families": 3,
+    "warm_family_indices": [
+      3
+    ],
+    "exposure_ticks": [
+      64,
+      96,
+      80,
+      80
+    ],
+    "signature_coverage": "The verified audit uses 64,96,80-step traces in the first three families. The fourth 80-step trace reuses that tape shape. Compact 256×50 training physics is fixed from the first audited attempt."
+  },
+  "final_keys_derived": false
+}

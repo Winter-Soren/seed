@@ -1,0 +1,51 @@
+{
+  "status": "finished",
+  "protocol": "solo-selection-v1",
+  "mode": "development-evaluation",
+  "view": null,
+  "seed_index": 0,
+  "elapsed_seconds": 40.71900000004098,
+  "setup_seconds": 1.7040000000270084,
+  "completed_attempts": 0,
+  "completed_families": 4,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "optimizer_updates": 0,
+  "attempt_wall_seconds": [],
+  "family_wall_seconds": [
+    30.34399999998277,
+    6.98399999999674,
+    0.8130000000237487,
+    0.8439999999827705
+  ],
+  "scientific_result": false,
+  "gate_status": "undecided",
+  "endpoint_sha256": [
+    "b0b575f83be2ca3dc4a792dbf51ff3b9dc3f5219dfd6bb36924f5d67a630b387",
+    "54c0a773381ae9ba9356f3dccb6f112461d11ee379871a24c0dffc8cee799155"
+  ],
+  "attempts": [],
+  "samples": [],
+  "raw_files": [
+    {
+      "path": "families/family_0000.npz",
+      "sha256": "96464b1605f1b578e9e74f05e647f3fbaec546bd2e1699aa6a3bb0aa67834ba0",
+      "bytes": 423678
+    },
+    {
+      "path": "families/family_0001.npz",
+      "sha256": "ff62b787c1a62d1a3375751fb252d93dfb89e1e6801a69c69164983e1119e863",
+      "bytes": 402173
+    },
+    {
+      "path": "families/family_0002.npz",
+      "sha256": "0430beacda8af3aa773e2856ecdbae3388c87a91049a2d0d2e8556833869aa4e",
+      "bytes": 400842
+    },
+    {
+      "path": "families/family_0003.npz",
+      "sha256": "a150ca4b40f08a54b79866eafb0433bccf6c64e40793ff9c855e8fc714549f4d",
+      "bytes": 451481
+    }
+  ]
+}

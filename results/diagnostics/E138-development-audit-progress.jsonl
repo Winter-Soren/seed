@@ -1,0 +1,24 @@
+{"event": "audit-start", "source": "a0fea29e1c91f16b18de68b0025216f7357fcf09"}
+{"event": "run-start", "kind": "training", "run": "runs/20261122-234631_E138-benchmark-background"}
+{"event": "attempt-start", "run": "runs/20261122-234631_E138-benchmark-background", "index": 1}
+{"event": "attempt-complete", "run": "runs/20261122-234631_E138-benchmark-background", "index": 1, "wall_seconds": 10.23399999999674}
+{"event": "attempt-start", "run": "runs/20261122-234631_E138-benchmark-background", "index": 2}
+{"event": "attempt-complete", "run": "runs/20261122-234631_E138-benchmark-background", "index": 2, "wall_seconds": 0.06300000002374873}
+{"event": "run-complete", "kind": "training", "run": "runs/20261122-234631_E138-benchmark-background", "wall_seconds": 20.90600000001723, "unit_seconds": 10.297000000020489, "overhead_seconds": 10.60899999999674, "assignment_seconds": 0.0}
+{"event": "run-start", "kind": "training", "run": "runs/20261122-234720_E138-benchmark-solo"}
+{"event": "attempt-start", "run": "runs/20261122-234720_E138-benchmark-solo", "index": 1}
+{"event": "attempt-complete", "run": "runs/20261122-234720_E138-benchmark-solo", "index": 1, "wall_seconds": 0.125}
+{"event": "attempt-start", "run": "runs/20261122-234720_E138-benchmark-solo", "index": 2}
+{"event": "attempt-complete", "run": "runs/20261122-234720_E138-benchmark-solo", "index": 2, "wall_seconds": 0.125}
+{"event": "run-complete", "kind": "training", "run": "runs/20261122-234720_E138-benchmark-solo", "wall_seconds": 1.0, "unit_seconds": 0.25, "overhead_seconds": 0.75, "assignment_seconds": 0.0}
+{"event": "run-start", "kind": "evaluation", "run": "runs/20261122-234815_E138-benchmark-eval"}
+{"event": "family-start", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 0}
+{"event": "family-complete", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 0, "wall_seconds": 5.39000000001397}
+{"event": "family-start", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 1}
+{"event": "family-complete", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 1, "wall_seconds": 1.6559999999590218}
+{"event": "family-start", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 2}
+{"event": "family-complete", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 2, "wall_seconds": 1.2040000000270084}
+{"event": "family-start", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 3}
+{"event": "family-complete", "run": "runs/20261122-234815_E138-benchmark-eval", "index": 3, "wall_seconds": 0.29599999997299165}
+{"event": "run-complete", "kind": "evaluation", "run": "runs/20261122-234815_E138-benchmark-eval", "wall_seconds": 9.796999999962281, "unit_seconds": 8.545999999972992, "overhead_seconds": 1.2509999999892898, "assignment_seconds": 0.25}
+{"event": "audit-end", "status": "passed", "wall_seconds": 32.81199999997625}

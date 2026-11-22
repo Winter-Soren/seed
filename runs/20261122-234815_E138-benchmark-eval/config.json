@@ -1,0 +1,130 @@
+{
+  "protocol": "solo-selection-v1",
+  "mode": "development-evaluation",
+  "view": null,
+  "args": {
+    "name": "E138-benchmark-eval",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026121900,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 4,
+    "eval_protocol": "solo-selection-v1",
+    "memory_condition": null,
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "a0fea29e1c91f16b18de68b0025216f7357fcf09",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "seed_index": 0,
+  "training_seed": null,
+  "evaluation_seed": 2026121900,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "111a41d9442cc62ffc06a4815992611f1c39a072931e4b3596834e743db916e3",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "seed/scene_transfer.py": "7125cb96be8a7a9b632f25562374a911f8bdfa51e747b807d7fc45d82521d539",
+    "seed/background_selection.py": "7c25c8bfb7948903eaf9d481fa1f5f74febce66f172d67e7ad7c0422ebb998a4",
+    "seed/solo_selection.py": "8ca67efe8cd0869b8a91c2bcd938291e01d00d970c74ec244f6f384ae11033f6",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_solo_selection.py": "d51e69c26cab887325df6a7345e24ea8831f412c597252cb7d10d137cc6c81f9",
+    "scripts/run_experiment.py": "53f1f0a69170fe5c181ec0cf33b1d4a4cb7004e27a3ab43f84015845e63f15fc",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "l2": 0.005,
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "train_receipts": [
+    {
+      "seed_index": 0,
+      "view": "background",
+      "run": "runs/20261122-234631_E138-benchmark-background",
+      "config_sha256": "2bd570ca3e5ff55de034764a939d2f873883a81ea19d2efccdf90e07acde66ff",
+      "summary_sha256": "4d73b775818d17bdc307e55367b4b59a117c376f0f690604007ef0b3322e9b2e",
+      "checkpoint_sha256": "44dd3022b9acbe95bd31b0394c31e89f355b43ebab5345f7fb665728b6920b18",
+      "endpoint_sha256": "b0b575f83be2ca3dc4a792dbf51ff3b9dc3f5219dfd6bb36924f5d67a630b387"
+    },
+    {
+      "seed_index": 0,
+      "view": "solo",
+      "run": "runs/20261122-234720_E138-benchmark-solo",
+      "config_sha256": "de06877a2a0f86a68d777c29774cf1e70859ec8d47fe6158998352276538fa1f",
+      "summary_sha256": "466875a00ff8b64eb97c6c10cc7248ad9f2b9852a9ae24192b9eebd1d6df48e0",
+      "checkpoint_sha256": "9baa5a503a7e7543e7ba10e40c863beeb8129c1ba1d40f0dcc66a278e7e1b3ac",
+      "endpoint_sha256": "54c0a773381ae9ba9356f3dccb6f112461d11ee379871a24c0dffc8cee799155"
+    }
+  ],
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "651f98ea127e9e49d92c43cf47047653c32f3e84c9b002004cd6091263439639",
+    "bytes": 1051
+  },
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "background",
+    "probe",
+    "solo_layout",
+    "solo_action"
+  ],
+  "genotype_order": [
+    "parent",
+    "background",
+    "solo"
+  ],
+  "endpoint_sha256": [
+    "b0b575f83be2ca3dc4a792dbf51ff3b9dc3f5219dfd6bb36924f5d67a630b387",
+    "54c0a773381ae9ba9356f3dccb6f112461d11ee379871a24c0dffc8cee799155"
+  ],
+  "max_seconds": 110,
+  "scientific_result": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}
