@@ -13,7 +13,7 @@ owner. Do not guess.
    - `PLAN.md`, especially "Owner direction, 22 November 2026 (evening)";
    - `experiments/E132_PROTOCOL.md`, all of it including the correction;
    - the E126 closure and E132 entries at the end of `experiments/LOG.md`.
-2. Pull the branch `claude/zen-gauss-dfd2oe`. It contains the registration commits.
+2. Pull the branch `zen-gauss`. It contains the registration commits.
 3. Confirm the repo-local git identity is the owner's GitHub noreply address,
    the same as earlier commits. Never use a personal email address.
 4. Follow these rules throughout:
@@ -431,13 +431,13 @@ These were added before any implementation. Where they differ from the steps
 above, they govern.
 
 1. **Branch.** At writing time, `origin/main` (`720a834`) was an ancestor of the
-   E132 branch `claude/zen-gauss-dfd2oe`. **Ask the owner** whether to
+   E132 branch `zen-gauss`. **Ask the owner** whether to
    fast-forward `main` to that branch:
 
    ```powershell
    git fetch origin
    git checkout main
-   git merge --ff-only origin/claude/zen-gauss-dfd2oe
+   git merge --ff-only origin/zen-gauss
    git push origin main
    ```
 
