@@ -1,0 +1,27 @@
+{
+  "protocol": "background-selection-v1",
+  "mode": "development",
+  "status": "failed",
+  "error": "AuditError: average ranks preserve fitness ties",
+  "final_evaluation_audited": false,
+  "checked_file_sha256": {
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/status.json": "8e227146dd678a725d47805875a8df0fecd2fb3e7621ea55effb8722b8b79b2c",
+    "runs/20261122-225619_E136-benchmark-background/status.json": "72c1371d4937d47c304ab5f915994d727eb8df47066e1944d3cf99bb33942520",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/status.json": "bfbcd274591bfb4c823b0bb91695fe8a2dfe04f48af9cde7ec649d3c8e1371e1",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/config.json": "415855860ba94b2813cfa02057be369e1b0f34668ad19e261d05fa74ef085129",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/summary.json": "be3eab308d178d7da54c56e3264ff0f350f68ce09c70c09536d0d4a89575b968",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/attempt_0000.npz": "b60d539c72b19f0e9e421eb9341a2378c1d0c4e05dc704c50fdb12d5a021c186",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/attempt_0001.npz": "acea0776691f974db8fb71d2d1d54a2899e8a417e03173085d2c02d592e9974a",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/samples_0001.npz": "312abd17faff560c21a2f8b16f3289deea0c5112bd600c0b0ae0d668ef177074"
+  },
+  "timing": {
+    "training_attempt_wall_seconds": [],
+    "family_wall_seconds": [],
+    "elapsed_seconds": 9.562000000034459,
+    "setup_and_summary_seconds": 9.562000000034459,
+    "training_order": "development isolated/background, then lineage 0/1/2 isolated/background; attempts ascending",
+    "family_order": "four development, then final lineage 0/1/2; (8,16),(16,32),(8,32),(16,16) cycle"
+  }
+}

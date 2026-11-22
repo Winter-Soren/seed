@@ -290,8 +290,10 @@ def tied_ranks(scores):
             end += 1
         positions[order[begin:end]] = (begin+end-1)/2
         begin = end
-    # Separate float32 division and subtraction match the saved native rank scale.
-    return positions/np.float32(len(scores)-1)-np.float32(.5)
+    # Keep the independent tie ordering and match the native CPU float32 scale.
+    # XLA's constant division can differ from NumPy by one representable value.
+    _, jnp = source_bytes.random_runtime()
+    return np.asarray(jnp.asarray(positions)/(len(scores)-1)-.5)
 
 
 def view_ranks(samples):

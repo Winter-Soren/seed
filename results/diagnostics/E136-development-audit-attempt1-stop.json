@@ -1,0 +1,42 @@
+{
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt1.guard.jsonl",
+  "auditOutcome": "failed",
+  "stageUsedSecondsAfter": 23.9110235,
+  "commit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "wallStartedAt": "2026-11-22T23:03:14.6816996+05:30",
+  "mode": "audit-development",
+  "sourceCommit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt1.audit.json",
+  "error": "Independent audit failed (child exit 1); inspect the preserved JSON report",
+  "wallSeconds": 23.9110235,
+  "timeZoneId": "India Standard Time",
+  "stageHardLimitSeconds": 100.0,
+  "runName": null,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T23:03:14.6816996+05:30",
+      "end": "2026-11-22T23:03:38.5927230+05:30",
+      "seconds": 23.9110234
+    }
+  ],
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-development-attempt1.stderr",
+  "studyLimitSeconds": 3600.0,
+  "studyUsedSecondsBefore": 325.92421809999996,
+  "studyUsedSecondsAfter": 349.83524159999996,
+  "reservedSeconds": 2859.4084042,
+  "priorStageSeconds": 0.0,
+  "attempt": 1,
+  "status": "stopped",
+  "study": "E136",
+  "processStarted": true,
+  "dailyLedgerSha256": "05f77d08708bde220b421ea85c782f0a8a180c21b7c3a124394dc6560ad91ec7",
+  "childExitCode": 1,
+  "retryEligible": false,
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "auditReportSha256": "f3e020e9f34d20dde1666bee1bcaa6626628e1be54b41930cc979a96d3e25eb2",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25351.65157079999
+  }
+}
