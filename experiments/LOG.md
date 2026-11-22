@@ -2684,3 +2684,21 @@ The table reports nearby minus random-distance offers, paired within families, w
 **Decision.** The access manipulation worked and all three direct solo comparisons improved. The registered reversal gate failed in all three lineages. Each established the old preference, sampled both colors more often and met the stationary solo and survival safeguards. Each missed absolute late local preference, absolute reversal solo score, the stationary-adjusted transfer gain and reversal exposure survival. Access changed both information and calories. Deaths contributed zero at readout. These data do not identify a preference that was acquired and subsequently forgotten. [Full estimates and gates](../results/diagnostics/E132-comparison.json)
 
 Two research chats compared an observable contact gate on Hebbian updates, an explicit context memory and direct selection on a reversal objective. Both favor testing the contact gate first. E129 demonstrated what a scheduled learning pause could preserve after acquisition. Give the new gate, the native updater and a frequency-matched sparse updater identical histories, then probe both immediately and after a gap. Only a later prospective intervention can establish whether this improves independent choices. If it does, compare evolved descendants with their parents with the gate active from birth. A hand-coded belief in this two-color world could encode the answer, and a change in harvest after selection alone would leave the cause unresolved.
+
+### E133 · Preregistration · 22 November 2026
+
+Test whether locally gating the existing Hebbian rule improves acquisition, retention and carried choice after the same sparse feedback. Compare ordinary updates, one update at the locally observed outcome and one equally sparse update before that outcome. Restore ordinary updates only during the empty gap in a clone of the contact-trained state to test the retention mechanism. Positive immediate reversal in the ordinary and gated arms is required before crediting preservation. The last return processes the last contact before the delay. The [protocol](E133_PROTOCOL.md) freezes observations, body, assignments, dose, survival safeguards, minimum effects and failure decisions. No E133 scientific measurements have been made.
+
+```powershell
+
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','contact-gate-v1','--generations',0)
+& $python $entry @common --condition-split development --name E133-benchmark --seed 2026121200 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E133-A0 --seed 2026121201 --eval-worlds 64 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --condition-split final --name E133-A1 --seed 2026121202 --eval-worlds 64 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --condition-split final --name E133-A2 --seed 2026121203 --eval-worlds 64 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+
+Run the focused test glob `test_contact_gate*.py` and fresh independent self-check before the four-family rehearsal. Run `python -B tools/audit_contact_gate.py --source-commit <scientific SHA> --development` on the rehearsal, then omit the development flag for the complete final triplet. Run `python scripts/summarize.py` after joint audit. Stage limits are 240/220/120/3×600/300/75 seconds with 845 seconds for operations, 3,600 total. The existing daily budget and resource floors apply. All E132 and E133 work stays local.
