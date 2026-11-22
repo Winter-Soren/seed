@@ -34,10 +34,12 @@ E130 tested each founder against its generation-200 descendant when all four cre
 
 E131 compared feedback-timed exploration with ordinary foraging and the same quota at random times. It passed the laptop cost criterion at 1.32× the ordinary warm median and failed behavior in all three lineages. A2 found food 3.42 ± 1.10 turns sooner than ordinary foraging. No lineage reliably beat equal quota on time to first food, and late adaptive Q was −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting.
 
+E132 made both colors easier to reach while keeping every action voluntary. The three lineages sampled both colors 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points more often. Solo first-item scores improved relative to random-distance offers. Stationary worlds showed similar gains, and survival during reversed exposure fell by 13 to 16 points. None met the reversal criterion.
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-The next diagnostic asks whether balanced opportunities to approach either item improve feedback access and reversal recovery when creatures still choose every move. It needs its own registered design and matched sham. E131's settings and held-out worlds are closed.
+The research council selected a test of when to update connection strengths. Give each controller identical experiences and compare updates triggered by locally observed contact with ordinary updating and an equally sparse schedule. Test the new preference immediately, after a gap and in a fresh solo world. A future selection experiment can then compare descendants with their parents on any capability the mechanism demonstrates.

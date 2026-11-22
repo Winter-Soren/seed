@@ -40,6 +40,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [When should a learned connection keep changing?](#when-should-a-learned-connection-keep-changing)
   - [Can descendants relearn the rule on their own?](#can-descendants-relearn-the-rule-on-their-own)
   - [Does it help to explore after a long stretch without food?](#does-it-help-to-explore-after-a-long-stretch-without-food)
+  - [What if both items are within reach?](#what-if-both-items-are-within-reach)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -58,6 +59,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Preserve the new preference by controlling when weights change | **Partial** | An imposed pause preserved local preference in all three lineages. Solo first-food success rose by 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 points versus continued updating. Two of three met the stricter transfer criterion. A controller that can decide when to pause remains open. [E129 result](#when-should-a-learned-connection-keep-changing) |
 | Recover from an unannounced reversal through self-directed foraging | **Failed · 0/3** | All three generation-200 lineages recovered some of their lost preference. None established a positive late preference for food or the required late advantage over its founder. The comparison includes all assigned creatures. [E130 results and graph](#can-descendants-relearn-the-rule-on-their-own) |
 | Decide when to explore | **Failed · 0/3** | E131's adaptive policy passed the laptop cost criterion. It did not produce a reliable first-food speedup over equal-quota exploration in any lineage. Late choice scores were −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting. [E131 results](#does-it-help-to-explore-after-a-long-stretch-without-food) |
+| Use feedback when both items are easy to reach | **Access increased in 3/3. Reversal gate failed in 3/3.** | Nearby offers increased the fraction sampling both colors by 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points. Survival fell in every lineage after the switch. None established a positive preference for the newly safe food. [E132 results](#what-if-both-items-are-within-reach) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -482,6 +484,20 @@ Q is first-food probability minus first-poison probability. Death and no contact
 A2 found food sooner than ordinary foraging, and A1 cleared both late Q contrasts against equal-quota exploration. No lineage found food reliably sooner than both controls, none had positive late Q, and all missed the stationary late-choice safeguard against both controls. The laptop cost criterion passed at **1.32×** the ordinary warm median. Across reversal worlds, adaptive overrides occurred on 3.94–3.96% of live turns versus 3.78–3.81% with equal quota. The quota was identical for fully lived blocks, and partial blocks could differ in realized overrides. [Full estimates](results/diagnostics/E131-comparison.json) · [Independent audit](results/diagnostics/E131-independent-audit.json)
 
 Retire this exploration setting. The next question is whether offering balanced opportunities to approach either item helps a creature gather feedback and recover when it still chooses every move. That question requires its own preregistration.
+
+## What if both items are within reach?
+
+In E132, each creature first experienced a stable food rule while choosing every move. We copied its state, then offered one item of each color either one move away or at two randomly drawn distances. We tested both stationary and reversed rules. Finally, every surviving copy faced an ordinary fresh solo grid. Animals that died during exposure remained in the denominator and scored zero on both choice probes. We used the same three saved genomes and 64 independently assigned families per lineage. [Preregistration](experiments/E132_PROTOCOL.md)
+
+| Lineage | Increase in lives sampling both colors after reversal (points) | Change in exposure survival (points) | Change in signed first-item score in the fresh grid | Gain after subtracting the same stationary-world comparison |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | +71.1 ± 3.8 | −16.4 ± 3.2 | +0.234 ± 0.093 | +0.023 ± 0.146 |
+| A1 | +68.0 ± 3.9 | −13.3 ± 3.2 | +0.188 ± 0.082 | +0.023 ± 0.133 |
+| A2 | +72.7 ± 4.0 | −14.8 ± 3.3 | +0.258 ± 0.076 | −0.023 ± 0.112 |
+
+Each difference compares nearby with random-distance offers and gives one paired family standard error. The first-item score counts food as +1, poison as −1 and no contact as zero. More animals tried both colors, and all three lineages improved their solo score relative to the random-distance condition. Nearby offers also helped when the old rule stayed in force. None established the required reversal-specific gain, absolute preference for the new food, or survival safeguard. The full gate failed in all three lineages. [Full estimates](results/diagnostics/E132-comparison.json) · [Independent audit](results/diagnostics/E132-independent-audit.json)
+
+The next question is what the controller learns from the same sequence of choices and outcomes. Nearby items change sensory experience, feedback and energy together. Matching those histories would let us test how a brain uses the evidence it receives. [Architecture decisions](experiments/ARCHITECTURE_COUNCIL_E130.md)
 
 ## Try it locally
 

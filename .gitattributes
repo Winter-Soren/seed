@@ -24,3 +24,5 @@ runs/*_E130-*/** -text
 results/diagnostics/E130-*.json -text
 runs/*_E131-*/** -text
 results/diagnostics/E131-*.json -text
+runs/*_E132-*/** -text
+results/diagnostics/E132-*.json -text

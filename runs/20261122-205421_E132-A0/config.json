@@ -1,0 +1,122 @@
+{
+  "protocol": "voluntary-offers-v1",
+  "args": {
+    "name": "E132-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026121101,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 64,
+    "eval_protocol": "voluntary-offers-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "4f3bdb772dc6cf92dacf9b06e48af3b0873933b0",
+    "branch": "main",
+    "dirty": false
+  },
+  "source_genome": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "source_generations": [
+    200
+  ],
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "seed_index": 0,
+  "eval_seed": 2026121101,
+  "expected_families": 64,
+  "statistical_unit": "independent family averaging both initially assigned rule replays",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "c0f72981f13f899e2d1ff2522f53a8cb2ef1377fa957b6a23617945ff4391e6e"
+  },
+  "arms": [
+    "near_stationary",
+    "near_reversal",
+    "sham_stationary",
+    "sham_reversal"
+  ],
+  "key_roles": [
+    "birth",
+    "geometry",
+    "exposure_action",
+    "solo_world",
+    "solo_action",
+    "probe"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "assignment_tag": 57650,
+  "apparatus": {
+    "acquisition_blocks": 8,
+    "continuation_blocks": 8,
+    "block_steps": 8,
+    "split_tick": 64,
+    "exposure_ticks": 128,
+    "feedback_ticks": 1,
+    "solo_steps": 50,
+    "local_placements": 12
+  },
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/exploration.py": "862a293a83b0d13815461ded8591df0da83c8efd6301ba47afd1a8a769edefc9",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/voluntary_offers.py": "a1f384b7b94b695389ec81722547f2a0b4cd1e0b66e56d3062d966f64e14a90d",
+    "scripts/run_voluntary_offers.py": "6e09af02b493b6b897346e51e80b463c6f0e9f976bdce3ba9010eba68d439466",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_retention_diagnostic.py": "92c3222c2faf1e004e9d75b7547ff0290abed0c4ca15992dc32f80e9c9b3e3e0",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "raw_schema": "voluntary-offers-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 500,
+  "scientific_result": false
+}

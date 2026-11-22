@@ -1,0 +1,135 @@
+{
+  "study": "E132",
+  "kind": "development-only complete local admission",
+  "status": "passed",
+  "sourceCommit": "4f3bdb772dc6cf92dacf9b06e48af3b0873933b0",
+  "registrationCommit": "29a695897f41396c0048f0d36a94746965ef4da7",
+  "createdAt": "2026-11-22T20:53:02.5982317+05:30",
+  "pins": {
+    ".tmp/E132-readiness-attempt1.result.json": "9bf45bce5ee7ed55cf9d3cefdd6d40f3e1d92cbf3dfab8d967e0d8cafe2d4b7d",
+    ".tmp/E132-benchmark-attempt1.result.json": "964bc670e29d15947faf94d9cb0f0a5038f7c7ab1a480aa3adbd07da63f9e3ee",
+    ".tmp/E132-audit-development-attempt1.result.json": "8b56561d277fb6a40a8924283083f94aaa47fcf64b06d9ce73bf47836fa6149b",
+    ".tmp/E132-audit-development-attempt1.audit.json": "1bdea58289f550452bc0e79b0e52fa98c440516473794afb176d92e6d66ea694",
+    ".tmp/E132-readiness-proof.json": "5b63130aababb7b97819f4edce8d3098f5a834c30e55ba27f083c2e3465af8a1",
+    ".tmp/E132-readiness-attempt1.stderr": "7ce7d5581c011148dae1d7b89f5e41c4df8351278ad73e624507301bb8f4c2af",
+    "runs/20261122-204850_E132-benchmark/status.json": "1375417ded609952e72bc7e3a33a5bdf7ac29da4a974e4868863c98d6ec49791"
+  },
+  "development": {
+    "run": "runs/20261122-204850_E132-benchmark",
+    "guardSeconds": 15.0161662,
+    "setupSeconds": 0.28100000001722947,
+    "elapsedSeconds": 9.48399999999674,
+    "innerFamilySeconds": [
+      8.23399999999674,
+      0.3279999999795109,
+      0.26600000000325963,
+      0.3279999999795109
+    ],
+    "fullFamilySeconds": [
+      8.23399999999674,
+      0.34399999998277053,
+      0.28100000001722947,
+      0.34399999998277053
+    ],
+    "guardedNonFamilySeconds": 5.81316620002049,
+    "maximumOfAllThreeLaterFamiliesSeconds": 0.34399999998277053
+  },
+  "liveReadoutCoverage": {
+    "nativeFixturePassed": true,
+    "fixtureTests": 43,
+    "freshSyntheticGroups": 5,
+    "auditedContinuationLiveReadouts": {
+      "near_stationary": 8.0,
+      "near_reversal": 6.0,
+      "sham_stationary": 8.0,
+      "sham_reversal": 8.0
+    },
+    "totalLiveReadouts": 30.0,
+    "totalContinuationAssignments": 32,
+    "everyDevelopmentFamilyHasLiveReadout": true,
+    "evidence": "Independent audited readout-survival means, each across four families and two initial rules. An arm with8/8 live assignments proves every family exercised the native live readout. No scientific gate is inferred from development."
+  },
+  "panelForecast": {
+    "formula": "guarded_nonfamily + first_full_family + 63*1.5*max(all_three_later_full_families)",
+    "seconds": 46.555166198389045,
+    "threePanelsSeconds": 139.66549859516715,
+    "hardSlotSeconds": 500,
+    "cleanupSeconds": 30,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 9.3310791,
+    "timing": {
+      "elapsed_seconds": 5.203000000037719,
+      "setup_and_summary_seconds": 4.671000000031199,
+      "reconstruction_seconds": 0.5320000000065193,
+      "family_seconds": [
+        0.1720000000204891,
+        0.10999999998603016,
+        0.14000000001396984,
+        0.10999999998603016
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 4.128079099962282,
+    "actualExpectedFinalReconstructions": 192,
+    "developmentMetadataRechecked": true,
+    "formula": "external + 4*setup_and_summary + family_allowance*1.5*max(development_family_seconds)",
+    "secondsFor192FinalFamilies": 72.34807910598794,
+    "conservativeFamilyAllowance": 196,
+    "seconds": 73.38007910611087,
+    "hardSlotSeconds": 240,
+    "cleanupSeconds": 30,
+    "explanation": "Final oracle reconstructs192 raw final families, with development metadata/source/key checks. Four administrative panel costs plus four additional reconstruction allowances conservatively cover that preflight; no extra raw audit is requested."
+  },
+  "budget": {
+    "knownStudySecondsBeforeCosting": 55.01584509999999,
+    "newHostedCiSeconds": 0,
+    "localOnly": true,
+    "operatingMarginBeforeCostingSeconds": 1260,
+    "reportingReserveSeconds": 60,
+    "costingChargedFromOperatingMargin": true,
+    "measuredScheduleWithMarginSeconds": 1588.061422801278,
+    "allFutureHardSlotsAndKnownSeconds": 3115.0158450999998,
+    "studyLimitSeconds": 3600,
+    "hardMarginSeconds": 484.98415490000025,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 22946.0264106,
+    "dailyLimitSeconds": 28800,
+    "projectedDayAllHardSlotsSeconds": 26006.0264106
+  },
+  "storage": {
+    "observedRawLengths": [
+      374959,
+      376357,
+      366792,
+      370469
+    ],
+    "observedMaxRawBytes": 376357,
+    "observedOtherBytes": 32202,
+    "futureAllowanceBytes": 221795077.0,
+    "formula": "2 copies *1.5 size allowance *(192*max_raw +3*(64/4)*metadata) +one_max_raw_atomic_write",
+    "optionalGitCopyIncluded": true,
+    "freeCBytes": 25960607744,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 46336647168,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 46114852091.0,
+    "minimumDFreeBytes": 10737418240,
+    "noArbitraryScratchReservation": true
+  },
+  "memory": {
+    "source": "native GetPerformanceInfo",
+    "availablePhysicalBytes": 7385010176,
+    "availableCommitBytes": 14285955072.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Only four development families; all four timings retained and no additional pilot or final timing was used.",
+    "Scientific admission does not depend on development behavioral means or gate labels.",
+    "The shape/static-source confirmation and fresh source/resource guards remain required.",
+    "No new hosted CI or publication is required for this local study.",
+    "This costing is charged from the existing1260-second operating margin, so its time is not excluded or added twice."
+  ]
+}

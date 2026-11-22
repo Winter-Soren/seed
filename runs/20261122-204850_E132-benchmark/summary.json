@@ -1,0 +1,1012 @@
+{
+  "status": "finished",
+  "completed_families": 4,
+  "expected_families": 4,
+  "setup_seconds": 0.28100000001722947,
+  "elapsed_seconds": 9.48399999999674,
+  "family_seconds": [
+    8.23399999999674,
+    0.3279999999795109,
+    0.26600000000325963,
+    0.3279999999795109
+  ],
+  "family_wall_seconds": [
+    8.23399999999674,
+    0.34399999998277053,
+    0.28100000001722947,
+    0.34399999998277053
+  ],
+  "protocol": "voluntary-offers-v1",
+  "condition_split": "development",
+  "seed_index": 0,
+  "evaluation_seed": 2026121100,
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "not_applicable",
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "bd872bdf7059217f7553a1d68e941558dfe23ca98504eeea0546dd006d72f75a"
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "10a746c8c56fbf60f85fddcfd47e1172c27f59ff40dd074dad2539df4e266249"
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "dc9afcacd5f3c2795a809b78266ee2521b01ad3cec891bf123d9ce259b7344fd"
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "3823883698873bab22666960b5e448bacf6a869471ff6cd1cd05d676dfc43e46"
+    }
+  ],
+  "measurements": {
+    "families": 4,
+    "initial_rule_replays": 8,
+    "continuation_lives": 32,
+    "agents_per_rule": 1,
+    "apparatus": {
+      "acquisition_blocks": 8,
+      "continuation_blocks": 8,
+      "block_steps": 8,
+      "split_tick": 64,
+      "exposure_ticks": 128,
+      "feedback_ticks": 1,
+      "solo_steps": 50,
+      "local_placements": 12
+    },
+    "pre_old_local": {
+      "mean": 0.40677403383112204,
+      "se": 0.0538767639978702,
+      "n": 4
+    },
+    "arms": {
+      "near_stationary": {
+        "local_S": {
+          "mean": 0.5097653988098804,
+          "se": 0.018975962676614794,
+          "n": 4
+        },
+        "both_colors": {
+          "mean": 0.25,
+          "se": 0.14433756729740643,
+          "n": 4
+        },
+        "solo_Y": {
+          "mean": 0.75,
+          "se": 0.25,
+          "n": 4
+        },
+        "first_food": {
+          "mean": 0.875,
+          "se": 0.125,
+          "n": 4
+        },
+        "first_poison": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "no_contact": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "exposure_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "readout_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "solo_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "intake_A": {
+          "mean": 2.625,
+          "se": 0.375,
+          "n": 4
+        },
+        "intake_B": {
+          "mean": 3.375,
+          "se": 0.4732423621500228,
+          "n": 4
+        },
+        "realized_energy": {
+          "mean": 0.4627499580383301,
+          "se": 0.12845853491373785,
+          "n": 4
+        }
+      },
+      "near_reversal": {
+        "local_S": {
+          "mean": -0.026827651191221474,
+          "se": 0.048681772028038646,
+          "n": 4
+        },
+        "both_colors": {
+          "mean": 0.875,
+          "se": 0.125,
+          "n": 4
+        },
+        "solo_Y": {
+          "mean": 0.125,
+          "se": 0.23935677693908453,
+          "n": 4
+        },
+        "first_food": {
+          "mean": 0.375,
+          "se": 0.125,
+          "n": 4
+        },
+        "first_poison": {
+          "mean": 0.25,
+          "se": 0.14433756729740643,
+          "n": 4
+        },
+        "no_contact": {
+          "mean": 0.375,
+          "se": 0.125,
+          "n": 4
+        },
+        "exposure_survival": {
+          "mean": 0.75,
+          "se": 0.14433756729740643,
+          "n": 4
+        },
+        "readout_survival": {
+          "mean": 0.75,
+          "se": 0.14433756729740643,
+          "n": 4
+        },
+        "solo_survival": {
+          "mean": 0.625,
+          "se": 0.125,
+          "n": 4
+        },
+        "intake_A": {
+          "mean": 2.75,
+          "se": 0.5204164998665332,
+          "n": 4
+        },
+        "intake_B": {
+          "mean": 2.625,
+          "se": 0.23935677693908453,
+          "n": 4
+        },
+        "realized_energy": {
+          "mean": -0.8772503733634949,
+          "se": 0.12684712328265577,
+          "n": 4
+        }
+      },
+      "sham_stationary": {
+        "local_S": {
+          "mean": 0.18261163858793827,
+          "se": 0.05958756689813038,
+          "n": 4
+        },
+        "both_colors": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "solo_Y": {
+          "mean": -0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "first_food": {
+          "mean": 0.375,
+          "se": 0.125,
+          "n": 4
+        },
+        "first_poison": {
+          "mean": 0.5,
+          "se": 0.0,
+          "n": 4
+        },
+        "no_contact": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "exposure_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "readout_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "solo_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "intake_A": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "intake_B": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "realized_energy": {
+          "mean": -0.1882513165473938,
+          "se": 0.003750026226043701,
+          "n": 4
+        }
+      },
+      "sham_reversal": {
+        "local_S": {
+          "mean": -0.17485708780683729,
+          "se": 0.06452400001877819,
+          "n": 4
+        },
+        "both_colors": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "solo_Y": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "first_food": {
+          "mean": 0.5,
+          "se": 0.0,
+          "n": 4
+        },
+        "first_poison": {
+          "mean": 0.375,
+          "se": 0.125,
+          "n": 4
+        },
+        "no_contact": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "exposure_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "readout_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "solo_survival": {
+          "mean": 1.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "intake_A": {
+          "mean": 0.125,
+          "se": 0.125,
+          "n": 4
+        },
+        "intake_B": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4
+        },
+        "realized_energy": {
+          "mean": -0.2232513427734375,
+          "se": 0.03125,
+          "n": 4
+        }
+      }
+    },
+    "components": {
+      "pre_old": {
+        "mean": 0.40677403383112204,
+        "se": 0.0538767639978702,
+        "n": 4
+      },
+      "near_reversal_local": {
+        "mean": -0.026827651191221474,
+        "se": 0.048681772028038646,
+        "n": 4
+      },
+      "both_colors_gain": {
+        "mean": 0.875,
+        "se": 0.125,
+        "n": 4
+      },
+      "near_reversal_solo": {
+        "mean": 0.125,
+        "se": 0.23935677693908453,
+        "n": 4
+      },
+      "solo_gain": {
+        "mean": 0.0,
+        "se": 0.3535533905932738,
+        "n": 4
+      },
+      "adjusted_solo_gain": {
+        "mean": -0.875,
+        "se": 0.5543389456520863,
+        "n": 4
+      }
+    },
+    "safeguards": {
+      "stationary_solo": {
+        "mean": 0.875,
+        "se": 0.3145764348029479,
+        "n": 4,
+        "lower_2se": 0.24584713039410422
+      },
+      "reversal_exposure_survival": {
+        "mean": -0.25,
+        "se": 0.14433756729740643,
+        "n": 4,
+        "lower_2se": -0.5386751345948129
+      },
+      "stationary_exposure_survival": {
+        "mean": 0.0,
+        "se": 0.0,
+        "n": 4,
+        "lower_2se": 0.0
+      }
+    },
+    "gate": {
+      "criteria": {
+        "pre_old_positive": true,
+        "near_reversal_local_positive": false,
+        "both_colors_improve": true,
+        "near_reversal_solo_positive": false,
+        "solo_gain": false,
+        "adjusted_solo_gain": false,
+        "stationary_solo_noninferiority": true,
+        "reversal_survival_noninferiority": false,
+        "stationary_survival_noninferiority": true
+      },
+      "passed": false,
+      "failed_criteria": [
+        "near_reversal_local_positive",
+        "near_reversal_solo_positive",
+        "solo_gain",
+        "adjusted_solo_gain",
+        "reversal_survival_noninferiority"
+      ]
+    },
+    "by_initial_rule": {
+      "0": {
+        "pre_old_local": {
+          "mean": 0.39067504815951304,
+          "se": 0.05205302201584777,
+          "n": 4
+        },
+        "arms": {
+          "near_stationary": {
+            "local_S": {
+              "mean": 0.4807706996119426,
+              "se": 0.07964940719577013,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 0.5,
+              "se": 0.5,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 5.25,
+              "se": 0.75,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": 0.44674962759017944,
+              "se": 0.16909696909720717,
+              "n": 4
+            }
+          },
+          "near_reversal": {
+            "local_S": {
+              "mean": -0.052748020813548166,
+              "se": 0.04933739605308725,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 0.25,
+              "se": 0.47871355387816905,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 4.0,
+              "se": 0.9128709291752769,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 1.0,
+              "se": 0.408248290463863,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.9085001349449158,
+              "se": 0.2393506879282631,
+              "n": 4
+            }
+          },
+          "sham_stationary": {
+            "local_S": {
+              "mean": 0.1554370998395219,
+              "se": 0.05480611276940976,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 0.25,
+              "se": 0.47871355387816905,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.1845012903213501,
+              "se": 0.007500052452087402,
+              "n": 4
+            }
+          },
+          "sham_reversal": {
+            "local_S": {
+              "mean": -0.13992799827731991,
+              "se": 0.06088637223908022,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": -0.25,
+              "se": 0.47871355387816905,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.2545013427734375,
+              "se": 0.0625,
+              "n": 4
+            }
+          }
+        },
+        "components": {
+          "pre_old": {
+            "mean": 0.39067504815951304,
+            "se": 0.05205302201584777,
+            "n": 4
+          },
+          "near_reversal_local": {
+            "mean": -0.052748020813548166,
+            "se": 0.04933739605308725,
+            "n": 4
+          },
+          "both_colors_gain": {
+            "mean": 0.75,
+            "se": 0.25,
+            "n": 4
+          },
+          "near_reversal_solo": {
+            "mean": 0.25,
+            "se": 0.47871355387816905,
+            "n": 4
+          },
+          "solo_gain": {
+            "mean": 0.5,
+            "se": 0.6454972243679028,
+            "n": 4
+          },
+          "adjusted_solo_gain": {
+            "mean": 0.25,
+            "se": 0.8539125638299665,
+            "n": 4
+          }
+        },
+        "safeguards": {
+          "stationary_solo": {
+            "mean": 0.25,
+            "se": 0.25,
+            "n": 4,
+            "lower_2se": -0.25
+          },
+          "reversal_exposure_survival": {
+            "mean": -0.25,
+            "se": 0.25,
+            "n": 4,
+            "lower_2se": -0.75
+          },
+          "stationary_exposure_survival": {
+            "mean": 0.0,
+            "se": 0.0,
+            "n": 4,
+            "lower_2se": 0.0
+          }
+        }
+      },
+      "1": {
+        "pre_old_local": {
+          "mean": 0.42287301950273104,
+          "se": 0.07143998092461873,
+          "n": 4
+        },
+        "arms": {
+          "near_stationary": {
+            "local_S": {
+              "mean": 0.5387600980078181,
+              "se": 0.07235129378142377,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 6.25,
+              "se": 1.1086778913041726,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": 0.4787502884864807,
+              "se": 0.19077375244973302,
+              "n": 4
+            }
+          },
+          "near_reversal": {
+            "local_S": {
+              "mean": -0.0009072815688947883,
+              "se": 0.07450735221652831,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 0.0,
+              "se": 0.408248290463863,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 0.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 1.5,
+              "se": 0.28867513459481287,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 4.25,
+              "se": 0.75,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.846000611782074,
+              "se": 0.13741385651772575,
+              "n": 4
+            }
+          },
+          "sham_stationary": {
+            "local_S": {
+              "mean": 0.20978617733635474,
+              "se": 0.1076428465924138,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": -0.5,
+              "se": 0.5,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.1920013427734375,
+              "se": 0.0,
+              "n": 4
+            }
+          },
+          "sham_reversal": {
+            "local_S": {
+              "mean": -0.20978617733635474,
+              "se": 0.1076428465924138,
+              "n": 4
+            },
+            "both_colors": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_Y": {
+              "mean": 0.5,
+              "se": 0.5,
+              "n": 4
+            },
+            "first_food": {
+              "mean": 0.75,
+              "se": 0.25,
+              "n": 4
+            },
+            "first_poison": {
+              "mean": 0.25,
+              "se": 0.25,
+              "n": 4
+            },
+            "no_contact": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "exposure_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "readout_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "solo_survival": {
+              "mean": 1.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_A": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "intake_B": {
+              "mean": 0.0,
+              "se": 0.0,
+              "n": 4
+            },
+            "realized_energy": {
+              "mean": -0.1920013427734375,
+              "se": 0.0,
+              "n": 4
+            }
+          }
+        },
+        "components": {
+          "pre_old": {
+            "mean": 0.42287301950273104,
+            "se": 0.07143998092461873,
+            "n": 4
+          },
+          "near_reversal_local": {
+            "mean": -0.0009072815688947883,
+            "se": 0.07450735221652831,
+            "n": 4
+          },
+          "both_colors_gain": {
+            "mean": 1.0,
+            "se": 0.0,
+            "n": 4
+          },
+          "near_reversal_solo": {
+            "mean": 0.0,
+            "se": 0.408248290463863,
+            "n": 4
+          },
+          "solo_gain": {
+            "mean": -0.5,
+            "se": 0.28867513459481287,
+            "n": 4
+          },
+          "adjusted_solo_gain": {
+            "mean": -2.0,
+            "se": 0.7071067811865476,
+            "n": 4
+          }
+        },
+        "safeguards": {
+          "stationary_solo": {
+            "mean": 1.5,
+            "se": 0.5,
+            "n": 4,
+            "lower_2se": 0.5
+          },
+          "reversal_exposure_survival": {
+            "mean": -0.25,
+            "se": 0.25,
+            "n": 4,
+            "lower_2se": -0.75
+          },
+          "stationary_exposure_survival": {
+            "mean": 0.0,
+            "se": 0.0,
+            "n": 4,
+            "lower_2se": 0.0
+          }
+        }
+      }
+    }
+  }
+}
