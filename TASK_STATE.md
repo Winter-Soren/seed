@@ -1,6 +1,6 @@
 # Current state
 
-Updated 22 November 2026. Follow PLAN.md and AGENTS.md.
+Updated 22 November 2026 (evening). Follow PLAN.md and AGENTS.md.
 
 ## What we know
 
@@ -36,8 +36,17 @@ E131 compared feedback-timed exploration with ordinary foraging and the same quo
 
 ## What is running
 
-No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
+No experiment is running. E126 stopped at generation 50 of 200 and will not be resumed. Rung 1 stays undecided. Its partial genomes and reserved test worlds stay sealed.
 
 ## What is next
 
-The next diagnostic asks whether balanced opportunities to approach either item improve feedback access and reversal recovery when creatures still choose every move. It needs its own registered design and matched sham. E131's settings and held-out worlds are closed.
+On 22 November the owner set a new direction: brain wiring as a head start for learning. Seed will test one human-brain design principle at a time, each against its existing brains, with every contestant evolved fresh from blank.
+
+E132 is registered and tests the first principle: a fast, fading memory added to the existing slow-learning brain, as in the hippocampus and cortex. Before any run, the next steps are:
+
+1. Build the fast-slow controller, off by default.
+2. Prove that old genomes and earlier protocols are unchanged.
+3. Benchmark on the laptop.
+4. Append the exact commands.
+
+See `experiments/E132_PROTOCOL.md`.

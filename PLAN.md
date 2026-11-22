@@ -263,3 +263,54 @@ Work toward specific learning behaviors that have also been measured in mammals.
 At each new experiment decision, bring alternative architectures to the research chats for a roundtable. Have proponents explain which observed limitation their design addresses. Ask another participant to challenge the explanation, identify a simpler competing design and specify a test that could distinguish them. Record the recommendation, the main objection and the evidence that would change the decision in the lab notebook or the linked design note.
 
 Compare a candidate with the current controller on the same observations, feedback, world assignments and compute budget. Report learning, failures and survival alongside measured time and storage. Use one architectural change per comparison and keep old genomes usable. An architecture earns adoption by meeting its preregistered behavioral and resource criteria on fresh worlds across three lineages. For a measurement-only experiment, explain how the result changes the choice of architecture. A more efficient implementation must preserve the behavior it claims to accelerate.
+
+## Owner direction, 22 November 2026 (evening) · Wiring as a head start
+
+The owner reviewed the project with Claude and changed its direction. The owner
+approved exactly what is written in this section.
+
+**Thesis to test, not assume:**
+
+> Brain wiring is a head start. A brain built on a design principle taken from
+> the human brain learns a changed rule faster, and keeps it better, than a
+> generic brain trained with the same observations, feedback and compute.
+
+The long-term aim stays human-level general intelligence, but nothing in the
+repository may claim progress toward it. Replaying the whole of evolution is
+not the method. Evolution stays the outer loop that tunes a small genome, and
+the principle under test supplies the brain's structure.
+
+**Method.** Test one human-brain principle per experiment. Keep a principle only
+if it passes its preregistered gate on fresh worlds in at least two of three
+fresh training seeds and its lesion shows the principle is what helps. A kept
+principle becomes part of the starting brain for the next test. The intended order is:
+
+1. Fast and slow learning systems (hippocampus and cortex).
+2. Reward prediction error (dopamine and the basal ganglia), for delayed reward.
+3. Learning to learn (prefrontal cortex), for new tasks.
+4. Offline replay during rest (sleep), for long-term memory.
+
+This order may change only by a dated owner decision. Each step needs its own
+preregistration and architecture roundtable under the direction above.
+
+**What this supersedes.**
+
+- Phase 3's rung sequence and its conditional mechanisms. The Phase 3(d) pass
+  rule stays: beat the comparison controllers by more than two combined standard
+  errors in at least two of three seeds, and identify the mechanism with a lesion.
+- E126. It stays stopped at generation 50 and will not be resumed. Rung 1 stays
+  undecided. Its partial genomes and reserved held-out seeds stay sealed and
+  unused.
+- New side diagnostics on the saved A0, A1 and A2 genomes. Every contestant in
+  this sequence trains fresh from blank.
+
+**Still in force.** `AGENTS.md`, the "Do not" list, the compute limits, the
+reporting format and every earlier gate result. Phase 4's connectome comparison
+stays available for later, but no step above depends on it.
+
+**Gate style.** One primary score, a small number of pass conditions and one
+lesion. Fix all of them before training. Avoid gates with many joint conditions,
+because a failure must tell us which idea was wrong.
+
+**First step.** E132 tests fast and slow learning systems. See
+`experiments/E132_PROTOCOL.md`.

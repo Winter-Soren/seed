@@ -2648,3 +2648,36 @@ A2 alone passed the latency contrast against ordinary. No lineage passed latency
 **Decision.** The behavioral gate failed at 0/3 and the setting fails adoption. Retire this 12-turn exploration setting from the improvement sequence. No tuning or extra panels on these worlds. The distinct next question is whether balanced, voluntarily chosen item encounters improve feedback access and reversal recovery against a matched sham. This is a candidate for separate preregistration.
 
 **Verification and compute.** Windows CIM access stopped the first readiness attempt before Python started. Its 1.296 seconds remained in the canonical ledger. The guarded retry passed 36 focused tests and seven independent synthetic check groups. The four-family development panel and its audit took 49.520 and 22.799 seconds. Final panels took 190.611, 104.387 and 147.074 seconds serially, with 36.712 seconds for the joint audit. Both compiled and warm policy timings are in the development record. The single [hosted Windows job](https://github.com/Winter-Soren/seed/actions/runs/45034835612) passed 601 tests in 1,096.658 test seconds and used 1,195 whole-job seconds. Study charge was 1,787.798/5,400 seconds, including reporting. The shared daily ledger stood at 22,891.011/28,800 seconds. The reporting check preserved all earlier diagnostic JSON bytes. [Operational accounting](../results/diagnostics/E131-operations.json) · [Generated results](../results/RESULTS.md#feedback-timed-exploration-timed-exploration-v1)
+
+### E126 closure · 22 November 2026 · Stopped at generation 50, not resumed
+
+The owner reviewed the project and changed its direction (PLAN.md, "Owner direction, 22 November 2026 (evening)"). E126 will not be resumed. Rung 1 of the Phase 3 task ladder stays **undecided**, not passed and not failed. The six generation-50 run folders, their 36 checkpoints and every audit receipt stay as they are. The partial genomes are not evaluated and not used as starting points. The reserved held-out seeds 2026120501–03 stay sealed and unused. No later experiment may cite E126 as evidence about recovery. This entry changes no earlier entry.
+
+**Reason.** Finishing the registered comparison projected to 60,800 s against its 43,200 s ceiling. The owner chose a new sequence of experiments over raising the budget. That sequence tests one human-brain design principle at a time against Seed's existing controllers, starting each contestant from blank.
+
+### E132 preregistration · 22 November 2026 · Fast and slow learning systems
+
+**Question.** Does a fast, decaying memory added to Seed's existing plastic brain help a creature recover after an unannounced food-rule change, compared with the same brain without it and with the fixed-weight recurrent controller? This is the first step of the owner's "wiring as a head start" sequence. The principle comes from complementary learning systems in the hippocampus and neocortex ([McClelland, McNaughton and O'Reilly, 1995](https://doi.org/10.1037/0033-295X.102.3.419)). The [protocol](E132_PROTOCOL.md) fixes the controller, contestants, training world, budget, seeds, score, gate, lesion, roundtable record and compute rules.
+
+**Hypothesis.** After 50 matched generations from blank, `fast-slow-v1` has a higher late-reversal score J than both `rules-v0` and `direct-rnn-v1` on fresh worlds. Freezing its fast weights at the switch removes the advantage.
+
+**Pass.** The same two or more of three training seeds (2026121101–03) each satisfy all four conditions:
+
+1. J(fast-slow) − J(rules-v0) > 2 paired SE.
+2. J(fast-slow) − J(direct) > 2 paired SE.
+3. J(fast-slow) − J(fast-slow lesion) > 2 paired SE in the reversal world.
+4. The lower two-SE bound of the end-of-life survival difference against rules-v0 is above −0.10.
+
+Held-out bases: 128 per seed, 32 per flip time, each replayed under both starting rules. Evaluation seeds: 2026121201–03.
+
+**Fail.** Anything else. A failed E132 is reported plainly and returned to the owner. There is no tuning of the fast pathway on these worlds and no substitute metric.
+
+**Status at registration.** No E132 code, benchmark, training or evaluation exists. Before any final run, these steps must be completed and appended here as a dated pre-final amendment:
+
+1. Implement `fast-slow-v1`, off by default.
+2. Write tests proving old genomes, EVAL v1 and earlier protocols are byte-identical with it off.
+3. Run the three-generation laptop benchmarks (development seed 2026121100).
+4. Write the cost forecast against the 36,000 s study ceiling.
+5. Fix the exact commands.
+
+That amendment may add commands and measured costs only. The 22 November laptop ledger stood at 22,891 s of 28,800 s after E131, so the benchmark and training belong to later local days.
