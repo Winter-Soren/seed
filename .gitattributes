@@ -34,3 +34,5 @@ runs/*_E135-*/** -text
 results/diagnostics/E135-*.json -text
 runs/*_E136-*/** -text
 results/diagnostics/E136-*.json -text
+results/diagnostics/E137-*.json -text
+results/diagnostics/E137-*.jsonl -text
