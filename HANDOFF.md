@@ -1,5 +1,9 @@
 # HANDOFF: Seed, an architecture that grows, learns and evolves on its own
 
+> **Publication update, 22 November 2026.** The owner authorized the existing
+> GitHub repository to become public under an open-source license. This
+> supersedes the private-repository instruction in the original setup notes.
+
 > **Current guidance, 19 November 2026:** this document preserves the original
 > design handoff. Follow `PLAN.md` and `TASK_STATE.md` for the current sequence.
 > E113 has already contradicted the original statement below that a fixed instinct

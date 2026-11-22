@@ -175,9 +175,9 @@ see the accuracy-by-meal curve fill in, and press a button to flip the food rule
 
 The simplest route is to export recorded trajectories and weights as JSON from
 the engine and replay them in JavaScript. State clearly on the page what this
-is—a small research simulation—and what it is not. The repository stays private.
-Do not publish the page or change repository visibility without the owner's
-explicit go-ahead.
+is—a small research simulation—and what it is not. On 22 November 2026 the owner
+approved open-sourcing the GitHub repository. Deployment of the demo and
+distribution on Hugging Face are separate release decisions.
 
 ## Optional work
 

@@ -4,6 +4,25 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
 
 **All three evolved lineages learned when the safe food changed. Pausing changes to connection strengths during 33 turns without food cues helped them remember.** Back in a fresh grid, the pause improved their chance of finding food before poison by **9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points** over allowing updates throughout. All three met the local memory criterion. Only two met the stricter criterion for retaining immediate foraging performance. We imposed the pause in the experiment. [Reversal learning](#learning-a-changed-rule-and-using-it-alone) · [Memory intervention](#when-should-a-learned-connection-keep-changing) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
 
+## Research milestones
+
+Each ± is one standard error in the underlying evaluation. Three-value sequences are for A0, A1 and A2, in that order.
+
+| Step | Status | What the experiments show |
+| --- | --- | --- |
+| Learn a stable food rule during one life | **Achieved** | All three lineages evolved from blank genomes passed the original learning gate. Among creatures reaching their twentieth meal, first-to-twentieth meal accuracy rose by 27 ± 2, 21 ± 2 and 25 ± 2 percentage points. The fixed-weight baseline won the original average harvest score in all three comparisons, so that score alone cannot establish learning. [Learning tests](results/EVAL_V3.md) · [Fixed-weight baseline](results/E113_BASELINE.md) |
+| Pass useful experience across lives | **Partial** | Newborns given donor weight changes found shelter 38.4 ± 5.3, 44.6 ± 5.4 and 37.3 ± 5.4 turns sooner. In the later selection experiment, the three final descendants saved −2.1 ± 3.1, −40.8 ± 6.3 and +6.3 ± 6.0 turns versus their immediate parents. Zero of three cleared the improvement threshold. [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Descendant test](#evolving-with-inherited-experience) |
+| Learn from another creature and pass on the lesson | **Partial** | Zero of three original or selected observers cleared their respective first-choice gates. Adding a calibrated readout improved first-food success by 32.8 ± 4.3, 24.2 ± 4.1 and 36.7 ± 4.3 points versus erasing the acquired belief. The lesson survived three handoffs in all three lineages. One lineage cleared both cumulative-improvement comparisons. [Original observer](#learning-by-watching-another-creature) · [Selected observer](#evolving-observers-to-use-a-demonstration) · [Calibrated readout](#using-a-calibrated-food-belief) · [Teaching chain](#learning-passed-through-three-pupils) |
+| Reverse a food preference after matched experiences | **Achieved** | After sixteen guided encounters with the reversal, all three lineages switched their local preference. Compared with creatures given the old-rule experience, they found the newly safe food first in a fresh grid 58.6 ± 3.2, 58.6 ± 3.4 and 59.0 ± 3.3 percentage points more often. Zero of three matched fixed-weight controls met the combined criterion. [E127 result](#learning-a-changed-rule-and-using-it-alone) |
+| Retain the new preference through a gap | **Failed** | All three lineages still showed a new-food preference after 33 active turns without food cues. First-food success fell by 9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 points. Zero of three cleared the registered preservation criteria for local choice or independent foraging. [E128 result](#what-survives-33-turns-without-food-cues) |
+| Preserve the new preference by controlling when weights change | **Partial** | An imposed pause preserved local preference in all three lineages. Solo first-food success rose by 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 points versus continued updating. Two of three met the stricter transfer criterion. A controller that can decide when to pause remains open. [E129 result](#when-should-a-learned-connection-keep-changing) |
+| Recover from an unannounced reversal through self-directed foraging | **In progress** | E130 compares the original founders with their own generation-200 descendants, using stationary controls and counting all assigned creatures, including missed meals and deaths. All three held-out panels finished and the audit checked 192 families. The registered decision awaits software verification and final reporting. [E130 protocol](experiments/E130_PROTOCOL.md) · [Architecture roundtable](experiments/ARCHITECTURE_COUNCIL_E130.md) |
+| Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
+| Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
+| Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
+| Test whether fly wiring provides a better starting point | **Proposed** | Compare fly-derived wiring with class-shuffled fly wiring and density-matched random wiring on the hardest passed task. Use the same budget and three seeds. The planned gate requires reaching a preregistered level sooner than both controls in at least two of three seeds. [Connectome experiment plan](PLAN.md#phase-4--finer-genome-and-the-connectome-test) |
+| Test memory outside Seed's grid | **Proposed** | MiniGrid Memory asks an agent to remember a cue and use it at a junction. The proposed comparison gives each controller the same observations and training budget and evaluates held-out layouts. Seed has no MiniGrid score. [Benchmark controls](experiments/ARCHITECTURE_COUNCIL_E130.md#independent-benchmark-and-eventual-release) |
+
 ## What the creatures do
 
 Four creatures move around a 16 × 16 grid. Each sees a small patch around itself and can move one square or stay put. There are two kinds of items, A and B. In one world, A is food and B is poison. In another world, B is food and A is poison. The rule is hidden from the creatures. Food adds energy, poison drains it, and staying alive uses a little energy each turn. A life lasts up to 300 turns and ends early if energy reaches zero. In some tests, the food rule switches halfway through.
@@ -379,7 +398,7 @@ On macOS or Linux, use `python3` to create the environment and `.venv/bin/python
 <details>
 <summary>More setup and testing notes</summary>
 
-On the owner's laptop, work from the checkout on D: and set temporary files to use that drive before setup.
+If your system drive is short on space, keep the checkout on a drive with room and set temporary files to use the checkout before setup.
 
 ```powershell
 New-Item -ItemType Directory -Force .tmp | Out-Null
@@ -400,3 +419,7 @@ For software tests, create `.tmp/` in the checkout and run `python -X utf8 -m un
 | See how the world and brains work in code | [Simulation](seed/seed.py) · [Experiment runner](scripts/run_experiment.py) |
 
 The [earlier README](https://github.com/Winter-Soren/seed/blob/v0.5-evalv5/README.md) has the original tables and charts for the older experiments, including the hand-set starting brain and the connection growth tests.
+
+## License
+
+Seed is available under the [MIT License](LICENSE).
