@@ -1,0 +1,347 @@
+{
+  "study": "E137",
+  "kind": "successor admission from preserved E136 development",
+  "status": "passed",
+  "sourceCommit": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8",
+  "releasedHead": "c6f56c3b310ebed1bf682e515b30a362185d6e43",
+  "registrationCommit": "bbd3cc2d29b9583cc34aa7d6c9573ca9ea436732",
+  "createdAt": "2026-11-22T23:18:34.3282240+05:30",
+  "pins": {
+    ".tmp/E137-development-forecast.ps1": "5651a9b98717984bb959a3acb04218d41fb51440515507e1bc11caebda8c05c3",
+    ".tmp/E137-offline-reference.json": "f8ae62c69405c903fdc53c8740a01470434716ac283efe5280cd1459ab256359",
+    ".tmp/E136-offline-reference.json": "d839d63b1ae551ccc04bee1175b603889ab2da0a9503ef66ce1b1ad62df30c28",
+    ".tmp/E136-readiness-attempt1.result.json": "980bda68c7b21e7f8e0d126c4794695548531b1190cbec3092f0b3ce4fbd809a",
+    ".tmp/E136-readiness-attempt2.result.json": "f26bdf4b43c4fd6e90ec42e59c4d693b3eb034b8505ab423562c208b432fa7e7",
+    ".tmp/E136-readiness-inventory-recovery.charge.json": "32950710c2aeca0b4ceb2a519e8e7aebab47c811a4a6ce7ab1bb5736a87d7270",
+    ".tmp/E136-readiness-recovery-release.charge.json": "215a80162e16f5edd70976277905c2979c0a93e8434691f2f2007ce4e897dd14",
+    ".tmp/E136-readiness-attempt3.result.json": "ad45af417bf5af4ffc8cb86d1a35637472bb167217bc79275ae67332a26f085a",
+    ".tmp/E136-benchmark-isolated-attempt1.result.json": "ae058b740a65d0de3832cf0454902b30e8e27dcd67b75cfa7cfe8343ff3660e6",
+    ".tmp/E136-cold-development-preflight.charge.json": "c20c8da56301056101b5ccb46c86a63362e9206dac18ee294252ec47b10e086f",
+    ".tmp/E136-cold-development-release.charge.json": "39a962293664694f26e4970bfd1f5308aeecfc0b7b3284b7e228ad745e950f17",
+    ".tmp/E136-readiness-cold-recovery-attempt1.result.json": "fa8f94b9f81cfad0987da54cc17f7cd8fc94a1619578e294190745b472e764b9",
+    ".tmp/E136-benchmark-isolated-recovery-attempt1.result.json": "92061ea47f581dc455bdd8e84977216a1a822cbc0f5692ba769d49de866da45b",
+    ".tmp/E136-benchmark-background-attempt1.result.json": "0e32a82fd86f6122c64e8c072fe9c744b9efc3dd7a992af241821a1401cda83a",
+    ".tmp/E136-benchmark-eval-attempt1.result.json": "006aa5d0747886ef3bafdc17894f06a9df0b301c5b93ca40fae87dcf9cc48c7c",
+    ".tmp/E136-evaluation-continuation-preflight.charge.json": "1700d9f758cd9b17c0025ad927f271e0c06849cb115e004994158e8a1e0ce345",
+    ".tmp/E136-evaluation-continuation-release.charge.json": "e11442358ca776f04deabbf606631c0a83e83ea803913c8a82ac72e3641544c7",
+    ".tmp/E136-benchmark-eval-continuation-attempt1.result.json": "8d956fd3352e9fa8109a7bd17c8c0ad09fea0cb098cd72144be067d14f9caf75",
+    ".tmp/E136-audit-development-attempt1.result.json": "05bd29a7a8802b8a023566e267d9f4b40ed96e753ffde171076c4e71542614c5",
+    ".tmp/E136-audit-correction-preflight.charge.json": "e01af084afa03d862db621bcbc908f69919bbfee26e5c710c9e576c2ec5a4c98",
+    ".tmp/E136-audit-correction-release.charge.json": "185f560ddb2530c94054d8e10ce4074f0bcd840ccacb193c0ed3713c9eaad17c",
+    ".tmp/E136-audit-development-attempt2.result.json": "1f16e827023ed10cf9ec183de98bb332bbb7c0e4ea2bdb08611e27f634c4ac7d",
+    ".tmp/E136-admission-stop-archive.charge.json": "0ec3b3971b8703cd5fa025c125ed60771471c307e1eed1da99278c0cf4537e8f",
+    ".tmp/E136-admission-stop-report.charge.json": "e3ccabfa8fb7f72dd98e545a3e2a9d4541c69081c7d436fef9bd29998d33b780",
+    ".tmp/E136-final-local-closeout.charge.json": "8c760178159e43a5354f41b2c80c5b30e410436cda6f849f95fb7011a679f52d",
+    ".tmp/E137-registration-source.charge.json": "aabc164ed4b64f7f72a0b72f0f5d9b0e89196d223c0b899f5f3fc729fbb37e21",
+    ".tmp/E137-guard-source-preflight.charge.json": "9c0f16aafb3e3ad396d300ead5b3134c45701acc49d501ae2023f0a95abc4b54",
+    ".tmp/E137-audit-development-attempt1.result.json": "309c51560fc2f3e6c6f0742de6958a6fdfdcf161f6cf39262c431d1811f8e650",
+    ".tmp/E136-benchmark-isolated-recovery-attempt1.guard.jsonl": "0e3f2ce480cb72de7ea3e3b4d12ac601d100f4fe31194656675bad16d6b112bb",
+    ".tmp/E136-benchmark-background-attempt1.guard.jsonl": "cd67f42e4464445ea16804cdbb39a9365e4fb0fa0e0a0467d95d9664b92db65e",
+    ".tmp/E136-benchmark-eval-continuation-attempt1.guard.jsonl": "a4a3ade2684db60c6ac3a0d645ba863d49300acfa422a1de656ad861900ee232",
+    ".tmp/E136-benchmark-eval-attempt1.guard.jsonl": "ae4ef7bc85ebf7c50bb966e70c68a2f4f0ce83d882cfaf3a5c044d5d47441bd4",
+    ".tmp/E137-audit-development-attempt1.guard.jsonl": "ab900420ca7ba69705b39f6d85b8db2493e9c5c00d32392930b2ec6dfd7f1ff2",
+    ".tmp/E137-audit-development-attempt1.progress.jsonl": "ac29474152fc4b5906902f27cc6fb48f2131e3a14552465ff1a6528b917bf468",
+    ".tmp/E137-audit-development-attempt1.audit.json": "015d30c892a00221d6631caea108cad1b6901d8e78fa3abd31a4c13266b77f97",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/status.json": "8e227146dd678a725d47805875a8df0fecd2fb3e7621ea55effb8722b8b79b2c",
+    "runs/20261122-225619_E136-benchmark-background/status.json": "72c1371d4937d47c304ab5f915994d727eb8df47066e1944d3cf99bb33942520",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/status.json": "bfbcd274591bfb4c823b0bb91695fe8a2dfe04f48af9cde7ec649d3c8e1371e1",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/config.json": "415855860ba94b2813cfa02057be369e1b0f34668ad19e261d05fa74ef085129",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/summary.json": "be3eab308d178d7da54c56e3264ff0f350f68ce09c70c09536d0d4a89575b968",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/attempt_0000.npz": "b60d539c72b19f0e9e421eb9341a2378c1d0c4e05dc704c50fdb12d5a021c186",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/attempt_0001.npz": "acea0776691f974db8fb71d2d1d54a2899e8a417e03173085d2c02d592e9974a",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/samples_0001.npz": "312abd17faff560c21a2f8b16f3289deea0c5112bd600c0b0ae0d668ef177074",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/attempt_0002.npz": "31764f22d7c701a7f961188b08c15cbf527f934161681398fde9677badd6d657",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/generations/samples_0002.npz": "b360d13dcb7ccfe1eff50e7f34f1fba07acfdf1044bdbc9b3175dcee1207932c",
+    "runs/20261122-225549_E136-benchmark-isolated-recovery/genome_final.npy": "b66e9a4785c02e32809e783870d4a0375f421c2ae918c6a3ab3d73f5684237dc",
+    "runs/20261122-225619_E136-benchmark-background/config.json": "ad92a1172e5e4e53b666d081732ee753b56cc3c1d8e293ec77051ed4c8672613",
+    "runs/20261122-225619_E136-benchmark-background/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-225619_E136-benchmark-background/summary.json": "3505090e967fe43fb2640a67cd2813a4b90fee3856282b5ff8f8b2c26bbf8120",
+    "runs/20261122-225619_E136-benchmark-background/generations/attempt_0000.npz": "b60d539c72b19f0e9e421eb9341a2378c1d0c4e05dc704c50fdb12d5a021c186",
+    "runs/20261122-225619_E136-benchmark-background/generations/attempt_0001.npz": "6ae5c7a43b52a4d447900238fe23738d523757739c59a2ba9b2c53b79757be08",
+    "runs/20261122-225619_E136-benchmark-background/generations/samples_0001.npz": "60ae5b220f435e33ac89fffbea67958385e4c510a0c8455afab7a43985cb816d",
+    "runs/20261122-225619_E136-benchmark-background/generations/attempt_0002.npz": "d82de59a39540e89bd9a683bd8a31677fd5a503d0f4498f47c715414213f0445",
+    "runs/20261122-225619_E136-benchmark-background/generations/samples_0002.npz": "c3a4140c3a9c4ef028201b4bf9656c9ea237f5ba15db53efa58d085ad2bbb9c6",
+    "runs/20261122-225619_E136-benchmark-background/genome_final.npy": "867464a16d15d3af08b3a564ee22f1985fac98a0bd6d9fcce4e5263d607359cb",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/config.json": "9c8307a7ed54003c97405facc079a2211fc95592d7ee228d8cfcbe1669ca027f",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/summary.json": "92ab1d68c6469e76b235b9c3af89e2ee0c36bbadcfa045d9ec1877a99fdef7f5",
+    "runs/20261122-225702_E136-benchmark-eval/status.json": "480c3ccd4ecc41fa3744ef39ffb366f3d7cce937674a11de5bd61c9e0391e7ae",
+    "runs/20261122-225702_E136-benchmark-eval/config.json": "6cc2aef5a78ebe9f26f72e65a4923261ad86568953d3fdeca3665e16f2fa879c",
+    "runs/20261122-225702_E136-benchmark-eval/evaluation.jsonl": "d8ec2942264c15178a01df678020d374c72d745f6bf36a05b9616ba0832c1b22",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/assignments.npz": "6d44a61a88e046eebce058269a1dcb10da808cb87cfbc5794b8419b708ce23f4",
+    "runs/20261122-225702_E136-benchmark-eval/assignments.npz": "6d44a61a88e046eebce058269a1dcb10da808cb87cfbc5794b8419b708ce23f4",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/families/family_0000.npz": "f28dcc3e518a5928828a4b56c31c3299405f056ed61cc40ff512946aa73f9376",
+    "runs/20261122-225702_E136-benchmark-eval/families/family_0000.npz": "f28dcc3e518a5928828a4b56c31c3299405f056ed61cc40ff512946aa73f9376",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/genome_isolated.npy": "b66e9a4785c02e32809e783870d4a0375f421c2ae918c6a3ab3d73f5684237dc",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/genome_background.npy": "867464a16d15d3af08b3a564ee22f1985fac98a0bd6d9fcce4e5263d607359cb",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/families/family_0001.npz": "f8d563ecab570ba56d69b416f0f4a00f708fc8e72267114b94df853c8b9ede7c",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/families/family_0002.npz": "0ae2c290ecc49dd56fa15ab23997c66c621699cdcc49c36f7719fbf72476f4df",
+    "runs/20261122-230224_E136-benchmark-eval-continuation/families/family_0003.npz": "173d4d27ee9187183b044fae53caa5b6ee58dabfd2a8202382bead049d357a8b"
+  },
+  "checks": {
+    "isolatedTrainingSlots": true,
+    "backgroundTrainingSlots": true,
+    "evaluationSlots": true,
+    "auditSlot": true,
+    "measuredCombinedStudy": true,
+    "allCombinedHardSlots": true,
+    "dailyBalance": true,
+    "measuredDailyBalance": true,
+    "freeC": true,
+    "protectedD": true,
+    "availableCommit": true
+  },
+  "stageCaps": {
+    "audit-development": 200,
+    "A0-isolated": 150,
+    "A0-background": 150,
+    "A1-isolated": 150,
+    "A1-background": 150,
+    "A2-isolated": 150,
+    "A2-background": 150,
+    "A0": 300,
+    "A1": 300,
+    "A2": 300,
+    "audit-final": 480,
+    "status-summary": 90
+  },
+  "finalKeysDerived": false,
+  "development": {
+    "scientificBehaviorNotReadForAdmission": true,
+    "archivedStudy": "E136",
+    "trainingProcesses": 2,
+    "evaluationGenotypes": 3,
+    "training": {
+      "isolated": {
+        "run": "runs/20261122-225549_E136-benchmark-isolated-recovery",
+        "guardSeconds": 25.7637704,
+        "attemptWallSeconds": [
+          15.65600000001723,
+          1.3589999999967404
+        ],
+        "nonattemptSeconds": 8.748770399986029,
+        "formula": "guarded_nonattempt +cold_attempt1 +9*1.5*warm_attempt2",
+        "seconds": 42.75127039995925,
+        "threeLineagesSeconds": 128.25381119987776,
+        "hardSlotSeconds": 150,
+        "cleanupSeconds": 30,
+        "bothViewReadoutsCharged": true
+      },
+      "background": {
+        "run": "runs/20261122-225619_E136-benchmark-background",
+        "guardSeconds": 32.9823616,
+        "attemptWallSeconds": [
+          18.875,
+          1.8280000000377186
+        ],
+        "nonattemptSeconds": 12.279361599962279,
+        "formula": "guarded_nonattempt +cold_attempt1 +9*1.5*warm_attempt2",
+        "seconds": 55.83236160047148,
+        "threeLineagesSeconds": 167.49708480141445,
+        "hardSlotSeconds": 150,
+        "cleanupSeconds": 30,
+        "bothViewReadoutsCharged": true
+      }
+    },
+    "evaluationRun": "runs/20261122-230224_E136-benchmark-eval-continuation",
+    "evaluationGuardSeconds": 57.3259748,
+    "stoppedPrefixGuardSeconds": 71.0950504,
+    "evaluationFamilyWallSeconds": [
+      35.23399999999674,
+      31.92099999997299,
+      4.0,
+      4.438000000023749
+    ],
+    "warmTimingReplaySeconds": [
+      0.625,
+      0.7029999999795109
+    ]
+  },
+  "trainingForecast": {
+    "isolated": {
+      "run": "runs/20261122-225549_E136-benchmark-isolated-recovery",
+      "guardSeconds": 25.7637704,
+      "attemptWallSeconds": [
+        15.65600000001723,
+        1.3589999999967404
+      ],
+      "nonattemptSeconds": 8.748770399986029,
+      "formula": "guarded_nonattempt +cold_attempt1 +9*1.5*warm_attempt2",
+      "seconds": 42.75127039995925,
+      "threeLineagesSeconds": 128.25381119987776,
+      "hardSlotSeconds": 150,
+      "cleanupSeconds": 30,
+      "bothViewReadoutsCharged": true
+    },
+    "background": {
+      "run": "runs/20261122-225619_E136-benchmark-background",
+      "guardSeconds": 32.9823616,
+      "attemptWallSeconds": [
+        18.875,
+        1.8280000000377186
+      ],
+      "nonattemptSeconds": 12.279361599962279,
+      "formula": "guarded_nonattempt +cold_attempt1 +9*1.5*warm_attempt2",
+      "seconds": 55.83236160047148,
+      "threeLineagesSeconds": 167.49708480141445,
+      "hardSlotSeconds": 150,
+      "cleanupSeconds": 30,
+      "bothViewReadoutsCharged": true
+    }
+  },
+  "evaluationForecast": {
+    "formula": "continuation_guard_nonfamily +sum(all4_possibly_cold_including_original_prefix_age) +126*1.5*max(two_warm_timing_replays)",
+    "coldIndices": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "nonfamilySeconds": 15.638974800023746,
+    "coldSeconds": 75.59299999999348,
+    "maximumWarmSeconds": 0.7029999999795109,
+    "seconds": 224.09897479614477,
+    "threeLineagesSeconds": 672.2969243884343,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30,
+    "conservativeExtraWarmEquivalentFamilies": 2
+  },
+  "auditForecast": {
+    "timing": {
+      "training_attempt_wall_seconds": [
+        1.8900000000139698,
+        0.01600000000325963,
+        0.015000000013969839,
+        0.01600000000325963
+      ],
+      "family_wall_seconds": [
+        2.094000000040978,
+        0.46899999998277053,
+        0.4529999999795109,
+        0.07800000003771856
+      ],
+      "elapsed_seconds": 18.95300000003772,
+      "setup_and_summary_seconds": 13.921999999962281,
+      "runs": [
+        {
+          "kind": "training",
+          "run": "runs/20261122-225549_E136-benchmark-isolated-recovery",
+          "wall_seconds": 11.639999999955762,
+          "unit_seconds": 1.9060000000172295,
+          "overhead_seconds": 9.733999999938533,
+          "assignment_seconds": 0.0
+        },
+        {
+          "kind": "training",
+          "run": "runs/20261122-225619_E136-benchmark-background",
+          "wall_seconds": 0.3130000000237487,
+          "unit_seconds": 0.031000000017229468,
+          "overhead_seconds": 0.28200000000651926,
+          "assignment_seconds": 0.0
+        },
+        {
+          "kind": "evaluation",
+          "run": "runs/20261122-230224_E136-benchmark-eval-continuation",
+          "wall_seconds": 6.547000000020489,
+          "unit_seconds": 3.094000000040978,
+          "overhead_seconds": 3.452999999979511,
+          "assignment_seconds": 0.09399999998277053
+        }
+      ],
+      "non_run_wall_seconds": 0.45300000003771856,
+      "training_order": "development isolated/background, then lineage 0/1/2 isolated/background; attempts ascending",
+      "family_order": "four development, then final lineage 0/1/2; (8,16),(16,32),(8,32),(16,16) cycle"
+    },
+    "externalOverheadSeconds": 8.682924199999999,
+    "guardMinusAuditSeconds": 8.22992419996228,
+    "trainingAttempts": 64,
+    "families": 388,
+    "administrativeRunCosts": 12,
+    "trainingRuns": 8,
+    "evaluationRuns": 4,
+    "maximumTrainingRunOverheadSeconds": 9.733999999938533,
+    "evaluationOtherOverheadSeconds": 3.3589999999967404,
+    "evaluationAssignmentSeconds": 0.09399999998277053,
+    "assignmentDevelopmentEquivalents": 97,
+    "coldAttemptIndices": [
+      0
+    ],
+    "warmAttemptIndices": [
+      1,
+      2,
+      3
+    ],
+    "coldFamilyIndices": [
+      0,
+      1,
+      2
+    ],
+    "warmFamilyIndices": [
+      3
+    ],
+    "warmFamilyLengthScale": 1.2,
+    "formula": "guard_minus_elapsed +non_run +8*max(train_overhead) +4*(eval_overhead-assignment) +97*assignment +attempt0 +63*1.5*max(attempt1..3) +sum(family0..2) +385*1.5*(96/80)*family3",
+    "seconds": 169.5809242242882,
+    "hardSlotSeconds": 480,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownE136Seconds": 423.52060709999995,
+    "knownE137Seconds": 30.9130291,
+    "knownStudySecondsBeforeCosting": 454.43363619999997,
+    "combinedStudies": [
+      "E136",
+      "E137"
+    ],
+    "studyLimitSeconds": 3600.0,
+    "operatingMarginBeforeCostingSeconds": 196.2698951,
+    "costingChargedFromOperatingMargin": true,
+    "predecessorUncertaintyReserveSeconds": 4.91,
+    "predecessorReserveIsDailyOnly": true,
+    "reportingReserveSeconds": 90,
+    "futureCleanupReserveSeconds": 300,
+    "measuredScheduleWithMarginSeconds": 2178.3322759140146,
+    "allFutureHardSlotsAndKnownSeconds": 3020.7035313,
+    "hardMarginSeconds": 579.2964686999999,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 25480.16098859999,
+    "dailyRemainingSeconds": 3319.8390114000103,
+    "dailyLimitSeconds": 28800,
+    "projectedDayAllHardSlotsSeconds": 28051.34088369999,
+    "localOnly": true,
+    "newHostedCiSeconds": 0
+  },
+  "storage": {
+    "observedMaxSampleBytes": 251359,
+    "observedMaxCheckpointBytes": 2816,
+    "observedMaxFamilyBytes": 440217,
+    "observedMaxTrainingMetadataBytes": 7580,
+    "observedEvaluationMetadataBytes": 10604,
+    "futureAuditBytes": 7000975.0,
+    "futureSingleCopyBytes": 192557083.0,
+    "existingDevelopmentBytes": 2803397,
+    "atomicAllowanceBytes": 7000975.0,
+    "futureAllowanceBytes": 588877319.5,
+    "formula": "2*1.5*(6*(10*max_sample+11*max_checkpoint+5*max_train_metadata)+384*max_family+96*eval_metadata+97*dev_audit)+1.5*existing+largest_atomic",
+    "localGitCopyIncluded": true,
+    "freeCBytes": 25831604224,
+    "freeDBytes": 45526773760,
+    "projectedDFreeBytes": 44937896440.5,
+    "minimumDFreeBytes": 10737418240
+  },
+  "memory": {
+    "source": "cim",
+    "availablePhysicalBytes": 7505575936,
+    "availableCommitBytes": 14463840256.0,
+    "commitLimitBytes": 53056770048
+  },
+  "limitations": [
+    "Only archived development timing/size and accepted independent audit evidence enter admission; no new rollouts or final assignments.",
+    "The first four evaluation durations are all charged as possibly cold, with126 additional warm units as a conservative bound.",
+    "Eight training and four evaluation audit runs are priced separately; assignment validation scales from4 to388 total families.",
+    "All E136 and E137 charges remain in the3600s combined ceiling;4.91s predecessor uncertainty is a separate daily reserve.",
+    "One successful metadata forecast does not release final work until its immutable report is committed and the E137 reference explicitly records admission."
+  ]
+}

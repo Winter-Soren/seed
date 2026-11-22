@@ -1,0 +1,24 @@
+{"event": "audit-start", "source": "c5ce01b4ec5436195c88924ba13a00b31ab3f4d8"}
+{"event": "run-start", "kind": "training", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery"}
+{"event": "attempt-start", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery", "index": 1}
+{"event": "attempt-complete", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery", "index": 1, "wall_seconds": 1.8900000000139698}
+{"event": "attempt-start", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery", "index": 2}
+{"event": "attempt-complete", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery", "index": 2, "wall_seconds": 0.01600000000325963}
+{"event": "run-complete", "kind": "training", "run": "runs/20261122-225549_E136-benchmark-isolated-recovery", "wall_seconds": 11.639999999955762, "unit_seconds": 1.9060000000172295, "overhead_seconds": 9.733999999938533, "assignment_seconds": 0.0}
+{"event": "run-start", "kind": "training", "run": "runs/20261122-225619_E136-benchmark-background"}
+{"event": "attempt-start", "run": "runs/20261122-225619_E136-benchmark-background", "index": 1}
+{"event": "attempt-complete", "run": "runs/20261122-225619_E136-benchmark-background", "index": 1, "wall_seconds": 0.015000000013969839}
+{"event": "attempt-start", "run": "runs/20261122-225619_E136-benchmark-background", "index": 2}
+{"event": "attempt-complete", "run": "runs/20261122-225619_E136-benchmark-background", "index": 2, "wall_seconds": 0.01600000000325963}
+{"event": "run-complete", "kind": "training", "run": "runs/20261122-225619_E136-benchmark-background", "wall_seconds": 0.3130000000237487, "unit_seconds": 0.031000000017229468, "overhead_seconds": 0.28200000000651926, "assignment_seconds": 0.0}
+{"event": "run-start", "kind": "evaluation", "run": "runs/20261122-230224_E136-benchmark-eval-continuation"}
+{"event": "family-start", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 0}
+{"event": "family-complete", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 0, "wall_seconds": 2.094000000040978}
+{"event": "family-start", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 1}
+{"event": "family-complete", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 1, "wall_seconds": 0.46899999998277053}
+{"event": "family-start", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 2}
+{"event": "family-complete", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 2, "wall_seconds": 0.4529999999795109}
+{"event": "family-start", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 3}
+{"event": "family-complete", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "index": 3, "wall_seconds": 0.07800000003771856}
+{"event": "run-complete", "kind": "evaluation", "run": "runs/20261122-230224_E136-benchmark-eval-continuation", "wall_seconds": 6.547000000020489, "unit_seconds": 3.094000000040978, "overhead_seconds": 3.452999999979511, "assignment_seconds": 0.09399999998277053}
+{"event": "audit-end", "status": "passed", "wall_seconds": 18.95300000003772}
