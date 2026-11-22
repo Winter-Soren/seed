@@ -239,6 +239,11 @@ def state_end(state, trace, stop):
                               ("denergy","denergy"),("sig","signal"),("key","key_after")):
         exact(state[field], trace[trace_field][stop-1], "recorded state at boundary " + field)
     require(int(state["t"]) == stop, "state tick matches processed history")
+    counts=np.zeros((1,2,2),np.float32)
+    for half in (0,1):
+        take=(np.arange(stop)>=150)==bool(half)
+        counts[0,half]=[np.sum(trace[name][:stop,0][take]) for name in ("food","poison")]
+    exact(state["counts"],counts,"contact telemetry is physical and unscored")
 
 
 def audit_family(raw, index, parent, endpoint, keys, pre, gap, sham):
@@ -258,6 +263,13 @@ def audit_family(raw, index, parent, endpoint, keys, pre, gap, sham):
     groups = {prefix:prefixed(raw,prefix+"_") for prefix in ("birth","boundary","old","acquired","local","exposure","solo_initial","solo_final")}
     solo = {name:value for name,value in prefixed(raw,"solo_").items()
             if not name.startswith(("initial_","final_"))}
+    for name,value in groups["birth"].items():
+        exact(value[:,0],value[:,1],"both rule labels start from the same inherited state "+name)
+    for name,value in groups["exposure"].items():
+        for history in (0,1):
+            for feedback in (0,1):
+                exact(value[:,:,history,feedback,:2*pre],value[:,:,0,0,:2*pre],
+                      "shared pre-boundary exposure "+name)
     for genotype in range(2):
         for rule in range(2):
             birth={name:value[genotype,rule] for name,value in groups["birth"].items()}
@@ -302,7 +314,8 @@ def audit_family(raw, index, parent, endpoint, keys, pre, gap, sham):
                 state_end(final,trace,50)
                 for name in outcome:
                     outcome[name][genotype,rule,history]=values["food_minus_poison" if name=="Y" else name]
-    exact(local[:,:,0,1],-local[:,:,1,1],"yoked same-target history effect is zero before averaging")
+    require(np.array_equal(local[:,:,0,1],-local[:,:,1,1]),
+            "yoked same-target history effect is numerically exactly zero before averaging")
     return dict(old=old,local=local,**outcome)
 
 
