@@ -34,4 +34,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E128 is complete. The next decision is how to distinguish continued synaptic updates during empty turns from the effects of hunger and changing neural activity. Keep E128's failed threshold and E127's passed immediate test in the record.
+E129 is the council's single follow-up. It tests whether pausing just the changes to synaptic weights during the empty interval helps all three lineages, then restores ordinary learning for solo foraging. The criteria and stopping rule are registered. E128's failed threshold and E127's passed immediate test remain in the record.

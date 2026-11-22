@@ -2528,3 +2528,19 @@ Entries use probability units. Each ± is one family-level SE across 128 indepen
 The normal hosted suite passed 508 tests in 1,674.479 seconds and charged 1,764 seconds of job wall time. The complete A0, A1 and A2 panels took 114.483, 117.132 and 98.663 seconds on `98f3dc2` with identical scientific source to `96a72d7`. Independent reconstruction verified every one of the 384 families and 417 artifact hashes in 186.949 seconds. It did not recompute every neural operation or action draw. Summarization and rendering took 6.620 seconds. E128 used 2,365.781 of 3,600 seconds. Daily all-Seed compute then stood at 16,471.252 of 28,800 seconds. [Full software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
 
 The council closes E128 at its original threshold. Its next decision is one causal diagnostic: switch off Hebbian updates only during the empty interval, leave the predictor working and restart ordinary weight updates for independent foraging. A comparison with normal learning can distinguish the effect of permitting those updates during the empty interval. Preregister a minimum rescue size and stop this retention sequence if the intervention fails. No evolved or lasting architectural improvement follows from a scheduling intervention alone.
+
+### E129 preregistration · 22 November 2026 · A single intervention during the cue-free interval
+
+Does allowing ongoing Hebbian weight updates during the 33 empty turns contribute to E128's decline? Use the [E129 protocol](E129_PROTOCOL.md), including its three nested, all-lineage decisions. First require a frozen-minus-normal advantage of at least 0.025 in delayed reversal-history signed preference and greater than two paired SE in **each** of the three original plastic lineages. To claim local rescue, the frozen-interval arm must also meet the unchanged E128 local thresholds. To claim transfer rescue, it must meet the E128 grid thresholds and show a direct grid advantage over the normal interval exceeding two paired SE in those same lineages. Endpoints are zero and 33 turns, with common random inputs, both acquisition histories and all assigned lives. Direct recurrent controls use ordinary dynamics throughout. This diagnostic closes the current retention investigation at its registered result.
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','retention-intervention-v1','--generations',0)
+& $python $entry @common --name E129-benchmark --condition-split development --seed 2026120800 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E129-A0 --condition-split final --seed 2026120801 --eval-worlds 128 --start file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy
+& $python $entry @common --name E129-A1 --condition-split final --seed 2026120802 --eval-worlds 128 --start file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy
+& $python $entry @common --name E129-A2 --condition-split final --seed 2026120803 --eval-worlds 128 --start file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy
+```
+
+Preregister `python -m unittest discover -s tests -p "test_retention_rescue*.py"`, including backward compatibility and intervention fixtures, plus `python tools/audit_retention_rescue.py --self-check` in a fresh interpreter. Run the development audit with `python tools/audit_retention_rescue.py --source-commit <scientific commit> --development`, and the complete triplet with the same command omitting `--development`. Preserve the original raw data and archive failed checks. Admit the full comparison only after the development forecast, the normal hosted suite and live resource checks. Score and publish only after all 384 independent families have been verified. No extension of the five-point retention margin or new retention interventions may follow from these results.

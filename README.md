@@ -344,7 +344,7 @@ The first A0 attempt stopped on a frozen-weight integrity check. Its 11 families
 
 All three plastic lineages still preferred the new food after the interval and outperformed agents given the old-rule history. All three missed the allowable-loss criterion for both measurements. A2's estimated grid loss was 4.7 points, but its uncertainty allowed a loss above five. The fixed-weight controls lacked an immediate acquired preference from which to measure persistence. [Independent audit](results/diagnostics/E128-independent-audit.json) · [Paired estimates and decisions](results/diagnostics/E128-comparison.json)
 
-During the empty turns the creatures used energy, moved, updated their internal activity and continued learning. E128 measures the effect of that whole experience. It leaves open which process caused the decline. [Lab record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
+During the empty turns the creatures used energy, moved, updated their internal activity and continued learning. E128 measures the effect of that whole experience. E129 tests one possible cause by pausing only Hebbian weight changes during the interval and restoring ordinary learning afterward. [E129 protocol and stopping rule](experiments/E129_PROTOCOL.md) · [Lab record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
 
 ## Try it locally
 
