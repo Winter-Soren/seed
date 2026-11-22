@@ -39,8 +39,372 @@ The registered comparison uses E127-A0-recovery1, E127-A1 and E127-A2. The faile
 | 20261122-045153_E127-benchmark-retry1 | finished | development | 4/4 | development only | d99bcc8 |
 | 20261122-050231_E127-A0 | failed | final | 11/128 | preserved partial; excluded | 5e6398e |
 | 20261122-051733_E127-benchmark-recovery2 | finished | development | 4/4 | development only | 760d13d |
+| 20261122-055021_E127-A0-recovery1 | finished | final | 128/128 | registered full-panel recovery | a035f30 |
+| 20261122-055304_E127-A1 | finished | final | 128/128 | registered final panel | a035f30 |
+| 20261122-055516_E127-A2 | finished | final | 128/128 | registered final panel | a035f30 |
 
-Replicated diagnostic decisions: **undecided**; all three complete final panels are required.
+Independent three-panel verification passed. Decisions use the frozen thresholds:
+
+| Architecture | Effect | Qualifying lineages | Seed indices | Replicated decision |
+|---|---|---|---|---|
+| plastic | local | 3/3 | 0, 1, 2 | PASS |
+| plastic | transfer | 3/3 | 0, 1, 2 | PASS |
+| plastic | hebbian_local | 3/3 | 0, 1, 2 | PASS |
+| direct | local | 0/3 | none | FAIL |
+| direct | transfer | 0/3 | none | FAIL |
+
+| Seed | Architecture | Old-food preference before reversal ± SE | S after sixteen contacts ± SE | Reversed minus stationary S ± paired SE | Reversed minus stationary G ± paired SE | Reversal Y ± SE | Local decision | Transfer decision |
+|---|---|---|---|---|---|---|---|---|
+| 0 | plastic | 0.662480 ± 0.005725 (n=128) | 0.217259 ± 0.019715 (n=128) | 0.902849 ± 0.022573 (n=128) | 0.585938 ± 0.032390 (n=128) | 0.269531 ± 0.056803 (n=128) | PASS | PASS |
+| 0 | direct | -0.012637 ± 0.003488 (n=128) | -0.015759 ± 0.003137 (n=128) | -0.031519 ± 0.006274 (n=128) | -0.007812 ± 0.017524 (n=128) | -0.007812 ± 0.017524 (n=128) | FAIL | FAIL |
+| 1 | plastic | 0.653173 ± 0.006668 (n=128) | 0.198290 ± 0.018600 (n=128) | 0.929058 ± 0.020443 (n=128) | 0.585938 ± 0.033785 (n=128) | 0.257812 ± 0.063230 (n=128) | PASS | PASS |
+| 1 | direct | 0.005598 ± 0.002741 (n=128) | 0.000863 ± 0.002904 (n=128) | 0.007576 ± 0.003787 (n=128) | -0.007812 ± 0.012382 (n=128) | -0.011719 ± 0.011719 (n=128) | FAIL | FAIL |
+| 2 | plastic | 0.641759 ± 0.006685 (n=128) | 0.222558 ± 0.020336 (n=128) | 0.917107 ± 0.022911 (n=128) | 0.589844 ± 0.032544 (n=128) | 0.328125 ± 0.055304 (n=128) | PASS | PASS |
+| 2 | direct | -0.000405 ± 0.003142 (n=128) | 0.002368 ± 0.003044 (n=128) | 0.001804 ± 0.002391 (n=128) | 0.000000 ± 0.015686 (n=128) | 0.007812 ± 0.017524 (n=128) | FAIL | FAIL |
+
+| Seed | Intact minus frozen S ± paired SE | Intact minus frozen G ± paired SE | Local Hebbian decision |
+|---|---|---|---|
+| 0 | 0.879146 ± 0.016419 (n=128) | 0.566406 ± 0.032514 (n=128) | PASS |
+| 1 | 0.846821 ± 0.015615 (n=128) | 0.562500 ± 0.033735 (n=128) | PASS |
+| 2 | 0.861920 ± 0.018346 (n=128) | 0.578125 ± 0.032546 (n=128) | PASS |
+
+| Seed | Arm | Post-boundary contacts | Choice statistic | Mean ± family SE (denominator) |
+|---|---|---|---|---|
+| 0 | plastic_stationary | 0 | p_food | 0.006099 ± 0.000376 (n=128) |
+| 0 | plastic_stationary | 0 | p_poison | 0.668579 ± 0.005541 (n=128) |
+| 0 | plastic_stationary | 0 | approach | 0.674678 ± 0.005376 (n=128) |
+| 0 | plastic_stationary | 0 | other | 0.325322 ± 0.005376 (n=128) |
+| 0 | plastic_stationary | 0 | S | -0.662480 ± 0.005725 (n=128) |
+| 0 | plastic_stationary | 2 | p_food | 0.004623 ± 0.000267 (n=128) |
+| 0 | plastic_stationary | 2 | p_poison | 0.675960 ± 0.005233 (n=128) |
+| 0 | plastic_stationary | 2 | approach | 0.680583 ± 0.005148 (n=128) |
+| 0 | plastic_stationary | 2 | other | 0.319417 ± 0.005148 (n=128) |
+| 0 | plastic_stationary | 2 | S | -0.671337 ± 0.005331 (n=128) |
+| 0 | plastic_stationary | 8 | p_food | 0.002538 ± 0.000150 (n=128) |
+| 0 | plastic_stationary | 8 | p_poison | 0.703497 ± 0.005223 (n=128) |
+| 0 | plastic_stationary | 8 | approach | 0.706035 ± 0.005205 (n=128) |
+| 0 | plastic_stationary | 8 | other | 0.293965 ± 0.005205 (n=128) |
+| 0 | plastic_stationary | 8 | S | -0.700959 ± 0.005245 (n=128) |
+| 0 | plastic_stationary | 16 | p_food | 0.002036 ± 0.000087 (n=128) |
+| 0 | plastic_stationary | 16 | p_poison | 0.687626 ± 0.006572 (n=128) |
+| 0 | plastic_stationary | 16 | approach | 0.689662 ± 0.006565 (n=128) |
+| 0 | plastic_stationary | 16 | other | 0.310338 ± 0.006565 (n=128) |
+| 0 | plastic_stationary | 16 | S | -0.685590 ± 0.006580 (n=128) |
+| 0 | plastic_reversal | 0 | p_food | 0.006099 ± 0.000376 (n=128) |
+| 0 | plastic_reversal | 0 | p_poison | 0.668579 ± 0.005541 (n=128) |
+| 0 | plastic_reversal | 0 | approach | 0.674678 ± 0.005376 (n=128) |
+| 0 | plastic_reversal | 0 | other | 0.325322 ± 0.005376 (n=128) |
+| 0 | plastic_reversal | 0 | S | -0.662480 ± 0.005725 (n=128) |
+| 0 | plastic_reversal | 2 | p_food | 0.019178 ± 0.001614 (n=128) |
+| 0 | plastic_reversal | 2 | p_poison | 0.581919 ± 0.007741 (n=128) |
+| 0 | plastic_reversal | 2 | approach | 0.601097 ± 0.006663 (n=128) |
+| 0 | plastic_reversal | 2 | other | 0.398903 ± 0.006663 (n=128) |
+| 0 | plastic_reversal | 2 | S | -0.562741 ± 0.008981 (n=128) |
+| 0 | plastic_reversal | 8 | p_food | 0.093469 ± 0.007070 (n=128) |
+| 0 | plastic_reversal | 8 | p_poison | 0.310939 ± 0.013434 (n=128) |
+| 0 | plastic_reversal | 8 | approach | 0.404408 ± 0.008181 (n=128) |
+| 0 | plastic_reversal | 8 | other | 0.595592 ± 0.008181 (n=128) |
+| 0 | plastic_reversal | 8 | S | -0.217471 ± 0.019848 (n=128) |
+| 0 | plastic_reversal | 16 | p_food | 0.300678 ± 0.014169 (n=128) |
+| 0 | plastic_reversal | 16 | p_poison | 0.083418 ± 0.006417 (n=128) |
+| 0 | plastic_reversal | 16 | approach | 0.384096 ± 0.009757 (n=128) |
+| 0 | plastic_reversal | 16 | other | 0.615904 ± 0.009757 (n=128) |
+| 0 | plastic_reversal | 16 | S | 0.217259 ± 0.019715 (n=128) |
+| 0 | plastic_frozen | 0 | p_food | 0.006099 ± 0.000376 (n=128) |
+| 0 | plastic_frozen | 0 | p_poison | 0.668579 ± 0.005541 (n=128) |
+| 0 | plastic_frozen | 0 | approach | 0.674678 ± 0.005376 (n=128) |
+| 0 | plastic_frozen | 0 | other | 0.325322 ± 0.005376 (n=128) |
+| 0 | plastic_frozen | 0 | S | -0.662480 ± 0.005725 (n=128) |
+| 0 | plastic_frozen | 2 | p_food | 0.006047 ± 0.000360 (n=128) |
+| 0 | plastic_frozen | 2 | p_poison | 0.666697 ± 0.005760 (n=128) |
+| 0 | plastic_frozen | 2 | approach | 0.672744 ± 0.005592 (n=128) |
+| 0 | plastic_frozen | 2 | other | 0.327256 ± 0.005592 (n=128) |
+| 0 | plastic_frozen | 2 | S | -0.660650 ± 0.005945 (n=128) |
+| 0 | plastic_frozen | 8 | p_food | 0.006038 ± 0.000360 (n=128) |
+| 0 | plastic_frozen | 8 | p_poison | 0.669576 ± 0.005745 (n=128) |
+| 0 | plastic_frozen | 8 | approach | 0.675614 ± 0.005580 (n=128) |
+| 0 | plastic_frozen | 8 | other | 0.324386 ± 0.005580 (n=128) |
+| 0 | plastic_frozen | 8 | S | -0.663538 ± 0.005927 (n=128) |
+| 0 | plastic_frozen | 16 | p_food | 0.006002 ± 0.000355 (n=128) |
+| 0 | plastic_frozen | 16 | p_poison | 0.667888 ± 0.006019 (n=128) |
+| 0 | plastic_frozen | 16 | approach | 0.673890 ± 0.005848 (n=128) |
+| 0 | plastic_frozen | 16 | other | 0.326110 ± 0.005848 (n=128) |
+| 0 | plastic_frozen | 16 | S | -0.661886 ± 0.006206 (n=128) |
+| 0 | direct_stationary | 0 | p_food | 0.225431 ± 0.002530 (n=128) |
+| 0 | direct_stationary | 0 | p_poison | 0.212794 ± 0.003894 (n=128) |
+| 0 | direct_stationary | 0 | approach | 0.438225 ± 0.005564 (n=128) |
+| 0 | direct_stationary | 0 | other | 0.561775 ± 0.005564 (n=128) |
+| 0 | direct_stationary | 0 | S | 0.012637 ± 0.003488 (n=128) |
+| 0 | direct_stationary | 2 | p_food | 0.228545 ± 0.002690 (n=128) |
+| 0 | direct_stationary | 2 | p_poison | 0.221590 ± 0.003621 (n=128) |
+| 0 | direct_stationary | 2 | approach | 0.450136 ± 0.005765 (n=128) |
+| 0 | direct_stationary | 2 | other | 0.549864 ± 0.005765 (n=128) |
+| 0 | direct_stationary | 2 | S | 0.006955 ± 0.002732 (n=128) |
+| 0 | direct_stationary | 8 | p_food | 0.224572 ± 0.002566 (n=128) |
+| 0 | direct_stationary | 8 | p_poison | 0.212795 ± 0.004008 (n=128) |
+| 0 | direct_stationary | 8 | approach | 0.437367 ± 0.005825 (n=128) |
+| 0 | direct_stationary | 8 | other | 0.562633 ± 0.005825 (n=128) |
+| 0 | direct_stationary | 8 | S | 0.011778 ± 0.003372 (n=128) |
+| 0 | direct_stationary | 16 | p_food | 0.226982 ± 0.002634 (n=128) |
+| 0 | direct_stationary | 16 | p_poison | 0.211223 ± 0.004117 (n=128) |
+| 0 | direct_stationary | 16 | approach | 0.438205 ± 0.006160 (n=128) |
+| 0 | direct_stationary | 16 | other | 0.561795 ± 0.006160 (n=128) |
+| 0 | direct_stationary | 16 | S | 0.015759 ± 0.003137 (n=128) |
+| 0 | direct_reversal | 0 | p_food | 0.225431 ± 0.002530 (n=128) |
+| 0 | direct_reversal | 0 | p_poison | 0.212794 ± 0.003894 (n=128) |
+| 0 | direct_reversal | 0 | approach | 0.438225 ± 0.005564 (n=128) |
+| 0 | direct_reversal | 0 | other | 0.561775 ± 0.005564 (n=128) |
+| 0 | direct_reversal | 0 | S | 0.012637 ± 0.003488 (n=128) |
+| 0 | direct_reversal | 2 | p_food | 0.219018 ± 0.003863 (n=128) |
+| 0 | direct_reversal | 2 | p_poison | 0.228899 ± 0.002780 (n=128) |
+| 0 | direct_reversal | 2 | approach | 0.447917 ± 0.006016 (n=128) |
+| 0 | direct_reversal | 2 | other | 0.552083 ± 0.006016 (n=128) |
+| 0 | direct_reversal | 2 | S | -0.009881 ± 0.003019 (n=128) |
+| 0 | direct_reversal | 8 | p_food | 0.212757 ± 0.004007 (n=128) |
+| 0 | direct_reversal | 8 | p_poison | 0.224600 ± 0.002567 (n=128) |
+| 0 | direct_reversal | 8 | approach | 0.437357 ± 0.005826 (n=128) |
+| 0 | direct_reversal | 8 | other | 0.562643 ± 0.005826 (n=128) |
+| 0 | direct_reversal | 8 | S | -0.011843 ± 0.003368 (n=128) |
+| 0 | direct_reversal | 16 | p_food | 0.211223 ± 0.004117 (n=128) |
+| 0 | direct_reversal | 16 | p_poison | 0.226982 ± 0.002634 (n=128) |
+| 0 | direct_reversal | 16 | approach | 0.438205 ± 0.006160 (n=128) |
+| 0 | direct_reversal | 16 | other | 0.561795 ± 0.006160 (n=128) |
+| 0 | direct_reversal | 16 | S | -0.015759 ± 0.003137 (n=128) |
+| 1 | plastic_stationary | 0 | p_food | 0.009288 ± 0.000576 (n=128) |
+| 1 | plastic_stationary | 0 | p_poison | 0.662461 ± 0.006305 (n=128) |
+| 1 | plastic_stationary | 0 | approach | 0.671749 ± 0.005976 (n=128) |
+| 1 | plastic_stationary | 0 | other | 0.328251 ± 0.005976 (n=128) |
+| 1 | plastic_stationary | 0 | S | -0.653173 ± 0.006668 (n=128) |
+| 1 | plastic_stationary | 2 | p_food | 0.007558 ± 0.000578 (n=128) |
+| 1 | plastic_stationary | 2 | p_poison | 0.669259 ± 0.006271 (n=128) |
+| 1 | plastic_stationary | 2 | approach | 0.676816 ± 0.006050 (n=128) |
+| 1 | plastic_stationary | 2 | other | 0.323184 ± 0.006050 (n=128) |
+| 1 | plastic_stationary | 2 | S | -0.661701 ± 0.006535 (n=128) |
+| 1 | plastic_stationary | 8 | p_food | 0.004281 ± 0.000517 (n=128) |
+| 1 | plastic_stationary | 8 | p_poison | 0.709791 ± 0.006394 (n=128) |
+| 1 | plastic_stationary | 8 | approach | 0.714073 ± 0.006261 (n=128) |
+| 1 | plastic_stationary | 8 | other | 0.285927 ± 0.006261 (n=128) |
+| 1 | plastic_stationary | 8 | S | -0.705510 ± 0.006565 (n=128) |
+| 1 | plastic_stationary | 16 | p_food | 0.002840 ± 0.000187 (n=128) |
+| 1 | plastic_stationary | 16 | p_poison | 0.733608 ± 0.007376 (n=128) |
+| 1 | plastic_stationary | 16 | approach | 0.736447 ± 0.007360 (n=128) |
+| 1 | plastic_stationary | 16 | other | 0.263553 ± 0.007360 (n=128) |
+| 1 | plastic_stationary | 16 | S | -0.730768 ± 0.007397 (n=128) |
+| 1 | plastic_reversal | 0 | p_food | 0.009288 ± 0.000576 (n=128) |
+| 1 | plastic_reversal | 0 | p_poison | 0.662461 ± 0.006305 (n=128) |
+| 1 | plastic_reversal | 0 | approach | 0.671749 ± 0.005976 (n=128) |
+| 1 | plastic_reversal | 0 | other | 0.328251 ± 0.005976 (n=128) |
+| 1 | plastic_reversal | 0 | S | -0.653173 ± 0.006668 (n=128) |
+| 1 | plastic_reversal | 2 | p_food | 0.022354 ± 0.001602 (n=128) |
+| 1 | plastic_reversal | 2 | p_poison | 0.570815 ± 0.008807 (n=128) |
+| 1 | plastic_reversal | 2 | approach | 0.593169 ± 0.007815 (n=128) |
+| 1 | plastic_reversal | 2 | other | 0.406831 ± 0.007815 (n=128) |
+| 1 | plastic_reversal | 2 | S | -0.548460 ± 0.009959 (n=128) |
+| 1 | plastic_reversal | 8 | p_food | 0.103750 ± 0.006500 (n=128) |
+| 1 | plastic_reversal | 8 | p_poison | 0.310785 ± 0.012961 (n=128) |
+| 1 | plastic_reversal | 8 | approach | 0.414534 ± 0.008668 (n=128) |
+| 1 | plastic_reversal | 8 | other | 0.585466 ± 0.008668 (n=128) |
+| 1 | plastic_reversal | 8 | S | -0.207035 ± 0.018583 (n=128) |
+| 1 | plastic_reversal | 16 | p_food | 0.304859 ± 0.012506 (n=128) |
+| 1 | plastic_reversal | 16 | p_poison | 0.106569 ± 0.007294 (n=128) |
+| 1 | plastic_reversal | 16 | approach | 0.411428 ± 0.008559 (n=128) |
+| 1 | plastic_reversal | 16 | other | 0.588572 ± 0.008559 (n=128) |
+| 1 | plastic_reversal | 16 | S | 0.198290 ± 0.018600 (n=128) |
+| 1 | plastic_frozen | 0 | p_food | 0.009288 ± 0.000576 (n=128) |
+| 1 | plastic_frozen | 0 | p_poison | 0.662461 ± 0.006305 (n=128) |
+| 1 | plastic_frozen | 0 | approach | 0.671749 ± 0.005976 (n=128) |
+| 1 | plastic_frozen | 0 | other | 0.328251 ± 0.005976 (n=128) |
+| 1 | plastic_frozen | 0 | S | -0.653173 ± 0.006668 (n=128) |
+| 1 | plastic_frozen | 2 | p_food | 0.008983 ± 0.000496 (n=128) |
+| 1 | plastic_frozen | 2 | p_poison | 0.657534 ± 0.006799 (n=128) |
+| 1 | plastic_frozen | 2 | approach | 0.666517 ± 0.006490 (n=128) |
+| 1 | plastic_frozen | 2 | other | 0.333483 ± 0.006490 (n=128) |
+| 1 | plastic_frozen | 2 | S | -0.648551 ± 0.007129 (n=128) |
+| 1 | plastic_frozen | 8 | p_food | 0.009218 ± 0.000597 (n=128) |
+| 1 | plastic_frozen | 8 | p_poison | 0.656754 ± 0.007115 (n=128) |
+| 1 | plastic_frozen | 8 | approach | 0.665972 ± 0.006826 (n=128) |
+| 1 | plastic_frozen | 8 | other | 0.334028 ± 0.006826 (n=128) |
+| 1 | plastic_frozen | 8 | S | -0.647536 ± 0.007440 (n=128) |
+| 1 | plastic_frozen | 16 | p_food | 0.009197 ± 0.000573 (n=128) |
+| 1 | plastic_frozen | 16 | p_poison | 0.657728 ± 0.007142 (n=128) |
+| 1 | plastic_frozen | 16 | approach | 0.666926 ± 0.006862 (n=128) |
+| 1 | plastic_frozen | 16 | other | 0.333074 ± 0.006862 (n=128) |
+| 1 | plastic_frozen | 16 | S | -0.648531 ± 0.007457 (n=128) |
+| 1 | direct_stationary | 0 | p_food | 0.264655 ± 0.001913 (n=128) |
+| 1 | direct_stationary | 0 | p_poison | 0.270253 ± 0.001507 (n=128) |
+| 1 | direct_stationary | 0 | approach | 0.534908 ± 0.002087 (n=128) |
+| 1 | direct_stationary | 0 | other | 0.465092 ± 0.002087 (n=128) |
+| 1 | direct_stationary | 0 | S | -0.005598 ± 0.002741 (n=128) |
+| 1 | direct_stationary | 2 | p_food | 0.264001 ± 0.001802 (n=128) |
+| 1 | direct_stationary | 2 | p_poison | 0.271000 ± 0.001394 (n=128) |
+| 1 | direct_stationary | 2 | approach | 0.535000 ± 0.001911 (n=128) |
+| 1 | direct_stationary | 2 | other | 0.465000 ± 0.001911 (n=128) |
+| 1 | direct_stationary | 2 | S | -0.006999 ± 0.002594 (n=128) |
+| 1 | direct_stationary | 8 | p_food | 0.266221 ± 0.001871 (n=128) |
+| 1 | direct_stationary | 8 | p_poison | 0.269370 ± 0.001385 (n=128) |
+| 1 | direct_stationary | 8 | approach | 0.535591 ± 0.001849 (n=128) |
+| 1 | direct_stationary | 8 | other | 0.464409 ± 0.001849 (n=128) |
+| 1 | direct_stationary | 8 | S | -0.003149 ± 0.002723 (n=128) |
+| 1 | direct_stationary | 16 | p_food | 0.264428 ± 0.001846 (n=128) |
+| 1 | direct_stationary | 16 | p_poison | 0.271141 ± 0.001493 (n=128) |
+| 1 | direct_stationary | 16 | approach | 0.535569 ± 0.001990 (n=128) |
+| 1 | direct_stationary | 16 | other | 0.464431 ± 0.001990 (n=128) |
+| 1 | direct_stationary | 16 | S | -0.006713 ± 0.002704 (n=128) |
+| 1 | direct_reversal | 0 | p_food | 0.264655 ± 0.001913 (n=128) |
+| 1 | direct_reversal | 0 | p_poison | 0.270253 ± 0.001507 (n=128) |
+| 1 | direct_reversal | 0 | approach | 0.534908 ± 0.002087 (n=128) |
+| 1 | direct_reversal | 0 | other | 0.465092 ± 0.002087 (n=128) |
+| 1 | direct_reversal | 0 | S | -0.005598 ± 0.002741 (n=128) |
+| 1 | direct_reversal | 2 | p_food | 0.267856 ± 0.001954 (n=128) |
+| 1 | direct_reversal | 2 | p_poison | 0.266876 ± 0.001437 (n=128) |
+| 1 | direct_reversal | 2 | approach | 0.534733 ± 0.001925 (n=128) |
+| 1 | direct_reversal | 2 | other | 0.465267 ± 0.001925 (n=128) |
+| 1 | direct_reversal | 2 | S | 0.000980 ± 0.002839 (n=128) |
+| 1 | direct_reversal | 8 | p_food | 0.266601 ± 0.001840 (n=128) |
+| 1 | direct_reversal | 8 | p_poison | 0.269146 ± 0.001385 (n=128) |
+| 1 | direct_reversal | 8 | approach | 0.535747 ± 0.001797 (n=128) |
+| 1 | direct_reversal | 8 | other | 0.464253 ± 0.001797 (n=128) |
+| 1 | direct_reversal | 8 | S | -0.002545 ± 0.002716 (n=128) |
+| 1 | direct_reversal | 16 | p_food | 0.268021 ± 0.002030 (n=128) |
+| 1 | direct_reversal | 16 | p_poison | 0.267158 ± 0.001513 (n=128) |
+| 1 | direct_reversal | 16 | approach | 0.535180 ± 0.002095 (n=128) |
+| 1 | direct_reversal | 16 | other | 0.464820 ± 0.002095 (n=128) |
+| 1 | direct_reversal | 16 | S | 0.000863 ± 0.002904 (n=128) |
+| 2 | plastic_stationary | 0 | p_food | 0.006323 ± 0.000521 (n=128) |
+| 2 | plastic_stationary | 0 | p_poison | 0.648083 ± 0.006455 (n=128) |
+| 2 | plastic_stationary | 0 | approach | 0.654406 ± 0.006260 (n=128) |
+| 2 | plastic_stationary | 0 | other | 0.345594 ± 0.006260 (n=128) |
+| 2 | plastic_stationary | 0 | S | -0.641759 ± 0.006685 (n=128) |
+| 2 | plastic_stationary | 2 | p_food | 0.005450 ± 0.000410 (n=128) |
+| 2 | plastic_stationary | 2 | p_poison | 0.653243 ± 0.006419 (n=128) |
+| 2 | plastic_stationary | 2 | approach | 0.658693 ± 0.006269 (n=128) |
+| 2 | plastic_stationary | 2 | other | 0.341307 ± 0.006269 (n=128) |
+| 2 | plastic_stationary | 2 | S | -0.647793 ± 0.006591 (n=128) |
+| 2 | plastic_stationary | 8 | p_food | 0.002996 ± 0.000228 (n=128) |
+| 2 | plastic_stationary | 8 | p_poison | 0.695006 ± 0.007278 (n=128) |
+| 2 | plastic_stationary | 8 | approach | 0.698002 ± 0.007247 (n=128) |
+| 2 | plastic_stationary | 8 | other | 0.301998 ± 0.007247 (n=128) |
+| 2 | plastic_stationary | 8 | S | -0.692010 ± 0.007316 (n=128) |
+| 2 | plastic_stationary | 16 | p_food | 0.002855 ± 0.000436 (n=128) |
+| 2 | plastic_stationary | 16 | p_poison | 0.697404 ± 0.008567 (n=128) |
+| 2 | plastic_stationary | 16 | approach | 0.700259 ± 0.008561 (n=128) |
+| 2 | plastic_stationary | 16 | other | 0.299741 ± 0.008561 (n=128) |
+| 2 | plastic_stationary | 16 | S | -0.694549 ± 0.008595 (n=128) |
+| 2 | plastic_reversal | 0 | p_food | 0.006323 ± 0.000521 (n=128) |
+| 2 | plastic_reversal | 0 | p_poison | 0.648083 ± 0.006455 (n=128) |
+| 2 | plastic_reversal | 0 | approach | 0.654406 ± 0.006260 (n=128) |
+| 2 | plastic_reversal | 0 | other | 0.345594 ± 0.006260 (n=128) |
+| 2 | plastic_reversal | 0 | S | -0.641759 ± 0.006685 (n=128) |
+| 2 | plastic_reversal | 2 | p_food | 0.021233 ± 0.001695 (n=128) |
+| 2 | plastic_reversal | 2 | p_poison | 0.558426 ± 0.008202 (n=128) |
+| 2 | plastic_reversal | 2 | approach | 0.579659 ± 0.007280 (n=128) |
+| 2 | plastic_reversal | 2 | other | 0.420341 ± 0.007280 (n=128) |
+| 2 | plastic_reversal | 2 | S | -0.537193 ± 0.009343 (n=128) |
+| 2 | plastic_reversal | 8 | p_food | 0.099808 ± 0.007235 (n=128) |
+| 2 | plastic_reversal | 8 | p_poison | 0.307825 ± 0.012631 (n=128) |
+| 2 | plastic_reversal | 8 | approach | 0.407633 ± 0.007852 (n=128) |
+| 2 | plastic_reversal | 8 | other | 0.592367 ± 0.007852 (n=128) |
+| 2 | plastic_reversal | 8 | S | -0.208017 ± 0.019030 (n=128) |
+| 2 | plastic_reversal | 16 | p_food | 0.307212 ± 0.015347 (n=128) |
+| 2 | plastic_reversal | 16 | p_poison | 0.084654 ± 0.006448 (n=128) |
+| 2 | plastic_reversal | 16 | approach | 0.391866 ± 0.011859 (n=128) |
+| 2 | plastic_reversal | 16 | other | 0.608134 ± 0.011859 (n=128) |
+| 2 | plastic_reversal | 16 | S | 0.222558 ± 0.020336 (n=128) |
+| 2 | plastic_frozen | 0 | p_food | 0.006323 ± 0.000521 (n=128) |
+| 2 | plastic_frozen | 0 | p_poison | 0.648083 ± 0.006455 (n=128) |
+| 2 | plastic_frozen | 0 | approach | 0.654406 ± 0.006260 (n=128) |
+| 2 | plastic_frozen | 0 | other | 0.345594 ± 0.006260 (n=128) |
+| 2 | plastic_frozen | 0 | S | -0.641759 ± 0.006685 (n=128) |
+| 2 | plastic_frozen | 2 | p_food | 0.006890 ± 0.000605 (n=128) |
+| 2 | plastic_frozen | 2 | p_poison | 0.639685 ± 0.006732 (n=128) |
+| 2 | plastic_frozen | 2 | approach | 0.646575 ± 0.006492 (n=128) |
+| 2 | plastic_frozen | 2 | other | 0.353425 ± 0.006492 (n=128) |
+| 2 | plastic_frozen | 2 | S | -0.632796 ± 0.007017 (n=128) |
+| 2 | plastic_frozen | 8 | p_food | 0.006528 ± 0.000433 (n=128) |
+| 2 | plastic_frozen | 8 | p_poison | 0.652991 ± 0.006787 (n=128) |
+| 2 | plastic_frozen | 8 | approach | 0.659519 ± 0.006582 (n=128) |
+| 2 | plastic_frozen | 8 | other | 0.340481 ± 0.006582 (n=128) |
+| 2 | plastic_frozen | 8 | S | -0.646462 ± 0.007012 (n=128) |
+| 2 | plastic_frozen | 16 | p_food | 0.006590 ± 0.000520 (n=128) |
+| 2 | plastic_frozen | 16 | p_poison | 0.645952 ± 0.007233 (n=128) |
+| 2 | plastic_frozen | 16 | approach | 0.652542 ± 0.007046 (n=128) |
+| 2 | plastic_frozen | 16 | other | 0.347458 ± 0.007046 (n=128) |
+| 2 | plastic_frozen | 16 | S | -0.639362 ± 0.007452 (n=128) |
+| 2 | direct_stationary | 0 | p_food | 0.282030 ± 0.001961 (n=128) |
+| 2 | direct_stationary | 0 | p_poison | 0.281625 ± 0.002213 (n=128) |
+| 2 | direct_stationary | 0 | approach | 0.563655 ± 0.002760 (n=128) |
+| 2 | direct_stationary | 0 | other | 0.436345 ± 0.002760 (n=128) |
+| 2 | direct_stationary | 0 | S | 0.000405 ± 0.003142 (n=128) |
+| 2 | direct_stationary | 2 | p_food | 0.282572 ± 0.001856 (n=128) |
+| 2 | direct_stationary | 2 | p_poison | 0.283528 ± 0.002257 (n=128) |
+| 2 | direct_stationary | 2 | approach | 0.566100 ± 0.002629 (n=128) |
+| 2 | direct_stationary | 2 | other | 0.433900 ± 0.002629 (n=128) |
+| 2 | direct_stationary | 2 | S | -0.000956 ± 0.003188 (n=128) |
+| 2 | direct_stationary | 8 | p_food | 0.281700 ± 0.001805 (n=128) |
+| 2 | direct_stationary | 8 | p_poison | 0.280470 ± 0.001953 (n=128) |
+| 2 | direct_stationary | 8 | approach | 0.562170 ± 0.002496 (n=128) |
+| 2 | direct_stationary | 8 | other | 0.437830 ± 0.002496 (n=128) |
+| 2 | direct_stationary | 8 | S | 0.001230 ± 0.002813 (n=128) |
+| 2 | direct_stationary | 16 | p_food | 0.285683 ± 0.002031 (n=128) |
+| 2 | direct_stationary | 16 | p_poison | 0.285119 ± 0.002273 (n=128) |
+| 2 | direct_stationary | 16 | approach | 0.570802 ± 0.003021 (n=128) |
+| 2 | direct_stationary | 16 | other | 0.429198 ± 0.003021 (n=128) |
+| 2 | direct_stationary | 16 | S | 0.000564 ± 0.003074 (n=128) |
+| 2 | direct_reversal | 0 | p_food | 0.282030 ± 0.001961 (n=128) |
+| 2 | direct_reversal | 0 | p_poison | 0.281625 ± 0.002213 (n=128) |
+| 2 | direct_reversal | 0 | approach | 0.563655 ± 0.002760 (n=128) |
+| 2 | direct_reversal | 0 | other | 0.436345 ± 0.002760 (n=128) |
+| 2 | direct_reversal | 0 | S | 0.000405 ± 0.003142 (n=128) |
+| 2 | direct_reversal | 2 | p_food | 0.285445 ± 0.002119 (n=128) |
+| 2 | direct_reversal | 2 | p_poison | 0.280872 ± 0.002118 (n=128) |
+| 2 | direct_reversal | 2 | approach | 0.566317 ± 0.002627 (n=128) |
+| 2 | direct_reversal | 2 | other | 0.433683 ± 0.002627 (n=128) |
+| 2 | direct_reversal | 2 | S | 0.004573 ± 0.003324 (n=128) |
+| 2 | direct_reversal | 8 | p_food | 0.281893 ± 0.001681 (n=128) |
+| 2 | direct_reversal | 8 | p_poison | 0.280240 ± 0.002031 (n=128) |
+| 2 | direct_reversal | 8 | approach | 0.562133 ± 0.002508 (n=128) |
+| 2 | direct_reversal | 8 | other | 0.437867 ± 0.002508 (n=128) |
+| 2 | direct_reversal | 8 | S | 0.001653 ± 0.002760 (n=128) |
+| 2 | direct_reversal | 16 | p_food | 0.286453 ± 0.001948 (n=128) |
+| 2 | direct_reversal | 16 | p_poison | 0.284085 ± 0.002356 (n=128) |
+| 2 | direct_reversal | 16 | approach | 0.570537 ± 0.003071 (n=128) |
+| 2 | direct_reversal | 16 | other | 0.429463 ± 0.003071 (n=128) |
+| 2 | direct_reversal | 16 | S | 0.002368 ± 0.003044 (n=128) |
+
+| Seed | Arm | G first food ± SE | First poison ± SE | No contact ± SE | Y ± SE | Latency ± SE | Net return ± SE | Survival ± SE |
+|---|---|---|---|---|---|---|---|---|
+| 0 | plastic_stationary | 0.035156 ± 0.011344 (n=128) | 0.953125 ± 0.012932 (n=128) | 0.011719 ± 0.006712 (n=128) | -0.917969 ± 0.023384 (n=128) | 6.164062 ± 0.554601 (n=128) | -3.433594 ± 0.061850 (n=128) | 0.308594 ± 0.029928 (n=128) |
+| 0 | plastic_reversal | 0.621094 ± 0.028682 (n=128) | 0.351562 ± 0.029009 (n=128) | 0.027344 ± 0.010088 (n=128) | 0.269531 ± 0.056803 (n=128) | 10.312500 ± 0.839424 (n=128) | 2.320312 ± 0.222927 (n=128) | 0.980469 ± 0.008596 (n=128) |
+| 0 | plastic_frozen | 0.054688 ± 0.013848 (n=128) | 0.914062 ± 0.018485 (n=128) | 0.031250 ± 0.010740 (n=128) | -0.859375 ± 0.030848 (n=128) | 8.218750 ± 0.766745 (n=128) | -3.097656 ± 0.085928 (n=128) | 0.421875 ± 0.033015 (n=128) |
+| 0 | direct_stationary | 0.503906 ± 0.008762 (n=128) | 0.496094 ± 0.008762 (n=128) | 0.000000 ± 0.000000 (n=128) | 0.007812 ± 0.017524 (n=128) | 4.777344 ± 0.335924 (n=128) | 2.539062 ± 0.139270 (n=128) | 0.531250 ± 0.010740 (n=128) |
+| 0 | direct_reversal | 0.496094 ± 0.008762 (n=128) | 0.503906 ± 0.008762 (n=128) | 0.000000 ± 0.000000 (n=128) | -0.007812 ± 0.017524 (n=128) | 4.777344 ± 0.335924 (n=128) | 2.484375 ± 0.128151 (n=128) | 0.515625 ± 0.007720 (n=128) |
+| 1 | plastic_stationary | 0.039062 ± 0.011907 (n=128) | 0.953125 ± 0.012932 (n=128) | 0.007812 ± 0.005502 (n=128) | -0.914062 ± 0.024244 (n=128) | 6.503906 ± 0.540484 (n=128) | -3.281250 ± 0.067413 (n=128) | 0.367188 ± 0.028541 (n=128) |
+| 1 | plastic_reversal | 0.625000 ± 0.031859 (n=128) | 0.367188 ± 0.031609 (n=128) | 0.007812 ± 0.005502 (n=128) | 0.257812 ± 0.063230 (n=128) | 9.988281 ± 0.718080 (n=128) | 2.312500 ± 0.203923 (n=128) | 0.992188 ± 0.005502 (n=128) |
+| 1 | plastic_frozen | 0.062500 ± 0.014673 (n=128) | 0.917969 ± 0.016431 (n=128) | 0.019531 ± 0.008596 (n=128) | -0.855469 ± 0.029944 (n=128) | 8.496094 ± 0.664210 (n=128) | -3.011719 ± 0.077736 (n=128) | 0.449219 ± 0.031294 (n=128) |
+| 1 | direct_stationary | 0.500000 ± 0.007843 (n=128) | 0.496094 ± 0.006784 (n=128) | 0.003906 ± 0.003906 (n=128) | 0.003906 ± 0.014135 (n=128) | 5.242188 ± 0.422769 (n=128) | 1.984375 ± 0.153688 (n=128) | 0.515625 ± 0.007720 (n=128) |
+| 1 | direct_reversal | 0.492188 ± 0.005502 (n=128) | 0.503906 ± 0.006784 (n=128) | 0.003906 ± 0.003906 (n=128) | -0.011719 ± 0.011719 (n=128) | 5.242188 ± 0.422769 (n=128) | 1.894531 ± 0.154458 (n=128) | 0.515625 ± 0.007720 (n=128) |
+| 2 | plastic_stationary | 0.039062 ± 0.011907 (n=128) | 0.953125 ± 0.012932 (n=128) | 0.007812 ± 0.005502 (n=128) | -0.914062 ± 0.024244 (n=128) | 6.531250 ± 0.586427 (n=128) | -3.468750 ± 0.070534 (n=128) | 0.257812 ± 0.028271 (n=128) |
+| 2 | plastic_reversal | 0.628906 ± 0.029992 (n=128) | 0.300781 ± 0.027361 (n=128) | 0.070312 ± 0.015424 (n=128) | 0.328125 ± 0.055304 (n=128) | 12.285156 ± 0.960058 (n=128) | 2.605469 ± 0.229717 (n=128) | 0.996094 ± 0.003906 (n=128) |
+| 2 | plastic_frozen | 0.050781 ± 0.013402 (n=128) | 0.937500 ± 0.014673 (n=128) | 0.011719 ± 0.006712 (n=128) | -0.886719 ± 0.027291 (n=128) | 7.437500 ± 0.640074 (n=128) | -3.250000 ± 0.073366 (n=128) | 0.375000 ± 0.031373 (n=128) |
+| 2 | direct_stationary | 0.503906 ± 0.008762 (n=128) | 0.496094 ± 0.008762 (n=128) | 0.000000 ± 0.000000 (n=128) | 0.007812 ± 0.017524 (n=128) | 4.777344 ± 0.608740 (n=128) | 3.023438 ± 0.165904 (n=128) | 0.542969 ± 0.012435 (n=128) |
+| 2 | direct_reversal | 0.503906 ± 0.008762 (n=128) | 0.496094 ± 0.008762 (n=128) | 0.000000 ± 0.000000 (n=128) | 0.007812 ± 0.017524 (n=128) | 4.777344 ± 0.608740 (n=128) | 3.023438 ± 0.176677 (n=128) | 0.554688 ± 0.013848 (n=128) |
+
+Initial-rule contrasts are descriptive and do not create extra independent replications:
+
+| Seed | Initial rule | Architecture | S after reversed feedback ± SE | Reversed minus stationary S ± paired SE | G after reversed feedback ± SE | Reversed minus stationary G ± paired SE |
+|---|---|---|---|---|---|---|
+| 0 | 0 | plastic | 0.211310 ± 0.020356 (n=128) | 0.896176 ± 0.022620 (n=128) | 0.617188 ± 0.043132 (n=128) | 0.578125 ± 0.043823 (n=128) |
+| 0 | 0 | direct | 0.392276 ± 0.007351 (n=128) | -0.031519 ± 0.006274 (n=128) | 0.898438 ± 0.026805 (n=128) | -0.007812 ± 0.017524 (n=128) |
+| 0 | 1 | plastic | 0.223209 ± 0.020080 (n=128) | 0.909523 ± 0.024243 (n=128) | 0.625000 ± 0.042959 (n=128) | 0.593750 ± 0.046318 (n=128) |
+| 0 | 1 | direct | -0.423794 ± 0.005006 (n=128) | -0.031519 ± 0.006274 (n=128) | 0.093750 ± 0.025865 (n=128) | -0.007812 ± 0.017524 (n=128) |
+| 1 | 0 | plastic | 0.201196 ± 0.019626 (n=128) | 0.926468 ± 0.022512 (n=128) | 0.656250 ± 0.042146 (n=128) | 0.601562 ± 0.044837 (n=128) |
+| 1 | 0 | direct | -0.448038 ± 0.003896 (n=128) | 0.007517 ± 0.003806 (n=128) | 0.078125 ± 0.023814 (n=128) | -0.015625 ± 0.011005 (n=128) |
+| 1 | 1 | plastic | 0.195385 ± 0.018566 (n=128) | 0.931649 ± 0.021374 (n=128) | 0.593750 ± 0.043581 (n=128) | 0.570312 ± 0.043927 (n=128) |
+| 1 | 1 | direct | 0.449764 ± 0.005802 (n=128) | 0.007636 ± 0.003783 (n=128) | 0.906250 ± 0.025865 (n=128) | 0.000000 ± 0.015686 (n=128) |
+| 2 | 0 | plastic | 0.220302 ± 0.020534 (n=128) | 0.916863 ± 0.023829 (n=128) | 0.609375 ± 0.043293 (n=128) | 0.562500 ± 0.044020 (n=128) |
+| 2 | 0 | direct | -0.558917 ± 0.005357 (n=128) | 0.001976 ± 0.002414 (n=128) | 0.109375 ± 0.027695 (n=128) | 0.000000 ± 0.015686 (n=128) |
+| 2 | 1 | plastic | 0.224814 ± 0.021143 (n=128) | 0.917351 ± 0.024630 (n=128) | 0.648438 ± 0.042368 (n=128) | 0.617188 ± 0.044535 (n=128) |
+| 2 | 1 | direct | 0.563653 ± 0.004149 (n=128) | 0.001631 ± 0.002413 (n=128) | 0.898438 ± 0.026805 (n=128) | 0.000000 ± 0.015686 (n=128) |
 
 ## Matched from-blank reversal evolution (reversal-evolution-v1)
 

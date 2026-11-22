@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Latest audited result — E125 failed the changing-world transfer gate in all three lineages.** In the late window after a hidden food-rule reversal, first-food success was **12.5 ± 2.9%, 18.0 ± 3.4% and 20.3 ± 3.6%** (one standard error). E124's successful transmission across pupils used a stationary rule. [E125 figure and results](#when-the-food-rule-changes) · [E124 retention and limits](#learning-passed-through-three-pupils) · [Social-learning comparison figure](#comparing-social-learning-studies) · [Saved genome evolution](#ten-generations-of-shelter-selection)
+**Latest audited result — all three evolved plastic lineages learned a reversed food rule and used it in a fresh grid.** After 16 guided encounters with the changed rule, the agents found the newly safe food first in **62.1 ± 2.9%, 62.5 ± 3.2% and 62.9 ± 3.0%** of solo lives. Matched agents that continued experiencing the old rule did so in about 4%. The fixed-weight recurrent controls passed in zero of three lineages. These are existing evolved genomes learning within a life. [E127 comparison and figure](#learning-a-changed-rule-and-using-it-alone) · [How their genomes evolved](#how-the-saved-genomes-evolved)
 
 ## What the creatures do
 
@@ -312,9 +312,23 @@ We also checked whether skipping 103 overwritten neuron outputs could make the l
 
 Fruit flies can switch an established preference when experience contradicts it. Our next target is to demonstrate a switch in Seed and see it guide behavior in a fresh place. The architecture council chose a controlled test with the existing brains first. It identified distinct follow-ups for a creature that cannot switch locally and one that switches but fails when searching. The annelid and bee studies inform how to control body state and test transfer. [Animal experiments and architecture decision](experiments/ANIMAL_LEARNING_BENCHMARKS.md)
 
-E127's four-family laptop rehearsal passed independent verification. The owner approved a 100-minute study budget against a forecast of 98 minutes 29 seconds. The first evaluation stopped after 11 of 128 families when a discarded choice probe failed its frozen-weight check. Those families remain archived and unscored. Whether the creatures can reverse a learned choice and use it in a fresh grid is still open. [Rehearsal audit](results/diagnostics/E127-development-audit.json) · [Lab log](experiments/LOG.md)
+## Learning a changed rule and using it alone
 
-The corrected probe reads frozen weights directly. All 47 focused tests passed, and an independent check accepted the corrected four-family rehearsal. The first lineage will start again from its first assigned world. The comparison still requires 128 families in each of three lineages, with the same controls and thresholds. [Corrected rehearsal](results/diagnostics/E127-recovery-development-audit.json) · [Full test suite](https://github.com/Winter-Soren/seed/actions/runs/44963740710)
+In E127 we guided creatures through identical encounters with both item colors. We copied each creature's state after eight or sixteen scheduled encounters with the original rule. One copy continued experiencing the old rule and the other experienced the reversal. After 16 further encounters, both faced the **same new food rule** alone in a fresh ordinary grid. We counted every assigned life, including deaths and lives with no contact. Each lineage had 128 independent world families, with both initial food colors tested within each family. Uncertainty below is one standard error across families. [Registered protocol](experiments/E127_PROTOCOL.md)
+
+| Lineage | First food after reversed feedback | First food after old-rule feedback | Paired gain, percentage points | Fixed-weight control's paired gain, points |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | 62.1 ± 2.9% | 3.5 ± 1.1% | +58.6 ± 3.2 | −0.8 ± 1.8 |
+| A1 | 62.5 ± 3.2% | 3.9 ± 1.2% | +58.6 ± 3.4 | −0.8 ± 1.2 |
+| A2 | 62.9 ± 3.0% | 3.9 ± 1.2% | +59.0 ± 3.3 | 0.0 ± 1.6 |
+
+![Paired effects of reversed feedback in the adjacent-food choice test and the fresh grid for all three plastic and fixed-weight lineages, with one standard error](results/figures/e127-feedback-readout.png)
+
+All three plastic lineages also switched their preference when the two items were adjacent. Keeping Hebbian updates active during reversed feedback increased their signed preference for the newly safe color by **0.879 ± 0.016, 0.847 ± 0.016 and 0.862 ± 0.018** compared with freezing those connections. Signed preference is the probability of moving toward the new food minus the probability of moving toward the other color. The matched fixed-weight controllers cleared neither the local reversal criterion nor the combined reversal-and-transfer criterion. [Independent audit](results/diagnostics/E127-independent-audit.json) · [All results](results/RESULTS.md)
+
+The roughly 59-point gains are measured against creatures still trained on the old rule. Their low success makes the contrast large. E127 shows that matched experience can change what an agent does next. In the earlier freely foraging E125 test, agents with a fixed socially acquired lesson struggled after the change. The two experiments ask different questions. Whether the revised preference survives a period without either cue is the next test. [E125 reversal](#when-the-food-rule-changes) · [Animal-learning research](experiments/ANIMAL_LEARNING_BENCHMARKS.md)
+
+The first A0 attempt stopped on a frozen-weight integrity check. Its 11 families remain archived and excluded. A corrected rehearsal passed, followed by 476 software tests, three complete 128-family evaluations and an independent audit covering 453 file hashes. [Recovery record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44963740710)
 
 ## Try it locally
 

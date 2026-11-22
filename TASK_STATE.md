@@ -24,10 +24,12 @@ E124 found that the same lesson survived three behavioral handoffs in all three 
 
 E125 changed which color was food once during a pupil's life. In the late window the socially prepared pupils chose food first in 12.5 ± 2.9%, 18.0 ± 3.4% and 20.3 ± 3.6% of assigned worlds. When the rule stayed fixed, the same pupils scored 78.1 ± 3.7%, 69.5 ± 4.1% and 71.1 ± 4.0%. Keeping the old lesson also hurt survival. Every lineage failed the recovery test. The two types of unprepared controller also struggled after the change.
 
+E127 gave creatures sixteen matched encounters with a changed food rule. All three original plastic lineages reversed their preference and carried it to a fresh grid. Their first-food advantage over old-rule experience was 58.6 ± 3.2, 58.6 ± 3.4 and 59.0 ± 3.3 percentage points. Hebbian weight changes contributed in all three. The fixed-weight recurrent controls passed in zero of three. Every assigned life counted.
+
 ## What is running
 
 E126 training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-E127's first evaluation stopped after eleven families when a discarded choice probe changed frozen weights. The eleven families are archived and excluded. The corrected probe passed its focused checks and four-family rehearsal. The full software suite is running. If it passes, run all three lineages from their first assigned world, then check the choices and uncertainty independently. The entire study has a one-hundred-minute limit. E126 remains stopped.
+E127's three full panels and independent audit are complete. The first eleven-family attempt is archived and excluded. The next question is how long the revised preference survives when neither food cue is present. Use fresh worlds, the same three lineages and a paired immediate test before adding any new mechanism.

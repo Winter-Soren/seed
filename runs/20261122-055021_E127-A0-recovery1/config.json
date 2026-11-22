@@ -1,0 +1,145 @@
+{
+  "protocol": "encounter-diagnostic-v1",
+  "args": {
+    "name": "E127-A0-recovery1",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120601,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "encounter-diagnostic-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "a035f300b03c2ff3fc826ae8c4629bc1ce7b856d",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "direct_source": {
+    "label": "direct0",
+    "training_seed": 0,
+    "path": "runs/20261119-033803_E113-direct-s0/genome_final.npy",
+    "sha256": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "eval_seed": 2026120601,
+  "expected_families": 128,
+  "statistical_unit": "independent paired base family",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "01346c2c73184d37bc427f13bf8cb7760a3b319bd3076cfebe27a058b00f4292"
+  },
+  "assignment_stream_tag": 57639,
+  "arms": [
+    "plastic_stationary",
+    "plastic_reversal",
+    "plastic_frozen",
+    "direct_stationary",
+    "direct_reversal"
+  ],
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "pre_contact_choices": [
+    8,
+    16
+  ],
+  "post_contacts": 16,
+  "readout_contacts": [
+    0,
+    2,
+    8,
+    16
+  ],
+  "grid_steps": 50,
+  "probe_placements": 12,
+  "source_code": {
+    "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "fd597dd5703e5f7f3a0503c3e706e762f40b14a4884e48bca972dda0eb907ba9",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd"
+  },
+  "raw_schema": "encounter-diagnostic-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 3600,
+  "scientific_result": false,
+  "recovery_of": {
+    "run": "runs/20261122-050231_E127-A0",
+    "files": {
+      "assignments.npz": "01346c2c73184d37bc427f13bf8cb7760a3b319bd3076cfebe27a058b00f4292",
+      "config.json": "8f29abc533b1362d68e3f78167700c10adf5536f3fd0f0e00a77291f6e135269",
+      "direct_genome.npy": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61",
+      "families/family_0000.npz": "0896f108fedf8451466702842b2a1577b01159485ec78602b049be3da0f61af4",
+      "families/family_0001.npz": "0668628c65d4ef5f3d15f717ab7f6dd3f3b5cb06c34da41e463653d9a7b78f77",
+      "families/family_0002.npz": "f1dd22a745751037e79847ea58a028cc8f38685ab3ae6f9d0e91f4cb037d3f01",
+      "families/family_0003.npz": "b076f395dce6265b551c0a65a517c3eda974bb71a58755e8e870a14d9f1c37ca",
+      "families/family_0004.npz": "1e032e0ab843e26d7142bc0843046a4191a7ec19a7e181e3da08e85628d61c69",
+      "families/family_0005.npz": "2e639489049b49ad7305a35d47f6c5a7cc807d9a64a46241c8b9e9cb410fda9a",
+      "families/family_0006.npz": "c9f78d30c33fab5f7fd87755673dacbe9cef23148c692a2daff535276dcce6e8",
+      "families/family_0007.npz": "c3d88fcbbbc20ea429f191a2edecec78d4c09e49a6487e32055725e1cb7663b0",
+      "families/family_0008.npz": "ba44e2b9a588e1c1901ba19c699b2659c6da1b1a08e0c9b7030a93937b5708da",
+      "families/family_0009.npz": "2587c13c9911fe95769a2c7343ca4f0a90cfef5f00267accb1c0e713dce61ee6",
+      "families/family_0010.npz": "11f8038a7bb8079472457c3aa7739c50644a78e2febb8ab5ef923efbc87e5c94",
+      "metrics.jsonl": "e433b1d339270ae0a6935da9451c17f252f5d8afb3bd093c223edd27b6565ebc",
+      "plastic_genome.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+      "status.json": "201cb159a714b58fe50efc6fa69028e74e709b15fcc20804c46fe76a6d66ae16",
+      "summary.json": "2247b4f4540bc117cac8623c674829e1efbc13d95c1279b354ad635375ab708a"
+    }
+  }
+}

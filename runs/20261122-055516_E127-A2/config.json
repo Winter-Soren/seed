@@ -1,0 +1,122 @@
+{
+  "protocol": "encounter-diagnostic-v1",
+  "args": {
+    "name": "E127-A2",
+    "start": "file:runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120603,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "encounter-diagnostic-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "a035f300b03c2ff3fc826ae8c4629bc1ce7b856d",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A2",
+    "training_seed": 2,
+    "path": "runs/20261112-102755_E103-A-blank-s2/genome_final.npy",
+    "sha256": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6"
+  },
+  "direct_source": {
+    "label": "direct2",
+    "training_seed": 2,
+    "path": "runs/20261119-041609_E113-direct-s2/genome_final.npy",
+    "sha256": "473124dfe1c2a0d77a9a4b7cdde5cb36c41f61b0664e17ede86ae88502971bbd"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "eval_seed": 2026120603,
+  "expected_families": 128,
+  "statistical_unit": "independent paired base family",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "d6d736a4218a764b70af1c8a63011383e6b4be9c77981f5b1f3a3405d1d41f94"
+  },
+  "assignment_stream_tag": 57639,
+  "arms": [
+    "plastic_stationary",
+    "plastic_reversal",
+    "plastic_frozen",
+    "direct_stationary",
+    "direct_reversal"
+  ],
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "pre_contact_choices": [
+    8,
+    16
+  ],
+  "post_contacts": 16,
+  "readout_contacts": [
+    0,
+    2,
+    8,
+    16
+  ],
+  "grid_steps": 50,
+  "probe_placements": 12,
+  "source_code": {
+    "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "fd597dd5703e5f7f3a0503c3e706e762f40b14a4884e48bca972dda0eb907ba9",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd"
+  },
+  "raw_schema": "encounter-diagnostic-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 3600,
+  "scientific_result": false
+}
