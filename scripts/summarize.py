@@ -41,6 +41,7 @@ def main():
     founder_status_rows = []
     exploration_status_rows = []
     offer_status_rows = []
+    contact_gate_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -68,6 +69,10 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "contact-gate-v1":
+            contact_gate_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
+                a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "voluntary-offers-v1":
             offer_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
                 a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
@@ -615,6 +620,57 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if contact_gate_status_rows:
+        from scripts import run_contact_gate
+        study = run_contact_gate.build_comparison(ROOT)
+        out += ["## Contact-timed Hebbian updating (contact-gate-v1)", "",
+            "E133 uses the three original saved controllers with zero training. Each family replays both initial "
+            "rules with identical observations, imposed actions and received feedback across native updating, "
+            "a locally observed contact gate, equally sparse randomly timed updates and a reopened-delay ablation. "
+            "After sixteen common contacts and eight stationary or reversed contacts, local choice and fresh "
+            "fifty-turn solo behavior are measured immediately and after 33 empty turns. All solo readouts "
+            "use ordinary learning, so this measures transfer of the carried state, not live use of the gate.", "",
+            "Every assigned life counts. Two rule replays are averaged within each of 64 independent families "
+            "before sample standard errors and paired contrasts. A dead exposure state gets no fresh body: "
+            "local and signed solo choice are zero, with no contact retained. Solo Y is first food minus first "
+            "poison. The sparse schedule draws one offset independently in each four-turn block and can "
+            "coincide with contact feedback by chance; its overlap is descriptive.", "",
+            "Retention requires verified immediate acquisition plus the registered delayed comparison. "
+            "Every acquisition, retention, transfer, stationary and survival criterion must pass in each "
+            "of the three lineages. Stationary-adjusted solo differences are descriptive.", "",
+            "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|", *contact_gate_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated contact gate: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E133-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimate = lambda value: f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})"
+            verdict = study["replicated_gates"]["contact_gate"]
+            out += [f"Replicated contact gate: **{'PASS' if verdict['passed'] else 'FAIL'}** ({verdict['count']}/3 lineages).", "",
+                "A full pass would justify a separately registered autonomous deployment check before bounded "
+                "equal-budget selection of a heritable between-contact learning gain. Failed immediate "
+                "acquisition points to feedback use. A local retention effect without transfer does not "
+                "advance this design into evolutionary training. Failure to distinguish equal sparsity or "
+                "the reopened delay retires this setting without tuning on these assignments.", ""]
+            gates, components, safeguards, endpoints = [], [], [], []
+            for panel in study["panels"]:
+                values, label = panel["measurements"], str(panel["index"])
+                gates.append("| " + " | ".join([label, "PASS" if values["gate"]["passed"] else "FAIL",
+                    ", ".join(values["gate"]["failed_criteria"]) or "none"]) + " |")
+                for name, value in values["components"].items():
+                    components.append("| " + " | ".join([label, name, estimate(value)]) + " |")
+                for name, value in values["safeguards"].items():
+                    safeguards.append("| " + " | ".join([label, name, estimate(value), f"{value['lower_2se']:.6f}"]) + " |")
+                for arm, fields in values["arms"].items():
+                    for name, pair in fields.items():
+                        endpoints.append("| " + " | ".join([label, arm, name, estimate(pair[0]), estimate(pair[1])]) + " |")
+            out += ["One ± is one family SE, paired for comparisons. All rates use fractions. Immediate and "
+                    "delayed solo probes are separate clones; neither changes the source state.", "",
+                "| Lineage | Joint decision | Failed criteria |", "|---" * 3 + "|", *gates, "",
+                "| Lineage | Component | Mean ± family SE |", "|---" * 3 + "|", *components, "",
+                "| Lineage | Safeguard | Mean ± paired SE | Lower two-SE bound |", "|---" * 4 + "|", *safeguards, "",
+                "| Lineage | Condition | Endpoint | Immediate mean ± family SE | Delayed mean ± family SE |", "|---" * 5 + "|", *endpoints, ""]
     if offer_status_rows:
         from scripts import run_voluntary_offers
         study = run_voluntary_offers.build_comparison(ROOT)

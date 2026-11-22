@@ -52,6 +52,7 @@ RETENTION_INTERVENTION_PROTOCOL = "retention-intervention-v1"
 FOUNDER_REVERSAL_PROTOCOL = "founder-reversal-v1"
 TIMED_EXPLORATION_PROTOCOL = "timed-exploration-v1"
 VOLUNTARY_OFFERS_PROTOCOL = "voluntary-offers-v1"
+CONTACT_GATE_PROTOCOL = "contact-gate-v1"
 PAIRED_V2_PROTOCOL = "paired-train-v2"
 PAIRED_PROTOCOLS = (PAIRED_PROTOCOL, PAIRED_V2_PROTOCOL)
 PAIRED_OBJECTIVES = ("paired-mean", "paired-min")
@@ -722,7 +723,7 @@ def main():
     ap.add_argument("--structural-plasticity", choices=("off", MODE), default=None,
                     help="default off; fixed bounded activity-driven growth/pruning")
     ap.add_argument("--eval-worlds", type=int, default=128)
-    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS, ECOLOGY_LINEAGE_PROTOCOL, COLD_DONOR_PROTOCOL, SHELTER_EVOLUTION_PROTOCOL, INHERITED_EVOLUTION_PROTOCOL, SOCIAL_LEARNING_PROTOCOL, SOCIAL_CHANNEL_PROTOCOL, SOCIAL_OBSERVER_PROTOCOL, SOCIAL_BELIEF_PROTOCOL, SOCIAL_TRANSMISSION_PROTOCOL, SOCIAL_REVERSAL_PROTOCOL, REVERSAL_EVOLUTION_PROTOCOL, ENCOUNTER_DIAGNOSTIC_PROTOCOL, RETENTION_DIAGNOSTIC_PROTOCOL, RETENTION_INTERVENTION_PROTOCOL, FOUNDER_REVERSAL_PROTOCOL, TIMED_EXPLORATION_PROTOCOL, VOLUNTARY_OFFERS_PROTOCOL), default=None,
+    ap.add_argument("--eval-protocol", choices=("v1", "v2", "structural-v1", broader_eval.PROTOCOL, reversal_eval.PROTOCOL, eval_v3.PROTOCOL, eval_v4.PROTOCOL, eval_v5.PROTOCOL, eval_v6.PROTOCOL, DIRECT_PROTOCOL, *PAIRED_PROTOCOLS, ECOLOGY_LINEAGE_PROTOCOL, COLD_DONOR_PROTOCOL, SHELTER_EVOLUTION_PROTOCOL, INHERITED_EVOLUTION_PROTOCOL, SOCIAL_LEARNING_PROTOCOL, SOCIAL_CHANNEL_PROTOCOL, SOCIAL_OBSERVER_PROTOCOL, SOCIAL_BELIEF_PROTOCOL, SOCIAL_TRANSMISSION_PROTOCOL, SOCIAL_REVERSAL_PROTOCOL, REVERSAL_EVOLUTION_PROTOCOL, ENCOUNTER_DIAGNOSTIC_PROTOCOL, RETENTION_DIAGNOSTIC_PROTOCOL, RETENTION_INTERVENTION_PROTOCOL, FOUNDER_REVERSAL_PROTOCOL, TIMED_EXPLORATION_PROTOCOL, VOLUNTARY_OFFERS_PROTOCOL, CONTACT_GATE_PROTOCOL), default=None,
                     help="v1 (default), v2, structural-v1, broader-v1, reversal-v1, v3, v4, v5, v6, direct-v1 or paired-train-v1/v2; ecology-lineage-v1 runs a development fixture; cold-donor-v1 runs the registered saved-genome comparison; social-channel-v1 evaluates fixed readers of public demonstrations")
     ap.add_argument("--memory-condition", choices=("shared", "empty"), default=None,
                     help="ecology-lineage-v1 selected trace; both paired memory conditions are retained")
@@ -753,6 +754,13 @@ def main():
         ap.error("--memory-condition is only valid for ecology-lineage-v1")
     if getattr(a, "persistence", False) and a.eval_protocol != ECOLOGY_LINEAGE_PROTOCOL:
         ap.error("--persistence is only valid for the ecology-lineage-v1 development fixture")
+    if a.eval_protocol == CONTACT_GATE_PROTOCOL:
+        from scripts import run_contact_gate
+        try:
+            run_contact_gate.run_tracked(a, git, ROOT, explicit=explicit)
+        except ValueError as error:
+            ap.error(str(error))
+        return
     if a.eval_protocol == VOLUNTARY_OFFERS_PROTOCOL:
         from scripts import run_voluntary_offers
         try:
@@ -928,6 +936,8 @@ def main():
             ap.error("Timed exploration attempts cannot resume; preserve all evidence and preregister any recovery")
         if args.get("eval_protocol") == VOLUNTARY_OFFERS_PROTOCOL:
             ap.error("Voluntary-offer attempts cannot resume; preserve all evidence and preregister any recovery")
+        if args.get("eval_protocol") == CONTACT_GATE_PROTOCOL:
+            ap.error("Contact-gate attempts cannot resume; preserve all evidence and preregister any recovery")
         if args.get("eval_protocol") == REVERSAL_EVOLUTION_PROTOCOL:
             ap.error("Reversal evolution continuation requires its explicit protocol and next immutable part name")
         if args.get("eval_protocol") == SOCIAL_REVERSAL_PROTOCOL:
