@@ -46,4 +46,4 @@ No experiment is running. E126 training stopped at generation 50 of 200 in all s
 
 ## What is next
 
-Retire E134's selection objective at the tested budget. Keep the E103 parents as the reference and retain all three endpoints and their evidence. Consider the council's pre-outcome options separately. No further study is registered.
+Retire E134's selection objective at the tested budget. Keep the E103 parents as the reference and retain all three endpoints and their evidence. The next proposed comparison measures one voluntary action with matched adjacent items against sparse and ordinary visual backgrounds. It separates an immediate context effect from performance lost during subsequent movement. No further study is registered.

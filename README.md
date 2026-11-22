@@ -537,9 +537,19 @@ Local preference is the probability of moving toward the newly safe color minus 
 
 A0 and A1 cleared the local feedback interaction but missed the required direct gain over their own parents. All three missed the stationary solo safeguard. For A0 and A2 the stationary score fell more than the reversal score, producing positive adjusted contrasts alongside negative direct gains. A2 also missed the absolute solo-reversal criterion and narrowly missed the reversal survival safeguard. [Independent audit and all gate components](results/diagnostics/E134-independent-audit.json)
 
+With the rule held stationary, the descendants improved on the local probe in all three lineages while their solo scores declined. Differences below are descendant minus parent, with one paired SE across 128 families per lineage.
+
+| Lineage | Stationary local preference | Stationary solo first-item score |
+|---|---:|---:|
+| A0 | +0.177 ± 0.011 | −0.270 ± 0.050 |
+| A1 | +0.127 ± 0.010 | −0.082 ± 0.044 |
+| A2 | +0.103 ± 0.014 | −0.457 ± 0.050 |
+
 In the reversal solo probe, first-food, first-poison and no-contact counts were **146/89/21 → 131/98/27**, **150/71/35 → 128/93/35** and **149/95/12 → 127/118/11** from parent to descendant. Each arm had 256 assigned lives. Among contacts only, the food fraction declined from **146/235 to 131/229**, **150/221 to 128/221** and **149/244 to 127/245**. These ratios describe choice among contactors. The gate scores every assigned life. The full report also gives the stationary counts and the denominator for every conditional ratio. [Audited solo outcomes](results/diagnostics/E134-independent-audit.json)
 
 All 30 final attempts produced optimizer updates. The behavioral comparison concerns performance after matched experience and a gap. Retention, autonomous recovery from birth and a causal effect of feedback on the solo gain would require additional comparisons. Close this selection setting at its original budget and thresholds. [Development forecast](results/diagnostics/E134-development-forecast.json) · [Operational receipts](results/diagnostics/E134-operations.json)
+
+**Proposed next comparison.** Measure one voluntary action in an ordinary visual background before changing the objective. Present the same adjacent A and B in both the sparse probe and a fresh ordinary-density background. Keep the start cell and the two other immediate destinations empty, balance the directions and starting rules, and copy the same brain and standardized body into both scenes. Score the same five-action signed preference before feedback, with updates held fixed during the readout. Compare how the descendant-minus-parent gap changes between scenes. If the advantage disappears on the first action, the immediate visual context is enough to disrupt transfer. If it survives, follow separate copies from the same backgrounds through free movement to see when the disadvantage appears. The 22 November laptop ledger had 4,363.438 seconds remaining after E134 reporting. [Operational receipts](results/diagnostics/E134-operations.json)
 
 ## Try it locally
 
