@@ -172,11 +172,14 @@ def _think(s, g, obs, controller, c, hebbian, predictor):
     return W, x, Wp, surprise, logits
 
 
-def _step(s, g, rule, forced, controller, c, *, hebbian=True, predictor=True, regrowth=True):
+def _step(s, g, rule, forced, controller, c, *, hebbian=True, predictor=True, regrowth=True,
+          observation=None):
     """Ordinary one-agent transition, with an explicit imposed-action/apparatus switch."""
     _, _, outputs, neurons, _ = seed.dims(c)
     key, ka, kr = jax.random.split(s["key"], 3)
-    obs = seed.observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
+    obs = observation
+    if obs is None:
+        obs = seed.observe(s["grid"], s["pos"], s["alive"], s["sig"], s["energy"], s["denergy"], c)
     W, x, Wp, surprise, logits = _think(s, g, obs, controller, c, hebbian, predictor)
     motor = x[:, neurons - outputs:neurons - 1]
     sampled = jax.random.categorical(ka, logits)

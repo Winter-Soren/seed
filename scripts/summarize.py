@@ -43,6 +43,7 @@ def main():
     offer_status_rows = []
     contact_gate_status_rows = []
     replay_selection_rows = []
+    scene_transfer_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -70,6 +71,10 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "scene-transfer-v1":
+            scene_transfer_rows.append("| " + " | ".join([d.name, cfg["mode"], s.get("status", "no summary"),
+                f"{s.get('completed_families', '?')}/{cfg['expected_families']}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "replay-selection-v1":
             replay_selection_rows.append("| " + " | ".join([d.name, cfg["mode"], s.get("status", "no summary"),
                 f"{s.get('completed_attempts', '?')}/{cfg['expected_attempts']}",
@@ -626,6 +631,77 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if scene_transfer_rows:
+        from scripts import run_scene_transfer
+        study = run_scene_transfer.build_comparison(ROOT)
+        out += ["## First-choice transfer across visual scenes (scene-transfer-v1)", "",
+            "E135 compares each frozen E134 attempt-ten descendant with its original E103 parent, with zero "
+            "new training. After identical stationary or reversed histories, discarded clones choose among "
+            "the same adjacent A/B items in the same ordinary-density physical scene. Only the first sensory "
+            "view changes: extra items are masked or fully visible. Both learning processes are frozen for "
+            "that decision. A randomly assigned placement continues freely with ordinary learning, and a "
+            "separate ordinary-grid reference tests the same acquired state.", "",
+            "The primary gate concerns stationary experience. First replicate at least a 0.05 descendant "
+            "advantage in the masked view, then require at least 0.05 attenuation of that advantage in the "
+            "full view. Each effect must have a strictly positive lower two-SE bound in all three lineages. "
+            "Failure to establish attenuation does not exclude it; excluding a loss of 0.05 requires the "
+            "registered upper-bound criterion. Reversed histories and subsequent movement are reported separately.", "",
+            "| Run | Mode | Status | Families completed/assigned | Commit |", "|---" * 5 + "|", *scene_transfer_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated first-choice attenuation: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E135-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+
+            def scene_estimate(value):
+                result = ("null (no contacts)" if value["mean"] is None else
+                          f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})")
+                if "contact_count" in value:
+                    result += f"; {value['food_count']}/{value['contact_count']} food/contact, {value['assigned_lives']} assigned lives"
+                return result
+
+            def scene_estimates(value, prefix=""):
+                if isinstance(value, dict) and {"mean", "se", "n"}.issubset(value):
+                    yield prefix, value
+                elif isinstance(value, dict):
+                    for key, child in value.items():
+                        yield from scene_estimates(child, prefix + ("." if prefix else "") + key)
+
+            verdict = study["replicated_gates"]["passed"]
+            out += [f"Replicated first-choice attenuation: **{'PASS' if verdict['passed'] else 'FAIL'}** ({verdict['count']}/3 lineages).", "",
+                "A pass identifies a first-observation context effect on the inherited advantage. It does not "
+                "by itself establish that the advantage vanishes: the full-view bounds distinguish erasure, "
+                "partial attenuation and unresolved cases. A failed masked-view replication leaves that "
+                "prerequisite open. Every assigned family remains in the analysis; no-contact lives score "
+                "zero in signed first-item Y. Neither a first-choice deficit nor a later solo deficit alone "
+                "establishes forgetting.", ""]
+            classifications = ["| " + " | ".join([name, str(value["count"]) + "/3",
+                ", ".join("A" + str(index) for index in value["seeds"]) or "none"]) + " |"
+                for name, value in study["replicated_gates"].items()]
+            contrasts, decisions, estimates = [], [], []
+            for panel in study["panels"]:
+                label, values = "A" + str(panel["index"]), panel["measurements"]
+                decisions.append("| " + " | ".join([label, ", ".join(name for name, passed in panel["gate"].items() if passed) or "none"]) + " |")
+                for history, measured in values["histories"].items():
+                    contrasts.append("| " + " | ".join([label, history, *[scene_estimate(measured[name])
+                        for name in ("masked_gain", "full_gain", "attenuation", "reference_gain")]]) + " |")
+                for name, value in scene_estimates(values):
+                    lower = "—" if "lower_2se" not in value else f"{value['lower_2se']:.6f}"
+                    upper = "—" if "upper_2se" not in value else f"{value['upper_2se']:.6f}"
+                    estimates.append("| " + " | ".join([label, name, scene_estimate(value), lower, upper]) + " |")
+            out += ["Each ± is one sample SE across 128 independent families. First-decision measures average "
+                    "both initial rules and all twelve placements within each family before estimates and "
+                    "paired contrasts. Continuation and reference measures average the two initial-rule "
+                    "lives within a family. Contact accuracy is descriptive, reports its food/contact denominator and is "
+                    "null without contacts. Its ratio uncertainty uses family clusters. The approach and "
+                    "conditional-choice decomposition is descriptive. Zero-distractor scenes remain included.", "",
+                "| Classification | Lineages meeting criterion | Lineages |", "|---" * 3 + "|", *classifications, "",
+                "| Lineage | Classifications established |", "|---" * 2 + "|", *decisions, "",
+                "| Lineage | History | Masked descendant gain | Full descendant gain | Attenuation | Ordinary-reference solo gain |",
+                "|---" * 6 + "|", *contrasts, "",
+                "| Lineage | Measure | Mean ± family SE | Lower two-SE bound | Upper two-SE bound |",
+                "|---" * 5 + "|", *estimates, ""]
     if replay_selection_rows:
         out += ["## Selection on independent choice after matched replay (replay-selection-v1)", "",
             "E134 selects the native genome on expected signed choice after matched experience. "
