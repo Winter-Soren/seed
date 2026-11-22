@@ -173,6 +173,12 @@ class FounderReversalRunnerTests(unittest.TestCase):
         self.assertEqual((config["cfg"]["M"], config["cfg"]["T"], config["max_seconds"]), (4, 300, 180))
         self.assertEqual(config["source_start"], entry.START_SOURCES[0])
         self.assertEqual(config["source_final"], entry.FINAL_SOURCES[0])
+        self.assertEqual(config["source_generations"], [0, 200])
+        self.assertNotIn("source_genome", config)
+        self.assertNotIn("policy_order", config)
+        self.assertNotIn("family_policy_seconds", result)
+        self.assertEqual(result["measurements"]["genotype_history_rollouts"], 32)
+        self.assertNotIn("policy_history_rollouts", result["measurements"])
         self.assertFalse(result["scientific_result"])
         self.assertEqual(result["gate_status"], "not_applicable")
         for artifact in result["raw_files"]:

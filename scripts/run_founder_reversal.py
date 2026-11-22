@@ -5,6 +5,7 @@ import io
 import json
 import os
 from pathlib import Path
+import sys
 import time
 
 import numpy as np
@@ -18,6 +19,9 @@ from scripts.run_shelter_evolution import _save_arrays
 
 
 PROTOCOL = "founder-reversal-v1"
+STUDY_ID = "E130"
+DEVELOPMENT_SEED = 2026120900
+ROLLOUTS_FIELD = "genotype_history_rollouts"
 MAX_SECONDS = {"development": 180, "final": 450}
 ARMS = ("gen0_stationary", "gen0_reversal", "gen200_stationary", "gen200_reversal")
 KEY_ROLES = ("world_action", "development")
@@ -30,6 +34,9 @@ START_SOURCES = tuple(dict(source, path=source["path"].replace("genome_final.npy
         "c62051a478c75f3211645968e5a15bb64bcfcdb8f61c366357020f4cff8294b9")))
 ALLOWED_FLAGS = {"--eval-protocol", "--condition-split", "--name", "--start", "--seed",
                  "--generations", "--eval-worlds", "--hypothesis"}
+SOURCE_SLOTS = (("genome_start.npy", "source_start", "gen0_genome_sha256", START_SOURCES),
+                ("genome_final.npy", "source_final", "gen200_genome_sha256", FINAL_SOURCES))
+CONFIG_EXTRA = {"source_generations": [0, 200]}
 
 
 def _gate(components, safeguards):
@@ -45,12 +52,12 @@ def _gate(components, safeguards):
     return dict(criteria=checks, passed=all(checks.values()), failed_criteria=[name for name, passed in checks.items() if not passed])
 
 
-def summarize(rows):
+def _family_arrays(rows, arms):
     n = len(rows)
     if n < 2 or [int(row["base_index"]) for row in rows] != list(range(n)):
         raise ValueError("founder comparison requires every ordered independent family")
     arrays = {}
-    for arm in ARMS:
+    for arm in arms:
         q = np.asarray([row[arm + "_Q_by_rule"] for row in rows])
         alive = np.asarray([row[arm + "_alive_end_by_rule"] for row in rows])
         survival = np.asarray([row[arm + "_final_survival_by_rule"] for row in rows])
@@ -63,20 +70,31 @@ def summarize(rows):
         arrays[arm] = dict(Q=q.astype(np.float64), first_food=(q == 1).astype(np.float64),
             first_poison=(q == -1).astype(np.float64), no_contact=(q == 0).astype(np.float64),
             survival=alive.astype(np.float64), end_survival=survival.astype(np.float64))
-    for generation in ("gen0", "gen200"):
+    for generation in {arm.rsplit("_", 1)[0] for arm in arms}:
         for field in ("Q", "survival"):
             if not np.array_equal(arrays[generation + "_stationary"][field][:, :, :3],
                                   arrays[generation + "_reversal"][field][:, :, :3]):
                 raise ValueError("stationary and reversal histories must agree before the switch")
 
+    return arrays
+
+
+def _arm_summaries(arrays, rule=None):
+    family, arms = {}, {}
+    for arm, fields in arrays.items():
+        family[arm] = {name: (value if rule is None else value[:, rule:rule+1]).mean(axis=(1, value.ndim-1))
+                       for name, value in fields.items()}
+        arms[arm] = dict(windows=[dict(index=i, start=BIN_EDGES[i], end=BIN_EDGES[i+1],
+            **{name: _estimate(family[arm][name][:, i]) for name in ("Q", "first_food", "first_poison", "no_contact", "survival")})
+            for i in range(6)], end_survival=_estimate(family[arm]["end_survival"]))
+    return family, arms
+
+
+def summarize(rows):
+    arrays, n = _family_arrays(rows, ARMS), len(rows)
+
     def measure(rule=None):
-        family, arms = {}, {}
-        for arm, fields in arrays.items():
-            family[arm] = {name: (value if rule is None else value[:, rule:rule+1]).mean(axis=(1, value.ndim-1))
-                           for name, value in fields.items()}
-            arms[arm] = dict(windows=[dict(index=i, start=BIN_EDGES[i], end=BIN_EDGES[i+1],
-                **{name: _estimate(family[arm][name][:, i]) for name in ("Q", "first_food", "first_poison", "no_contact", "survival")})
-                for i in range(6)], end_survival=_estimate(family[arm]["end_survival"]))
+        family, arms = _arm_summaries(arrays, rule)
         f_rev, f_stat = family["gen0_reversal"]["Q"], family["gen0_stationary"]["Q"]
         d_rev, d_stat = family["gen200_reversal"]["Q"], family["gen200_stationary"]["Q"]
         components = dict(descendant_pre=_estimate(d_rev[:, 2]), descendant_reversal_late=_estimate(d_rev[:, 5]),
@@ -117,10 +135,11 @@ def _source_code(root):
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in names}
 
 
-def _validate(args, git, root, explicit):
+def _validate(args, git, root, explicit, *, study=None):
+    study = sys.modules[__name__] if study is None else study
     if explicit is not None and set(explicit) - ALLOWED_FLAGS:
         raise ValueError("founder comparison accepts only its registered identity and source flags")
-    if (args.eval_protocol != PROTOCOL or args.condition_split not in MAX_SECONDS or args.generations != 0
+    if (args.eval_protocol != study.PROTOCOL or args.condition_split not in study.MAX_SECONDS or args.generations != 0
             or args.quick or args.allow_dirty or args.resume or args.cfg or args.no_plastic
             or args.controller not in (None, "rules-v0") or args.structural_plasticity not in (None, "off")
             or args.objective is not None or args.memory_condition is not None or getattr(args, "persistence", False)
@@ -130,70 +149,79 @@ def _validate(args, git, root, explicit):
     commit = git.get("commit", "")
     if git.get("dirty") is not False or not isinstance(commit, str) or len(commit) != 40 or any(ch not in "0123456789abcdef" for ch in commit):
         raise ValueError("founder comparison requires clean committed code")
-    indices = [i for i in range(3) if args.name == f"E130-A{i}"]
+    indices = [i for i in range(3) if args.name == f"{study.STUDY_ID}-A{i}"]
     if args.condition_split == "development":
-        index, expected = 0, ("E130-benchmark", 2026120900, 4)
+        index, expected = 0, (study.STUDY_ID + "-benchmark", study.DEVELOPMENT_SEED, 4)
     elif len(indices) == 1:
         index = indices[0]
-        expected = (f"E130-A{index}", 2026120901+index, 64)
+        expected = (f"{study.STUDY_ID}-A{index}", study.DEVELOPMENT_SEED+1+index, 64)
     else:
-        raise ValueError("final founder panels must be E130-A0, E130-A1 or E130-A2")
+        raise ValueError("final panels must match one of the three registered lineage names")
     if (args.name, args.seed, args.eval_worlds) != expected or any((root / "runs").glob("*_" + args.name)):
         raise ValueError("founder identity differs from registration or its immutable attempt already exists")
-    source, final_source = START_SOURCES[index], FINAL_SOURCES[index]
+    source = study.SOURCE_SLOTS[0][3][index]
     if not args.start.startswith("file:") or (root / args.start[5:]).resolve() != (root / source["path"]).resolve():
-        raise ValueError("founder comparison requires the matching original generation-zero E103 file")
-    original, evolved = (_read_pinned(root / item["path"], item["sha256"]) for item in (source, final_source))
-    first, last = (np.load(io.BytesIO(raw), allow_pickle=False) for raw in (original, evolved))
-    if any(value.shape != (155,) or value.dtype != np.float32 or not np.isfinite(value).all() for value in (first, last)):
-        raise ValueError("both original genomes must be finite float32 rules-v0 arrays")
-    if (engine.PROTOCOL != PROTOCOL or tuple(engine.ARMS) != ARMS or tuple(engine.KEY_ROLES) != KEY_ROLES
-            or tuple(engine.BIN_EDGES) != BIN_EDGES or engine.FLIP_STEP != 150 or engine.CFG != Cfg()):
+        raise ValueError("comparison requires its matching original E103 source file")
+    originals = tuple(_read_pinned(root / sources[index]["path"], sources[index]["sha256"])
+                      for _, _, _, sources in study.SOURCE_SLOTS)
+    values = tuple(np.load(io.BytesIO(raw), allow_pickle=False) for raw in originals)
+    if any(value.shape != (155,) or value.dtype != np.float32 or not np.isfinite(value).all() for value in values):
+        raise ValueError("original genomes must be finite float32 rules-v0 arrays")
+    backend = study.engine
+    if (backend.PROTOCOL != study.PROTOCOL or tuple(backend.ARMS) != study.ARMS or tuple(backend.KEY_ROLES) != study.KEY_ROLES
+            or tuple(backend.BIN_EDGES) != BIN_EDGES or backend.FLIP_STEP != 150 or backend.CFG != Cfg()):
         raise ValueError("founder engine differs from its registered ordinary world")
-    return index, source, final_source, original, evolved, first, last
+    return index, originals, values
 
 
-def run_tracked(args, git, root, *, explicit=None):
+def run_tracked(args, git, root, *, explicit=None, study=None):
+    study = sys.modules[__name__] if study is None else study
     started, root = time.monotonic(), Path(root).resolve()
-    index, source, final_source, original, evolved, first, last = _validate(args, git, root, explicit)
+    index, originals, values = _validate(args, git, root, explicit, study=study)
+    source, backend = study.SOURCE_SLOTS[0][3][index], study.engine
     n = args.eval_worlds
-    assignment = {key: np.asarray(value) for key, value in engine.assignments_manifest(args.seed, n).items()}
-    if (set(assignment) != {"family_keys", "initial_rules"} or assignment["family_keys"].shape != (n, 2, 2)
+    assignment = {key: np.asarray(value) for key, value in backend.assignments_manifest(args.seed, n).items()}
+    if (set(assignment) != {"family_keys", "initial_rules"} or assignment["family_keys"].shape != (n, len(study.KEY_ROLES), 2)
             or assignment["family_keys"].dtype != np.uint32 or assignment["initial_rules"].dtype != np.int32
             or not np.array_equal(assignment["initial_rules"], [0, 1])
-            or len({key.tobytes() for key in assignment["family_keys"].reshape(-1, 2)}) != 2*n):
+            or len({key.tobytes() for key in assignment["family_keys"].reshape(-1, 2)}) != len(study.KEY_ROLES)*n):
         raise ValueError("founder families need unique paired world/development keys and both rules")
-    code = _source_code(root)
+    code = study._source_code(root)
     folder = root / "runs" / (datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "_" + args.name)
     folder.mkdir(parents=True, exist_ok=False)
     (folder / "families").mkdir()
     manifest = _save_arrays(folder, "assignments.npz", assignment)
-    config = dict(protocol=PROTOCOL, args=dict(vars(args), start="file:" + source["path"]), git=dict(git),
-        source_start=source, source_final=final_source, source_generations=[0, 200], cfg=Cfg()._asdict(), cfg_overrides={},
+    config = dict(protocol=study.PROTOCOL, args=dict(vars(args), start="file:" + source["path"]), git=dict(git),
+        **{field: sources[index] for _, field, _, sources in study.SOURCE_SLOTS},
+        **study.CONFIG_EXTRA, cfg=Cfg()._asdict(), cfg_overrides={},
         condition_split=args.condition_split, generation=0, seed_index=index, eval_seed=args.seed, expected_families=n,
         statistical_unit="independent family averaging four original animals and both rules", assignments=manifest,
-        arms=list(ARMS), key_roles=list(KEY_ROLES), initial_rules=[0, 1], bin_edges=list(BIN_EDGES), flip_step=150,
-        source_code=code, raw_schema=PROTOCOL, raw_pattern="families/family_{index:04d}.npz", runtime=_runtime(),
-        max_seconds=MAX_SECONDS[args.condition_split], scientific_result=False)
+        arms=list(study.ARMS), key_roles=list(study.KEY_ROLES), initial_rules=[0, 1], bin_edges=list(BIN_EDGES), flip_step=150,
+        source_code=code, raw_schema=study.PROTOCOL, raw_pattern="families/family_{index:04d}.npz", runtime=_runtime(),
+        max_seconds=study.MAX_SECONDS[args.condition_split], scientific_result=False)
     _write_json(folder / "config.json", config)
-    _write_bytes(folder / "genome_start.npy", original)
-    _write_bytes(folder / "genome_final.npy", evolved)
+    for (name, _, _, _), content in zip(study.SOURCE_SLOTS, originals):
+        _write_bytes(folder / name, content)
     rows, artifacts, durations, walls = [], [], [], []
+    policy_durations = []
     setup = time.monotonic()-started
 
     def status(value):
         if (len(walls) > len(artifacts) or any(not np.isfinite(t) or t < 0 for t in walls)
                 or value == "finished" and len(walls) != n):
             raise ValueError("founder timing must preserve a complete nonnegative family prefix")
-        return dict(status=value, completed_families=len(artifacts), expected_families=n, elapsed_seconds=time.monotonic()-started,
-                    setup_seconds=setup, family_seconds=list(durations), family_wall_seconds=list(walls))
+        result = dict(status=value, completed_families=len(artifacts), expected_families=n, elapsed_seconds=time.monotonic()-started,
+                      setup_seconds=setup, family_seconds=list(durations), family_wall_seconds=list(walls))
+        if hasattr(study, "POLICIES"):
+            result.update(policy_order=list(study.POLICIES), family_policy_seconds=list(policy_durations))
+        return result
 
     def summary(value):
-        return dict(**status(value), protocol=PROTOCOL, condition_split=args.condition_split, seed_index=index,
+        return dict(**status(value), protocol=study.PROTOCOL, condition_split=args.condition_split, seed_index=index,
             evaluation_seed=args.seed, scientific_result=False, artifact_validity="incomplete", gate_status="undecided", raw_files=list(artifacts))
 
     def deadline():
-        if time.monotonic()-started >= MAX_SECONDS[args.condition_split]:
+        if time.monotonic()-started >= study.MAX_SECONDS[args.condition_split]:
             raise TimeoutError("founder comparison exceeded its registered invocation allowance")
 
     _write_status(folder, status("running"))
@@ -202,21 +230,31 @@ def run_tracked(args, git, root, *, explicit=None):
             for family, keys in enumerate(assignment["family_keys"]):
                 deadline()
                 family_started = time.monotonic()
-                if not np.array_equal(keys, np.asarray(engine.evaluation_keys(args.seed, family))):
+                if not np.array_equal(keys, np.asarray(backend.evaluation_keys(args.seed, family))):
                     raise ValueError("founder assignment differs from the registered key derivation")
-                raw = engine.evaluate_world(first, last, keys, family, c=engine.CFG)
-                compact = engine.summary_input(raw)
+                raw = backend.evaluate_world(*values, keys, family, c=backend.CFG)
+                compact = backend.summary_input(raw)
                 if (int(raw["base_index"]) != family or not np.array_equal(raw["keys"], keys)
                         or not np.array_equal(raw["initial_rules"], [0, 1]) or not np.array_equal(raw["bin_edges"], BIN_EDGES)
-                        or int(raw["flip_step"]) != 150 or not np.array_equal(raw["gen0_genome_sha256"], _array_sha(first))
-                        or not np.array_equal(raw["gen200_genome_sha256"], _array_sha(last))):
+                        or int(raw["flip_step"]) != 150
+                        or any(not np.array_equal(raw[field], _array_sha(value))
+                               for (_, _, field, _), value in zip(study.SOURCE_SLOTS, values))):
                     raise ValueError("founder raw evidence differs from its assigned inputs")
+                if hasattr(study, "POLICIES"):
+                    timing = np.asarray(raw["policy_seconds"], np.float64)
+                    if timing.shape != (len(study.POLICIES),) or not np.isfinite(timing).all() or np.any(timing <= 0):
+                        raise ValueError("policy timing must retain every synchronized positive observation")
                 artifact = dict(index=family, **_save_arrays(folder, f"families/family_{family:04d}.npz", raw))
                 artifacts.append(artifact)
+                if hasattr(study, "POLICIES"):
+                    policy_durations.append(timing.tolist())
                 rows.append(compact)
                 durations.append(time.monotonic()-family_started)
-                stream.write(json.dumps(dict(family=family, keys=keys.tolist(), raw_file=artifact,
-                    family_seconds=durations[-1], elapsed_seconds=time.monotonic()-started), allow_nan=False) + "\n")
+                metric = dict(family=family, keys=keys.tolist(), raw_file=artifact,
+                    family_seconds=durations[-1], elapsed_seconds=time.monotonic()-started)
+                if hasattr(study, "POLICIES"):
+                    metric["policy_seconds"] = timing.tolist()
+                stream.write(json.dumps(metric, allow_nan=False) + "\n")
                 stream.flush()
                 os.fsync(stream.fileno())
                 _write_status(folder, status("running"))
@@ -224,8 +262,9 @@ def run_tracked(args, git, root, *, explicit=None):
                 print(f"founder family {family+1}/{n} saved", flush=True)
                 del raw
                 deadline()
-        measurements = summarize(rows)
-        for name, content, value, item in (("genome_start.npy", original, first, source), ("genome_final.npy", evolved, last, final_source)):
+        measurements = study.summarize(rows)
+        for (name, _, _, sources), content, value in zip(study.SOURCE_SLOTS, originals, values):
+            item = sources[index]
             _read_pinned(root / item["path"], item["sha256"])
             if (folder / name).read_bytes() != content or value.tobytes() != np.load(io.BytesIO(content), allow_pickle=False).tobytes():
                 raise ValueError("founder evaluation changed a source endpoint")
@@ -245,11 +284,12 @@ def run_tracked(args, git, root, *, explicit=None):
     return folder
 
 
-def build_comparison(root):
+def build_comparison(root, *, study=None):
+    study = sys.modules[__name__] if study is None else study
     root = Path(root).resolve()
     folders, configs = [], []
     for index in range(3):
-        candidates = list((root / "runs").glob(f"*_E130-A{index}"))
+        candidates = list((root / "runs").glob(f"*_{study.STUDY_ID}-A{index}"))
         if len(candidates) != 1 or not (candidates[0] / "status.json").exists():
             return dict(status="undecided", reason="all three complete founder panels are required")
         folder = candidates[0]
@@ -257,19 +297,19 @@ def build_comparison(root):
         config = json.loads((folder / "config.json").read_text(encoding="utf-8"))
         if state.get("status") != "finished" or state.get("completed_families") != 64 or state.get("expected_families") != 64:
             return dict(status="undecided", reason="a registered founder panel is incomplete")
-        if (config.get("protocol") != PROTOCOL or config.get("condition_split") != "final"
-                or config.get("args", {}).get("name") != f"E130-A{index}" or config.get("eval_seed") != 2026120901+index
-                or config.get("source_start") != START_SOURCES[index] or config.get("source_final") != FINAL_SOURCES[index]
+        if (config.get("protocol") != study.PROTOCOL or config.get("condition_split") != "final"
+                or config.get("args", {}).get("name") != f"{study.STUDY_ID}-A{index}" or config.get("eval_seed") != study.DEVELOPMENT_SEED+1+index
+                or any(config.get(field) != sources[index] for _, field, _, sources in study.SOURCE_SLOTS)
                 or config.get("expected_families") != 64 or config.get("git", {}).get("dirty") is not False):
             raise ValueError("founder panel metadata differs from the registered lineage comparison")
         folders.append(folder)
         configs.append(config)
-    path = root / AUDIT_PATH
+    path = root / study.AUDIT_PATH
     if not path.exists():
         return dict(status="undecided", reason="independent three-panel founder verification is pending")
     raw_audit = path.read_bytes()
     audit = json.loads(raw_audit)
-    if audit.get("status") != "passed" or audit.get("protocol") != PROTOCOL or audit.get("mode") != "final":
+    if audit.get("status") != "passed" or audit.get("protocol") != study.PROTOCOL or audit.get("mode") != "final":
         return dict(status="undecided", reason="independent final founder verification has not passed")
     registered, checked = audit.get("registered_source", ""), audit.get("checked_file_sha256", {})
     if (not isinstance(registered, str) or len(registered) != 40 or any(ch not in "0123456789abcdef" for ch in registered)
@@ -288,7 +328,8 @@ def build_comparison(root):
         for name in ("config.json", "status.json", "metrics.jsonl"):
             verified(folder / name)
         verified(folder / "assignments.npz", config["assignments"]["sha256"])
-        for name, source in (("genome_start.npy", START_SOURCES[index]), ("genome_final.npy", FINAL_SOURCES[index])):
+        for name, _, _, sources in study.SOURCE_SLOTS:
+            source = sources[index]
             verified(folder / name, source["sha256"])
             verified(root / source["path"], source["sha256"])
         result = json.loads(verified(folder / "summary.json"))
@@ -303,12 +344,13 @@ def build_comparison(root):
             verified(folder / relative, artifact["sha256"])
         measures = result["measurements"]
         if (measures.get("families") != 64 or measures.get("initial_rule_replays") != 128
-                or measures.get("genotype_history_rollouts") != 512 or measures.get("agents_per_rule") != 4
+                or measures.get(study.ROLLOUTS_FIELD) != 64*len(study.ARMS)*2 or measures.get("agents_per_rule") != 4
                 or measures.get("bin_edges") != list(BIN_EDGES) or measures.get("flip_step") != 150):
             raise ValueError("founder comparison changed its assigned denominators or windows")
         panels.append(dict(index=index, run=folder.relative_to(root).as_posix(), measurements=measures))
-    decisions = _replicated_gates(panels)
+    decisions = study._replicated_gates(panels)
     if audit.get("replicated_gates") != decisions:
         raise ValueError("runner and independent founder audit disagree")
-    return dict(status="complete", protocol=PROTOCOL, scientific_result=True, registered_source=registered,
-        audit=dict(path=AUDIT_PATH, sha256=hashlib.sha256(raw_audit).hexdigest()), panels=panels, replicated_gates=decisions)
+    extra = study._comparison_extra(root, audit, verified, decisions) if hasattr(study, "_comparison_extra") else {}
+    return dict(status="complete", protocol=study.PROTOCOL, scientific_result=True, registered_source=registered,
+        audit=dict(path=study.AUDIT_PATH, sha256=hashlib.sha256(raw_audit).hexdigest()), panels=panels, replicated_gates=decisions, **extra)

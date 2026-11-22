@@ -39,6 +39,7 @@ def main():
     retention_status_rows = []
     retention_intervention_status_rows = []
     founder_status_rows = []
+    exploration_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -66,6 +67,10 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "timed-exploration-v1":
+            exploration_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
+                a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "founder-reversal-v1":
             founder_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
                 a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
@@ -605,6 +610,68 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if exploration_status_rows:
+        from scripts import run_timed_exploration
+        study = run_timed_exploration.build_comparison(ROOT)
+        out += ["## Feedback-timed exploration (timed-exploration-v1)", "",
+            "E131 compares the same saved generation-200 controller with unchanged actions, drought-timed "
+            "exploration, and outcome-independent exploration with the same nominal quota. Independent "
+            "random phase delays avoid alignment with the hidden switch at turn 150. All four original "
+            "animals and both initial rules count inside each of 64 independent families per lineage.", "",
+            "First-food latency uses offsets 0–49 in [150,200), or 50 without food, including death. "
+            "Each fifty-turn Q is the first item: food +1, poison -1, no contact zero. Every lineage must "
+            "improve latency and direct late reversal Q over both controls above two paired SE, retain "
+            "positive adaptive late Q, and improve history-adjusted late Q by at least 0.05 and above "
+            "two paired SE. Stationary late Q and survival in both histories must retain lower paired "
+            "two-SE bounds above -0.05. The development runtime ceiling is a separate adoption condition.", "",
+            "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|", *exploration_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated timed exploration: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E131-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimate = lambda value: f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})"
+            verdict, cost = study["replicated_gates"]["timed_exploration"], study["operational_cost"]
+            out += [f"Replicated timed exploration: **{'PASS' if verdict['passed'] else 'FAIL'}** ({verdict['count']}/3 lineages). "
+                f"Adoption: **{'PASS' if study['adoption']['passed'] else 'FAIL'}**.", "",
+                f"Warm development medians: ordinary {cost['ordinary_median_seconds']:.6f} s, "
+                f"adaptive {cost['adaptive_median_seconds']:.6f} s, quota {cost['quota_median_seconds']:.6f} s. "
+                f"Adaptive/ordinary {cost['ratio']:.6f}; ceiling 1.5; **{'PASS' if cost['passed'] else 'FAIL'}**. "
+                "All four policy timings, including compilation, remain in the raw development record.", "",
+                "No genotype was evolved or replaced. Differences isolate this action schedule on these "
+                "worlds. Independent checks reconstruct events, policy counters and paired uncertainty; "
+                "they do not recompute every neural or world transition.", ""]
+            gates, components, safeguards, windows, endpoints = [], [], [], [], []
+            for panel in study["panels"]:
+                values, lineage = panel["measurements"], str(panel["index"])
+                gates.append("| " + " | ".join([lineage, "PASS" if values["gate"]["passed"] else "FAIL",
+                    ", ".join(values["gate"]["failed_criteria"]) or "none"]) + " |")
+                for view, measurements in [("both", values), *values["by_initial_rule"].items()]:
+                    for name, value in measurements["components"].items():
+                        components.append("| " + " | ".join([lineage, view, "absolute", name, estimate(value)]) + " |")
+                    for control, comparison in measurements["comparisons"].items():
+                        for name in ("latency_saved", "late_Q_difference", "adjusted_late_Q"):
+                            components.append("| " + " | ".join([lineage, view, control, name, estimate(comparison[name])]) + " |")
+                        for name, value in comparison["safeguards"].items():
+                            safeguards.append("| " + " | ".join([lineage, view, control, name, estimate(value), f"{value['lower_2se']:.6f}"]) + " |")
+                    for arm, data in measurements["arms"].items():
+                        endpoints.append("| " + " | ".join([lineage, view, arm, *[estimate(data[name]) for name in
+                            ("first_food_latency", "first_any_latency", "end_survival", "override_count", "override_live_fraction", "changed_action_count", "changed_action_live_fraction")]]) + " |")
+                        for window in data["windows"]:
+                            windows.append("| " + " | ".join([lineage, view, arm, f"[{window['start']},{window['end']})",
+                                *[estimate(window[name]) for name in ("Q", "first_food", "first_poison", "no_contact", "survival")]]) + " |")
+            out += ["All rates below use fractions; one ± is one family SE. Initial-rule views are descriptive. "
+                    "Override count is per assigned animal; live fraction is each family's overrides divided "
+                    "by its alive-turn count, then summarized across families. Changed-action counts exclude "
+                    "overrides that happen to match the ordinary sampled action.", "",
+                "| Lineage | Behavioral decision | Failed criteria |", "|---" * 3 + "|", *gates, "",
+                "| Lineage | Initial rule | Control | Component | Mean ± paired family SE |", "|---" * 5 + "|", *components, "",
+                "| Lineage | Initial rule | Control | Safeguard | Mean ± paired SE | Lower two-SE bound |", "|---" * 6 + "|", *safeguards, "",
+                "| Lineage | Initial rule | Policy/history | First-food latency | First-item latency | End survival | Overrides/assigned | Overrides/live turn | Changed actions/assigned | Changed actions/live turn |",
+                "|---" * 10 + "|", *endpoints, "",
+                "| Lineage | Initial rule | Policy/history | Window | Q | First food | First poison | No contact | Alive at window end |",
+                "|---" * 9 + "|", *windows, ""]
     if founder_status_rows:
         from scripts import run_founder_reversal
         study = run_founder_reversal.build_comparison(ROOT)

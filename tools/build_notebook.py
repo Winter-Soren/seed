@@ -10,6 +10,13 @@ seed_src = seed_src.replace("from seed.ecology import EcologyV1, apply_costs, ma
 persistence_src = (Path(__file__).resolve().parents[1] / "seed" / "persistence.py").read_text()
 persistence_src = persistence_src.replace("from seed.ecology import EcologyV1", "")
 seed_src = seed_src.replace("from seed.persistence import PersistenceV1, bias_logits, initial_memory, validate_persistence", persistence_src)
+exploration_src = (Path(__file__).resolve().parents[1] / "seed" / "exploration.py").read_text(encoding="utf-8")
+exploration_bundle = (
+    "from types import ModuleType as _ModuleType\n"
+    "bounded_exploration = _ModuleType('seed.exploration')\n"
+    f"exec({exploration_src!r}, bounded_exploration.__dict__)\n"
+)
+seed_src = seed_src.replace("from seed import exploration as bounded_exploration", exploration_bundle)
 QUICK = "--quick" in sys.argv
 
 cells = []

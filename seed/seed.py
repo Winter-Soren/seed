@@ -22,6 +22,7 @@ from jax.flatten_util import ravel_pytree
 from seed.structural import INTERVAL, STREAM_TAG, birth_caps, rewire, validate_structure
 from seed.ecology import EcologyV1, apply_costs, make_shelter
 from seed.persistence import PersistenceV1, bias_logits, initial_memory, validate_persistence
+from seed import exploration as bounded_exploration
 
 
 class Cfg(NamedTuple):
@@ -175,16 +176,27 @@ def social_action_bias(observation, q, c):
 
 
 # ----------------------------------------------------------------------------- one lifetime
-@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights", "_world_protocol", "_hebbian_off_step", "_reversal_probe_step"))
+@partial(jax.jit, static_argnames=("c", "plastic", "record", "predictor_plastic", "structural", "flip_step", "diagnostics", "ecology", "persistence", "_return_weights", "_world_protocol", "_hebbian_off_step", "_reversal_probe_step", "exploration", "_exploration_record"))
 def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_plastic=None,
             structural=False, flip_step=None, diagnostics=False, direct_weights=None, ecology=None,
             persistence=None, _initial_weights=None, _initial_alive=None, _return_weights=False,
             _initial_brain=None, _belief_q=None, _world_protocol=None,
-            _hebbian_off_step=None, _reversal_probe_step=None):
+            _hebbian_off_step=None, _reversal_probe_step=None, exploration=None,
+            _exploration_schedule=None, _exploration_record=False):
     """One family lives one life in one world. rule=0: A is food; rule=1: B is food."""
     if flip_step is not None and (type(flip_step) is not int or not 0 < flip_step < c.T):
         raise ValueError("flip_step must be an integer strictly inside the lifetime")
     validate_persistence(persistence, ecology)
+    if exploration not in (None, *bounded_exploration.MODES):
+        raise ValueError("unknown exploration policy")
+    if exploration is not None:
+        if (not plastic or (predictor_plastic is not None and float(predictor_plastic) != 1.) or structural or direct_weights is not None
+                or ecology is not None or persistence is not None or any(value is not None for value in
+                    (_initial_weights, _initial_alive, _initial_brain, _belief_q, _hebbian_off_step, _reversal_probe_step))):
+            raise ValueError("bounded exploration requires the ordinary unassisted plastic controller")
+        bounded_exploration.validate_schedule(_exploration_schedule, c.M, c.T)
+    elif _exploration_schedule is not None:
+        raise ValueError("a disabled policy cannot consume an exploration schedule")
     if _world_protocol not in (None, "reversal-random-v1", "reversal-evolution-v1"):
         raise ValueError("unknown versioned world protocol")
     if _world_protocol is not None and (structural or ecology is not None or persistence is not None):
@@ -255,6 +267,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         carry["last_alive_W"] = W
     if persistence is not None:
         carry["persistence"] = initial_memory(M)
+    if exploration is not None:
+        carry["exploration"] = bounded_exploration.initial_state(M)
     if structural:
         legal = (types[:, None] != 0) & ~jnp.eye(n, dtype=bool)
         caps = birth_caps(mask, legal)
@@ -333,6 +347,10 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
                 logits, local_shelter, obs[:, D - 1] > 0, s["alive"],
                 s["persistence"], persistence, MOVES)
         act = jax.random.categorical(ka, logits)
+        ordinary_action = act
+        if exploration is not None:
+            act, exploration_state, exploration_evidence = bounded_exploration.choose_action(
+                exploration, s["exploration"], _exploration_schedule, s["t"], s["denergy"], s["alive"], act)
         # efference copy: motor neurons "know" which action was actually taken, so the
         # next Hebbian update links what was seen to what was done
         x = x.at[:, n - O:n - 1].set(jax.nn.one_hot(act, O - 1))
@@ -362,10 +380,19 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
         counts = s["counts"].at[:, half, 0].add(is_food).at[:, half, 1].add(is_pois)
         ns = dict(grid=grid, pos=pos, W=W, x=x, Wp=Wp, energy=e_new, alive=alive_new, sig=sig,
                   denergy=denergy, counts=counts, key=key, t=s["t"] + 1)
+        if exploration is not None:
+            ns["exploration"] = exploration_state
         if _reversal_probe_step is not None:
             ns["reversal_probe"] = {name: jnp.where(s["t"] == _reversal_probe_step, s[name], saved)
                                      for name, saved in s["reversal_probe"].items()}
         out = dict(surprise=jnp.mean(surprise))
+        if _exploration_record or (exploration is not None and (record or diagnostics)):
+            proof = exploration_evidence if exploration is not None else bounded_exploration.inactive_evidence(ordinary_action)
+            out["_exploration"] = dict(proof, observed_denergy=s["denergy"], energy_before=s["energy"],
+                unclipped_energy=before_ecology, energy_after=e_new, denergy=denergy,
+                ordinary_action=ordinary_action, action=act, action_key=ka,
+                incoming_efference=s["x"][:, n - O:n - 1], efference=x[:, n - O:n - 1],
+                override_changed=proof["override"] & (act != ordinary_action))
         if _world_protocol is not None and (record or diagnostics):
             out["_world"] = dict(observation=obs, action=act, action_key=ka,
                                   efference=x[:, n - O:n - 1], activity=x, denergy=denergy)
@@ -416,6 +443,8 @@ def rollout(g, wkey, dkey, rule, c, plastic=True, record=False, *, predictor_pla
             res["direct_state"] = dict(W=s["W"], x=s["x"], Wp=s["Wp"])
     if diagnostics:
         res["events"] = {key: traj[key] for key in ("food", "poison", "alive_before", "alive_after")}
+    if _exploration_record or (exploration is not None and (record or diagnostics)):
+        res["exploration"] = traj["_exploration"]
     if _return_weights:
         res["_weight_state"] = dict(birth_W=birth_W, mask=mask, initial_W=W,
                                     terminal_W=s["last_alive_W"], alive=s["alive"])
