@@ -40,10 +40,12 @@ E133 compared native updates with a locally observed contact gate, an equal-dose
 
 E134 evolved the native 155-number genomes for ten attempts per lineage and tested each frozen endpoint against its parent on 128 fresh families. All three showed positive local reversal preference after the gap, but none passed the 0.05 direct improvement criterion. Direct solo changes were −0.094 ± 0.061, −0.172 ± 0.066 and −0.176 ± 0.063. The independent audit passed and the improvement gate failed 0/3.
 
+E135 changed only whether extra items appeared in the first observation with the same adjacent A/B, physical scene and acquired state. On 128 fresh families per lineage, the masked stationary gains replicated at +0.183 ± 0.010, +0.131 ± 0.010 and +0.132 ± 0.014. Full-view attenuation reached +0.390 ± 0.022, +0.122 ± 0.018 and +0.312 ± 0.020. The registered gate passed 3/3. The full-view gain was erased in A0 and A2. A1’s remaining gain is unresolved. The joint audit reconstructed 384 final and four development families. [Audited results](results/diagnostics/E135-independent-audit.json)
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-Retire E134's selection objective at the tested budget. Keep the E103 parents as the reference and retain all three endpoints and their evidence. The next proposed comparison measures one voluntary action with matched adjacent items against sparse and ordinary visual backgrounds. It separates an immediate context effect from performance lost during subsequent movement. No further study is registered.
+Keep the E103 parents as the reference and retain the E134 endpoints. E135 selects a matched-budget training comparison that changes only the first-choice scenes from isolated to ordinary-density backgrounds. Hold the native controller, matched history and first-choice selection score fixed. Use fresh ordinary solo first-item choice and survival to test whether any gain transfers. The separate unprobed stationary deficit was established in A0 and A2, and the reversal results remain descriptive. The selection comparison awaits registration.

@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Ten rounds of selection on post-replay choices failed to improve on the saved parents.** All three E134 descendants favored the newly safe food in a local probe. None cleared the required gain over its parent, and all three had lower first-item scores in fresh solo grids. Autonomous recovery remains open. [E134 result](#can-selection-improve-the-choices-descendants-make) · [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own)
+**Ordinary item backgrounds weakened the first-choice gain in all three lineages.** E135 held adjacent items equally reachable and changed only which background items appeared in the first observation. The first-choice advantage from E134 was erased in two lineages. Its remainder was unresolved in the third. Autonomous recovery remains open. [E135 result](#does-visual-context-weaken-the-first-choice-gain) · [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own)
 
 ## Table of contents
 
@@ -43,6 +43,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [What if both items are within reach?](#what-if-both-items-are-within-reach)
   - [Can a contact gate protect relearning?](#can-a-contact-gate-protect-relearning)
   - [Can selection improve the choices descendants make?](#can-selection-improve-the-choices-descendants-make)
+  - [Does visual context weaken the first-choice gain?](#does-visual-context-weaken-the-first-choice-gain)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -64,6 +65,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Use feedback when both items are easy to reach | **Access increased in 3/3. Reversal gate failed in 3/3.** | Nearby offers increased the fraction sampling both colors by 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points. Survival fell in every lineage after the switch. None established a positive preference for the newly safe food. [E132 results](#what-if-both-items-are-within-reach) |
 | Time weight updates from contact feedback | **Failed · 0/3** | Native and contact-gated brains still chose the old food after eight matched reversed contacts. Reopening updates during the empty gap weakened this obsolete preference. Delayed solo choice was worse with the contact gate than with native updating. [E133 results](#can-a-contact-gate-protect-relearning) |
 | Evolve better choices from matched experience | **Failed · 0/3** | Ten rounds changed all three genomes. Every descendant favored the newly safe food locally, but none established the required gain over its parent. Solo first-item scores declined in all three. [E134 results](#can-selection-improve-the-choices-descendants-make) |
+| Test first-choice transfer against real item backgrounds | **Attenuated · 3/3** | Revealing background items reduced the stationary descendant advantage by 0.390 ± 0.022, 0.122 ± 0.018 and 0.312 ± 0.020 while holding focal access fixed. The gain was erased in A0 and A2. [E135 results](#does-visual-context-weaken-the-first-choice-gain) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -550,6 +552,24 @@ In the reversal solo probe, first-food, first-poison and no-contact counts were 
 All 30 final attempts produced optimizer updates. The behavioral comparison concerns performance after matched experience and a gap. Retention, autonomous recovery from birth and a causal effect of feedback on the solo gain would require additional comparisons. Close this selection setting at its original budget and thresholds. [Development forecast](results/diagnostics/E134-development-forecast.json) · [Operational receipts](results/diagnostics/E134-operations.json)
 
 **Proposed next comparison.** Measure one voluntary action in an ordinary visual background before changing the objective. Present the same adjacent A and B in both the sparse probe and a fresh ordinary-density background. Keep the start cell and the two other immediate destinations empty, balance the directions and starting rules, and copy the same brain and standardized body into both scenes. Score the same five-action signed preference before feedback, with updates held fixed during the readout. Compare how the descendant-minus-parent gap changes between scenes. If the advantage disappears on the first action, the immediate visual context is enough to disrupt transfer. If it survives, follow separate copies from the same backgrounds through free movement to see when the disadvantage appears. The 22 November laptop ledger had 4,363.438 seconds remaining after E134 reporting. [Operational receipts](results/diagnostics/E134-operations.json)
+
+## Does visual context weaken the first-choice gain?
+
+E135 tested the frozen E134 descendants and their E103 parents on 128 new independent families per lineage. Both copies could reach the same adjacent A and B from the same physical grid and acquired brain state. One copy saw only the focal items on the first observation. The other saw the ordinary-density scene. Hebbian and predictor writes were off for both first choices. Each family included both initial food mappings, both histories and one of the two registered gaps. Five families had zero visible background items and stayed in the analysis. [Registered contrast and controls](experiments/E135_PROTOCOL.md)
+
+The first-action score S is the probability of moving to adjacent food minus the probability of moving to adjacent poison. Gains are descendant minus parent. Attenuation is the masked gain minus the full-view gain. Each ± is one paired family SE.
+
+| Lineage | Stationary masked gain | Stationary full-view gain | Stationary attenuation | Ordinary stationary first-item gain |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | +0.183 ± 0.010 | −0.207 ± 0.020 | +0.390 ± 0.022 | −0.176 ± 0.055 |
+| A1 | +0.131 ± 0.010 | +0.009 ± 0.022 | +0.122 ± 0.018 | −0.059 ± 0.046 |
+| A2 | +0.132 ± 0.014 | −0.180 ± 0.020 | +0.312 ± 0.020 | −0.438 ± 0.057 |
+
+All three lineages cleared the registered stationary replication and attenuation criteria. The upper two-SE bounds on full-view gain were −0.167 and −0.141 for A0 and A2, establishing erasure. A1’s interval was [−0.034, +0.053]. Changes in how often creatures approached the focal pair accounted for 0.135 ± 0.016, 0.055 ± 0.012 and 0.098 ± 0.015 of the attenuation. Changes in the relative preference between the two focal colors accounted for 0.256 ± 0.015, 0.067 ± 0.008 and 0.215 ± 0.012. Background items can also be useful destinations. [Audited choices and decomposition](results/diagnostics/E135-independent-audit.json)
+
+From the paired scenes, ordinary perception and learning resumed after the first choice. Masking only that first observation reduced the stationary first-item disadvantage over 50 turns by 0.395 ± 0.056, 0.125 ± 0.032 and 0.340 ± 0.049. The masked descendants still scored below their parents in A2 by 0.098 ± 0.034. The separate unprobed reference showed negative stationary point differences in all three, with upper bounds below zero in A0 and A2. Reversal attenuation was +0.060 ± 0.012, +0.071 ± 0.011 and +0.031 ± 0.012. The result table reports first food, first poison, missing contacts, latency and survival for every assigned group and keeps both histories separate. [Full result table](results/RESULTS.md#first-choice-transfer-across-visual-scenes-scene-transfer-v1)
+
+The selected next comparison keeps the native first-choice selection score and budget and changes only the training backgrounds. Compare isolated backgrounds with ordinary-density backgrounds, then test both frozen sets on fresh ordinary solo grids. The 50-turn reference measures transfer after guided experience. Recovery after self-directed experience remains open. [Operations and receipts](results/diagnostics/E135-operations.json)
 
 ## Try it locally
 

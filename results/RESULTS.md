@@ -23,6 +23,533 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## First-choice transfer across visual scenes (scene-transfer-v1)
+
+E135 compares each frozen E134 attempt-ten descendant with its original E103 parent, with zero new training. After identical stationary or reversed histories, discarded clones choose among the same adjacent A/B items in the same ordinary-density physical scene. Only the first sensory view changes: extra items are masked or fully visible. Both learning processes are frozen for that decision. A randomly assigned placement continues freely with ordinary learning, and a separate ordinary-grid reference tests the same acquired state.
+
+The primary gate concerns stationary experience. First replicate at least a 0.05 descendant advantage in the masked view, then require at least 0.05 attenuation of that advantage in the full view. Each effect must have a strictly positive lower two-SE bound in all three lineages. Failure to establish attenuation does not exclude it; excluding a loss of 0.05 requires the registered upper-bound criterion. Reversed histories and subsequent movement are reported separately.
+
+| Run | Mode | Status | Families completed/assigned | Commit |
+|---|---|---|---|---|
+| 20261122-221632_E135-dev | development | finished | 4/4 | 84c26f8 |
+| 20261122-222011_E135-A0 | final | finished | 128/128 | 6f9ac31 |
+| 20261122-222258_E135-A1 | final | finished | 128/128 | 6f9ac31 |
+| 20261122-222443_E135-A2 | final | finished | 128/128 | 6f9ac31 |
+
+Replicated first-choice attenuation: **PASS** (3/3 lineages).
+
+A pass identifies a first-observation context effect on the inherited advantage. It does not by itself establish that the advantage vanishes: the full-view bounds distinguish erasure, partial attenuation and unresolved cases. A failed masked-view replication leaves that prerequisite open. Every assigned family remains in the analysis; no-contact lives score zero in signed first-item Y. Neither a first-choice deficit nor a later solo deficit alone establishes forgetting.
+
+Each ± is one sample SE across 128 independent families. First-decision measures average both initial rules and all twelve placements within each family before estimates and paired contrasts. Continuation and reference measures average the two initial-rule lives within a family. Contact accuracy is descriptive, reports its food/contact denominator and is null without contacts. Its ratio uncertainty uses family clusters. The approach and conditional-choice decomposition is descriptive. Zero-distractor scenes remain included.
+
+| Classification | Lineages meeting criterion | Lineages |
+|---|---|---|
+| isolated_replicates | 3/3 | A0, A1, A2 |
+| attenuation_confirmed | 3/3 | A0, A1, A2 |
+| passed | 3/3 | A0, A1, A2 |
+| practical_loss_excluded | 0/3 | none |
+| advantage_erased | 2/3 | A0, A2 |
+| partial_attenuation | 0/3 | none |
+| reference_deficit | 2/3 | A0, A2 |
+
+| Lineage | Classifications established |
+|---|---|
+| A0 | isolated_replicates, attenuation_confirmed, passed, advantage_erased, reference_deficit |
+| A1 | isolated_replicates, attenuation_confirmed, passed |
+| A2 | isolated_replicates, attenuation_confirmed, passed, advantage_erased, reference_deficit |
+
+| Lineage | History | Masked descendant gain | Full descendant gain | Attenuation | Ordinary-reference solo gain |
+|---|---|---|---|---|---|
+| A0 | stationary | 0.183414 ± 0.009675 (n=128) | -0.207044 ± 0.020079 (n=128) | 0.390458 ± 0.022413 (n=128) | -0.175781 ± 0.054506 (n=128) |
+| A0 | reversal | -0.020551 ± 0.007962 (n=128) | -0.080190 ± 0.010571 (n=128) | 0.059639 ± 0.012200 (n=128) | -0.101562 ± 0.061096 (n=128) |
+| A1 | stationary | 0.130788 ± 0.010266 (n=128) | 0.009257 ± 0.021795 (n=128) | 0.121531 ± 0.017912 (n=128) | -0.058594 ± 0.045606 (n=128) |
+| A1 | reversal | 0.032838 ± 0.009970 (n=128) | -0.038600 ± 0.012794 (n=128) | 0.071438 ± 0.010760 (n=128) | -0.066406 ± 0.072390 (n=128) |
+| A2 | stationary | 0.132152 ± 0.014228 (n=128) | -0.180344 ± 0.019634 (n=128) | 0.312496 ± 0.020313 (n=128) | -0.437500 ± 0.056558 (n=128) |
+| A2 | reversal | -0.073532 ± 0.011326 (n=128) | -0.104713 ± 0.012064 (n=128) | 0.031181 ± 0.011515 (n=128) | -0.226562 ± 0.062465 (n=128) |
+
+| Lineage | Measure | Mean ± family SE | Lower two-SE bound | Upper two-SE bound |
+|---|---|---|---|---|
+| A0 | distractors | 3.476562 ± 0.135379 (n=128) | 3.205805 | 3.747320 |
+| A0 | zero_distractors | 0.000000 ± 0.000000 (n=128) | 0.000000 | 0.000000 |
+| A0 | histories.stationary.masked_gain | 0.183414 ± 0.009675 (n=128) | 0.164063 | 0.202764 |
+| A0 | histories.stationary.full_gain | -0.207044 ± 0.020079 (n=128) | -0.247203 | -0.166885 |
+| A0 | histories.stationary.attenuation | 0.390458 ± 0.022413 (n=128) | 0.345631 | 0.435285 |
+| A0 | histories.stationary.scene_gain_masked | -0.003906 ± 0.029081 (n=128) | -0.062069 | 0.054256 |
+| A0 | histories.stationary.scene_gain_full | -0.398438 ± 0.047176 (n=128) | -0.492790 | -0.304085 |
+| A0 | histories.stationary.scene_attenuation | 0.394531 ± 0.055640 (n=128) | 0.283250 | 0.505812 |
+| A0 | histories.stationary.reference_gain | -0.175781 ± 0.054506 (n=128) | -0.284793 | -0.066769 |
+| A0 | histories.stationary.local.parent.masked | 0.686092 ± 0.009228 (n=128) | 0.667635 | 0.704549 |
+| A0 | histories.stationary.local.parent.full | 0.619586 ± 0.023741 (n=128) | 0.572103 | 0.667069 |
+| A0 | histories.stationary.local.descendant.masked | 0.869506 ± 0.007093 (n=128) | 0.855320 | 0.883691 |
+| A0 | histories.stationary.local.descendant.full | 0.412542 ± 0.027887 (n=128) | 0.356767 | 0.468317 |
+| A0 | histories.stationary.sampled.parent.masked | 0.683594 ± 0.011787 (n=128) | 0.660020 | 0.707168 |
+| A0 | histories.stationary.sampled.parent.full | 0.615885 ± 0.024573 (n=128) | 0.566740 | 0.665031 |
+| A0 | histories.stationary.sampled.descendant.masked | 0.861003 ± 0.009730 (n=128) | 0.841542 | 0.880464 |
+| A0 | histories.stationary.sampled.descendant.full | 0.403971 ± 0.028194 (n=128) | 0.347583 | 0.460360 |
+| A0 | histories.stationary.first_choice.parent.masked.p_food | 0.692810 ± 0.008743 (n=128) | 0.675325 | 0.710295 |
+| A0 | histories.stationary.first_choice.parent.masked.p_poison | 0.006718 ± 0.001016 (n=128) | 0.004685 | 0.008751 |
+| A0 | histories.stationary.first_choice.parent.masked.p_other | 0.300472 ± 0.008353 (n=128) | 0.283767 | 0.317178 |
+| A0 | histories.stationary.first_choice.parent.masked.approach | 0.699528 ± 0.008353 (n=128) | 0.682822 | 0.716233 |
+| A0 | histories.stationary.first_choice.parent.masked.conditional | 0.973843 ± 0.004090 (n=128) | 0.965663 | 0.982024 |
+| A0 | histories.stationary.first_choice.parent.full.p_food | 0.631317 ± 0.023569 (n=128) | 0.584178 | 0.678456 |
+| A0 | histories.stationary.first_choice.parent.full.p_poison | 0.011731 ± 0.001756 (n=128) | 0.008220 | 0.015242 |
+| A0 | histories.stationary.first_choice.parent.full.p_other | 0.356952 ± 0.023528 (n=128) | 0.309896 | 0.404007 |
+| A0 | histories.stationary.first_choice.parent.full.approach | 0.643048 ± 0.023528 (n=128) | 0.595993 | 0.690104 |
+| A0 | histories.stationary.first_choice.parent.full.conditional | 0.852692 ± 0.017976 (n=128) | 0.816740 | 0.888644 |
+| A0 | histories.stationary.first_choice.descendant.masked.p_food | 0.879507 ± 0.006402 (n=128) | 0.866703 | 0.892312 |
+| A0 | histories.stationary.first_choice.descendant.masked.p_poison | 0.010001 ± 0.001058 (n=128) | 0.007885 | 0.012118 |
+| A0 | histories.stationary.first_choice.descendant.masked.p_other | 0.110491 ± 0.005824 (n=128) | 0.098844 | 0.122138 |
+| A0 | histories.stationary.first_choice.descendant.masked.approach | 0.889509 ± 0.005824 (n=128) | 0.877862 | 0.901156 |
+| A0 | histories.stationary.first_choice.descendant.masked.conditional | 0.959816 ± 0.005209 (n=128) | 0.949397 | 0.970235 |
+| A0 | histories.stationary.first_choice.descendant.full.p_food | 0.516438 ± 0.023022 (n=128) | 0.470394 | 0.562483 |
+| A0 | histories.stationary.first_choice.descendant.full.p_poison | 0.103896 ± 0.005415 (n=128) | 0.093066 | 0.114727 |
+| A0 | histories.stationary.first_choice.descendant.full.p_other | 0.379666 ± 0.018466 (n=128) | 0.342734 | 0.416597 |
+| A0 | histories.stationary.first_choice.descendant.full.approach | 0.620334 ± 0.018466 (n=128) | 0.583403 | 0.657266 |
+| A0 | histories.stationary.first_choice.descendant.full.conditional | 0.494766 ± 0.029107 (n=128) | 0.436551 | 0.552980 |
+| A0 | histories.stationary.decomposition.approach | 0.134510 ± 0.015641 (n=128) | 0.103228 | 0.165792 |
+| A0 | histories.stationary.decomposition.conditional | 0.255948 ± 0.014868 (n=128) | 0.226212 | 0.285683 |
+| A0 | histories.stationary.scene.parent.masked.Y | 0.925781 ± 0.022246 (n=128) | 0.881289 | 0.970273 |
+| A0 | histories.stationary.scene.parent.masked.first_food | 0.957031 ± 0.012435 (n=128) | 0.932161 | 0.981901 |
+| A0 | histories.stationary.scene.parent.masked.first_poison | 0.031250 ± 0.010740 (n=128) | 0.009771 | 0.052729 |
+| A0 | histories.stationary.scene.parent.masked.no_contact | 0.011719 ± 0.006712 (n=128) | -0.001706 | 0.025143 |
+| A0 | histories.stationary.scene.parent.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.scene.parent.masked.latency | 3.312500 ± 0.584700 (n=128) | 2.143101 | 4.481899 |
+| A0 | histories.stationary.scene.parent.masked.contact_accuracy | 0.968379 ± 0.010861 (n=128); 245/253 food/contact, 256 assigned lives | — | — |
+| A0 | histories.stationary.scene.parent.full.Y | 0.894531 ± 0.026972 (n=128) | 0.840587 | 0.948476 |
+| A0 | histories.stationary.scene.parent.full.first_food | 0.945312 ± 0.013848 (n=128) | 0.917617 | 0.973008 |
+| A0 | histories.stationary.scene.parent.full.first_poison | 0.050781 ± 0.013402 (n=128) | 0.023977 | 0.077586 |
+| A0 | histories.stationary.scene.parent.full.no_contact | 0.003906 ± 0.003906 (n=128) | -0.003906 | 0.011719 |
+| A0 | histories.stationary.scene.parent.full.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.scene.parent.full.latency | 2.894531 ± 0.473448 (n=128) | 1.947636 | 3.841427 |
+| A0 | histories.stationary.scene.parent.full.contact_accuracy | 0.949020 ± 0.013450 (n=128); 242/255 food/contact, 256 assigned lives | — | — |
+| A0 | histories.stationary.scene.descendant.masked.Y | 0.921875 ± 0.023814 (n=128) | 0.874247 | 0.969503 |
+| A0 | histories.stationary.scene.descendant.masked.first_food | 0.960938 ± 0.011907 (n=128) | 0.937124 | 0.984751 |
+| A0 | histories.stationary.scene.descendant.masked.first_poison | 0.039062 ± 0.011907 (n=128) | 0.015249 | 0.062876 |
+| A0 | histories.stationary.scene.descendant.masked.no_contact | 0.000000 ± 0.000000 (n=128) | 0.000000 | 0.000000 |
+| A0 | histories.stationary.scene.descendant.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.scene.descendant.masked.latency | 1.398438 ± 0.406916 (n=128) | 0.584605 | 2.212270 |
+| A0 | histories.stationary.scene.descendant.masked.contact_accuracy | 0.960938 ± 0.011907 (n=128); 246/256 food/contact, 256 assigned lives | — | — |
+| A0 | histories.stationary.scene.descendant.full.Y | 0.496094 ± 0.047546 (n=128) | 0.401003 | 0.591185 |
+| A0 | histories.stationary.scene.descendant.full.first_food | 0.738281 ± 0.024152 (n=128) | 0.689977 | 0.786585 |
+| A0 | histories.stationary.scene.descendant.full.first_poison | 0.242188 ± 0.024164 (n=128) | 0.193859 | 0.290516 |
+| A0 | histories.stationary.scene.descendant.full.no_contact | 0.019531 ± 0.008596 (n=128) | 0.002339 | 0.036723 |
+| A0 | histories.stationary.scene.descendant.full.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.scene.descendant.full.latency | 3.957031 ± 0.675404 (n=128) | 2.606223 | 5.307840 |
+| A0 | histories.stationary.scene.descendant.full.contact_accuracy | 0.752988 ± 0.024351 (n=128); 189/251 food/contact, 256 assigned lives | — | — |
+| A0 | histories.stationary.reference.parent.Y | 0.703125 ± 0.040542 (n=128) | 0.622042 | 0.784208 |
+| A0 | histories.stationary.reference.parent.first_food | 0.843750 ± 0.021300 (n=128) | 0.801151 | 0.886349 |
+| A0 | histories.stationary.reference.parent.first_poison | 0.140625 ± 0.019948 (n=128) | 0.100729 | 0.180521 |
+| A0 | histories.stationary.reference.parent.no_contact | 0.015625 ± 0.007720 (n=128) | 0.000186 | 0.031064 |
+| A0 | histories.stationary.reference.parent.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.reference.parent.latency | 7.246094 ± 0.687142 (n=128) | 5.871810 | 8.620378 |
+| A0 | histories.stationary.reference.parent.contact_accuracy | 0.857143 ± 0.020282 (n=128); 216/252 food/contact, 256 assigned lives | — | — |
+| A0 | histories.stationary.reference.descendant.Y | 0.527344 ± 0.044819 (n=128) | 0.437706 | 0.616982 |
+| A0 | histories.stationary.reference.descendant.first_food | 0.750000 ± 0.023530 (n=128) | 0.702941 | 0.797059 |
+| A0 | histories.stationary.reference.descendant.first_poison | 0.222656 ± 0.022738 (n=128) | 0.177181 | 0.268131 |
+| A0 | histories.stationary.reference.descendant.no_contact | 0.027344 ± 0.011512 (n=128) | 0.004320 | 0.050367 |
+| A0 | histories.stationary.reference.descendant.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A0 | histories.stationary.reference.descendant.latency | 7.992188 ± 0.826648 (n=128) | 6.338891 | 9.645484 |
+| A0 | histories.stationary.reference.descendant.contact_accuracy | 0.771084 ± 0.023035 (n=128); 192/249 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.masked_gain | -0.020551 ± 0.007962 (n=128) | -0.036475 | -0.004628 |
+| A0 | histories.reversal.full_gain | -0.080190 ± 0.010571 (n=128) | -0.101333 | -0.059047 |
+| A0 | histories.reversal.attenuation | 0.059639 ± 0.012200 (n=128) | 0.035238 | 0.084039 |
+| A0 | histories.reversal.scene_gain_masked | -0.171875 ± 0.069144 (n=128) | -0.310163 | -0.033587 |
+| A0 | histories.reversal.scene_gain_full | -0.230469 ± 0.065363 (n=128) | -0.361195 | -0.099742 |
+| A0 | histories.reversal.scene_attenuation | 0.058594 ± 0.087623 (n=128) | -0.116653 | 0.233840 |
+| A0 | histories.reversal.reference_gain | -0.101562 ± 0.061096 (n=128) | -0.223755 | 0.020630 |
+| A0 | histories.reversal.local.parent.masked | 0.204359 ± 0.019412 (n=128) | 0.165535 | 0.243183 |
+| A0 | histories.reversal.local.parent.full | 0.107652 ± 0.014526 (n=128) | 0.078600 | 0.136703 |
+| A0 | histories.reversal.local.descendant.masked | 0.183808 ± 0.017818 (n=128) | 0.148172 | 0.219444 |
+| A0 | histories.reversal.local.descendant.full | 0.027462 ± 0.006193 (n=128) | 0.015077 | 0.039847 |
+| A0 | histories.reversal.sampled.parent.masked | 0.210286 ± 0.020171 (n=128) | 0.169944 | 0.250629 |
+| A0 | histories.reversal.sampled.parent.full | 0.099284 ± 0.014696 (n=128) | 0.069892 | 0.128676 |
+| A0 | histories.reversal.sampled.descendant.masked | 0.191081 ± 0.018240 (n=128) | 0.154602 | 0.227560 |
+| A0 | histories.reversal.sampled.descendant.full | 0.029948 ± 0.006978 (n=128) | 0.015993 | 0.043903 |
+| A0 | histories.reversal.first_choice.parent.masked.p_food | 0.356033 ± 0.011811 (n=128) | 0.332412 | 0.379654 |
+| A0 | histories.reversal.first_choice.parent.masked.p_poison | 0.151674 ± 0.008045 (n=128) | 0.135583 | 0.167764 |
+| A0 | histories.reversal.first_choice.parent.masked.p_other | 0.492294 ± 0.005622 (n=128) | 0.481050 | 0.503538 |
+| A0 | histories.reversal.first_choice.parent.masked.approach | 0.507706 ± 0.005622 (n=128) | 0.496462 | 0.518950 |
+| A0 | histories.reversal.first_choice.parent.masked.conditional | 0.338359 ± 0.031344 (n=128) | 0.275671 | 0.401048 |
+| A0 | histories.reversal.first_choice.parent.full.p_food | 0.208475 ± 0.014059 (n=128) | 0.180357 | 0.236592 |
+| A0 | histories.reversal.first_choice.parent.full.p_poison | 0.100823 ± 0.007074 (n=128) | 0.086674 | 0.114972 |
+| A0 | histories.reversal.first_choice.parent.full.p_other | 0.690703 ± 0.016864 (n=128) | 0.656975 | 0.724430 |
+| A0 | histories.reversal.first_choice.parent.full.approach | 0.309297 ± 0.016864 (n=128) | 0.275570 | 0.343025 |
+| A0 | histories.reversal.first_choice.parent.full.conditional | 0.192871 ± 0.022715 (n=128) | 0.147441 | 0.238302 |
+| A0 | histories.reversal.first_choice.descendant.masked.p_food | 0.333692 ± 0.011866 (n=128) | 0.309960 | 0.357424 |
+| A0 | histories.reversal.first_choice.descendant.masked.p_poison | 0.149884 ± 0.006486 (n=128) | 0.136912 | 0.162857 |
+| A0 | histories.reversal.first_choice.descendant.masked.p_other | 0.516423 ± 0.006947 (n=128) | 0.502529 | 0.530317 |
+| A0 | histories.reversal.first_choice.descendant.masked.approach | 0.483577 ± 0.006947 (n=128) | 0.469683 | 0.497471 |
+| A0 | histories.reversal.first_choice.descendant.masked.conditional | 0.265294 ± 0.025532 (n=128) | 0.214230 | 0.316357 |
+| A0 | histories.reversal.first_choice.descendant.full.p_food | 0.205308 ± 0.005652 (n=128) | 0.194005 | 0.216611 |
+| A0 | histories.reversal.first_choice.descendant.full.p_poison | 0.177846 ± 0.003565 (n=128) | 0.170715 | 0.184977 |
+| A0 | histories.reversal.first_choice.descendant.full.p_other | 0.616846 ± 0.007138 (n=128) | 0.602569 | 0.631123 |
+| A0 | histories.reversal.first_choice.descendant.full.approach | 0.383154 ± 0.007138 (n=128) | 0.368877 | 0.397431 |
+| A0 | histories.reversal.first_choice.descendant.full.conditional | 0.045429 ± 0.009228 (n=128) | 0.026973 | 0.063884 |
+| A0 | histories.reversal.decomposition.approach | -0.009816 ± 0.006511 (n=128) | -0.022837 | 0.003206 |
+| A0 | histories.reversal.decomposition.conditional | 0.069454 ± 0.009284 (n=128) | 0.050886 | 0.088022 |
+| A0 | histories.reversal.scene.parent.masked.Y | 0.320312 ± 0.055663 (n=128) | 0.208986 | 0.431639 |
+| A0 | histories.reversal.scene.parent.masked.first_food | 0.648438 ± 0.028474 (n=128) | 0.591490 | 0.705385 |
+| A0 | histories.reversal.scene.parent.masked.first_poison | 0.328125 ± 0.027971 (n=128) | 0.272182 | 0.384068 |
+| A0 | histories.reversal.scene.parent.masked.no_contact | 0.023438 ± 0.009378 (n=128) | 0.004681 | 0.042194 |
+| A0 | histories.reversal.scene.parent.masked.survival | 0.984375 ± 0.007720 (n=128) | 0.968936 | 0.999814 |
+| A0 | histories.reversal.scene.parent.masked.latency | 6.695312 ± 0.775034 (n=128) | 5.145244 | 8.245381 |
+| A0 | histories.reversal.scene.parent.masked.contact_accuracy | 0.664000 ± 0.028457 (n=128); 166/250 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.scene.parent.full.Y | 0.253906 ± 0.056557 (n=128) | 0.140792 | 0.367020 |
+| A0 | histories.reversal.scene.parent.full.first_food | 0.609375 ± 0.028784 (n=128) | 0.551806 | 0.666944 |
+| A0 | histories.reversal.scene.parent.full.first_poison | 0.355469 ± 0.028899 (n=128) | 0.297671 | 0.413267 |
+| A0 | histories.reversal.scene.parent.full.no_contact | 0.035156 ± 0.011344 (n=128) | 0.012469 | 0.057844 |
+| A0 | histories.reversal.scene.parent.full.survival | 0.996094 ± 0.003906 (n=128) | 0.988281 | 1.003906 |
+| A0 | histories.reversal.scene.parent.full.latency | 8.593750 ± 0.822316 (n=128) | 6.949117 | 10.238383 |
+| A0 | histories.reversal.scene.parent.full.contact_accuracy | 0.631579 ± 0.029366 (n=128); 156/247 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.scene.descendant.masked.Y | 0.148438 ± 0.055282 (n=128) | 0.037874 | 0.259001 |
+| A0 | histories.reversal.scene.descendant.masked.first_food | 0.550781 ± 0.028732 (n=128) | 0.493317 | 0.608246 |
+| A0 | histories.reversal.scene.descendant.masked.first_poison | 0.402344 ± 0.028311 (n=128) | 0.345722 | 0.458966 |
+| A0 | histories.reversal.scene.descendant.masked.no_contact | 0.046875 ± 0.014071 (n=128) | 0.018732 | 0.075018 |
+| A0 | histories.reversal.scene.descendant.masked.survival | 0.980469 ± 0.008596 (n=128) | 0.963277 | 0.997661 |
+| A0 | histories.reversal.scene.descendant.masked.latency | 7.199219 ± 0.934071 (n=128) | 5.331077 | 9.067360 |
+| A0 | histories.reversal.scene.descendant.masked.contact_accuracy | 0.577869 ± 0.028988 (n=128); 141/244 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.scene.descendant.full.Y | 0.023438 ± 0.046021 (n=128) | -0.068605 | 0.115480 |
+| A0 | histories.reversal.scene.descendant.full.first_food | 0.480469 ± 0.024429 (n=128) | 0.431611 | 0.529327 |
+| A0 | histories.reversal.scene.descendant.full.first_poison | 0.457031 ± 0.024192 (n=128) | 0.408648 | 0.505415 |
+| A0 | histories.reversal.scene.descendant.full.no_contact | 0.062500 ± 0.015686 (n=128) | 0.031127 | 0.093873 |
+| A0 | histories.reversal.scene.descendant.full.survival | 0.976562 ± 0.009378 (n=128) | 0.957806 | 0.995319 |
+| A0 | histories.reversal.scene.descendant.full.latency | 8.769531 ± 1.048878 (n=128) | 6.671776 | 10.867287 |
+| A0 | histories.reversal.scene.descendant.full.contact_accuracy | 0.512500 ± 0.024542 (n=128); 123/240 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.reference.parent.Y | 0.199219 ± 0.050932 (n=128) | 0.097354 | 0.301084 |
+| A0 | histories.reversal.reference.parent.first_food | 0.589844 ± 0.025676 (n=128) | 0.538492 | 0.641196 |
+| A0 | histories.reversal.reference.parent.first_poison | 0.390625 ± 0.025976 (n=128) | 0.338673 | 0.442577 |
+| A0 | histories.reversal.reference.parent.no_contact | 0.019531 ± 0.008596 (n=128) | 0.002339 | 0.036723 |
+| A0 | histories.reversal.reference.parent.survival | 0.968750 ± 0.010740 (n=128) | 0.947271 | 0.990229 |
+| A0 | histories.reversal.reference.parent.latency | 10.062500 ± 0.944902 (n=128) | 8.172696 | 11.952304 |
+| A0 | histories.reversal.reference.parent.contact_accuracy | 0.601594 ± 0.026020 (n=128); 151/251 food/contact, 256 assigned lives | — | — |
+| A0 | histories.reversal.reference.descendant.Y | 0.097656 ± 0.042980 (n=128) | 0.011696 | 0.183616 |
+| A0 | histories.reversal.reference.descendant.first_food | 0.511719 ± 0.023177 (n=128) | 0.465364 | 0.558073 |
+| A0 | histories.reversal.reference.descendant.first_poison | 0.414062 ± 0.022940 (n=128) | 0.368182 | 0.459943 |
+| A0 | histories.reversal.reference.descendant.no_contact | 0.074219 ± 0.016721 (n=128) | 0.040777 | 0.107660 |
+| A0 | histories.reversal.reference.descendant.survival | 0.984375 ± 0.007720 (n=128) | 0.968936 | 0.999814 |
+| A0 | histories.reversal.reference.descendant.latency | 11.941406 ± 1.120310 (n=128) | 9.700787 | 14.182026 |
+| A0 | histories.reversal.reference.descendant.contact_accuracy | 0.552743 ± 0.023218 (n=128); 131/237 food/contact, 256 assigned lives | — | — |
+| A1 | distractors | 3.546875 ± 0.142849 (n=128) | 3.261176 | 3.832574 |
+| A1 | zero_distractors | 0.023438 ± 0.013425 (n=128) | -0.003412 | 0.050287 |
+| A1 | histories.stationary.masked_gain | 0.130788 ± 0.010266 (n=128) | 0.110255 | 0.151320 |
+| A1 | histories.stationary.full_gain | 0.009257 ± 0.021795 (n=128) | -0.034333 | 0.052846 |
+| A1 | histories.stationary.attenuation | 0.121531 ± 0.017912 (n=128) | 0.085706 | 0.157355 |
+| A1 | histories.stationary.scene_gain_masked | 0.023438 ± 0.026516 (n=128) | -0.029595 | 0.076470 |
+| A1 | histories.stationary.scene_gain_full | -0.101562 ± 0.034349 (n=128) | -0.170260 | -0.032865 |
+| A1 | histories.stationary.scene_attenuation | 0.125000 ± 0.032338 (n=128) | 0.060323 | 0.189677 |
+| A1 | histories.stationary.reference_gain | -0.058594 ± 0.045606 (n=128) | -0.149805 | 0.032618 |
+| A1 | histories.stationary.local.parent.masked | 0.708769 ± 0.010644 (n=128) | 0.687482 | 0.730057 |
+| A1 | histories.stationary.local.parent.full | 0.695667 ± 0.015553 (n=128) | 0.664561 | 0.726774 |
+| A1 | histories.stationary.local.descendant.masked | 0.839557 ± 0.006912 (n=128) | 0.825733 | 0.853381 |
+| A1 | histories.stationary.local.descendant.full | 0.704924 ± 0.022500 (n=128) | 0.659925 | 0.749923 |
+| A1 | histories.stationary.sampled.parent.masked | 0.721029 ± 0.012012 (n=128) | 0.697004 | 0.745053 |
+| A1 | histories.stationary.sampled.parent.full | 0.706055 ± 0.016065 (n=128) | 0.673924 | 0.738185 |
+| A1 | histories.stationary.sampled.descendant.masked | 0.843099 ± 0.009511 (n=128) | 0.824077 | 0.862120 |
+| A1 | histories.stationary.sampled.descendant.full | 0.703776 ± 0.023358 (n=128) | 0.657061 | 0.750491 |
+| A1 | histories.stationary.first_choice.parent.masked.p_food | 0.714745 ± 0.010253 (n=128) | 0.694239 | 0.735250 |
+| A1 | histories.stationary.first_choice.parent.masked.p_poison | 0.005975 ± 0.000855 (n=128) | 0.004266 | 0.007684 |
+| A1 | histories.stationary.first_choice.parent.masked.p_other | 0.279280 ± 0.009920 (n=128) | 0.259440 | 0.299120 |
+| A1 | histories.stationary.first_choice.parent.masked.approach | 0.720720 ± 0.009920 (n=128) | 0.700880 | 0.740560 |
+| A1 | histories.stationary.first_choice.parent.masked.conditional | 0.958512 ± 0.006351 (n=128) | 0.945810 | 0.971214 |
+| A1 | histories.stationary.first_choice.parent.full.p_food | 0.703269 ± 0.015427 (n=128) | 0.672415 | 0.734123 |
+| A1 | histories.stationary.first_choice.parent.full.p_poison | 0.007602 ± 0.001093 (n=128) | 0.005416 | 0.009787 |
+| A1 | histories.stationary.first_choice.parent.full.p_other | 0.289129 ± 0.015378 (n=128) | 0.258374 | 0.319885 |
+| A1 | histories.stationary.first_choice.parent.full.approach | 0.710871 ± 0.015378 (n=128) | 0.680115 | 0.741626 |
+| A1 | histories.stationary.first_choice.parent.full.conditional | 0.931225 ± 0.008805 (n=128) | 0.913616 | 0.948835 |
+| A1 | histories.stationary.first_choice.descendant.masked.p_food | 0.846296 ± 0.006657 (n=128) | 0.832982 | 0.859611 |
+| A1 | histories.stationary.first_choice.descendant.masked.p_poison | 0.006740 ± 0.000760 (n=128) | 0.005220 | 0.008259 |
+| A1 | histories.stationary.first_choice.descendant.masked.p_other | 0.146964 ± 0.006482 (n=128) | 0.133999 | 0.159929 |
+| A1 | histories.stationary.first_choice.descendant.masked.approach | 0.853036 ± 0.006482 (n=128) | 0.840071 | 0.866001 |
+| A1 | histories.stationary.first_choice.descendant.masked.conditional | 0.971053 ± 0.003645 (n=128) | 0.963762 | 0.978343 |
+| A1 | histories.stationary.first_choice.descendant.full.p_food | 0.734029 ± 0.020851 (n=128) | 0.692328 | 0.775731 |
+| A1 | histories.stationary.first_choice.descendant.full.p_poison | 0.029105 ± 0.003245 (n=128) | 0.022616 | 0.035595 |
+| A1 | histories.stationary.first_choice.descendant.full.p_other | 0.236865 ± 0.019604 (n=128) | 0.197656 | 0.276074 |
+| A1 | histories.stationary.first_choice.descendant.full.approach | 0.763135 ± 0.019604 (n=128) | 0.723926 | 0.802344 |
+| A1 | histories.stationary.first_choice.descendant.full.conditional | 0.832647 ± 0.017739 (n=128) | 0.797170 | 0.868124 |
+| A1 | histories.stationary.decomposition.approach | 0.054606 ± 0.011699 (n=128) | 0.031207 | 0.078005 |
+| A1 | histories.stationary.decomposition.conditional | 0.066925 ± 0.008410 (n=128) | 0.050105 | 0.083744 |
+| A1 | histories.stationary.scene.parent.masked.Y | 0.925781 ± 0.022246 (n=128) | 0.881289 | 0.970273 |
+| A1 | histories.stationary.scene.parent.masked.first_food | 0.949219 ± 0.014504 (n=128) | 0.920210 | 0.978228 |
+| A1 | histories.stationary.scene.parent.masked.first_poison | 0.023438 ± 0.009378 (n=128) | 0.004681 | 0.042194 |
+| A1 | histories.stationary.scene.parent.masked.no_contact | 0.027344 ± 0.010088 (n=128) | 0.007168 | 0.047520 |
+| A1 | histories.stationary.scene.parent.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.scene.parent.masked.latency | 3.003906 ± 0.578711 (n=128) | 1.846483 | 4.161329 |
+| A1 | histories.stationary.scene.parent.masked.contact_accuracy | 0.975904 ± 0.009672 (n=128); 243/249 food/contact, 256 assigned lives | — | — |
+| A1 | histories.stationary.scene.parent.full.Y | 0.941406 ± 0.019703 (n=128) | 0.902001 | 0.980812 |
+| A1 | histories.stationary.scene.parent.full.first_food | 0.964844 ± 0.011344 (n=128) | 0.942156 | 0.987531 |
+| A1 | histories.stationary.scene.parent.full.first_poison | 0.023438 ± 0.009378 (n=128) | 0.004681 | 0.042194 |
+| A1 | histories.stationary.scene.parent.full.no_contact | 0.011719 ± 0.006712 (n=128) | -0.001706 | 0.025143 |
+| A1 | histories.stationary.scene.parent.full.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.scene.parent.full.latency | 2.574219 ± 0.514614 (n=128) | 1.544990 | 3.603448 |
+| A1 | histories.stationary.scene.parent.full.contact_accuracy | 0.976285 ± 0.009485 (n=128); 247/253 food/contact, 256 assigned lives | — | — |
+| A1 | histories.stationary.scene.descendant.masked.Y | 0.949219 ± 0.018260 (n=128) | 0.912700 | 0.985738 |
+| A1 | histories.stationary.scene.descendant.masked.first_food | 0.968750 ± 0.010740 (n=128) | 0.947271 | 0.990229 |
+| A1 | histories.stationary.scene.descendant.masked.first_poison | 0.019531 ± 0.008596 (n=128) | 0.002339 | 0.036723 |
+| A1 | histories.stationary.scene.descendant.masked.no_contact | 0.011719 ± 0.006712 (n=128) | -0.001706 | 0.025143 |
+| A1 | histories.stationary.scene.descendant.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.scene.descendant.masked.latency | 1.675781 ± 0.442414 (n=128) | 0.790952 | 2.560610 |
+| A1 | histories.stationary.scene.descendant.masked.contact_accuracy | 0.980237 ± 0.008695 (n=128); 248/253 food/contact, 256 assigned lives | — | — |
+| A1 | histories.stationary.scene.descendant.full.Y | 0.839844 ± 0.032307 (n=128) | 0.775230 | 0.904457 |
+| A1 | histories.stationary.scene.descendant.full.first_food | 0.906250 ± 0.019011 (n=128) | 0.868229 | 0.944271 |
+| A1 | histories.stationary.scene.descendant.full.first_poison | 0.066406 ± 0.015057 (n=128) | 0.036292 | 0.096521 |
+| A1 | histories.stationary.scene.descendant.full.no_contact | 0.027344 ± 0.011512 (n=128) | 0.004320 | 0.050367 |
+| A1 | histories.stationary.scene.descendant.full.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.scene.descendant.full.latency | 3.636719 ± 0.761976 (n=128) | 2.112766 | 5.160671 |
+| A1 | histories.stationary.scene.descendant.full.contact_accuracy | 0.931727 ± 0.015507 (n=128); 232/249 food/contact, 256 assigned lives | — | — |
+| A1 | histories.stationary.reference.parent.Y | 0.796875 ± 0.031096 (n=128) | 0.734683 | 0.859067 |
+| A1 | histories.stationary.reference.parent.first_food | 0.851562 ± 0.021016 (n=128) | 0.809531 | 0.893594 |
+| A1 | histories.stationary.reference.parent.first_poison | 0.054688 ± 0.013848 (n=128) | 0.026992 | 0.082383 |
+| A1 | histories.stationary.reference.parent.no_contact | 0.093750 ± 0.017317 (n=128) | 0.059115 | 0.128385 |
+| A1 | histories.stationary.reference.parent.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.reference.parent.latency | 10.324219 ± 0.898750 (n=128) | 8.526720 | 12.121718 |
+| A1 | histories.stationary.reference.parent.contact_accuracy | 0.939655 ± 0.015203 (n=128); 218/232 food/contact, 256 assigned lives | — | — |
+| A1 | histories.stationary.reference.descendant.Y | 0.738281 ± 0.036353 (n=128) | 0.665576 | 0.810986 |
+| A1 | histories.stationary.reference.descendant.first_food | 0.835938 ± 0.022260 (n=128) | 0.791418 | 0.880457 |
+| A1 | histories.stationary.reference.descendant.first_poison | 0.097656 ± 0.017589 (n=128) | 0.062478 | 0.132835 |
+| A1 | histories.stationary.reference.descendant.no_contact | 0.066406 ± 0.016977 (n=128) | 0.032451 | 0.100361 |
+| A1 | histories.stationary.reference.descendant.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A1 | histories.stationary.reference.descendant.latency | 10.273438 ± 0.973108 (n=128) | 8.327222 | 12.219653 |
+| A1 | histories.stationary.reference.descendant.contact_accuracy | 0.895397 ± 0.018610 (n=128); 214/239 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.masked_gain | 0.032838 ± 0.009970 (n=128) | 0.012897 | 0.052779 |
+| A1 | histories.reversal.full_gain | -0.038600 ± 0.012794 (n=128) | -0.064189 | -0.013011 |
+| A1 | histories.reversal.attenuation | 0.071438 ± 0.010760 (n=128) | 0.049918 | 0.092959 |
+| A1 | histories.reversal.scene_gain_masked | -0.031250 ± 0.065091 (n=128) | -0.161433 | 0.098933 |
+| A1 | histories.reversal.scene_gain_full | -0.046875 ± 0.066422 (n=128) | -0.179718 | 0.085968 |
+| A1 | histories.reversal.scene_attenuation | 0.015625 ± 0.064424 (n=128) | -0.113222 | 0.144472 |
+| A1 | histories.reversal.reference_gain | -0.066406 ± 0.072390 (n=128) | -0.211185 | 0.078373 |
+| A1 | histories.reversal.local.parent.masked | 0.168533 ± 0.017479 (n=128) | 0.133574 | 0.203491 |
+| A1 | histories.reversal.local.parent.full | 0.133139 ± 0.015211 (n=128) | 0.102717 | 0.163561 |
+| A1 | histories.reversal.local.descendant.masked | 0.201370 ± 0.020499 (n=128) | 0.160372 | 0.242368 |
+| A1 | histories.reversal.local.descendant.full | 0.094539 ± 0.013934 (n=128) | 0.066671 | 0.122406 |
+| A1 | histories.reversal.sampled.parent.masked | 0.180990 ± 0.019248 (n=128) | 0.142494 | 0.219485 |
+| A1 | histories.reversal.sampled.parent.full | 0.137044 ± 0.016549 (n=128) | 0.103947 | 0.170142 |
+| A1 | histories.reversal.sampled.descendant.masked | 0.208333 ± 0.021554 (n=128) | 0.165225 | 0.251441 |
+| A1 | histories.reversal.sampled.descendant.full | 0.097656 ± 0.015757 (n=128) | 0.066142 | 0.129171 |
+| A1 | histories.reversal.first_choice.parent.masked.p_food | 0.307347 ± 0.011238 (n=128) | 0.284872 | 0.329822 |
+| A1 | histories.reversal.first_choice.parent.masked.p_poison | 0.138814 ± 0.007424 (n=128) | 0.123967 | 0.153662 |
+| A1 | histories.reversal.first_choice.parent.masked.p_other | 0.553839 ± 0.007567 (n=128) | 0.538704 | 0.568974 |
+| A1 | histories.reversal.first_choice.parent.masked.approach | 0.446161 ± 0.007567 (n=128) | 0.431026 | 0.461296 |
+| A1 | histories.reversal.first_choice.parent.masked.conditional | 0.289643 ± 0.027979 (n=128) | 0.233684 | 0.345602 |
+| A1 | histories.reversal.first_choice.parent.full.p_food | 0.256533 ± 0.011587 (n=128) | 0.233359 | 0.279707 |
+| A1 | histories.reversal.first_choice.parent.full.p_poison | 0.123394 ± 0.007258 (n=128) | 0.108878 | 0.137910 |
+| A1 | histories.reversal.first_choice.parent.full.p_other | 0.620073 ± 0.011937 (n=128) | 0.596199 | 0.643947 |
+| A1 | histories.reversal.first_choice.parent.full.approach | 0.379927 ± 0.011937 (n=128) | 0.356053 | 0.403801 |
+| A1 | histories.reversal.first_choice.parent.full.conditional | 0.239182 ± 0.024520 (n=128) | 0.190143 | 0.288222 |
+| A1 | histories.reversal.first_choice.descendant.masked.p_food | 0.340655 ± 0.013460 (n=128) | 0.313735 | 0.367576 |
+| A1 | histories.reversal.first_choice.descendant.masked.p_poison | 0.139285 ± 0.008006 (n=128) | 0.123274 | 0.155296 |
+| A1 | histories.reversal.first_choice.descendant.masked.p_other | 0.520060 ± 0.008386 (n=128) | 0.503288 | 0.536831 |
+| A1 | histories.reversal.first_choice.descendant.masked.approach | 0.479940 ± 0.008386 (n=128) | 0.463169 | 0.496712 |
+| A1 | histories.reversal.first_choice.descendant.masked.conditional | 0.312291 ± 0.030857 (n=128) | 0.250578 | 0.374004 |
+| A1 | histories.reversal.first_choice.descendant.full.p_food | 0.225339 ± 0.011999 (n=128) | 0.201340 | 0.249337 |
+| A1 | histories.reversal.first_choice.descendant.full.p_poison | 0.130800 ± 0.006278 (n=128) | 0.118244 | 0.143356 |
+| A1 | histories.reversal.first_choice.descendant.full.p_other | 0.643861 ± 0.013139 (n=128) | 0.617583 | 0.670140 |
+| A1 | histories.reversal.first_choice.descendant.full.approach | 0.356139 ± 0.013139 (n=128) | 0.329860 | 0.382417 |
+| A1 | histories.reversal.first_choice.descendant.full.conditional | 0.167176 ± 0.021620 (n=128) | 0.123937 | 0.210416 |
+| A1 | histories.reversal.decomposition.approach | 0.025932 ± 0.004996 (n=128) | 0.015940 | 0.035923 |
+| A1 | histories.reversal.decomposition.conditional | 0.045507 ± 0.006975 (n=128) | 0.031557 | 0.059456 |
+| A1 | histories.reversal.scene.parent.masked.Y | 0.296875 ± 0.058018 (n=128) | 0.180839 | 0.412911 |
+| A1 | histories.reversal.scene.parent.masked.first_food | 0.613281 ± 0.030485 (n=128) | 0.552311 | 0.674252 |
+| A1 | histories.reversal.scene.parent.masked.first_poison | 0.316406 ± 0.029800 (n=128) | 0.256807 | 0.376005 |
+| A1 | histories.reversal.scene.parent.masked.no_contact | 0.070312 ± 0.016391 (n=128) | 0.037531 | 0.103094 |
+| A1 | histories.reversal.scene.parent.masked.survival | 0.980469 ± 0.008596 (n=128) | 0.963277 | 0.997661 |
+| A1 | histories.reversal.scene.parent.masked.latency | 8.253906 ± 0.927622 (n=128) | 6.398663 | 10.109150 |
+| A1 | histories.reversal.scene.parent.masked.contact_accuracy | 0.659664 ± 0.031207 (n=128); 157/238 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.scene.parent.full.Y | 0.238281 ± 0.056820 (n=128) | 0.124642 | 0.351921 |
+| A1 | histories.reversal.scene.parent.full.first_food | 0.570312 ± 0.030746 (n=128) | 0.508820 | 0.631805 |
+| A1 | histories.reversal.scene.parent.full.first_poison | 0.332031 ± 0.028965 (n=128) | 0.274100 | 0.389962 |
+| A1 | histories.reversal.scene.parent.full.no_contact | 0.097656 ± 0.018443 (n=128) | 0.060771 | 0.134542 |
+| A1 | histories.reversal.scene.parent.full.survival | 0.976562 ± 0.009378 (n=128) | 0.957806 | 0.995319 |
+| A1 | histories.reversal.scene.parent.full.latency | 11.734375 ± 1.097627 (n=128) | 9.539122 | 13.929628 |
+| A1 | histories.reversal.scene.parent.full.contact_accuracy | 0.632035 ± 0.031326 (n=128); 146/231 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.scene.descendant.masked.Y | 0.265625 ± 0.058938 (n=128) | 0.147748 | 0.383502 |
+| A1 | histories.reversal.scene.descendant.masked.first_food | 0.593750 ± 0.031738 (n=128) | 0.530273 | 0.657227 |
+| A1 | histories.reversal.scene.descendant.masked.first_poison | 0.328125 ± 0.029575 (n=128) | 0.268975 | 0.387275 |
+| A1 | histories.reversal.scene.descendant.masked.no_contact | 0.078125 ± 0.017038 (n=128) | 0.044050 | 0.112200 |
+| A1 | histories.reversal.scene.descendant.masked.survival | 0.972656 ± 0.011512 (n=128) | 0.949633 | 0.995680 |
+| A1 | histories.reversal.scene.descendant.masked.latency | 9.437500 ± 1.048263 (n=128) | 7.340974 | 11.534026 |
+| A1 | histories.reversal.scene.descendant.masked.contact_accuracy | 0.644068 ± 0.031725 (n=128); 152/236 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.scene.descendant.full.Y | 0.191406 ± 0.053805 (n=128) | 0.083796 | 0.299016 |
+| A1 | histories.reversal.scene.descendant.full.first_food | 0.566406 ± 0.029015 (n=128) | 0.508376 | 0.624436 |
+| A1 | histories.reversal.scene.descendant.full.first_poison | 0.375000 ± 0.027170 (n=128) | 0.320661 | 0.429339 |
+| A1 | histories.reversal.scene.descendant.full.no_contact | 0.058594 ± 0.016284 (n=128) | 0.026026 | 0.091162 |
+| A1 | histories.reversal.scene.descendant.full.survival | 0.984375 ± 0.007720 (n=128) | 0.968936 | 0.999814 |
+| A1 | histories.reversal.scene.descendant.full.latency | 10.054688 ± 1.095204 (n=128) | 7.864279 | 12.245096 |
+| A1 | histories.reversal.scene.descendant.full.contact_accuracy | 0.601660 ± 0.028422 (n=128); 145/241 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.reference.parent.Y | 0.261719 ± 0.053760 (n=128) | 0.154198 | 0.369239 |
+| A1 | histories.reversal.reference.parent.first_food | 0.562500 ± 0.030377 (n=128) | 0.501747 | 0.623253 |
+| A1 | histories.reversal.reference.parent.first_poison | 0.300781 ± 0.027918 (n=128) | 0.244946 | 0.356617 |
+| A1 | histories.reversal.reference.parent.no_contact | 0.136719 ± 0.022674 (n=128) | 0.091371 | 0.182067 |
+| A1 | histories.reversal.reference.parent.survival | 0.992188 ± 0.005502 (n=128) | 0.981183 | 1.003192 |
+| A1 | histories.reversal.reference.parent.latency | 15.515625 ± 1.126051 (n=128) | 13.263522 | 17.767728 |
+| A1 | histories.reversal.reference.parent.contact_accuracy | 0.651584 ± 0.030923 (n=128); 144/221 food/contact, 256 assigned lives | — | — |
+| A1 | histories.reversal.reference.descendant.Y | 0.195312 ± 0.057698 (n=128) | 0.079916 | 0.310709 |
+| A1 | histories.reversal.reference.descendant.first_food | 0.539062 ± 0.031181 (n=128) | 0.476701 | 0.601424 |
+| A1 | histories.reversal.reference.descendant.first_poison | 0.343750 ± 0.030250 (n=128) | 0.283251 | 0.404249 |
+| A1 | histories.reversal.reference.descendant.no_contact | 0.117188 ± 0.021107 (n=128) | 0.074973 | 0.159402 |
+| A1 | histories.reversal.reference.descendant.survival | 0.988281 ± 0.006712 (n=128) | 0.974857 | 1.001706 |
+| A1 | histories.reversal.reference.descendant.latency | 17.207031 ± 1.227962 (n=128) | 14.751108 | 19.662955 |
+| A1 | histories.reversal.reference.descendant.contact_accuracy | 0.610619 ± 0.032661 (n=128); 138/226 food/contact, 256 assigned lives | — | — |
+| A2 | distractors | 3.648438 ± 0.154728 (n=128) | 3.338982 | 3.957893 |
+| A2 | zero_distractors | 0.015625 ± 0.011005 (n=128) | -0.006385 | 0.037635 |
+| A2 | histories.stationary.masked_gain | 0.132152 ± 0.014228 (n=128) | 0.103695 | 0.160609 |
+| A2 | histories.stationary.full_gain | -0.180344 ± 0.019634 (n=128) | -0.219611 | -0.141077 |
+| A2 | histories.stationary.attenuation | 0.312496 ± 0.020313 (n=128) | 0.271871 | 0.353122 |
+| A2 | histories.stationary.scene_gain_masked | -0.097656 ± 0.033762 (n=128) | -0.165179 | -0.030133 |
+| A2 | histories.stationary.scene_gain_full | -0.437500 ± 0.052321 (n=128) | -0.542141 | -0.332859 |
+| A2 | histories.stationary.scene_attenuation | 0.339844 ± 0.048645 (n=128) | 0.242554 | 0.437133 |
+| A2 | histories.stationary.reference_gain | -0.437500 ± 0.056558 (n=128) | -0.550616 | -0.324384 |
+| A2 | histories.stationary.local.parent.masked | 0.638246 ± 0.011639 (n=128) | 0.614968 | 0.661524 |
+| A2 | histories.stationary.local.parent.full | 0.509757 ± 0.014298 (n=128) | 0.481162 | 0.538352 |
+| A2 | histories.stationary.local.descendant.masked | 0.770398 ± 0.013861 (n=128) | 0.742675 | 0.798120 |
+| A2 | histories.stationary.local.descendant.full | 0.329413 ± 0.025633 (n=128) | 0.278146 | 0.380680 |
+| A2 | histories.stationary.sampled.parent.masked | 0.624674 ± 0.014851 (n=128) | 0.594973 | 0.654375 |
+| A2 | histories.stationary.sampled.parent.full | 0.497070 ± 0.017829 (n=128) | 0.461412 | 0.532728 |
+| A2 | histories.stationary.sampled.descendant.masked | 0.767904 ± 0.015827 (n=128) | 0.736250 | 0.799557 |
+| A2 | histories.stationary.sampled.descendant.full | 0.319336 ± 0.025642 (n=128) | 0.268052 | 0.370620 |
+| A2 | histories.stationary.first_choice.parent.masked.p_food | 0.644449 ± 0.011360 (n=128) | 0.621729 | 0.667169 |
+| A2 | histories.stationary.first_choice.parent.masked.p_poison | 0.006203 ± 0.000840 (n=128) | 0.004524 | 0.007883 |
+| A2 | histories.stationary.first_choice.parent.masked.p_other | 0.349348 ± 0.011137 (n=128) | 0.327073 | 0.371622 |
+| A2 | histories.stationary.first_choice.parent.masked.approach | 0.650652 ± 0.011137 (n=128) | 0.628378 | 0.672927 |
+| A2 | histories.stationary.first_choice.parent.masked.conditional | 0.969244 ± 0.003787 (n=128) | 0.961670 | 0.976818 |
+| A2 | histories.stationary.first_choice.parent.full.p_food | 0.512540 ± 0.014291 (n=128) | 0.483958 | 0.541123 |
+| A2 | histories.stationary.first_choice.parent.full.p_poison | 0.002783 ± 0.000307 (n=128) | 0.002170 | 0.003397 |
+| A2 | histories.stationary.first_choice.parent.full.p_other | 0.484676 ± 0.014292 (n=128) | 0.456093 | 0.513260 |
+| A2 | histories.stationary.first_choice.parent.full.approach | 0.515324 ± 0.014292 (n=128) | 0.486740 | 0.543907 |
+| A2 | histories.stationary.first_choice.parent.full.conditional | 0.955786 ± 0.005168 (n=128) | 0.945451 | 0.966121 |
+| A2 | histories.stationary.first_choice.descendant.masked.p_food | 0.788458 ± 0.013506 (n=128) | 0.761445 | 0.815471 |
+| A2 | histories.stationary.first_choice.descendant.masked.p_poison | 0.018061 ± 0.001533 (n=128) | 0.014994 | 0.021127 |
+| A2 | histories.stationary.first_choice.descendant.masked.p_other | 0.193481 ± 0.013320 (n=128) | 0.166841 | 0.220121 |
+| A2 | histories.stationary.first_choice.descendant.masked.approach | 0.806519 ± 0.013320 (n=128) | 0.779879 | 0.833159 |
+| A2 | histories.stationary.first_choice.descendant.masked.conditional | 0.901912 ± 0.008192 (n=128) | 0.885527 | 0.918296 |
+| A2 | histories.stationary.first_choice.descendant.full.p_food | 0.384465 ± 0.026167 (n=128) | 0.332131 | 0.436800 |
+| A2 | histories.stationary.first_choice.descendant.full.p_poison | 0.055052 ± 0.004627 (n=128) | 0.045799 | 0.064306 |
+| A2 | histories.stationary.first_choice.descendant.full.p_other | 0.560482 ± 0.027481 (n=128) | 0.505521 | 0.615443 |
+| A2 | histories.stationary.first_choice.descendant.full.approach | 0.439518 ± 0.027481 (n=128) | 0.384557 | 0.494479 |
+| A2 | histories.stationary.first_choice.descendant.full.conditional | 0.476262 ± 0.025711 (n=128) | 0.424839 | 0.527685 |
+| A2 | histories.stationary.decomposition.approach | 0.097638 ± 0.015111 (n=128) | 0.067417 | 0.127860 |
+| A2 | histories.stationary.decomposition.conditional | 0.214858 ± 0.012108 (n=128) | 0.190641 | 0.239074 |
+| A2 | histories.stationary.scene.parent.masked.Y | 0.957031 ± 0.020017 (n=128) | 0.916997 | 0.997066 |
+| A2 | histories.stationary.scene.parent.masked.first_food | 0.972656 ± 0.011512 (n=128) | 0.949633 | 0.995680 |
+| A2 | histories.stationary.scene.parent.masked.first_poison | 0.015625 ± 0.009505 (n=128) | -0.003386 | 0.034636 |
+| A2 | histories.stationary.scene.parent.masked.no_contact | 0.011719 ± 0.006712 (n=128) | -0.001706 | 0.025143 |
+| A2 | histories.stationary.scene.parent.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A2 | histories.stationary.scene.parent.masked.latency | 3.023438 ± 0.511941 (n=128) | 1.999556 | 4.047319 |
+| A2 | histories.stationary.scene.parent.masked.contact_accuracy | 0.984190 ± 0.009616 (n=128); 249/253 food/contact, 256 assigned lives | — | — |
+| A2 | histories.stationary.scene.parent.full.Y | 0.957031 ± 0.020017 (n=128) | 0.916997 | 0.997066 |
+| A2 | histories.stationary.scene.parent.full.first_food | 0.972656 ± 0.011512 (n=128) | 0.949633 | 0.995680 |
+| A2 | histories.stationary.scene.parent.full.first_poison | 0.015625 ± 0.009505 (n=128) | -0.003386 | 0.034636 |
+| A2 | histories.stationary.scene.parent.full.no_contact | 0.011719 ± 0.006712 (n=128) | -0.001706 | 0.025143 |
+| A2 | histories.stationary.scene.parent.full.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A2 | histories.stationary.scene.parent.full.latency | 2.945312 ± 0.493381 (n=128) | 1.958550 | 3.932075 |
+| A2 | histories.stationary.scene.parent.full.contact_accuracy | 0.984190 ± 0.009616 (n=128); 249/253 food/contact, 256 assigned lives | — | — |
+| A2 | histories.stationary.scene.descendant.masked.Y | 0.859375 ± 0.030848 (n=128) | 0.797680 | 0.921070 |
+| A2 | histories.stationary.scene.descendant.masked.first_food | 0.929688 ± 0.015424 (n=128) | 0.898840 | 0.960535 |
+| A2 | histories.stationary.scene.descendant.masked.first_poison | 0.070312 ± 0.015424 (n=128) | 0.039465 | 0.101160 |
+| A2 | histories.stationary.scene.descendant.masked.no_contact | 0.000000 ± 0.000000 (n=128) | 0.000000 | 0.000000 |
+| A2 | histories.stationary.scene.descendant.masked.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A2 | histories.stationary.scene.descendant.masked.latency | 1.242188 ± 0.269935 (n=128) | 0.702317 | 1.782058 |
+| A2 | histories.stationary.scene.descendant.masked.contact_accuracy | 0.929688 ± 0.015424 (n=128); 238/256 food/contact, 256 assigned lives | — | — |
+| A2 | histories.stationary.scene.descendant.full.Y | 0.519531 ± 0.049419 (n=128) | 0.420693 | 0.618369 |
+| A2 | histories.stationary.scene.descendant.full.first_food | 0.757812 ± 0.024793 (n=128) | 0.708227 | 0.807398 |
+| A2 | histories.stationary.scene.descendant.full.first_poison | 0.238281 ± 0.024781 (n=128) | 0.188720 | 0.287842 |
+| A2 | histories.stationary.scene.descendant.full.no_contact | 0.003906 ± 0.003906 (n=128) | -0.003906 | 0.011719 |
+| A2 | histories.stationary.scene.descendant.full.survival | 0.988281 ± 0.006712 (n=128) | 0.974857 | 1.001706 |
+| A2 | histories.stationary.scene.descendant.full.latency | 3.761719 ± 0.526370 (n=128) | 2.708978 | 4.814460 |
+| A2 | histories.stationary.scene.descendant.full.contact_accuracy | 0.760784 ± 0.024824 (n=128); 194/255 food/contact, 256 assigned lives | — | — |
+| A2 | histories.stationary.reference.parent.Y | 0.777344 ± 0.034992 (n=128) | 0.707360 | 0.847327 |
+| A2 | histories.stationary.reference.parent.first_food | 0.871094 ± 0.019408 (n=128) | 0.832278 | 0.909909 |
+| A2 | histories.stationary.reference.parent.first_poison | 0.093750 ± 0.017317 (n=128) | 0.059115 | 0.128385 |
+| A2 | histories.stationary.reference.parent.no_contact | 0.035156 ± 0.011344 (n=128) | 0.012469 | 0.057844 |
+| A2 | histories.stationary.reference.parent.survival | 1.000000 ± 0.000000 (n=128) | 1.000000 | 1.000000 |
+| A2 | histories.stationary.reference.parent.latency | 8.683594 ± 0.790353 (n=128) | 7.102888 | 10.264300 |
+| A2 | histories.stationary.reference.parent.contact_accuracy | 0.902834 ± 0.017833 (n=128); 223/247 food/contact, 256 assigned lives | — | — |
+| A2 | histories.stationary.reference.descendant.Y | 0.339844 ± 0.046046 (n=128) | 0.247751 | 0.431936 |
+| A2 | histories.stationary.reference.descendant.first_food | 0.660156 ± 0.024132 (n=128) | 0.611892 | 0.708420 |
+| A2 | histories.stationary.reference.descendant.first_poison | 0.320312 ± 0.022687 (n=128) | 0.274938 | 0.365687 |
+| A2 | histories.stationary.reference.descendant.no_contact | 0.019531 ± 0.008596 (n=128) | 0.002339 | 0.036723 |
+| A2 | histories.stationary.reference.descendant.survival | 0.996094 ± 0.003906 (n=128) | 0.988281 | 1.003906 |
+| A2 | histories.stationary.reference.descendant.latency | 8.082031 ± 0.834127 (n=128) | 6.413778 | 9.750284 |
+| A2 | histories.stationary.reference.descendant.contact_accuracy | 0.673307 ± 0.023270 (n=128); 169/251 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.masked_gain | -0.073532 ± 0.011326 (n=128) | -0.096184 | -0.050879 |
+| A2 | histories.reversal.full_gain | -0.104713 ± 0.012064 (n=128) | -0.128840 | -0.080585 |
+| A2 | histories.reversal.attenuation | 0.031181 ± 0.011515 (n=128) | 0.008151 | 0.054211 |
+| A2 | histories.reversal.scene_gain_masked | -0.175781 ± 0.074322 (n=128) | -0.324426 | -0.027137 |
+| A2 | histories.reversal.scene_gain_full | -0.230469 ± 0.062722 (n=128) | -0.355912 | -0.105025 |
+| A2 | histories.reversal.scene_attenuation | 0.054688 ± 0.067977 (n=128) | -0.081267 | 0.190642 |
+| A2 | histories.reversal.reference_gain | -0.226562 ± 0.062465 (n=128) | -0.351493 | -0.101632 |
+| A2 | histories.reversal.local.parent.masked | 0.200965 ± 0.018836 (n=128) | 0.163292 | 0.238638 |
+| A2 | histories.reversal.local.parent.full | 0.128368 ± 0.013958 (n=128) | 0.100451 | 0.156284 |
+| A2 | histories.reversal.local.descendant.masked | 0.127434 ± 0.014048 (n=128) | 0.099338 | 0.155529 |
+| A2 | histories.reversal.local.descendant.full | 0.023655 ± 0.005134 (n=128) | 0.013387 | 0.033923 |
+| A2 | histories.reversal.sampled.parent.masked | 0.205404 ± 0.020483 (n=128) | 0.164438 | 0.246369 |
+| A2 | histories.reversal.sampled.parent.full | 0.121745 ± 0.014376 (n=128) | 0.092992 | 0.150497 |
+| A2 | histories.reversal.sampled.descendant.masked | 0.125977 ± 0.015818 (n=128) | 0.094340 | 0.157613 |
+| A2 | histories.reversal.sampled.descendant.full | 0.024414 ± 0.006413 (n=128) | 0.011589 | 0.037240 |
+| A2 | histories.reversal.first_choice.parent.masked.p_food | 0.339925 ± 0.011905 (n=128) | 0.316115 | 0.363735 |
+| A2 | histories.reversal.first_choice.parent.masked.p_poison | 0.138960 ± 0.008002 (n=128) | 0.122956 | 0.154965 |
+| A2 | histories.reversal.first_choice.parent.masked.p_other | 0.521114 ± 0.007531 (n=128) | 0.506052 | 0.536177 |
+| A2 | histories.reversal.first_choice.parent.masked.approach | 0.478886 ± 0.007531 (n=128) | 0.463823 | 0.493948 |
+| A2 | histories.reversal.first_choice.parent.masked.conditional | 0.348610 ± 0.031299 (n=128) | 0.286013 | 0.411208 |
+| A2 | histories.reversal.first_choice.parent.full.p_food | 0.201033 ± 0.012005 (n=128) | 0.177023 | 0.225043 |
+| A2 | histories.reversal.first_choice.parent.full.p_poison | 0.072665 ± 0.006394 (n=128) | 0.059878 | 0.085453 |
+| A2 | histories.reversal.first_choice.parent.full.p_other | 0.726301 ± 0.013235 (n=128) | 0.699832 | 0.752771 |
+| A2 | histories.reversal.first_choice.parent.full.approach | 0.273699 ± 0.013235 (n=128) | 0.247229 | 0.300168 |
+| A2 | histories.reversal.first_choice.parent.full.conditional | 0.321795 ± 0.029671 (n=128) | 0.262453 | 0.381136 |
+| A2 | histories.reversal.first_choice.descendant.masked.p_food | 0.266273 ± 0.011229 (n=128) | 0.243816 | 0.288730 |
+| A2 | histories.reversal.first_choice.descendant.masked.p_poison | 0.138839 ± 0.006314 (n=128) | 0.126212 | 0.151467 |
+| A2 | histories.reversal.first_choice.descendant.masked.p_other | 0.594888 ± 0.011599 (n=128) | 0.571690 | 0.618086 |
+| A2 | histories.reversal.first_choice.descendant.masked.approach | 0.405112 ± 0.011599 (n=128) | 0.381914 | 0.428310 |
+| A2 | histories.reversal.first_choice.descendant.masked.conditional | 0.202107 ± 0.020510 (n=128) | 0.161087 | 0.243127 |
+| A2 | histories.reversal.first_choice.descendant.full.p_food | 0.131158 ± 0.009186 (n=128) | 0.112787 | 0.149529 |
+| A2 | histories.reversal.first_choice.descendant.full.p_poison | 0.107503 ± 0.007143 (n=128) | 0.093217 | 0.121788 |
+| A2 | histories.reversal.first_choice.descendant.full.p_other | 0.761340 ± 0.015634 (n=128) | 0.730071 | 0.792608 |
+| A2 | histories.reversal.first_choice.descendant.full.approach | 0.238660 ± 0.015634 (n=128) | 0.207392 | 0.269929 |
+| A2 | histories.reversal.first_choice.descendant.full.conditional | 0.046991 ± 0.008321 (n=128) | 0.030350 | 0.063633 |
+| A2 | histories.reversal.decomposition.approach | -0.030802 ± 0.008347 (n=128) | -0.047496 | -0.014109 |
+| A2 | histories.reversal.decomposition.conditional | 0.061983 ± 0.008227 (n=128) | 0.045528 | 0.078438 |
+| A2 | histories.reversal.scene.parent.masked.Y | 0.339844 ± 0.059715 (n=128) | 0.220414 | 0.459274 |
+| A2 | histories.reversal.scene.parent.masked.first_food | 0.648438 ± 0.030558 (n=128) | 0.587322 | 0.709553 |
+| A2 | histories.reversal.scene.parent.masked.first_poison | 0.308594 ± 0.030438 (n=128) | 0.247718 | 0.369469 |
+| A2 | histories.reversal.scene.parent.masked.no_contact | 0.042969 ± 0.012435 (n=128) | 0.018099 | 0.067839 |
+| A2 | histories.reversal.scene.parent.masked.survival | 0.988281 ± 0.006712 (n=128) | 0.974857 | 1.001706 |
+| A2 | histories.reversal.scene.parent.masked.latency | 6.460938 ± 0.764030 (n=128) | 4.932878 | 7.988997 |
+| A2 | histories.reversal.scene.parent.masked.contact_accuracy | 0.677551 ± 0.031260 (n=128); 166/245 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.scene.parent.full.Y | 0.343750 ± 0.053699 (n=128) | 0.236353 | 0.451147 |
+| A2 | histories.reversal.scene.parent.full.first_food | 0.644531 ± 0.028362 (n=128) | 0.587808 | 0.701255 |
+| A2 | histories.reversal.scene.parent.full.first_poison | 0.300781 ± 0.027361 (n=128) | 0.246059 | 0.355504 |
+| A2 | histories.reversal.scene.parent.full.no_contact | 0.054688 ± 0.014917 (n=128) | 0.024854 | 0.084521 |
+| A2 | histories.reversal.scene.parent.full.survival | 0.996094 ± 0.003906 (n=128) | 0.988281 | 1.003906 |
+| A2 | histories.reversal.scene.parent.full.latency | 7.550781 ± 0.801635 (n=128) | 5.947510 | 9.154052 |
+| A2 | histories.reversal.scene.parent.full.contact_accuracy | 0.681818 ± 0.028348 (n=128); 165/242 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.scene.descendant.masked.Y | 0.164062 ± 0.049947 (n=128) | 0.064168 | 0.263957 |
+| A2 | histories.reversal.scene.descendant.masked.first_food | 0.570312 ± 0.025855 (n=128) | 0.518602 | 0.622023 |
+| A2 | histories.reversal.scene.descendant.masked.first_poison | 0.406250 ± 0.025263 (n=128) | 0.355724 | 0.456776 |
+| A2 | histories.reversal.scene.descendant.masked.no_contact | 0.023438 ± 0.010895 (n=128) | 0.001647 | 0.045228 |
+| A2 | histories.reversal.scene.descendant.masked.survival | 0.976562 ± 0.009378 (n=128) | 0.957806 | 0.995319 |
+| A2 | histories.reversal.scene.descendant.masked.latency | 6.863281 ± 0.788616 (n=128) | 5.286049 | 8.440514 |
+| A2 | histories.reversal.scene.descendant.masked.contact_accuracy | 0.584000 ± 0.025538 (n=128); 146/250 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.scene.descendant.full.Y | 0.113281 ± 0.041582 (n=128) | 0.030118 | 0.196445 |
+| A2 | histories.reversal.scene.descendant.full.first_food | 0.546875 ± 0.021790 (n=128) | 0.503294 | 0.590456 |
+| A2 | histories.reversal.scene.descendant.full.first_poison | 0.433594 ± 0.021024 (n=128) | 0.391545 | 0.475642 |
+| A2 | histories.reversal.scene.descendant.full.no_contact | 0.019531 ± 0.010230 (n=128) | -0.000928 | 0.039991 |
+| A2 | histories.reversal.scene.descendant.full.survival | 0.972656 ± 0.010088 (n=128) | 0.952480 | 0.992832 |
+| A2 | histories.reversal.scene.descendant.full.latency | 7.894531 ± 0.823174 (n=128) | 6.248183 | 9.540880 |
+| A2 | histories.reversal.scene.descendant.full.contact_accuracy | 0.557769 ± 0.021167 (n=128); 140/251 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.reference.parent.Y | 0.257812 ± 0.052316 (n=128) | 0.153180 | 0.362445 |
+| A2 | histories.reversal.reference.parent.first_food | 0.597656 ± 0.028311 (n=128) | 0.541034 | 0.654278 |
+| A2 | histories.reversal.reference.parent.first_poison | 0.339844 ± 0.027132 (n=128) | 0.285580 | 0.394108 |
+| A2 | histories.reversal.reference.parent.no_contact | 0.062500 ± 0.018394 (n=128) | 0.025712 | 0.099288 |
+| A2 | histories.reversal.reference.parent.survival | 0.976562 ± 0.009378 (n=128) | 0.957806 | 0.995319 |
+| A2 | histories.reversal.reference.parent.latency | 11.480469 ± 1.067445 (n=128) | 9.345580 | 13.615358 |
+| A2 | histories.reversal.reference.parent.contact_accuracy | 0.637500 ± 0.027849 (n=128); 153/240 food/contact, 256 assigned lives | — | — |
+| A2 | histories.reversal.reference.descendant.Y | 0.031250 ± 0.037100 (n=128) | -0.042950 | 0.105450 |
+| A2 | histories.reversal.reference.descendant.first_food | 0.488281 ± 0.019580 (n=128) | 0.449120 | 0.527442 |
+| A2 | histories.reversal.reference.descendant.first_poison | 0.457031 ± 0.020017 (n=128) | 0.416997 | 0.497066 |
+| A2 | histories.reversal.reference.descendant.no_contact | 0.054688 ± 0.013848 (n=128) | 0.026992 | 0.082383 |
+| A2 | histories.reversal.reference.descendant.survival | 0.984375 ± 0.007720 (n=128) | 0.968936 | 0.999814 |
+| A2 | histories.reversal.reference.descendant.latency | 11.171875 ± 1.081984 (n=128) | 9.007907 | 13.335843 |
+| A2 | histories.reversal.reference.descendant.contact_accuracy | 0.516529 ± 0.019633 (n=128); 125/242 food/contact, 256 assigned lives | — | — |
+
 ## Selection on independent choice after matched replay (replay-selection-v1)
 
 E134 selects the native genome on expected signed choice after matched experience. Each endpoint is frozen before separate evaluation against its own E103 parent. See the [protocol](../experiments/E134_PROTOCOL.md) for the feedback ablation and decision rules.

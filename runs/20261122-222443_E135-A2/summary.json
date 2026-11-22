@@ -1,0 +1,2301 @@
+{
+  "status": "finished",
+  "protocol": "scene-transfer-v1",
+  "mode": "final",
+  "seed_index": 2,
+  "elapsed_seconds": 141.95300000003772,
+  "setup_seconds": 0.6870000000344589,
+  "completed_families": 128,
+  "expected_families": 128,
+  "family_seconds": [
+    17.92199999996228,
+    4.313000000023749,
+    0.8439999999827705,
+    0.9369999999762513,
+    0.7810000000172295,
+    0.9679999999934807,
+    1.0310000000172295,
+    0.9529999999795109,
+    1.0619999999762513,
+    1.25,
+    1.297000000020489,
+    1.187999999965541,
+    0.8279999999795109,
+    0.5790000000270084,
+    0.8279999999795109,
+    1.1869999999762513,
+    0.8910000000032596,
+    0.9070000000065193,
+    1.2189999999827705,
+    1.2339999999967404,
+    1.0619999999762513,
+    1.2179999999934807,
+    0.9220000000204891,
+    0.7189999999827705,
+    1.0320000000065193,
+    1.077999999979511,
+    1.0160000000032596,
+    0.8599999999860302,
+    0.9219999999622814,
+    1.1400000000139698,
+    1.202999999979511,
+    1.2189999999827705,
+    0.8280000000377186,
+    0.9689999999827705,
+    0.7189999999827705,
+    0.6410000000032596,
+    0.6869999999762513,
+    0.6880000000237487,
+    0.5939999999827705,
+    0.6089999999967404,
+    0.6880000000237487,
+    1.0790000000270084,
+    1.2189999999827705,
+    1.1089999999967404,
+    1.0929999999934807,
+    0.8910000000032596,
+    1.0160000000032596,
+    0.9850000000442378,
+    0.9540000000270084,
+    1.0939999999827705,
+    0.9679999999934807,
+    1.0619999999762513,
+    1.047000000020489,
+    1.077999999979511,
+    0.9220000000204891,
+    0.9059999999590218,
+    1.125,
+    1.2179999999934807,
+    1.172000000020489,
+    0.7339999999967404,
+    0.5619999999762513,
+    0.625,
+    0.7970000000204891,
+    0.9060000000172295,
+    0.8440000000409782,
+    0.9689999999827705,
+    0.8910000000032596,
+    0.9369999999762513,
+    1.0310000000172295,
+    1.077999999979511,
+    1.2660000000032596,
+    1.2810000000172295,
+    1.2350000000442378,
+    0.9540000000270084,
+    0.6559999999590218,
+    0.6100000000442378,
+    0.5939999999827705,
+    0.9369999999762513,
+    0.9839999999967404,
+    0.9370000000344589,
+    1.0149999999557622,
+    0.8280000000377186,
+    1.0309999999590218,
+    0.875,
+    0.8910000000032596,
+    1.125,
+    0.9379999999655411,
+    0.9849999999860302,
+    0.8130000000237487,
+    0.9540000000270084,
+    0.8599999999860302,
+    0.8589999999967404,
+    1.0310000000172295,
+    0.9380000000237487,
+    0.9679999999934807,
+    1.0320000000065193,
+    0.9849999999860302,
+    1.0619999999762513,
+    0.9839999999967404,
+    0.9839999999967404,
+    0.9060000000172295,
+    1.0309999999590218,
+    1.047000000020489,
+    1.2660000000032596,
+    1.125,
+    0.9380000000237487,
+    0.8910000000032596,
+    0.5630000000237487,
+    0.5,
+    0.4220000000204891,
+    0.5,
+    0.75,
+    0.75,
+    0.5320000000065193,
+    0.5469999999622814,
+    0.6089999999967404,
+    0.8280000000377186,
+    1.0619999999762513,
+    0.8279999999795109,
+    0.9070000000065193,
+    0.9839999999967404,
+    0.8900000000139698,
+    0.9689999999827705,
+    0.9219999999622814,
+    0.9070000000065193,
+    1.0469999999622814,
+    0.9060000000172295,
+    0.9839999999967404
+  ],
+  "family_wall_seconds": [
+    17.92199999996228,
+    4.328000000037719,
+    0.8599999999860302,
+    0.9529999999795109,
+    0.7970000000204891,
+    0.9839999999967404,
+    1.0310000000172295,
+    0.9689999999827705,
+    1.077999999979511,
+    1.25,
+    1.312000000034459,
+    1.202999999979511,
+    0.8279999999795109,
+    0.5790000000270084,
+    0.8279999999795109,
+    1.202999999979511,
+    0.9060000000172295,
+    0.9220000000204891,
+    1.2349999999860302,
+    1.25,
+    1.0619999999762513,
+    1.2339999999967404,
+    0.9220000000204891,
+    0.7339999999967404,
+    1.047000000020489,
+    1.0939999999827705,
+    1.0310000000172295,
+    0.8599999999860302,
+    0.9379999999655411,
+    1.1560000000172295,
+    1.2179999999934807,
+    1.2189999999827705,
+    0.8440000000409782,
+    0.9839999999967404,
+    0.7189999999827705,
+    0.6410000000032596,
+    0.6869999999762513,
+    0.7030000000377186,
+    0.5939999999827705,
+    0.6089999999967404,
+    0.7029999999795109,
+    1.0940000000409782,
+    1.2349999999860302,
+    1.1089999999967404,
+    1.1089999999967404,
+    0.9060000000172295,
+    1.0309999999590218,
+    0.9850000000442378,
+    0.9540000000270084,
+    1.1099999999860302,
+    0.9839999999967404,
+    1.077999999979511,
+    1.047000000020489,
+    1.0929999999934807,
+    0.9220000000204891,
+    0.9219999999622814,
+    1.1410000000032596,
+    1.2339999999967404,
+    1.1880000000237487,
+    0.75,
+    0.5619999999762513,
+    0.625,
+    0.8130000000237487,
+    0.9060000000172295,
+    0.8600000000442378,
+    0.9689999999827705,
+    0.8910000000032596,
+    0.9529999999795109,
+    1.047000000020489,
+    1.077999999979511,
+    1.2660000000032596,
+    1.2959999999729916,
+    1.25,
+    0.9690000000409782,
+    0.6559999999590218,
+    0.6100000000442378,
+    0.5939999999827705,
+    0.9369999999762513,
+    1.0,
+    0.9530000000377186,
+    1.0309999999590218,
+    0.8280000000377186,
+    1.0309999999590218,
+    0.8900000000139698,
+    0.9070000000065193,
+    1.1400000000139698,
+    0.9529999999795109,
+    1.0,
+    0.8279999999795109,
+    0.9540000000270084,
+    0.8599999999860302,
+    0.875,
+    1.0459999999729916,
+    0.9540000000270084,
+    0.9679999999934807,
+    1.0320000000065193,
+    1.0,
+    1.0619999999762513,
+    1.0,
+    1.0,
+    0.9060000000172295,
+    1.0469999999622814,
+    1.062000000034459,
+    1.2809999999590218,
+    1.1410000000032596,
+    0.9530000000377186,
+    0.9059999999590218,
+    0.5630000000237487,
+    0.5,
+    0.4220000000204891,
+    0.5160000000032596,
+    0.7660000000032596,
+    0.7650000000139698,
+    0.5470000000204891,
+    0.5469999999622814,
+    0.625,
+    0.8440000000409782,
+    1.0619999999762513,
+    0.8429999999934807,
+    0.9070000000065193,
+    0.9839999999967404,
+    0.9060000000172295,
+    0.9839999999967404,
+    0.9379999999655411,
+    0.9220000000204891,
+    1.062999999965541,
+    0.9060000000172295,
+    1.0
+  ],
+  "scientific_result": false,
+  "artifact_validity": "passed",
+  "gate_status": "undecided",
+  "raw_files": [
+    {
+      "index": 0,
+      "path": "families/family_0000.npz",
+      "sha256": "e1d5222f45b525a57896aeddc2c0bdbba7e9725628bcdc5190dfea36b1c70398",
+      "bytes": 708569
+    },
+    {
+      "index": 1,
+      "path": "families/family_0001.npz",
+      "sha256": "77aa6e267ef0bd9c1382ed3d61ced39d22bef509cd7bfb74041aa6ce18fc445e",
+      "bytes": 652584
+    },
+    {
+      "index": 2,
+      "path": "families/family_0002.npz",
+      "sha256": "980bdbd07b3bf2e481390ddc79ccfa02697ada2ad4a938fae8a36c77cb6d5c58",
+      "bytes": 605474
+    },
+    {
+      "index": 3,
+      "path": "families/family_0003.npz",
+      "sha256": "86c39baee42ca5d45d660ce82d769d2342c8771a342705f47f2291c92a7944eb",
+      "bytes": 700562
+    },
+    {
+      "index": 4,
+      "path": "families/family_0004.npz",
+      "sha256": "8d1fb00b909830e0f21ec883def21c136aa88b979342bf9c87af6c05e35f666c",
+      "bytes": 677922
+    },
+    {
+      "index": 5,
+      "path": "families/family_0005.npz",
+      "sha256": "b248822cb173b5d193a650f16f59251c1b85e0629c3e45ab66bc0d736432423f",
+      "bytes": 615625
+    },
+    {
+      "index": 6,
+      "path": "families/family_0006.npz",
+      "sha256": "b493c8853ec315e5b789f8d1214102e845775216a107bdb142df412aa8bbad05",
+      "bytes": 622726
+    },
+    {
+      "index": 7,
+      "path": "families/family_0007.npz",
+      "sha256": "f204d81f28781f9b5588b4567c9c1f5c034477ed897a9dc7ee65f87933bc571a",
+      "bytes": 695603
+    },
+    {
+      "index": 8,
+      "path": "families/family_0008.npz",
+      "sha256": "4551bfecbfd0f1535ab26cfceab35e883d48c78e3ec67fe1ff4987068ba90b61",
+      "bytes": 679919
+    },
+    {
+      "index": 9,
+      "path": "families/family_0009.npz",
+      "sha256": "1276b26f4daf99aec6769fe0a0074fd0fadc3915cc91af049794f3f8cad23f8d",
+      "bytes": 611818
+    },
+    {
+      "index": 10,
+      "path": "families/family_0010.npz",
+      "sha256": "6eb96a2951f9d1ecc8d747e469f46be1a022a250cdec8555a01bbb12d692e9ec",
+      "bytes": 602997
+    },
+    {
+      "index": 11,
+      "path": "families/family_0011.npz",
+      "sha256": "3347e3b0d217f3a92586afd436a2cd61f85392e7d59a51bc4b6848c765aa7f45",
+      "bytes": 682294
+    },
+    {
+      "index": 12,
+      "path": "families/family_0012.npz",
+      "sha256": "eb5156c073af283d7e329bddb5073087ccf7daca23ca5d13f0f8763ffae62efb",
+      "bytes": 689269
+    },
+    {
+      "index": 13,
+      "path": "families/family_0013.npz",
+      "sha256": "8d816dc13b31dceefdaaf647558d4a9cac88e6f04805e53612d922933700e2cb",
+      "bytes": 593188
+    },
+    {
+      "index": 14,
+      "path": "families/family_0014.npz",
+      "sha256": "b67f029a1c1818587dd96e0ba1a0a0fba3b7c5bbee274a844a5701da95186714",
+      "bytes": 610405
+    },
+    {
+      "index": 15,
+      "path": "families/family_0015.npz",
+      "sha256": "f12e1a9839ff57e4f6546f460bb745ec091d228bcf07e235476cf59234a49c35",
+      "bytes": 668739
+    },
+    {
+      "index": 16,
+      "path": "families/family_0016.npz",
+      "sha256": "690db3cd51a198f69c9b2191d2f8999dcf077bc34ee547559488ae247d8dcb7a",
+      "bytes": 712758
+    },
+    {
+      "index": 17,
+      "path": "families/family_0017.npz",
+      "sha256": "abe8a8ad8c09f5d4c58632a2d8ccdb23621950cf455f9948a193f6b46db22fc1",
+      "bytes": 604801
+    },
+    {
+      "index": 18,
+      "path": "families/family_0018.npz",
+      "sha256": "3bf31ab94272d1ff695fef116bb64dd2a85142174723ab38de760af18717d2eb",
+      "bytes": 620909
+    },
+    {
+      "index": 19,
+      "path": "families/family_0019.npz",
+      "sha256": "7b7d60c55e56c2778fe3b4155b4361bf14797522f5acff6669607b2cc87f460f",
+      "bytes": 687317
+    },
+    {
+      "index": 20,
+      "path": "families/family_0020.npz",
+      "sha256": "b53f6a1429efbcc8054dfba51c7e275b0831cb37080f18751e71972c02895d68",
+      "bytes": 697029
+    },
+    {
+      "index": 21,
+      "path": "families/family_0021.npz",
+      "sha256": "5d6013e415ed5e233988521c73bd567188bacd37c9bed158f7cf25bd19295b2d",
+      "bytes": 599617
+    },
+    {
+      "index": 22,
+      "path": "families/family_0022.npz",
+      "sha256": "8bdd5fa587b90de84ad8b5fdb98c33c64a133d652a92174f542bb3d38069625b",
+      "bytes": 591771
+    },
+    {
+      "index": 23,
+      "path": "families/family_0023.npz",
+      "sha256": "23137a0b75c4f810e702f0ffe71bf8ea3625b37576d05a46fa36043470a14564",
+      "bytes": 712114
+    },
+    {
+      "index": 24,
+      "path": "families/family_0024.npz",
+      "sha256": "137657236956d70f474f1b28811a2f091a1a2546f633c3b57e28bf9a98dc31d9",
+      "bytes": 682446
+    },
+    {
+      "index": 25,
+      "path": "families/family_0025.npz",
+      "sha256": "597e32d7c0455470ba17ea8a999a5c8473e97fc430701140a25f2a16c19c3475",
+      "bytes": 611539
+    },
+    {
+      "index": 26,
+      "path": "families/family_0026.npz",
+      "sha256": "2ddf340527b274efa470f6e391ed3ab5e3054b2a1a4327e0ddf70955d86eb10b",
+      "bytes": 605930
+    },
+    {
+      "index": 27,
+      "path": "families/family_0027.npz",
+      "sha256": "57fa05ab43c347125bc15057791cf9d2116982dc77899e143c454e6418524e62",
+      "bytes": 692991
+    },
+    {
+      "index": 28,
+      "path": "families/family_0028.npz",
+      "sha256": "098e9461e7983e31f7cb1dd82740961c78bfb7715bc8bc24509cc03b609119bc",
+      "bytes": 706712
+    },
+    {
+      "index": 29,
+      "path": "families/family_0029.npz",
+      "sha256": "2772cd7e7a17c2368e2fe96f473bf915f6ad6378f48794ea7d35b253ae8d0173",
+      "bytes": 605506
+    },
+    {
+      "index": 30,
+      "path": "families/family_0030.npz",
+      "sha256": "171870587991c53a247d77a3524a1287e671aa931095d69c980ecab8efc65f52",
+      "bytes": 583883
+    },
+    {
+      "index": 31,
+      "path": "families/family_0031.npz",
+      "sha256": "b37992f34e81808eb748e58d868271fe17d638c51adc68fe1f648030aeb25a1e",
+      "bytes": 669530
+    },
+    {
+      "index": 32,
+      "path": "families/family_0032.npz",
+      "sha256": "7f67ab7a3a7b4cad29f4aeb53f7b9d3dcbf0b18d55e290fbcf0e18ee8fdbf082",
+      "bytes": 655091
+    },
+    {
+      "index": 33,
+      "path": "families/family_0033.npz",
+      "sha256": "884ca9499444bb87f642cd8fac6d414165343432825d1094975705d663066cc5",
+      "bytes": 597003
+    },
+    {
+      "index": 34,
+      "path": "families/family_0034.npz",
+      "sha256": "0f0b786cd5c7412b9faae5e537b18e3565917038dfe138d878957f85207e749d",
+      "bytes": 606097
+    },
+    {
+      "index": 35,
+      "path": "families/family_0035.npz",
+      "sha256": "084a484a1db620448d8146f1c7674c4ed4af98a9e543d17921899036452e5d2f",
+      "bytes": 679291
+    },
+    {
+      "index": 36,
+      "path": "families/family_0036.npz",
+      "sha256": "7859ae0e97395cf515baedede30b3d3c08265f1f0e92878c14cc6f4c4960f4e2",
+      "bytes": 705456
+    },
+    {
+      "index": 37,
+      "path": "families/family_0037.npz",
+      "sha256": "78915f778d976390783cc75fc3a75803aafeccfedc319790ecf4068e85075f13",
+      "bytes": 596652
+    },
+    {
+      "index": 38,
+      "path": "families/family_0038.npz",
+      "sha256": "192fff837fb257ec28e099a2ed2e15458c56e827d130dfa97482877ab63354e5",
+      "bytes": 583907
+    },
+    {
+      "index": 39,
+      "path": "families/family_0039.npz",
+      "sha256": "2a45f130ea756b6b09bf7c54fd05e77f826274b3c37b2942e3592880c2d805af",
+      "bytes": 688415
+    },
+    {
+      "index": 40,
+      "path": "families/family_0040.npz",
+      "sha256": "e3cade6519b5f0fb1661f45ca77a70c8c1931a70fe1097ffe7e1c991512d4e61",
+      "bytes": 703441
+    },
+    {
+      "index": 41,
+      "path": "families/family_0041.npz",
+      "sha256": "c9af9048b50d95f84b671b7be257adb937665b972486a9ff3a9afd9002bbd166",
+      "bytes": 613205
+    },
+    {
+      "index": 42,
+      "path": "families/family_0042.npz",
+      "sha256": "88c452e30539b5c550cab1499b4f2c118281d7dd522de507610ca2b8139dbd5b",
+      "bytes": 600152
+    },
+    {
+      "index": 43,
+      "path": "families/family_0043.npz",
+      "sha256": "b6f4587c44af02d24f1f750253342950fc6e373635eae2af6bc37b5966a7fcfa",
+      "bytes": 612933
+    },
+    {
+      "index": 44,
+      "path": "families/family_0044.npz",
+      "sha256": "b7cc550ef4bba79989b1167851b2f8f52d60cb9ae5b12194ba5588ef8d7c6a4c",
+      "bytes": 704816
+    },
+    {
+      "index": 45,
+      "path": "families/family_0045.npz",
+      "sha256": "1878d589b0efd28fe8f98e27cf2798438dd7f3c1167bc07f8827679e304e51d5",
+      "bytes": 603070
+    },
+    {
+      "index": 46,
+      "path": "families/family_0046.npz",
+      "sha256": "1cb13828345ebd64f82d60b67198513c77ad0bc4363832f40d730a93f6c80798",
+      "bytes": 580512
+    },
+    {
+      "index": 47,
+      "path": "families/family_0047.npz",
+      "sha256": "9d97cc1b22e7eb988597742b40171af8d01a29c94f3d0215420850bad9c183dc",
+      "bytes": 666540
+    },
+    {
+      "index": 48,
+      "path": "families/family_0048.npz",
+      "sha256": "9ddd844a05f06e21c119ec5409786779625937790e6281863291068faacd7a4e",
+      "bytes": 726155
+    },
+    {
+      "index": 49,
+      "path": "families/family_0049.npz",
+      "sha256": "b487abf4d222f1fda20067f5ff4c77ad50dd6989da65f3f6587af3cbe8550924",
+      "bytes": 619909
+    },
+    {
+      "index": 50,
+      "path": "families/family_0050.npz",
+      "sha256": "2171ef400bf15012d33d567c47e163b0b66559214d1921dd161194b6c553f7a4",
+      "bytes": 604059
+    },
+    {
+      "index": 51,
+      "path": "families/family_0051.npz",
+      "sha256": "f9b520db365fbd2ab0664780a8f87060a43ba49c3294028ef99bf7926bfd68ab",
+      "bytes": 678976
+    },
+    {
+      "index": 52,
+      "path": "families/family_0052.npz",
+      "sha256": "72377f4448073a74f0f7fe605c860d34cd87a3e2d1c6916b0a38e1bd900a4d12",
+      "bytes": 706314
+    },
+    {
+      "index": 53,
+      "path": "families/family_0053.npz",
+      "sha256": "432644949635769a58fd5d4e4bbb2f33ba7021995ada370658686138efc6bc91",
+      "bytes": 593182
+    },
+    {
+      "index": 54,
+      "path": "families/family_0054.npz",
+      "sha256": "542053216d04da94b2db97ff9d6f208ebdfabaf9de0d15cc60b0dc8918488b8f",
+      "bytes": 600870
+    },
+    {
+      "index": 55,
+      "path": "families/family_0055.npz",
+      "sha256": "ebee1ab1b78111fca47fa0d1ee43623575eeebf6581699c1962ead3fe51211e7",
+      "bytes": 698160
+    },
+    {
+      "index": 56,
+      "path": "families/family_0056.npz",
+      "sha256": "09cc2f587869913e543543a8ee5232c5415f0a1522f110d766a67a10632cc07a",
+      "bytes": 723900
+    },
+    {
+      "index": 57,
+      "path": "families/family_0057.npz",
+      "sha256": "34142d00cf971a57c1ed9257176376615ca186dddaebd45bb38e1b2710390185",
+      "bytes": 625870
+    },
+    {
+      "index": 58,
+      "path": "families/family_0058.npz",
+      "sha256": "1f36d04223a763e4127233a5c662d4150418428df8e131af73c090bff293a867",
+      "bytes": 611954
+    },
+    {
+      "index": 59,
+      "path": "families/family_0059.npz",
+      "sha256": "37d043de2429b31b3bcea5bb371c9954dda4b2f13f8109b2c6b4d12b40c62d83",
+      "bytes": 698419
+    },
+    {
+      "index": 60,
+      "path": "families/family_0060.npz",
+      "sha256": "8a2476cc7a8ba717a225d28f09ffbf46fab762ad10957b5bb2531b71f399e3dc",
+      "bytes": 694369
+    },
+    {
+      "index": 61,
+      "path": "families/family_0061.npz",
+      "sha256": "0916db85712903b63f2863b3098bf9643e7aec1388af7e6f6b7c18f231e6ef2e",
+      "bytes": 615780
+    },
+    {
+      "index": 62,
+      "path": "families/family_0062.npz",
+      "sha256": "ed93098c74702b81291f48a820fdd5280ba50b5e34ee801a4303f9ce2f38093a",
+      "bytes": 613788
+    },
+    {
+      "index": 63,
+      "path": "families/family_0063.npz",
+      "sha256": "2f8d657730e3a200ddc698dc9b49104ffdd60fb8895b50f729cac05cdf6004d3",
+      "bytes": 671477
+    },
+    {
+      "index": 64,
+      "path": "families/family_0064.npz",
+      "sha256": "2e634ef2a2676405ef610d682d7c6a7b87e5b313e14f4d860dbb68755bceacd6",
+      "bytes": 690263
+    },
+    {
+      "index": 65,
+      "path": "families/family_0065.npz",
+      "sha256": "41e8c3a2610427046587e01b490237ac9e22f5d2e1462766da71a231d7861df2",
+      "bytes": 608744
+    },
+    {
+      "index": 66,
+      "path": "families/family_0066.npz",
+      "sha256": "591f34beb3fa0514c3407e4a2b1b77c40c713234bf25a5fe34b2fafc0fbeaf1c",
+      "bytes": 599670
+    },
+    {
+      "index": 67,
+      "path": "families/family_0067.npz",
+      "sha256": "08ea6cfa51fcab00c45bc79a2c512cc488945d1a962fcd55534913dc867f1d1f",
+      "bytes": 713161
+    },
+    {
+      "index": 68,
+      "path": "families/family_0068.npz",
+      "sha256": "ce0d8706ddd053827242ae32b118343bfe6ece26744cebaec78fbefacdb20562",
+      "bytes": 691141
+    },
+    {
+      "index": 69,
+      "path": "families/family_0069.npz",
+      "sha256": "80a9bb4ad2095cde946e2345623eba5ec534184a6a8468278fe4f45cbe23c178",
+      "bytes": 598644
+    },
+    {
+      "index": 70,
+      "path": "families/family_0070.npz",
+      "sha256": "1e1577e35bea886e2216d30632ce99047c40359ec9ea5ba4efb0a366087cb8e6",
+      "bytes": 613333
+    },
+    {
+      "index": 71,
+      "path": "families/family_0071.npz",
+      "sha256": "79f18f4487011e80eab6f13cf148b5c79eea6857c9611a9d23c1c83be78c12db",
+      "bytes": 664397
+    },
+    {
+      "index": 72,
+      "path": "families/family_0072.npz",
+      "sha256": "7bc3875b5232297a439200b520f88e58d3e0a369b7d63724ac365d9e88a1807b",
+      "bytes": 735145
+    },
+    {
+      "index": 73,
+      "path": "families/family_0073.npz",
+      "sha256": "992c5365f1b844884fcc1ca332eac54332e38d7b5fcf00f9c68fa81b82fa00e5",
+      "bytes": 601716
+    },
+    {
+      "index": 74,
+      "path": "families/family_0074.npz",
+      "sha256": "07e347eded5909b60ccb505baff9631de1864bcafb13356b498d7694be4642a9",
+      "bytes": 623355
+    },
+    {
+      "index": 75,
+      "path": "families/family_0075.npz",
+      "sha256": "0f2466c76a1e16d674502005bb7f7436d2ac0b806f552acfded9c90bea4dd9ab",
+      "bytes": 690667
+    },
+    {
+      "index": 76,
+      "path": "families/family_0076.npz",
+      "sha256": "7f028049c8451e6349bbca418bdd600fb8ed75a0e31303f4a3dc64f2bb24f22f",
+      "bytes": 680597
+    },
+    {
+      "index": 77,
+      "path": "families/family_0077.npz",
+      "sha256": "64cb3484687c339a1346626b1d408da202281d142ec2b222eced40b5de142447",
+      "bytes": 641399
+    },
+    {
+      "index": 78,
+      "path": "families/family_0078.npz",
+      "sha256": "30f2dfe5428e701f3254b88f7a73d577f10a2e96e7cba165ddccc4286ca736c3",
+      "bytes": 612446
+    },
+    {
+      "index": 79,
+      "path": "families/family_0079.npz",
+      "sha256": "fbf96d8d5fd732fe1f9e3329918e62331dff6486e79fc808483de995aee30c47",
+      "bytes": 636860
+    },
+    {
+      "index": 80,
+      "path": "families/family_0080.npz",
+      "sha256": "fbb3fd3428fe1cf51b4d5dd617b01ff5a2d9c4d79a79a6161a1e2e8d47634a6c",
+      "bytes": 704861
+    },
+    {
+      "index": 81,
+      "path": "families/family_0081.npz",
+      "sha256": "a747e67c380be87a589c95a89e315a9bf16e9ec36cfce91ff01cdc0ac4433dd8",
+      "bytes": 594950
+    },
+    {
+      "index": 82,
+      "path": "families/family_0082.npz",
+      "sha256": "7866b439577cf77eab35cf902d6dfd1cff4d8a70607327cc2dc3c00710e24360",
+      "bytes": 592469
+    },
+    {
+      "index": 83,
+      "path": "families/family_0083.npz",
+      "sha256": "5838d60f98facde1d76a5c6f0eb46d8c2015428a936a829d7bafa4d34131f01b",
+      "bytes": 670313
+    },
+    {
+      "index": 84,
+      "path": "families/family_0084.npz",
+      "sha256": "a2717fadad333fb604af96ea719a559f08fb20edd6bfdd22512862a2225fb261",
+      "bytes": 671216
+    },
+    {
+      "index": 85,
+      "path": "families/family_0085.npz",
+      "sha256": "89472dccd08113efad7cb3ba63c6d8acf675641af4d4cf120012fef843081e03",
+      "bytes": 605379
+    },
+    {
+      "index": 86,
+      "path": "families/family_0086.npz",
+      "sha256": "e72a688e6e54d46ef29eed86677089bce70722755e2710b7add19258f90ccbdd",
+      "bytes": 605515
+    },
+    {
+      "index": 87,
+      "path": "families/family_0087.npz",
+      "sha256": "3e478209ff04571cce197e5d921faa65592d7a5c9dd0dee11cdc9558a98c5a76",
+      "bytes": 685904
+    },
+    {
+      "index": 88,
+      "path": "families/family_0088.npz",
+      "sha256": "ea9ac8cafcdca0b6ae0921d47162688d8be69c6a9a9e1e8668fbd9748da4bdf2",
+      "bytes": 709814
+    },
+    {
+      "index": 89,
+      "path": "families/family_0089.npz",
+      "sha256": "ca18b11e1fd822f9a3f27742f6fdb19a750ae77c827170f277dfee6f2cac8599",
+      "bytes": 614045
+    },
+    {
+      "index": 90,
+      "path": "families/family_0090.npz",
+      "sha256": "231959c66c26bb42313add459e499b7e5077922955076538ab09eba0ba5df1ed",
+      "bytes": 595034
+    },
+    {
+      "index": 91,
+      "path": "families/family_0091.npz",
+      "sha256": "531f2a0e9ecf9b3ab0811c6e5d3d45e4624bcaec3ac81daae1ac120d30b04ae5",
+      "bytes": 664860
+    },
+    {
+      "index": 92,
+      "path": "families/family_0092.npz",
+      "sha256": "f6ee8508ca6d3c03fe12af3e86e07306b55263cd1c444aec95ba5bbde6830388",
+      "bytes": 679256
+    },
+    {
+      "index": 93,
+      "path": "families/family_0093.npz",
+      "sha256": "efaaf07c50666624bc1073d3aac9c816b6652aa4a4b4f9a4f82363dbe32715ca",
+      "bytes": 604648
+    },
+    {
+      "index": 94,
+      "path": "families/family_0094.npz",
+      "sha256": "ce61e93e79bcf3c2d8661fb4c3a62900d871c4ac3497a69eccee2ef3a3bc20b2",
+      "bytes": 595297
+    },
+    {
+      "index": 95,
+      "path": "families/family_0095.npz",
+      "sha256": "b93725be03d3d4f20e9e676eb5d449fd3920f80755d48b1c2da4369083596d78",
+      "bytes": 661678
+    },
+    {
+      "index": 96,
+      "path": "families/family_0096.npz",
+      "sha256": "c4e110871bc6cc38bde389e5bb8caa980c663826fde60edba4c411812e150f98",
+      "bytes": 725206
+    },
+    {
+      "index": 97,
+      "path": "families/family_0097.npz",
+      "sha256": "0671d025f453e47e443fe676193e5f18aee5e6a0b32cf8332f74074e020dd974",
+      "bytes": 611210
+    },
+    {
+      "index": 98,
+      "path": "families/family_0098.npz",
+      "sha256": "f0549da16f8c07d1e17ae65a44698b4923fb2357dd46a3bce73e60bceac3ea5d",
+      "bytes": 593424
+    },
+    {
+      "index": 99,
+      "path": "families/family_0099.npz",
+      "sha256": "39b732a72966f1d15177dfa55e9758e4f34622711131e00e487f57e649a9fc9d",
+      "bytes": 666290
+    },
+    {
+      "index": 100,
+      "path": "families/family_0100.npz",
+      "sha256": "8c1935a5e8b2f5553a36738ef7730500e9470749d40923cd94dbcaf138927fc2",
+      "bytes": 699689
+    },
+    {
+      "index": 101,
+      "path": "families/family_0101.npz",
+      "sha256": "c067b7c32e225b2cb6d0be619b84a646aaf4a8d9dcc3c7fed61aaf7aac4bce95",
+      "bytes": 665912
+    },
+    {
+      "index": 102,
+      "path": "families/family_0102.npz",
+      "sha256": "a64e2c27c5a56b617f198b404d21ff7789b56824ee7a9adfcc006edd1573149b",
+      "bytes": 613271
+    },
+    {
+      "index": 103,
+      "path": "families/family_0103.npz",
+      "sha256": "77137c50d0fe501c94b9fc51517771f3de8f7cc96cd8b7ad48d0b3557c8554de",
+      "bytes": 668691
+    },
+    {
+      "index": 104,
+      "path": "families/family_0104.npz",
+      "sha256": "d917d8423382fb1af9af465a7380d7b1814e11c4659009728d52c9ca0133a7be",
+      "bytes": 689868
+    },
+    {
+      "index": 105,
+      "path": "families/family_0105.npz",
+      "sha256": "986745bcb3265190c89590b43206e864b0e94e845776ce34f062baeffbbd4aec",
+      "bytes": 605947
+    },
+    {
+      "index": 106,
+      "path": "families/family_0106.npz",
+      "sha256": "9345bb31933e855ebf0da1c538d1c0db5392fe5eb82d2737892a9679dda1bac0",
+      "bytes": 603996
+    },
+    {
+      "index": 107,
+      "path": "families/family_0107.npz",
+      "sha256": "c7f794a99dfbff434f822f21a8e7483948122d2b683ad550dcdec131f2c1fe57",
+      "bytes": 673927
+    },
+    {
+      "index": 108,
+      "path": "families/family_0108.npz",
+      "sha256": "e253ddad6485e18034969dca3d27cf76e3ff9cdb02ea47d79f5121b3c0254cb0",
+      "bytes": 679604
+    },
+    {
+      "index": 109,
+      "path": "families/family_0109.npz",
+      "sha256": "35033eeea142879168dff62c1bf410f046fbf845a3f87e8a0f5a02de79bf9a1f",
+      "bytes": 629165
+    },
+    {
+      "index": 110,
+      "path": "families/family_0110.npz",
+      "sha256": "eef2a31d3f5d7e9bac522208f72f1ab0b89e504fd7ad5b6f0ee22aa34a31d5e7",
+      "bytes": 614621
+    },
+    {
+      "index": 111,
+      "path": "families/family_0111.npz",
+      "sha256": "5cad686b284d96db297e22b766c27cf2d807303f25fa5536a42d5dea64cef254",
+      "bytes": 640226
+    },
+    {
+      "index": 112,
+      "path": "families/family_0112.npz",
+      "sha256": "72755cc858e7343fcdc106b62b3242c4e0ad63ad6e0ca2817596b183d03e4429",
+      "bytes": 707096
+    },
+    {
+      "index": 113,
+      "path": "families/family_0113.npz",
+      "sha256": "747bc78e004526e24300e656f13e07d45b70bd6bbd21216fb7fe1d0c387b533e",
+      "bytes": 614144
+    },
+    {
+      "index": 114,
+      "path": "families/family_0114.npz",
+      "sha256": "e48ef0f829d455a20f70589fadbb691497ac59ec397b66462fb33b21233d5416",
+      "bytes": 618226
+    },
+    {
+      "index": 115,
+      "path": "families/family_0115.npz",
+      "sha256": "05e70756cc944d5bc6241af264b18df119ee0e9ca8ead6acf11752b319aaec93",
+      "bytes": 632886
+    },
+    {
+      "index": 116,
+      "path": "families/family_0116.npz",
+      "sha256": "efcdb4225d25e8d3df0762b2b9b0a54aa0837306c085bdd7ca97b528cd25f281",
+      "bytes": 722941
+    },
+    {
+      "index": 117,
+      "path": "families/family_0117.npz",
+      "sha256": "65436228599b0b907a40152ac859bb4ef5a19958759c04e1d968ee3ca1e1f4f6",
+      "bytes": 606112
+    },
+    {
+      "index": 118,
+      "path": "families/family_0118.npz",
+      "sha256": "ce391117d04fb0be200fb128abcf3210019f0c6b3d72607bbda6650cc91af443",
+      "bytes": 638624
+    },
+    {
+      "index": 119,
+      "path": "families/family_0119.npz",
+      "sha256": "85ca74356d1c63379ad1a696f2edee4d875492689df123ec133af6695f9361d5",
+      "bytes": 643535
+    },
+    {
+      "index": 120,
+      "path": "families/family_0120.npz",
+      "sha256": "e5601841dd717bd39740d9c514d5e4998e2925e706f24352f68a99db391291ab",
+      "bytes": 699253
+    },
+    {
+      "index": 121,
+      "path": "families/family_0121.npz",
+      "sha256": "8a8e06f265ad4f4b683942cdb18240cb8e05d02422b80078ffb48137315da094",
+      "bytes": 614427
+    },
+    {
+      "index": 122,
+      "path": "families/family_0122.npz",
+      "sha256": "d0d2f51c6529dda973184dbade4a63a34c9f7afbbeaa087599924660a5f5d3cc",
+      "bytes": 588612
+    },
+    {
+      "index": 123,
+      "path": "families/family_0123.npz",
+      "sha256": "cae2d0fdbab35914705c44fbf541e9990aa024e7e29f2cb8ddf443d0f060ca4b",
+      "bytes": 703897
+    },
+    {
+      "index": 124,
+      "path": "families/family_0124.npz",
+      "sha256": "55ee780ca7ea1c24b63a5ddf1b00fa8d0d280861fe3d3d8989247e2afe5213ee",
+      "bytes": 666401
+    },
+    {
+      "index": 125,
+      "path": "families/family_0125.npz",
+      "sha256": "6ec77163d38b2c7f9fa481b165ed41643221b53ef5de765f3705654146827dda",
+      "bytes": 587995
+    },
+    {
+      "index": 126,
+      "path": "families/family_0126.npz",
+      "sha256": "947b9f783457a0dbeafee4f244ab021cea3e5c7228ec4ef6f63548dd390985f6",
+      "bytes": 580416
+    },
+    {
+      "index": 127,
+      "path": "families/family_0127.npz",
+      "sha256": "30404529e092eb8d4a23d1e8063cb2bc5509812621aba1988789c8725660ff17",
+      "bytes": 661083
+    }
+  ],
+  "measurements": {
+    "families": 128,
+    "distractors": {
+      "n": 128,
+      "mean": 3.6484375,
+      "se": 0.1547277596141894,
+      "lower_2se": 3.3389819807716212,
+      "upper_2se": 3.9578930192283788
+    },
+    "zero_distractors": {
+      "n": 128,
+      "mean": 0.015625,
+      "se": 0.011004959288293975,
+      "lower_2se": -0.006384918576587951,
+      "upper_2se": 0.03763491857658795
+    },
+    "histories": {
+      "stationary": {
+        "masked_gain": {
+          "n": 128,
+          "mean": 0.13215218856631358,
+          "se": 0.014228478271240092,
+          "lower_2se": 0.1036952320238334,
+          "upper_2se": 0.16060914510879376
+        },
+        "full_gain": {
+          "n": 128,
+          "mean": -0.18034389911874388,
+          "se": 0.019633633666962722,
+          "lower_2se": -0.21961116645266932,
+          "upper_2se": -0.14107663178481844
+        },
+        "attenuation": {
+          "n": 128,
+          "mean": 0.3124960876850575,
+          "se": 0.020312730568447585,
+          "lower_2se": 0.2718706265481623,
+          "upper_2se": 0.3531215488219527
+        },
+        "scene_gain_masked": {
+          "n": 128,
+          "mean": -0.09765625,
+          "se": 0.0337615692431985,
+          "lower_2se": -0.16517938848639702,
+          "upper_2se": -0.030133111513602998
+        },
+        "scene_gain_full": {
+          "n": 128,
+          "mean": -0.4375,
+          "se": 0.052320653545245156,
+          "lower_2se": -0.5421413070904904,
+          "upper_2se": -0.3328586929095097
+        },
+        "scene_attenuation": {
+          "n": 128,
+          "mean": 0.33984375,
+          "se": 0.04864477139571364,
+          "lower_2se": 0.24255420720857274,
+          "upper_2se": 0.43713329279142726
+        },
+        "reference_gain": {
+          "n": 128,
+          "mean": -0.4375,
+          "se": 0.056558101962829295,
+          "lower_2se": -0.5506162039256586,
+          "upper_2se": -0.3243837960743414
+        },
+        "local": {
+          "parent": {
+            "masked": {
+              "n": 128,
+              "mean": 0.6382455954102207,
+              "se": 0.011639042841551215,
+              "lower_2se": 0.6149675097271183,
+              "upper_2se": 0.6615236810933232
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.5097568707316025,
+              "se": 0.014297500575775118,
+              "lower_2se": 0.48116186958005225,
+              "upper_2se": 0.5383518718831527
+            }
+          },
+          "descendant": {
+            "masked": {
+              "n": 128,
+              "mean": 0.7703977839765344,
+              "se": 0.013861180983814938,
+              "lower_2se": 0.7426754220089045,
+              "upper_2se": 0.7981201459441642
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.32941297161285854,
+              "se": 0.025633408376513546,
+              "lower_2se": 0.27814615485983146,
+              "upper_2se": 0.3806797883658856
+            }
+          }
+        },
+        "sampled": {
+          "parent": {
+            "masked": {
+              "n": 128,
+              "mean": 0.6246744791666667,
+              "se": 0.014850501481738866,
+              "lower_2se": 0.594973476203189,
+              "upper_2se": 0.6543754821301445
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.49707031250000006,
+              "se": 0.017828925368170375,
+              "lower_2se": 0.4614124617636593,
+              "upper_2se": 0.5327281632363408
+            }
+          },
+          "descendant": {
+            "masked": {
+              "n": 128,
+              "mean": 0.7679036458333333,
+              "se": 0.01582658940519639,
+              "lower_2se": 0.7362504670229405,
+              "upper_2se": 0.799556824643726
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.3193359375,
+              "se": 0.02564193434003311,
+              "lower_2se": 0.26805206881993376,
+              "upper_2se": 0.37061980618006624
+            }
+          }
+        },
+        "first_choice": {
+          "parent": {
+            "masked": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.6444490426394698,
+                "se": 0.011359839669404672,
+                "lower_2se": 0.6217293633006604,
+                "upper_2se": 0.6671687219782791
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.006203447229249074,
+                "se": 0.0008398483791151041,
+                "lower_2se": 0.004523750471018865,
+                "upper_2se": 0.007883143987479281
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.34934750521972546,
+                "se": 0.01113711304377535,
+                "lower_2se": 0.32707327913217477,
+                "upper_2se": 0.37162173130727616
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.6506524898687189,
+                "se": 0.011137113044299232,
+                "lower_2se": 0.6283782637801205,
+                "upper_2se": 0.6729267159573173
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.9692439684208277,
+                "se": 0.0037870566533105463,
+                "lower_2se": 0.9616698551142067,
+                "upper_2se": 0.9768180817274488
+              }
+            },
+            "full": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.5125402494928721,
+                "se": 0.014291266986829239,
+                "lower_2se": 0.4839577155192137,
+                "upper_2se": 0.5411227834665306
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.0027833787612697356,
+                "se": 0.00030693139991506795,
+                "lower_2se": 0.0021695159614395997,
+                "upper_2se": 0.0033972415610998715
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.48467636980213535,
+                "se": 0.01429162390059776,
+                "lower_2se": 0.4560931220009398,
+                "upper_2se": 0.5132596176033308
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.5153236282541419,
+                "se": 0.014291623953627115,
+                "lower_2se": 0.48674038034688766,
+                "upper_2se": 0.5439068761613961
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.9557858108856723,
+                "se": 0.005167547712800948,
+                "lower_2se": 0.9454507154600704,
+                "upper_2se": 0.9661209063112741
+              }
+            }
+          },
+          "descendant": {
+            "masked": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.788458394436096,
+                "se": 0.013506453573018672,
+                "lower_2se": 0.7614454872900587,
+                "upper_2se": 0.8154713015821333
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.01806061045956161,
+                "se": 0.0015330835642330498,
+                "lower_2se": 0.014994443331095508,
+                "upper_2se": 0.02112677758802771
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.19348099355090653,
+                "se": 0.01331979452912842,
+                "lower_2se": 0.1668414044926497,
+                "upper_2se": 0.22012058260916337
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.8065190048956576,
+                "se": 0.01331979460817576,
+                "lower_2se": 0.7798794156793061,
+                "upper_2se": 0.8331585941120092
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.9019115893879367,
+                "se": 0.00819231301346809,
+                "lower_2se": 0.8855269633610006,
+                "upper_2se": 0.9182962154148728
+              }
+            },
+            "full": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.3844654653701885,
+                "se": 0.026167249362604852,
+                "lower_2se": 0.33213096664497876,
+                "upper_2se": 0.43679996409539823
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.05505249375733001,
+                "se": 0.0046266391958626725,
+                "lower_2se": 0.04579921536560467,
+                "upper_2se": 0.06430577214905536
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.5604820434908409,
+                "se": 0.02748071770946834,
+                "lower_2se": 0.5055206080719041,
+                "upper_2se": 0.6154434789097776
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.43951795912751856,
+                "se": 0.02748071749263034,
+                "lower_2se": 0.3845565241422579,
+                "upper_2se": 0.49447939411277925
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.4762618929521185,
+                "se": 0.02571143037905818,
+                "lower_2se": 0.42483903219400215,
+                "upper_2se": 0.5276847537102349
+              }
+            }
+          }
+        },
+        "decomposition": {
+          "approach": {
+            "n": 128,
+            "mean": 0.09763831605504614,
+            "se": 0.015110884077386201,
+            "lower_2se": 0.06741654790027374,
+            "upper_2se": 0.12786008420981854
+          },
+          "conditional": {
+            "n": 128,
+            "mean": 0.21485777163001132,
+            "se": 0.012108295785036841,
+            "lower_2se": 0.19064118005993763,
+            "upper_2se": 0.23907436320008502
+          }
+        },
+        "scene": {
+          "parent": {
+            "masked": {
+              "Y": {
+                "n": 128,
+                "mean": 0.95703125,
+                "se": 0.020017327439554526,
+                "lower_2se": 0.9169965951208909,
+                "upper_2se": 0.9970659048791091
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.97265625,
+                "se": 0.011511871426815857,
+                "lower_2se": 0.9496325071463683,
+                "upper_2se": 0.9956799928536317
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.015625,
+                "se": 0.009505327712459988,
+                "lower_2se": -0.0033856554249199755,
+                "upper_2se": 0.034635655424919976
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.01171875,
+                "se": 0.006712337857651081,
+                "lower_2se": -0.0017059257153021617,
+                "upper_2se": 0.025143425715302162
+              },
+              "survival": {
+                "n": 128,
+                "mean": 1.0,
+                "se": 0.0,
+                "lower_2se": 1.0,
+                "upper_2se": 1.0
+              },
+              "latency": {
+                "n": 128,
+                "mean": 3.0234375,
+                "se": 0.5119409332746849,
+                "lower_2se": 1.9995556334506301,
+                "upper_2se": 4.04731936654937
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.9841897233201581,
+                "se": 0.00961621182813831,
+                "food_count": 249,
+                "contact_count": 253,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            },
+            "full": {
+              "Y": {
+                "n": 128,
+                "mean": 0.95703125,
+                "se": 0.020017327439554526,
+                "lower_2se": 0.9169965951208909,
+                "upper_2se": 0.9970659048791091
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.97265625,
+                "se": 0.011511871426815857,
+                "lower_2se": 0.9496325071463683,
+                "upper_2se": 0.9956799928536317
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.015625,
+                "se": 0.009505327712459988,
+                "lower_2se": -0.0033856554249199755,
+                "upper_2se": 0.034635655424919976
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.01171875,
+                "se": 0.006712337857651081,
+                "lower_2se": -0.0017059257153021617,
+                "upper_2se": 0.025143425715302162
+              },
+              "survival": {
+                "n": 128,
+                "mean": 1.0,
+                "se": 0.0,
+                "lower_2se": 1.0,
+                "upper_2se": 1.0
+              },
+              "latency": {
+                "n": 128,
+                "mean": 2.9453125,
+                "se": 0.49338121552948516,
+                "lower_2se": 1.9585500689410296,
+                "upper_2se": 3.9320749310589704
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.9841897233201581,
+                "se": 0.00961621182813831,
+                "food_count": 249,
+                "contact_count": 253,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            }
+          },
+          "descendant": {
+            "masked": {
+              "Y": {
+                "n": 128,
+                "mean": 0.859375,
+                "se": 0.030847556262404395,
+                "lower_2se": 0.7976798874751913,
+                "upper_2se": 0.9210701125248087
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.9296875,
+                "se": 0.015423778131202198,
+                "lower_2se": 0.8988399437375956,
+                "upper_2se": 0.9605350562624044
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.0703125,
+                "se": 0.015423778131202198,
+                "lower_2se": 0.039464943737595605,
+                "upper_2se": 0.1011600562624044
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.0,
+                "se": 0.0,
+                "lower_2se": 0.0,
+                "upper_2se": 0.0
+              },
+              "survival": {
+                "n": 128,
+                "mean": 1.0,
+                "se": 0.0,
+                "lower_2se": 1.0,
+                "upper_2se": 1.0
+              },
+              "latency": {
+                "n": 128,
+                "mean": 1.2421875,
+                "se": 0.26993503468709945,
+                "lower_2se": 0.7023174306258011,
+                "upper_2se": 1.782057569374199
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.9296875,
+                "se": 0.015423778131202198,
+                "food_count": 238,
+                "contact_count": 256,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            },
+            "full": {
+              "Y": {
+                "n": 128,
+                "mean": 0.51953125,
+                "se": 0.04941909838936378,
+                "lower_2se": 0.42069305322127243,
+                "upper_2se": 0.6183694467787275
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.7578125,
+                "se": 0.024792678123459443,
+                "lower_2se": 0.7082271437530812,
+                "upper_2se": 0.8073978562469188
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.23828125,
+                "se": 0.024780559896955403,
+                "lower_2se": 0.1887201302060892,
+                "upper_2se": 0.2878423697939108
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.00390625,
+                "se": 0.00390625,
+                "lower_2se": -0.00390625,
+                "upper_2se": 0.01171875
+              },
+              "survival": {
+                "n": 128,
+                "mean": 0.98828125,
+                "se": 0.006712337857651081,
+                "lower_2se": 0.9748565742846979,
+                "upper_2se": 1.0017059257153023
+              },
+              "latency": {
+                "n": 128,
+                "mean": 3.76171875,
+                "se": 0.5263704473109693,
+                "lower_2se": 2.7089778553780617,
+                "upper_2se": 4.814459644621938
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.7607843137254902,
+                "se": 0.024824341245863895,
+                "food_count": 194,
+                "contact_count": 255,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            }
+          }
+        },
+        "reference": {
+          "parent": {
+            "Y": {
+              "n": 128,
+              "mean": 0.77734375,
+              "se": 0.03499182349216163,
+              "lower_2se": 0.7073601030156768,
+              "upper_2se": 0.8473273969843232
+            },
+            "first_food": {
+              "n": 128,
+              "mean": 0.87109375,
+              "se": 0.019407828542821047,
+              "lower_2se": 0.832278092914358,
+              "upper_2se": 0.909909407085642
+            },
+            "first_poison": {
+              "n": 128,
+              "mean": 0.09375,
+              "se": 0.017317311328654435,
+              "lower_2se": 0.05911537734269113,
+              "upper_2se": 0.12838462265730888
+            },
+            "no_contact": {
+              "n": 128,
+              "mean": 0.03515625,
+              "se": 0.011343652387814554,
+              "lower_2se": 0.012468945224370892,
+              "upper_2se": 0.05784355477562911
+            },
+            "survival": {
+              "n": 128,
+              "mean": 1.0,
+              "se": 0.0,
+              "lower_2se": 1.0,
+              "upper_2se": 1.0
+            },
+            "latency": {
+              "n": 128,
+              "mean": 8.68359375,
+              "se": 0.7903528949169664,
+              "lower_2se": 7.1028879601660675,
+              "upper_2se": 10.264299539833933
+            },
+            "contact_accuracy": {
+              "n": 128,
+              "mean": 0.902834008097166,
+              "se": 0.017833373675597283,
+              "food_count": 223,
+              "contact_count": 247,
+              "assigned_lives": 256,
+              "descriptive": true
+            }
+          },
+          "descendant": {
+            "Y": {
+              "n": 128,
+              "mean": 0.33984375,
+              "se": 0.046046181079599374,
+              "lower_2se": 0.24775138784080125,
+              "upper_2se": 0.43193611215919875
+            },
+            "first_food": {
+              "n": 128,
+              "mean": 0.66015625,
+              "se": 0.02413207598255596,
+              "lower_2se": 0.6118920980348881,
+              "upper_2se": 0.7084204019651119
+            },
+            "first_poison": {
+              "n": 128,
+              "mean": 0.3203125,
+              "se": 0.022687304775629108,
+              "lower_2se": 0.2749378904487418,
+              "upper_2se": 0.3656871095512582
+            },
+            "no_contact": {
+              "n": 128,
+              "mean": 0.01953125,
+              "se": 0.008595986645232744,
+              "lower_2se": 0.0023392767095345122,
+              "upper_2se": 0.036723223290465484
+            },
+            "survival": {
+              "n": 128,
+              "mean": 0.99609375,
+              "se": 0.00390625,
+              "lower_2se": 0.98828125,
+              "upper_2se": 1.00390625
+            },
+            "latency": {
+              "n": 128,
+              "mean": 8.08203125,
+              "se": 0.8341265010041042,
+              "lower_2se": 6.413778247991791,
+              "upper_2se": 9.750284252008209
+            },
+            "contact_accuracy": {
+              "n": 128,
+              "mean": 0.6733067729083665,
+              "se": 0.023270259135447422,
+              "food_count": 169,
+              "contact_count": 251,
+              "assigned_lives": 256,
+              "descriptive": true
+            }
+          }
+        }
+      },
+      "reversal": {
+        "masked_gain": {
+          "n": 128,
+          "mean": -0.07353159989139613,
+          "se": 0.011326445648937363,
+          "lower_2se": -0.09618449118927086,
+          "upper_2se": -0.0508787085935214
+        },
+        "full_gain": {
+          "n": 128,
+          "mean": -0.10471252451674218,
+          "se": 0.012063936191075663,
+          "lower_2se": -0.1288403968988935,
+          "upper_2se": -0.08058465213459085
+        },
+        "attenuation": {
+          "n": 128,
+          "mean": 0.03118092462534605,
+          "se": 0.011514800508972247,
+          "lower_2se": 0.008151323607401558,
+          "upper_2se": 0.05421052564329054
+        },
+        "scene_gain_masked": {
+          "n": 128,
+          "mean": -0.17578125,
+          "se": 0.07432228325724644,
+          "lower_2se": -0.32442581651449287,
+          "upper_2se": -0.02713668348550713
+        },
+        "scene_gain_full": {
+          "n": 128,
+          "mean": -0.23046875,
+          "se": 0.06272164040729002,
+          "lower_2se": -0.35591203081458,
+          "upper_2se": -0.10502546918541997
+        },
+        "scene_attenuation": {
+          "n": 128,
+          "mean": 0.0546875,
+          "se": 0.06797712835273821,
+          "lower_2se": -0.08126675670547642,
+          "upper_2se": 0.19064175670547642
+        },
+        "reference_gain": {
+          "n": 128,
+          "mean": -0.2265625,
+          "se": 0.06246538780770144,
+          "lower_2se": -0.3514932756154029,
+          "upper_2se": -0.10163172438459712
+        },
+        "local": {
+          "parent": {
+            "masked": {
+              "n": 128,
+              "mean": 0.20096520911444787,
+              "se": 0.018836467565031493,
+              "lower_2se": 0.1632922739843849,
+              "upper_2se": 0.23863814424451085
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.12836774078848143,
+              "se": 0.01395830214263327,
+              "lower_2se": 0.10045113650321488,
+              "upper_2se": 0.15628434507374797
+            }
+          },
+          "descendant": {
+            "masked": {
+              "n": 128,
+              "mean": 0.12743360922305177,
+              "se": 0.014047934017998257,
+              "lower_2se": 0.09933774118705527,
+              "upper_2se": 0.15552947725904828
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.023655216271739242,
+              "se": 0.0051339481855422545,
+              "lower_2se": 0.013387319900654733,
+              "upper_2se": 0.03392311264282375
+            }
+          }
+        },
+        "sampled": {
+          "parent": {
+            "masked": {
+              "n": 128,
+              "mean": 0.20540364583333334,
+              "se": 0.02048273519610169,
+              "lower_2se": 0.16443817544112996,
+              "upper_2se": 0.24636911622553673
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.12174479166666666,
+              "se": 0.014376293964154895,
+              "lower_2se": 0.09299220373835687,
+              "upper_2se": 0.15049737959497644
+            }
+          },
+          "descendant": {
+            "masked": {
+              "n": 128,
+              "mean": 0.1259765625,
+              "se": 0.015818363115454273,
+              "lower_2se": 0.09433983626909145,
+              "upper_2se": 0.15761328873090855
+            },
+            "full": {
+              "n": 128,
+              "mean": 0.0244140625,
+              "se": 0.006412732443073872,
+              "lower_2se": 0.011588597613852256,
+              "upper_2se": 0.03723952738614775
+            }
+          }
+        },
+        "first_choice": {
+          "parent": {
+            "masked": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.3399253991511083,
+                "se": 0.011905033390121859,
+                "lower_2se": 0.3161153323708646,
+                "upper_2se": 0.36373546593135203
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.13896019003666046,
+                "se": 0.008002178091662437,
+                "lower_2se": 0.12295583385333558,
+                "upper_2se": 0.15496454621998534
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.5211144085551116,
+                "se": 0.0075310582994406764,
+                "lower_2se": 0.5060522919562302,
+                "upper_2se": 0.5361765251539929
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.4788855891877688,
+                "se": 0.007531058234585214,
+                "lower_2se": 0.46382347271859836,
+                "upper_2se": 0.49394770565693924
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.3486103157362379,
+                "se": 0.03129874257370699,
+                "lower_2se": 0.28601283058882393,
+                "upper_2se": 0.4112078008836519
+              }
+            },
+            "full": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.20103315659963528,
+                "se": 0.012005027928879385,
+                "lower_2se": 0.1770231007418765,
+                "upper_2se": 0.22504321245739406
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.07266541581115385,
+                "se": 0.006393605008128639,
+                "lower_2se": 0.05987820579489657,
+                "upper_2se": 0.08545262582741113
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.7263014251876522,
+                "se": 0.013234937138830762,
+                "lower_2se": 0.6998315509099906,
+                "upper_2se": 0.7527712994653137
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.2736985724107891,
+                "se": 0.013234937190679927,
+                "lower_2se": 0.24722869802942923,
+                "upper_2se": 0.30016844679214894
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.32179466898821346,
+                "se": 0.02967079782470977,
+                "lower_2se": 0.2624530733387939,
+                "upper_2se": 0.381136264637633
+              }
+            }
+          },
+          "descendant": {
+            "masked": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.2662728564289031,
+                "se": 0.011228518240215464,
+                "lower_2se": 0.24381581994847215,
+                "upper_2se": 0.288729892909334
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.13883924720585128,
+                "se": 0.006313708985062957,
+                "lower_2se": 0.12621182923572535,
+                "upper_2se": 0.1514666651759772
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.594887894361212,
+                "se": 0.01159916545491368,
+                "lower_2se": 0.5716895634513847,
+                "upper_2se": 0.6180862252710394
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.4051121036347543,
+                "se": 0.011599165308926311,
+                "lower_2se": 0.38191377301690166,
+                "upper_2se": 0.42831043425260695
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.20210716544446705,
+                "se": 0.02050996570179935,
+                "lower_2se": 0.16108723404086836,
+                "upper_2se": 0.24312709684806574
+              }
+            },
+            "full": {
+              "p_food": {
+                "n": 128,
+                "mean": 0.13115777095557254,
+                "se": 0.009185563120805955,
+                "lower_2se": 0.11278664471396063,
+                "upper_2se": 0.14952889719718446
+              },
+              "p_poison": {
+                "n": 128,
+                "mean": 0.1075025546838333,
+                "se": 0.007142665677373878,
+                "lower_2se": 0.09321722332908554,
+                "upper_2se": 0.12178788603858105
+              },
+              "p_other": {
+                "n": 128,
+                "mean": 0.761339673146343,
+                "se": 0.015634163338569096,
+                "lower_2se": 0.7300713464692048,
+                "upper_2se": 0.7926079998234812
+              },
+              "approach": {
+                "n": 128,
+                "mean": 0.2386603256394058,
+                "se": 0.015634163286797856,
+                "lower_2se": 0.2073919990658101,
+                "upper_2se": 0.26992865221300155
+              },
+              "conditional": {
+                "n": 128,
+                "mean": 0.046991392108395785,
+                "se": 0.00832058465392957,
+                "lower_2se": 0.030350222800536647,
+                "upper_2se": 0.06363256141625492
+              }
+            }
+          }
+        },
+        "decomposition": {
+          "approach": {
+            "n": 128,
+            "mean": -0.030802476435960846,
+            "se": 0.008346714694590232,
+            "lower_2se": -0.04749590582514131,
+            "upper_2se": -0.014109047046780381
+          },
+          "conditional": {
+            "n": 128,
+            "mean": 0.061983401061306904,
+            "se": 0.008227494439831414,
+            "lower_2se": 0.04552841218164408,
+            "upper_2se": 0.07843838994096973
+          }
+        },
+        "scene": {
+          "parent": {
+            "masked": {
+              "Y": {
+                "n": 128,
+                "mean": 0.33984375,
+                "se": 0.059714913302753886,
+                "lower_2se": 0.22041392339449223,
+                "upper_2se": 0.45927357660550777
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.6484375,
+                "se": 0.03055797492385335,
+                "lower_2se": 0.5873215501522933,
+                "upper_2se": 0.7095534498477067
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.30859375,
+                "se": 0.03043781869285372,
+                "lower_2se": 0.24771811261429255,
+                "upper_2se": 0.36946938738570745
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.04296875,
+                "se": 0.012435047474632265,
+                "lower_2se": 0.01809865505073547,
+                "upper_2se": 0.06783884494926454
+              },
+              "survival": {
+                "n": 128,
+                "mean": 0.98828125,
+                "se": 0.006712337857651081,
+                "lower_2se": 0.9748565742846979,
+                "upper_2se": 1.0017059257153023
+              },
+              "latency": {
+                "n": 128,
+                "mean": 6.4609375,
+                "se": 0.7640298921837707,
+                "lower_2se": 4.932877715632459,
+                "upper_2se": 7.988997284367541
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.6775510204081633,
+                "se": 0.03126045984191813,
+                "food_count": 166,
+                "contact_count": 245,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            },
+            "full": {
+              "Y": {
+                "n": 128,
+                "mean": 0.34375,
+                "se": 0.05369870286120865,
+                "lower_2se": 0.2363525942775827,
+                "upper_2se": 0.4511474057224173
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.64453125,
+                "se": 0.028361778757317664,
+                "lower_2se": 0.5878076924853647,
+                "upper_2se": 0.7012548075146353
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.30078125,
+                "se": 0.02736132028293759,
+                "lower_2se": 0.24605860943412483,
+                "upper_2se": 0.35550389056587517
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.0546875,
+                "se": 0.014916902990657182,
+                "lower_2se": 0.024853694018685635,
+                "upper_2se": 0.08452130598131437
+              },
+              "survival": {
+                "n": 128,
+                "mean": 0.99609375,
+                "se": 0.00390625,
+                "lower_2se": 0.98828125,
+                "upper_2se": 1.00390625
+              },
+              "latency": {
+                "n": 128,
+                "mean": 7.55078125,
+                "se": 0.8016354132305179,
+                "lower_2se": 5.947510423538964,
+                "upper_2se": 9.154052076461035
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.6818181818181818,
+                "se": 0.028347795891728134,
+                "food_count": 165,
+                "contact_count": 242,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            }
+          },
+          "descendant": {
+            "masked": {
+              "Y": {
+                "n": 128,
+                "mean": 0.1640625,
+                "se": 0.04994749180635663,
+                "lower_2se": 0.06416751638728674,
+                "upper_2se": 0.26395748361271326
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.5703125,
+                "se": 0.025855428212679513,
+                "lower_2se": 0.518601643574641,
+                "upper_2se": 0.622023356425359
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.40625,
+                "se": 0.025263132937677617,
+                "lower_2se": 0.35572373412464475,
+                "upper_2se": 0.45677626587535525
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.0234375,
+                "se": 0.010895236116281628,
+                "lower_2se": 0.001647027767436745,
+                "upper_2se": 0.04522797223256325
+              },
+              "survival": {
+                "n": 128,
+                "mean": 0.9765625,
+                "se": 0.009378075283008743,
+                "lower_2se": 0.9578063494339825,
+                "upper_2se": 0.9953186505660175
+              },
+              "latency": {
+                "n": 128,
+                "mean": 6.86328125,
+                "se": 0.788616156186527,
+                "lower_2se": 5.286048937626946,
+                "upper_2se": 8.440513562373054
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.584,
+                "se": 0.02553812238333393,
+                "food_count": 146,
+                "contact_count": 250,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            },
+            "full": {
+              "Y": {
+                "n": 128,
+                "mean": 0.11328125,
+                "se": 0.041581835960879124,
+                "lower_2se": 0.030117578078241752,
+                "upper_2se": 0.19644492192175825
+              },
+              "first_food": {
+                "n": 128,
+                "mean": 0.546875,
+                "se": 0.021790472232563255,
+                "lower_2se": 0.5032940555348735,
+                "upper_2se": 0.5904559444651265
+              },
+              "first_poison": {
+                "n": 128,
+                "mean": 0.43359375,
+                "se": 0.02102437373695121,
+                "lower_2se": 0.3915450025260976,
+                "upper_2se": 0.4756424974739024
+              },
+              "no_contact": {
+                "n": 128,
+                "mean": 0.01953125,
+                "se": 0.010229802560204556,
+                "lower_2se": -0.000928355120409112,
+                "upper_2se": 0.03999085512040911
+              },
+              "survival": {
+                "n": 128,
+                "mean": 0.97265625,
+                "se": 0.010087879347602812,
+                "lower_2se": 0.9524804913047944,
+                "upper_2se": 0.9928320086952056
+              },
+              "latency": {
+                "n": 128,
+                "mean": 7.89453125,
+                "se": 0.8231743614045608,
+                "lower_2se": 6.248182527190878,
+                "upper_2se": 9.540879972809122
+              },
+              "contact_accuracy": {
+                "n": 128,
+                "mean": 0.5577689243027888,
+                "se": 0.021167135131947377,
+                "food_count": 140,
+                "contact_count": 251,
+                "assigned_lives": 256,
+                "descriptive": true
+              }
+            }
+          }
+        },
+        "reference": {
+          "parent": {
+            "Y": {
+              "n": 128,
+              "mean": 0.2578125,
+              "se": 0.05231606058965142,
+              "lower_2se": 0.15318037882069716,
+              "upper_2se": 0.3624446211793029
+            },
+            "first_food": {
+              "n": 128,
+              "mean": 0.59765625,
+              "se": 0.028310897965095682,
+              "lower_2se": 0.5410344540698087,
+              "upper_2se": 0.6542780459301913
+            },
+            "first_poison": {
+              "n": 128,
+              "mean": 0.33984375,
+              "se": 0.027132019115919007,
+              "lower_2se": 0.285579711768162,
+              "upper_2se": 0.394107788231838
+            },
+            "no_contact": {
+              "n": 128,
+              "mean": 0.0625,
+              "se": 0.018393928731329483,
+              "lower_2se": 0.025712142537341033,
+              "upper_2se": 0.09928785746265897
+            },
+            "survival": {
+              "n": 128,
+              "mean": 0.9765625,
+              "se": 0.009378075283008743,
+              "lower_2se": 0.9578063494339825,
+              "upper_2se": 0.9953186505660175
+            },
+            "latency": {
+              "n": 128,
+              "mean": 11.48046875,
+              "se": 1.0674445269669797,
+              "lower_2se": 9.345579696066041,
+              "upper_2se": 13.615357803933959
+            },
+            "contact_accuracy": {
+              "n": 128,
+              "mean": 0.6375,
+              "se": 0.027849033716004144,
+              "food_count": 153,
+              "contact_count": 240,
+              "assigned_lives": 256,
+              "descriptive": true
+            }
+          },
+          "descendant": {
+            "Y": {
+              "n": 128,
+              "mean": 0.03125,
+              "se": 0.037100065528307684,
+              "lower_2se": -0.04295013105661537,
+              "upper_2se": 0.10545013105661537
+            },
+            "first_food": {
+              "n": 128,
+              "mean": 0.48828125,
+              "se": 0.019580400754031675,
+              "lower_2se": 0.44912044849193666,
+              "upper_2se": 0.5274420515080633
+            },
+            "first_poison": {
+              "n": 128,
+              "mean": 0.45703125,
+              "se": 0.020017327439554526,
+              "lower_2se": 0.41699659512089093,
+              "upper_2se": 0.49706590487910907
+            },
+            "no_contact": {
+              "n": 128,
+              "mean": 0.0546875,
+              "se": 0.013847603432252425,
+              "lower_2se": 0.02699229313549515,
+              "upper_2se": 0.08238270686450486
+            },
+            "survival": {
+              "n": 128,
+              "mean": 0.984375,
+              "se": 0.007719674922269189,
+              "lower_2se": 0.9689356501554616,
+              "upper_2se": 0.9998143498445384
+            },
+            "latency": {
+              "n": 128,
+              "mean": 11.171875,
+              "se": 1.081983779676603,
+              "lower_2se": 9.007907440646793,
+              "upper_2se": 13.335842559353207
+            },
+            "contact_accuracy": {
+              "n": 128,
+              "mean": 0.5165289256198347,
+              "se": 0.019632820621355542,
+              "food_count": 125,
+              "contact_count": 242,
+              "assigned_lives": 256,
+              "descriptive": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "gate": {
+    "isolated_replicates": true,
+    "attenuation_confirmed": true,
+    "passed": true,
+    "practical_loss_excluded": false,
+    "advantage_erased": true,
+    "partial_attenuation": false,
+    "reference_deficit": true
+  }
+}
