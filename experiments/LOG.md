@@ -2681,3 +2681,14 @@ Held-out bases: 128 per seed, 32 per flip time, each replayed under both startin
 5. Fix the exact commands.
 
 That amendment may add commands and measured costs only. The 22 November laptop ledger stood at 22,891 s of 28,800 s after E131, so the benchmark and training belong to later local days.
+
+#### E132 pre-implementation correction · 22 November 2026
+
+Before any E132 code, benchmark or training existed, the [protocol](E132_PROTOCOL.md#pre-implementation-correction--22-november-2026) received a dated correction. The entry above is unchanged.
+
+- **Lesion.** The lesion now sets only the fast learning rate to zero at `flip+1`, with decay continuing.
+- **Indeterminate outcome.** A third outcome, INDETERMINATE, is added for when two or more seeds have no contestant above zero. E126's 50-generation training means on this objective were at or below zero (−0.66, −0.04 and −0.17 for plastic; −0.62 for the first direct lineage).
+- **Separation wiring.** It is drawn from a folded key, so the slow brain's births match `rules-v0`.
+- **Caveat.** The fast rule resembles the biology prior. A pass must then be tested against a decay-only variant and a biology-prior start.
+
+The pass rule is unchanged.

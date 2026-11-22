@@ -199,3 +199,49 @@ admit a run.
 E132 does not test human-level intelligence, delayed reward, new tasks, sleep or
 real connectome wiring. A pass would show only that this fast pathway helps
 these creatures recover from one rule change after 50 generations of evolution.
+## Pre-implementation correction · 22 November 2026
+
+This correction was made before any E132 code, benchmark or training existed.
+Where it disagrees with the sections above, this section governs.
+
+**1. The lesion stops learning, not decay.** The lesion sets `eta_f` to 0 from
+neural tick `flip+1`. Decay and readout continue unchanged. This replaces "freeze
+`F`" in *Held-out evaluation* and in gate condition 3. Freezing `F` entirely would
+also stop decay, so an intact win could then come from decay erasing old-rule
+associations rather than from new learning. The corrected lesion matches the
+roundtable claim and mirrors E126's Hebbian-only lesion.
+
+**2. An indeterminate outcome is added.** In a training seed, call a contestant
+**learned** if its held-out J is more than 2 SE above zero. Call the seed
+**uninformative** if no contestant learned. The overall result is then:
+
+- **PASS**, if the same two or more seeds pass, unchanged from above;
+- **INDETERMINATE**, otherwise, if two or more seeds are uninformative;
+- **FAIL**, in every other case.
+
+An indeterminate result is reported plainly and returned to the owner. Any longer
+budget would need a new registration. This does not make a pass easier.
+
+*Reason, from training scores only:* E126 trained `rules-v0` and `direct-rnn-v1`
+from blank on this same world and objective. After 50 generations the population
+means of the training objective were −0.66, −0.04 and −0.17 for the plastic
+lineages, and about −0.62 for the first direct lineage. A creature that avoids
+every item scores 0, so a zero score can mean nothing was learned. These are
+training curves already in `runs/`. They are not held-out evidence about
+recovery, and E126's sealed evaluation stays sealed.
+
+**3. Births share the slow brain's draws.** The separation-layer wiring is drawn
+from `jax.random.fold_in(agent_development_key, 0xE132)`. The slow brain's
+development draws must stay byte-identical to `rules-v0` for the same key, so
+the one-change comparison changes only the fast pathway.
+
+**4. Caveat added to "What this does not test."** The fast pathway's fixed rule
+(modulator × pre × post, coefficient 1, from sensation to action) is close to the
+hand-built biology-prior rule. That rule is now running on a separate, decaying
+path. E104 showed that the biology prior gives an early lead that blank
+evolution matched by generation 200. A pass at 50 generations could therefore
+partly repeat that early lead rather than show something specific to
+complementary learning systems. If E132 passes, E133 must include two controls:
+a decay-only variant of `rules-v0`, and `rules-v0` started from the biology
+prior. Only a fast-slow advantage over both would support the
+complementary-systems design specifically.
