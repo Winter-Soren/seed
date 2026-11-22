@@ -38,6 +38,7 @@ def main():
     encounter_status_rows = []
     retention_status_rows = []
     retention_intervention_status_rows = []
+    founder_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -65,6 +66,10 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "founder-reversal-v1":
+            founder_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
+                a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "retention-intervention-v1":
             retention_intervention_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
                 a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
@@ -600,6 +605,73 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if founder_status_rows:
+        from scripts import run_founder_reversal
+        study = run_founder_reversal.build_comparison(ROOT)
+        out += ["## Founder and descendant autonomous reversal (founder-reversal-v1)", "",
+            "E130 pairs each original E103 founder with its generation-200 descendant in stationary and "
+            "unannounced reversal worlds. Four original animals choose every action for 300 turns, with the "
+            "food rule changing before consumption at turn 150. Each family replays both initial rules with "
+            "the same world and development randomness across both genotypes and histories.", "",
+            "Q scores each animal's first item in each fifty-turn window as +1 for food, -1 for poison and "
+            "zero for no item, including death before contact. Average all four animals and both initial rules "
+            "inside each of 64 independent families before computing a mean or sample SE. Pre, early and late "
+            "windows are [100,150), [150,200) and [250,300). Endpoints and lineages are never pooled into extra samples.", "",
+            "Every lineage must have positive descendant pre-switch and late reversal Q above two SE. The "
+            "descendant's reversal improvement from early to late, its late advantage over the founder, and "
+            "the genotype-by-history recovery interaction K must each be at least 0.05 and strictly above "
+            "two paired SE. Each descendant-minus-founder lower two-SE bound must exceed -0.05 for pre Q, "
+            "stationary late Q and final survival in both histories. All three lineages must pass every criterion.", "",
+            "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|", *founder_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated evolutionary recovery: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E130-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimate = lambda value, percent=False: (f"{100*value['mean']:.2f}% ± {100*value['se']:.2f} pp (n={value['n']})"
+                if percent else f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})")
+            verdict = study["replicated_gates"]["evolutionary_recovery"]
+            out += [f"Replicated evolutionary recovery: **{'PASS' if verdict['passed'] else 'FAIL'}** "
+                    f"({verdict['count']}/3 lineages). Individual positive effects remain visible below.", ""]
+            components, safeguards, gates, windows, survival, subgroups, subgroup_components, subgroup_safeguards = [], [], [], [], [], [], [], []
+            for panel in study["panels"]:
+                label, values = str(panel["index"]), panel["measurements"]
+                gates.append("| " + " | ".join([label, "PASS" if values["gate"]["passed"] else "FAIL",
+                    ", ".join(values["gate"]["failed_criteria"]) or "none"]) + " |")
+                for name, metric in values["components"].items():
+                    components.append("| " + " | ".join([label, name, estimate(metric),
+                        "yes" if metric["mean"] > 2*metric["se"] else "no"]) + " |")
+                for name, metric in values["safeguards"].items():
+                    safeguards.append("| " + " | ".join([label, name, estimate(metric), f"{metric['lower_2se']:.6f}",
+                        "PASS" if metric["lower_2se"] > -.05 else "FAIL"]) + " |")
+                for arm, data in values["arms"].items():
+                    survival.append("| " + " | ".join([label, arm, estimate(data["end_survival"], True)]) + " |")
+                    for window in data["windows"]:
+                        windows.append("| " + " | ".join([label, arm, f"[{window['start']},{window['end']})", estimate(window["Q"]),
+                            *[estimate(window[name], True) for name in ("first_food", "first_poison", "no_contact", "survival")]]) + " |")
+                for rule, data in values["by_initial_rule"].items():
+                    for arm, outcome in data["arms"].items():
+                        for window in outcome["windows"]:
+                            subgroups.append("| " + " | ".join([label, rule, arm, f"[{window['start']},{window['end']})", estimate(window["Q"]),
+                                *[estimate(window[name], True) for name in ("first_food", "first_poison", "no_contact", "survival")]]) + " |")
+                    for name, metric in data["components"].items():
+                        subgroup_components.append("| " + " | ".join([label, rule, name, estimate(metric)]) + " |")
+                    for name, metric in data["safeguards"].items():
+                        subgroup_safeguards.append("| " + " | ".join([label, rule, name, estimate(metric), f"{metric['lower_2se']:.6f}"]) + " |")
+            out += ["The independent check reconstructs event-based outcomes and uncertainty. It does not "
+                    "recompute every neural or world transition. Comparing generation zero with generation "
+                    "200 cannot establish steady improvement across intervening generations.", "",
+                "| Lineage | Joint decision | Failed criteria |", "|---" * 3 + "|", *gates, "",
+                "| Lineage | Component | Mean ± family SE | Positive above two SE |", "|---" * 4 + "|", *components, "",
+                "| Lineage | Descendant-minus-founder safeguard | Mean ± paired SE | Lower two-SE bound | Above -0.05 |", "|---" * 5 + "|", *safeguards, "",
+                "| Lineage | Genotype/history | Window | Q ± SE | First food | First poison | No contact | Alive at window end |", "|---" * 8 + "|", *windows, "",
+                "| Lineage | Genotype/history | End-of-life survival |", "|---" * 3 + "|", *survival, "",
+                "Initial-rule views are descriptive and use the same family denominator:", "",
+                "| Lineage | Initial rule | Genotype/history | Window | Q ± SE | First food | First poison | No contact | Alive at window end |",
+                "|---" * 9 + "|", *subgroups, "",
+                "| Lineage | Initial rule | Component | Mean ± family SE |", "|---" * 4 + "|", *subgroup_components, "",
+                "| Lineage | Initial rule | Safeguard | Mean ± paired SE | Lower two-SE bound |", "|---" * 5 + "|", *subgroup_safeguards, ""]
     if retention_intervention_status_rows:
         from scripts import run_retention_intervention
         study = run_retention_intervention.build_comparison(ROOT)

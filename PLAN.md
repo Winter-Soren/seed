@@ -255,3 +255,11 @@ Showing that the sequence itself helps requires a comparison with equal exposure
 - Owner workflow update, 15 November 2026: create no new pull requests until the
   owner re-enables them, and do not request routine pull-request reviews. This
   changes publication workflow only, not gates or approval requirements.
+
+## Owner direction, 22 November 2026
+
+Work toward specific learning behaviors that have also been measured in mammals. Start with the animal's observable choices, what feedback it receives and how it changes its behavior. Name the species, task and differences from Seed when drawing a comparison.
+
+At each new experiment decision, bring alternative architectures to the research chats for a roundtable. Have proponents explain which observed limitation their design addresses. Ask another participant to challenge the explanation, identify a simpler competing design and specify a test that could distinguish them. Record the recommendation, the main objection and the evidence that would change the decision in the lab notebook or the linked design note.
+
+Compare a candidate with the current controller on the same observations, feedback, world assignments and compute budget. Report learning, failures and survival alongside measured time and storage. Use one architectural change per comparison and keep old genomes usable. An architecture earns adoption by meeting its preregistered behavioral and resource criteria on fresh worlds across three lineages. For a measurement-only experiment, explain how the result changes the choice of architecture. A more efficient implementation must preserve the behavior it claims to accelerate.
