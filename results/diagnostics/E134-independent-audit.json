@@ -1,0 +1,2756 @@
+{
+  "protocol": "replay-selection-v1",
+  "mode": "final",
+  "training": [
+    {
+      "index": 0,
+      "run": "runs/20261122-214125_E134-benchmark",
+      "attempts": [
+        {
+          "attempt": 1,
+          "informative": true,
+          "optimizer_updates": 1,
+          "changed_parameters": 155,
+          "score_mean": 0.4738894999027252,
+          "score_best": 0.5238257646560669
+        },
+        {
+          "attempt": 2,
+          "informative": true,
+          "optimizer_updates": 2,
+          "changed_parameters": 155,
+          "score_mean": 0.4512994885444641,
+          "score_best": 0.5085097551345825
+        }
+      ],
+      "endpoint_sha256": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151"
+    },
+    {
+      "index": 0,
+      "run": "runs/20261122-214433_E134-A0-train",
+      "attempts": [
+        {
+          "attempt": 1,
+          "informative": true,
+          "optimizer_updates": 1,
+          "changed_parameters": 155,
+          "score_mean": 0.4570538401603699,
+          "score_best": 0.5288872122764587
+        },
+        {
+          "attempt": 2,
+          "informative": true,
+          "optimizer_updates": 2,
+          "changed_parameters": 155,
+          "score_mean": 0.4747561812400818,
+          "score_best": 0.5487914085388184
+        },
+        {
+          "attempt": 3,
+          "informative": true,
+          "optimizer_updates": 3,
+          "changed_parameters": 155,
+          "score_mean": 0.5003870725631714,
+          "score_best": 0.5412434339523315
+        },
+        {
+          "attempt": 4,
+          "informative": true,
+          "optimizer_updates": 4,
+          "changed_parameters": 155,
+          "score_mean": 0.5003811120986938,
+          "score_best": 0.5617600083351135
+        },
+        {
+          "attempt": 5,
+          "informative": true,
+          "optimizer_updates": 5,
+          "changed_parameters": 155,
+          "score_mean": 0.5371635556221008,
+          "score_best": 0.5831050872802734
+        },
+        {
+          "attempt": 6,
+          "informative": true,
+          "optimizer_updates": 6,
+          "changed_parameters": 155,
+          "score_mean": 0.519874632358551,
+          "score_best": 0.5505368709564209
+        },
+        {
+          "attempt": 7,
+          "informative": true,
+          "optimizer_updates": 7,
+          "changed_parameters": 155,
+          "score_mean": 0.5368605852127075,
+          "score_best": 0.5816928744316101
+        },
+        {
+          "attempt": 8,
+          "informative": true,
+          "optimizer_updates": 8,
+          "changed_parameters": 155,
+          "score_mean": 0.5433709621429443,
+          "score_best": 0.5780495405197144
+        },
+        {
+          "attempt": 9,
+          "informative": true,
+          "optimizer_updates": 9,
+          "changed_parameters": 155,
+          "score_mean": 0.5497151613235474,
+          "score_best": 0.5851486921310425
+        },
+        {
+          "attempt": 10,
+          "informative": true,
+          "optimizer_updates": 10,
+          "changed_parameters": 155,
+          "score_mean": 0.5550602674484253,
+          "score_best": 0.5876598358154297
+        }
+      ],
+      "endpoint_sha256": "936176dfea318a4ec698393e5b693877b8a1bd3dd4406db6d9c76778dfe76378"
+    },
+    {
+      "index": 1,
+      "run": "runs/20261122-214515_E134-A1-train",
+      "attempts": [
+        {
+          "attempt": 1,
+          "informative": true,
+          "optimizer_updates": 1,
+          "changed_parameters": 155,
+          "score_mean": 0.4485015273094177,
+          "score_best": 0.4961603879928589
+        },
+        {
+          "attempt": 2,
+          "informative": true,
+          "optimizer_updates": 2,
+          "changed_parameters": 155,
+          "score_mean": 0.45884788036346436,
+          "score_best": 0.4947257339954376
+        },
+        {
+          "attempt": 3,
+          "informative": true,
+          "optimizer_updates": 3,
+          "changed_parameters": 155,
+          "score_mean": 0.4651818871498108,
+          "score_best": 0.5047404170036316
+        },
+        {
+          "attempt": 4,
+          "informative": true,
+          "optimizer_updates": 4,
+          "changed_parameters": 155,
+          "score_mean": 0.5110471248626709,
+          "score_best": 0.5774635076522827
+        },
+        {
+          "attempt": 5,
+          "informative": true,
+          "optimizer_updates": 5,
+          "changed_parameters": 155,
+          "score_mean": 0.5087713003158569,
+          "score_best": 0.5741937160491943
+        },
+        {
+          "attempt": 6,
+          "informative": true,
+          "optimizer_updates": 6,
+          "changed_parameters": 155,
+          "score_mean": 0.5068786144256592,
+          "score_best": 0.5404104590415955
+        },
+        {
+          "attempt": 7,
+          "informative": true,
+          "optimizer_updates": 7,
+          "changed_parameters": 155,
+          "score_mean": 0.5108060240745544,
+          "score_best": 0.5520132184028625
+        },
+        {
+          "attempt": 8,
+          "informative": true,
+          "optimizer_updates": 8,
+          "changed_parameters": 155,
+          "score_mean": 0.5199607610702515,
+          "score_best": 0.5557857751846313
+        },
+        {
+          "attempt": 9,
+          "informative": true,
+          "optimizer_updates": 9,
+          "changed_parameters": 155,
+          "score_mean": 0.544715940952301,
+          "score_best": 0.5723874568939209
+        },
+        {
+          "attempt": 10,
+          "informative": true,
+          "optimizer_updates": 10,
+          "changed_parameters": 155,
+          "score_mean": 0.5510379076004028,
+          "score_best": 0.5848780274391174
+        }
+      ],
+      "endpoint_sha256": "ed054c08356b30ea7ccd80f4346f09a4f07cd371729c3d86e7b4a14aa837f37a"
+    },
+    {
+      "index": 2,
+      "run": "runs/20261122-214556_E134-A2-train",
+      "attempts": [
+        {
+          "attempt": 1,
+          "informative": true,
+          "optimizer_updates": 1,
+          "changed_parameters": 155,
+          "score_mean": 0.4494982957839966,
+          "score_best": 0.5142976641654968
+        },
+        {
+          "attempt": 2,
+          "informative": true,
+          "optimizer_updates": 2,
+          "changed_parameters": 155,
+          "score_mean": 0.47826576232910156,
+          "score_best": 0.5440787672996521
+        },
+        {
+          "attempt": 3,
+          "informative": true,
+          "optimizer_updates": 3,
+          "changed_parameters": 155,
+          "score_mean": 0.5113564729690552,
+          "score_best": 0.5655804872512817
+        },
+        {
+          "attempt": 4,
+          "informative": true,
+          "optimizer_updates": 4,
+          "changed_parameters": 155,
+          "score_mean": 0.48248085379600525,
+          "score_best": 0.5342846512794495
+        },
+        {
+          "attempt": 5,
+          "informative": true,
+          "optimizer_updates": 5,
+          "changed_parameters": 155,
+          "score_mean": 0.4949512481689453,
+          "score_best": 0.5510191917419434
+        },
+        {
+          "attempt": 6,
+          "informative": true,
+          "optimizer_updates": 6,
+          "changed_parameters": 155,
+          "score_mean": 0.4863449037075043,
+          "score_best": 0.5291324853897095
+        },
+        {
+          "attempt": 7,
+          "informative": true,
+          "optimizer_updates": 7,
+          "changed_parameters": 155,
+          "score_mean": 0.5127066373825073,
+          "score_best": 0.5752081871032715
+        },
+        {
+          "attempt": 8,
+          "informative": true,
+          "optimizer_updates": 8,
+          "changed_parameters": 155,
+          "score_mean": 0.5180846452713013,
+          "score_best": 0.5573684573173523
+        },
+        {
+          "attempt": 9,
+          "informative": true,
+          "optimizer_updates": 9,
+          "changed_parameters": 155,
+          "score_mean": 0.5063810348510742,
+          "score_best": 0.5491932034492493
+        },
+        {
+          "attempt": 10,
+          "informative": true,
+          "optimizer_updates": 10,
+          "changed_parameters": 155,
+          "score_mean": 0.5331776142120361,
+          "score_best": 0.6000958681106567
+        }
+      ],
+      "endpoint_sha256": "bcf5ad20fd1e38c322bb459c3d694f64a7fe8ca018720a47c7942a49d2191e14"
+    }
+  ],
+  "development": {
+    "index": 0,
+    "run": "runs/20261122-214158_E134-benchmark-eval",
+    "measurements": {
+      "families": 4,
+      "arms": {
+        "parent": {
+          "old_preference": {
+            "mean": 0.6604271747819439,
+            "se": 0.04430201043111594,
+            "n": 4,
+            "lower_2se": 0.5718231539197121
+          },
+          "histories": {
+            "stationary": {
+              "local": {
+                "informative": {
+                  "mean": 0.6035213185538548,
+                  "se": 0.07654627835705687,
+                  "n": 4,
+                  "lower_2se": 0.4504287618397411
+                },
+                "yoked": {
+                  "mean": 0.2783470244909646,
+                  "se": 0.0881785986517943,
+                  "n": 4,
+                  "lower_2se": 0.10198982718737601
+                }
+              },
+              "solo": {
+                "Y": {
+                  "mean": 0.875,
+                  "se": 0.125,
+                  "n": 4,
+                  "lower_2se": 0.625
+                },
+                "first_food": {
+                  "mean": 0.875,
+                  "se": 0.125,
+                  "n": 4,
+                  "lower_2se": 0.625
+                },
+                "first_poison": {
+                  "mean": 0.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 0.0
+                },
+                "no_contact": {
+                  "mean": 0.125,
+                  "se": 0.125,
+                  "n": 4,
+                  "lower_2se": -0.125
+                },
+                "survival": {
+                  "mean": 1.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 1.0
+                },
+                "latency": {
+                  "mean": 11.875,
+                  "se": 5.5952919197005855,
+                  "n": 4,
+                  "lower_2se": 0.684416160598829
+                }
+              },
+              "conditional_contact_accuracy": {
+                "value": 1.0,
+                "food_count": 7,
+                "contact_count": 7,
+                "assigned_lives": 8,
+                "descriptive": true
+              }
+            },
+            "reversal": {
+              "local": {
+                "informative": {
+                  "mean": 0.05941237338386904,
+                  "se": 0.12372357325665553,
+                  "n": 4,
+                  "lower_2se": -0.18803477312944203
+                },
+                "yoked": {
+                  "mean": -0.2783470244909646,
+                  "se": 0.0881785986517943,
+                  "n": 4,
+                  "lower_2se": -0.45470422179455317
+                }
+              },
+              "solo": {
+                "Y": {
+                  "mean": -0.25,
+                  "se": 0.47871355387816905,
+                  "n": 4,
+                  "lower_2se": -1.207427107756338
+                },
+                "first_food": {
+                  "mean": 0.375,
+                  "se": 0.23935677693908453,
+                  "n": 4,
+                  "lower_2se": -0.10371355387816905
+                },
+                "first_poison": {
+                  "mean": 0.625,
+                  "se": 0.23935677693908453,
+                  "n": 4,
+                  "lower_2se": 0.14628644612183095
+                },
+                "no_contact": {
+                  "mean": 0.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 0.0
+                },
+                "survival": {
+                  "mean": 1.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 1.0
+                },
+                "latency": {
+                  "mean": 5.375,
+                  "se": 1.8413649828320293,
+                  "n": 4,
+                  "lower_2se": 1.6922700343359414
+                }
+              },
+              "conditional_contact_accuracy": {
+                "value": 0.375,
+                "food_count": 3,
+                "contact_count": 8,
+                "assigned_lives": 8,
+                "descriptive": true
+              }
+            }
+          }
+        },
+        "descendant": {
+          "old_preference": {
+            "mean": 0.6790309598630604,
+            "se": 0.05527894833382421,
+            "n": 4,
+            "lower_2se": 0.568473063195412
+          },
+          "histories": {
+            "stationary": {
+              "local": {
+                "informative": {
+                  "mean": 0.6789832765783407,
+                  "se": 0.0898253551395534,
+                  "n": 4,
+                  "lower_2se": 0.49933256629923384
+                },
+                "yoked": {
+                  "mean": 0.2895574754656991,
+                  "se": 0.05887162646164569,
+                  "n": 4,
+                  "lower_2se": 0.17181422254240772
+                }
+              },
+              "solo": {
+                "Y": {
+                  "mean": 0.75,
+                  "se": 0.25,
+                  "n": 4,
+                  "lower_2se": 0.25
+                },
+                "first_food": {
+                  "mean": 0.875,
+                  "se": 0.125,
+                  "n": 4,
+                  "lower_2se": 0.625
+                },
+                "first_poison": {
+                  "mean": 0.125,
+                  "se": 0.125,
+                  "n": 4,
+                  "lower_2se": -0.125
+                },
+                "no_contact": {
+                  "mean": 0.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 0.0
+                },
+                "survival": {
+                  "mean": 1.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 1.0
+                },
+                "latency": {
+                  "mean": 6.875,
+                  "se": 1.8413649828320293,
+                  "n": 4,
+                  "lower_2se": 3.1922700343359414
+                }
+              },
+              "conditional_contact_accuracy": {
+                "value": 0.875,
+                "food_count": 7,
+                "contact_count": 8,
+                "assigned_lives": 8,
+                "descriptive": true
+              }
+            },
+            "reversal": {
+              "local": {
+                "informative": {
+                  "mean": 0.07597289715340594,
+                  "se": 0.0798225260388341,
+                  "n": 4,
+                  "lower_2se": -0.08367215492426225
+                },
+                "yoked": {
+                  "mean": -0.2895574754656991,
+                  "se": 0.05887162646164569,
+                  "n": 4,
+                  "lower_2se": -0.40730072838899045
+                }
+              },
+              "solo": {
+                "Y": {
+                  "mean": 0.0,
+                  "se": 0.408248290463863,
+                  "n": 4,
+                  "lower_2se": -0.816496580927726
+                },
+                "first_food": {
+                  "mean": 0.5,
+                  "se": 0.2041241452319315,
+                  "n": 4,
+                  "lower_2se": 0.09175170953613698
+                },
+                "first_poison": {
+                  "mean": 0.5,
+                  "se": 0.2041241452319315,
+                  "n": 4,
+                  "lower_2se": 0.09175170953613698
+                },
+                "no_contact": {
+                  "mean": 0.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 0.0
+                },
+                "survival": {
+                  "mean": 1.0,
+                  "se": 0.0,
+                  "n": 4,
+                  "lower_2se": 1.0
+                },
+                "latency": {
+                  "mean": 3.625,
+                  "se": 1.125,
+                  "n": 4,
+                  "lower_2se": 1.375
+                }
+              },
+              "conditional_contact_accuracy": {
+                "value": 0.5,
+                "food_count": 4,
+                "contact_count": 8,
+                "assigned_lives": 8,
+                "descriptive": true
+              }
+            }
+          }
+        }
+      },
+      "contrasts": {
+        "old_descendant": {
+          "mean": 0.6790309598630604,
+          "se": 0.05527894833382421,
+          "n": 4,
+          "lower_2se": 0.568473063195412
+        },
+        "reversal_local_descendant": {
+          "mean": 0.07597289715340594,
+          "se": 0.0798225260388341,
+          "n": 4,
+          "lower_2se": -0.08367215492426225
+        },
+        "informative_history_effect": {
+          "mean": 0.7549561737317465,
+          "se": 0.07650488560287835,
+          "n": 4,
+          "lower_2se": 0.6019464025259897
+        },
+        "local_gain": {
+          "mean": 0.016560523769536907,
+          "se": 0.05872384288679136,
+          "n": 4,
+          "lower_2se": -0.10088716200404582
+        },
+        "feedback_gain": {
+          "mean": 0.02777097474427139,
+          "se": 0.02930116092704985,
+          "n": 4,
+          "lower_2se": -0.030831347109828308
+        },
+        "reversal_solo_descendant": {
+          "mean": 0.0,
+          "se": 0.408248290463863,
+          "n": 4,
+          "lower_2se": -0.816496580927726
+        },
+        "solo_gain": {
+          "mean": 0.25,
+          "se": 0.25,
+          "n": 4,
+          "lower_2se": -0.25
+        },
+        "adjusted_solo_gain": {
+          "mean": 0.375,
+          "se": 0.375,
+          "n": 4,
+          "lower_2se": -0.375
+        },
+        "old_safeguard": {
+          "mean": 0.018603785081116514,
+          "se": 0.013777325923290557,
+          "n": 4,
+          "lower_2se": -0.0089508667654646
+        },
+        "stationary_local_safeguard": {
+          "mean": 0.07546195802448596,
+          "se": 0.03326937113430235,
+          "n": 4,
+          "lower_2se": 0.008923215755881259
+        },
+        "stationary_solo_safeguard": {
+          "mean": -0.125,
+          "se": 0.3145764348029479,
+          "n": 4,
+          "lower_2se": -0.7541528696058958
+        },
+        "stationary_survival_safeguard": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4,
+          "lower_2se": 0.0
+        },
+        "reversal_survival_safeguard": {
+          "mean": 0.0,
+          "se": 0.0,
+          "n": 4,
+          "lower_2se": 0.0
+        }
+      },
+      "gate": {
+        "passed": false,
+        "criteria": {
+          "old_descendant": true,
+          "reversal_local_descendant": false,
+          "informative_history_effect": true,
+          "local_gain": false,
+          "feedback_gain": false,
+          "reversal_solo_descendant": false,
+          "solo_gain": false,
+          "adjusted_solo_gain": false,
+          "old_safeguard": true,
+          "stationary_local_safeguard": true,
+          "stationary_solo_safeguard": false,
+          "stationary_survival_safeguard": true,
+          "reversal_survival_safeguard": true
+        },
+        "failed_criteria": [
+          "reversal_local_descendant",
+          "local_gain",
+          "feedback_gain",
+          "reversal_solo_descendant",
+          "solo_gain",
+          "adjusted_solo_gain",
+          "stationary_solo_safeguard"
+        ]
+      }
+    }
+  },
+  "runs": [
+    {
+      "index": 0,
+      "run": "runs/20261122-214727_E134-A0",
+      "measurements": {
+        "families": 128,
+        "arms": {
+          "parent": {
+            "old_preference": {
+              "mean": 0.668601560363868,
+              "se": 0.005755304112321136,
+              "n": 128,
+              "lower_2se": 0.6570909521392257
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.6839637124893632,
+                    "se": 0.01101705818739571,
+                    "n": 128,
+                    "lower_2se": 0.6619295961145717
+                  },
+                  "yoked": {
+                    "mean": 0.24262826829783535,
+                    "se": 0.011758835007486933,
+                    "n": 128,
+                    "lower_2se": 0.21911059828286147
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.7890625,
+                    "se": 0.034904156859785616,
+                    "n": 128,
+                    "lower_2se": 0.7192541862804288
+                  },
+                  "first_food": {
+                    "mean": 0.8828125,
+                    "se": 0.018794546001423027,
+                    "n": 128,
+                    "lower_2se": 0.8452234079971539
+                  },
+                  "first_poison": {
+                    "mean": 0.09375,
+                    "se": 0.017317311328654435,
+                    "n": 128,
+                    "lower_2se": 0.05911537734269113
+                  },
+                  "no_contact": {
+                    "mean": 0.0234375,
+                    "se": 0.009378075283008743,
+                    "n": 128,
+                    "lower_2se": 0.0046813494339825144
+                  },
+                  "survival": {
+                    "mean": 1.0,
+                    "se": 0.0,
+                    "n": 128,
+                    "lower_2se": 1.0
+                  },
+                  "latency": {
+                    "mean": 8.6484375,
+                    "se": 0.7270808994325431,
+                    "n": 128,
+                    "lower_2se": 7.194275701134914
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.904,
+                  "food_count": 226,
+                  "contact_count": 250,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.2015972691982597,
+                    "se": 0.019794017252529505,
+                    "n": 128,
+                    "lower_2se": 0.1620092346932007
+                  },
+                  "yoked": {
+                    "mean": -0.24262826829783535,
+                    "se": 0.011758835007486933,
+                    "n": 128,
+                    "lower_2se": -0.2661459383128092
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.22265625,
+                    "se": 0.05137401985469897,
+                    "n": 128,
+                    "lower_2se": 0.11990821029060206
+                  },
+                  "first_food": {
+                    "mean": 0.5703125,
+                    "se": 0.02758218247543634,
+                    "n": 128,
+                    "lower_2se": 0.5151481350491274
+                  },
+                  "first_poison": {
+                    "mean": 0.34765625,
+                    "se": 0.026918622894767277,
+                    "n": 128,
+                    "lower_2se": 0.2938190042104655
+                  },
+                  "no_contact": {
+                    "mean": 0.08203125,
+                    "se": 0.018206816890574514,
+                    "n": 128,
+                    "lower_2se": 0.04561761621885097
+                  },
+                  "survival": {
+                    "mean": 0.984375,
+                    "se": 0.007719674922269189,
+                    "n": 128,
+                    "lower_2se": 0.9689356501554616
+                  },
+                  "latency": {
+                    "mean": 14.046875,
+                    "se": 1.0711700093138092,
+                    "n": 128,
+                    "lower_2se": 11.904534981372382
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.6212765957446809,
+                  "food_count": 146,
+                  "contact_count": 235,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          },
+          "descendant": {
+            "old_preference": {
+              "mean": 0.7205729286328431,
+              "se": 0.008468063580420931,
+              "n": 128,
+              "lower_2se": 0.7036368014720011
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.8612979341184162,
+                    "se": 0.008402921795574695,
+                    "n": 128,
+                    "lower_2se": 0.8444920905272668
+                  },
+                  "yoked": {
+                    "mean": 0.3367494907799179,
+                    "se": 0.010619029489356693,
+                    "n": 128,
+                    "lower_2se": 0.3155114318012045
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.51953125,
+                    "se": 0.044507068824866436,
+                    "n": 128,
+                    "lower_2se": 0.43051711235026713
+                  },
+                  "first_food": {
+                    "mean": 0.7265625,
+                    "se": 0.024715018799942194,
+                    "n": 128,
+                    "lower_2se": 0.6771324624001156
+                  },
+                  "first_poison": {
+                    "mean": 0.20703125,
+                    "se": 0.0225465287101465,
+                    "n": 128,
+                    "lower_2se": 0.16193819257970699
+                  },
+                  "no_contact": {
+                    "mean": 0.06640625,
+                    "se": 0.016046091328934774,
+                    "n": 128,
+                    "lower_2se": 0.03431406734213045
+                  },
+                  "survival": {
+                    "mean": 1.0,
+                    "se": 0.0,
+                    "n": 128,
+                    "lower_2se": 1.0
+                  },
+                  "latency": {
+                    "mean": 11.4765625,
+                    "se": 1.037214459079117,
+                    "n": 128,
+                    "lower_2se": 9.402133581841767
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.7782426778242678,
+                  "food_count": 186,
+                  "contact_count": 239,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.19106419025699023,
+                    "se": 0.017779238198998727,
+                    "n": 128,
+                    "lower_2se": 0.15550571385899278
+                  },
+                  "yoked": {
+                    "mean": -0.3367494907799179,
+                    "se": 0.010619029489356693,
+                    "n": 128,
+                    "lower_2se": -0.3579875497586313
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.12890625,
+                    "se": 0.040847209420093275,
+                    "n": 128,
+                    "lower_2se": 0.04721183115981345
+                  },
+                  "first_food": {
+                    "mean": 0.51171875,
+                    "se": 0.02317717549157413,
+                    "n": 128,
+                    "lower_2se": 0.4653643990168517
+                  },
+                  "first_poison": {
+                    "mean": 0.3828125,
+                    "se": 0.022517200746947796,
+                    "n": 128,
+                    "lower_2se": 0.3377780985061044
+                  },
+                  "no_contact": {
+                    "mean": 0.10546875,
+                    "se": 0.020491878124812887,
+                    "n": 128,
+                    "lower_2se": 0.06448499375037423
+                  },
+                  "survival": {
+                    "mean": 0.98046875,
+                    "se": 0.008595986645232744,
+                    "n": 128,
+                    "lower_2se": 0.9632767767095345
+                  },
+                  "latency": {
+                    "mean": 15.5859375,
+                    "se": 1.2260263730002208,
+                    "n": 128,
+                    "lower_2se": 13.133884753999558
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.5720524017467249,
+                  "food_count": 131,
+                  "contact_count": 229,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "old_descendant": {
+            "mean": 0.7205729286328431,
+            "se": 0.008468063580420931,
+            "n": 128,
+            "lower_2se": 0.7036368014720011
+          },
+          "reversal_local_descendant": {
+            "mean": 0.19106419025699023,
+            "se": 0.017779238198998727,
+            "n": 128,
+            "lower_2se": 0.15550571385899278
+          },
+          "informative_history_effect": {
+            "mean": 1.0523621243754064,
+            "se": 0.017622517025236473,
+            "n": 128,
+            "lower_2se": 1.0171170903249336
+          },
+          "local_gain": {
+            "mean": -0.010533078941269494,
+            "se": 0.008347025011340584,
+            "n": 128,
+            "lower_2se": -0.027227128963950662
+          },
+          "feedback_gain": {
+            "mean": 0.08358814354081309,
+            "se": 0.008329347932485498,
+            "n": 128,
+            "lower_2se": 0.0669294476758421
+          },
+          "reversal_solo_descendant": {
+            "mean": 0.12890625,
+            "se": 0.040847209420093275,
+            "n": 128,
+            "lower_2se": 0.04721183115981345
+          },
+          "solo_gain": {
+            "mean": -0.09375,
+            "se": 0.06068982957123727,
+            "n": 128,
+            "lower_2se": -0.21512965914247456
+          },
+          "adjusted_solo_gain": {
+            "mean": 0.17578125,
+            "se": 0.0736989020713547,
+            "n": 128,
+            "lower_2se": 0.028383445857290607
+          },
+          "old_safeguard": {
+            "mean": 0.051971368268975006,
+            "se": 0.004473095355479478,
+            "n": 128,
+            "lower_2se": 0.04302517755801605
+          },
+          "stationary_local_safeguard": {
+            "mean": 0.177334221629053,
+            "se": 0.010653563948825454,
+            "n": 128,
+            "lower_2se": 0.15602709373140208
+          },
+          "stationary_solo_safeguard": {
+            "mean": -0.26953125,
+            "se": 0.05049653299656062,
+            "n": 128,
+            "lower_2se": -0.37052431599312124
+          },
+          "stationary_survival_safeguard": {
+            "mean": 0.0,
+            "se": 0.0,
+            "n": 128,
+            "lower_2se": 0.0
+          },
+          "reversal_survival_safeguard": {
+            "mean": -0.00390625,
+            "se": 0.011759688989318217,
+            "n": 128,
+            "lower_2se": -0.027425627978636433
+          }
+        },
+        "gate": {
+          "passed": false,
+          "criteria": {
+            "old_descendant": true,
+            "reversal_local_descendant": true,
+            "informative_history_effect": true,
+            "local_gain": false,
+            "feedback_gain": true,
+            "reversal_solo_descendant": true,
+            "solo_gain": false,
+            "adjusted_solo_gain": true,
+            "old_safeguard": true,
+            "stationary_local_safeguard": true,
+            "stationary_solo_safeguard": false,
+            "stationary_survival_safeguard": true,
+            "reversal_survival_safeguard": true
+          },
+          "failed_criteria": [
+            "local_gain",
+            "solo_gain",
+            "stationary_solo_safeguard"
+          ]
+        }
+      }
+    },
+    {
+      "index": 1,
+      "run": "runs/20261122-214925_E134-A1",
+      "measurements": {
+        "families": 128,
+        "arms": {
+          "parent": {
+            "old_preference": {
+              "mean": 0.6631560160184335,
+              "se": 0.006915100995961899,
+              "n": 128,
+              "lower_2se": 0.6493258140265098
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.7080136212203835,
+                    "se": 0.010651956930668604,
+                    "n": 128,
+                    "lower_2se": 0.6867097073590462
+                  },
+                  "yoked": {
+                    "mean": 0.27123075755544807,
+                    "se": 0.010909241531039249,
+                    "n": 128,
+                    "lower_2se": 0.24941227449336956
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.7890625,
+                    "se": 0.0330948435565048,
+                    "n": 128,
+                    "lower_2se": 0.7228728128869903
+                  },
+                  "first_food": {
+                    "mean": 0.86328125,
+                    "se": 0.02053873015081919,
+                    "n": 128,
+                    "lower_2se": 0.8222037896983616
+                  },
+                  "first_poison": {
+                    "mean": 0.07421875,
+                    "se": 0.01577423198984935,
+                    "n": 128,
+                    "lower_2se": 0.0426702860203013
+                  },
+                  "no_contact": {
+                    "mean": 0.0625,
+                    "se": 0.01568639512845396,
+                    "n": 128,
+                    "lower_2se": 0.031127209743092077
+                  },
+                  "survival": {
+                    "mean": 1.0,
+                    "se": 0.0,
+                    "n": 128,
+                    "lower_2se": 1.0
+                  },
+                  "latency": {
+                    "mean": 10.03515625,
+                    "se": 0.9541530065694698,
+                    "n": 128,
+                    "lower_2se": 8.12685023686106
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.9208333333333333,
+                  "food_count": 221,
+                  "contact_count": 240,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.17696284924206412,
+                    "se": 0.01665193309335016,
+                    "n": 128,
+                    "lower_2se": 0.1436589830553638
+                  },
+                  "yoked": {
+                    "mean": -0.27123075755544807,
+                    "se": 0.010909241531039249,
+                    "n": 128,
+                    "lower_2se": -0.2930492406175266
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.30859375,
+                    "se": 0.04838721950581005,
+                    "n": 128,
+                    "lower_2se": 0.21181931098837992
+                  },
+                  "first_food": {
+                    "mean": 0.5859375,
+                    "se": 0.028338469734266195,
+                    "n": 128,
+                    "lower_2se": 0.5292605605314676
+                  },
+                  "first_poison": {
+                    "mean": 0.27734375,
+                    "se": 0.025298776749230024,
+                    "n": 128,
+                    "lower_2se": 0.22674619650153996
+                  },
+                  "no_contact": {
+                    "mean": 0.13671875,
+                    "se": 0.023342470569139878,
+                    "n": 128,
+                    "lower_2se": 0.09003380886172024
+                  },
+                  "survival": {
+                    "mean": 0.9765625,
+                    "se": 0.009378075283008743,
+                    "n": 128,
+                    "lower_2se": 0.9578063494339825
+                  },
+                  "latency": {
+                    "mean": 17.5859375,
+                    "se": 1.2352365038492357,
+                    "n": 128,
+                    "lower_2se": 15.115464492301529
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.6787330316742082,
+                  "food_count": 150,
+                  "contact_count": 221,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          },
+          "descendant": {
+            "old_preference": {
+              "mean": 0.699392650166601,
+              "se": 0.00784428739548409,
+              "n": 128,
+              "lower_2se": 0.6837040753756328
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.8350541420243569,
+                    "se": 0.00802216778088079,
+                    "n": 128,
+                    "lower_2se": 0.8190098064625954
+                  },
+                  "yoked": {
+                    "mean": 0.32176272050692967,
+                    "se": 0.011841284165093498,
+                    "n": 128,
+                    "lower_2se": 0.29808015217674266
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.70703125,
+                    "se": 0.040952962890075315,
+                    "n": 128,
+                    "lower_2se": 0.6251253242198493
+                  },
+                  "first_food": {
+                    "mean": 0.8046875,
+                    "se": 0.026732751057170406,
+                    "n": 128,
+                    "lower_2se": 0.7512219978856591
+                  },
+                  "first_poison": {
+                    "mean": 0.09765625,
+                    "se": 0.01844285317823244,
+                    "n": 128,
+                    "lower_2se": 0.06077054364353512
+                  },
+                  "no_contact": {
+                    "mean": 0.09765625,
+                    "se": 0.02079452945851583,
+                    "n": 128,
+                    "lower_2se": 0.05606719108296834
+                  },
+                  "survival": {
+                    "mean": 1.0,
+                    "se": 0.0,
+                    "n": 128,
+                    "lower_2se": 1.0
+                  },
+                  "latency": {
+                    "mean": 12.55859375,
+                    "se": 1.1629457528172822,
+                    "n": 128,
+                    "lower_2se": 10.232702244365436
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.8917748917748918,
+                  "food_count": 206,
+                  "contact_count": 231,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.19415966478303895,
+                    "se": 0.02009500010388494,
+                    "n": 128,
+                    "lower_2se": 0.15396966457526906
+                  },
+                  "yoked": {
+                    "mean": -0.32176272050692967,
+                    "se": 0.011841284165093498,
+                    "n": 128,
+                    "lower_2se": -0.34544528883711667
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.13671875,
+                    "se": 0.054258502610185506,
+                    "n": 128,
+                    "lower_2se": 0.028201744779628987
+                  },
+                  "first_food": {
+                    "mean": 0.5,
+                    "se": 0.030376573547265674,
+                    "n": 128,
+                    "lower_2se": 0.43924685290546867
+                  },
+                  "first_poison": {
+                    "mean": 0.36328125,
+                    "se": 0.02919674078435197,
+                    "n": 128,
+                    "lower_2se": 0.30488776843129606
+                  },
+                  "no_contact": {
+                    "mean": 0.13671875,
+                    "se": 0.024624919904492226,
+                    "n": 128,
+                    "lower_2se": 0.08746891019101555
+                  },
+                  "survival": {
+                    "mean": 0.98828125,
+                    "se": 0.006712337857651081,
+                    "n": 128,
+                    "lower_2se": 0.9748565742846979
+                  },
+                  "latency": {
+                    "mean": 17.96484375,
+                    "se": 1.283988977443937,
+                    "n": 128,
+                    "lower_2se": 15.396865795112125
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.579185520361991,
+                  "food_count": 128,
+                  "contact_count": 221,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "old_descendant": {
+            "mean": 0.699392650166601,
+            "se": 0.00784428739548409,
+            "n": 128,
+            "lower_2se": 0.6837040753756328
+          },
+          "reversal_local_descendant": {
+            "mean": 0.19415966478303895,
+            "se": 0.02009500010388494,
+            "n": 128,
+            "lower_2se": 0.15396966457526906
+          },
+          "informative_history_effect": {
+            "mean": 1.029213806807396,
+            "se": 0.020803204691187245,
+            "n": 128,
+            "lower_2se": 0.9876073974250215
+          },
+          "local_gain": {
+            "mean": 0.017196815540974814,
+            "se": 0.011086696156867925,
+            "n": 128,
+            "lower_2se": -0.004976576772761036
+          },
+          "feedback_gain": {
+            "mean": 0.06772877849245636,
+            "se": 0.010280390674891015,
+            "n": 128,
+            "lower_2se": 0.04716799714267433
+          },
+          "reversal_solo_descendant": {
+            "mean": 0.13671875,
+            "se": 0.054258502610185506,
+            "n": 128,
+            "lower_2se": 0.028201744779628987
+          },
+          "solo_gain": {
+            "mean": -0.171875,
+            "se": 0.0661896871130096,
+            "n": 128,
+            "lower_2se": -0.3042543742260192
+          },
+          "adjusted_solo_gain": {
+            "mean": -0.08984375,
+            "se": 0.0747028220269282,
+            "n": 128,
+            "lower_2se": -0.2392493940538564
+          },
+          "old_safeguard": {
+            "mean": 0.03623663414816747,
+            "se": 0.004409644946287504,
+            "n": 128,
+            "lower_2se": 0.02741734425559246
+          },
+          "stationary_local_safeguard": {
+            "mean": 0.12704052080397332,
+            "se": 0.010241929428535412,
+            "n": 128,
+            "lower_2se": 0.1065566619469025
+          },
+          "stationary_solo_safeguard": {
+            "mean": -0.08203125,
+            "se": 0.044290580309153255,
+            "n": 128,
+            "lower_2se": -0.1706124106183065
+          },
+          "stationary_survival_safeguard": {
+            "mean": 0.0,
+            "se": 0.0,
+            "n": 128,
+            "lower_2se": 0.0
+          },
+          "reversal_survival_safeguard": {
+            "mean": 0.01171875,
+            "se": 0.011718749999999998,
+            "n": 128,
+            "lower_2se": -0.011718749999999997
+          }
+        },
+        "gate": {
+          "passed": false,
+          "criteria": {
+            "old_descendant": true,
+            "reversal_local_descendant": true,
+            "informative_history_effect": true,
+            "local_gain": false,
+            "feedback_gain": true,
+            "reversal_solo_descendant": true,
+            "solo_gain": false,
+            "adjusted_solo_gain": false,
+            "old_safeguard": true,
+            "stationary_local_safeguard": true,
+            "stationary_solo_safeguard": false,
+            "stationary_survival_safeguard": true,
+            "reversal_survival_safeguard": true
+          },
+          "failed_criteria": [
+            "local_gain",
+            "solo_gain",
+            "adjusted_solo_gain",
+            "stationary_solo_safeguard"
+          ]
+        }
+      }
+    },
+    {
+      "index": 2,
+      "run": "runs/20261122-215128_E134-A2",
+      "measurements": {
+        "families": 128,
+        "arms": {
+          "parent": {
+            "old_preference": {
+              "mean": 0.6405176776599623,
+              "se": 0.007289426263173195,
+              "n": 128,
+              "lower_2se": 0.6259388251336159
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.6587086287095948,
+                    "se": 0.010865824075363503,
+                    "n": 128,
+                    "lower_2se": 0.6369769805588678
+                  },
+                  "yoked": {
+                    "mean": 0.23355631377347663,
+                    "se": 0.010895539395073355,
+                    "n": 128,
+                    "lower_2se": 0.21176523498332991
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.765625,
+                    "se": 0.03591529397812905,
+                    "n": 128,
+                    "lower_2se": 0.6937944120437419
+                  },
+                  "first_food": {
+                    "mean": 0.86328125,
+                    "se": 0.02053873015081919,
+                    "n": 128,
+                    "lower_2se": 0.8222037896983616
+                  },
+                  "first_poison": {
+                    "mean": 0.09765625,
+                    "se": 0.017589228503208734,
+                    "n": 128,
+                    "lower_2se": 0.06247779299358253
+                  },
+                  "no_contact": {
+                    "mean": 0.0390625,
+                    "se": 0.013135160811999471,
+                    "n": 128,
+                    "lower_2se": 0.012792178376001058
+                  },
+                  "survival": {
+                    "mean": 1.0,
+                    "se": 0.0,
+                    "n": 128,
+                    "lower_2se": 1.0
+                  },
+                  "latency": {
+                    "mean": 8.94921875,
+                    "se": 0.8078463002331453,
+                    "n": 128,
+                    "lower_2se": 7.333526149533709
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.8983739837398373,
+                  "food_count": 221,
+                  "contact_count": 246,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.18914027967330566,
+                    "se": 0.019159805096255582,
+                    "n": 128,
+                    "lower_2se": 0.15082066948079448
+                  },
+                  "yoked": {
+                    "mean": -0.23355631377347663,
+                    "se": 0.010895539395073355,
+                    "n": 128,
+                    "lower_2se": -0.2553473925636233
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.2109375,
+                    "se": 0.05645178565023779,
+                    "n": 128,
+                    "lower_2se": 0.09803392869952442
+                  },
+                  "first_food": {
+                    "mean": 0.58203125,
+                    "se": 0.029229643165023855,
+                    "n": 128,
+                    "lower_2se": 0.5235719636699523
+                  },
+                  "first_poison": {
+                    "mean": 0.37109375,
+                    "se": 0.028948780958509456,
+                    "n": 128,
+                    "lower_2se": 0.3131961880829811
+                  },
+                  "no_contact": {
+                    "mean": 0.046875,
+                    "se": 0.014071382802566985,
+                    "n": 128,
+                    "lower_2se": 0.01873223439486603
+                  },
+                  "survival": {
+                    "mean": 0.98828125,
+                    "se": 0.006712337857651081,
+                    "n": 128,
+                    "lower_2se": 0.9748565742846979
+                  },
+                  "latency": {
+                    "mean": 11.25390625,
+                    "se": 0.8996629005224479,
+                    "n": 128,
+                    "lower_2se": 9.454580448955104
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.610655737704918,
+                  "food_count": 149,
+                  "contact_count": 244,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          },
+          "descendant": {
+            "old_preference": {
+              "mean": 0.7017446966757461,
+              "se": 0.008299884230747852,
+              "n": 128,
+              "lower_2se": 0.6851449282142504
+            },
+            "histories": {
+              "stationary": {
+                "local": {
+                  "informative": {
+                    "mean": 0.7612397264395554,
+                    "se": 0.013746874252631868,
+                    "n": 128,
+                    "lower_2se": 0.7337459779342916
+                  },
+                  "yoked": {
+                    "mean": 0.32358644297585215,
+                    "se": 0.009415912352176523,
+                    "n": 128,
+                    "lower_2se": 0.3047546182714991
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.30859375,
+                    "se": 0.04475473603240462,
+                    "n": 128,
+                    "lower_2se": 0.21908427793519075
+                  },
+                  "first_food": {
+                    "mean": 0.6484375,
+                    "se": 0.022431665012352022,
+                    "n": 128,
+                    "lower_2se": 0.603574169975296
+                  },
+                  "first_poison": {
+                    "mean": 0.33984375,
+                    "se": 0.022821948716013674,
+                    "n": 128,
+                    "lower_2se": 0.29419985256797265
+                  },
+                  "no_contact": {
+                    "mean": 0.01171875,
+                    "se": 0.006712337857651081,
+                    "n": 128,
+                    "lower_2se": -0.0017059257153021617
+                  },
+                  "survival": {
+                    "mean": 0.98828125,
+                    "se": 0.006712337857651081,
+                    "n": 128,
+                    "lower_2se": 0.9748565742846979
+                  },
+                  "latency": {
+                    "mean": 9.796875,
+                    "se": 0.8251110470927223,
+                    "n": 128,
+                    "lower_2se": 8.146652905814555
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.6561264822134387,
+                  "food_count": 166,
+                  "contact_count": 253,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              },
+              "reversal": {
+                "local": {
+                  "informative": {
+                    "mean": 0.11085827068226686,
+                    "se": 0.013202671438662867,
+                    "n": 128,
+                    "lower_2se": 0.08445292780494112
+                  },
+                  "yoked": {
+                    "mean": -0.32358644297585215,
+                    "se": 0.009415912352176523,
+                    "n": 128,
+                    "lower_2se": -0.3424182676802052
+                  }
+                },
+                "solo": {
+                  "Y": {
+                    "mean": 0.03515625,
+                    "se": 0.03515625,
+                    "n": 128,
+                    "lower_2se": -0.03515625
+                  },
+                  "first_food": {
+                    "mean": 0.49609375,
+                    "se": 0.01960492992212613,
+                    "n": 128,
+                    "lower_2se": 0.45688389015574776
+                  },
+                  "first_poison": {
+                    "mean": 0.4609375,
+                    "se": 0.01889655242766719,
+                    "n": 128,
+                    "lower_2se": 0.4231443951446656
+                  },
+                  "no_contact": {
+                    "mean": 0.04296875,
+                    "se": 0.015713180064633712,
+                    "n": 128,
+                    "lower_2se": 0.011542389870732576
+                  },
+                  "survival": {
+                    "mean": 0.96484375,
+                    "se": 0.011343652387814554,
+                    "n": 128,
+                    "lower_2se": 0.9421564452243709
+                  },
+                  "latency": {
+                    "mean": 12.66796875,
+                    "se": 1.1085892587777268,
+                    "n": 128,
+                    "lower_2se": 10.450790232444547
+                  }
+                },
+                "conditional_contact_accuracy": {
+                  "value": 0.5183673469387755,
+                  "food_count": 127,
+                  "contact_count": 245,
+                  "assigned_lives": 256,
+                  "descriptive": true
+                }
+              }
+            }
+          }
+        },
+        "contrasts": {
+          "old_descendant": {
+            "mean": 0.7017446966757461,
+            "se": 0.008299884230747852,
+            "n": 128,
+            "lower_2se": 0.6851449282142504
+          },
+          "reversal_local_descendant": {
+            "mean": 0.11085827068226686,
+            "se": 0.013202671438662867,
+            "n": 128,
+            "lower_2se": 0.08445292780494112
+          },
+          "informative_history_effect": {
+            "mean": 0.8720979971218223,
+            "se": 0.02074265471307775,
+            "n": 128,
+            "lower_2se": 0.8306126876956669
+          },
+          "local_gain": {
+            "mean": -0.07828200899103877,
+            "se": 0.010515357323062533,
+            "n": 128,
+            "lower_2se": -0.09931272363716383
+          },
+          "feedback_gain": {
+            "mean": 0.011748120211336754,
+            "se": 0.01141668574685849,
+            "n": 128,
+            "lower_2se": -0.011085251282380224
+          },
+          "reversal_solo_descendant": {
+            "mean": 0.03515625,
+            "se": 0.03515625,
+            "n": 128,
+            "lower_2se": -0.03515625
+          },
+          "solo_gain": {
+            "mean": -0.17578125,
+            "se": 0.06313404856163568,
+            "n": 128,
+            "lower_2se": -0.30204934712327136
+          },
+          "adjusted_solo_gain": {
+            "mean": 0.28125,
+            "se": 0.0749733384369267,
+            "n": 128,
+            "lower_2se": 0.1313033231261466
+          },
+          "old_safeguard": {
+            "mean": 0.061227019015783896,
+            "se": 0.006782067706929388,
+            "n": 128,
+            "lower_2se": 0.04766288360192512
+          },
+          "stationary_local_safeguard": {
+            "mean": 0.10253109772996065,
+            "se": 0.01433166558284811,
+            "n": 128,
+            "lower_2se": 0.07386776656426443
+          },
+          "stationary_solo_safeguard": {
+            "mean": -0.45703125,
+            "se": 0.0499222278238182,
+            "n": 128,
+            "lower_2se": -0.5568757056476364
+          },
+          "stationary_survival_safeguard": {
+            "mean": -0.01171875,
+            "se": 0.006712337857651081,
+            "n": 128,
+            "lower_2se": -0.025143425715302162
+          },
+          "reversal_survival_safeguard": {
+            "mean": -0.0234375,
+            "se": 0.013424675715302162,
+            "n": 128,
+            "lower_2se": -0.050286851430604323
+          }
+        },
+        "gate": {
+          "passed": false,
+          "criteria": {
+            "old_descendant": true,
+            "reversal_local_descendant": true,
+            "informative_history_effect": true,
+            "local_gain": false,
+            "feedback_gain": false,
+            "reversal_solo_descendant": false,
+            "solo_gain": false,
+            "adjusted_solo_gain": true,
+            "old_safeguard": true,
+            "stationary_local_safeguard": true,
+            "stationary_solo_safeguard": false,
+            "stationary_survival_safeguard": true,
+            "reversal_survival_safeguard": false
+          },
+          "failed_criteria": [
+            "local_gain",
+            "feedback_gain",
+            "reversal_solo_descendant",
+            "solo_gain",
+            "stationary_solo_safeguard",
+            "reversal_survival_safeguard"
+          ]
+        }
+      }
+    }
+  ],
+  "status": "passed",
+  "registered_source": "836e34faa8352663df1ae2813d930926fa22cd5f",
+  "registered_source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_experiment.py": "3f9e8d3c347ec49f1f6b824d0a830d8237ed72ab1adbbfbbb610358e962578c0",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "final_evaluation_audited": true,
+  "scientific_gate_passed": false,
+  "limitations": [
+    "Neural matrix operations and candidate development are not independently rerun.",
+    "Physics, PRNG assignments/actions, five-way choice scores, ES updates and paired-family decisions are independently reconstructed.",
+    "Rule-uninformative replay is a local information control; solo release uses informative exposure."
+  ],
+  "checked_file_sha256": {
+    "runs/20261122-214125_E134-benchmark/status.json": "afc79a005986cd45aec6b4c12f2ed17db199a73a866542d971239e480c31fe0e",
+    "runs/20261122-214158_E134-benchmark-eval/status.json": "8364938cd15cf54609028fe406e505ef39360c324ee6961d4d7327c472d1d32b",
+    "runs/20261122-214433_E134-A0-train/status.json": "de6b85488098f49cf6dd1d93f293904b6e11220bbe28d51da8e1d67829b2cfa2",
+    "runs/20261122-214515_E134-A1-train/status.json": "b395a49e9d6c1f17c8b3b9323824e0a28162174648c8650d7cfe08a4735d2a38",
+    "runs/20261122-214556_E134-A2-train/status.json": "23682c7b7f9e7d8e0e24bee455b0e2e00f88e768a6b22f96f034c6f7e82f8f3a",
+    "runs/20261122-214727_E134-A0/status.json": "09cd146640e1839728e7d26fb07ded9f7715e0329777271e95d155d4dca73330",
+    "runs/20261122-214925_E134-A1/status.json": "bfaeb6756584637a5adbcc972a7f2f9a45937d6db06e5a94e24750e43e9d3182",
+    "runs/20261122-215128_E134-A2/status.json": "d8c22de0a504f13cccba0a72cbb4691745801e5861069c7ec14b4161a86655ba",
+    "runs/20261122-214125_E134-benchmark/config.json": "41e0204e7c1db16dc91dd89bb404bf5072ed946caf489f520efd24c3a452dcad",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214125_E134-benchmark/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214125_E134-benchmark/summary.json": "53dc51b556417ad668db0188c23b4d557bb0d0cd13a64719902ba7d68a747ee6",
+    "runs/20261122-214125_E134-benchmark/generations/attempt_0000.npz": "f394cf6d871dd91034e69dd10b4dde851dc986d8f26a1f8844a1aa11f58a2b77",
+    "runs/20261122-214125_E134-benchmark/generations/attempt_0001.npz": "fcc7b5a6535551fbb530094dd7199e8df913613f2150a43fbf59b46a59f86a5b",
+    "runs/20261122-214125_E134-benchmark/generations/samples_0001.npz": "cab7b9ae47577fcd86fa3d7fea5d2021171b145722e0f1d8dd4d46acd38d2723",
+    "runs/20261122-214125_E134-benchmark/generations/attempt_0002.npz": "ac7be3fab76c85eed2b15dae9905b2aa89eabae3301354d98b861e4344dfaf6c",
+    "runs/20261122-214125_E134-benchmark/generations/samples_0002.npz": "9244889689303157440c4fc11e03c7c9287060d066a25c3477f120ab136b9655",
+    "runs/20261122-214125_E134-benchmark/genome_final.npy": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151",
+    "runs/20261122-214158_E134-benchmark-eval/config.json": "5f83a121b46b4129cf14f9cfa3e5dad0f43c435e0d30d5c87510a3101339c66e",
+    "runs/20261122-214158_E134-benchmark-eval/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214158_E134-benchmark-eval/summary.json": "15850138d6f8346e3ef5025a22cdac53d772f4befed68d501020bfd03b75b8ad",
+    "runs/20261122-214158_E134-benchmark-eval/genome_final.npy": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151",
+    "runs/20261122-214158_E134-benchmark-eval/assignments.npz": "d8e612d7f57a00a0e8002b1b4ffd87fe0f4bb9b8c85c6cf20bf2535670a5fc37",
+    "runs/20261122-214158_E134-benchmark-eval/families/family_0000.npz": "eecb9b9ce2e17b1c61b36b8b2005095da3fc612b7cc6b143be1a489219534724",
+    "runs/20261122-214158_E134-benchmark-eval/families/family_0001.npz": "d15b139fbf03a1837490b7f56d50c97f06dbdda062c49463a6333e88c31d65d2",
+    "runs/20261122-214158_E134-benchmark-eval/families/family_0002.npz": "1e568860ec8e00817f0e8f148262b633a540a7db0d5ee84b9f27768da9756f76",
+    "runs/20261122-214158_E134-benchmark-eval/families/family_0003.npz": "badf97169cb041d8e552efce142869d9a99f08d11049281bbf2d6198e889b6b7",
+    "runs/20261122-214433_E134-A0-train/config.json": "818cd175a86e6c814656e5aa0d933d996f568dea8803f2f0dad29bdfa30c8fb7",
+    "runs/20261122-214433_E134-A0-train/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214433_E134-A0-train/summary.json": "b0494b82e94c0c9a7a872cc82886491873b0decb95a642712f65ab3657938a4c",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0000.npz": "272bd17f46b28edacb37e6958d32536dbc86f39028a0d66bf78a0d40e705e2bf",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0001.npz": "9a728edab259d5a164d9528ca0acaf8d28ede3853d587771485f8b3b134620e7",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0001.npz": "44c1028daf6963794558701f9ce2ce10291352dde06a4d339a2f115138ae1f11",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0002.npz": "72400db766aee7e0d218d2614695308539df94922049ff483f88a5ae9bf2ff49",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0002.npz": "0a4bfb93a2b3b3edaeec478eb552a4813eae88de56885b8bac2dffad9228a983",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0003.npz": "ee3ac9e65e78c9141f4fcf9bdb63338807822cffd54ec3f477590e9a5a4fa6a4",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0003.npz": "e6ea57e88e7050eac434ebd9125167a767902803f39704b8e0806f84c4898dad",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0004.npz": "3560d2d6d231603048c0e59764c26eb9166b224f5d3dc8604cd8d7dbfaf53b46",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0004.npz": "5d9dbaccf8eb1de56444a1c43f0fba205644c9edf6ec721d0f514387acf822bc",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0005.npz": "34a6ceb0006f2ca1db7c990acb1fce2afa1c68f18cca25210c505b27469b94a7",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0005.npz": "4fe1560dda1d298b22cceab0ce90cf1bb7f499a288095b6d00517f8057edac5c",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0006.npz": "8119780824951c05f85a716179ef4f5a382a613aed987ec2528cba8bd5bbb3be",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0006.npz": "57fa344606f948888804e8fe822eb034972fe4cc34f5cedc649aacc31141f577",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0007.npz": "b5bf532f40df6776b2ee80c520564e55458221510ef97179ed69928e3ee26d53",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0007.npz": "bd9d9721536114c56f1a26b0343751caabdc9cb6d3029bff9e2c3db14330fb06",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0008.npz": "f71d694e96a72466dbb9ed3d64a2efc53a5834ba4274bc35ac736fd2a01e34d7",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0008.npz": "739354dbd67668be65c1bafa9927da78c546eb3167f7039827e58e4b6bcceddd",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0009.npz": "94c16e0be31d9e392d6cb354bdddc0509ea8448df0f4458b897d3d2ea5b8abce",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0009.npz": "6d9361d2f0b21d3cc49252588c38961f8766536ec487a8391a8a331567666627",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0010.npz": "a3a333f16010c2531c837d62228f5f0fa90c099a69a3c15188c0f06e9da39dcf",
+    "runs/20261122-214433_E134-A0-train/generations/samples_0010.npz": "0e590952c8ea173cfeb26261b742074eac9f557e5478144a709f32e9b278d2c2",
+    "runs/20261122-214433_E134-A0-train/genome_final.npy": "936176dfea318a4ec698393e5b693877b8a1bd3dd4406db6d9c76778dfe76378",
+    "runs/20261122-214515_E134-A1-train/config.json": "101811f422b2a2772f60b763f951bcba84f94a00f0da98b1ce9ee3263f6fc0e6",
+    "runs/20261112-050319_E103-A-blank-s1/genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261122-214515_E134-A1-train/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261122-214515_E134-A1-train/summary.json": "3abf0e5aae5e0fd4faa247948662700a5c764711ece9b481611a4fae2743f95a",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0000.npz": "b3416e900b9fa06fe07d61c7ec8e621d3c9c8e2eb41ebde31ca3284ff6041500",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0001.npz": "22f88a2795e2fc8d471ac99ecec9930b9ab6821f02389cd72d945678a4e7388f",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0001.npz": "b03592825de68c880937c3cd6ab6f39a5cfe726ddc3466f386663878741da99a",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0002.npz": "6dec3e6c37ead27845c1e86e318e0098dd9b26aceb407b1004d2d265e410466a",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0002.npz": "443f748e92ff4707468b59b593e154c5cdb633333fb93c4474a3a5b4174809c7",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0003.npz": "f9d3b22a426b6c91faf3069baaa3fc5514499e301a7086bd00675b5c148781e7",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0003.npz": "e194c51b2e13f93177a3ed6ab49dcead328707c382dc6f01795026b1ed7f5824",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0004.npz": "eaf3f1e4d12a19d4eb91d44cdaa3d0d89244578be419ce5a3b3ed1b0d35b0091",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0004.npz": "88edcdfb96c3651e913f26e181a8b216ae306df483254d360ecebf3924bf85d9",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0005.npz": "b1a1c6a1e181a6a5af2625fe2b7d0675e2c8af992475034bd5bb648bb327f089",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0005.npz": "20a211572349bd70eaf4f64056888c9904fb8795569dde93004cf035decbb5e4",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0006.npz": "5169af54805e7715e206764c6268b5ae0218ac2da6ce47c89b2298c7569d16eb",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0006.npz": "a4c5ffd3fdd12f9a42fbbbcb7c29fb711434e6001afd8a504683737964d04772",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0007.npz": "b43beba1db309f6cc5c554c15ab052716f4763eae595536d7623df66e222d418",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0007.npz": "48b9e01569a13c9f4e8ef3e7e1e8e4d709d201e4b87b2656f27c98fd21fa9c2b",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0008.npz": "25c7c04231eec357c07f9ed512d077f383d4be5a7f6e73e0627a5364e82cbf3c",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0008.npz": "c297475a3e95deac815b4d19aecfa1e84e2f7af6e16eec548ebe72920282b14d",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0009.npz": "753bc180e2fec15b6e719b118eecf1d9d930273370591f2505d422625f2d13d5",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0009.npz": "044d82d82cb2a2de986e0af91f382bf9937f658184563ad75243410fff55ad8b",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0010.npz": "db450a9064c87ac50581d9bd9fc224cf96446aae08672e93e365217393c57d81",
+    "runs/20261122-214515_E134-A1-train/generations/samples_0010.npz": "6a223a440c2f9a6bfed60363bc096af0733429e52b71eb86a1d9c1fa7e5e5cb0",
+    "runs/20261122-214515_E134-A1-train/genome_final.npy": "ed054c08356b30ea7ccd80f4346f09a4f07cd371729c3d86e7b4a14aa837f37a",
+    "runs/20261122-214556_E134-A2-train/config.json": "e30dea71dd52f7c1639b2676751ce6eed477e339152f39bfbbde7df5044f2a8f",
+    "runs/20261112-102755_E103-A-blank-s2/genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261122-214556_E134-A2-train/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261122-214556_E134-A2-train/summary.json": "0e4faf98c274313598a2ab9d101f0d46ee1846f70873cf9127eab931a2050882",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0000.npz": "caf9c7291ab0f6a27e8e9b437555c8da574511398ad1eb4d4b003d5ddcfb7ea6",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0001.npz": "2eefdbb42f39aa811a45567beb607134abec5907e6bdeb7d6d3329dc63c8e914",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0001.npz": "b52419fb41fe3bf60089af46e539e4ec606be15ac0d677226120a10c91e7f445",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0002.npz": "de9c82f7b954b8ae5608cf2ea690cf412aa9ec0035ce3024b177ccd372b503a0",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0002.npz": "628859ff0f8e34f14da3ff1911ceb8f4078b5b5ba2c48137b8eb4edf373cea5d",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0003.npz": "7b3cc53c1ae11411163af48f591e83ca601bebeceae643e1e4249c75c370512b",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0003.npz": "d7521af272eee6607e541afed4c84e2f05db82775621b3dc9fd2f1590728e9ab",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0004.npz": "0425d4086a6b5404b8a19f79be82280c1a61b28fe648fbca94fa06255133ba08",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0004.npz": "36dfba6a5f4592db1d2fda0c3b55e5598372610a6379598e25d4c0bd6de4db24",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0005.npz": "ea9459e6ae4b89e410799ee7e6544a79af8d3075c29bff127cf4dd3e0fb5b439",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0005.npz": "3bd9782283081a0d89008fa231d3842720edd31ece045ecb8556d637a17e960b",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0006.npz": "0e8e082c0829fed7788df3f088bbd13e9390fc596842a2928b64a43b282d514e",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0006.npz": "f2ba7eb3fd5fa6e7c00c76f647bf61be38816606a1717aae3989fe2f55e96a1d",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0007.npz": "8abf5aaadf6662d37f9edbce10aa63fe38b801300b7c8a5d101a2a0708b626b5",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0007.npz": "833f582352d6936d58621afd1a10a05ad68a24289f34d92efa1ae069da82d1cd",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0008.npz": "6a1b25476226f7183b383376eecd87d40cb5ee893a7e13382640e9ad90448940",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0008.npz": "0f66e7d33baf076915d29449c6f8ad07fb48b6612756da5a88fb824633084281",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0009.npz": "30cd04bde630d83f36150c9cc6fa986b4446e9dbfe63ac00c5cb135701ea3558",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0009.npz": "28828c4e44a8a9dcaf27721f80f44e215c72c0da9e9bea4df274b9fb145b3dd3",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0010.npz": "03553b4d9755ebcd694620f7de73186803d7d275a7ab67130cf2d4b3e7990f79",
+    "runs/20261122-214556_E134-A2-train/generations/samples_0010.npz": "1a6cd3cd73068ab2dc05e5a69a6098a63a1a4b09e9a5cf371d3b8caa5f789a01",
+    "runs/20261122-214556_E134-A2-train/genome_final.npy": "bcf5ad20fd1e38c322bb459c3d694f64a7fe8ca018720a47c7942a49d2191e14",
+    "runs/20261122-214727_E134-A0/config.json": "dd6c2b96102a8b5c05573170498ee347664aa359a1acbd8de223ac82272f3afa",
+    "runs/20261122-214727_E134-A0/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214727_E134-A0/summary.json": "76c97e6ada7cab862920bc6d9284fb4089e72b674df9b23a708dc17f7daf7132",
+    "runs/20261122-214727_E134-A0/genome_final.npy": "936176dfea318a4ec698393e5b693877b8a1bd3dd4406db6d9c76778dfe76378",
+    "runs/20261122-214727_E134-A0/assignments.npz": "6eda523b8a114094a17f155caa3239910c564861632b0351ca1ee6494202d1f8",
+    "runs/20261122-214727_E134-A0/families/family_0000.npz": "f602b1031a5044f944f32f29b83aa127dab3ae02130722ee3bd058ba30b4339e",
+    "runs/20261122-214727_E134-A0/families/family_0001.npz": "45a8bbddeb32b480f55a9a575bf71ab1d637237da63abe5a1d1af4537c510761",
+    "runs/20261122-214727_E134-A0/families/family_0002.npz": "c66fe37ca4139328d2778f208951ebe703a213074c5976505d1518d09b243b65",
+    "runs/20261122-214727_E134-A0/families/family_0003.npz": "b128361421fb032b6213d56c3d747c6e356ec2d2b0bfdce25c8ed88bb6fafe52",
+    "runs/20261122-214727_E134-A0/families/family_0004.npz": "4b1793868853dcab0f7376571f5ee0346a1bba36527a7e668f34ffbfed62a12a",
+    "runs/20261122-214727_E134-A0/families/family_0005.npz": "a17fbead1e3d733c91cc6d7b8ae0f69b8a0a7095d15cb706203c4374a61a2e70",
+    "runs/20261122-214727_E134-A0/families/family_0006.npz": "bf2c7d671badcdbc6031b5a7c1a5da2fb67622b1985df9bf0daae1e43a70c4d2",
+    "runs/20261122-214727_E134-A0/families/family_0007.npz": "274b2505453fa46f23aa48327eaee630c4cb4f8a429016b2c0d62889231a1f5d",
+    "runs/20261122-214727_E134-A0/families/family_0008.npz": "a42f35874af6112a80ab4747ed4cb3aa06fa9ef4f16979e2672e92fc06680870",
+    "runs/20261122-214727_E134-A0/families/family_0009.npz": "8c158c6592b5b84956cc765e479d66532349bc13a278902c31303406041f8d31",
+    "runs/20261122-214727_E134-A0/families/family_0010.npz": "8b065a6d90eec8341280bcb6d9527491d3d60a64802d59f5336b7200bcab8a90",
+    "runs/20261122-214727_E134-A0/families/family_0011.npz": "4dc560637b271f9ca1c3c959703c696f75245bf837954f84fbd21e749b135f68",
+    "runs/20261122-214727_E134-A0/families/family_0012.npz": "a58e7cd408b3579ac0ebfa544416e30a96683fd2aaef22f8a82e4a045d277fdf",
+    "runs/20261122-214727_E134-A0/families/family_0013.npz": "38752a163149fbd86f5e1794e604174ef0895670bf9c7732448ef88600e706b1",
+    "runs/20261122-214727_E134-A0/families/family_0014.npz": "21f9daabe2e984477afca66a2ea24277294a80e20b0825222dda70a40cd759d8",
+    "runs/20261122-214727_E134-A0/families/family_0015.npz": "f42bd5afab6c198e623bd9cae7439e37be9d6e2a44c051766ee2f1e9b5c2bec2",
+    "runs/20261122-214727_E134-A0/families/family_0016.npz": "134794b78cec5109d9f53038ffcce1c2e8e25b7f7b5436aab316eb6006f9d9e0",
+    "runs/20261122-214727_E134-A0/families/family_0017.npz": "f56c2e506b21dce73d76da3e5bbdb09cb42f70506e5b5aa6e6c8397a2afa756c",
+    "runs/20261122-214727_E134-A0/families/family_0018.npz": "18a46d90727622cc1b21e0fc35b5593619b6d53087487a8dacc2e5fc9d2b4653",
+    "runs/20261122-214727_E134-A0/families/family_0019.npz": "3ad8f0b65b9ec2efc3e4f10f1c2bf2d9ad57fab53ec3213b73bdb48507412bff",
+    "runs/20261122-214727_E134-A0/families/family_0020.npz": "8fa426127fa7c8cde29636c40b17e590ac39df8e13a0a530585e75919a28d29c",
+    "runs/20261122-214727_E134-A0/families/family_0021.npz": "46afe317d3f975da439f8db9e61bbc18d071d7c317ae95568668debf90cd67f0",
+    "runs/20261122-214727_E134-A0/families/family_0022.npz": "dfaa43feacab77f8be492b03e842fa9812cba2583629ae2d093d3533342cf437",
+    "runs/20261122-214727_E134-A0/families/family_0023.npz": "4a399d2d22f10d2f601d76c3abaff7f0b2046b6261f51bdfc7d54615cfe5a3c9",
+    "runs/20261122-214727_E134-A0/families/family_0024.npz": "352eadfabe91eb4f2d9af3361092a40b16ab10495b3dfaac3d9fb5f07d5b79f6",
+    "runs/20261122-214727_E134-A0/families/family_0025.npz": "1fbc4be58e69d0c1dd92926194eed65a9dadccca909017ad4ceeac8444aec5d9",
+    "runs/20261122-214727_E134-A0/families/family_0026.npz": "55136fa2733f6b9de686074abadd40fd47b26f7da9c53ce00c55566cdb8b9b33",
+    "runs/20261122-214727_E134-A0/families/family_0027.npz": "3c49253a4130b91b683e773273d749a84530ca51eb832718c15dd068f3cb1f6c",
+    "runs/20261122-214727_E134-A0/families/family_0028.npz": "9dd81191178853a8c69b8be608825e3718ffc33943ed07b1baa4ea5e4a26ebd3",
+    "runs/20261122-214727_E134-A0/families/family_0029.npz": "3ec971e94f512a376127960c80e6d7998ee46836adc01840f09c51ad4b499b06",
+    "runs/20261122-214727_E134-A0/families/family_0030.npz": "caec5a5856a86b0c84c8d31d8caf66800caa0f18cdf8c3847708c9d37c5afffc",
+    "runs/20261122-214727_E134-A0/families/family_0031.npz": "fb0611402afe0b9eaf7feac4edfed86f400889985f7623262d59f798d391539f",
+    "runs/20261122-214727_E134-A0/families/family_0032.npz": "0746e02c58dc847a89bf11be8df2936d88824746e62bafcc6143e0688f8e456b",
+    "runs/20261122-214727_E134-A0/families/family_0033.npz": "760907eb34382102029886ba4e0696088daba8b7fa271cb41208bbb0f9da2739",
+    "runs/20261122-214727_E134-A0/families/family_0034.npz": "477f664621d92fdb0cd73e4a71b278d626d3da65895cb1ff371e5900cd8f3e57",
+    "runs/20261122-214727_E134-A0/families/family_0035.npz": "a39965abd8d8cd90d6b6c634a66ded6c2c0f892c22eac252f46c77431b9a8e1a",
+    "runs/20261122-214727_E134-A0/families/family_0036.npz": "403672a46e22182bfbd2d795cfb582aab271f33425e890893f63371afc1c8792",
+    "runs/20261122-214727_E134-A0/families/family_0037.npz": "574b3c9fc179aa3b6d7127f2dc83cbe16b12886a86ef5608dfb718b5c98cea0c",
+    "runs/20261122-214727_E134-A0/families/family_0038.npz": "560448b0bb05adfeaa54567baeaa5b40c85386150b2620bceb87f426b7758321",
+    "runs/20261122-214727_E134-A0/families/family_0039.npz": "d28b6f2e5c4b2d14c18b135214a674f0ad6bf2092fe21837e32fcb3fb9222cb3",
+    "runs/20261122-214727_E134-A0/families/family_0040.npz": "2581807dc15a770937b7b7bcb2f1092e52fdceff6aa7405d572f38dd02714643",
+    "runs/20261122-214727_E134-A0/families/family_0041.npz": "ef6e8b3c54b4f5f60b9b0ebad2e2e285dcb0f55c390052f5c6571c2bbd8c224c",
+    "runs/20261122-214727_E134-A0/families/family_0042.npz": "ab855e6bb99821a3b308b42a816cce621330d4f772d9df522e73c31d8f0b79bb",
+    "runs/20261122-214727_E134-A0/families/family_0043.npz": "898223edcaa9e4cbcd31df273f2c9bf16f5d0a66486a90de2d21412ff2031824",
+    "runs/20261122-214727_E134-A0/families/family_0044.npz": "1a6f3f002e4b3e82b4c6ad97493d9f1540e96daa2766d62eab14783bccb5fc7a",
+    "runs/20261122-214727_E134-A0/families/family_0045.npz": "0fd19dbff4ae6bd9459d50ae2a989658dc24c4caec7cb108cf36e14f9d7c8758",
+    "runs/20261122-214727_E134-A0/families/family_0046.npz": "c705564e47fe4a922700c35fcc1d564416847dacb70ed688ea349277d036b7cd",
+    "runs/20261122-214727_E134-A0/families/family_0047.npz": "737be4934678244220d12fd052d6c2329e56a76d9ad91b1a819d7e0b9dcbfe5c",
+    "runs/20261122-214727_E134-A0/families/family_0048.npz": "c01812122176dadf6e2722e92a4f5b299bf6a2f754224fe05c0a61c3361f7726",
+    "runs/20261122-214727_E134-A0/families/family_0049.npz": "d393eff31152e477170472f5e170e9d4a658db9994c1980c963896e929afa9d7",
+    "runs/20261122-214727_E134-A0/families/family_0050.npz": "eb427cf14f080c8b16efbe2acfde940677a47a7733bbc4e0f7b1ffb4436341c4",
+    "runs/20261122-214727_E134-A0/families/family_0051.npz": "f08afdf934804bc3b1235d9afbd3892891b679d82faae19f5fbb30fccfd79106",
+    "runs/20261122-214727_E134-A0/families/family_0052.npz": "585650e335ac1939c7639b586e26dba88ad880cc228e8693f6fc1d9735d66c74",
+    "runs/20261122-214727_E134-A0/families/family_0053.npz": "a782f1bb510f6f9b7e215e25b100e5125483e6c67c69fdfaf21954845fa7b3d7",
+    "runs/20261122-214727_E134-A0/families/family_0054.npz": "4ddb0711ed030e52292324b607a08be696f5c297b53add5c42a313ab41d24e8d",
+    "runs/20261122-214727_E134-A0/families/family_0055.npz": "0f5da3d7e54d402825c979b41a8d08deb635b27cb798666816d9490785030ac5",
+    "runs/20261122-214727_E134-A0/families/family_0056.npz": "008e5e31862fd64fdec4984823b6e63bb1ac1182502ce206d253ef5eeca2fa98",
+    "runs/20261122-214727_E134-A0/families/family_0057.npz": "b9c3406a6d4f3bb4d794f41caac95640868e396628047e8eba569ce5fb73017c",
+    "runs/20261122-214727_E134-A0/families/family_0058.npz": "4419532b95c558378f2e558eee6a92e1c182af21fe56ea88952bef7a86c1d5fc",
+    "runs/20261122-214727_E134-A0/families/family_0059.npz": "f6aa39bc5f1650be07a4771edca5abca112e82088c2aeb3d73930e7affd2542e",
+    "runs/20261122-214727_E134-A0/families/family_0060.npz": "83c099e82bfc911bd8111f252576c453f117078976295371a0fecf9abb225385",
+    "runs/20261122-214727_E134-A0/families/family_0061.npz": "8fade8f11bdac6e8df95a70c29b34ba93cc8895f0623ee4f7e95b34fba1a682f",
+    "runs/20261122-214727_E134-A0/families/family_0062.npz": "52c5e317eea009ea0aaf1aa0db35ee4d9512243632cfc18d3085fca22bff2a4a",
+    "runs/20261122-214727_E134-A0/families/family_0063.npz": "efb613c3d5654fa839be0262c0a03075f00b6290265a11e8a7ab35102816190f",
+    "runs/20261122-214727_E134-A0/families/family_0064.npz": "4ec7e81c4feab16d63614b9b2cd1460d43838593ba63f9662a5c4004bcf712d2",
+    "runs/20261122-214727_E134-A0/families/family_0065.npz": "b541923c82486eb6e5117a1ea080864a61873d1eec603a4599d562e37ad6c278",
+    "runs/20261122-214727_E134-A0/families/family_0066.npz": "31084b8bb026fae47d3d039bc1c9d29a070b0dc6f48dc14aed63407e1f531c59",
+    "runs/20261122-214727_E134-A0/families/family_0067.npz": "ee78fed62207c5c03982d4dcbb5bac7f5eadeaff396b4129e1d3da9d8555a98a",
+    "runs/20261122-214727_E134-A0/families/family_0068.npz": "183b0d3b29c80ada19c9031598b1be5f43dc29b6c7a564eb7575d045661a2c7b",
+    "runs/20261122-214727_E134-A0/families/family_0069.npz": "ec335e6349feba444daf24234fcaf079f44a68cd729063b445179e4f2d42029b",
+    "runs/20261122-214727_E134-A0/families/family_0070.npz": "d437d219055a0477620180af1d47d0e8d13990cd163578e21aa7fde373f684d5",
+    "runs/20261122-214727_E134-A0/families/family_0071.npz": "034cc95c3da4f3f8855b617eead77cd7b628c200dfecf89e5c8b80e4e74ecf3a",
+    "runs/20261122-214727_E134-A0/families/family_0072.npz": "fd8f7b2ae449ff46aa36c8ad2a9909f6198f45607ad02de2994a3e9eaeca4143",
+    "runs/20261122-214727_E134-A0/families/family_0073.npz": "2e437fe8c8c8d63e86639fe9752323d767566e60201991e36f94b237988fe0a5",
+    "runs/20261122-214727_E134-A0/families/family_0074.npz": "1fd502cd1c0fb43541235f9feb136f2c0e1c03c3c0fca39b39e5befea96bc4de",
+    "runs/20261122-214727_E134-A0/families/family_0075.npz": "71fee3a3ee55c35dee827fc044d48acc295d8cf2d123ff7cbe75b1c491fb4fb6",
+    "runs/20261122-214727_E134-A0/families/family_0076.npz": "74d7fa0503672c3d54e6354a61630e9d27e360e7b7d5a52cd8f1b3556774555e",
+    "runs/20261122-214727_E134-A0/families/family_0077.npz": "0e187338cf4fce4a8ff4bbe798fe72026d9049380fd9c5b1543c26a0024e6fba",
+    "runs/20261122-214727_E134-A0/families/family_0078.npz": "cacb00667a99621b62bee6c55022ce8d793f4880a59bcd808e7eb6550aad6219",
+    "runs/20261122-214727_E134-A0/families/family_0079.npz": "20ef69c20079dbd27f23a0f82017e1ce38feddd864431de76c05dc3274d1ad4a",
+    "runs/20261122-214727_E134-A0/families/family_0080.npz": "7647b44b9c5dbf6bccb5d35e5844eb85b165fca0bcaafe4a52416eca99f49a98",
+    "runs/20261122-214727_E134-A0/families/family_0081.npz": "e5e23f261fcab460453a562b54d614b505a6a65c36a1a59a732c6036f3d9bd5c",
+    "runs/20261122-214727_E134-A0/families/family_0082.npz": "62e735d63d1cae5ff58ec9b2c497ed44c0fd61b7de22e47bf0f69dcded3b90c4",
+    "runs/20261122-214727_E134-A0/families/family_0083.npz": "86ae6f66066107be38e038872c8dcf85164961794713553f7e6cfde83625908c",
+    "runs/20261122-214727_E134-A0/families/family_0084.npz": "6fcf169680c8717c9948d8c7379c076a76ca85dc60be95f5e567d20c0cbe82da",
+    "runs/20261122-214727_E134-A0/families/family_0085.npz": "c6c7ba33836e31d3c5703c1ffb054c09d8547a0f212b97398f344d4765d7d4ad",
+    "runs/20261122-214727_E134-A0/families/family_0086.npz": "45a6440610b0ade8c4619917f94498f95a60a5e7bd3adbd71ae5db43139b6e3a",
+    "runs/20261122-214727_E134-A0/families/family_0087.npz": "b7e400d51cb3c26834538ecde8990ab3afe259e8af8ad5fc0e6f9f0667798067",
+    "runs/20261122-214727_E134-A0/families/family_0088.npz": "785ead206f514f8f2dc50aa7c33157f919ebd838645d4fca28f3c0922bfe2c3d",
+    "runs/20261122-214727_E134-A0/families/family_0089.npz": "b8bf3cf8d13ec567a2269fd41d749fcb3fb637aa8b77d33d5ca9f6bc4dbb99a2",
+    "runs/20261122-214727_E134-A0/families/family_0090.npz": "e823ab703964b1e4c80754d6901a4d96443b656cf84fde590553183499be3665",
+    "runs/20261122-214727_E134-A0/families/family_0091.npz": "0b489a1eedb7db0c5d463303be04a99c9b7eb6c5a4af24afa9dba954c30d7262",
+    "runs/20261122-214727_E134-A0/families/family_0092.npz": "e53e14e976e2c799218bf180a3c9cb94170b70ed8349c3c2b46b6459dc1e104a",
+    "runs/20261122-214727_E134-A0/families/family_0093.npz": "d6f7056aa391ed3b4234d1d5874b3f1c9a02afa84534c0c80a3d46e301329283",
+    "runs/20261122-214727_E134-A0/families/family_0094.npz": "7042c5e4d57c568931254ed91c62e29fcd68cc518dc5eddb8b59591b943ab8ff",
+    "runs/20261122-214727_E134-A0/families/family_0095.npz": "78d317f294d39f1ace3a67708bcf4f8439745896445e695b25fd8e887bcaa651",
+    "runs/20261122-214727_E134-A0/families/family_0096.npz": "4d8d91656aac82ca08851052f9a9311547e7b8f8dc0ff124e7338a76115d5510",
+    "runs/20261122-214727_E134-A0/families/family_0097.npz": "da855207e1122d3a48769b69df93be3b901c77e047666a57d44939add57d6f6d",
+    "runs/20261122-214727_E134-A0/families/family_0098.npz": "fc6fc8cb49ad8f18984802bfb436d3650d1e7afdf328c8315e12c8f64f492b4d",
+    "runs/20261122-214727_E134-A0/families/family_0099.npz": "506fd0e94a522c18a212f1b933c467d155559c9909a31cccf36209fae73c2fea",
+    "runs/20261122-214727_E134-A0/families/family_0100.npz": "3eec5971a9edc47bb9da0e65765f726b5e8ee7e555f87b027cd984d22727a184",
+    "runs/20261122-214727_E134-A0/families/family_0101.npz": "8a8a20c2421295b56e382bf82d15ca652bc97be183c02cae4c6818f484c2d560",
+    "runs/20261122-214727_E134-A0/families/family_0102.npz": "b192ae0562cf0c078de24d935ed4d8713081b85df06860e0c2a539cfbcc81859",
+    "runs/20261122-214727_E134-A0/families/family_0103.npz": "ffdd9fc8c5520e6dd27a0ebb31d1ed4a0b783c3683575424deb276ac565b5b0b",
+    "runs/20261122-214727_E134-A0/families/family_0104.npz": "e54fd297e9cab74360f14dd1387e9e9e2839a2e5576b1bc787f3990c9932f569",
+    "runs/20261122-214727_E134-A0/families/family_0105.npz": "e730e9246a1b8c0e58d400838c0c756fda6cbb5f8a11f22b8646f51655fd5066",
+    "runs/20261122-214727_E134-A0/families/family_0106.npz": "92ab67e76674d57aafed7d777abcb5000376227b2dd8e620178d53340e6339fa",
+    "runs/20261122-214727_E134-A0/families/family_0107.npz": "fa35f10bbd5b1ecd190ca48823c0ed09cfc7295ffa7eac67f9489000e41e54a0",
+    "runs/20261122-214727_E134-A0/families/family_0108.npz": "66819742bedce75c8a715575165b55edd092e45a265d3e0cd0c3693531c5df91",
+    "runs/20261122-214727_E134-A0/families/family_0109.npz": "055d4e8aa1b474be0035b9703233e8697efb52c20fed1a26b8480b896154c835",
+    "runs/20261122-214727_E134-A0/families/family_0110.npz": "592c4701a75ec19f50d88a6b7544b237ef53558c7f78fddd6951237cd5427287",
+    "runs/20261122-214727_E134-A0/families/family_0111.npz": "581548ebd5c33d83e03816bc1c78e89f92f7910efdf413e399a3fe1d312fec3f",
+    "runs/20261122-214727_E134-A0/families/family_0112.npz": "84f002da4f1dd2c205c1de1dee325093cecfcff6115c13b5ff1fe0f440f3a05f",
+    "runs/20261122-214727_E134-A0/families/family_0113.npz": "04c7af8e0458982cdc144ab6344ed3f96866b4ef253cec3a301035fcc6efd85b",
+    "runs/20261122-214727_E134-A0/families/family_0114.npz": "4b51eb98b850674f9d535b2f80009d36f2d148d7ddcb0418b79244d5d0422195",
+    "runs/20261122-214727_E134-A0/families/family_0115.npz": "241b67c463b36e816cc8796e6fe342f037b2b112cc7f3044e659b5ea9f158c33",
+    "runs/20261122-214727_E134-A0/families/family_0116.npz": "f7f91f83ea120f6a703c7f4b2d2d5db65bb8ada2a15f0c125d7532423de6f381",
+    "runs/20261122-214727_E134-A0/families/family_0117.npz": "c2b9f8919ac2c84d6e4cfb542a4e2db98a573129c5e3b44ca1fd21218e80ddc6",
+    "runs/20261122-214727_E134-A0/families/family_0118.npz": "6a907a3036ff3c42321ef9e0b477eace4b520b505869d4358d1315bede6c4015",
+    "runs/20261122-214727_E134-A0/families/family_0119.npz": "3bf2e1bd6b5df6193e318290f841ba946f6d70cacb435308163d49072ccd3b50",
+    "runs/20261122-214727_E134-A0/families/family_0120.npz": "d56fed1f0f03f7ffe84f11ffab84092e2640e624f118939da4ebaa063b9deddc",
+    "runs/20261122-214727_E134-A0/families/family_0121.npz": "2d048414dc884cfdd8a44adcbdfcb9a4a6405848b0aeedf35e51ce1bef1d4b1f",
+    "runs/20261122-214727_E134-A0/families/family_0122.npz": "9f12d3269b037f1ffa788a2ff5ece901a03c3f800ef773296501aff91cebc174",
+    "runs/20261122-214727_E134-A0/families/family_0123.npz": "1f7fab07f18cba7929836632e5b6b120d62dd54d34dcb7f9c538f5b3cf7660d9",
+    "runs/20261122-214727_E134-A0/families/family_0124.npz": "2f0757ef0106a5e2db93d310038ce96c7e30f2727e38dd7f8a33215777234a45",
+    "runs/20261122-214727_E134-A0/families/family_0125.npz": "5dbf61b90137966b18f29c3aeeb5d54de1d5913583317ea3c4193bd0cf34b114",
+    "runs/20261122-214727_E134-A0/families/family_0126.npz": "7c619e1f432a2195770b32222be3041bf60ae75bf1308b1da2a90004390fe1a4",
+    "runs/20261122-214727_E134-A0/families/family_0127.npz": "908b11d68fdb8335bf765d4060fa11dc6746425a5ca90c45921fd6dd667696bf",
+    "runs/20261122-214925_E134-A1/config.json": "7ad006b4b5e4797d8c8786ac1f65b410336a71bada1deb05558cab09ae9f3043",
+    "runs/20261122-214925_E134-A1/genome_start.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261122-214925_E134-A1/summary.json": "b9ae4ab1177c78e41d492fdcd3a5be8f694242d49f9312087b87a418520d71bc",
+    "runs/20261122-214925_E134-A1/genome_final.npy": "ed054c08356b30ea7ccd80f4346f09a4f07cd371729c3d86e7b4a14aa837f37a",
+    "runs/20261122-214925_E134-A1/assignments.npz": "1711c89fb19254f63866c71265028c32635a13b88b9b482add33458bc06e172a",
+    "runs/20261122-214925_E134-A1/families/family_0000.npz": "b2bb3f4b7f6d3e623cedbe9489380aaf01c7ac0f584897ae588505a4cfa52d7d",
+    "runs/20261122-214925_E134-A1/families/family_0001.npz": "cb567801f16cf10b2154be259ce9caa55b2662c46c2fd75c3da155302c0759aa",
+    "runs/20261122-214925_E134-A1/families/family_0002.npz": "cdde843ea4946958b7929977472c64cbba6d7115d45087b9fddecd1ff040ed2f",
+    "runs/20261122-214925_E134-A1/families/family_0003.npz": "90c171b3f14c3034de877c2cfcd46b6651c0478e2d5a6b0cf1f9c9a0f44e810e",
+    "runs/20261122-214925_E134-A1/families/family_0004.npz": "c94d0b4cc7f90f70de2f1aa91a93068f0dd1855743c6e4f20426e6f568c049e1",
+    "runs/20261122-214925_E134-A1/families/family_0005.npz": "976f39aa7f6dc671af19d281bb51ff490d5089f9c7db8777e6beaea199ad71c3",
+    "runs/20261122-214925_E134-A1/families/family_0006.npz": "b8730adf7aead5e5a631d800f347822a5dd548bbb52dd174fcf998d257401374",
+    "runs/20261122-214925_E134-A1/families/family_0007.npz": "fcd64fcf9fb04197d63fb0afb654b07fb96c15c5879e611a02cdd5c07e22a55d",
+    "runs/20261122-214925_E134-A1/families/family_0008.npz": "f5dfa1b1e38d52445fd913c6d417b3a708ab16a25c83beea58c802104e379835",
+    "runs/20261122-214925_E134-A1/families/family_0009.npz": "b4e941ea14faee469931f596ca7b393b780256aa1663e9f05a6ae1a7f1ae53f6",
+    "runs/20261122-214925_E134-A1/families/family_0010.npz": "43d8e584b5753aebbcc96d5719b002a4635b937996d1655fdd689e3313cd7f4b",
+    "runs/20261122-214925_E134-A1/families/family_0011.npz": "1601c3576946efbf7e6238f83eb02c39c615126bcd2649cc51044702f0c54832",
+    "runs/20261122-214925_E134-A1/families/family_0012.npz": "e90d74caca6981aade97cece675438c1a2ecfcd22122579fcb60c35380957c8d",
+    "runs/20261122-214925_E134-A1/families/family_0013.npz": "65ba9e25f45fdb3b0fb1910d3584b7408e65453e16f606eec2884bdca9a106e8",
+    "runs/20261122-214925_E134-A1/families/family_0014.npz": "27780957d2caee15ac6572c3b9304327b85b8eab0aa59e89b26bd18a1274960d",
+    "runs/20261122-214925_E134-A1/families/family_0015.npz": "ac13afaaacc358c6d7141eea55f74c129beecd6795bf4c771145dc2e929d162a",
+    "runs/20261122-214925_E134-A1/families/family_0016.npz": "1835de8c94e1b68fc54df6cc219ec8db7a575bb2a52fd34f43df5f11ea0915d4",
+    "runs/20261122-214925_E134-A1/families/family_0017.npz": "59d4d152ddfc645cab304c6c0aa6ff3cc16f9f1c76e243924993863d9f8f9d0f",
+    "runs/20261122-214925_E134-A1/families/family_0018.npz": "64e5cccaebb8e82e260e70f8e7099cbd5a83c538f80bd13190a7dc9a39c96e61",
+    "runs/20261122-214925_E134-A1/families/family_0019.npz": "09f94773df3ff35f0466025a57ef1e32d0822b63c4e65d5a9bc3cfa154bc86cb",
+    "runs/20261122-214925_E134-A1/families/family_0020.npz": "ed2386c83607a1ff3f10c4ba906540a4bc4675def683430a2309ccd123892704",
+    "runs/20261122-214925_E134-A1/families/family_0021.npz": "c1b96fcdb52628744d583f3ed3aef2f11f71f08962f527e14d27bdd404e2c9a1",
+    "runs/20261122-214925_E134-A1/families/family_0022.npz": "8ee04c1df27511ddd6f18abd64166ab64d403436dd9f7628f48a2da696148728",
+    "runs/20261122-214925_E134-A1/families/family_0023.npz": "db19009485aa82728e468196d3465a885ffe22e61fea3d4a90538f1b40eafb40",
+    "runs/20261122-214925_E134-A1/families/family_0024.npz": "c7fd8f053990355469d9f6bd8bcc0a979f491d896cf4a53340e8029e57dfca34",
+    "runs/20261122-214925_E134-A1/families/family_0025.npz": "d9680ccef6814bd14cd72f5fbd8754eb671e14aa2a298036590e99adc7c956fb",
+    "runs/20261122-214925_E134-A1/families/family_0026.npz": "7fd8ff6933c7701f4d2a07d2b84c5ea57a860be89c1f291d75fb1b9a08fe6c4a",
+    "runs/20261122-214925_E134-A1/families/family_0027.npz": "a0e2a8beaaf25ffe9c6974867c4effc7a5be4df4b6c2eee7323929951bd97a41",
+    "runs/20261122-214925_E134-A1/families/family_0028.npz": "f570e4f852761ef1d4d1e279b3ce17e06d9716e03319421ac9a93fa769ed8a80",
+    "runs/20261122-214925_E134-A1/families/family_0029.npz": "d89259414d4b791890ea52383242180a0edb3e3b4823f631dfbb1f40bd8e8bf2",
+    "runs/20261122-214925_E134-A1/families/family_0030.npz": "2185839988f9a31682987e35bc3e0088f69a5d3456bc4574467b1b95f2e8d556",
+    "runs/20261122-214925_E134-A1/families/family_0031.npz": "89cac185ca1f77bbb3a0dc2412fb53b7c7e7cabb9aca47a61e3689bb3ed6e079",
+    "runs/20261122-214925_E134-A1/families/family_0032.npz": "c21f2c7bf773080c6c4179854d9f7e749c28596cb6f7a49d4473fdbb7f86e4e6",
+    "runs/20261122-214925_E134-A1/families/family_0033.npz": "369f28fe78cb33e075d0aa3889806b10e22aaaa743a76c3f9b3bbd0ef1ee1a81",
+    "runs/20261122-214925_E134-A1/families/family_0034.npz": "33caf4aa08fe959d57ccae734ffb8e23de4475922cc3dd6c0e684e6b1041c700",
+    "runs/20261122-214925_E134-A1/families/family_0035.npz": "a5f21344af405279fcad610ee67a7f5a1c1bfb807df744ed47e043ef288f40e7",
+    "runs/20261122-214925_E134-A1/families/family_0036.npz": "2be7241f51e092aca77110b397168b1e8bfe504abed33cedf458b208c43f7494",
+    "runs/20261122-214925_E134-A1/families/family_0037.npz": "d9fa74e30595971f3cc19018037c40e38278bf26decf085bafac2bca2172b121",
+    "runs/20261122-214925_E134-A1/families/family_0038.npz": "da948c1200f3c346131b3413ce033e14001f30883d79302ade1b1ab07fa4fa80",
+    "runs/20261122-214925_E134-A1/families/family_0039.npz": "e9c54036d392cb5192d21866b60bedf415485423af652010c69eecb2d51b4e38",
+    "runs/20261122-214925_E134-A1/families/family_0040.npz": "57860f484f292f597d8f6d358d20c0ee1182e4a4832f476e7ba37977f7e7bef5",
+    "runs/20261122-214925_E134-A1/families/family_0041.npz": "250f70e8eb3877f17452cec018f8e8b6b817261476124c7dcc68042d4ef6047c",
+    "runs/20261122-214925_E134-A1/families/family_0042.npz": "5f6ea77ad876cad34fd558eb6f8b4223763b02c7c14e0958ae6e46240ff87202",
+    "runs/20261122-214925_E134-A1/families/family_0043.npz": "2803074e8c3e347f97734aa14d7653526bb5a6f4a1ac902a52239b17d57860ce",
+    "runs/20261122-214925_E134-A1/families/family_0044.npz": "d6c509e8289ba9ab78bf50abc83a887b24c9af33cdb487244df403b27028513b",
+    "runs/20261122-214925_E134-A1/families/family_0045.npz": "b309fdc9eeba98ddbde7bf28706bbb8bb29f3a2ea77f23fbdf67154feda0130c",
+    "runs/20261122-214925_E134-A1/families/family_0046.npz": "880b23b832c4d95dd597c6ba538345b0ed26856d5d09810ce47dd699181a649d",
+    "runs/20261122-214925_E134-A1/families/family_0047.npz": "05fca9f13986c75e0503ca0275ffad4923c237f270c1fa2e19fac4533ec891f7",
+    "runs/20261122-214925_E134-A1/families/family_0048.npz": "c6469263394c5ee39ae14014c9782229612c2a2b49a13ea9f347c20517b0640f",
+    "runs/20261122-214925_E134-A1/families/family_0049.npz": "ba39c2c1ece0ee38e9fb90f52c1e456e485990b3fdeaa41728c4bc5ae8bb0ba9",
+    "runs/20261122-214925_E134-A1/families/family_0050.npz": "d28c3e1a2958cc609386efdca545e2c1044e6da1192b80858ac9f555fce6444f",
+    "runs/20261122-214925_E134-A1/families/family_0051.npz": "70e1f15637ea4b189250daf12a16dc8c027a51a10383f8ac437e1f0789b75884",
+    "runs/20261122-214925_E134-A1/families/family_0052.npz": "24ea5fc5db1dd46034102b0e1ea7f07ae4e0467a4691bf87c7eaa2f470b34149",
+    "runs/20261122-214925_E134-A1/families/family_0053.npz": "0f852a8cff32ec7f0a59999547977cbd26ef18fa7c3eed72571ac80192d9edcc",
+    "runs/20261122-214925_E134-A1/families/family_0054.npz": "e981b8316a47674160d5d603e13ff06ec475944bcc30db48bffc2a98c2d6f8b5",
+    "runs/20261122-214925_E134-A1/families/family_0055.npz": "d45b659c80d0ec2bd3e0ee9e562cad0f922d9a4be333bce27deac59d0927de7d",
+    "runs/20261122-214925_E134-A1/families/family_0056.npz": "31da7db0a8712d44684e229c974bbffb9022610bbc303ab5ee498f93a314389b",
+    "runs/20261122-214925_E134-A1/families/family_0057.npz": "7735b7b78c1d829cfef609173849b55e8da483ad7acbc7859ae122d597a37542",
+    "runs/20261122-214925_E134-A1/families/family_0058.npz": "0304e83708b401aeafe8fdc0158500ad41bfb9ff8d2463956476a70956ea7d9b",
+    "runs/20261122-214925_E134-A1/families/family_0059.npz": "7cb2822a5c70c1e30c3d6a9041e656af0fabb0f1aca90402a4d938c914520c48",
+    "runs/20261122-214925_E134-A1/families/family_0060.npz": "e1ce43dedd87ddc500ac7cfb9ff9c6b80b6f1b6404d87ac1c0fbed2087070072",
+    "runs/20261122-214925_E134-A1/families/family_0061.npz": "b1eaa7ca70ab72abc49c0a344a739750a0c2f92422bc2879325d6f0590983699",
+    "runs/20261122-214925_E134-A1/families/family_0062.npz": "ac3de493192775926a6006e745915272a700e9699e7651a48824688f37860963",
+    "runs/20261122-214925_E134-A1/families/family_0063.npz": "5a657bdab0cc5d85b92ad07cf23f90124793c162cf64bddd4d211be73c581862",
+    "runs/20261122-214925_E134-A1/families/family_0064.npz": "d71b6a9d7354bf775dfb3dbf30d022507334e970dbafd95670fe8bb7f9137a7f",
+    "runs/20261122-214925_E134-A1/families/family_0065.npz": "1c578110591d339faaa4eac8e7ac6902de7a35344eaa399e30b54c7ff343312b",
+    "runs/20261122-214925_E134-A1/families/family_0066.npz": "6d95b0858f16cf07cd1ff42101418e6f2deed2b7d0abd63900933ce785008c9e",
+    "runs/20261122-214925_E134-A1/families/family_0067.npz": "8abfd0f42afeb3c34c3ec529e4af4831f5a4802cc247ff551470e5ab8263fb1d",
+    "runs/20261122-214925_E134-A1/families/family_0068.npz": "f1cb92e42abea8ceb33c1290b7be511bc854efb3c8fb4c7843c9134f9867975f",
+    "runs/20261122-214925_E134-A1/families/family_0069.npz": "cb4a3f9183cd74f73371f9552cd004c2c2704da913409a9504a335f3420fede7",
+    "runs/20261122-214925_E134-A1/families/family_0070.npz": "113788e999bdc4638afb308a60a47f1a5a400fdbd0005a1922fcf27c5d75ff35",
+    "runs/20261122-214925_E134-A1/families/family_0071.npz": "f471cdd80e9c35fcc70507d3d1d8e57a98d3d13acf6a59f5a05b504d3e687125",
+    "runs/20261122-214925_E134-A1/families/family_0072.npz": "0d81e4d25181fb736108cf9ef10545135606509195f076ba129f95de32bbff82",
+    "runs/20261122-214925_E134-A1/families/family_0073.npz": "3ed6d0335b816d026018bf2ed7336b3671e1b42abf9595cf24d47ff66d749931",
+    "runs/20261122-214925_E134-A1/families/family_0074.npz": "986c4f78aed925c9b72adff10fa4b11fce548d109133b808b9365d3ca1b42f14",
+    "runs/20261122-214925_E134-A1/families/family_0075.npz": "f0e570ca64a0bfb00dd04075ca8c4bce2df6d58f4a586b29c4ccd56c144f1c28",
+    "runs/20261122-214925_E134-A1/families/family_0076.npz": "21aced0300339143624dfe4e61067c3c549002861d996001b1ee6644c71bfe39",
+    "runs/20261122-214925_E134-A1/families/family_0077.npz": "45cd4a7fe0dc48b7154ecccf8f5e4f605a781214643cbfdfd58e3aac8d6ff6ed",
+    "runs/20261122-214925_E134-A1/families/family_0078.npz": "470db7c0baa949459aa28e0f691e52eee91cfc45b213be7ddccd6f71e4e3cfe8",
+    "runs/20261122-214925_E134-A1/families/family_0079.npz": "b5e1020190505e6cca038d560b9cfaf3194af5d2f94ed3c348bbcb06713935e8",
+    "runs/20261122-214925_E134-A1/families/family_0080.npz": "58e4e33d5bd9d856d2d21c4db3523666fb54694aca2ee210c7c3918e79ab202f",
+    "runs/20261122-214925_E134-A1/families/family_0081.npz": "03800ddabe90624657597ef91627a5ee0c4eba96bc36102fbe15b5360018badf",
+    "runs/20261122-214925_E134-A1/families/family_0082.npz": "f0c0b6c243a58335eb596d77bb54b1d0b1db71fe6a7e593ce9c4313c36d0cbf3",
+    "runs/20261122-214925_E134-A1/families/family_0083.npz": "21d38086e11dfd2bbd6d6773e667bea6790a0e6fe30ac6757132455988f22deb",
+    "runs/20261122-214925_E134-A1/families/family_0084.npz": "f591bef4e6cad61e62d50146084d06fd6a4c6922bf529fe60e30f32788009f71",
+    "runs/20261122-214925_E134-A1/families/family_0085.npz": "fda0e102367b9d4fabf42d08120a717b946b400ea90ebe59a12a451684eb604c",
+    "runs/20261122-214925_E134-A1/families/family_0086.npz": "73b46a467b3c2bc37992acc2bbbca9489e282612278bdc7b447d87c82c7629e9",
+    "runs/20261122-214925_E134-A1/families/family_0087.npz": "177d48e5289fa7425a55a65e159a04de08f3f13d9edcdf5d8df282be33ac5e33",
+    "runs/20261122-214925_E134-A1/families/family_0088.npz": "ed167fa83c418a7f4e139ecb1e5b4fc7753911251375c393e0e0c5c39eeec20a",
+    "runs/20261122-214925_E134-A1/families/family_0089.npz": "71729a565e87f3c5dbda661ba164bcedb94e2edc2d8b338ee26271da260d78c1",
+    "runs/20261122-214925_E134-A1/families/family_0090.npz": "8acbd20cd39d66f362e5e795dd7d0085521233c9c732d5a9fbb13542f833dd23",
+    "runs/20261122-214925_E134-A1/families/family_0091.npz": "b4806e86f413509a5a461c501061a1155c39c0871a4efb790c57c82d4d4bcd52",
+    "runs/20261122-214925_E134-A1/families/family_0092.npz": "9f1a469deb7dc6281802ddfd7adb34d3f2b9fdb1050c678fff7cefb9a774e0a2",
+    "runs/20261122-214925_E134-A1/families/family_0093.npz": "e70f19546ffc144d943892134b6fa0b5b93d1df7794f3c96a242b0ef30bcd7ef",
+    "runs/20261122-214925_E134-A1/families/family_0094.npz": "288d91187346300c446b0a9ad1f353f78f537ccb8a01a8968f4d618936c1459f",
+    "runs/20261122-214925_E134-A1/families/family_0095.npz": "dec7615deeff465de385884df0d0cfd668e9070f0b36f76d99aba1820ca75b8c",
+    "runs/20261122-214925_E134-A1/families/family_0096.npz": "ff72aca4a571913ad938f065046bcf62a7dac21da9bc8768d08a44c8468bcfdb",
+    "runs/20261122-214925_E134-A1/families/family_0097.npz": "f9425105c7896deb400a3985f6c2e736bdfbd2123ca4380f746bce581ec6a768",
+    "runs/20261122-214925_E134-A1/families/family_0098.npz": "c3e7c302001f98ba766b5ac13c2a8a36012fdbb33ae87a7cfade7c34f17970f0",
+    "runs/20261122-214925_E134-A1/families/family_0099.npz": "93f9db52cfcb37b5e1162b7cbbbbf7817bfe03e59ab79d53889c75a34782b996",
+    "runs/20261122-214925_E134-A1/families/family_0100.npz": "5e2b9bf7133ce1f191ea337ef79714ff3691f7e8f1f7c5705294d06255282a42",
+    "runs/20261122-214925_E134-A1/families/family_0101.npz": "ed3f1ca646aa544f4a72b741a3cad93101805e6e185fba10f96a8a2c3a9ccd96",
+    "runs/20261122-214925_E134-A1/families/family_0102.npz": "34aae94a3efc2f8d330497c75b3f23095b380df72436e9c1e7b8152a7ae6de4a",
+    "runs/20261122-214925_E134-A1/families/family_0103.npz": "9130fa6be505c2de76284c49591734cd9501235698538a83329a650bf455fd1c",
+    "runs/20261122-214925_E134-A1/families/family_0104.npz": "51186a8d093ba549945ffd942bc74f34842160baf547da255a5a68ec792236d7",
+    "runs/20261122-214925_E134-A1/families/family_0105.npz": "639a0bffde0ada47a9a8c45d97ac4e282df12b54d544b81150f1d4ecb56645aa",
+    "runs/20261122-214925_E134-A1/families/family_0106.npz": "c2e674c0d4d839de4235b6c794377f97d182b6456c2e77039125b6c334f36f20",
+    "runs/20261122-214925_E134-A1/families/family_0107.npz": "79ac0e04f92e08ba877cb080cf4f6103f189330922ac71207e347d1a5fbf8377",
+    "runs/20261122-214925_E134-A1/families/family_0108.npz": "bb333f850144bcb1d712bd65d2abad6f41519d1b632d057845534eb28f42c8b1",
+    "runs/20261122-214925_E134-A1/families/family_0109.npz": "06ffd075aaf463e7368fb7a56268453a6e249972872e0d74a2cf8b7da9470a30",
+    "runs/20261122-214925_E134-A1/families/family_0110.npz": "46b4f0ee532a80016a6807f7f478efbfc074a8dad117904a700c8636f118a8d8",
+    "runs/20261122-214925_E134-A1/families/family_0111.npz": "ca8c6ce6673e40c83939b38c8022d97a78ca94c2b809fba89b75494ade9cc38f",
+    "runs/20261122-214925_E134-A1/families/family_0112.npz": "20d3cb9eb64305cf77e9f261dbc07dad5133874fb774158117ebc71fb1297b7d",
+    "runs/20261122-214925_E134-A1/families/family_0113.npz": "bef91c210f3efaf30d743ddbbfa630e82209cdd87d7481e1654d43c8e76a3974",
+    "runs/20261122-214925_E134-A1/families/family_0114.npz": "567928ee98db5f0084322ae5e86ff197d118877348b40af3f0a0e050dad1c98f",
+    "runs/20261122-214925_E134-A1/families/family_0115.npz": "80a28ed5081c25debfb512104ea2e37e2146a4021408ef4e3ff93d56d61e138a",
+    "runs/20261122-214925_E134-A1/families/family_0116.npz": "cb0aaa489cdd4703b468e4678f9ad444742ee01ffefa238c4acd9d4cc06aaa5a",
+    "runs/20261122-214925_E134-A1/families/family_0117.npz": "3470ff46b669fc791aea66da12ad6322bbbb2ea92a6bff4fa5cc825d89b14d83",
+    "runs/20261122-214925_E134-A1/families/family_0118.npz": "084de2622041a120c181e9a904a55fcc16237ec1742a5742f8782d4ecfa9823e",
+    "runs/20261122-214925_E134-A1/families/family_0119.npz": "65d2309c2eb601d2f812fb5556f007c7081a03abfdffb0539399a72de10e3a73",
+    "runs/20261122-214925_E134-A1/families/family_0120.npz": "7b356a4e63973b9239d4779712e436251c43d699209a52e818c86267c3b0fa05",
+    "runs/20261122-214925_E134-A1/families/family_0121.npz": "db51b633724a6d24212b331974dd4bfe7e23909cf4f09cde55a4c3cb3eb6c3d4",
+    "runs/20261122-214925_E134-A1/families/family_0122.npz": "02e9a5b8a1803c2f966ecc7cd737d7ff18cd0baa5b64dafb28ab97fad17599d7",
+    "runs/20261122-214925_E134-A1/families/family_0123.npz": "905afd13f712f6960dce043341153d31df14cf18f451f124ed2b7eef6fe55740",
+    "runs/20261122-214925_E134-A1/families/family_0124.npz": "f6eee3708dd91ae252198e0ad7ea689dead59268652b75df4b68421108d63aa0",
+    "runs/20261122-214925_E134-A1/families/family_0125.npz": "5d648d16cc94b69e6cd0e1a59e52e75deb8cd50f05a329750fa8e75e6e659256",
+    "runs/20261122-214925_E134-A1/families/family_0126.npz": "22df6fc3f36683eb6f2abe3856ba3d0c37b00c81946aa7cc3c2336791d7caa2c",
+    "runs/20261122-214925_E134-A1/families/family_0127.npz": "8bf1d10290e3139a0fce325495d137ce4ae9c97d2cbf43266ea7ea7c170f390e",
+    "runs/20261122-215128_E134-A2/config.json": "c9d05e6453a0ef28199a7442426851341f5dd4641b895dd5eeadd95720db399d",
+    "runs/20261122-215128_E134-A2/genome_start.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261122-215128_E134-A2/summary.json": "091cdf3ff77a1110e26644d1f0a90d7979bffc6355190ff4ff91a24ced25aaef",
+    "runs/20261122-215128_E134-A2/genome_final.npy": "bcf5ad20fd1e38c322bb459c3d694f64a7fe8ca018720a47c7942a49d2191e14",
+    "runs/20261122-215128_E134-A2/assignments.npz": "c585ee14697a7d1f0574475eb192d74fbfb8a559bb50f2139b3291676ce99910",
+    "runs/20261122-215128_E134-A2/families/family_0000.npz": "5c12d4843c20f7c535f1958dfa65f71b95c262a2e543b1e8f7699ccafbc30e92",
+    "runs/20261122-215128_E134-A2/families/family_0001.npz": "026249d1655d98ed5914efa25f6fd83542b91852be23ba4a2ed81b8253d12905",
+    "runs/20261122-215128_E134-A2/families/family_0002.npz": "49f1b4490e5e38be15cbe64bc11b6a41d37c8e417f14ba079a8502c67397638b",
+    "runs/20261122-215128_E134-A2/families/family_0003.npz": "a64b68b03712986d1f1540a3aebfcf3ffdd78b7972a26c5b621ded4b80366e6b",
+    "runs/20261122-215128_E134-A2/families/family_0004.npz": "f18c2d3020148587fa43f1efd28c9c6aa849839131a9d11144468bbe6eeca868",
+    "runs/20261122-215128_E134-A2/families/family_0005.npz": "c62c26c416a9ba200c97286ae5e920787a219172c2eb26f270af925275d599cb",
+    "runs/20261122-215128_E134-A2/families/family_0006.npz": "005b2aaf540d7b71c47905563ab1550d49c51c5aa843802e9a3e82576eef43da",
+    "runs/20261122-215128_E134-A2/families/family_0007.npz": "a81359bef658c40cf4c909ef3dd97ddfbef5d92ed47d992601bd38f847100929",
+    "runs/20261122-215128_E134-A2/families/family_0008.npz": "871a5c229c0b172c75e718cb5a930e8d2b1bdd9c95b154e4b546b1aa0161d837",
+    "runs/20261122-215128_E134-A2/families/family_0009.npz": "d0adc61e670ae4fd81256cff937a69ac87ad69859a89de6ca72ec26e31537ecb",
+    "runs/20261122-215128_E134-A2/families/family_0010.npz": "60dcd1fe445feca88c811b217b4a8591d3efd9778262d8ed039c3e32a5d9f329",
+    "runs/20261122-215128_E134-A2/families/family_0011.npz": "783128c5e2948b451fe76797930ceeb6a1ca7624c9c9156ff5ab5dd0a29e6825",
+    "runs/20261122-215128_E134-A2/families/family_0012.npz": "5224fb0c2c148dcd712dfb17beb757abd4c9e98e319856f1ca802ce32fdc47cb",
+    "runs/20261122-215128_E134-A2/families/family_0013.npz": "b861626c138fc05a9930d504f30c152d16a7e60d7b94b30f553a17f92c0ba7e8",
+    "runs/20261122-215128_E134-A2/families/family_0014.npz": "51414bd8f219318bf96aea673e7a3d7e2f068f2ce68c085a013197a3dc523859",
+    "runs/20261122-215128_E134-A2/families/family_0015.npz": "1743c1030a756b1b5e26c2483f02918f60aa9e021d05fff82b35c2f4c576ceaf",
+    "runs/20261122-215128_E134-A2/families/family_0016.npz": "3768e7198a8a1fce4b1626634d96f5222ee019dfe15a44527df7c7904c97934a",
+    "runs/20261122-215128_E134-A2/families/family_0017.npz": "884253c0d01bc1a6269ff929184d604be9ef8e18256f38964a60ba48ae06b709",
+    "runs/20261122-215128_E134-A2/families/family_0018.npz": "6d38c113628732fa2042daba9b7223a01cc2e48fb85d70ce934d1d6b2feb42a5",
+    "runs/20261122-215128_E134-A2/families/family_0019.npz": "b0295ed325952dafd8cb9c7c6910f4679ad15a733254a6569c69c8fe3d256faf",
+    "runs/20261122-215128_E134-A2/families/family_0020.npz": "94f9b5703deab0dfc34b6ddfbe62355acf7b6ab4a42ca69f152ed14ca7a26cc7",
+    "runs/20261122-215128_E134-A2/families/family_0021.npz": "67167f0cab00ad8d57dd9b2d759f633fa645732da028cef81262e12c3db2fe0b",
+    "runs/20261122-215128_E134-A2/families/family_0022.npz": "a3d174f645e0e2d8a1e8b8b62c6e6d4c214d7d6a0002bb1a35a25ea26085fe72",
+    "runs/20261122-215128_E134-A2/families/family_0023.npz": "f48a850291c0e2a376d54134f7efef31e77261778be5052b6142f7c5bb7a4bb7",
+    "runs/20261122-215128_E134-A2/families/family_0024.npz": "37c91667ed94889524a0afc53a5be74b1605a5569a5b0630f3ae03c69a1ee650",
+    "runs/20261122-215128_E134-A2/families/family_0025.npz": "2ec5d7a2cd3a7b8cea7f7ac74dabac862d6639a3ade08371fceeed68d28148e3",
+    "runs/20261122-215128_E134-A2/families/family_0026.npz": "99f4dbdeef304837e73abf8d134d2bbde34a21d291fdb0363b1c9fdbb2500168",
+    "runs/20261122-215128_E134-A2/families/family_0027.npz": "1c22f5952916275996c4fe527ad6e59e30402289a3db1f0b201040f7583a92fa",
+    "runs/20261122-215128_E134-A2/families/family_0028.npz": "c24587019598a074d2b6909d841f25b7791ee79f7c1e803c80573b7d113913a1",
+    "runs/20261122-215128_E134-A2/families/family_0029.npz": "11d85dd777219446e863dc4348e020abac5a73e43191e7d86c6f043a36e0c67c",
+    "runs/20261122-215128_E134-A2/families/family_0030.npz": "a329b6f98a49e5d52ac0085ecbf9d4b2969c37fcf9f880bd740c6e8c526b7bab",
+    "runs/20261122-215128_E134-A2/families/family_0031.npz": "1122b09d9e6062e1cb96295b3828172c9877bd7ca04e290d708361211153d415",
+    "runs/20261122-215128_E134-A2/families/family_0032.npz": "73a36d3c0b3334c5a4210ee3281629bfa8aa68484bb6d472ea07771e46b4abb5",
+    "runs/20261122-215128_E134-A2/families/family_0033.npz": "87fdef17aa81932282ec7fd3acba1c8da0fd5a9ebc93208ca0996d3b2e0224af",
+    "runs/20261122-215128_E134-A2/families/family_0034.npz": "5143956dc61e0df7be504ea8787b5d76012b61248df0b96b026ef1fbddfece45",
+    "runs/20261122-215128_E134-A2/families/family_0035.npz": "c0bdecd22e2f937e0cbdf4feb4f9b72eefca211b7c699aa4eacab6c52e06b1f9",
+    "runs/20261122-215128_E134-A2/families/family_0036.npz": "d84b6b8183dec84f181cd70f8a72d520fde668fbcbda133da024d74e4d95d536",
+    "runs/20261122-215128_E134-A2/families/family_0037.npz": "27d4635008b023632182dca6adb225c00a69a29d04eec79763d7c29ffc85bff5",
+    "runs/20261122-215128_E134-A2/families/family_0038.npz": "ce3443edfd2d3ae00ec5a398cb0bf8865030749162d751e99a0e3bcb1dbe62f8",
+    "runs/20261122-215128_E134-A2/families/family_0039.npz": "96a48d1950122323581180bf35eda0c28a9f5b0b35fb98cb011e19c4f02e505c",
+    "runs/20261122-215128_E134-A2/families/family_0040.npz": "603fd9addc8569778568108debc833d298f504a25537db95ff4f0fba63be3188",
+    "runs/20261122-215128_E134-A2/families/family_0041.npz": "6fba50ac2ccd8d76c540abcd28f4587c6b89a8839371e77ff4045127528a952c",
+    "runs/20261122-215128_E134-A2/families/family_0042.npz": "2172ff903f01f11b4acc93a0e6d0d85afaa6a2cc35b2c125a7a2ee0c9fc7216f",
+    "runs/20261122-215128_E134-A2/families/family_0043.npz": "44fcbc8d35661b9d4f58863d0933419964dc2017c74c44e6084e17283992afb5",
+    "runs/20261122-215128_E134-A2/families/family_0044.npz": "252699174431ef32bfaef05ef19123de66b0a1f467aa75dd393f4d5524e2b26c",
+    "runs/20261122-215128_E134-A2/families/family_0045.npz": "06fec0af81f909b2a4f545944b3620c76edd3f3ded11f5b972845069c26bf68f",
+    "runs/20261122-215128_E134-A2/families/family_0046.npz": "ff71a9c9ccbe720ce133f6304dc6405004823ebecfc11377cbccc06883e283c6",
+    "runs/20261122-215128_E134-A2/families/family_0047.npz": "2c1e9d3c68190a1e48ea5351ac1c7a5481a7dafa97a179ddcdad32874ce90b48",
+    "runs/20261122-215128_E134-A2/families/family_0048.npz": "d1251f4df6f9f8c6417664bb70f166d335e6f95c7d73a9d183548d547e595553",
+    "runs/20261122-215128_E134-A2/families/family_0049.npz": "1c953d024c210fb27f677bf9b7694c0a5349eaa3e0d30aa959a19604997c21a1",
+    "runs/20261122-215128_E134-A2/families/family_0050.npz": "02ba0dbac589a1f738465624a580bebb8403ded635ab15d3e45cb347de916dce",
+    "runs/20261122-215128_E134-A2/families/family_0051.npz": "f7ec102af186d7b9c50ff333a21ccd0c2c93aa33fb08abac3db988da07a13d03",
+    "runs/20261122-215128_E134-A2/families/family_0052.npz": "fdbcbbf3b489628afba9958083739606be2b472ed71bd7ee0d793100d7e72ec1",
+    "runs/20261122-215128_E134-A2/families/family_0053.npz": "0c5e37691716d60b8396c7f6424343327a14aedb528ff59153d5cde8ac102210",
+    "runs/20261122-215128_E134-A2/families/family_0054.npz": "15cd1a09b6a66dbc89d3511a8e1a0dc075ab31913c4e22e3af727f5b41e1ca1a",
+    "runs/20261122-215128_E134-A2/families/family_0055.npz": "c7971d9e6295adf2f13fcca15d244d375f531036e4b0503b7420924b97b8fc15",
+    "runs/20261122-215128_E134-A2/families/family_0056.npz": "8fc51389e4ca53e6579932169a3e1be2a1ffc5382b3a60e923742936a69518d0",
+    "runs/20261122-215128_E134-A2/families/family_0057.npz": "ce23af99f1100a988e5df6ad381cd91d695957247fbb85fd12e4dc1f29923e78",
+    "runs/20261122-215128_E134-A2/families/family_0058.npz": "08c70e37276004b05b1ef2039f8028096809baa1948901ee6bd44c228f534d3a",
+    "runs/20261122-215128_E134-A2/families/family_0059.npz": "324b4c64d3f4f6cfad062bc293ddd75ee56231d497238e96ebf3590603514378",
+    "runs/20261122-215128_E134-A2/families/family_0060.npz": "f6db633d209639f96f2f7e5e8eee5104c6aaea0e8ce617ed720ac3e3de2f87b0",
+    "runs/20261122-215128_E134-A2/families/family_0061.npz": "4899313daf018f63be57131dc0be12714425c52682bdba9ee22675feb5592115",
+    "runs/20261122-215128_E134-A2/families/family_0062.npz": "3bb673ca5b1b464cc411fd53b327c38cc30b950ad77b67cef0be796c6583431a",
+    "runs/20261122-215128_E134-A2/families/family_0063.npz": "a2f2c145af1587f61554bbf7a48d3012fb85e13f7ff0d99f40442515af734713",
+    "runs/20261122-215128_E134-A2/families/family_0064.npz": "a56c20d7c7352f34a771d20c6df1999a2f21bce510399f326bf9ca3d4480ce17",
+    "runs/20261122-215128_E134-A2/families/family_0065.npz": "5356f566065a2496d479d02857c7d643ce3be5b7a23f7e84b7efdd4e1768c1fb",
+    "runs/20261122-215128_E134-A2/families/family_0066.npz": "0ce52c0c27013bba3cddc9866e6e582fade4b70a128a9f254614ef78468ee8b9",
+    "runs/20261122-215128_E134-A2/families/family_0067.npz": "a67fd58f244a595ce13a521b5fd70d95511f0d260cd1de2fe2a500f1c7a7a503",
+    "runs/20261122-215128_E134-A2/families/family_0068.npz": "1f9591b50bf82b45919684aa0ef95f75ffaa356c472c27dc84c7f67282216691",
+    "runs/20261122-215128_E134-A2/families/family_0069.npz": "7c74702ea81037cd574728f9c68f7bd88f94c532b4da49a1dafb5d0a1b26e180",
+    "runs/20261122-215128_E134-A2/families/family_0070.npz": "8f2036ba9f5d7c6da6bf1fa548d9d8a88528ac3b5e9d77f27bf769f3d1765feb",
+    "runs/20261122-215128_E134-A2/families/family_0071.npz": "3e197977cc04d12db41853f17186db87d63f031f45f296babcb1bc4dc8ef83b4",
+    "runs/20261122-215128_E134-A2/families/family_0072.npz": "79440e05c41ef25ee08d65dd35a7d69cf718b57faa3aaf96bbce79ab8c61ab62",
+    "runs/20261122-215128_E134-A2/families/family_0073.npz": "5dd1c2f82720834f440c836fbe818b4da9158b30de4ada0d1e3dac48b32cdcaf",
+    "runs/20261122-215128_E134-A2/families/family_0074.npz": "974aa55fb3c9bcf050b94df2d3bca0719545be26bdf3bbea771530592ef76575",
+    "runs/20261122-215128_E134-A2/families/family_0075.npz": "8358a2e093ddda09dd00d5d91272ace08344175c61619e561ef693493b0e5c79",
+    "runs/20261122-215128_E134-A2/families/family_0076.npz": "ca328d9a03f38154bbb5bc7e7bbc69296e832db4f2c7ef4aeb6f93f07f7f1be2",
+    "runs/20261122-215128_E134-A2/families/family_0077.npz": "ad2e42249a09def1e28795e9d33032196cdd20ccee0577463571a82819760518",
+    "runs/20261122-215128_E134-A2/families/family_0078.npz": "c12ffe63756ec244f60a1606d1e9c9088251841159dccead1322d96d1a5a4da2",
+    "runs/20261122-215128_E134-A2/families/family_0079.npz": "d19dd36eda9a9752e24edb691b7ca502ca24ea8b0167865e03ff63cad277b501",
+    "runs/20261122-215128_E134-A2/families/family_0080.npz": "0ddfd2cc303d2fa2ff6067542b77b681fd62abe0ac9d6b430ebd12a4f77e889d",
+    "runs/20261122-215128_E134-A2/families/family_0081.npz": "2e29d11f9c101c678e9f3ce10180a1a3f08f3fb22fd8a45cb47882cbe84f2b0f",
+    "runs/20261122-215128_E134-A2/families/family_0082.npz": "8bb898becdcb9e3466a750be9311b3d50f9831b87752914f03731fc15e77e46d",
+    "runs/20261122-215128_E134-A2/families/family_0083.npz": "baf7db3a02711415e67db40813619880b073a43bbebbbbb41f77cf1fbff8040a",
+    "runs/20261122-215128_E134-A2/families/family_0084.npz": "76724844aad31d7e26409031874c3de6dd78a5a8f5c9654c3a7662c64bdc5f8a",
+    "runs/20261122-215128_E134-A2/families/family_0085.npz": "39d8ac4d45fb82742ebc3fe71a91689a725832bfec1d36739646401efe57e44c",
+    "runs/20261122-215128_E134-A2/families/family_0086.npz": "7bb5252f864530ca3413bfdb02753978ba8cd7033f4c9480f70830210b1d155a",
+    "runs/20261122-215128_E134-A2/families/family_0087.npz": "19b853dba32efbf72874399df83f0d114d4fcbb16dcc8f070b839d4d5443b3f7",
+    "runs/20261122-215128_E134-A2/families/family_0088.npz": "f13df93060931dea80c3062bd495df27128820c20ef3671e2ff629c841554f2a",
+    "runs/20261122-215128_E134-A2/families/family_0089.npz": "10cae4137e6bc7d5a5f6bec8894674692197606ff00473208781aad336788578",
+    "runs/20261122-215128_E134-A2/families/family_0090.npz": "6f48cf05fa1c12ff67250f97d61e4cb0e8254c4a474efe17e3b61e4036c1ebd8",
+    "runs/20261122-215128_E134-A2/families/family_0091.npz": "8c4ffb7cf03a76ff4bb9070221ce86c4cf6b312b93d01ff17924c99a2c335c8d",
+    "runs/20261122-215128_E134-A2/families/family_0092.npz": "8316b84c91978a6d0ecdcd6a20427cfbbc3d3f62b2e80cd6138ab5718e48709d",
+    "runs/20261122-215128_E134-A2/families/family_0093.npz": "2d7dc15cac80c06a65ccc7c0798391e6cd4ff5d9ddf322c9f5e5560dbe9dcd5b",
+    "runs/20261122-215128_E134-A2/families/family_0094.npz": "895f5ef72a6ebfd7762e45b9762886a862e3ee3f0b25638da128b5736e496a80",
+    "runs/20261122-215128_E134-A2/families/family_0095.npz": "fe77c6965fbc7ca8d258aacd44995a59ebfd6f2707fc7a6328830886670f3915",
+    "runs/20261122-215128_E134-A2/families/family_0096.npz": "39aff2f64b0cb3455ba4fc7074ab8bd6fd5b997811a12b88f7e8e084b9f7c66e",
+    "runs/20261122-215128_E134-A2/families/family_0097.npz": "e1016b5a684ed69010cb6ba69d29c8c9cb3c2fd8e0a41d02f07a7ae9cc842a77",
+    "runs/20261122-215128_E134-A2/families/family_0098.npz": "a04744717ff317d46f1887807ad6e7dd7a78596f5646a4e4b1c22e64d2981e4d",
+    "runs/20261122-215128_E134-A2/families/family_0099.npz": "3f314ae72cb1955a974e06422d58403fae792944bb39b75dd215db80360d1121",
+    "runs/20261122-215128_E134-A2/families/family_0100.npz": "f7f0068ce4335cecef0ffc97472d612e9c9da213d6d43e3d937abd1aa1a8eeb4",
+    "runs/20261122-215128_E134-A2/families/family_0101.npz": "057ba9d87569f76ac58744358d5de447b28cb134ffe5b20a1393eb30eaa1c695",
+    "runs/20261122-215128_E134-A2/families/family_0102.npz": "86ec9f0b41e500124644a60454b2d35a0257bfa3cc2022684e4ab7f2e23749eb",
+    "runs/20261122-215128_E134-A2/families/family_0103.npz": "a1b3fdbe79650b09196959e21369741fe8203eea529663f0734e893eaf431064",
+    "runs/20261122-215128_E134-A2/families/family_0104.npz": "83f58fcb9edaa4bd7a30433a74b61e314a7627c3a1ba429632e1f01e847cd3e2",
+    "runs/20261122-215128_E134-A2/families/family_0105.npz": "b9a352092cb616b2cb7396d4c2a7b1193cdb068b602210f43fcd45e85cb9a0ed",
+    "runs/20261122-215128_E134-A2/families/family_0106.npz": "d7f34de8d74610923f31009a0a94d8be49d9c58c4fbac364ed94d0db4b93f86e",
+    "runs/20261122-215128_E134-A2/families/family_0107.npz": "7b37d0411ece5baf08f86232d246636e17ddf18fd1184a37ee9fc9717cdeb77c",
+    "runs/20261122-215128_E134-A2/families/family_0108.npz": "d54d1a3802acfddb557580ca5fb2f5b00f87d8134bcdc9ab0751eeb9d4c9db8d",
+    "runs/20261122-215128_E134-A2/families/family_0109.npz": "ab2e4c09d97bfcdedfba9703003c61b6b1221bb0d3b11140da8541316a5b18c4",
+    "runs/20261122-215128_E134-A2/families/family_0110.npz": "82c02b8ab6d963fb603f533583dd7591ffdfd58f64d548b9219ff8eb90fa2a82",
+    "runs/20261122-215128_E134-A2/families/family_0111.npz": "4ad5b894c68af6dbad8c6c2a9e1e990afcbd3803f28df6a402d8f4254c680c46",
+    "runs/20261122-215128_E134-A2/families/family_0112.npz": "ae6d5681c36c204be7ab2d0588d5b867b468bab68af56fce4f854754e5c0c64e",
+    "runs/20261122-215128_E134-A2/families/family_0113.npz": "c4c0590a8a235ded963ee5c9155a068a7fe20ee68816c0d205bc44668be09b09",
+    "runs/20261122-215128_E134-A2/families/family_0114.npz": "77f356ebc76c93599692c9f011dffad3f0c20c83f0e0f4cb5a688aed07f4a2e0",
+    "runs/20261122-215128_E134-A2/families/family_0115.npz": "ac645f343555e0b9cc221a15d9f2e0e549b7f64a1a1bed4ededc3cbe1117de8b",
+    "runs/20261122-215128_E134-A2/families/family_0116.npz": "1093ff14428e4764008aa6bb70edd7872e630ed5276b880d5e4f3fc9facc7a01",
+    "runs/20261122-215128_E134-A2/families/family_0117.npz": "f0c0b01f708aaa0bcc0d5e960369c8dfd9d6f39394ed12611fb101318c318e8c",
+    "runs/20261122-215128_E134-A2/families/family_0118.npz": "1ed343f4cf7cbc88b22dcc9d20c603ec2a4df67c844e972f461acc242cfb85f8",
+    "runs/20261122-215128_E134-A2/families/family_0119.npz": "16f35eaa8cc14a83e04553449256891be61d0068cb6bbce9f19530a8686e2c49",
+    "runs/20261122-215128_E134-A2/families/family_0120.npz": "368b584892650d7cfa37628720e96aae01b9a7ad6937dd42022ff65db64f2903",
+    "runs/20261122-215128_E134-A2/families/family_0121.npz": "f550608c43467722e09aef241a18519f7c91f2219bf0d5996af4b5417a23be36",
+    "runs/20261122-215128_E134-A2/families/family_0122.npz": "740ec35322600ad7410355633ec50259a4ca2b1738145928d6a8db0ecde2848f",
+    "runs/20261122-215128_E134-A2/families/family_0123.npz": "be84b4ab9328698fe743b98639a9657ae962a2ca2902ed86066960e2861fa043",
+    "runs/20261122-215128_E134-A2/families/family_0124.npz": "6daca13aebf16e3e2cd9dee864a23b086c2bafddea2bd0c84638ea939d0af229",
+    "runs/20261122-215128_E134-A2/families/family_0125.npz": "06999417b0e19270ad8947a7a5f7e1e2ff9b42bf2303db4b4b79d4c1de96a0a0",
+    "runs/20261122-215128_E134-A2/families/family_0126.npz": "92b669ab5dffca118a897e84a666056d4005ea2f4ed45b9a58a0c2c4a56224ec",
+    "runs/20261122-215128_E134-A2/families/family_0127.npz": "57132289ee467ee4724d9dad0b17f74895cca42693edeb30ba05cc1fc012a644"
+  },
+  "timing": {
+    "training_attempt_wall_seconds": [
+      2.25,
+      0.06300000002374873,
+      0.01600000000325963,
+      0.0,
+      0.01600000000325963,
+      0.015000000013969839,
+      0.01600000000325963,
+      0.0,
+      0.01600000000325963,
+      0.045999999972991645,
+      0.01600000000325963,
+      0.01600000000325963,
+      0.030999999959021807,
+      0.01600000000325963,
+      0.0,
+      0.031000000017229468,
+      0.01600000000325963,
+      0.015000000013969839,
+      0.01600000000325963,
+      0.030999999959021807,
+      0.0,
+      0.01600000000325963,
+      0.01600000000325963,
+      0.031000000017229468,
+      0.031000000017229468,
+      0.01600000000325963,
+      0.014999999955762178,
+      0.01600000000325963,
+      0.031000000017229468,
+      0.01600000000325963,
+      0.01600000000325963,
+      0.031000000017229468
+    ],
+    "family_wall_seconds": [
+      1.9540000000270084,
+      1.0150000000139698,
+      0.8439999999827705,
+      0.34399999998277053,
+      0.25,
+      0.375,
+      0.18800000002374873,
+      0.18699999997625127,
+      0.18800000002374873,
+      0.2809999999590218,
+      0.23399999999674037,
+      0.2190000000409782,
+      0.23499999998603016,
+      0.2029999999795109,
+      0.21799999999348074,
+      0.26600000000325963,
+      0.23399999999674037,
+      0.2190000000409782,
+      0.23499999998603016,
+      0.21799999999348074,
+      0.21899999998277053,
+      0.23399999999674037,
+      0.1720000000204891,
+      0.23499999998603016,
+      0.21799999999348074,
+      0.2190000000409782,
+      0.18799999996554106,
+      0.25,
+      0.23399999999674037,
+      0.20300000003771856,
+      0.18799999996554106,
+      0.20300000003771856,
+      0.2029999999795109,
+      0.28100000001722947,
+      0.2029999999795109,
+      0.23499999998603016,
+      0.26500000001396984,
+      0.1720000000204891,
+      0.25,
+      0.26600000000325963,
+      0.2809999999590218,
+      0.28100000001722947,
+      0.18800000002374873,
+      0.17199999996228144,
+      0.20300000003771856,
+      0.2649999999557622,
+      0.2190000000409782,
+      0.18799999996554106,
+      0.40600000001722947,
+      0.26600000000325963,
+      0.21799999999348074,
+      0.2029999999795109,
+      0.14100000000325963,
+      0.15600000001722947,
+      0.1720000000204891,
+      0.17199999996228144,
+      0.18800000002374873,
+      0.25,
+      0.23399999999674037,
+      0.3119999999762513,
+      0.20400000002700835,
+      0.21799999999348074,
+      0.1720000000204891,
+      0.1559999999590218,
+      0.18800000002374873,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.21799999999348074,
+      0.1720000000204891,
+      0.1559999999590218,
+      0.18800000002374873,
+      0.2970000000204891,
+      0.2029999999795109,
+      0.39100000000325963,
+      0.26500000001396984,
+      0.29699999996228144,
+      0.26600000000325963,
+      0.28100000001722947,
+      0.23399999999674037,
+      0.25,
+      0.15700000000651926,
+      0.23399999999674037,
+      0.26600000000325963,
+      0.15600000001722947,
+      0.18699999997625127,
+      0.18800000002374873,
+      0.18699999997625127,
+      0.15700000000651926,
+      0.17099999997299165,
+      0.1720000000204891,
+      0.2029999999795109,
+      0.20400000002700835,
+      0.21799999999348074,
+      0.15700000000651926,
+      0.2029999999795109,
+      0.21799999999348074,
+      0.23500000004423782,
+      0.18699999997625127,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.1720000000204891,
+      0.2029999999795109,
+      0.18699999997625127,
+      0.23500000004423782,
+      0.25,
+      0.23399999999674037,
+      0.2029999999795109,
+      0.1720000000204891,
+      0.18799999996554106,
+      0.20300000003771856,
+      0.21899999998277053,
+      0.25,
+      0.23399999999674037,
+      0.2029999999795109,
+      0.1720000000204891,
+      0.18699999997625127,
+      0.26600000000325963,
+      0.25,
+      0.20300000003771856,
+      0.2029999999795109,
+      0.15700000000651926,
+      0.18699999997625127,
+      0.25,
+      0.14100000000325963,
+      0.21799999999348074,
+      0.1720000000204891,
+      0.2029999999795109,
+      0.1720000000204891,
+      0.28200000000651926,
+      0.3119999999762513,
+      0.18800000002374873,
+      0.23399999999674037,
+      0.3279999999795109,
+      0.25,
+      0.32800000003771856,
+      0.23399999999674037,
+      0.18799999996554106,
+      0.1720000000204891,
+      0.18699999997625127,
+      0.2190000000409782,
+      0.18699999997625127,
+      0.21899999998277053,
+      0.25,
+      0.25,
+      0.2190000000409782,
+      0.18699999997625127,
+      0.18800000002374873,
+      0.18699999997625127,
+      0.2029999999795109,
+      0.20400000002700835,
+      0.17099999997299165,
+      0.15700000000651926,
+      0.15600000001722947,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.21799999999348074,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.21899999998277053,
+      0.18700000003445894,
+      0.18799999996554106,
+      0.20300000003771856,
+      0.2029999999795109,
+      0.23399999999674037,
+      0.21899999998277053,
+      0.26600000000325963,
+      0.28100000001722947,
+      0.23399999999674037,
+      0.1720000000204891,
+      0.23499999998603016,
+      0.3279999999795109,
+      0.18700000003445894,
+      0.17199999996228144,
+      0.26600000000325963,
+      0.1720000000204891,
+      0.21799999999348074,
+      0.1720000000204891,
+      0.35999999998603016,
+      0.17099999997299165,
+      0.20400000002700835,
+      0.18699999997625127,
+      0.1720000000204891,
+      0.4369999999762513,
+      0.4850000000442378,
+      0.625,
+      0.5779999999795109,
+      0.3279999999795109,
+      0.25,
+      0.23399999999674037,
+      0.28200000000651926,
+      0.20300000003771856,
+      0.18699999997625127,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.3279999999795109,
+      0.2970000000204891,
+      0.26600000000325963,
+      0.2029999999795109,
+      0.20300000003771856,
+      0.17199999996228144,
+      0.28100000001722947,
+      0.2970000000204891,
+      0.21899999998277053,
+      0.23399999999674037,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.18699999997625127,
+      0.25,
+      0.26600000000325963,
+      0.14000000001396984,
+      0.23499999998603016,
+      0.21799999999348074,
+      0.2190000000409782,
+      0.17199999996228144,
+      0.20300000003771856,
+      0.2809999999590218,
+      0.3130000000237487,
+      0.2029999999795109,
+      0.15600000001722947,
+      0.18800000002374873,
+      0.1559999999590218,
+      0.20300000003771856,
+      0.1559999999590218,
+      0.1720000000204891,
+      0.1720000000204891,
+      0.18799999996554106,
+      0.20300000003771856,
+      0.17199999996228144,
+      0.25,
+      0.15600000001722947,
+      0.1720000000204891,
+      0.2029999999795109,
+      0.1720000000204891,
+      0.21899999998277053,
+      0.18699999997625127,
+      0.20300000003771856,
+      0.18799999996554106,
+      0.23399999999674037,
+      0.20300000003771856,
+      0.2029999999795109,
+      0.1720000000204891,
+      0.21899999998277053,
+      0.18699999997625127,
+      0.2190000000409782,
+      0.17199999996228144,
+      0.18800000002374873,
+      0.15600000001722947,
+      0.18699999997625127,
+      0.23499999998603016,
+      0.34299999999348074,
+      0.20400000002700835,
+      0.2029999999795109,
+      0.21799999999348074,
+      0.2190000000409782,
+      0.2029999999795109,
+      0.21899999998277053,
+      0.1720000000204891,
+      0.2029999999795109,
+      0.2970000000204891,
+      0.18699999997625127,
+      0.18699999997625127,
+      0.15700000000651926,
+      0.34299999999348074,
+      0.2029999999795109,
+      0.2190000000409782,
+      0.23499999998603016,
+      0.3279999999795109,
+      0.21799999999348074,
+      0.20400000002700835,
+      0.29599999997299165,
+      0.28200000000651926,
+      0.15600000001722947,
+      0.1720000000204891,
+      0.25,
+      0.34399999998277053,
+      0.18699999997625127,
+      0.20300000003771856,
+      0.23499999998603016,
+      0.15600000001722947,
+      0.25,
+      0.17199999996228144,
+      0.20300000003771856,
+      0.18699999997625127,
+      0.14100000000325963,
+      0.18699999997625127,
+      0.20400000002700835,
+      0.2029999999795109,
+      0.18700000003445894,
+      0.2029999999795109,
+      0.21899999998277053,
+      0.20300000003771856,
+      0.21899999998277053,
+      0.18699999997625127,
+      0.23500000004423782,
+      0.21899999998277053,
+      0.23399999999674037,
+      0.15600000001722947,
+      0.1559999999590218,
+      0.20400000002700835,
+      0.23399999999674037,
+      0.15600000001722947,
+      0.18799999996554106,
+      0.21799999999348074,
+      0.23500000004423782,
+      0.2029999999795109,
+      0.21899999998277053,
+      0.18700000003445894,
+      0.21899999998277053,
+      0.21899999998277053,
+      0.15600000001722947,
+      0.23399999999674037,
+      0.2029999999795109,
+      0.18800000002374873,
+      0.21899999998277053,
+      0.23399999999674037,
+      0.1720000000204891,
+      0.1720000000204891,
+      0.18699999997625127,
+      0.23499999998603016,
+      0.20300000003771856,
+      0.17199999996228144,
+      0.20300000003771856,
+      0.17199999996228144,
+      0.1720000000204891,
+      0.23399999999674037,
+      0.21899999998277053,
+      0.1720000000204891,
+      0.18699999997625127,
+      0.18800000002374873,
+      0.29599999997299165,
+      0.26600000000325963,
+      0.20300000003771856,
+      0.18799999996554106,
+      0.28100000001722947,
+      0.26600000000325963,
+      0.23399999999674037,
+      0.23399999999674037,
+      0.21899999998277053,
+      0.2190000000409782,
+      0.2809999999590218,
+      0.20300000003771856,
+      0.25,
+      0.2809999999590218,
+      0.28200000000651926,
+      0.26500000001396984,
+      0.2970000000204891,
+      0.29699999996228144,
+      0.2970000000204891,
+      0.28100000001722947,
+      0.3279999999795109,
+      0.28200000000651926,
+      0.23399999999674037,
+      0.28100000001722947,
+      0.25,
+      0.2809999999590218,
+      0.2970000000204891,
+      0.23499999998603016,
+      0.26500000001396984,
+      0.21899999998277053,
+      0.35899999999674037,
+      0.28200000000651926,
+      0.26500000001396984,
+      0.25,
+      0.26600000000325963,
+      0.28100000001722947,
+      0.3279999999795109,
+      0.3279999999795109,
+      0.375,
+      0.26600000000325963,
+      0.28100000001722947,
+      0.39100000000325963,
+      0.2970000000204891,
+      0.2029999999795109,
+      0.28100000001722947,
+      0.31299999996554106,
+      0.25,
+      0.39000000001396984,
+      0.28200000000651926,
+      0.21799999999348074,
+      0.2970000000204891,
+      0.26600000000325963,
+      0.29699999996228144,
+      0.32800000003771856,
+      0.2809999999590218,
+      0.28100000001722947,
+      0.25,
+      0.25,
+      0.26600000000325963
+    ],
+    "elapsed_seconds": 120.40600000001723,
+    "setup_and_summary_seconds": 26.24800000002142
+  }
+}

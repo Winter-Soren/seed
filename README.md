@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**All three evolved lineages learned a reversed food rule after 16 guided encounters. None cleared the autonomous recovery gate.** In E133, eight spaced reversed contacts left both native and contact-gated brains favoring the obsolete food. The gate missed adoption in all three lineages. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Contact-gate result](#can-a-contact-gate-protect-relearning)
+**Ten rounds of selection on post-replay choices failed to improve on the saved parents.** All three E134 descendants favored the newly safe food in a local probe. None cleared the required gain over its parent, and all three had lower first-item scores in fresh solo grids. Autonomous recovery remains open. [E134 result](#can-selection-improve-the-choices-descendants-make) · [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own)
 
 ## Table of contents
 
@@ -42,6 +42,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [Does it help to explore after a long stretch without food?](#does-it-help-to-explore-after-a-long-stretch-without-food)
   - [What if both items are within reach?](#what-if-both-items-are-within-reach)
   - [Can a contact gate protect relearning?](#can-a-contact-gate-protect-relearning)
+  - [Can selection improve the choices descendants make?](#can-selection-improve-the-choices-descendants-make)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -62,6 +63,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Decide when to explore | **Failed · 0/3** | E131's adaptive policy passed the laptop cost criterion. It did not produce a reliable first-food speedup over equal-quota exploration in any lineage. Late choice scores were −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting. [E131 results](#does-it-help-to-explore-after-a-long-stretch-without-food) |
 | Use feedback when both items are easy to reach | **Access increased in 3/3. Reversal gate failed in 3/3.** | Nearby offers increased the fraction sampling both colors by 71.1 ± 3.8, 68.0 ± 3.9 and 72.7 ± 4.0 percentage points. Survival fell in every lineage after the switch. None established a positive preference for the newly safe food. [E132 results](#what-if-both-items-are-within-reach) |
 | Time weight updates from contact feedback | **Failed · 0/3** | Native and contact-gated brains still chose the old food after eight matched reversed contacts. Reopening updates during the empty gap weakened this obsolete preference. Delayed solo choice was worse with the contact gate than with native updating. [E133 results](#can-a-contact-gate-protect-relearning) |
+| Evolve better choices from matched experience | **Failed · 0/3** | Ten rounds changed all three genomes. Every descendant favored the newly safe food locally, but none established the required gain over its parent. Solo first-item scores declined in all three. [E134 results](#can-selection-improve-the-choices-descendants-make) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -520,6 +522,24 @@ S is the probability of choosing the newly safe color minus the probability of c
 **Solo choice.** The contact-gated states scored worse than native after the delay. Final solo survival also fell by 24.2 ± 4.6, 25.8 ± 4.9 and 35.2 ± 5.2 percentage points relative to native. All animals survived the matched replay. The solo probes used ordinary updating for all arms, so the comparison measures what each exposure left in the brain. [Full estimates](results/diagnostics/E133-comparison.json) · [Independent audit](results/diagnostics/E133-independent-audit.json)
 
 Retire this gate setting. A candidate next study is short evolutionary selection on the unchanged 155-parameter genome. Score each candidate's own choices after matched experience, then compare frozen descendants with their parents on fresh ordinary grids. A budget-matched stationary training objective is needed to claim the reversal objective caused a gain. E122 gives a laptop timing precedent for a short selection study on a different task. The proposed study needs a fresh preregistration and full-generation benchmark. [E122 selection study](#evolving-observers-to-use-a-demonstration)
+
+## Can selection improve the choices descendants make?
+
+**E134 failed the improvement gate in all three lineages.** Each lineage started from its saved E103 generation-200 genome. Over ten selection attempts, candidates received the same scripted experiences and earned scores from the native probabilities of their own next move. The replayed food and poison contributed no fitness. We froze the last attempted genome, then tested it against its own parent in 128 fresh families with both initial rules, stationary and reversed histories, and cue-free gaps longer than those used in training. [Registered protocol](experiments/E134_PROTOCOL.md)
+
+Local preference is the probability of moving toward the newly safe color minus the probability of moving toward the other color. The solo score gives +1 for first food, −1 for first poison and zero for no contact by 50 turns, including death before contact. Every move in the solo grid was voluntary. Each ± is one family-level SE, paired for differences.
+
+| Lineage | Parent local preference | Descendant local preference | Local gain | Local feedback interaction | Solo gain | Solo gain adjusted for stationary performance |
+|---|---:|---:|---:|---:|---:|---:|
+| A0 | 0.202 ± 0.020 | 0.191 ± 0.018 | −0.011 ± 0.008 | +0.084 ± 0.008 | −0.094 ± 0.061 | +0.176 ± 0.074 |
+| A1 | 0.177 ± 0.017 | 0.194 ± 0.020 | +0.017 ± 0.011 | +0.068 ± 0.010 | −0.172 ± 0.066 | −0.090 ± 0.075 |
+| A2 | 0.189 ± 0.019 | 0.111 ± 0.013 | −0.078 ± 0.011 | +0.012 ± 0.011 | −0.176 ± 0.063 | +0.281 ± 0.075 |
+
+A0 and A1 cleared the local feedback interaction but missed the required direct gain over their own parents. All three missed the stationary solo safeguard. For A0 and A2 the stationary score fell more than the reversal score, producing positive adjusted contrasts alongside negative direct gains. A2 also missed the absolute solo-reversal criterion and narrowly missed the reversal survival safeguard. [Independent audit and all gate components](results/diagnostics/E134-independent-audit.json)
+
+In the reversal solo probe, first-food, first-poison and no-contact counts were **146/89/21 → 131/98/27**, **150/71/35 → 128/93/35** and **149/95/12 → 127/118/11** from parent to descendant. Each arm had 256 assigned lives. Among contacts only, the food fraction declined from **146/235 to 131/229**, **150/221 to 128/221** and **149/244 to 127/245**. These ratios describe choice among contactors. The gate scores every assigned life. The full report also gives the stationary counts and the denominator for every conditional ratio. [Audited solo outcomes](results/diagnostics/E134-independent-audit.json)
+
+All 30 final attempts produced optimizer updates. The behavioral comparison concerns performance after matched experience and a gap. Retention, autonomous recovery from birth and a causal effect of feedback on the solo gain would require additional comparisons. Close this selection setting at its original budget and thresholds. [Development forecast](results/diagnostics/E134-development-forecast.json) · [Operational receipts](results/diagnostics/E134-operations.json)
 
 ## Try it locally
 

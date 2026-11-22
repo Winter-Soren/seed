@@ -1,0 +1,26 @@
+{
+  "status": "finished",
+  "protocol": "replay-selection-v1",
+  "mode": "training",
+  "seed_index": 2,
+  "elapsed_seconds": 50.39100000000326,
+  "setup_seconds": 0.3130000000237487,
+  "completed_attempts": 10,
+  "completed_families": 0,
+  "expected_attempts": 10,
+  "expected_families": 0,
+  "optimizer_updates": 10,
+  "attempt_wall_seconds": [
+    24.76500000001397,
+    1.7820000000065193,
+    2.3589999999967404,
+    2.8119999999762513,
+    2.844000000040978,
+    2.764999999955762,
+    2.797000000020489,
+    2.5310000000172295,
+    2.577999999979511,
+    3.0
+  ],
+  "family_wall_seconds": []
+}

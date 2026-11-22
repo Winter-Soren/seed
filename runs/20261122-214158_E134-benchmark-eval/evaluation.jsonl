@@ -1,0 +1,4 @@
+{"index": 0, "raw_file": {"path": "families/family_0000.npz", "sha256": "eecb9b9ce2e17b1c61b36b8b2005095da3fc612b7cc6b143be1a489219534724", "bytes": 163683}}
+{"index": 1, "raw_file": {"path": "families/family_0001.npz", "sha256": "d15b139fbf03a1837490b7f56d50c97f06dbdda062c49463a6333e88c31d65d2", "bytes": 189159}}
+{"index": 2, "raw_file": {"path": "families/family_0002.npz", "sha256": "1e568860ec8e00817f0e8f148262b633a540a7db0d5ee84b9f27768da9756f76", "bytes": 179337}}
+{"index": 3, "raw_file": {"path": "families/family_0003.npz", "sha256": "badf97169cb041d8e552efce142869d9a99f08d11049281bbf2d6198e889b6b7", "bytes": 178713}}

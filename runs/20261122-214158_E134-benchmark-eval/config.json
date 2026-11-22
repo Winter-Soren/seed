@@ -1,0 +1,106 @@
+{
+  "protocol": "replay-selection-v1",
+  "mode": "development-evaluation",
+  "args": {
+    "name": "E134-benchmark-eval",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026121400,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 4,
+    "eval_protocol": "replay-selection-v1",
+    "memory_condition": null,
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "1c520f285c1c03410186cd6f29bfe3f23110fbc1",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "seed_index": 0,
+  "training_seed": null,
+  "evaluation_seed": 2026121400,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_experiment.py": "3f9e8d3c347ec49f1f6b824d0a830d8237ed72ab1adbbfbbb610358e962578c0",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "l2": 0.005,
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "train_receipts": [
+    {
+      "seed_index": 0,
+      "run": "runs/20261122-214125_E134-benchmark",
+      "config_sha256": "41e0204e7c1db16dc91dd89bb404bf5072ed946caf489f520efd24c3a452dcad",
+      "summary_sha256": "53dc51b556417ad668db0188c23b4d557bb0d0cd13a64719902ba7d68a747ee6",
+      "checkpoint_sha256": "ac7be3fab76c85eed2b15dae9905b2aa89eabae3301354d98b861e4344dfaf6c",
+      "endpoint_sha256": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151"
+    }
+  ],
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "d8e612d7f57a00a0e8002b1b4ffd87fe0f4bb9b8c85c6cf20bf2535670a5fc37",
+    "bytes": 1211
+  },
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe"
+  ],
+  "endpoint_sha256": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151",
+  "max_seconds": 120,
+  "scientific_result": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

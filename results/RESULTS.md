@@ -23,6 +23,23 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Selection on independent choice after matched replay (replay-selection-v1)
+
+E134 selects the native genome on expected signed choice after matched experience. Each endpoint is frozen before separate evaluation against its own E103 parent. See the [protocol](../experiments/E134_PROTOCOL.md) for the feedback ablation and decision rules.
+
+| Run | Mode | Status | ES attempts completed/assigned | Families completed/assigned | Commit |
+|---|---|---|---|---|---|
+| 20261122-214125_E134-benchmark | development-training | finished | 2/2 | 0/0 | 1c520f2 |
+| 20261122-214158_E134-benchmark-eval | development-evaluation | finished | 0/0 | 4/4 | 1c520f2 |
+| 20261122-214433_E134-A0-train | training | finished | 10/10 | 0/0 | e514d3f |
+| 20261122-214515_E134-A1-train | training | finished | 10/10 | 0/0 | e514d3f |
+| 20261122-214556_E134-A2-train | training | finished | 10/10 | 0/0 | e514d3f |
+| 20261122-214727_E134-A0 | evaluation | finished | 0/0 | 128/128 | e514d3f |
+| 20261122-214925_E134-A1 | evaluation | finished | 0/0 | 128/128 | e514d3f |
+| 20261122-215128_E134-A2 | evaluation | finished | 0/0 | 128/128 | e514d3f |
+
+[Independent held-out reconstruction and gate decisions](diagnostics/E134-independent-audit.json).
+
 ## Contact-timed Hebbian updating (contact-gate-v1)
 
 E133 uses the three original saved controllers with zero training. Each family replays both initial rules with identical observations, imposed actions and received feedback across native updating, a locally observed contact gate, equally sparse randomly timed updates and a reopened-delay ablation. After sixteen common contacts and eight stationary or reversed contacts, local choice and fresh fifty-turn solo behavior are measured immediately and after 33 empty turns. All solo readouts use ordinary learning, so this measures transfer of the carried state, not live use of the gate.

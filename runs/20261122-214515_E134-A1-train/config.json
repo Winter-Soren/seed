@@ -1,0 +1,93 @@
+{
+  "protocol": "replay-selection-v1",
+  "mode": "training",
+  "args": {
+    "name": "E134-A1-train",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 10,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026121302,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 0,
+    "eval_protocol": "replay-selection-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "e514d3fea404f2e765d0b065dd26ac407eab2695",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "seed_index": 1,
+  "training_seed": 2026121302,
+  "evaluation_seed": null,
+  "expected_attempts": 10,
+  "expected_families": 0,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_experiment.py": "3f9e8d3c347ec49f1f6b824d0a830d8237ed72ab1adbbfbbb610358e962578c0",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "l2": 0.005,
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "train_receipts": [],
+  "assignments": null,
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe"
+  ],
+  "endpoint_sha256": null,
+  "max_seconds": 450,
+  "scientific_result": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

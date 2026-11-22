@@ -1,0 +1,51 @@
+{
+  "status": "finished",
+  "protocol": "replay-selection-v1",
+  "mode": "development-training",
+  "seed_index": 0,
+  "elapsed_seconds": 23.23399999999674,
+  "setup_seconds": 0.21899999998277053,
+  "completed_attempts": 2,
+  "completed_families": 0,
+  "expected_attempts": 2,
+  "expected_families": 0,
+  "optimizer_updates": 2,
+  "attempt_wall_seconds": [
+    20.71899999998277,
+    1.0
+  ],
+  "family_wall_seconds": [],
+  "scientific_result": false,
+  "gate_status": "undecided",
+  "endpoint_sha256": "7d53e5fbf799f32a292a1a98f7f3ac7773c07189c2ac34b2d5ab106050156151",
+  "attempts": [
+    {
+      "path": "generations/attempt_0000.npz",
+      "sha256": "f394cf6d871dd91034e69dd10b4dde851dc986d8f26a1f8844a1aa11f58a2b77",
+      "bytes": 1558
+    },
+    {
+      "path": "generations/attempt_0001.npz",
+      "sha256": "fcc7b5a6535551fbb530094dd7199e8df913613f2150a43fbf59b46a59f86a5b",
+      "bytes": 2802
+    },
+    {
+      "path": "generations/attempt_0002.npz",
+      "sha256": "ac7be3fab76c85eed2b15dae9905b2aa89eabae3301354d98b861e4344dfaf6c",
+      "bytes": 2802
+    }
+  ],
+  "samples": [
+    {
+      "path": "generations/samples_0001.npz",
+      "sha256": "cab7b9ae47577fcd86fa3d7fea5d2021171b145722e0f1d8dd4d46acd38d2723",
+      "bytes": 135047
+    },
+    {
+      "path": "generations/samples_0002.npz",
+      "sha256": "9244889689303157440c4fc11e03c7c9287060d066a25c3477f120ab136b9655",
+      "bytes": 134977
+    }
+  ],
+  "raw_files": []
+}

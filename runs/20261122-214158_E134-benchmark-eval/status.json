@@ -1,0 +1,20 @@
+{
+  "status": "finished",
+  "protocol": "replay-selection-v1",
+  "mode": "development-evaluation",
+  "seed_index": 0,
+  "elapsed_seconds": 14.296999999962281,
+  "setup_seconds": 0.7809999999590218,
+  "completed_attempts": 0,
+  "completed_families": 4,
+  "expected_attempts": 0,
+  "expected_families": 4,
+  "optimizer_updates": 0,
+  "attempt_wall_seconds": [],
+  "family_wall_seconds": [
+    9.812000000034459,
+    2.4369999999762513,
+    0.6880000000237487,
+    0.5309999999590218
+  ]
+}
