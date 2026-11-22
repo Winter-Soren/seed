@@ -34,4 +34,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E129 is the council's single follow-up. It tests whether pausing just the changes to synaptic weights during the empty interval helps all three lineages, then restores ordinary learning for solo foraging. The criteria and stopping rule are registered. E128's failed threshold and E127's passed immediate test remain in the record.
+E129 is the council's single follow-up. It tests whether pausing just the changes to synaptic weights during the empty interval helps all three lineages, then restores ordinary learning for solo foraging. Its four-family rehearsal passed. The full software suite is running. Three fresh final panels and their audit fit the measured budget. The registered stopping rule closes this retention test at its result.
