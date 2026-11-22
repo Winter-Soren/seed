@@ -1,0 +1,40 @@
+{
+  "protocol": "scene-transfer-v1",
+  "mode": "development",
+  "status": "failed",
+  "error": "AuditError: reference_grid: shape or dtype",
+  "replicated_gates": null,
+  "checked_file_sha256": {
+    "runs/20261122-221632_E135-dev/status.json": "ff39f792df3ba050f143361d542db6264537ec709d6876817a0ce4b86e1a6b2e",
+    "runs/20261122-221632_E135-dev/config.json": "16a18073638b8cdfa3c287fd99a3d12a41af85ab4767b8591b007e2c68a72f52",
+    "runs/20261122-214433_E134-A0-train/config.json": "818cd175a86e6c814656e5aa0d933d996f568dea8803f2f0dad29bdfa30c8fb7",
+    "runs/20261122-214433_E134-A0-train/summary.json": "b0494b82e94c0c9a7a872cc82886491873b0decb95a642712f65ab3657938a4c",
+    "runs/20261122-214433_E134-A0-train/generations/attempt_0010.npz": "a3a333f16010c2531c837d62228f5f0fa90c099a69a3c15188c0f06e9da39dcf",
+    "runs/20261122-214433_E134-A0-train/genome_final.npy": "936176dfea318a4ec698393e5b693877b8a1bd3dd4406db6d9c76778dfe76378",
+    "runs/20261112-023245_E103-A-blank-s0/genome_final.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-214515_E134-A1-train/config.json": "101811f422b2a2772f60b763f951bcba84f94a00f0da98b1ce9ee3263f6fc0e6",
+    "runs/20261122-214515_E134-A1-train/summary.json": "3abf0e5aae5e0fd4faa247948662700a5c764711ece9b481611a4fae2743f95a",
+    "runs/20261122-214515_E134-A1-train/generations/attempt_0010.npz": "db450a9064c87ac50581d9bd9fc224cf96446aae08672e93e365217393c57d81",
+    "runs/20261122-214515_E134-A1-train/genome_final.npy": "ed054c08356b30ea7ccd80f4346f09a4f07cd371729c3d86e7b4a14aa837f37a",
+    "runs/20261112-050319_E103-A-blank-s1/genome_final.npy": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899",
+    "runs/20261122-214556_E134-A2-train/config.json": "e30dea71dd52f7c1639b2676751ce6eed477e339152f39bfbbde7df5044f2a8f",
+    "runs/20261122-214556_E134-A2-train/summary.json": "0e4faf98c274313598a2ab9d101f0d46ee1846f70873cf9127eab931a2050882",
+    "runs/20261122-214556_E134-A2-train/generations/attempt_0010.npz": "03553b4d9755ebcd694620f7de73186803d7d275a7ab67130cf2d4b3e7990f79",
+    "runs/20261122-214556_E134-A2-train/genome_final.npy": "bcf5ad20fd1e38c322bb459c3d694f64a7fe8ca018720a47c7942a49d2191e14",
+    "runs/20261112-102755_E103-A-blank-s2/genome_final.npy": "f299069753636a303f6ba7f91be78099e8491b20a7511bdcef47fd8b4c5bbaa6",
+    "runs/20261122-221632_E135-dev/genome_start.npy": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53",
+    "runs/20261122-221632_E135-dev/genome_final.npy": "936176dfea318a4ec698393e5b693877b8a1bd3dd4406db6d9c76778dfe76378",
+    "runs/20261122-221632_E135-dev/assignments.npz": "7853d281038a35341773de335e452b34b11f4a97813768e355d5e8b1c190a073",
+    "runs/20261122-221632_E135-dev/evaluation.jsonl": "728018f55f23d2d90fb913aa805e6e35d1be044ed41b4fc59f77aad663c9ec82",
+    "runs/20261122-221632_E135-dev/summary.json": "5d51b3e8b1a47f18f13a49ff069c0ec80fecaae4445d0227cc606d7f22f6ccb1",
+    "runs/20261122-221632_E135-dev/families/family_0000.npz": "ab7da63822404b58be1e2ee401df43afe18397356fbc5ad17d6959bfbc5ba57a"
+  },
+  "timing": {
+    "elapsed_seconds": 6.061999999976251,
+    "setup_and_summary_seconds": 6.061999999976251,
+    "reconstruction_seconds": 0,
+    "family_seconds": [],
+    "family_wall_seconds": [],
+    "completed_families": 0
+  }
+}

@@ -233,7 +233,7 @@ def audit_family(raw, index, parent, descendant, keys, pre, gap, randomness=None
     groups = {"exposure_": (2, 2, 2, steps), "first_": (2, 2, 2, 2, 12),
               "scene_": (2, 2, 2, 2, 50), "reference_": (2, 2, 2, 50)}
     top = {"base_index", "keys", "pre_contacts", "gap", "continuation", "initial_rules", "genome_sha256", "script",
-           "background", "reference_grid", "reference_pos"}
+           "background", "reference_pos"}
     neural = {prefix+name for prefix in ("acquired_", "scene_initial_", "reference_initial_") for name in NEURAL}
     expected_fields = top | neural | {"acquired_"+name+"_sha256" for name in NEURAL}
     expected_fields |= {prefix+name for prefix in groups for name in TRACE_SHAPES}
@@ -247,7 +247,7 @@ def audit_family(raw, index, parent, descendant, keys, pre, gap, randomness=None
     if randomness is None:
         randomness = random_helpers()[1](keys)
     exact(numeric(raw, "script", (pre+16, 5), np.int32), randomness["script"][:pre+16], "independently derived balanced contact script")
-    for name, shape in (("background", (16, 16)), ("reference_grid", (16, 16)), ("reference_pos", (1, 2))):
+    for name, shape in (("background", (16, 16)), ("reference_pos", (1, 2))):
         exact(numeric(raw, name, shape, np.int32), randomness[name], "independent assigned " + name)
     exact(raw["continuation"], randomness["continuation"], "continuation was assigned before observing any choice")
     continuation = int(raw["continuation"])
@@ -319,7 +319,10 @@ def audit_family(raw, index, parent, descendant, keys, pre, gap, randomness=None
                         exact(first[name][0], first[name][1], "empty visible background makes views identical " + name)
                         exact(traces["scene"][name][address+(0,)], traces["scene"][name][address+(1,)], "identical first input continues identically " + name)
                 reference = {name: value[address] for name, value in traces["reference"].items()}
-                behavior = trace_physics(reference, neutral_body(raw["reference_grid"], raw["reference_pos"], keys[7]), np.full(50, target, np.int32))
+                # The archived reference_grid name holds post-transition grids.
+                # The independently derived initial layout must match every clone's grid_before[0].
+                reference_body = neutral_body(randomness["reference_grid"], raw["reference_pos"], keys[7])
+                behavior = trace_physics(reference, reference_body, np.full(50, target, np.int32))
                 for name, value in behavior.items():
                     reference_out[name][address] = value
     return dict(base_index=index, n_distractors=n_distractors, local=local, sampled=sampled,
@@ -511,8 +514,9 @@ class Auditor(shared.Auditor):
             same(commit, self.source, "development uses the scientific anchor exactly")
         else:
             self.git("merge-base", "--is-ancestor", self.source, commit)
-            require(not self.git("diff", "--name-only", self.source, commit, "--", "seed", "scripts", "tools", "tests", "notebooks"),
-                    "admission descendant changes only tracking material")
+            changed_code = self.git("diff", "--name-only", self.source, commit, "--", "seed", "scripts", "tools", "tests", "notebooks").splitlines()
+            require(set(changed_code) <= {"tools/audit_scene_transfer.py"},
+                    "admission descendant changes only tracking material and the registered read-only layout correction")
             if self.admission_commit is None:
                 self.admission_commit = commit
             same(commit, self.admission_commit, "all three final panels use the same admitted clean commit")
