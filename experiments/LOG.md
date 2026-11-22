@@ -2648,3 +2648,5 @@ $common = @('--eval-protocol','voluntary-offers-v1','--generations',0)
 ```
 
 Use the committed source and `python -B tools/audit_voluntary_offers.py --source-commit <source SHA> --development` for the independent rehearsal. Omit `--development` for the joint audit. Run `python scripts/summarize.py` on the audited evidence.
+
+**Before measurement, 22 November.** The independent reviewer asked which of two adjacent observations defines the named survival safeguard. End-of-exposure survival is measured after the final presentation tick (128 ticks). Report survival after the empty feedback tick (129) separately. Only animals alive at that second observation enter the local and solo readouts. This distinction was frozen before tests or development measurement.
