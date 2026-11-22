@@ -1,0 +1,139 @@
+{
+  "protocol": "timed-exploration-v1",
+  "args": {
+    "name": "E131-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026121002,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 64,
+    "eval_protocol": "timed-exploration-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+    "branch": "main",
+    "dirty": false
+  },
+  "source_genome": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "source_generations": [
+    200
+  ],
+  "policy_order": [
+    "unchanged",
+    "adaptive",
+    "random_quota"
+  ],
+  "assignment_tag": 57649,
+  "policy_parameters": {
+    "block_length": 25,
+    "quota_per_block": 1,
+    "counter_cap": 12,
+    "trigger": 12,
+    "phase_delay_min": 0,
+    "phase_delay_max": 24,
+    "quota_offset_min": 0,
+    "quota_offset_max": 24,
+    "cardinal_min": 1,
+    "cardinal_max": 4,
+    "feedback": "positive_observed_realized_denergy"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 4,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "seed_index": 1,
+  "eval_seed": 2026121002,
+  "expected_families": 64,
+  "statistical_unit": "independent family averaging four original animals and both rules",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "6240b27f4e5f8cc9f4296946a083e747c9c7536eff35b1b9697b8aaac953f5d3"
+  },
+  "arms": [
+    "unchanged_stationary",
+    "unchanged_reversal",
+    "adaptive_stationary",
+    "adaptive_reversal",
+    "random_quota_stationary",
+    "random_quota_reversal"
+  ],
+  "key_roles": [
+    "world_action",
+    "development",
+    "exploration"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "bin_edges": [
+    0,
+    50,
+    100,
+    150,
+    200,
+    250,
+    300
+  ],
+  "flip_step": 150,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/founder_reversal.py": "3952c053a0fb9192664863fd07ea54795bdc6640db4cd5fda1b09ffa736c1826",
+    "scripts/run_founder_reversal.py": "a46e13fb1ca7d92065b8ea656093313f4b64c2e0da1d704a652605628640a909",
+    "scripts/run_retention_diagnostic.py": "92c3222c2faf1e004e9d75b7547ff0290abed0c4ca15992dc32f80e9c9b3e3e0",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4",
+    "seed/exploration.py": "862a293a83b0d13815461ded8591df0da83c8efd6301ba47afd1a8a769edefc9",
+    "seed/timed_exploration.py": "00e60e64f8c432369d8915ab3064db062af70d552da455bb70c81b81c336d1f5",
+    "scripts/run_timed_exploration.py": "75208b4a8281390da8708ab5fd9d1d2763628a4650087ed617bb1d6e4fd04bbb"
+  },
+  "raw_schema": "timed-exploration-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 600,
+  "scientific_result": false
+}

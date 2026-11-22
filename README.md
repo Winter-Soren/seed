@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**After guided encounters, all three evolved lineages learned a reversed food rule and used it alone. When they had to find every item themselves, none met the test for better recovery than its founder.** They learned the old rule, initially sought the wrong food after the switch, and recovered some ground. By the final 50 turns, poison was still more often their first item than food in the observed sample. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Genome design](#how-the-saved-genomes-evolved)
+**All three evolved lineages learned a reversed food rule from guided encounters. None cleared the autonomous recovery gate.** A follow-up gave the same brains one exploratory move per block, timed by their own energy feedback. The move schedule missed the behavioral criteria in all three lineages. Late first contacts still favored poison in the observed sample. [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own) · [Timed exploration](#does-it-help-to-explore-after-a-long-stretch-without-food)
 
 ## Table of contents
 
@@ -39,6 +39,7 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
   - [What survives 33 turns without food cues?](#what-survives-33-turns-without-food-cues)
   - [When should a learned connection keep changing?](#when-should-a-learned-connection-keep-changing)
   - [Can descendants relearn the rule on their own?](#can-descendants-relearn-the-rule-on-their-own)
+  - [Does it help to explore after a long stretch without food?](#does-it-help-to-explore-after-a-long-stretch-without-food)
 - [Try it locally](#try-it-locally)
 - [Where to look next](#where-to-look-next)
 - [License](#license)
@@ -56,7 +57,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Retain the new preference through a gap | **Failed** | All three lineages still showed a new-food preference after 33 active turns without food cues. First-food success fell by 9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 points. Zero of three cleared the registered preservation criteria for local choice or independent foraging. [E128 result](#what-survives-33-turns-without-food-cues) |
 | Preserve the new preference by controlling when weights change | **Partial** | An imposed pause preserved local preference in all three lineages. Solo first-food success rose by 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 points versus continued updating. Two of three met the stricter transfer criterion. A controller that can decide when to pause remains open. [E129 result](#when-should-a-learned-connection-keep-changing) |
 | Recover from an unannounced reversal through self-directed foraging | **Failed · 0/3** | All three generation-200 lineages recovered some of their lost preference. None established a positive late preference for food or the required late advantage over its founder. The comparison includes all assigned creatures. [E130 results and graph](#can-descendants-relearn-the-rule-on-their-own) |
-| Decide when to explore | **Registered** | E131 compares a new action controller that times exploration from recent energy feedback with ordinary foraging and the same allowance of randomly timed moves. It must improve both access to the newly safe food and later choices across all three lineages. [Exploration design and controls](experiments/E131_PROTOCOL.md) |
+| Decide when to explore | **Failed · 0/3** | E131's adaptive policy passed the laptop cost criterion. It did not produce a reliable first-food speedup over equal-quota exploration in any lineage. Late choice scores were −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting. [E131 results](#does-it-help-to-explore-after-a-long-stretch-without-food) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -463,6 +464,24 @@ In each 50-turn window, the first food counted +1, the first poison −1, and no
 All three descendants showed an early-to-late improvement beyond the matched founder and stationary-world changes. All three also met the survival safeguards. **None met the two remaining requirements**: a positive late preference supported by the data and a late advantage of at least 0.05 over its founder exceeding two paired standard errors. The two endpoints show what changed over 200 generations; they leave the trajectory between generations unresolved. [Registered criteria](experiments/E130_PROTOCOL.md) · [Full estimates](results/diagnostics/E130-comparison.json) · [Independent audit](results/diagnostics/E130-independent-audit.json)
 
 Among descendants alive at the switch, **21.1 ± 2.3%, 18.1 ± 1.9% and 25.9 ± 2.0%** experienced a registered 25-turn gap without any item contact. A0 and A2 crossed the council's 20% threshold. This selects an **exploration controller** for the next comparison: does changing when a creature tries a different move help it find feedback and recover? A control will receive the same allowance of exploratory moves at times unrelated to its own outcomes. The saved events cannot tell us whether a creature saw an item and avoided it. [Architecture roundtable](experiments/ARCHITECTURE_COUNCIL_E130.md) · [Encounter counts](results/diagnostics/E130-architecture-feedback.json)
+
+## Does it help to explore after a long stretch without food?
+
+**E131 failed the behavioral gate in all three lineages.** In matched four-creature worlds, an adaptive policy spent one exploratory move per 25-turn block after 12 turns without a felt energy gain, or at the end of the block. The controls used ordinary action selection or the same allowance of moves at random times. All three policies used the original generation-200 brains, with lifetime learning active. Each lineage had 64 independent families with both initial rules. [Registered protocol](experiments/E131_PROTOCOL.md)
+
+| Lineage | Adaptive late Q | Turns saved vs ordinary | Turns saved vs equal quota | Adjusted late Q gain vs ordinary | Adjusted late Q gain vs equal quota |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| A0 | −0.051 ± 0.031 | −1.05 ± 1.08 | −0.52 ± 1.06 | +0.035 ± 0.051 | +0.006 ± 0.057 |
+| A1 | −0.041 ± 0.031 | −0.16 ± 1.05 | −0.72 ± 1.05 | +0.061 ± 0.071 | +0.143 ± 0.064 |
+| A2 | −0.070 ± 0.034 | +3.42 ± 1.10 | +1.77 ± 0.99 | +0.063 ± 0.063 | +0.033 ± 0.070 |
+
+Q is first-food probability minus first-poison probability. Death and no contact count as zero in Q and as 50 turns in the first-food window when no food is found. The adjusted gain subtracts the corresponding stationary-world difference. Each ± is one family standard error, paired for differences.
+
+![E131 paired differences in turns to first food and adjusted late Q for three lineages, with two standard error intervals](results/figures/e131-timed-exploration.png)
+
+A2 found food sooner than ordinary foraging, and A1 cleared both late Q contrasts against equal-quota exploration. No lineage found food reliably sooner than both controls, none had positive late Q, and all missed the stationary late-choice safeguard against both controls. The laptop cost criterion passed at **1.32×** the ordinary warm median. Across reversal worlds, adaptive overrides occurred on 3.94–3.96% of live turns versus 3.78–3.81% with equal quota. The quota was identical for fully lived blocks, and partial blocks could differ in realized overrides. [Full estimates](results/diagnostics/E131-comparison.json) · [Independent audit](results/diagnostics/E131-independent-audit.json)
+
+Retire this exploration setting. The next question is whether offering balanced opportunities to approach either item helps a creature gather feedback and recover when it still chooses every move. That question requires its own preregistration.
 
 ## Try it locally
 

@@ -32,10 +32,12 @@ E129 found that pausing changes to connection strengths for those empty turns pr
 
 E130 tested each founder against its generation-200 descendant when all four creatures foraged freely. All three descendants learned the old rule and recovered some ground after the switch. Their late first-item scores relative to their founders were −0.096 ± 0.048, −0.064 ± 0.038 and −0.111 ± 0.041. None met the evolutionary recovery criterion. Two lineages crossed the council's threshold for long gaps without contact.
 
+E131 compared feedback-timed exploration with ordinary foraging and the same quota at random times. It passed the laptop cost criterion at 1.32× the ordinary warm median and failed behavior in all three lineages. A2 found food 3.42 ± 1.10 turns sooner than ordinary foraging. No lineage reliably beat equal quota on time to first food, and late adaptive Q was −0.051 ± 0.031, −0.041 ± 0.031 and −0.070 ± 0.034. Retire this setting.
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-The architecture roundtable selected a small exploration controller for comparison with the unchanged controller and an equal-budget control that explores at unrelated times. The open question is whether better-timed exploration improves both access to feedback and late choice without costing survival. The public README tracks this alongside the later external memory benchmark.
+The next diagnostic asks whether balanced opportunities to approach either item improve feedback access and reversal recovery when creatures still choose every move. It needs its own registered design and matched sham. E131's settings and held-out worlds are closed.

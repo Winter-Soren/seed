@@ -1,0 +1,365 @@
+{
+  "study": "E131",
+  "date": "2026-11-22",
+  "time_zone": "India Standard Time",
+  "registration_commit": "bee51c82a8f7074ac53309f17ab2fa45be5f95aa",
+  "scientific_commit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+  "study_seconds": 1787.7978934,
+  "study_limit_seconds": 5400.0,
+  "daily_seconds": 22891.0105656,
+  "daily_limit_seconds": 28800,
+  "focused_checks": {
+    "status": "passed",
+    "fixture_tests": 36,
+    "independent_synthetic_groups": 7,
+    "fresh_auditor_process": true,
+    "simulator_imported_by_self_check": false
+  },
+  "historical_diagnostics": {
+    "status": "passed",
+    "historical_files_unchanged": 59,
+    "sha256": {
+      "results/diagnostics/E112-guards.json": "9aa7f3c8453e52978aab38063e945250f89811060c9a2a4be9801f7d09a9e6a0",
+      "results/diagnostics/E113-comparison.json": "cd48a8cbbafb6e4112d23ecf0640537e3526850ff2f59e2e3c7052071d9de2d5",
+      "results/diagnostics/E113-s0-final-audit.json": "f003b76e084bc9bf86dcbbe77cb70aa81eb567c3689ace7f2ccb5e1d7ef5a3a4",
+      "results/diagnostics/E113-s0-per-rule-audit.json": "2e2b3e36cbf380fd41820469f1af86efbbfb82abb03d850fc3afa67336a1a817",
+      "results/diagnostics/E113-s1-final-audit.json": "fea85d8dbe8c588726017974e18d8b53b5dfc49ae789b761da9fc212a754f7a3",
+      "results/diagnostics/E113-s2-final-audit.json": "4a1348ad2379d3373ebdb35103b41862cea11d3d272670266b7ed162bef3f111",
+      "results/diagnostics/E113-segment1-audit.json": "63c02b6789def35aa65bbd90df23712e88dfe8720222b09c73b5ccbe8aea7c37",
+      "results/diagnostics/E114-final-audit.json": "56fbfdc8160725448a0aa5092f5e1326d7e05c647c0e3c18be0d62147675cfbb",
+      "results/diagnostics/E115-benchmark-audit.json": "b23f187ff018644f53b25f2f75d0dcca15418936526f883801b81eaacf90c717",
+      "results/diagnostics/E115-ci-result.json": "124afab0dea6eb7d6464f48be96d5c2ed1d6779cf2e63151c4782f0996457b67",
+      "results/diagnostics/E115-independent-audit.json": "85b7f93558a2d34c44842be6ecad9d29cea5b6d3cea8a85559b885c520e4e8a4",
+      "results/diagnostics/E115-interrupted-files.json": "e4528fc15c1cf2e477ad379cf755f2678fc3d7fb4c96bf660da649dab335c421",
+      "results/diagnostics/E115-interruption-audit.json": "1a52c32de5d87314766e7be8d097213c33bf4192b694efef8897266414610cf4",
+      "results/diagnostics/E115-mean-s0-audit.json": "9090e60f74fe07b9bc1d71bd8bdc5d8ea6f4c876fb9a817ab7fe47b44926dd17",
+      "results/diagnostics/E115-mean-s1-audit.json": "316942a3d645eecf3f98cc0024bf5406031c1c137ca386eec605dfd35b8b7bda",
+      "results/diagnostics/E115-mean-s2-audit.json": "7e5ce9379c30be6600558ba5c475e87563ad4dfb744b5858521f92fd0af5485d",
+      "results/diagnostics/E115-min-s0-audit.json": "7b2f279c48bad41b43c4049af42a9be167b601b5ba41fbfb6de4da7ba8b0ba6e",
+      "results/diagnostics/E115-min-s1-audit.json": "739b59bf8db8563a7c29853bba01c5ed89ed093d286e45266e706d493bfba91c",
+      "results/diagnostics/E115-min-s2-audit.json": "4e5bbd3626619ed303a5d8a347ededd8e320e353e00bb44589d7352da081ea81",
+      "results/diagnostics/E115-power-events.json": "3d8bb370dcc807729eb0ddfa6cf51cc9b585a19ef5205c4edcdb6e957cc4b20d",
+      "results/diagnostics/E115-recovery-execution.json": "9a0249f8453d6838169e2634a6991381d0f1b4af880c7c6e59961f62d554f023",
+      "results/diagnostics/E115-recovery-preflight.json": "699d4feaa02067c286b3a96ab8d7c478719bed42030d911aeba920849bd3573b",
+      "results/diagnostics/E115-software-audit.json": "b4f1a062b04f7610170d36d5753a6231fca67098423b14de2e5b075017c117f4",
+      "results/diagnostics/E115-training-preflight.json": "59d156117300fd14f00f9c350417f33650a2f4afc2de19022fb50425e25e4157",
+      "results/diagnostics/E116-independent-audit.json": "0a34c5b4155f4d5b3a7c3d23c711f5bc0706bb8b5db0f8fc555d90daa0e211cb",
+      "results/diagnostics/E117-independent-audit.json": "41242e66419d7483ecb94e1335936d9f0008ac6553d6de5d9101a07a222200c3",
+      "results/diagnostics/E118-independent-audit.json": "8f8f1b7d3c671fe7473ebedf76f64f8fc145bd0a5b7c18fc4f5d66c756c45487",
+      "results/diagnostics/E119-independent-audit.json": "7b745c52d61ab92a26c37b03730c349697aaeef3e6e3f34294555304077fb876",
+      "results/diagnostics/E120-independent-audit.json": "8d9cb635819150788672cd64350918786a2b78ee0f43944d723f370b8103a0bc",
+      "results/diagnostics/E121-independent-audit.json": "ef7e91288a712167a4cc2a52df88dbd1c984fd8acd2ada46b5d749cb3b71050e",
+      "results/diagnostics/E122-independent-audit.json": "0977ae7ac063cab5af4616866515f2f4017b4a58d99337c018ee1435fc19f756",
+      "results/diagnostics/E123-independent-audit.json": "94816b7533945b0f0611f2e51c081733221dfdb7abc40f0cdeed36e782cb25b5",
+      "results/diagnostics/E124-independent-audit.json": "a4670edb4d151c09f19eb3409c9a1ccec58ada28daecdb049a2ce2f55f207c8f",
+      "results/diagnostics/E125-independent-audit.json": "c2a2692f46aa20189dc2391dd15a7c403e23dbe9fa37c0f308a46be5615c9b86",
+      "results/diagnostics/E127-comparison.json": "83224452a3103c4fbcfbfed9c3bfccadf40b7cb05bc14ab1c88709090eb1316c",
+      "results/diagnostics/E127-cost-forecast.json": "0721f308e3cdabd914440d9162fb4b7299ec56c1743afe0fd8f1cb9965af979d",
+      "results/diagnostics/E127-development-audit.json": "8f8334e2f0b645b2f56f58bc7bc9bb5d9d84a67f3e28eba7700ec3d4e156db5d",
+      "results/diagnostics/E127-development-probability-check.json": "3448a9afb7578620e60752bee47d22f04c44bee3ebaab87bd7872ba610a2e30d",
+      "results/diagnostics/E127-independent-audit.json": "4ab38f7a8a1782c438a495009832c7c3c3d5707313d8e6f8c6f5d1f9577cff70",
+      "results/diagnostics/E127-recovery-cost-forecast.json": "b127ef4ccffe25ae696d79e2333e1a9717503d64ec9e4fedc75d528c42eb96fb",
+      "results/diagnostics/E127-recovery-development-audit.json": "170580a6411174223c96ca8a0ceaebcd4060af4994eb6e93f8c0b744014d367a",
+      "results/diagnostics/E127-synthetic-frozen-weights.json": "ec7cc22758a900b357d73b8d3bcfda0b8515123d590c790c8da22c18869211a5",
+      "results/diagnostics/E128-comparison.json": "f4f103872e780bbf4c19d3200b5e7356d8c3dbe72ccc4ee3be957e664fea1197",
+      "results/diagnostics/E128-development-audit.json": "74882bd453c8d7dd5892a92f2ea51f2bf72f2ecbf219d940c330c80f4242bbb9",
+      "results/diagnostics/E128-development-forecast.json": "35fd27f95d420bf960859017cbcc6eeb3015e6eff939e409eee5fdec0f8a5d00",
+      "results/diagnostics/E128-independent-audit.json": "d038dbbcc1062fecde4f20b83eb83e2c7032a873a810cd9cdcced7e08ee02249",
+      "results/diagnostics/E129-comparison.json": "102796531e24a0e16f76cb4a503e7c3cf9f6eab20d75dd969a9e5dd0a397f1fe",
+      "results/diagnostics/E129-development-audit.json": "15fc2ab00d63bb1a41e5fa1a1926c77c9e017e1f68a50f9c9f21b44a08722a25",
+      "results/diagnostics/E129-development-forecast.json": "9632979c8aabb8860ab4822b6f8ec12e80937bf9da8dab820c959086b806af29",
+      "results/diagnostics/E129-historical-diagnostics-proof.json": "25c4c7401d424d927076b48de0f9bb84059320590d40f5a0fb125d989bb6292c",
+      "results/diagnostics/E129-independent-audit.json": "91e162da8fd87a7b0ad8b652b54f080e14d0eabff5427279364c6254c5f2a659",
+      "results/diagnostics/E130-architecture-feedback.json": "05b2d7d823464b003ee8b76cebdcaa3dbcf0a3891d976c0d0ebfe0e87137ffc4",
+      "results/diagnostics/E130-comparison.json": "4263566488f6d4cc719778529e5c012c1e41b7e8774d7deb1570d4406269e7b0",
+      "results/diagnostics/E130-development-audit.json": "72f253105f77b1515e1cb1ef19836bd90d7633984fc210b047f9cb3fd045450b",
+      "results/diagnostics/E130-development-forecast.json": "3967cf586e918583a2f7da43d73901e756ccc8a50e803c05b97144ce41b0ff7d",
+      "results/diagnostics/E130-historical-diagnostics-proof.json": "75759740c540ad4aa7dfa7c78c0723e1733106b8768614dbea5d58b1093c7e65",
+      "results/diagnostics/E130-independent-audit.json": "35d1e875cbd8d21a9296c892a98a640b23be5dc6efd411637bd4ad2c8f57dcd3",
+      "results/diagnostics/ecology-fixture-audit.json": "e32e8f1aefe67b3120dd046981db85a2d017d38b529f10514dcf967c25d98d41",
+      "results/diagnostics/persistence-fixture-audit.json": "fb999754e656431b0130fd77348b002bfd5d65b58b1ef4b06b2d403973c772ec"
+    },
+    "input_audit_sha256": "a182b8b66a25b0b5fa91bba7d241cda7907e2e6f71c8cd23333280cb845179b1"
+  },
+  "hosted_suite": {
+    "study": "E131",
+    "sourceKind": "GitHub Actions",
+    "localGuard": false,
+    "measured": true,
+    "mode": "hosted-full-suite",
+    "status": "success",
+    "wallStartedAt": "2026-11-22T20:18:44+05:30",
+    "wallSeconds": 1195.0,
+    "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+    "jobId": "137246155202",
+    "runId": "45034835612",
+    "testCount": 601,
+    "skippedTests": 0,
+    "suiteSeconds": 1096.658,
+    "calendarSegments": [
+      {
+        "end": "2026-11-22T20:38:39+05:30",
+        "start": "2026-11-22T20:18:44+05:30",
+        "date": "2026-11-22",
+        "seconds": 1195.0
+      }
+    ],
+    "htmlUrl": "https://github.com/Winter-Soren/seed/actions/runs/45034835612"
+  },
+  "charges": [
+    {
+      "evidence": ".tmp/E131-readiness-attempt1.result.json",
+      "sha256": "3c79c0a6a05301d8b08ff2157162669516feddb9170d8e4d913e859f936e76fa",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "readiness",
+      "status": "stopped",
+      "processStarted": false,
+      "wallSeconds": 1.2963431,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:07:00.8441660+05:30",
+          "end": "2026-11-22T20:07:02.1405091+05:30",
+          "seconds": 1.2963431
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-readiness-attempt2.result.json",
+      "sha256": "00510c045a66de84ac3e77bf00ef6f187b3891703cd0acd07381f11e846ab683",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "readiness",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 25.9577841,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:07:20.8619251+05:30",
+          "end": "2026-11-22T20:07:46.8197092+05:30",
+          "seconds": 25.9577841
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-benchmark-attempt1.result.json",
+      "sha256": "ceaab92da9e6c64d546c4b5c05e7a858efa058ed9a54b4cb860f72a9e0a04745",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "benchmark",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 49.5197661,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:08:12.4788972+05:30",
+          "end": "2026-11-22T20:09:01.9986632+05:30",
+          "seconds": 49.519766
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-audit-development-attempt1.result.json",
+      "sha256": "9277f30c8a75c71addda793d859c15e6b14c9f133ed1664669bc0f8c1454b3ba",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "audit-development",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 22.7985046,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:09:24.6754724+05:30",
+          "end": "2026-11-22T20:09:47.4739770+05:30",
+          "seconds": 22.7985046
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-development-forecast.charge.json",
+      "sha256": "0c72eceb5ac79622f050b60b7940f84b62e957da2906181e79b56b12ec0d9bc0",
+      "study": "E131",
+      "sourceKind": "PowerShell metadata calculation",
+      "localGuard": false,
+      "measured": true,
+      "mode": "development-cost-forecast",
+      "status": "finished",
+      "processStarted": null,
+      "wallSeconds": 0.862871,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:09:55.2832258+05:30",
+          "end": "2026-11-22T20:09:56.1460968+05:30",
+          "seconds": 0.862871
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-A0-attempt1.result.json",
+      "sha256": "48473ec1fd43ab86a5a96af92ea4f5285d98f8d520ef9dbea81ffa9664d737f0",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A0",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 190.6107061,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:10:10.8362928+05:30",
+          "end": "2026-11-22T20:13:21.4469988+05:30",
+          "seconds": 190.610706
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-A1-attempt1.result.json",
+      "sha256": "1e1b1471d8b66cbaa43d63265d799fec2317df249ca796e6f21a630203300cf1",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A1",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 104.3873776,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:13:22.0468688+05:30",
+          "end": "2026-11-22T20:15:06.4342463+05:30",
+          "seconds": 104.3873775
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-A2-attempt1.result.json",
+      "sha256": "a2fce586304c4c2d7cf4c1addd33274920d8fd86e6ab5486a047885df82ac6d2",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "A2",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 147.0742129,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:15:06.4931281+05:30",
+          "end": "2026-11-22T20:17:33.5673409+05:30",
+          "seconds": 147.0742128
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-audit-final-attempt1.result.json",
+      "sha256": "e63ff137fdcb84b6518cf8c02f2de42365ab707a87e0af0109bf3cffa17db5b6",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "audit-final",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 36.711684,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:17:33.6701119+05:30",
+          "end": "2026-11-22T20:18:10.3817958+05:30",
+          "seconds": 36.7116839
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    },
+    {
+      "evidence": ".tmp/E131-hosted-137246155202.charge.json",
+      "sha256": "c4149a910cc9f02886ec7f02c3b2c7bc5d7c49a1bd3919aa78b716f0ff43d6dc",
+      "study": "E131",
+      "sourceKind": "GitHub Actions",
+      "localGuard": false,
+      "measured": true,
+      "mode": "hosted-full-suite",
+      "status": "success",
+      "processStarted": null,
+      "wallSeconds": 1195.0,
+      "calendarSegments": [
+        {
+          "end": "2026-11-22T20:38:39.0000000+05:30",
+          "start": "2026-11-22T20:18:44.0000000+05:30",
+          "date": "2026-11-22",
+          "seconds": 1195.0
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": "137246155202",
+      "runId": "45034835612"
+    },
+    {
+      "evidence": ".tmp/E131-status-summary-attempt1.result.json",
+      "sha256": "ee79789a903bf7bd45bf0927b1c18f70397a229ea119e21fbc0732728d395b8c",
+      "study": "E131",
+      "sourceKind": "Local guarded command",
+      "localGuard": true,
+      "measured": true,
+      "mode": "status-summary",
+      "status": "finished",
+      "processStarted": true,
+      "wallSeconds": 13.5786439,
+      "calendarSegments": [
+        {
+          "date": "2026-11-22",
+          "start": "2026-11-22T20:39:24.6246540+05:30",
+          "end": "2026-11-22T20:39:38.2032978+05:30",
+          "seconds": 13.5786438
+        }
+      ],
+      "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+      "jobId": null,
+      "runId": null
+    }
+  ],
+  "readiness_prelaunch_issue": "Windows CIM unavailable in the initial sandboxed guard. No Python process started. The attempt was preserved and charged; the same guarded checks passed with Windows monitoring enabled."
+}

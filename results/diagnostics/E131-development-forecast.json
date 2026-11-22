@@ -1,0 +1,160 @@
+{
+  "study": "E131",
+  "kind": "development-only prospective forecast",
+  "status": "passed",
+  "sourceCommit": "b5811f6afc05c856fdcd32c0f571529f81e7d9ca",
+  "registrationCommit": "bee51c82a8f7074ac53309f17ab2fa45be5f95aa",
+  "createdAt": "2026-11-22T20:09:56.0602603+05:30",
+  "pins": {
+    ".tmp/E131-readiness-attempt2.result.json": "00510c045a66de84ac3e77bf00ef6f187b3891703cd0acd07381f11e846ab683",
+    ".tmp/E131-benchmark-attempt1.result.json": "ceaab92da9e6c64d546c4b5c05e7a858efa058ed9a54b4cb860f72a9e0a04745",
+    ".tmp/E131-audit-development-attempt1.result.json": "9277f30c8a75c71addda793d859c15e6b14c9f133ed1664669bc0f8c1454b3ba",
+    ".tmp/E131-audit-development-attempt1.audit.json": "605d7e2773ab0a33bf10b1a0381602fcaf99fc60f3b8f00038e87e64e108aabe",
+    "runs/20261122-200819_E131-benchmark/status.json": "8f9e40c083d62129e527b79c8743886b3f4f150028ad9523494c82af0106e7a7"
+  },
+  "staticShapeEvidence": "All four development families exercise the same six policy and schedule pairs, both initial rules, 300 turns and four agents per replay. Family count changes the number of repeated calls, not these rollout shapes.",
+  "costAdmission": {
+    "passed": true,
+    "ratio": 1.3216661282000906,
+    "ratioLimit": 1.5,
+    "families": [
+      1,
+      2,
+      3
+    ],
+    "synchronizedSeconds": {
+      "unchanged": {
+        "cold": 4.199576799990609,
+        "warm": [
+          0.35237070004222915,
+          0.4364369999966584,
+          0.4946021999930963
+        ],
+        "warmMedian": 0.4364369999966584,
+        "total": 5.482986700022593,
+        "incrementalTotal": 0.0
+      },
+      "adaptive": {
+        "cold": 18.2148721999838,
+        "warm": [
+          0.4088692999794148,
+          0.5768239999888465,
+          0.6740183000219986
+        ],
+        "warmMedian": 0.5768239999888465,
+        "total": 19.87458379997406,
+        "incrementalTotal": 14.391597099951468
+      },
+      "random_quota": {
+        "cold": 9.06164590001572,
+        "warm": [
+          0.36544249998405576,
+          0.4866728000342846,
+          0.6876892000436783
+        ],
+        "warmMedian": 0.4866728000342846,
+        "total": 10.601450400077738,
+        "incrementalTotal": 5.118463700055145
+      }
+    }
+  },
+  "development": {
+    "run": "runs/20261122-200819_E131-benchmark",
+    "guardSeconds": 49.5197661,
+    "familySeconds": [
+      34.21900000004098,
+      1.327999999979511,
+      1.7660000000032596,
+      2.6869999999762513
+    ],
+    "fullFamilySeconds": [
+      34.28200000000652,
+      1.3439999999827705,
+      1.7660000000032596,
+      2.7339999999967404
+    ],
+    "nonFamilyOverheadSeconds": 9.393766100010708,
+    "firstFamilySeconds": 34.28200000000652,
+    "maximumOfAllLaterFamiliesSeconds": 2.7339999999967404
+  },
+  "panelForecast": {
+    "formula": "guard_overhead + first_full_family + 63 * 1.5 * max(all_three_later_full_families)",
+    "seconds": 302.03876609970916,
+    "threePanelsSeconds": 906.1162982991275,
+    "hardSlotSeconds": 600,
+    "cleanupSeconds": 30,
+    "includesAllObservations": true,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 22.7985046,
+    "timing": {
+      "elapsed_seconds": 12.5,
+      "setup_and_summary_seconds": 12.094000000040978,
+      "reconstruction_seconds": 0.4059999999590218,
+      "family_seconds": [
+        0.10899999999674037,
+        0.10999999998603016,
+        0.09299999999348074,
+        0.09399999998277053
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 10.298504600000001,
+    "formula": "external + 4*setup_and_summary + 196*1.5*max(family_seconds)",
+    "seconds": 91.01450459605678,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeThisCosting": 99.5723979,
+    "oneCiReserveSeconds": 2100,
+    "operationalReserveBeforeCostingSeconds": 580,
+    "reportingReserveSeconds": 60,
+    "costingChargedFromOperationalReserve": true,
+    "measuredScheduleWithCiAndReservesSeconds": 3836.7032007951843,
+    "allHardSlotsSeconds": 4939.5723978999995,
+    "studyLimitSeconds": 5400,
+    "hardMarginSeconds": 460.4276021000005,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 21202.785070600003,
+    "dailyLimitSeconds": 28800,
+    "projectedDayWithAllHardSlotsSeconds": 26042.785070600003,
+    "noDuplicateBaselineSuite": true,
+    "ciAfterLocalPanelsAndAudit": true
+  },
+  "storage": {
+    "observedRawLengths": [
+      225151,
+      227344,
+      213415,
+      220176
+    ],
+    "observedMaxRawBytes": 227344,
+    "observedOtherBytes": 128852,
+    "futureReserveBytes": 149732176.0,
+    "reserveFormula": "2 copies * 1.5 size allowance * (192*max_raw + 3*(64/4)*observed_metadata) + one_max_raw_atomic_write",
+    "freeCBytes": 25934745600,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 46428184576,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 46278452400.0,
+    "minimumDFreeBytes": 10737418240,
+    "noArbitraryScratchReserve": true
+  },
+  "memory": {
+    "source": "native GetPerformanceInfo",
+    "availablePhysicalBytes": 6888923136,
+    "availableCommitBytes": 13977686016.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Four development families; the1.5 factor is a scheduling allowance, not statistical confidence.",
+    "Future source preflight and startup guards remain authoritative.",
+    "All64 final assignment keys add host work; generous fixed hard slots preserve measured headroom.",
+    "No held-out behavior observed; formal release remains with the coordinator.",
+    "Costing wall is charged from the existing580-second operational reserve, so admission does not gain uncharged time.",
+    "Scientific publication requires the later single full hosted suite as well as the joint audit."
+  ]
+}

@@ -2630,3 +2630,21 @@ $common = @('--eval-protocol','timed-exploration-v1','--generations',0)
 ```
 
 Run the new targeted fixtures, a fresh independent synthetic audit and the rehearsal before final release. Verify the original rollout against its historical implementation. Use `python -B tools/audit_timed_exploration.py --source-commit <source SHA> --development` and repeat without `--development` to check the complete triplet. Run `python scripts/summarize.py` after audit and hosted verification. Cap E131 at 5,400 seconds and spend no more than the current local day's allowance.
+
+### E131 result and decision · 22 November 2026
+
+The registered adaptive timing passed laptop admission and failed the behavioral gate in all three lineages. Every guarded final panel completed all 64 assigned families on its original seed. The joint audit independently reconstructed 192 final and four development families and checked 223 file hashes. The untouched code release for every rollout and for the single hosted suite was `b5811f6afc05c856fdcd32c0f571529f81e7d9ca`. [Independent final audit](../results/diagnostics/E131-independent-audit.json) · [Admission forecast](../results/diagnostics/E131-development-forecast.json)
+
+| Lineage | Adaptive late Q | Turns saved | Direct late Q gain | Adjusted late Q gain |
+| --- | ---: | ---: | ---: | ---: |
+| [A0](../runs/20261122-201021_E131-A0) | −0.051 ± 0.031 | −1.05 ± 1.08 / −0.52 ± 1.06 | −0.041 ± 0.045 / −0.027 ± 0.044 | +0.035 ± 0.051 / +0.006 ± 0.057 |
+| [A1](../runs/20261122-201337_E131-A1) | −0.041 ± 0.031 | −0.16 ± 1.05 / −0.72 ± 1.05 | +0.035 ± 0.043 / +0.082 ± 0.040 | +0.061 ± 0.071 / +0.143 ± 0.064 |
+| [A2](../runs/20261122-201521_E131-A2) | −0.070 ± 0.034 | +3.42 ± 1.10 / +1.77 ± 0.99 | −0.051 ± 0.047 / −0.016 ± 0.048 | +0.063 ± 0.063 / +0.033 ± 0.070 |
+
+Each cell with two values shows the ordinary control first and the equal-quota control second. Each ± is one family standard error, paired for contrasts. Late Q assigns food +1, poison −1, and death or no contact 0. First-food latency counts every assigned creature, with 50 for no food in the early window. The adaptive warm median was 0.576824 s, ordinary 0.436437 s and equal quota 0.486673 s. The adaptive/ordinary ratio of 1.321666 met the 1.5 ceiling.
+
+A2 alone passed the latency contrast against ordinary. No lineage passed latency against equal quota. A1 alone cleared the direct and stationary-adjusted late Q gains against equal quota. All three adaptive late scores were negative, and every stationary late-Q safeguard missed the registered −0.05 lower-bound margin. Both survival safeguards passed against both controls for A2 and against quota for A1. Absolute reversal outcomes, realized overrides and all safeguard bounds are in the [comparison](../results/diagnostics/E131-comparison.json). The guards and audit checked complete live-block quotas. Variable duration of partial blocks means realized dose can differ.
+
+**Decision.** The behavioral gate failed at 0/3 and the setting fails adoption. Retire this 12-turn exploration setting from the improvement sequence. No tuning or extra panels on these worlds. The distinct next question is whether balanced, voluntarily chosen item encounters improve feedback access and reversal recovery against a matched sham. This is a candidate for separate preregistration.
+
+**Verification and compute.** Windows CIM access stopped the first readiness attempt before Python started. Its 1.296 seconds remained in the canonical ledger. The guarded retry passed 36 focused tests and seven independent synthetic check groups. The four-family development panel and its audit took 49.520 and 22.799 seconds. Final panels took 190.611, 104.387 and 147.074 seconds serially, with 36.712 seconds for the joint audit. Both compiled and warm policy timings are in the development record. The single [hosted Windows job](https://github.com/Winter-Soren/seed/actions/runs/45034835612) passed 601 tests in 1,096.658 test seconds and used 1,195 whole-job seconds. Study charge was 1,787.798/5,400 seconds, including reporting. The shared daily ledger stood at 22,891.011/28,800 seconds. The reporting check preserved all earlier diagnostic JSON bytes. [Operational accounting](../results/diagnostics/E131-operations.json) · [Generated results](../results/RESULTS.md#feedback-timed-exploration-timed-exploration-v1)
