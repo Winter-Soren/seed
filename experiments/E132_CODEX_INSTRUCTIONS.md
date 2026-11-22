@@ -424,3 +424,52 @@ registration and the owner's approval:
 - Add any other mechanism to the brain.
 - Run two heavy jobs at once, or exceed the time limits.
 - Describe a difference inside the error bars as a result.
+
+## Clarifications · 22 November 2026
+
+These were added before any implementation. Where they differ from the steps
+above, they govern.
+
+1. **Branch.** At writing time, `origin/main` (`720a834`) was an ancestor of the
+   E132 branch `claude/zen-gauss-dfd2oe`. **Ask the owner** whether to
+   fast-forward `main` to that branch:
+
+   ```powershell
+   git fetch origin
+   git checkout main
+   git merge --ff-only origin/claude/zen-gauss-dfd2oe
+   git push origin main
+   ```
+
+   Then work on `main` as usual. Never force-push or rebase. If
+   `--ff-only` refuses, stop and ask the owner.
+2. **World-protocol label inside `rollout`.** The fast-slow arms keep using
+   `_world_protocol="reversal-evolution-v1"` for the world itself. That lets
+   `_reversal_probe_step`, the flip handling and the existing `_world`
+   diagnostics work without loosening `rollout`'s checks. Allow `fast_memory`
+   and `_fast_off_step` only under that label. Use `fast-slow-reversal-v1` only
+   as the runner, summary and results protocol name.
+3. **Lesion validation.** Do **not** copy E126's check that
+   `probe_W_sha256 == final_W_sha256` in lesion arms. In the fast-slow lesion the
+   slow `W` keeps learning, so that check would fail every world. For
+   fast-slow lesion arms, check these instead:
+   - `fast_enabled` is false from `flip+1` on;
+   - the hashes of `F` at the probe tick match the intact arm;
+   - `F` evolves by decay alone after the probe.
+
+   E126's own validation stays unchanged.
+4. **Pass criterion for the gain-0 one-change test.**
+   - Actions, events and food and poison counts must be **identical**.
+   - Slow weights, activity and predictor weights must agree under
+     `np.array_equal`, which treats +0.0 and −0.0 as equal. They need not be
+     byte-identical, because adding `0.0` can flip the sign of a zero and the
+     extra operation can change XLA fusion.
+   - Byte-identity is still required for the `fast_memory=None` path against
+     commit `720a834`.
+   - If the gain-0 test shows any difference beyond signed zeros, stop at
+     checkpoint B.
+5. **Matched schedules test.** Add a test that, for a given training seed and
+   generation, `sampling` gives identical `world_keys`, `development_keys`,
+   `assignment_key` and `flip_steps` for all three controllers. Only the noise
+   and candidates may differ. Note that with 158 numbers instead of 155 the
+   candidate noise differs by design.
