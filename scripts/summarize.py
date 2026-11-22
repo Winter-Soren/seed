@@ -44,6 +44,7 @@ def main():
     contact_gate_status_rows = []
     replay_selection_rows = []
     scene_transfer_rows = []
+    background_selection_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -71,6 +72,11 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "background-selection-v1":
+            background_selection_rows.append("| " + " | ".join([d.name, cfg["mode"], cfg.get("view") or "—", s.get("status", "no summary"),
+                f"{s.get('completed_attempts', '?')}/{cfg['expected_attempts']}",
+                f"{s.get('completed_families', '?')}/{cfg['expected_families']}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "scene-transfer-v1":
             scene_transfer_rows.append("| " + " | ".join([d.name, cfg["mode"], s.get("status", "no summary"),
                 f"{s.get('completed_families', '?')}/{cfg['expected_families']}", commit]) + " |")
@@ -631,6 +637,14 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if background_selection_rows:
+        out += ["## Paired selection on masked and ordinary backgrounds (background-selection-v1)", "",
+            "Both selection arms computed the same two first-view scores, with one preassigned scalar per arm. "
+            "The [protocol](../experiments/E136_PROTOCOL.md) gives separate stationary and reversal decisions.", "",
+            "| Run | Mode | Selected view | Status | ES attempts completed/assigned | Families completed/assigned | Commit |",
+            "|---" * 7 + "|", *background_selection_rows, ""]
+        if (ROOT / "results/diagnostics/E136-independent-audit.json").is_file():
+            out += ["[Independent reconstruction and paired lineage results](diagnostics/E136-independent-audit.json).", ""]
     if scene_transfer_rows:
         from scripts import run_scene_transfer
         study = run_scene_transfer.build_comparison(ROOT)

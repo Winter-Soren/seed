@@ -32,3 +32,5 @@ runs/*_E134-*/** -text
 results/diagnostics/E134-*.json -text
 runs/*_E135-*/** -text
 results/diagnostics/E135-*.json -text
+runs/*_E136-*/** -text
+results/diagnostics/E136-*.json -text
