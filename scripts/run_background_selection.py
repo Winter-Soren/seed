@@ -20,6 +20,7 @@ PROTOCOL = "background-selection-v1"
 TRAIN_SEED = 2026121600
 EVAL_SEED = 2026121700
 VIEWS = ("isolated", "background")
+DEVELOPMENT_TRAINING_NAMES = ("E136-benchmark-isolated-recovery", "E136-benchmark-background")
 SETTINGS = (16, 4, .05, .02)
 MAX_SECONDS = {"development-training": 105, "development-evaluation": 100, "training": 240, "evaluation": 300}
 ALLOWED_FLAGS = {"--eval-protocol", "--condition-split", "--name", "--start", "--seed",
@@ -32,8 +33,8 @@ KEY_ROLES = ("script", "birth", "chamber", "background", "probe", "solo_layout",
 
 
 def _requests():
-    requests = {f"E136-benchmark-{view}": ("development", "development-training", 0, view, TRAIN_SEED, 2, 0)
-                for view in VIEWS}
+    requests = {name: ("development", "development-training", 0, view, TRAIN_SEED, 2, 0)
+                for view, name in zip(VIEWS, DEVELOPMENT_TRAINING_NAMES)}
     requests["E136-benchmark-eval"] = ("development", "development-evaluation", 0, None, EVAL_SEED, 0, 4)
     for index in range(3):
         for view in VIEWS:
@@ -93,7 +94,7 @@ def _endpoint_receipts(root, source_code, commit, *, development=False):
     for index in range(1 if development else 3):
         pair = []
         for view in VIEWS:
-            name = f"E136-benchmark-{view}" if development else f"E136-A{index}-{view}"
+            name = DEVELOPMENT_TRAINING_NAMES[VIEWS.index(view)] if development else f"E136-A{index}-{view}"
             paths = list((root / "runs").glob("*_"+name))
             if len(paths) != 1:
                 raise ValueError("paired training endpoints for every assigned lineage are required before evaluation")

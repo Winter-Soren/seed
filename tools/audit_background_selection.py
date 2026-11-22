@@ -30,6 +30,7 @@ exact, fingerprint, prefixed = replay.exact, replay.fingerprint, replay.prefixed
 CFG, MOVES, NEURAL, PLACEMENTS = replay.CFG, replay.MOVES, replay.NEURAL, replay.PLACEMENTS
 PROTOCOL = "background-selection-v1"
 VIEWS, GENOTYPES = ("isolated", "background"), ("parent", "isolated", "background")
+DEVELOPMENT_TRAINING_RUNS = ("E136-benchmark-isolated-recovery", "E136-benchmark-background")
 HISTORIES = ("stationary", "reversal")
 KEY_ROLES = ("script", "birth", "chamber", "background", "probe", "solo_layout", "solo_action")
 CELLS = ((8, 16), (16, 32), (8, 32), (16, 16))
@@ -341,7 +342,7 @@ class Auditor(replay.Auditor):
         attempts, families = (2 if development else 10, 0) if training else (0, 4 if development else 128)
         train_seed = 2026121600+(0 if development else index+1)
         eval_seed = 2026121700+(0 if development else index+1)
-        name = "E136-benchmark-"+view if development and training else "E136-benchmark-eval" if development else (
+        name = DEVELOPMENT_TRAINING_RUNS[VIEWS.index(view)] if development and training else "E136-benchmark-eval" if development else (
             f"E136-A{index}-{view}" if training else f"E136-A{index}")
         require(Path(folder).name.endswith("_"+name), "registered run name selects the objective")
         subset(config, dict(protocol=PROTOCOL, mode=mode, seed_index=index, cfg=CFG, l2=.005, view=view,
@@ -633,7 +634,7 @@ def main():
     try:
         auditor = Auditor(args.root, args.source_commit)
         # Read only statuses and filenames until the entire requested bundle is complete.
-        dev_train = [auditor.completed("E136-benchmark-"+view, 2, 0) for view in VIEWS]
+        dev_train = [auditor.completed(name, 2, 0) for name in DEVELOPMENT_TRAINING_RUNS]
         dev_eval = auditor.completed("E136-benchmark-eval", 0, 4)
         final_train = [] if args.development else [(i, view, auditor.completed(f"E136-A{i}-{view}", 10, 0)) for i in range(3) for view in VIEWS]
         final_eval = [] if args.development or args.training else [auditor.completed(f"E136-A{i}", 0, 128) for i in range(3)]

@@ -93,6 +93,10 @@ def _score_family(flat, script, birth_key, chamber_key, background, probe_key, p
 
 @lru_cache(None)
 def _population_cell(pre_contacts, gap):
+    # Resolve cached factories on the host before entering a traced scan.
+    scene._first_decisions()
+    encounter._unravel(CFG)
+
     @jax.jit
     def run(candidates, script, birth_keys, chamber_key, background, probe_key):
         return jax.lax.map(lambda pair: _score_family(

@@ -1,0 +1,42 @@
+{
+  "sourceCommit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "attempt": 1,
+  "childExitCode": 1,
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-attempt1.guard.jsonl",
+  "studyLimitSeconds": 3600.0,
+  "wallStartedAt": "2026-11-22T22:50:51.2879300+05:30",
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:50:51.2879300+05:30",
+      "end": "2026-11-22T22:51:18.9242786+05:30",
+      "seconds": 27.6363486
+    }
+  ],
+  "stageUsedSecondsAfter": 27.6363487,
+  "commit": "38db26a87cfb093114e11e2904d4be5abce612cd",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-attempt1.stdout",
+  "processStarted": true,
+  "retryEligible": false,
+  "dailyLedgerSha256": "0ba5b8d4fad06907c1affdad2c5e90cad28194b3221ffe3b599ccfe3960db63b",
+  "auditOutcome": null,
+  "mode": "benchmark-isolated",
+  "auditReportSha256": null,
+  "study": "E136",
+  "runName": "E136-benchmark-isolated",
+  "studyUsedSecondsAfter": 114.1418958,
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "wallSeconds": 27.6363487,
+  "reservedSeconds": 3354.7873397000003,
+  "stageHardLimitSeconds": 105.0,
+  "status": "stopped",
+  "dailySecondsBefore": {
+    "2026-11-22": 25112.23290019999,
+    "2026-11-21": 17110.3704831
+  },
+  "priorStageSeconds": 0.0,
+  "studyUsedSecondsBefore": 86.5055471,
+  "error": "Owned command exited 1",
+  "timeZoneId": "India Standard Time",
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-benchmark-isolated-attempt1.stderr"
+}
