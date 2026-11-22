@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 806" width="900" height="806" role="img" aria-labelledby="title desc">
+  <title id="title">Seed controller architectures</title>
+  <desc id="desc">Panel A shows the developed plastic controller and feedback loop. Panel B shows the directly encoded fixed-weight recurrent baseline. Panel C shows the activity-based grow-and-prune variant. Panels D through F show transferred weight changes at birth, a demonstration-derived action bias, and an optional shelter persistence bias.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#395c74"/></marker>
+    <marker id="feedback" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#087568"/></marker>
+    <style>
+    text { font: 17px 'Segoe UI', Arial, sans-serif; fill: #14293a; }
+    .title { font: 700 31px Georgia, serif; }
+    .subtitle { fill: #40586a; }
+    .panel-title { font-weight: 700; font-size: 20px; }
+    .letter { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #fff; }
+    .label { font-weight: 650; }
+    .small { font-size: 15px; fill: #40586a; }
+    .tiny { font-size: 14px; fill: #40586a; }
+    .math { font: italic 19px Georgia, serif; }
+    .panel { fill: #fff; stroke: #cedbe4; }
+    .blue { fill: #eaf1fa; stroke: #9cb8d6; }
+    .teal { fill: #e8f5f1; stroke: #92c7b9; }
+    .amber { fill: #fff1dc; stroke: #d8b47e; }
+    .violet { fill: #f1edf8; stroke: #bcabd7; }
+    .neutral { fill: #f3f6f8; stroke: #c1cfd9; }
+    .arrow { fill: none; stroke: #395c74; stroke-width: 1.65; marker-end: url(#arrow); }
+    .feedback { stroke: #087568; stroke-dasharray: 5 4; marker-end: url(#feedback); }
+    .boundary { stroke: #c3d1db; fill: none; }
+    </style>
+  </defs>
+  <rect width="900" height="806" rx="14" fill="#f6f8fa"/>
+  <text x="30" y="42" class="title">Seed controller architectures</text>
+  <text x="31" y="69" class="subtitle">Controllers share a recurrent action loop. Their genomes and update rules differ.</text>
+  <rect x="22" y="91" width="856" height="235" rx="12" class="panel"/>
+  <rect x="37" y="105" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="50" y="123" class="letter" text-anchor="middle">A</text>
+  <text x="73" y="124" class="panel-title">Developed recurrent controller · lifetime plasticity</text>
+  <rect x="42" y="139" width="211" height="58" rx="7" class="blue"/>
+  <text x="147.5" y="162" class="label" text-anchor="middle">Local observations</text>
+  <text x="147.5" y="183" class="small" text-anchor="middle">clamped sensor inputs</text>
+  <rect x="325" y="139" width="250" height="58" rx="7" class="teal"/>
+  <text x="450" y="162" class="label" text-anchor="middle">Recurrent brain</text>
+  <text x="450" y="183" class="small" text-anchor="middle">48 hidden + 6 output units</text>
+  <rect x="647" y="139" width="211" height="58" rx="7" class="violet"/>
+  <text x="752.5" y="162" class="label" text-anchor="middle">Movement + signal</text>
+  <text x="752.5" y="183" class="small" text-anchor="middle">executed move fed back</text>
+  <path d="M254 168 H320" class="arrow"/>
+  <path d="M576 168 H642" class="arrow"/>
+  <path d="M752 139 V131 H450 V138" class="arrow feedback"/>
+  <rect x="42" y="246" width="211" height="58" rx="7" class="blue"/>
+  <text x="147.5" y="269" class="label" text-anchor="middle">Observation predictor</text>
+  <text x="147.5" y="290" class="small" text-anchor="middle">error from last hidden state</text>
+  <rect x="325" y="246" width="250" height="58" rx="7" class="amber"/>
+  <text x="450" y="269" class="label" text-anchor="middle">Neuromodulator</text>
+  <text x="450" y="290" class="small" text-anchor="middle">surprise + energy change + bias</text>
+  <rect x="647" y="246" width="211" height="58" rx="7" class="teal"/>
+  <text x="752.5" y="269" class="label" text-anchor="middle">Hebbian weight update</text>
+  <text x="752.5" y="290" class="small" text-anchor="middle">prior activity × modulation</text>
+  <path d="M149 198 V241" class="arrow feedback"/>
+  <path d="M254 275 H320" class="arrow feedback"/>
+  <path d="M576 275 H642" class="arrow feedback"/>
+  <path d="M754 245 V222 H451 V202" class="arrow feedback"/>
+  <text x="537" y="218" class="tiny">adjusts present weights</text>
+  <rect x="22" y="340" width="856" height="132" rx="12" class="panel"/>
+  <rect x="37" y="354" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="50" y="372" class="letter" text-anchor="middle">B</text>
+  <text x="73" y="373" class="panel-title">Direct recurrent baseline · fixed lifetime weights</text>
+  <rect x="42" y="391" width="210" height="58" rx="7" class="blue"/>
+  <text x="147" y="414" class="label" text-anchor="middle">8,424 weights</text>
+  <text x="147" y="435" class="small" text-anchor="middle">default food-world genome</text>
+  <rect x="280" y="391" width="180" height="58" rx="7" class="neutral"/>
+  <text x="370" y="414" class="label" text-anchor="middle">Decode once</text>
+  <text x="370" y="435" class="small" text-anchor="middle">legal edges only</text>
+  <rect x="489" y="391" width="196" height="58" rx="7" class="teal"/>
+  <text x="587" y="414" class="label" text-anchor="middle">Recurrent brain</text>
+  <text x="587" y="435" class="small" text-anchor="middle">activity changes</text>
+  <rect x="716" y="391" width="142" height="58" rx="7" class="violet"/>
+  <text x="787" y="414" class="label" text-anchor="middle">Actions</text>
+  <text x="787" y="435" class="small" text-anchor="middle">and signal</text>
+  <path d="M253 420 H276" class="arrow"/>
+  <path d="M461 420 H485" class="arrow"/>
+  <path d="M686 420 H712" class="arrow"/>
+  <rect x="22" y="486" width="856" height="135" rx="12" class="panel"/>
+  <rect x="37" y="500" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="50" y="518" class="letter" text-anchor="middle">C</text>
+  <text x="73" y="519" class="panel-title">Structural plasticity · activity-dependent wiring</text>
+  <rect x="42" y="537" width="209" height="58" rx="7" class="teal"/>
+  <text x="146.5" y="560" class="label" text-anchor="middle">Plastic controller</text>
+  <text x="146.5" y="581" class="small" text-anchor="middle">same 155-scalar genome</text>
+  <rect x="281" y="537" width="177" height="58" rx="7" class="neutral"/>
+  <text x="369.5" y="560" class="label" text-anchor="middle">Activity + mask</text>
+  <text x="369.5" y="581" class="small" text-anchor="middle">every 10 turns</text>
+  <rect x="488" y="537" width="192" height="58" rx="7" class="amber"/>
+  <text x="584" y="560" class="label" text-anchor="middle">Grow / prune</text>
+  <text x="584" y="581" class="small" text-anchor="middle">birth-bounded fan-in</text>
+  <rect x="710" y="537" width="148" height="58" rx="7" class="violet"/>
+  <text x="784" y="560" class="label" text-anchor="middle">Next turn</text>
+  <text x="784" y="581" class="small" text-anchor="middle">new mask + weights</text>
+  <path d="M252 566 H277" class="arrow"/>
+  <path d="M459 566 H484" class="arrow"/>
+  <path d="M681 566 H706" class="arrow"/>
+  <text x="29" y="655" class="panel-title">Optional extensions to the controller</text>
+  <rect x="22" y="672" width="274" height="113" rx="12" class="panel"/>
+  <rect x="37" y="686" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="50" y="704" class="letter" text-anchor="middle">D</text>
+  <text x="73" y="705" class="panel-title">Inherited experience</text>
+  <rect x="312" y="672" width="275" height="113" rx="12" class="panel"/>
+  <rect x="327" y="686" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="340" y="704" class="letter" text-anchor="middle">E</text>
+  <text x="363" y="705" class="panel-title">Social readout</text>
+  <rect x="603" y="672" width="275" height="113" rx="12" class="panel"/>
+  <rect x="618" y="686" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="631" y="704" class="letter" text-anchor="middle">F</text>
+  <text x="654" y="705" class="panel-title">Shelter persistence</text>
+  <text x="40" y="734" class="small">Donor sensor → motor changes</text>
+  <text x="40" y="759" class="label">→ matching newborn weights</text>
+  <text x="330" y="734" class="small">Teacher movie → food belief</text>
+  <text x="330" y="759" class="label">→ movement-logit bias</text>
+  <text x="621" y="734" class="small">Recent shelter cue → goal</text>
+  <text x="621" y="759" class="label">→ movement-logit bias</text>
+</svg>

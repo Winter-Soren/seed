@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 556" width="900" height="556" role="img" aria-labelledby="title desc">
+  <title id="title">The Seed genome and development</title>
+  <desc id="desc">The default 155-scalar genome supplies type-pair connection probabilities, weight scales and Hebbian coefficients, plus global learning controls. The five-type schematic highlights a sensor-to-motor block. Each birth samples a different legal wiring mask and starting weights. The default brain has 103 inputs or 129 in the shelter world, 48 hidden units and six outputs.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#395c74"/></marker>
+    <marker id="feedback" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto"><path d="M0 0 L7 3.5 L0 7 Z" fill="#087568"/></marker>
+    <style>
+    text { font: 17px 'Segoe UI', Arial, sans-serif; fill: #14293a; }
+    .title { font: 700 31px Georgia, serif; }
+    .subtitle { fill: #40586a; }
+    .panel-title { font-weight: 700; font-size: 20px; }
+    .letter { font: 700 16px 'Segoe UI', Arial, sans-serif; fill: #fff; }
+    .label { font-weight: 650; }
+    .small { font-size: 15px; fill: #40586a; }
+    .tiny { font-size: 14px; fill: #40586a; }
+    .math { font: italic 19px Georgia, serif; }
+    .panel { fill: #fff; stroke: #cedbe4; }
+    .blue { fill: #eaf1fa; stroke: #9cb8d6; }
+    .teal { fill: #e8f5f1; stroke: #92c7b9; }
+    .amber { fill: #fff1dc; stroke: #d8b47e; }
+    .violet { fill: #f1edf8; stroke: #bcabd7; }
+    .neutral { fill: #f3f6f8; stroke: #c1cfd9; }
+    .arrow { fill: none; stroke: #395c74; stroke-width: 1.65; marker-end: url(#arrow); }
+    .feedback { stroke: #087568; stroke-dasharray: 5 4; marker-end: url(#feedback); }
+    .boundary { stroke: #c3d1db; fill: none; }
+    </style>
+  </defs>
+  <rect width="900" height="556" rx="14" fill="#f6f8fa"/>
+  <text x="30" y="42" class="title">The Seed genome and development</text>
+  <text x="31" y="69" class="subtitle">155 evolved scalars specify how a recurrent brain starts and learns.</text>
+  <rect x="22" y="91" width="417" height="338" rx="12" class="panel"/>
+  <rect x="37" y="105" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="50" y="123" class="letter" text-anchor="middle">A</text>
+  <text x="73" y="124" class="panel-title">Inherited parameters</text>
+  <rect x="461" y="91" width="417" height="338" rx="12" class="panel"/>
+  <rect x="476" y="105" width="26" height="25" rx="4" fill="#214760"/>
+  <text x="489" y="123" class="letter" text-anchor="middle">B</text>
+  <text x="512" y="124" class="panel-title">From type pairs to a newborn</text>
+  <text x="42" y="151" class="small">Field</text>
+  <text x="153" y="151" class="small" text-anchor="end">Shape</text>
+  <text x="199" y="151" class="small" text-anchor="end">Values</text>
+  <text x="214" y="151" class="small">Role</text>
+  <rect x="36" y="160" width="389" height="32" rx="4" class="blue"/>
+  <text x="45" y="181" class="label">conn</text>
+  <text x="153" y="181" class="tiny" text-anchor="end">5 × 5</text>
+  <text x="199" y="181" class="label" text-anchor="end">25</text>
+  <text x="214" y="181" class="small">Connection probabilities</text>
+  <rect x="36" y="195" width="389" height="32" rx="4" class="blue"/>
+  <text x="45" y="216" class="label">wscale</text>
+  <text x="153" y="216" class="tiny" text-anchor="end">5 × 5</text>
+  <text x="199" y="216" class="label" text-anchor="end">25</text>
+  <text x="214" y="216" class="small">Starting weight scale</text>
+  <rect x="36" y="230" width="389" height="32" rx="4" class="teal"/>
+  <text x="45" y="251" class="label">hebb</text>
+  <text x="153" y="251" class="tiny" text-anchor="end">5 × 5 × 4</text>
+  <text x="199" y="251" class="label" text-anchor="end">100</text>
+  <text x="214" y="251" class="small">A, B, C, D per type pair</text>
+  <rect x="36" y="265" width="389" height="32" rx="4" class="teal"/>
+  <text x="45" y="286" class="label">log_eta</text>
+  <text x="153" y="286" class="tiny" text-anchor="end">scalar</text>
+  <text x="199" y="286" class="label" text-anchor="end">1</text>
+  <text x="214" y="286" class="small">Hebbian learning rate</text>
+  <rect x="36" y="300" width="389" height="32" rx="4" class="teal"/>
+  <text x="45" y="321" class="label">mod</text>
+  <text x="153" y="321" class="tiny" text-anchor="end">vector</text>
+  <text x="199" y="321" class="label" text-anchor="end">3</text>
+  <text x="214" y="321" class="small">Energy, surprise and bias</text>
+  <rect x="36" y="335" width="389" height="32" rx="4" class="teal"/>
+  <text x="45" y="356" class="label">log_plr</text>
+  <text x="153" y="356" class="tiny" text-anchor="end">scalar</text>
+  <text x="199" y="356" class="label" text-anchor="end">1</text>
+  <text x="214" y="356" class="small">Predictor learning rate</text>
+  <text x="42" y="392" class="tiny">50 for wiring + 100 Hebbian coefficients + 5 global controls</text>
+  <text x="654" y="145" class="small" text-anchor="middle">Source type (columns)</text>
+  <text x="508" y="214" class="small" text-anchor="middle">Target</text>
+  <text x="508" y="235" class="small" text-anchor="middle">type</text>
+  <text x="584" y="166" class="label" text-anchor="middle">S</text>
+  <text x="556" y="191" class="label" text-anchor="end">S</text>
+  <rect x="568" y="170" width="33" height="33" fill="#e6edf2" stroke="#afc5c8"/>
+  <rect x="568" y="204" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="568" y="238" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="568" y="272" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="568" y="306" width="33" height="33" fill="#188575" stroke="#afc5c8"/>
+  <text x="618" y="166" class="label" text-anchor="middle">H₁</text>
+  <text x="556" y="225" class="label" text-anchor="end">H₁</text>
+  <rect x="602" y="170" width="33" height="33" fill="#e6edf2" stroke="#afc5c8"/>
+  <rect x="602" y="204" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="602" y="238" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="602" y="272" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="602" y="306" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <text x="652" y="166" class="label" text-anchor="middle">H₂</text>
+  <text x="556" y="259" class="label" text-anchor="end">H₂</text>
+  <rect x="636" y="170" width="33" height="33" fill="#e6edf2" stroke="#afc5c8"/>
+  <rect x="636" y="204" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="636" y="238" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="636" y="272" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="636" y="306" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <text x="686" y="166" class="label" text-anchor="middle">H₃</text>
+  <text x="556" y="293" class="label" text-anchor="end">H₃</text>
+  <rect x="670" y="170" width="33" height="33" fill="#e6edf2" stroke="#afc5c8"/>
+  <rect x="670" y="204" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="670" y="238" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="670" y="272" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="670" y="306" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <text x="720" y="166" class="label" text-anchor="middle">M</text>
+  <text x="556" y="327" class="label" text-anchor="end">M</text>
+  <rect x="704" y="170" width="33" height="33" fill="#e6edf2" stroke="#afc5c8"/>
+  <rect x="704" y="204" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="704" y="238" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="704" y="272" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <rect x="704" y="306" width="33" height="33" fill="#deeee9" stroke="#afc5c8"/>
+  <text x="753" y="193" class="small">Sensor rows</text>
+  <text x="753" y="213" class="small">are masked.</text>
+  <text x="753" y="270" class="small">Example block</text>
+  <text x="753" y="291" class="label">S → M</text>
+  <text x="480" y="367" class="small">Self-connections are excluded within type blocks.</text>
+  <text x="480" y="393" class="small">Each birth samples a mask and starting weights.</text>
+  <path d="M440 185 H458" class="arrow"/>
+  <rect x="22" y="447" width="245" height="61" rx="7" class="blue"/>
+  <text x="144.5" y="470" class="label" text-anchor="middle">S · Sensors</text>
+  <text x="144.5" y="491" class="small" text-anchor="middle">103 inputs or 129 with shelter</text>
+  <rect x="326" y="447" width="247" height="61" rx="7" class="teal"/>
+  <text x="449.5" y="470" class="label" text-anchor="middle">H₁–H₃ · Hidden</text>
+  <text x="449.5" y="491" class="small" text-anchor="middle">3 types × 16 recurrent units</text>
+  <rect x="633" y="447" width="245" height="61" rx="7" class="violet"/>
+  <text x="755.5" y="470" class="label" text-anchor="middle">M · Motor and signal</text>
+  <text x="755.5" y="491" class="small" text-anchor="middle">5 movement logits + 1 signal</text>
+  <path d="M268 478 H321" class="arrow"/>
+  <path d="M574 478 H628" class="arrow"/>
+  <path d="M145 446 V439 H756 V445" class="arrow"/>
+  <path d="M756 509 V525 H449 V510" class="arrow"/>
+  <text x="449" y="545" class="tiny" text-anchor="middle">Arrows show allowed paths. Hidden and motor units can also recur within groups.</text>
+</svg>

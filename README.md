@@ -4,6 +4,44 @@ Seed is a small simulation where creatures forage, avoid poison and seek shelter
 
 **All three evolved lineages learned when the safe food changed. Pausing changes to connection strengths during 33 turns without food cues helped them remember.** Back in a fresh grid, the pause improved their chance of finding food before poison by **9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points** over allowing updates throughout. All three met the local memory criterion. Only two met the stricter criterion for retaining immediate foraging performance. We imposed the pause in the experiment. [Reversal learning](#learning-a-changed-rule-and-using-it-alone) · [Memory intervention](#when-should-a-learned-connection-keep-changing) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
 
+## Table of contents
+
+- [Research milestones](#research-milestones)
+- **Simulation and controllers**
+  - [What the creatures do](#what-the-creatures-do)
+  - [The genome and the brain it builds](#the-genome-and-the-brain-it-builds)
+  - [Controller architectures](#controller-architectures)
+  - [How the saved genomes evolved](#how-the-saved-genomes-evolved)
+  - [How a creature learns during its life](#how-a-creature-learns-during-its-life)
+  - [What a generation means](#what-a-generation-means)
+- **Learning and selection**
+  - [How we check whether learning helps](#how-we-check-whether-learning-helps)
+  - [What we found](#what-we-found)
+  - [What happened when we trained for both rules?](#what-happened-when-we-trained-for-both-rules)
+  - [Smaller training steps helped, but the original brains still set the benchmark](#smaller-training-steps-helped-but-the-original-brains-still-set-the-benchmark)
+- **Shelter and inherited experience**
+  - [A world with shelter and memory across lives](#a-world-with-shelter-and-memory-across-lives)
+    - [Persistence after a setback](#persistence-after-a-setback)
+  - [What newborns gained from earlier lives](#what-newborns-gained-from-earlier-lives)
+  - [Ten generations of shelter selection](#ten-generations-of-shelter-selection)
+  - [Evolving with inherited experience](#evolving-with-inherited-experience)
+- **Social learning**
+  - [Learning by watching another creature](#learning-by-watching-another-creature)
+  - [What information the demonstration films contain](#what-information-the-demonstration-films-contain)
+  - [Evolving observers to use a demonstration](#evolving-observers-to-use-a-demonstration)
+  - [Using a calibrated food belief](#using-a-calibrated-food-belief)
+  - [Comparing social-learning studies](#comparing-social-learning-studies)
+  - [Learning passed through three pupils](#learning-passed-through-three-pupils)
+- **Reversal and retention**
+  - [When the food rule changes](#when-the-food-rule-changes)
+  - [Human-inspired research direction](#human-inspired-research-direction)
+  - [Learning a changed rule and using it alone](#learning-a-changed-rule-and-using-it-alone)
+  - [What survives 33 turns without food cues?](#what-survives-33-turns-without-food-cues)
+  - [When should a learned connection keep changing?](#when-should-a-learned-connection-keep-changing)
+- [Try it locally](#try-it-locally)
+- [Where to look next](#where-to-look-next)
+- [License](#license)
+
 ## Research milestones
 
 Each ± is one standard error in the underlying evaluation. Three-value sequences are for A0, A1 and A2, in that order.
@@ -31,6 +69,10 @@ Four creatures move around a 16 × 16 grid. Each sees a small patch around itsel
 
 We chose the genome format, cell types, observations, actions and learning equations. Evolution can change all **155 numerical parameters** within that design. There are five cell types. All inputs share a type, the hidden units use three types with 16 units each, and the six outputs share the last type. Each pair of types has its own wiring and learning parameters. [Genome and development code](seed/seed.py#L44)
 
+[![Genome parameters and the five-type wiring matrix, with sensors, three hidden types and motor outputs](results/figures/seed-genome.svg)](results/figures/seed-genome.svg)
+
+*Figure 1. The genome specifies rules by source and target type. A separate development key samples each newborn's wiring and initial weights.*
+
 | Inherited field | Shape | Numbers | What it controls |
 | --- | --- | ---: | --- |
 | `conn` | 5 × 5 | 25 | Probability of a connection from one cell type to another, stored as a logit |
@@ -54,6 +96,25 @@ flowchart LR
 ```
 
 Evolution changes the inherited parameters across generations. Development draws each newborn's particular connections from those parameters. Lifetime learning changes the strengths of its connections and its observation predictor. The collective-memory mechanism also lets a later newborn receive acquired changes on matching sensor-to-output connections. These are distinct places where experience can affect a creature. [Learning update](seed/seed.py#L147) · [Evolution update](seed/seed.py#L401) · [Memory transfer](seed/lineage.py#L217)
+
+## Controller architectures
+
+[![Six panels comparing the developed plastic brain, directly encoded fixed-weight baseline, structural rewiring, inherited experience, social readout and shelter persistence](results/figures/seed-controller-architectures.svg)](results/figures/seed-controller-architectures.svg)
+
+*Figure 2. The top panels show the controller and its updates. The bottom panels show where optional memory and action-bias modules enter that loop.*
+
+| Panel | Design | What changes |
+| --- | --- | --- |
+| A | Developed plastic controller | The 155 inherited rules sample a recurrent network at birth. During life, the predictor learns from observation errors and the modulator uses their mean squared size, energy change and a bias to gate Hebbian updates. The birth mask stays fixed. [Controller code](seed/seed.py#L147) |
+| B | Direct recurrent baseline | The original food-world genome contains **8,424** weights, one per legal input into the 54 non-sensor units. The recurrent activity evolves each turn while the weights stay fixed. [Decoder](seed/direct.py) · [E113 comparison](results/E113_BASELINE.md) |
+| C | Structural plasticity | The developed brain also checks for grow and prune opportunities every ten turns. It can change existing neuron-to-neuron connections within a cap set at birth. [Rewiring rule](seed/structural.py) · [E107 results](experiments/LOG.md#e107-full-fixed-genome-comparison--2026-11-14--structural-intervention-lowers-fitness-in-33-inputs) |
+| D | Inherited experience | A donor's acquired sensor-to-motor weight changes are applied to matching edges in a newborn's sampled wiring. [Transfer mechanism](#a-world-with-shelter-and-memory-across-lives) |
+| E | Social readout | An engineered, calibrated food-color belief from the teacher's movie biases movement toward locally visible items. [E123 design](#using-a-calibrated-food-belief) |
+| F | Shelter persistence | A short-lived shelter memory and progress check bias movement in the cold world. [Persistence design](#persistence-after-a-setback) |
+
+Frozen and Hebbian-only comparisons use the developed controller with selected learning updates switched off. E129 temporarily pauses the Hebbian update and keeps the predictor active. The hand-set biology prior and the evolved A genomes use the same controller with different inherited values. [Learning controls](experiments/LOG.md#e106--2026-11-14--eval-v2-separate-predictor-and-hebbian-contributions) · [E129 intervention](#when-should-a-learned-connection-keep-changing)
+
+The roundtable's proposed designs would modify different stages of the loop. Exploration would intervene at action selection, a contact gate would control Hebbian updates, and compact context memory would carry evidence about the current food rule. [Architecture roundtable](experiments/ARCHITECTURE_COUNCIL_E130.md)
 
 ## How the saved genomes evolved
 
