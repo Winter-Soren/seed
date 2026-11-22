@@ -2692,3 +2692,17 @@ Before any E132 code, benchmark or training existed, the [protocol](E132_PROTOCO
 - **Caveat.** The fast rule resembles the biology prior. A pass must then be tested against a decay-only variant and a biology-prior start.
 
 The pass rule is unchanged.
+
+#### E132 implementation instructions · 22 November 2026
+
+[Step-by-step instructions](E132_CODEX_INSTRUCTIONS.md) for the laptop coding agent now cover:
+
+- the engine change, off by default;
+- the 158-number genome format;
+- the new `fast-slow-reversal-v1` protocol module and runner;
+- the required compatibility and gate tests;
+- the audit tool;
+- the benchmark and forecast;
+- the owner checkpoints, final commands, evaluation and reporting.
+
+The instructions add no scientific choices beyond the protocol and its correction. The one open decision is the training budget: the registered 50 generations, or 200 with a raised ceiling. It is reserved for the owner at checkpoint A, after the laptop benchmark and before any final run. Nothing was run to write these instructions.

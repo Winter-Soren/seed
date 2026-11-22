@@ -49,4 +49,4 @@ E132 is registered and tests the first principle: a fast, fading memory added to
 3. Benchmark on the laptop.
 4. Append the exact commands.
 
-See `experiments/E132_PROTOCOL.md`.
+See `experiments/E132_PROTOCOL.md`. The coding agent follows `experiments/E132_CODEX_INSTRUCTIONS.md` step by step. It stops for the owner after the benchmark, to decide between 50 and 200 generations, before any final training.
