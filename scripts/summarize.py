@@ -40,6 +40,7 @@ def main():
     retention_intervention_status_rows = []
     founder_status_rows = []
     exploration_status_rows = []
+    offer_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -67,6 +68,10 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "voluntary-offers-v1":
+            offer_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
+                a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "timed-exploration-v1":
             exploration_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
                 a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
@@ -610,6 +615,57 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if offer_status_rows:
+        from scripts import run_voluntary_offers
+        study = run_voluntary_offers.build_comparison(ROOT)
+        out += ["## Voluntary access to both alternatives (voluntary-offers-v1)", "",
+            "E132 uses the three original saved controllers with one creature per life. Every family replays "
+            "both initial rules. After eight common nearby eight-turn offers, copies receive eight further "
+            "offers crossing nearby versus random-distance placement with stationary versus reversed rules. "
+            "The creature chooses every action. Local choice and a fresh fifty-turn solo probe measure what "
+            "transfers beyond the presentation apparatus.", "",
+            "Every initially assigned birth counts. Two rule replays are averaged inside each of 64 independent "
+            "families before means, paired differences and sample standard errors. Both-color exposure counts "
+            "actual contacts during the continuation, including a contact that causes death. The survival "
+            "safeguard is measured at exposure tick 128; survival after the empty feedback tick 129 is shown "
+            "separately. Dead readout states score zero for local and signed solo choice, with no-contact "
+            "retained in the assigned denominator. Solo Y is first food minus first poison.", "",
+            "All three lineages must pass the registered preference, access, solo-transfer and survival "
+            "criteria. There is no policy-time ratio and no new training.", "",
+            "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|", *offer_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated voluntary access: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E132-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimate = lambda value: f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})"
+            verdict = study["replicated_gates"]["voluntary_access"]
+            out += [f"Replicated voluntary access: **{'PASS' if verdict['passed'] else 'FAIL'}** ({verdict['count']}/3 lineages).", "",
+                "A pass would support a contribution from easier access to the alternatives in this apparatus. "
+                "It would leave calorie intake, visual stimulation and feedback contributions unresolved. "
+                "When access improves but transfer fails, the result points to examining feedback use; a "
+                "failed access manipulation cannot establish a memory defect.", ""]
+            gates, components, safeguards, endpoints = [], [], [], []
+            for panel in study["panels"]:
+                values, label = panel["measurements"], str(panel["index"])
+                gates.append("| " + " | ".join([label, "PASS" if values["gate"]["passed"] else "FAIL",
+                    ", ".join(values["gate"]["failed_criteria"]) or "none"]) + " |")
+                for rule, measured in [("both", values), *values["by_initial_rule"].items()]:
+                    for name, value in measured["components"].items():
+                        components.append("| " + " | ".join([label, rule, name, estimate(value)]) + " |")
+                    for name, value in measured["safeguards"].items():
+                        safeguards.append("| " + " | ".join([label, rule, name, estimate(value), f"{value['lower_2se']:.6f}"]) + " |")
+                    for arm, fields in measured["arms"].items():
+                        for name, value in fields.items():
+                            endpoints.append("| " + " | ".join([label, rule, arm, name, estimate(value)]) + " |")
+            out += ["All rates use fractions; one ± is one family SE. Initial-rule views are descriptive. "
+                    "Intake counts each consumed color per assigned life, and realized energy is the sum "
+                    "of signed actual energy changes during the 64 continuation turns, including clipped gains.", "",
+                "| Lineage | Joint decision | Failed criteria |", "|---" * 3 + "|", *gates, "",
+                "| Lineage | Initial rule | Component | Mean ± family SE |", "|---" * 4 + "|", *components, "",
+                "| Lineage | Initial rule | Near-minus-sham safeguard | Mean ± paired SE | Lower two-SE bound |", "|---" * 5 + "|", *safeguards, "",
+                "| Lineage | Initial rule | Condition | Endpoint | Mean ± family SE |", "|---" * 5 + "|", *endpoints, ""]
     if exploration_status_rows:
         from scripts import run_timed_exploration
         study = run_timed_exploration.build_comparison(ROOT)
