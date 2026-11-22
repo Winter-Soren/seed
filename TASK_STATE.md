@@ -36,4 +36,4 @@ No experiment is running. E126 training stopped at generation 50 of 200 in all s
 
 ## What is next
 
-The preregistered decision closes this retention investigation. The experimenter chose when to pause the updates. Whether a creature can discover a useful update schedule from its own experience remains open. The animal-learning benchmarks document separate future questions about unfamiliar cues and sequences of actions.
+The retention investigation is closed. E130 compares each original founder with its descendant after 200 generations. It asks whether the descendants recover better when they find every item themselves and the rule changes without warning. Stationary worlds, missed meals and survival are part of this comparison. The thresholds and fresh test worlds are registered before running.

@@ -2574,3 +2574,21 @@ The [joint independent audit](../results/diagnostics/E129-independent-audit.json
 **Decision.** The imposed pause preserved a recently reversed local food preference across three saved lineages. Both the absolute solo success rates and the improvements relative to ordinary updates are reported in the [README](../README.md#when-should-a-learned-connection-keep-changing). The registered three-lineage transfer rescue failed. Close the retention series here. The ability to discover an update schedule autonomously remains untested.
 
 Publication verification found that Git's line-ending defaults could change archived JSON checksums on another operating system. Archive attributes now preserve the original E129 final bytes and restore the original line endings for the previously committed E128 and E129 development records. A separate checkout with automatic line-ending conversion disabled reproduced the original SHA-256 for all 41 E128 and E129 JSON and JSONL evidence files. No prior run was edited.
+
+### E130 · Preregistration · 22 November 2026
+
+The owner asked us to work toward behaviors studied in mammals. The council selected autonomous reversal after checking that E112 already evaluated the same founding and generation-200 genomes. The new question is whether the descendants' recovery exceeds that of their own founders when both must find every item themselves. The [protocol](E130_PROTOCOL.md) fixes the outcome, comparison with stationary worlds, numerical criteria, original-assignment denominator, common random draws, fresh worlds and stopping conditions. The mouse study motivates the behavioral question. The E130 comparison uses different sensory inputs and a deterministic food rule.
+
+Prediction: each of the three evolved lineages acquires the old rule, favors the new food late, improves through the post-switch period, and beats its founder on absolute and reversal-specific recovery while preserving stationary behavior and survival. A joint pass requires every numerical criterion in the protocol in all three lineages. A failure of any required component in any lineage leaves the joint claim unestablished. No final outcomes have been inspected. The rehearsal uses four development families, and each final panel has 64 independent families, both counterbalanced rules and both genotypes. The E103 genotype files are fixed before measurement. No new evolution or memory intervention is included.
+
+```powershell
+$python = '.\.venv\Scripts\python.exe'
+$entry = 'scripts/run_experiment.py'
+$common = @('--eval-protocol','founder-reversal-v1','--generations',0)
+& $python $entry @common --condition-split development --name E130-benchmark --seed 2026120900 --eval-worlds 4 --start file:runs/20261112-023245_E103-A-blank-s0/genome_start.npy
+& $python $entry @common --condition-split final --name E130-A0 --seed 2026120901 --eval-worlds 64 --start file:runs/20261112-023245_E103-A-blank-s0/genome_start.npy
+& $python $entry @common --condition-split final --name E130-A1 --seed 2026120902 --eval-worlds 64 --start file:runs/20261112-050319_E103-A-blank-s1/genome_start.npy
+& $python $entry @common --condition-split final --name E130-A2 --seed 2026120903 --eval-worlds 64 --start file:runs/20261112-102755_E103-A-blank-s2/genome_start.npy
+```
+
+Use the repository interpreter for `python -m unittest discover -s tests -p "test_founder_reversal*.py"` and `python -B tools/audit_founder_reversal.py --self-check`. Independently check the rehearsal using `python -B tools/audit_founder_reversal.py --source-commit <implementation SHA> --development` and the three complete panels using the same command without `--development`. Run `python scripts/summarize.py` and publish the raw data with the audited result. Reserve up to 2,100 seconds for the normal Windows suite and at most 4,800 seconds in total. One heavy job at a time. Keep E126 sealed and E129 closed.
