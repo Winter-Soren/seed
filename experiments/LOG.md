@@ -2702,3 +2702,7 @@ $common = @('--eval-protocol','contact-gate-v1','--generations',0)
 
 
 Run the focused test glob `test_contact_gate*.py` and fresh independent self-check before the four-family rehearsal. Run `python -B tools/audit_contact_gate.py --source-commit <scientific SHA> --development` on the rehearsal, then omit the development flag for the complete final triplet. Run `python scripts/summarize.py` after joint audit. Stage limits are 240/220/120/3×600/300/75 seconds with 845 seconds for operations, 3,600 total. The existing daily budget and resource floors apply. All E132 and E133 work stays local.
+
+#### E133 prospective control correction · 22 November 2026
+
+Replace the originally proposed fixed outward-tick control update with one independently drawn uniform offset (0–3) per treatment block, shared across both rule replays and histories. Draw these offsets on a seventh, independent sparse-timing stream and retain them with every family. Report how often they coincide with real contact feedback, which they can do by chance. The control still spends one update per block and none in the empty interval. Effects, gates, worlds, stages and budget are unchanged. The only check before this correction was the synthetic red fixture failing to import the unimplemented module. No executable treatment or scientific family was measured.
