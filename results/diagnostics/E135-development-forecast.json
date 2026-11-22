@@ -1,0 +1,170 @@
+{
+  "study": "E135",
+  "kind": "development-only complete local admission",
+  "status": "passed",
+  "sourceCommit": "84c26f888c5d82ed5de042891ac96a82a6ab582f",
+  "releasedHead": "f9cb8a66b2604a8ae6d1fdd3528a0d7c96371502",
+  "registrationCommit": "37240adb2c7e5b97c628c47b30a8bbeb85587c73",
+  "createdAt": "2026-11-22T22:19:29.1819348+05:30",
+  "pins": {
+    ".tmp/E135-development-forecast.ps1": "095e4d5cb39420bd0e3030b23cc90a02e1c5598fc4947358db35da2bc5b9015b",
+    ".tmp/E135-readiness-attempt1.result.json": "72dc150726093fbb5d33054b7b28740df93ac33048061257b9baa2dc3faf8442",
+    ".tmp/E135-benchmark-attempt1.result.json": "1eafab3e472b880790595758ddef30bdf4ed04eb543599ae5715a7bde4f1246a",
+    ".tmp/E135-audit-development-attempt1.result.json": "e4e63817432a26fe7beaaf752f00bfb208b39111140e4366b2f2de8abc01d99f",
+    ".tmp/E135-audit-development-attempt2.result.json": "b7e0efeb1f0e2ef85d188f8c723a34bd3c8e81c89dea68959489ed374d6199e4",
+    ".tmp/E135-audit-development-attempt2.audit.json": "fd4e8fab53ba3d9807e5355110921bc07c5571475518f7b1a54deba603439ee9",
+    ".tmp/E135-readiness-proof.json": "c80bf666a01960239ae8141f70ee32b447d1f622eb57ece1de906fad97caae4a",
+    "runs/20261122-221632_E135-dev/status.json": "ff39f792df3ba050f143361d542db6264537ec709d6876817a0ce4b86e1a6b2e",
+    "runs/20261122-221632_E135-dev/families/family_0000.npz": "ab7da63822404b58be1e2ee401df43afe18397356fbc5ad17d6959bfbc5ba57a",
+    "runs/20261122-221632_E135-dev/families/family_0001.npz": "fa95ad6699489c6d9abefdcdb154c01a31a539e0e633196cdec901ce112a6f60",
+    "runs/20261122-221632_E135-dev/families/family_0002.npz": "010fbcc3eec6ba623e0fb2a271990f4f9852dfc2881f45d7535af3b6d35b3acd",
+    "runs/20261122-221632_E135-dev/families/family_0003.npz": "873357d8e16c23c986b4b0d38a155f9b947859d39ae8d6b2c85802bcf61bc95b"
+  },
+  "checks": {
+    "panelSlot": true,
+    "auditSlot": true,
+    "measuredStudy": true,
+    "allHardSlots": true,
+    "dailyBalance": true,
+    "freeC": true,
+    "protectedD": true,
+    "availableCommit": true
+  },
+  "development": {
+    "run": "runs/20261122-221632_E135-dev",
+    "guardSeconds": 19.8137225,
+    "setupSeconds": 0.31200000003445894,
+    "elapsedSeconds": 13.78100000001723,
+    "innerFamilySeconds": [
+      10.46899999998277,
+      2.1089999999967404,
+      0.375,
+      0.4529999999795109
+    ],
+    "fullFamilySeconds": [
+      10.46899999998277,
+      2.1089999999967404,
+      0.39100000000325963,
+      0.46799999999348074
+    ],
+    "guardedNonFamilySeconds": 6.3767225000237495,
+    "timingCoverage": "Separate pre8/pre16 and post16 chamber JIT, gap16/gap32 JIT, common 24-decision first readout, 49-tick scene continuation and ordinary 50-tick reference execute in every family. Rows 0 and 1 compile all lengths; rows 2 and 3 are warm. Auditor tape lengths 64, 96, 80, 80; common batched first draws and 50-turn tape compile in row 0.",
+    "scientificBehaviorNotReadForAdmission": true
+  },
+  "readiness": {
+    "fixtureTests": 5,
+    "freshSyntheticGroups": 7,
+    "freshAuditorProcess": true
+  },
+  "panelForecast": {
+    "formula": "guarded_nonfamily +sum(full_family[0:2]) +126*1.5*max(full_family[2:4])",
+    "developmentColdIndices": [
+      0,
+      1
+    ],
+    "developmentWarmIndices": [
+      2,
+      3
+    ],
+    "coldSeconds": 12.577999999979511,
+    "maximumOfBothWarmFamiliesSeconds": 0.46799999999348074,
+    "seconds": 107.40672249877112,
+    "threePanelsSeconds": 322.22016749631337,
+    "hardSlotSeconds": 400,
+    "cleanupSeconds": 30,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 24.3465166,
+    "timing": {
+      "elapsed_seconds": 14.15700000000652,
+      "setup_and_summary_seconds": 10.96899999998277,
+      "reconstruction_seconds": 3.1880000000237487,
+      "family_seconds": [
+        2.1410000000032596,
+        0.5780000000377186,
+        0.4059999999590218,
+        0.06300000002374873
+      ],
+      "family_wall_seconds": [
+        2.1410000000032596,
+        0.5780000000377186,
+        0.4059999999590218,
+        0.06300000002374873
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 10.189516599993482,
+    "expectedReconstructions": 388,
+    "finalFamilies": 384,
+    "developmentFamilies": 4,
+    "administrativePanelCosts": 4,
+    "coldIndices": [
+      0,
+      1,
+      2
+    ],
+    "warmIndices": [
+      3
+    ],
+    "coldSeconds": 3.125,
+    "warm80TickFamilySeconds": 0.06300000002374873,
+    "longestExposureLengthRatio": 1.2,
+    "formula": "external +4*setup_and_summary +sum(family_seconds[0:3]) +385*1.5*(96/80)*family_seconds[3]",
+    "seconds": 100.84951661638243,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeCosting": 75.5729278,
+    "newHostedCiSeconds": 0,
+    "localOnly": true,
+    "operatingMarginBeforeCostingSeconds": 347.20971430000003,
+    "reportingReserveSeconds": 70,
+    "costingChargedFromOperatingMargin": true,
+    "measuredScheduleWithMarginSeconds": 915.8523262126957,
+    "allFutureHardSlotsAndKnownSeconds": 1992.7826421,
+    "studyLimitSeconds": 2400,
+    "hardMarginSeconds": 407.2173579,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 24512.134993199998,
+    "dailyLimitSeconds": 28800,
+    "projectedDayAllHardSlotsSeconds": 26429.344707499997
+  },
+  "storage": {
+    "observedRawLengths": [
+      826194,
+      723593,
+      712689,
+      835916
+    ],
+    "observedMaxRawBytes": 835916,
+    "observedOtherBytes": 50498,
+    "observedDevelopmentAuditBytes": 50640,
+    "projectedJointAuditBytes": 4912080.0,
+    "existingDevelopmentBytes": 3199530,
+    "atomicWriteAllowanceBytes": 4912080,
+    "futureAllowanceBytes": 1001966271.0,
+    "formula": "2 copies *1.5 *(384*max_raw +3*(128/4)*metadata +97*development_audit) +1.5*existing_development +max(max_raw,97*development_audit)",
+    "optionalLocalGitCopyIncluded": true,
+    "freeCBytes": 25846018048,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 46053130240,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 45051163969.0,
+    "minimumDFreeBytes": 10737418240
+  },
+  "memory": {
+    "source": "cim",
+    "availablePhysicalBytes": 4988178432,
+    "availableCommitBytes": 10788868096.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Four development families only. All full-family timings retained. No additional pilot or final behavior is used for admission.",
+    "The engine has two cold then two warm families; independent exposure-tape audit has three cold then one warm family. Length scaling and the1.5 multiplier are conservative scheduling allowances, not confidence intervals.",
+    "Complete familiar/new scene readout and both native solo paths must be confirmed from source; no development scientific effect threshold is applied.",
+    "No new hosted CI, uploads or publication. Costing is charged from the remaining350-second operating allocation."
+  ]
+}
