@@ -42,10 +42,12 @@ E134 evolved the native 155-number genomes for ten attempts per lineage and test
 
 E135 changed only whether extra items appeared in the first observation with the same adjacent A/B, physical scene and acquired state. On 128 fresh families per lineage, the masked stationary gains replicated at +0.183 ± 0.010, +0.131 ± 0.010 and +0.132 ± 0.014. Full-view attenuation reached +0.390 ± 0.022, +0.122 ± 0.018 and +0.312 ± 0.020. The registered gate passed 3/3. The full-view gain was erased in A0 and A2. A1’s remaining gain is unresolved. The joint audit reconstructed 384 final and four development families. [Audited results](results/diagnostics/E135-independent-audit.json)
 
+E136 stopped at admission. E137 audited its preserved development bundle, completed the six matched training runs and reconstructed all 384 held-out families. Stationary repair and reversal advancement each passed 0/3. Background-trained minus parent solo reversal gains were +0.063 ± 0.068, 0.000 ± 0.060 and −0.156 ± 0.065. The background objective changed ranks on all 60 final populations. [Audited results](results/diagnostics/E137-independent-audit.json)
+
 ## What is running
 
 No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-Keep the E103 parents and E134 endpoints as references. E136 registered the matched-budget ordinary-background comparison and completed its development data. The independent readback exceeded the original cumulative audit allotment. Final ES and evaluation stayed sealed. Both scientific decisions remain open. A later E136 admission would first need a prospectively funded independent check of the preserved development bundle. E136 supplies no evidence to choose an E137 comparison.
+Keep the E103 parents as references and retain the matched E137 endpoints. Retire the ten-attempt background first-choice setting. A future matched native selection comparison could score actual free ordinary-solo behavior over multiple turns, with both arms and both histories sharing the same workload. It needs fresh registration and a priced development check. Autonomous acquisition and reversal from birth remain open.

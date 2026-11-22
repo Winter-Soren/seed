@@ -1,0 +1,160 @@
+{
+  "protocol": "background-selection-v1",
+  "mode": "evaluation",
+  "view": null,
+  "args": {
+    "name": "E136-A0",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 16,
+    "worlds": 4,
+    "sigma": 0.05,
+    "lr": 0.02,
+    "seed": 2026121701,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "background-selection-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "78ef9608c08f808854117913513b56742f090561",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "seed_index": 0,
+  "training_seed": null,
+  "evaluation_seed": 2026121701,
+  "expected_attempts": 0,
+  "expected_families": 128,
+  "source_code": {
+    "seed/seed.py": "45ed9d8bf1497c3e5cc94edaf18bd7a810e885d4ac9010cdc6a83f8a3b2386a3",
+    "seed/encounter_diagnostic.py": "111a41d9442cc62ffc06a4815992611f1c39a072931e4b3596834e743db916e3",
+    "seed/replay_selection.py": "3f7eef3e17f7c802b7459672c523fc6f17f9b1b000f41afd23d76645f05ec4eb",
+    "seed/scene_transfer.py": "7125cb96be8a7a9b632f25562374a911f8bdfa51e747b807d7fc45d82521d539",
+    "seed/background_selection.py": "7c25c8bfb7948903eaf9d481fa1f5f74febce66f172d67e7ad7c0422ebb998a4",
+    "scripts/social_observer_evolution.py": "908a4dac1dbc8cede3c6d6e9e1a4d4815b648ead74a62f1c395f2431f0d05e7b",
+    "scripts/run_replay_selection.py": "508af45abbbd1dfd79ef146096838a9ee70410c19c9a8b681020e9efa12ece57",
+    "scripts/run_background_selection.py": "71c1fe2710dd6661bcb4ef02e343d15f6026a30efa243a74c979d68b9d096c30",
+    "scripts/run_experiment.py": "acb5593db46963f6406efd98c7f2bd1db386906967a79144099e502b3d6a1204",
+    "scripts/run_cold_donor.py": "29060602fbc6b6cc251e9143037148ef4dd5076a28beabba26e77ea0e678f080",
+    "scripts/run_shelter_evolution.py": "535c41378adc49705b49e9af9b1e190e7c207d3aef16989d1e2314b89557ade4"
+  },
+  "l2": 0.005,
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "train_receipts": [
+    {
+      "seed_index": 0,
+      "view": "isolated",
+      "run": "runs/20261122-231942_E136-A0-isolated",
+      "config_sha256": "80ac824a175fa96964f96a81211af87d4eed0c0ebf5f4d306231ce0edd9420d7",
+      "summary_sha256": "72044f7821bb478feb676c75ec8efd4137789c16afe6ff36064a376529b972b2",
+      "checkpoint_sha256": "4cf1e31b5f6eeaa5dd3d1c1f0100f1581c796bc813f6121cee5b2a12aeebb99b",
+      "endpoint_sha256": "d170c684f2238af7bce810d5271075a70cc4799fbf32c8efa1a3d96e75023998"
+    },
+    {
+      "seed_index": 0,
+      "view": "background",
+      "run": "runs/20261122-232046_E136-A0-background",
+      "config_sha256": "e1d740d10d2d5289e476e2b7d359ca2545f5624b65fd91489806461d4000f481",
+      "summary_sha256": "65e0edeaa6b1d6d58d34518d58df14c8a3567722514ad909dd0cfcc62870002e",
+      "checkpoint_sha256": "07ad1c459c697f835454db8e592cc54a0150044685eebaea0653e1aa5aecec65",
+      "endpoint_sha256": "b0cd77346150eea1dd85c373397fb4d023e2e7dbe68cd0a707ca07173d3f883c"
+    },
+    {
+      "seed_index": 1,
+      "view": "isolated",
+      "run": "runs/20261122-232131_E136-A1-isolated",
+      "config_sha256": "41fd218e1b00f3cf16b534e7ee7685b96c783730e01491926bf4c7fdc38a682d",
+      "summary_sha256": "e3fccab5d399285a20cd60005ce019904270e494cfbf7d7d31d1415d7c88140a",
+      "checkpoint_sha256": "ad6e210ed002f7602dac96587e97b25bd31fd09d1f319deb0757574ab46cda8e",
+      "endpoint_sha256": "f39867cfca8a28d713c09e57cd3d7e59f06e0c0ca4de3e2c306630fd90901145"
+    },
+    {
+      "seed_index": 1,
+      "view": "background",
+      "run": "runs/20261122-232208_E136-A1-background",
+      "config_sha256": "c73cda6c99ad7c12b8d23344286c5b67149ce8a8a8fafcd3c4ca804e1434a862",
+      "summary_sha256": "86637a6d1e73ca8018b734115851411454083ea541ce2cd8f246506c23da5ad8",
+      "checkpoint_sha256": "96cee81f110bcdbb9c5b697bb1642bc16f244dfaa7488d2213a063e3b9bfd89e",
+      "endpoint_sha256": "07815aa5158b786f26736bc7f07a341c0fb7cf1629ea733b8aca0d8e71d3b62a"
+    },
+    {
+      "seed_index": 2,
+      "view": "isolated",
+      "run": "runs/20261122-232244_E136-A2-isolated",
+      "config_sha256": "b8e4d518201b8c4fcffc69e4ea9c2028a0ccd9330663591ee08e5417cbb558d0",
+      "summary_sha256": "106a5266827dd9ea133e8b0ace09a2fe2b72445a430183e0f344df88d161ae3c",
+      "checkpoint_sha256": "c68037467393016d4a5fd6930f1301f2b5a15226c56f15b2fae38b0c676630aa",
+      "endpoint_sha256": "8887fd6d9f50c7657a9138d56564ea7ba58dc954c9c69c129b5ad194ce5d853e"
+    },
+    {
+      "seed_index": 2,
+      "view": "background",
+      "run": "runs/20261122-232337_E136-A2-background",
+      "config_sha256": "3545d6509e3feabb690eba76b4fe74ea46e17d96893050933a610354ad12e0f5",
+      "summary_sha256": "14008d0d7223479ea6db30c29c4b79ba838d4c57673558e79b6a837238162217",
+      "checkpoint_sha256": "ea93298bd6db4d9952cc4bf27e4e8ce7d9a9125880e4b9686283f54fcbe4f43b",
+      "endpoint_sha256": "521c5e5c22d7c0db55cca3412c49618b6750d30ed69ac974c28474010085dc35"
+    }
+  ],
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "ac11b25a167b096c6ba09d4f503f265e5d57d25352521d8b37226e11577a38dc",
+    "bytes": 8042
+  },
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "background",
+    "probe",
+    "solo_layout",
+    "solo_action"
+  ],
+  "endpoint_sha256": [
+    "d170c684f2238af7bce810d5271075a70cc4799fbf32c8efa1a3d96e75023998",
+    "b0cd77346150eea1dd85c373397fb4d023e2e7dbe68cd0a707ca07173d3f883c"
+  ],
+  "max_seconds": 300,
+  "scientific_result": false,
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  }
+}

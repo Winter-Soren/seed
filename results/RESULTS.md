@@ -23,6 +23,27 @@ Fitness = food minus poison per agent in unseen evaluation worlds (seed 123). Fr
 | 20261117-070747_E104-B-bio-s2 | finished | biology | yes | 200/200 | 128×8 | 0.05/0.02 |  | 5.13 | 15.33 | 0.15 | 0.69 → 0.83 | ec2d0b8 |
 | 20261118-031323_E111-benchmark-cpu | finished | file:runs/20261112-131946_E104-B-bio-s0/genome_start.npy | yes | 1/1 | 128×8 | 0.05/0.02 |  | 5.13 | 6.22 | 0.19 | 0.59 → 0.68 | c4bb5ce |
 
+## Paired selection on masked and ordinary backgrounds (background-selection-v1)
+
+Both selection arms computed the same two first-view scores, with one preassigned scalar per arm. The [protocol](../experiments/E136_PROTOCOL.md) gives separate stationary and reversal decisions.
+
+| Run | Mode | Selected view | Status | ES attempts completed/assigned | Families completed/assigned | Commit |
+|---|---|---|---|---|---|---|
+| 20261122-225104_E136-benchmark-isolated | development-training | isolated | failed | 0/2 | 0/0 | 38db26a |
+| 20261122-225549_E136-benchmark-isolated-recovery | development-training | isolated | finished | 2/2 | 0/0 | 73d91f0 |
+| 20261122-225619_E136-benchmark-background | development-training | background | finished | 2/2 | 0/0 | 73d91f0 |
+| 20261122-225702_E136-benchmark-eval | development-evaluation | — | no summary | ?/0 | ?/4 | 73d91f0 |
+| 20261122-230224_E136-benchmark-eval-continuation | development-evaluation | — | finished | 0/0 | 4/4 | c5ce01b |
+| 20261122-231942_E136-A0-isolated | training | isolated | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232046_E136-A0-background | training | background | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232131_E136-A1-isolated | training | isolated | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232208_E136-A1-background | training | background | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232244_E136-A2-isolated | training | isolated | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232337_E136-A2-background | training | background | finished | 10/10 | 0/0 | 78ef960 |
+| 20261122-232439_E136-A0 | evaluation | — | finished | 0/0 | 128/128 | 78ef960 |
+| 20261122-232610_E136-A1 | evaluation | — | finished | 0/0 | 128/128 | 78ef960 |
+| 20261122-232750_E136-A2 | evaluation | — | finished | 0/0 | 128/128 | 78ef960 |
+
 ## First-choice transfer across visual scenes (scene-transfer-v1)
 
 E135 compares each frozen E134 attempt-ten descendant with its original E103 parent, with zero new training. After identical stationary or reversed histories, discarded clones choose among the same adjacent A/B items in the same ordinary-density physical scene. Only the first sensory view changes: extra items are masked or fully visible. Both learning processes are frozen for that decision. A randomly assigned placement continues freely with ordinary learning, and a separate ordinary-grid reference tests the same acquired state.
@@ -3993,3 +4014,25 @@ Development rows are software checks, not adaptation results. Window hits use co
 | 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | noflip_frozen | 0.0 | 0 | 1 | a96e43e |
 | 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_learning | -1.0 | 0 | 1 | a96e43e |
 | 20261115-003726_E108-R-D-reviewed-smoke | finished | development | 8210 | 1 | flip_frozen | 0.0 | 0 | 1 | a96e43e |
+
+## E137 completion of the background selection comparison
+
+E137 used the stock final run aliases `E136-Ai` and `E136-Ai-{isolated,background}`. The original E136 stopped at admission.
+
+The signed ordinary solo score Y is +1 for first food, −1 for first poison and zero for no contact. Differences are background-trained minus comparator. Each ± is one family SE.
+
+| Lineage | History | Background Y | Y vs parent | Y vs isolated | Survival vs parent | Survival vs isolated |
+|---|---|---:|---:|---:|---:|---:|
+| A0 | stationary | +0.785 ± 0.035 | -0.012 ± 0.045 | +0.172 ± 0.052 | +0.000 ± 0.000 | +0.000 ± 0.000 |
+| A0 | reversal | +0.277 ± 0.047 | +0.062 ± 0.068 | +0.156 ± 0.063 | +0.004 ± 0.007 | +0.000 ± 0.008 |
+| A1 | stationary | +0.684 ± 0.039 | -0.129 ± 0.044 | -0.047 ± 0.048 | +0.000 ± 0.000 | +0.000 ± 0.000 |
+| A1 | reversal | +0.234 ± 0.051 | +0.000 ± 0.060 | +0.125 ± 0.059 | +0.000 ± 0.016 | -0.008 ± 0.014 |
+| A2 | stationary | +0.641 ± 0.045 | -0.164 ± 0.046 | +0.207 ± 0.046 | +0.000 ± 0.000 | +0.000 ± 0.000 |
+| A2 | reversal | +0.168 ± 0.050 | -0.156 ± 0.065 | +0.090 ± 0.055 | -0.020 ± 0.014 | +0.016 ± 0.017 |
+
+| Gate | Lineages passed | Criteria below the bound |
+|---|---:|---|
+| Stationary repair | 0/3 | A0 stationary solo gain vs parent, reversal solo gain vs parent safeguard / A1 stationary solo gain vs parent, reversal solo gain vs parent safeguard, stationary solo gain vs isolated, stationary dense gain vs isolated / A2 stationary solo gain vs parent, reversal solo gain vs parent safeguard |
+| Reversal advancement | 0/3 | A0 reversal solo gain vs parent, stationary solo gain vs parent safeguard / A1 reversal solo gain vs parent, stationary solo gain vs parent safeguard, stationary solo gain vs isolated safeguard / A2 reversal solo gain vs parent, stationary solo gain vs parent safeguard, reversal solo gain vs isolated |
+
+[Registered protocol](../experiments/E137_PROTOCOL.md) · [Independent audit, contact and survival readouts](diagnostics/E137-independent-audit.json)

@@ -1,0 +1,27 @@
+{
+  "status": "finished",
+  "protocol": "background-selection-v1",
+  "mode": "training",
+  "view": "isolated",
+  "seed_index": 0,
+  "elapsed_seconds": 50.35999999998603,
+  "setup_seconds": 0.3279999999795109,
+  "completed_attempts": 10,
+  "completed_families": 0,
+  "expected_attempts": 10,
+  "expected_families": 0,
+  "optimizer_updates": 10,
+  "attempt_wall_seconds": [
+    29.85899999999674,
+    1.3910000000032596,
+    1.8440000000409782,
+    2.5,
+    2.077999999979511,
+    2.3589999999967404,
+    2.202999999979511,
+    1.9690000000409782,
+    1.8910000000032596,
+    2.280999999959022
+  ],
+  "family_wall_seconds": []
+}

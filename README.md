@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Ordinary item backgrounds weakened the first-choice gain in all three lineages.** E135 held adjacent items equally reachable and changed only which background items appeared in the first observation. The first-choice advantage from E134 was erased in two lineages. Its remainder was unresolved in the third. Autonomous recovery remains open. [E135 result](#does-visual-context-weaken-the-first-choice-gain) · [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own)
+**Selection on ordinary backgrounds missed both transfer gates.** E137 finished the matched selection comparison across three lineages. Training on ordinary scenes improved some solo scores compared with retraining on isolated views. Every lineage missed the required gain over its original parent. Autonomous recovery remains open. [E137 result](#can-training-on-ordinary-backgrounds-repair-first-choice-transfer) · [Guided reversal](#learning-a-changed-rule-and-using-it-alone) · [Autonomous reversal](#can-descendants-relearn-the-rule-on-their-own)
 
 ## Table of contents
 
@@ -66,6 +66,7 @@ Each ± is one standard error in the underlying evaluation. Three-value sequence
 | Time weight updates from contact feedback | **Failed · 0/3** | Native and contact-gated brains still chose the old food after eight matched reversed contacts. Reopening updates during the empty gap weakened this obsolete preference. Delayed solo choice was worse with the contact gate than with native updating. [E133 results](#can-a-contact-gate-protect-relearning) |
 | Evolve better choices from matched experience | **Failed · 0/3** | Ten rounds changed all three genomes. Every descendant favored the newly safe food locally, but none established the required gain over its parent. Solo first-item scores declined in all three. [E134 results](#can-selection-improve-the-choices-descendants-make) |
 | Test first-choice transfer against real item backgrounds | **Attenuated · 3/3** | Revealing background items reduced the stationary descendant advantage by 0.390 ± 0.022, 0.122 ± 0.018 and 0.312 ± 0.020 while holding focal access fixed. The gain was erased in A0 and A2. [E135 results](#does-visual-context-weaken-the-first-choice-gain) |
+| Evolve first choices in ordinary scenes | **Stationary repair · 0/3. Reversal advancement · 0/3.** | Background training improved several solo comparisons against the isolated training arm. Stationary solo scores fell relative to the original parents in A1 and A2. Reversal fell in A2. [E137 results](#can-training-on-ordinary-backgrounds-repair-first-choice-transfer) |
 | Learn when food feedback is delayed | **Proposed** | Start with a five-turn delay between contact and its energy consequence. Test whether a fading record of recent activity improves credit assignment if the existing controller falls short. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Use a visible context cue | **Proposed** | Change which item is safe according to a cue the creature can observe. Test whether it learns to use the cue on held-out worlds. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
 | Learn new items without forgetting old ones | **Proposed** | Test eight or more item types, introduce new types during a life, and track performance on the old types. [Task ladder](PLAN.md#phase-3--the-task-ladder) |
@@ -575,7 +576,21 @@ The selected next comparison keeps the native first-choice selection score and b
 
 E136 paired the original native genomes under two equal-work selection objectives. Both computed both first-choice scores from the same experience. Only the assigned training view supplied the score used to rank candidates. The final design compared each endpoint with its own starting genome and its independently retrained control. It reserved separate decisions for stationary repair and reversal advancement. [Registered design](experiments/E136_PROTOCOL.md)
 
-**Stopped at laptop admission.** Both development arms completed two optimizer attempts, and all four development families were saved. The first independent reader stopped at an exact rank-weight check. A checker-only correction used the native float32 scale after independently sorting ties. The corrected readback reached its reserved wall cutoff before it produced a report. E136 therefore has no verified training comparison, no final endpoints and no held-out lineage measurements. The scientific gates remain undecided. [Operational receipts](results/diagnostics/E136-operations.json)
+**E136 stopped at laptop admission.** Both development arms completed two optimizer attempts, and all four development families were saved. The corrected independent readback reached its wall cutoff before it produced a report. E137 completed read-only reconstruction on those archives and admitted the original final design under the combined budget. [E136 operational receipts](results/diagnostics/E136-operations.json) · [E137 registration](experiments/E137_PROTOCOL.md)
+
+E137 completed all 60 training attempts and evaluated both frozen endpoints and their E103 parent on 128 fresh families in each lineage. The two first-choice scores produced different rankings in every realized final population, and all 155 inherited values differed between the two final endpoints in every lineage. The audit verified both the selection difference and its downstream outcomes. [Independent audit](results/diagnostics/E137-independent-audit.json)
+
+Ordinary solo Y scores first food +1, first poison −1 and no item zero. Gains are background-trained minus comparator, with one paired family SE.
+
+| Lineage | Stationary vs parent | Stationary vs isolated | Reversal vs parent | Reversal vs isolated |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | −0.012 ± 0.045 | +0.172 ± 0.052 | +0.063 ± 0.068 | +0.156 ± 0.063 |
+| A1 | −0.129 ± 0.044 | −0.047 ± 0.048 | 0.000 ± 0.060 | +0.125 ± 0.059 |
+| A2 | −0.164 ± 0.046 | +0.207 ± 0.046 | −0.156 ± 0.065 | +0.090 ± 0.055 |
+
+**Stationary repair and reversal advancement both passed in 0/3 lineages.** A0 and A2 improved stationary full-view choice against isolated training. All three had positive absolute solo preference after guided reversal. The reversal gain over the original parent remained uncertain in A0 and A1, and A2’s upper two-SE bound was −0.027. All survival safeguards passed. [Generated outcomes and failed criteria](results/RESULTS.md#e137-completion-of-the-background-selection-comparison)
+
+Retire this exact first-choice objective and budget. The remaining question is whether rewarding a creature’s own multistep solo choices can improve inherited performance over the original parent. The current comparison establishes performance after guided experience. Autonomous acquisition and revision from birth remain open. [E137 operations](results/diagnostics/E137-operations.json)
 
 
 ## Try it locally
