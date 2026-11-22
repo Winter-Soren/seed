@@ -28,8 +28,8 @@ concurrency:
 jobs:
   tests:
     runs-on: windows-2022
-    # The E116 suite alone took most of 20 minutes on the hosted CPU.
-    timeout-minutes: 30
+    # The last 508-test Windows job took 29m24s before the E129 compatibility checks.
+    timeout-minutes: 35
     env:
       JAX_PLATFORMS: cpu
       PYTHONUTF8: '1'

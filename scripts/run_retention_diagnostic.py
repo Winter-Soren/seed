@@ -5,6 +5,7 @@ import io
 import json
 import os
 from pathlib import Path
+import sys
 import time
 
 import numpy as np
@@ -18,6 +19,9 @@ from scripts.run_social_reversal import DIRECT_SOURCES
 
 
 PROTOCOL = "retention-diagnostic-v1"
+STUDY_ID = "E128"
+DEVELOPMENT_SEED = 2026120700
+ASSIGNMENT_TAG = 0xE128
 MAX_SECONDS = {"development": 120, "final": 300}
 ARMS = ("plastic_stationary", "plastic_reversal", "direct_stationary", "direct_reversal")
 KEY_ROLES = ("script", "birth", "chamber", "grid", "action", "probe", "retention")
@@ -43,14 +47,17 @@ def _advantage(value, minimum=0.):
     return value["mean"] >= minimum and value["mean"] > 2 * value["se"]
 
 
-def summarize(rows):
+def summarize(rows, *, retention_ticks=RETENTION_TICKS):
     """Average both rules within family before every uncertainty and paired contrast."""
     n = len(rows)
+    retention_ticks = tuple(retention_ticks)
+    if retention_ticks not in ((0, 1, 33), (0, 33)):
+        raise ValueError("retention summaries require registered immediate and 33-turn endpoints")
     if n < 2 or [int(row["base_index"]) for row in rows] != list(range(n)):
         raise ValueError("retention summaries require the complete ordered family panel")
     values, arms = {}, {}
     shapes = {"pre_old_by_rule": (2,), "pre_local_by_rule": (2, 5),
-              "local_by_rule": (2, 3, 5), "grid_by_rule": (2, 3, 7)}
+              "local_by_rule": (2, len(retention_ticks), 5), "grid_by_rule": (2, len(retention_ticks), 7)}
     for arm in ARMS:
         by_rule = {}
         for name, shape in shapes.items():
@@ -65,7 +72,7 @@ def summarize(rows):
             by_delay={str(t): dict(
                 local={name: _estimate(paired["local_by_rule"][:, i, j]) for j, name in enumerate(LOCAL_FIELDS)},
                 grid={name: _estimate(paired["grid_by_rule"][:, i, j]) for j, name in enumerate(GRID_FIELDS)})
-                for i, t in enumerate(RETENTION_TICKS)})
+                for i, t in enumerate(retention_ticks)})
     architectures, by_initial_rule = {}, {"0": {}, "1": {}}
     for architecture in ("plastic", "direct"):
         reversal, stationary = values[architecture + "_reversal"], values[architecture + "_stationary"]
@@ -75,12 +82,12 @@ def summarize(rows):
         grid_contrast = food - stationary["grid_by_rule"][:, :, :, 0].mean(axis=1)
         preference = reversal["grid_by_rule"][:, :, :, 3].mean(axis=1)
         local_result = dict(by_delay={str(t): dict(signed_preference=_estimate(local[:, i]),
-            reversal_minus_stationary=_estimate(contrast[:, i])) for i, t in enumerate(RETENTION_TICKS)},
-            change_33_minus_0=_estimate(local[:, 2] - local[:, 0], bound=True))
+            reversal_minus_stationary=_estimate(contrast[:, i])) for i, t in enumerate(retention_ticks)},
+            change_33_minus_0=_estimate(local[:, -1] - local[:, 0], bound=True))
         grid_result = dict(by_delay={str(t): dict(first_food=_estimate(food[:, i]),
             food_minus_poison=_estimate(preference[:, i]), reversal_minus_stationary=_estimate(grid_contrast[:, i]))
-            for i, t in enumerate(RETENTION_TICKS)},
-            change_33_minus_0=_estimate(food[:, 2] - food[:, 0], bound=True))
+            for i, t in enumerate(retention_ticks)},
+            change_33_minus_0=_estimate(food[:, -1] - food[:, 0], bound=True))
         local_checks = {**{f"S{t}": _advantage(local_result["by_delay"][str(t)]["signed_preference"], .1) for t in (0, 33)},
                         **{f"C{t}": _advantage(local_result["by_delay"][str(t)]["reversal_minus_stationary"], .1) for t in (0, 33)},
                         "retention": local_result["change_33_minus_0"]["lower_2se"] > -.05}
@@ -100,8 +107,8 @@ def summarize(rows):
                     G=_estimate(reversal["grid_by_rule"][:, rule, i, 0]),
                     Y=_estimate(reversal["grid_by_rule"][:, rule, i, 3]),
                     grid_difference=_estimate(reversal["grid_by_rule"][:, rule, i, 0] - stationary["grid_by_rule"][:, rule, i, 0]))
-                    for i, t in enumerate(RETENTION_TICKS)})
-    return dict(families=n, initial_rule_replays=2*n, retention_ticks=list(RETENTION_TICKS),
+                    for i, t in enumerate(retention_ticks)})
+    return dict(families=n, initial_rule_replays=2*n, retention_ticks=list(retention_ticks),
                 arms=arms, architectures=architectures, by_initial_rule=by_initial_rule)
 
 
@@ -133,10 +140,12 @@ def _source_code(root):
     return {name: hashlib.sha256((root / name).read_bytes()).hexdigest() for name in names}
 
 
-def _validate(args, git, root, explicit):
+def _validate(args, git, root, explicit, *, study=None):
+    study = sys.modules[__name__] if study is None else study
+    backend = study.engine
     if explicit is not None and set(explicit) - ALLOWED_FLAGS:
         raise ValueError("retention diagnostics accept only registered source and evaluation flags")
-    if (args.eval_protocol != PROTOCOL or args.condition_split not in MAX_SECONDS or args.generations != 0
+    if (args.eval_protocol != study.PROTOCOL or args.condition_split not in study.MAX_SECONDS or args.generations != 0
             or args.quick or args.allow_dirty or args.resume or args.cfg or args.no_plastic
             or args.controller not in (None, "rules-v0") or args.structural_plasticity not in (None, "off")
             or args.objective is not None or args.memory_condition is not None or getattr(args, "persistence", False)
@@ -147,14 +156,14 @@ def _validate(args, git, root, explicit):
     if (git.get("dirty") is not False or not isinstance(commit, str) or len(commit) != 40
             or any(ch not in "0123456789abcdef" for ch in commit)):
         raise ValueError("retention diagnostics require clean committed source provenance")
-    matches = [i for i in range(3) if args.name == f"E128-A{i}"]
+    matches = [i for i in range(3) if args.name == f"{study.STUDY_ID}-A{i}"]
     if args.condition_split == "development":
-        index, expected = 0, ("E128-benchmark", 2026120700, 4)
+        index, expected = 0, (f"{study.STUDY_ID}-benchmark", study.DEVELOPMENT_SEED, 4)
     elif len(matches) == 1:
         index = matches[0]
-        expected = (f"E128-A{index}", 2026120701 + index, 128)
+        expected = (f"{study.STUDY_ID}-A{index}", study.DEVELOPMENT_SEED + 1 + index, 128)
     else:
-        raise ValueError("final retention panels must be E128-A0, E128-A1 or E128-A2")
+        raise ValueError(f"final retention panels must be {study.STUDY_ID}-A0, {study.STUDY_ID}-A1 or {study.STUDY_ID}-A2")
     if (args.name, args.seed, args.eval_worlds) != expected:
         raise ValueError("retention name, seed and family count differ from registration")
     if any((root / "runs").glob("*_" + args.name)):
@@ -167,18 +176,20 @@ def _validate(args, git, root, explicit):
     if (plastic.shape != (155,) or fixed.shape != (direct.genome_size(Cfg(M=1)),)
             or any(value.dtype != np.float32 or not np.isfinite(value).all() for value in (plastic, fixed))):
         raise ValueError("retention source controllers must retain their finite float32 encodings")
-    if (engine.PROTOCOL != PROTOCOL or tuple(engine.ARMS) != ARMS or tuple(engine.KEY_ROLES) != KEY_ROLES
-            or tuple(engine.RETENTION_TICKS) != RETENTION_TICKS or engine.GRID_STEPS != 50
-            or tuple(engine.LOCAL_FIELDS) != LOCAL_FIELDS or tuple(engine.GRID_FIELDS) != GRID_FIELDS):
+    if (backend.PROTOCOL != study.PROTOCOL or tuple(backend.ARMS) != study.ARMS or tuple(backend.KEY_ROLES) != study.KEY_ROLES
+            or tuple(backend.RETENTION_TICKS) != study.RETENTION_TICKS or backend.GRID_STEPS != 50
+            or tuple(backend.LOCAL_FIELDS) != LOCAL_FIELDS or tuple(backend.GRID_FIELDS) != GRID_FIELDS):
         raise ValueError("retention engine differs from its frozen design")
     return source, baseline, original, recurrent, plastic, fixed
 
 
-def run_tracked(args, git, root, *, explicit=None):
+def run_tracked(args, git, root, *, explicit=None, study=None):
+    study = sys.modules[__name__] if study is None else study
+    backend = study.engine
     started, root = time.monotonic(), Path(root).resolve()
-    source, baseline, original, recurrent, plastic, fixed = _validate(args, git, root, explicit)
+    source, baseline, original, recurrent, plastic, fixed = _validate(args, git, root, explicit, study=study)
     c = Cfg(M=1)
-    schedule = {name: np.asarray(value) for name, value in engine.assignments_manifest(args.seed, args.eval_worlds).items()}
+    schedule = {name: np.asarray(value) for name, value in backend.assignments_manifest(args.seed, args.eval_worlds).items()}
     n = args.eval_worlds
     if (set(schedule) != {"key", "permutation", "pre_contacts"} or schedule["key"].shape != (2,)
             or schedule["key"].dtype != np.uint32 or schedule["permutation"].shape != (n,)
@@ -187,20 +198,24 @@ def run_tracked(args, git, root, *, explicit=None):
             or not np.array_equal(np.sort(schedule["permutation"]), np.arange(n))
             or not np.array_equal(schedule["pre_contacts"], np.repeat([8, 16], n // 2)[schedule["permutation"]])):
         raise ValueError("retention assignments must balance registered eight/sixteen-contact boundaries")
-    source_code = _source_code(root)
+    source_code = study._source_code(root)
     folder = root / "runs" / (datetime.datetime.now().strftime("%Y%m%d-%H%M%S") + "_" + args.name)
     folder.mkdir(parents=True, exist_ok=False)
     (folder / "families").mkdir()
     assignments = _save_arrays(folder, "assignments.npz", schedule)
     recorded_args = dict(vars(args), start="file:" + source["path"])
-    config = dict(protocol=PROTOCOL, args=recorded_args, git=dict(git), source=source, direct_source=baseline,
+    config = dict(protocol=study.PROTOCOL, args=recorded_args, git=dict(git), source=source, direct_source=baseline,
         cfg=c._asdict(), cfg_overrides={}, condition_split=args.condition_split, generation=0, eval_seed=args.seed,
         expected_families=n, statistical_unit="independent paired base family", assignments=assignments,
-        assignment_stream_tag=0xE128, arms=list(ARMS), key_roles=list(KEY_ROLES), initial_rules=[0, 1],
-        pre_contact_choices=[8, 16], post_contacts=16, retention_ticks=list(RETENTION_TICKS),
-        grid_steps=50, probe_placements=12, source_code=source_code, raw_schema=PROTOCOL,
+        assignment_stream_tag=study.ASSIGNMENT_TAG, arms=list(study.ARMS), key_roles=list(study.KEY_ROLES), initial_rules=[0, 1],
+        pre_contact_choices=[8, 16], post_contacts=16, retention_ticks=list(study.RETENTION_TICKS),
+        grid_steps=50, probe_placements=12, source_code=source_code, raw_schema=study.PROTOCOL,
         raw_pattern="families/family_{index:04d}.npz", runtime=_runtime(),
-        max_seconds=MAX_SECONDS[args.condition_split], scientific_result=False)
+        max_seconds=study.MAX_SECONDS[args.condition_split], scientific_result=False)
+    extra = getattr(study, "CONFIG_EXTRA", {})
+    if set(extra).intersection(config):
+        raise ValueError("retention study metadata cannot replace registered core fields")
+    config.update(extra)
     _write_json(folder / "config.json", config)
     _write_bytes(folder / "plastic_genome.npy", original)
     _write_bytes(folder / "direct_genome.npy", recurrent)
@@ -216,12 +231,12 @@ def run_tracked(args, git, root, *, explicit=None):
             family_wall_seconds=list(walls), family_pre_contacts=schedule["pre_contacts"][:len(artifacts)].tolist())
 
     def summary(value):
-        return dict(**status(value), protocol=PROTOCOL, condition_split=args.condition_split,
+        return dict(**status(value), protocol=study.PROTOCOL, condition_split=args.condition_split,
             source_label=source["label"], seed_index=source["training_seed"], evaluation_seed=args.seed,
             scientific_result=False, artifact_validity="incomplete", gate_status="undecided", raw_files=list(artifacts))
 
     def deadline():
-        if time.monotonic()-started >= MAX_SECONDS[args.condition_split]:
+        if time.monotonic()-started >= study.MAX_SECONDS[args.condition_split]:
             raise TimeoutError("retention diagnostic exceeded its registered invocation allowance")
 
     _write_status(folder, status("running"))
@@ -230,18 +245,18 @@ def run_tracked(args, git, root, *, explicit=None):
             for index, boundary in enumerate(schedule["pre_contacts"]):
                 deadline()
                 family_started = time.monotonic()
-                keys = np.asarray(engine.evaluation_keys(args.seed, index))
+                keys = np.asarray(backend.evaluation_keys(args.seed, index))
                 if keys.dtype != np.uint32 or keys.shape != (7, 2):
                     raise ValueError("retention keys must be an ordered seven-role uint32 table")
                 tokens = [key.tobytes() for key in keys]
                 if len(set(tokens)) != 7 or used.intersection(tokens):
                     raise ValueError("retention family or assignment keys were reused")
                 used.update(tokens)
-                raw = engine.evaluate_world(plastic, fixed, keys, index, int(boundary), c=c)
-                projected = engine.summary_input(raw)
+                raw = backend.evaluate_world(plastic, fixed, keys, index, int(boundary), c=c)
+                projected = backend.summary_input(raw)
                 if (not np.array_equal(raw["keys"], keys) or int(raw["base_index"]) != index
                         or int(raw["pre_contacts"]) != boundary or not np.array_equal(raw["initial_rules"], [0, 1])
-                        or not np.array_equal(raw["retention_ticks"], RETENTION_TICKS)
+                        or not np.array_equal(raw["retention_ticks"], study.RETENTION_TICKS)
                         or not np.array_equal(raw["plastic_genome_sha256"], _array_sha(plastic))
                         or not np.array_equal(raw["direct_genome_sha256"], _array_sha(fixed))):
                     raise ValueError("retention evidence differs from its assigned family or frozen controllers")
@@ -258,7 +273,7 @@ def run_tracked(args, git, root, *, explicit=None):
                 print(f"retention family {index + 1}/{n} saved", flush=True)
                 del raw
                 deadline()
-        measurements = summarize(rows)
+        measurements = study.summarize(rows)
         for path, content, value in (("plastic_genome.npy", original, plastic), ("direct_genome.npy", recurrent, fixed)):
             if ((folder / path).read_bytes() != content
                     or value.tobytes() != np.load(io.BytesIO(content), allow_pickle=False).tobytes()):
@@ -281,12 +296,13 @@ def run_tracked(args, git, root, *, explicit=None):
     return folder
 
 
-def build_comparison(root):
+def build_comparison(root, *, study=None):
     """Release measurements only after all three complete panels and an independent audit."""
+    study = sys.modules[__name__] if study is None else study
     root = Path(root).resolve()
     folders, configs = [], []
     for index in range(3):
-        candidates = list((root / "runs").glob(f"*_E128-A{index}"))
+        candidates = list((root / "runs").glob(f"*_{study.STUDY_ID}-A{index}"))
         if len(candidates) != 1 or not (candidates[0] / "status.json").exists():
             return dict(status="undecided", reason="all three complete retention panels are required")
         folder = candidates[0]
@@ -294,20 +310,20 @@ def build_comparison(root):
         config = json.loads((folder / "config.json").read_text(encoding="utf-8"))
         if state.get("status") != "finished" or state.get("completed_families") != 128 or state.get("expected_families") != 128:
             return dict(status="undecided", reason="a registered retention panel is incomplete")
-        if (config.get("protocol") != PROTOCOL or config.get("condition_split") != "final"
-                or config.get("args", {}).get("name") != f"E128-A{index}"
+        if (config.get("protocol") != study.PROTOCOL or config.get("condition_split") != "final"
+                or config.get("args", {}).get("name") != f"{study.STUDY_ID}-A{index}"
                 or config.get("source") != SOURCES[index] or config.get("direct_source") != DIRECT_SOURCES[index]
-                or config.get("eval_seed") != 2026120701+index or config.get("expected_families") != 128
-                or config.get("git", {}).get("dirty") is not False or config.get("retention_ticks") != list(RETENTION_TICKS)):
+                or config.get("eval_seed") != study.DEVELOPMENT_SEED+1+index or config.get("expected_families") != 128
+                or config.get("git", {}).get("dirty") is not False or config.get("retention_ticks") != list(study.RETENTION_TICKS)):
             raise ValueError("retention panel metadata differs from its registered source, seed or protocol")
         folders.append(folder)
         configs.append(config)
-    path = root / AUDIT_PATH
+    path = root / study.AUDIT_PATH
     if not path.exists():
         return dict(status="undecided", reason="independent three-panel retention verification is pending")
     raw_audit = path.read_bytes()
     audit = json.loads(raw_audit)
-    if audit.get("status") != "passed" or audit.get("protocol") != PROTOCOL or audit.get("mode") != "final":
+    if audit.get("status") != "passed" or audit.get("protocol") != study.PROTOCOL or audit.get("mode") != "final":
         return dict(status="undecided", reason="independent final retention verification has not passed")
     registered, checked = audit.get("registered_source", ""), audit.get("checked_file_sha256", {})
     if (not isinstance(registered, str) or len(registered) != 40 or any(ch not in "0123456789abcdef" for ch in registered)
@@ -342,12 +358,12 @@ def build_comparison(root):
             verified(folder / relative, artifact["sha256"])
         measurements = result["measurements"]
         if (measurements.get("families") != 128 or measurements.get("initial_rule_replays") != 256
-                or measurements.get("retention_ticks") != list(RETENTION_TICKS)):
+                or measurements.get("retention_ticks") != list(study.RETENTION_TICKS)):
             raise ValueError("retention denominators or observation delays changed")
         panels.append(dict(index=index, run=folder.relative_to(root).as_posix(), measurements=measurements))
-    decisions = _replicated_gates(panels)
+    decisions = study._replicated_gates(panels)
     if audit.get("replicated_gates") != decisions:
         raise ValueError("runner and independent audit disagree on retention decisions")
-    return dict(status="complete", protocol=PROTOCOL, scientific_result=True, registered_source=registered,
-                audit=dict(path=AUDIT_PATH, sha256=hashlib.sha256(raw_audit).hexdigest()),
+    return dict(status="complete", protocol=study.PROTOCOL, scientific_result=True, registered_source=registered,
+                audit=dict(path=study.AUDIT_PATH, sha256=hashlib.sha256(raw_audit).hexdigest()),
                 panels=panels, replicated_gates=decisions)

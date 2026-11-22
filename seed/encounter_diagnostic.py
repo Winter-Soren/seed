@@ -269,7 +269,27 @@ def _readouts(controller, c):
 
 
 @lru_cache(None)
-def _free_grid(controller, c, hebbian=True, steps=GRID_STEPS):
+def _free_grid(controller, c, hebbian=True, steps=GRID_STEPS, *, verify_weight_identity=False):
+    if verify_weight_identity:
+        @jax.jit
+        def observed(flat, initial, rule, acquired_W):
+            g = _unravel(c)(flat) if controller == "plastic" else None
+            reference = jax.lax.bitcast_convert_type(acquired_W, jnp.uint32)
+
+            def tick(state, _):
+                final, trace = _step(state, g, rule, -1, controller, c,
+                    hebbian=hebbian, predictor=controller == "plastic", regrowth=True)
+                # Compare actual carried bits, including signed zero/subnormals;
+                # observation never restores, clips or otherwise writes W.
+                trace = dict(trace,
+                    W_input_matches_acquired=jnp.all(jax.lax.bitcast_convert_type(state["W"], jnp.uint32) == reference),
+                    W_output_matches_acquired=jnp.all(jax.lax.bitcast_convert_type(final["W"], jnp.uint32) == reference))
+                return final, trace
+
+            return jax.lax.scan(tick, initial, None, length=steps)
+        return observed
+
+    # Keep the previously verified default executable unchanged.
     @jax.jit
     def run(flat, initial, rule):
         g = _unravel(c)(flat) if controller == "plastic" else None

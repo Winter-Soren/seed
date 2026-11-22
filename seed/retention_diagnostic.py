@@ -48,12 +48,12 @@ def assignments_manifest(master, count):
                 pre_contacts=np.repeat(np.asarray([8, 16], np.int32), count // 2)[permutation])
 
 
-def _inputs(keys, index, pre_contacts, c):
+def _inputs(keys, index, pre_contacts, c, *, assignment_tag=ASSIGNMENT_TAG):
     encounter._config(c)
     keys = np.asarray(keys)
     if (keys.shape != (len(KEY_ROLES), 2) or keys.dtype != np.uint32
             or len({key.tobytes() for key in keys}) != len(KEY_ROLES)
-            or isinstance(index, bool) or not isinstance(index, Integral) or not 0 <= index < ASSIGNMENT_TAG
+            or isinstance(index, bool) or not isinstance(index, Integral) or not 0 <= index < assignment_tag
             or isinstance(pre_contacts, bool) or not isinstance(pre_contacts, Integral) or pre_contacts not in (8, 16)):
         raise ValueError("invalid independent retention family keys/index or hidden boundary")
     return keys
@@ -73,21 +73,8 @@ def retention_states(flat, acquired, key, rule, controller, c=CFG):
     return (initial, one, last), _trace_join(first, remainder)
 
 
-def evaluate_world(plastic_flat, direct_flat, keys, index, pre_contacts, c=CFG):
-    """Replay acquisition once/history, then clone only at registered readouts."""
-    keys = _inputs(keys, index, pre_contacts, c)
-    flats = {"plastic": encounter._genome(plastic_flat, "plastic", c),
-             "direct": encounter._genome(direct_flat, "direct", c)}
-    role = {name: jnp.asarray(key) for name, key in zip(KEY_ROLES, keys)}
-    script = encounter.contact_script(keys[0], int(pre_contacts))
-    grid, position = seed.init_world(role["grid"], c)
-    probe_keys = jax.random.split(role["probe"], len(encounter.PLACEMENTS))
-    row = dict(base_index=np.asarray(index, np.int32), keys=keys.copy(), pre_contacts=np.asarray(pre_contacts, np.int32),
-        initial_rules=np.asarray([0, 1], np.int32), target_rules=np.asarray([1, 0], np.int32), script=script,
-        probe_placements=encounter.PLACEMENTS.copy(), probe_keys=np.asarray(probe_keys),
-        retention_ticks=np.asarray(RETENTION_TICKS, np.int32), grid_steps=np.asarray(GRID_STEPS, np.int32),
-        plastic_genome_sha256=encounter.array_hash(plastic_flat), direct_genome_sha256=encounter.array_hash(direct_flat))
-    arms = {arm: [] for arm in ARMS}
+def _acquired_histories(flats, role, script, pre_contacts, probe_keys, c):
+    """Yield each actual acquired carry; acquisition and baseline probes are shared."""
     for initial_rule in (0, 1):
         for controller, flat in flats.items():
             birth = encounter._birth(flat, controller, role["birth"], role["chamber"], c)
@@ -105,25 +92,51 @@ def evaluate_world(plastic_flat, direct_flat, keys, index, pre_contacts, c=CFG):
                     acquired, trace = encounter._chamber(controller, c)(flat, acquired,
                         jnp.asarray(script[pre_contacts + start:pre_contacts + stop]), rule)
                     guided.append(trace)
-                states, retention = retention_states(flat, acquired, role["retention"], rule, controller, c)
                 record = dict(shared)
                 record.update({"guided_" + name: value for name, value in _trace_join(*guided).items()})
                 record.update({"acquired_" + name: value for name, value in encounter._state_evidence(acquired).items()})
-                record.update({"delay_" + name: value for name, value in
-                    encounter._stack([encounter._state_evidence(state) for state in states]).items()})
-                record.update({"retention_" + name: value for name, value in retention.items()})
-                probes, grids = [], []
-                for state in states:
-                    probes.append(encounter._probe_evidence(encounter._readouts(controller, c)(flat, state, probe_keys)))
-                    initial = encounter._fresh_body(state, grid, position, role["action"], c)
-                    final, trace = encounter._free_grid(controller, c)(flat, initial, 1 - initial_rule)
-                    evidence = {"initial_" + name: value for name, value in encounter._state_evidence(initial).items()}
-                    evidence.update({"final_" + name: value for name, value in encounter._state_evidence(final).items()})
-                    evidence.update({name: np.asarray(value) for name, value in trace.items()})
-                    grids.append(evidence)
-                record.update({"probe_" + name: value for name, value in encounter._stack(probes).items()})
-                record.update({"grid_" + name: value for name, value in encounter._stack(grids).items()})
-                arms[controller + "_" + history].append(record)
+                yield initial_rule, controller, history, flat, rule, acquired, record
+
+
+def _readout_evidence(flat, states, grid, position, action_key, probe_keys, rule, controller, c):
+    """Fresh physical readouts always use the controller's normal learning mode."""
+    probes, grids = [], []
+    for state in states:
+        probes.append(encounter._probe_evidence(encounter._readouts(controller, c)(flat, state, probe_keys)))
+        initial = encounter._fresh_body(state, grid, position, action_key, c)
+        final, trace = encounter._free_grid(controller, c)(flat, initial, rule)
+        evidence = {"initial_" + name: value for name, value in encounter._state_evidence(initial).items()}
+        evidence.update({"final_" + name: value for name, value in encounter._state_evidence(final).items()})
+        evidence.update({name: np.asarray(value) for name, value in trace.items()})
+        grids.append(evidence)
+    return {**{"probe_" + name: value for name, value in encounter._stack(probes).items()},
+            **{"grid_" + name: value for name, value in encounter._stack(grids).items()}}
+
+
+def evaluate_world(plastic_flat, direct_flat, keys, index, pre_contacts, c=CFG):
+    """Replay acquisition once/history, then clone only at registered readouts."""
+    keys = _inputs(keys, index, pre_contacts, c)
+    flats = {"plastic": encounter._genome(plastic_flat, "plastic", c),
+             "direct": encounter._genome(direct_flat, "direct", c)}
+    role = {name: jnp.asarray(key) for name, key in zip(KEY_ROLES, keys)}
+    script = encounter.contact_script(keys[0], int(pre_contacts))
+    grid, position = seed.init_world(role["grid"], c)
+    probe_keys = jax.random.split(role["probe"], len(encounter.PLACEMENTS))
+    row = dict(base_index=np.asarray(index, np.int32), keys=keys.copy(), pre_contacts=np.asarray(pre_contacts, np.int32),
+        initial_rules=np.asarray([0, 1], np.int32), target_rules=np.asarray([1, 0], np.int32), script=script,
+        probe_placements=encounter.PLACEMENTS.copy(), probe_keys=np.asarray(probe_keys),
+        retention_ticks=np.asarray(RETENTION_TICKS, np.int32), grid_steps=np.asarray(GRID_STEPS, np.int32),
+        plastic_genome_sha256=encounter.array_hash(plastic_flat), direct_genome_sha256=encounter.array_hash(direct_flat))
+    arms = {arm: [] for arm in ARMS}
+    for initial_rule, controller, history, flat, rule, acquired, record in _acquired_histories(
+            flats, role, script, pre_contacts, probe_keys, c):
+        states, retention = retention_states(flat, acquired, role["retention"], rule, controller, c)
+        record.update({"delay_" + name: value for name, value in
+            encounter._stack([encounter._state_evidence(state) for state in states]).items()})
+        record.update({"retention_" + name: value for name, value in retention.items()})
+        record.update(_readout_evidence(flat, states, grid, position, role["action"], probe_keys,
+                                      1 - initial_rule, controller, c))
+        arms[controller + "_" + history].append(record)
     for arm, records in arms.items():
         row.update({arm + "_" + name: value for name, value in encounter._stack(records).items()})
     validate_world(row, c)
@@ -135,7 +148,7 @@ def _require_same(actual, expected, message):
         raise ValueError(message)
 
 
-def _validate_trace(value, stem, time_axis, plastic):
+def _validate_trace(value, stem, time_axis, plastic, *, hebbian=None):
     def field(name):
         return np.moveaxis(value[stem + "_" + name], time_axis, 0)
 
@@ -147,16 +160,16 @@ def _validate_trace(value, stem, time_axis, plastic):
     _require_same(field("key_before")[1:], field("key_after")[:-1], "action-key stream restarted")
     _require_same(field("logits"), np.float32(3) * field("decision_motor"), "logits differ from actual motors")
     encounter.validate_probabilities(field("probabilities"), field("logits"))
-    if np.any(field("hebbian_enabled") != plastic) or np.any(field("predictor_enabled") != plastic):
+    if np.any(field("hebbian_enabled") != (plastic if hebbian is None else hebbian)) or np.any(field("predictor_enabled") != plastic):
         raise ValueError("retention experiment changed the existing learning switches")
     if stem != "guided":
         if np.any(field("forced_action") != -1) or not np.array_equal(action, field("sampled_action")):
             raise ValueError("autonomous life used an imposed action")
 
 
-def _validate_probe(value, stem, snapshot, with_delay, c):
+def _validate_probe(value, stem, snapshot, with_delay, c, *, delays=3):
     p = value[stem + "probabilities"]
-    shape = (2, 3, 12, 5) if with_delay else (2, 12, 5)
+    shape = (2, delays, 12, 5) if with_delay else (2, 12, 5)
     if p.shape != shape:
         raise ValueError("missing rule, delay, placement or original action alternative")
     for name in encounter.NEURAL:
@@ -174,11 +187,12 @@ def _validate_probe(value, stem, snapshot, with_delay, c):
             raise ValueError("local readout did not start with the matched fresh body")
 
 
-def validate_world(row, c=CFG):
+def validate_world(row, c=CFG, *, arms=ARMS, retention_ticks=RETENTION_TICKS, hebbian_off=(), assignment_tag=ASSIGNMENT_TAG):
     """Check the new clone/continuation contract; independent audit checks physics."""
     pre, index = int(row["pre_contacts"]), int(row["base_index"])
-    keys = _inputs(row["keys"], index, pre, c)
-    for name, expected in (("initial_rules", [0, 1]), ("target_rules", [1, 0]), ("retention_ticks", RETENTION_TICKS)):
+    keys = _inputs(row["keys"], index, pre, c, assignment_tag=assignment_tag)
+    delays = len(retention_ticks)
+    for name, expected in (("initial_rules", [0, 1]), ("target_rules", [1, 0]), ("retention_ticks", retention_ticks)):
         _require_same(row[name], np.asarray(expected, np.int32), "changed registered rule or retention schedule")
     _require_same(row["probe_placements"], encounter.PLACEMENTS, "changed local probe placements")
     if int(row["grid_steps"]) != GRID_STEPS:
@@ -196,11 +210,11 @@ def validate_world(row, c=CFG):
         if sorted(map(tuple, block[:, [2, 3]].tolist())) != [(color, direction) for color in (1, 2) for direction in range(1, 5)]:
             raise ValueError("contact block lost its color/direction balance")
     ticks = 2 * (pre + 16)
-    reference_grid = encounter._arm(row, ARMS[0])
-    for arm in ARMS:
+    reference_grid = encounter._arm(row, arms[0])
+    for arm in arms:
         value, plastic = encounter._arm(row, arm), arm.startswith("plastic")
         if (value["guided_action"].shape != (2, ticks, 1) or value["retention_action"].shape != (2, 33, 1)
-                or value["grid_action"].shape != (2, 3, GRID_STEPS, 1)):
+                or value["grid_action"].shape != (2, delays, GRID_STEPS, 1)):
             raise ValueError("lost an assigned acquisition, retention or grid turn")
         if not np.array_equal(value["guided_action"][:, :, 0], np.broadcast_to(script[:, [3, 4]].reshape(-1), (2, ticks))):
             raise ValueError("acquisition departed from its physical contact script")
@@ -208,7 +222,7 @@ def validate_world(row, c=CFG):
                 or np.any(value["guided_unclipped_energy"] >= c.e_max)):
             raise ValueError("acquisition violated its original alive/no-clipping guarantee")
         for stem, axis in (("guided", 1), ("retention", 1), ("grid", 2)):
-            _validate_trace(value, stem, axis, plastic)
+            _validate_trace(value, stem, axis, plastic, hebbian=False if stem == "retention" and arm in hebbian_off else None)
         for field in ("grid_before", "grid", "food", "poison", "item"):
             if np.any(value["retention_" + field]):
                 raise ValueError("retention interval contained an item or eating outcome")
@@ -226,21 +240,21 @@ def validate_world(row, c=CFG):
         if np.any(value["delay_grid"]):
             raise ValueError("retention checkpoint is not an empty world")
         mapping = dict(pos="position", energy="energy", alive="alive_after", sig="signal", denergy="denergy", key="key_after")
-        for ordinal, turn in enumerate(RETENTION_TICKS[1:], 1):
+        for ordinal, turn in enumerate(retention_ticks[1:], 1):
             for state, trace in mapping.items():
                 _require_same(value["delay_" + state][:, ordinal], value["retention_" + trace][:, turn - 1],
                               "saved delay state is not the actual trajectory prefix")
             for rule in (0, 1):
                 _require_same(value["delay_x_sha256"][rule, ordinal], encounter.array_hash(value["retention_activity"][rule, turn - 1]),
                               "delayed neural activity is not the actual prefix state")
-        _require_same(value["delay_t"], value["acquired_t"][:, None] + np.asarray(RETENTION_TICKS, np.int32), "retention clock was reset")
+        _require_same(value["delay_t"], value["acquired_t"][:, None] + np.asarray(retention_ticks, np.int32), "retention clock was reset")
         _require_same(value["delay_counts"], np.broadcast_to(value["acquired_counts"][:, None], value["delay_counts"].shape), "empty retention changed meal counts")
         _require_same(value["retention_incoming_denergy"][:, 0], value["acquired_denergy"], "first blank tick erased pending real feedback")
         for rule in (0, 1):
             _require_same(encounter.array_hash(value["retention_incoming_activity"][rule, 0]), value["acquired_x_sha256"][rule],
                           "first blank tick erased acquired activity")
         _validate_probe(value, "baseline_probe_", "pre_", False, c)
-        _validate_probe(value, "probe_", "delay_", True, c)
+        _validate_probe(value, "probe_", "delay_", True, c, delays=delays)
         for stem in ("baseline_probe_", "probe_"):
             _require_same(value[stem + "initial_key"], np.broadcast_to(row["probe_keys"], value[stem + "initial_key"].shape),
                           "local readout keys differ across treatments")
@@ -274,20 +288,37 @@ def summary_input(row):
     No orientation or initial-rule replay is treated as an independent family.
     """
     validate_world(row)
+    return _compact_outcomes(row)
+
+
+def _compact_outcomes(row, *, arms=ARMS, retention_ticks=RETENTION_TICKS):
+    """Project an already validated row; retain paired initial-rule outcomes."""
+    delays = len(retention_ticks)
+    lives = 2 * delays
     compact = {name: np.asarray(row[name]).copy() for name in
         ("base_index", "keys", "pre_contacts", "initial_rules", "retention_ticks", "plastic_genome_sha256", "direct_genome_sha256")}
-    for arm in ARMS:
+    for arm in arms:
         value = encounter._arm(row, arm)
         probabilities = np.concatenate((value["baseline_probe_probabilities"][:, None], value["probe_probabilities"]), axis=1)
-        local = encounter.local_outcomes(probabilities)
+        if delays == 3:
+            local = encounter.local_outcomes(probabilities)
+        else:
+            # Same five-action/orientation calculation, with the registered
+            # number of behavioral endpoints rather than invented readouts.
+            probs = np.asarray(probabilities, np.float64)
+            if probs.shape != (2, delays + 1, 12, 5) or not np.isfinite(probs).all():
+                raise ValueError("compact projection lost an assigned local readout")
+            food = np.stack([probs[rule, :, np.arange(12), encounter.PLACEMENTS[:, 1 - rule]] for rule in (0, 1)])
+            poison = np.stack([probs[rule, :, np.arange(12), encounter.PLACEMENTS[:, rule]] for rule in (0, 1)])
+            local = np.stack((food, poison, food + poison, 1 - food - poison, food - poison), axis=-1).mean(1)
         compact[arm + "_pre_local_by_rule"] = local[:, 0]
         compact[arm + "_pre_old_by_rule"] = -local[:, 0, 4]
         compact[arm + "_local_by_rule"] = local[:, 1:]
-        food, poison = (value["grid_" + name][..., 0].reshape(6, GRID_STEPS) for name in ("food", "poison"))
+        food, poison = (value["grid_" + name][..., 0].reshape(lives, GRID_STEPS) for name in ("food", "poison"))
         contacted = (food | poison).any(1)
         first = (food | poison).argmax(1)
-        first_food, first_poison = food[np.arange(6), first] & contacted, poison[np.arange(6), first] & contacted
+        first_food, first_poison = food[np.arange(lives), first] & contacted, poison[np.arange(lives), first] & contacted
         compact[arm + "_grid_by_rule"] = np.stack((first_food, first_poison, ~contacted,
             first_food.astype(int) - first_poison.astype(int), np.where(contacted, first + 1, GRID_STEPS + 1),
-            (food.astype(int) - poison.astype(int)).sum(1), value["grid_alive_after"][..., -1, 0].reshape(6)), axis=-1).astype(np.float64).reshape(2, 3, len(GRID_FIELDS))
+            (food.astype(int) - poison.astype(int)).sum(1), value["grid_alive_after"][..., -1, 0].reshape(lives)), axis=-1).astype(np.float64).reshape(2, delays, len(GRID_FIELDS))
     return compact

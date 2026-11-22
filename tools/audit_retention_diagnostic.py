@@ -67,20 +67,20 @@ def retention_gate(local, grid):
     return bool(local["passed"] and grid["passed"])
 
 
-def summarize(rows):
+def summarize(rows, *, delays=DELAYS):
     require(len(rows) >= 2, "at least two independent families for sample SE")
     pre = {arm: np.stack([row[arm + "_pre_local_by_rule"] for row in rows]).astype(np.float64) for arm in ARMS}
     local = {arm: np.stack([row[arm + "_local_by_rule"] for row in rows]).astype(np.float64) for arm in ARMS}
     grid = {arm: np.stack([row[arm + "_grid_by_rule"] for row in rows]).astype(np.float64) for arm in ARMS}
     for arm in ARMS:
-        require(pre[arm].shape == (len(rows), 2, 5) and local[arm].shape == (len(rows), 2, 3, 5)
-                and grid[arm].shape == (len(rows), 2, 3, 7), "family/rule/delay statistical units")
-    result = dict(families=len(rows), initial_rule_replays=2 * len(rows), retention_ticks=list(DELAYS),
+        require(pre[arm].shape == (len(rows), 2, 5) and local[arm].shape == (len(rows), 2, len(delays), 5)
+                and grid[arm].shape == (len(rows), 2, len(delays), 7), "family/rule/delay statistical units")
+    result = dict(families=len(rows), initial_rule_replays=2 * len(rows), retention_ticks=list(delays),
                   arms={}, architectures={}, by_initial_rule={"0": {}, "1": {}})
     for arm in ARMS:
         by_delay = {str(delay): dict(local={field: stat(local[arm][:, :, point, column].mean(1)) for column, field in enumerate(LOCAL_FIELDS)},
             grid={field: stat(grid[arm][:, :, point, column].mean(1)) for column, field in enumerate(GRID_FIELDS)})
-            for point, delay in enumerate(DELAYS)}
+            for point, delay in enumerate(delays)}
         result["arms"][arm] = dict(pre_old=stat(-pre[arm][:, :, 4].mean(1)),
             pre_local={field: stat(pre[arm][:, :, column].mean(1)) for column, field in enumerate(LOCAL_FIELDS)}, by_delay=by_delay)
     for architecture in ("plastic", "direct"):
@@ -91,18 +91,18 @@ def summarize(rows):
         contrast_family = signed_family - local[steady][..., 4].mean(1)
         grid_contrast_family = good_family - grid[steady][..., 0].mean(1)
         local_result = dict(by_delay={str(delay): dict(signed_preference=stat(signed_family[:, point]),
-            reversal_minus_stationary=stat(contrast_family[:, point])) for point, delay in enumerate(DELAYS)},
-            change_33_minus_0=change(signed_family[:, 2] - signed_family[:, 0]))
+            reversal_minus_stationary=stat(contrast_family[:, point])) for point, delay in enumerate(delays)},
+            change_33_minus_0=change(signed_family[:, -1] - signed_family[:, 0]))
         grid_result = dict(by_delay={str(delay): dict(first_food=stat(good_family[:, point]),
             food_minus_poison=stat(net[:, :, point].mean(1)), reversal_minus_stationary=stat(grid_contrast_family[:, point]))
-            for point, delay in enumerate(DELAYS)}, change_33_minus_0=change(good_family[:, 2] - good_family[:, 0]))
+            for point, delay in enumerate(delays)}, change_33_minus_0=change(good_family[:, -1] - good_family[:, 0]))
         combined = retention_gate(local_result, grid_result)
         result["architectures"][architecture] = dict(local=local_result, grid=grid_result, combined_passed=combined)
         for rule in (0, 1):
             result["by_initial_rule"][str(rule)][architecture] = dict(pre_old=stat(-pre[rev][:, rule, 4]),
                 by_delay={str(delay): {field: stat(values[:, rule, point])
                     for field, values in (("S", signed), ("C", contrast), ("G", good), ("Y", net), ("grid_difference", grid_contrast))}
-                    for point, delay in enumerate(DELAYS)})
+                    for point, delay in enumerate(delays)})
     return result
 
 
@@ -161,7 +161,7 @@ def probe(probe, state, placements, keys):
               "probe has only visible items and standardized body feedback")
 
 
-def active_interval(acquired, states, retention, key, plastic, rule):
+def active_interval(acquired, states, retention, key, plastic, rule, *, hebbian=None):
     require(len(states) == 3, "all three registered retention states")
     for state in states:
         state_hashes(state)
@@ -178,14 +178,14 @@ def active_interval(acquired, states, retention, key, plastic, rule):
         require(not retention[field].any(), "no resource or consumption anywhere during retention")
     normalized = dict(retention, t=retention["t"] - np.int32(ticks))
     encounter.trace_events(normalized, states[0], np.full(33, rule, np.int32),
-        hebbian=np.full(33, plastic), predictor=plastic)
+        hebbian=np.full(33, plastic if hebbian is None else hebbian), predictor=plastic)
     for point, delay in enumerate(DELAYS[1:], 1):
         state_at(states[point], retention, states[0], delay, ticks)
 
 
-def audit_family(raw, index, pre, plastic, direct, probe_keys):
+def audit_family(raw, index, pre, plastic, direct, probe_keys, *, arms=ARMS, delays=DELAYS, interval_checks=None):
     require(int(raw["base_index"]) == index and int(raw["pre_contacts"]) == pre and pre in (8, 16), "registered family identity")
-    for field, expected in (("initial_rules", [0, 1]), ("target_rules", [1, 0]), ("retention_ticks", DELAYS)):
+    for field, expected in (("initial_rules", [0, 1]), ("target_rules", [1, 0]), ("retention_ticks", delays)):
         exact(raw[field], np.asarray(expected, np.int32), "registered rules and retention intervals")
     require(int(raw["grid_steps"]) == 50, "all fifty autonomous readout turns")
     keys = typed(raw, "keys", (7, 2), "u")
@@ -207,7 +207,7 @@ def audit_family(raw, index, pre, plastic, direct, probe_keys):
         Wp=fingerprint(np.zeros((1, 103, 48), np.float32)),
         mask=fingerprint(((np.arange(157)[:, None] >= 103) & ~np.eye(157, dtype=bool)).astype(np.float32)[None]))
     rows, lives, paired_grid = {}, {}, None
-    for arm in ARMS:
+    for arm in arms:
         data, plastic_arm = prefixed(raw, arm + "_"), arm.startswith("plastic")
         rows[arm + "_pre_local_by_rule"] = local_by_rule(data["baseline_probe_probabilities"][:, None], placements)[:, 0]
         rows[arm + "_local_by_rule"] = local_by_rule(data["probe_probabilities"], placements)
@@ -236,12 +236,13 @@ def audit_family(raw, index, pre, plastic, direct, probe_keys):
             state_at(before, guided, birth, 2 * pre)
             state_at(acquired, guided, birth, ticks)
             probe(prefixed(life, "baseline_probe_"), before, placements, probe_keys)
-            delays = prefixed(life, "delay_")
-            states = [{field: value[point] for field, value in delays.items()} for point in range(3)]
+            delay_evidence = prefixed(life, "delay_")
+            states = [{field: value[point] for field, value in delay_evidence.items()} for point in range(len(delays))]
             retention = prefixed(life, "retention_")
-            active_interval(acquired, states, retention, keys[6], plastic_arm, rule_after)
+            interval_check = active_interval if interval_checks is None else interval_checks.get(arm, active_interval)
+            interval_check(acquired, states, retention, keys[6], plastic_arm, rule_after)
             grid_values, checked_states = [], [birth, before, acquired, *states]
-            for point in range(3):
+            for point in range(len(states)):
                 state = states[point]
                 sample = {field: value[point] for field, value in prefixed(life, "probe_").items()}
                 probe(sample, state, placements, probe_keys)
@@ -271,7 +272,7 @@ def audit_family(raw, index, pre, plastic, direct, probe_keys):
                     for field, expected in fixed_direct.items():
                         exact(state[field + "_sha256"], expected, "independently decoded unbounded direct weights and fixed predictor")
         rows[arm + "_grid_by_rule"] = np.asarray(grid_by_rule, np.float64)
-    reference = lives[ARMS[0], 0]
+    reference = lives[arms[0], 0]
     for (arm, rule), life in lives.items():
         for field, value in life.items():
             if field.startswith("birth_"):
@@ -284,7 +285,7 @@ def audit_family(raw, index, pre, plastic, direct, probe_keys):
         exact(life["baseline_probe_action_key"], reference["baseline_probe_action_key"], "matched discarded baseline readouts")
         exact(life["probe_action_key"], np.broadcast_to(reference["baseline_probe_action_key"], life["probe_action_key"].shape),
               "local randomness is matched across histories and every retention delay")
-    for controller in ("plastic", "direct"):
+    for controller in dict.fromkeys(arm.rsplit("_", 1)[0] for arm in arms):
         for rule in (0, 1):
             steady, changed = (lives[controller + "_" + history, rule] for history in ("stationary", "reversal"))
             for field, value in steady.items():
@@ -296,13 +297,24 @@ def audit_family(raw, index, pre, plastic, direct, probe_keys):
 
 
 class Auditor(prior.chain.Auditor):
+    RUN_PREFIX = "E128"
+    MASTER = 2026120700
+    PROTOCOL = PROTOCOL
+    ARMS = ARMS
+    DELAYS = DELAYS
+    ASSIGNMENT_TAG = 0xE128
+    SOURCE_PATHS = SOURCE_PATHS
+    MAX_SECONDS = {"development": 120, "final": 300}
+    reconstruct_family = staticmethod(audit_family)
+    summarize_rows = staticmethod(summarize)
+
     def __init__(self, root, source):
         require(re.fullmatch(r"[0-9a-f]{40}", source), "full immutable source commit required")
         super().__init__(root, source)
         self.code, self.family_seconds = None, []
 
     def completed_bundle(self, development=False):
-        count, names = (4, ["E128-benchmark"]) if development else (128, [f"E128-A{index}" for index in range(3)])
+        count, names = (4, [self.RUN_PREFIX + "-benchmark"]) if development else (128, [f"{self.RUN_PREFIX}-A{index}" for index in range(3)])
         folders, pending = [], []
         for name in names:
             found = list(self.path("runs").glob("*_" + name))
@@ -348,21 +360,21 @@ class Auditor(prior.chain.Auditor):
 
     def metadata(self, folder, index, development):
         config = self.json(folder + "/config.json")
-        count, master, name = (4, 2026120700, "E128-benchmark") if development else (128, 2026120701 + index, f"E128-A{index}")
-        subset(config, dict(protocol=PROTOCOL, condition_split="development" if development else "final", cfg=CFG,
+        count, master, name = (4, self.MASTER, self.RUN_PREFIX + "-benchmark") if development else (128, self.MASTER + 1 + index, f"{self.RUN_PREFIX}-A{index}")
+        subset(config, dict(protocol=self.PROTOCOL, condition_split="development" if development else "final", cfg=CFG,
             cfg_overrides={}, generation=0, eval_seed=master, expected_families=count, statistical_unit="independent paired base family",
-            arms=list(ARMS), key_roles=list(KEY_ROLES), initial_rules=[0, 1], pre_contact_choices=[8, 16], post_contacts=16,
-            retention_ticks=list(DELAYS), grid_steps=50, probe_placements=12, raw_schema=PROTOCOL,
-            raw_pattern="families/family_{index:04d}.npz", assignment_stream_tag=0xE128,
-            max_seconds=120 if development else 300, scientific_result=False), "registered retention design")
-        subset(config["args"], dict(name=name, seed=master, generations=0, eval_worlds=count, eval_protocol=PROTOCOL,
+            arms=list(self.ARMS), key_roles=list(KEY_ROLES), initial_rules=[0, 1], pre_contact_choices=[8, 16], post_contacts=16,
+            retention_ticks=list(self.DELAYS), grid_steps=50, probe_placements=12, raw_schema=self.PROTOCOL,
+            raw_pattern="families/family_{index:04d}.npz", assignment_stream_tag=self.ASSIGNMENT_TAG,
+            max_seconds=self.MAX_SECONDS["development" if development else "final"], scientific_result=False), "registered retention design")
+        subset(config["args"], dict(name=name, seed=master, generations=0, eval_worlds=count, eval_protocol=self.PROTOCOL,
             condition_split=config["condition_split"], allow_dirty=False, resume=None, cfg=None, no_plastic=False,
             objective=None, memory_condition=None), "registered fresh invocation")
         require(config.get("retry_of") is None and config.get("recovery_of") is None, "no unregistered recovery")
         commit = config["git"]["commit"]
         require(config["git"]["dirty"] is False and re.fullmatch(r"[0-9a-f]{40}", commit)
                 and self.code_trees(commit) == self.expected_trees, "actual clean source matches registered scientific trees")
-        require(set(config["source_code"]) == SOURCE_PATHS, "complete transitive source manifest")
+        require(set(config["source_code"]) == self.SOURCE_PATHS, "complete transitive source manifest")
         context = type("SourceContext", (), {"root": self.root, "source": commit})()
         attributes = source_bytes.Auditor.source_attributes(context, list(config["source_code"]))
         for path, digest in config["source_code"].items():
@@ -389,7 +401,7 @@ class Auditor(prior.chain.Auditor):
         require(set(schedule) == {"key", "permutation", "pre_contacts"}, "exact assignment evidence")
         jax, _ = source_bytes.random_runtime()
         same(config["runtime"]["jax"], jax.__version__, "same archived PRNG runtime")
-        key = jax.random.fold_in(jax.random.PRNGKey(master), 0xE128)
+        key = jax.random.fold_in(jax.random.PRNGKey(master), self.ASSIGNMENT_TAG)
         permutation = np.asarray(jax.random.permutation(key, count), np.int32)
         exact(schedule["key"], np.asarray(key), "new independent assignment stream")
         exact(schedule["permutation"], permutation, "independent balanced assignment order")
@@ -414,7 +426,7 @@ class Auditor(prior.chain.Auditor):
         config, schedule, records, genomes, probe_keys = prepared
         count = config["expected_families"]
         summary = self.json(folder + "/summary.json")
-        subset(summary, dict(status="finished", protocol=PROTOCOL, condition_split=config["condition_split"],
+        subset(summary, dict(status="finished", protocol=self.PROTOCOL, condition_split=config["condition_split"],
             completed_families=count, expected_families=count, evaluation_seed=config["eval_seed"], seed_index=index,
             artifact_validity="passed", scientific_result=False, gate_status="not_applicable" if development else "undecided"), "complete bounded panel")
         require(len(summary["raw_files"]) == count and 0 < summary["elapsed_seconds"] <= config["max_seconds"], "complete run within its registered cap")
@@ -426,9 +438,9 @@ class Auditor(prior.chain.Auditor):
             same(record["raw_file"], manifest, "journal and saved-family linkage")
             raw = self.artifact(folder, manifest)
             exact(raw["keys"], np.asarray(record["keys"], np.uint32), "actual assigned role keys")
-            rows.append(audit_family(raw, family, int(schedule["pre_contacts"][family]), *genomes, probe_keys[family]))
+            rows.append(self.reconstruct_family(raw, family, int(schedule["pre_contacts"][family]), *genomes, probe_keys[family]))
             self.family_seconds.append(time.monotonic() - started)
-        measured = summarize(rows)
+        measured = self.summarize_rows(rows)
         same(summary["measurements"], measured, "independent complete outcomes, paired family SE and retention decisions")
         return dict(index=index, run=folder, measurements=measured)
 
