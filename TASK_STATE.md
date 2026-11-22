@@ -32,4 +32,4 @@ E126 training is stopped. All six lineages reached generation 50 of 200. An inde
 
 ## What is next
 
-E128 tests whether the revised preference survives 33 active turns without food or poison. It uses fresh worlds and the same three lineages. The success criteria are registered, including how large a loss is acceptable and how uncertainty counts. Verify the implementation and measure its cost before running the three formal panels. E127 is complete and tagged.
+E128 tests whether the revised preference survives 33 active turns without food or poison. Its focused checks and four-family rehearsal passed. The full software suite is running. Once it passes, evaluate all three original lineages on fresh worlds and independently check the full comparison. E127 is complete and tagged.

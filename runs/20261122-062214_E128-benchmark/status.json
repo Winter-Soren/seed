@@ -1,0 +1,25 @@
+{
+  "status": "finished",
+  "completed_families": 4,
+  "expected_families": 4,
+  "elapsed_seconds": 24.030999999988126,
+  "setup_seconds": 0.39000000001396984,
+  "family_seconds": [
+    20.359000000025844,
+    2.265999999974156,
+    0.5,
+    0.4840000000258442
+  ],
+  "family_wall_seconds": [
+    20.359000000025844,
+    2.265999999974156,
+    0.5,
+    0.5
+  ],
+  "family_pre_contacts": [
+    8,
+    16,
+    16,
+    8
+  ]
+}

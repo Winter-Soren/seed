@@ -1,0 +1,122 @@
+{
+  "study": "E128",
+  "kind": "development-only prospective forecast",
+  "status": "passed",
+  "sourceCommit": "96a72d7552ff251a87047d11970ef6ddf8590295",
+  "registrationCommit": "a64d32adb4c77cff739fc37464e7c417d831d338",
+  "createdAt": "2026-11-22T06:25:46.8529644+05:30",
+  "pins": {
+    ".tmp/E128-readiness-attempt1.result.json": "9a31755dc07aeafd2a6f38cb3c63b139990799614ba2e08064214ade7e034c7c",
+    ".tmp/E128-benchmark-attempt1.result.json": "5120eb6d0fc1a44684112d6d30c284ef052e7fe4201349e34f5eba111926c144",
+    ".tmp/E128-audit-development-attempt1.result.json": "ca1f5d922678e259051944709ed00868bd3e948b248abfd5b52c7ea8f1c05bf0",
+    ".tmp/E128-audit-development-attempt1.audit.json": "74882bd453c8d7dd5892a92f2ea51f2bf72f2ecbf219d940c330c80f4242bbb9",
+    "runs/20261122-062214_E128-benchmark/status.json": "dc23a37bbfc9859bdff30bfbd2f6a5e1c347b4ea962c8b0291a7a889b32d06dc"
+  },
+  "development": {
+    "run": "runs/20261122-062214_E128-benchmark",
+    "guardSeconds": 30.0395837,
+    "preContacts": [
+      8,
+      16,
+      16,
+      8
+    ],
+    "familySeconds": [
+      20.359000000025844,
+      2.265999999974156,
+      0.5,
+      0.4840000000258442
+    ],
+    "fullFamilySeconds": [
+      20.359000000025844,
+      2.265999999974156,
+      0.5,
+      0.5
+    ],
+    "shapes": {
+      "8": {
+        "indices": [
+          0,
+          3
+        ],
+        "firstSeconds": 20.359000000025844,
+        "repeatSeconds": 0.5
+      },
+      "16": {
+        "indices": [
+          1,
+          2
+        ],
+        "firstSeconds": 2.265999999974156,
+        "repeatSeconds": 0.5
+      }
+    },
+    "nonFamilyOverheadSeconds": 6.414583700000001
+  },
+  "panelForecast": {
+    "formula": "overhead + first8 + first16 + 126 * 1.5 * max(repeat8,repeat16)",
+    "seconds": 123.53958370000001,
+    "threePanelsSeconds": 370.61875110000005,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 20,
+    "includesAllObservations": true,
+    "factorIsSchedulingAllowanceNotConfidenceInterval": true
+  },
+  "auditForecast": {
+    "guardSeconds": 10.6503418,
+    "timing": {
+      "elapsed_seconds": 6.14100000000326,
+      "setup_and_summary_seconds": 3.7030000000086147,
+      "reconstruction_seconds": 2.437999999994645,
+      "family_seconds": [
+        0.7659999999741558,
+        0.6400000000139698,
+        0.5940000000118744,
+        0.4379999999946449
+      ],
+      "completed_families": 4
+    },
+    "externalOverheadSeconds": 4.50934179999674,
+    "formula": "external + 3*setup_and_summary + 384*1.5*max(family_seconds)",
+    "seconds": 456.8343417851363,
+    "hardSlotSeconds": 500,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeThisCosting": 77.61313570000002,
+    "oneCiReserveSeconds": 1800,
+    "reportingReserveBeforeThisCostingSeconds": 60,
+    "costingChargedFromReportingReserve": true,
+    "forecastWithFullAuditReserveSeconds": 2808.2318868,
+    "allHardSlotsSeconds": 3337.6131357,
+    "studyLimitSeconds": 3600,
+    "hardMarginSeconds": 262.38686430000007,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 14183.0848298,
+    "dailyLimitSeconds": 28800
+  },
+  "storage": {
+    "observedRawLengths": [
+      879559,
+      940097,
+      941446,
+      908688
+    ],
+    "observedMaxRawBytes": 941446,
+    "observedOtherBytes": 85676,
+    "futureReserveBytes": 2520830992.0,
+    "reserveFormula": "4*(384*max_raw + 3*metadata) + 1GiB",
+    "freeCBytes": 26073169920,
+    "totalCBytes": 401226067968,
+    "freeDBytes": 47847858176,
+    "totalDBytes": 107373129728,
+    "projectedDFreeBytes": 45327027184.0,
+    "minimumDFreeBytes": 10737418240
+  },
+  "limitations": [
+    "Only two observations per pre-boundary length; timings are operational estimates.",
+    "No final behavior observed.",
+    "CI and final execution require the coordinator release; no retry or recovery is authorized.",
+    "This calculation wall is charged against the existing reporting reserve; that transfer does not change the forecast total."
+  ]
+}

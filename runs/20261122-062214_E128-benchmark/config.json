@@ -1,0 +1,123 @@
+{
+  "protocol": "retention-diagnostic-v1",
+  "args": {
+    "name": "E128-benchmark",
+    "start": "file:runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120700,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 4,
+    "eval_protocol": "retention-diagnostic-v1",
+    "memory_condition": null,
+    "condition_split": "development",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "96a72d7552ff251a87047d11970ef6ddf8590295",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A0",
+    "training_seed": 0,
+    "path": "runs/20261112-023245_E103-A-blank-s0/genome_final.npy",
+    "sha256": "477d9d03c713dcab8072349ff9155813e5a384d3709eff67595a342b55111f53"
+  },
+  "direct_source": {
+    "label": "direct0",
+    "training_seed": 0,
+    "path": "runs/20261119-033803_E113-direct-s0/genome_final.npy",
+    "sha256": "0a47a3dbbb7482a42ef069cf6b54b44e511ffaf2d169d92914c10fdf75a4bb61"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "development",
+  "generation": 0,
+  "eval_seed": 2026120700,
+  "expected_families": 4,
+  "statistical_unit": "independent paired base family",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "f69a60a8127bba6ac0ce9d2fd633da9fde87fa40573741cb98100f0e73a9e427"
+  },
+  "assignment_stream_tag": 57640,
+  "arms": [
+    "plastic_stationary",
+    "plastic_reversal",
+    "direct_stationary",
+    "direct_reversal"
+  ],
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe",
+    "retention"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "pre_contact_choices": [
+    8,
+    16
+  ],
+  "post_contacts": 16,
+  "retention_ticks": [
+    0,
+    1,
+    33
+  ],
+  "grid_steps": 50,
+  "probe_placements": 12,
+  "source_code": {
+    "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "fd597dd5703e5f7f3a0503c3e706e762f40b14a4884e48bca972dda0eb907ba9",
+    "seed/retention_diagnostic.py": "9f5608e758e1e6d19c15fc9320a02801544ec30170056e8a95dd05b6c768006d",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_retention_diagnostic.py": "8f3480d1cd92d1037ebdb1c5a9c3f9dbcea2b57706f3d570a5425f18968a54f3"
+  },
+  "raw_schema": "retention-diagnostic-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 120,
+  "scientific_result": false
+}
