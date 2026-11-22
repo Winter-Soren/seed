@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**Latest audited result — all three evolved plastic lineages learned a reversed food rule and used it in a fresh grid.** After 16 guided encounters with the changed rule, the agents found the newly safe food first in **62.1 ± 2.9%, 62.5 ± 3.2% and 62.9 ± 3.0%** of solo lives. Matched agents that continued experiencing the old rule did so in about 4%. The fixed-weight recurrent controls passed in zero of three lineages. These are existing evolved genomes learning within a life. [E127 comparison and figure](#learning-a-changed-rule-and-using-it-alone) · [How their genomes evolved](#how-the-saved-genomes-evolved)
+**All three evolved plastic lineages learned a reversed food rule and used it in a fresh grid. Their performance weakened over 33 active turns without food cues.** E127 found first-food success around 62% after changed feedback versus about 4% after continued old-rule feedback. On fresh E128 worlds, first-food success declined by **9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 percentage points** over the empty interval. Every lineage still preferred the new food. Zero of three met the registered retention criterion. [Immediate transfer](#learning-a-changed-rule-and-using-it-alone) · [Retention results](#what-survives-33-turns-without-food-cues) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
 
 ## What the creatures do
 
@@ -326,9 +326,25 @@ In E127 we guided creatures through identical encounters with both item colors. 
 
 All three plastic lineages also switched their preference when the two items were adjacent. Keeping Hebbian updates active during reversed feedback increased their signed preference for the newly safe color by **0.879 ± 0.016, 0.847 ± 0.016 and 0.862 ± 0.018** compared with freezing those connections. Signed preference is the probability of moving toward the new food minus the probability of moving toward the other color. The matched fixed-weight controllers cleared neither the local reversal criterion nor the combined reversal-and-transfer criterion. [Independent audit](results/diagnostics/E127-independent-audit.json) · [All results](results/RESULTS.md)
 
-The roughly 59-point gains are measured against creatures still trained on the old rule. Their low success makes the contrast large. E127 shows that matched experience can change what an agent does next. In the earlier freely foraging E125 test, agents with a fixed socially acquired lesson struggled after the change. The two experiments ask different questions. E128 tests whether the revised preference survives 33 active turns without either cue. Its decision criteria were registered before testing. [E125 reversal](#when-the-food-rule-changes) · [Animal-learning research](experiments/ANIMAL_LEARNING_BENCHMARKS.md) · [E128 retention protocol](experiments/E128_PROTOCOL.md)
+The roughly 59-point gains are measured against creatures still trained on the old rule. Their low success makes the contrast large. E127 shows that matched experience can change what an agent does next. In the earlier freely foraging E125 test, agents with a fixed socially acquired lesson struggled after the change. The two experiments ask different questions. [E125 reversal](#when-the-food-rule-changes) · [Animal-learning research](experiments/ANIMAL_LEARNING_BENCHMARKS.md)
 
 The first A0 attempt stopped on a frozen-weight integrity check. Its 11 families remain archived and excluded. A corrected rehearsal passed, followed by 476 software tests, three complete 128-family evaluations and an independent audit covering 453 file hashes. [Recovery record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44963740710)
+
+## What survives 33 turns without food cues?
+
+**E128 failed the retention criterion in all three lineages.** Using fresh world families, we gave each creature the same opportunity to learn the new rule, then let it move and learn for 33 turns on an empty grid. We tested copies of its brain immediately and after the interval, always in the same standardized fresh body and target world. The preregistration required evidence that both local preference and first-food success lost less than 0.05 in probability units. Uncertainty is one standard error across 128 independent families per lineage, paired for the change. [Protocol fixed before testing](experiments/E128_PROTOCOL.md)
+
+| Plastic lineage | First food immediately | First food after 33 turns | Paired change, percentage points | Delayed local preference, probability units |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | 66.4 ± 3.1% | 57.4 ± 2.6% | −9.0 ± 3.7 | 0.179 ± 0.017 |
+| A1 | 62.5 ± 2.9% | 54.7 ± 3.0% | −7.8 ± 3.5 | 0.148 ± 0.015 |
+| A2 | 68.0 ± 3.0% | 63.3 ± 2.7% | −4.7 ± 3.3 | 0.183 ± 0.018 |
+
+![Food preference and first-food success immediately, after one turn and after 33 active empty-world turns in each of the three plastic and fixed-weight lineages, with one standard error](results/figures/e128-retention.png)
+
+All three plastic lineages still preferred the new food after the interval and outperformed agents given the old-rule history. All three missed the allowable-loss criterion for both measurements. A2's estimated grid loss was 4.7 points, but its uncertainty allowed a loss above five. The fixed-weight controls lacked an immediate acquired preference from which to measure persistence. [Independent audit](results/diagnostics/E128-independent-audit.json) · [Paired estimates and decisions](results/diagnostics/E128-comparison.json)
+
+During the empty turns the creatures used energy, moved, updated their internal activity and continued learning. E128 measures the effect of that whole experience. It leaves open which process caused the decline. [Lab record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
 
 ## Try it locally
 

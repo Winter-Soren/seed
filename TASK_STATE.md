@@ -26,10 +26,12 @@ E125 changed which color was food once during a pupil's life. In the late window
 
 E127 gave creatures sixteen matched encounters with a changed food rule. All three original plastic lineages reversed their preference and carried it to a fresh grid. Their first-food advantage over old-rule experience was 58.6 ± 3.2, 58.6 ± 3.4 and 59.0 ± 3.3 percentage points. Hebbian weight changes contributed in all three. The fixed-weight recurrent controls passed in zero of three. Every assigned life counted.
 
+E128 found that all three still preferred the changed food after 33 empty turns. First-food success fell by 9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 percentage points. None met the registered five-point retention margin for either local choice or independent foraging. The fixed-weight controls showed little immediate learning.
+
 ## What is running
 
 E126 training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-E128 tests whether the revised preference survives 33 active turns without food or poison. Its focused checks and four-family rehearsal passed. The full software suite is running. Once it passes, evaluate all three original lineages on fresh worlds and independently check the full comparison. E127 is complete and tagged.
+E128 is complete. The next decision is how to distinguish continued synaptic updates during empty turns from the effects of hunger and changing neural activity. Keep E128's failed threshold and E127's passed immediate test in the record.
