@@ -1,0 +1,130 @@
+{
+  "protocol": "retention-intervention-v1",
+  "args": {
+    "name": "E129-A1",
+    "start": "file:runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "generations": 0,
+    "pop": 128,
+    "worlds": 8,
+    "sigma": 0.1,
+    "lr": 0.1,
+    "seed": 2026120802,
+    "no_plastic": false,
+    "controller": null,
+    "objective": null,
+    "structural_plasticity": null,
+    "eval_worlds": 128,
+    "eval_protocol": "retention-intervention-v1",
+    "memory_condition": null,
+    "condition_split": "final",
+    "checkpoint_every": 10,
+    "max_train_seconds": null,
+    "cfg": null,
+    "hypothesis": "",
+    "quick": false,
+    "resume": null,
+    "allow_dirty": false
+  },
+  "git": {
+    "commit": "b4fcb3ff7115d83b4a9cf5ee127a5ac3662cea70",
+    "branch": "main",
+    "dirty": false
+  },
+  "source": {
+    "label": "A1",
+    "training_seed": 1,
+    "path": "runs/20261112-050319_E103-A-blank-s1/genome_final.npy",
+    "sha256": "35196cd30c2de5c1ed5bb9e23ce445ff6ad13bd1a33bdbf7a77f54d53edce899"
+  },
+  "direct_source": {
+    "label": "direct1",
+    "training_seed": 1,
+    "path": "runs/20261119-040602_E113-direct-s1/genome_final.npy",
+    "sha256": "0e77c3083a88c8216e57bff0667b5f594542447c14f6ae7338ec0e090b9d7d3b"
+  },
+  "cfg": {
+    "G": 16,
+    "M": 1,
+    "T": 300,
+    "R": 2,
+    "n_items": 24,
+    "H": 48,
+    "n_htypes": 3,
+    "e0": 1.0,
+    "decay": 0.003,
+    "gain": 0.25,
+    "e_max": 2.0,
+    "micro": 2,
+    "wmax": 3.0
+  },
+  "cfg_overrides": {},
+  "condition_split": "final",
+  "generation": 0,
+  "eval_seed": 2026120802,
+  "expected_families": 128,
+  "statistical_unit": "independent paired base family",
+  "assignments": {
+    "path": "assignments.npz",
+    "sha256": "3fcbcf2a3731963823eb8f075cb61f0f1feeeed97f3241696c03bcdec08bc667"
+  },
+  "assignment_stream_tag": 57641,
+  "arms": [
+    "plastic_stationary",
+    "plastic_reversal",
+    "plastic_hebbian_off_stationary",
+    "plastic_hebbian_off_reversal",
+    "direct_stationary",
+    "direct_reversal"
+  ],
+  "key_roles": [
+    "script",
+    "birth",
+    "chamber",
+    "grid",
+    "action",
+    "probe",
+    "retention"
+  ],
+  "initial_rules": [
+    0,
+    1
+  ],
+  "pre_contact_choices": [
+    8,
+    16
+  ],
+  "post_contacts": 16,
+  "retention_ticks": [
+    0,
+    33
+  ],
+  "grid_steps": 50,
+  "probe_placements": 12,
+  "source_code": {
+    "seed/seed.py": "a202aa0b75abb11e0b0f3dc9d45b85a9ebf8d308fffbb9dfe5b0e268acc41360",
+    "seed/direct.py": "a4ede166426bb5fb9abebce4cabc22fc4bd983457d8c516aee3471b66f5ee265",
+    "seed/encounter_diagnostic.py": "0a15cbd524fcbe895fe5dcd9f00d68ec8446a78a2a81dafd01fb5f8e8a2d102b",
+    "seed/retention_diagnostic.py": "2f8dac635d8827f8b2596f5a970c71aa845267b5d5019c3962659cf4ae6b9049",
+    "scripts/run_encounter_diagnostic.py": "cd1087d652c3fd613532ba7216329f42e3513e09f449c2884ac8062b6a4694cd",
+    "scripts/run_retention_diagnostic.py": "92c3222c2faf1e004e9d75b7547ff0290abed0c4ca15992dc32f80e9c9b3e3e0",
+    "seed/retention_rescue.py": "e0de94ad929ce00cfe1d2cb2e0604eb918c696e18197209ed8436ec94f676723",
+    "scripts/run_retention_intervention.py": "de70f4fae79e2af127807e73e5ec1f7b6caef51d43546febea0e4ff93ec87071"
+  },
+  "raw_schema": "retention-intervention-v1",
+  "raw_pattern": "families/family_{index:04d}.npz",
+  "runtime": {
+    "python": "3.12.10",
+    "platform": "Windows",
+    "platform_release": "11",
+    "machine": "AMD64",
+    "numpy": "2.5.4",
+    "jax": "0.12.0.1",
+    "jaxlib": "0.12.0.1"
+  },
+  "max_seconds": 300,
+  "scientific_result": false,
+  "intervention": "hebbian-off-during-retention-only",
+  "continuation_tick": 1,
+  "plastic_predictor_active": true,
+  "plastic_grid_hebbian_active": true
+}

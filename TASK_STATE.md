@@ -28,10 +28,12 @@ E127 gave creatures sixteen matched encounters with a changed food rule. All thr
 
 E128 found that all three still preferred the changed food after 33 empty turns. First-food success fell by 9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 percentage points. None met the registered five-point retention margin for either local choice or independent foraging. The fixed-weight controls showed little immediate learning.
 
+E129 found that pausing changes to connection strengths for those empty turns preserved local food preference in all three lineages. With ordinary learning restored, their solo first-food gains over continued updating were 9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points. A0 and A1 also retained immediate foraging performance within five points. A2's lower bound was a loss of 5.03 points. The full three-lineage transfer claim failed.
+
 ## What is running
 
-E126 training is stopped. All six lineages reached generation 50 of 200. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
+No experiment is running. E126 training stopped at generation 50 of 200 in all six lineages. An independent check reconstructed every genome update. All 155 inherited values in each plastic lineage and all 8,424 in each recurrent lineage differ from their founder. The full comparison projects to 16 hours 53 minutes against the 12-hour ceiling. The comparison on fresh worlds remains sealed.
 
 ## What is next
 
-E129 is the council's single follow-up. It tests whether pausing just the changes to synaptic weights during the empty interval helps all three lineages, then restores ordinary learning for solo foraging. Its four-family rehearsal passed. The full software suite is running. Three fresh final panels and their audit fit the measured budget. The registered stopping rule closes this retention test at its result.
+The preregistered decision closes this retention investigation. The experimenter chose when to pause the updates. Whether a creature can discover a useful update schedule from its own experience remains open. The animal-learning benchmarks document separate future questions about unfamiliar cues and sequences of actions.

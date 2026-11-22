@@ -2,7 +2,7 @@
 
 Seed is a small simulation where creatures forage, avoid poison and seek shelter when the world turns cold. We track what changes during a life, what experience a newborn can inherit, and what evolution changes in the genome. [Genome design and history](#the-genome-and-the-brain-it-builds) · [Donor experiment](#what-newborns-gained-from-earlier-lives) · [Ten generations of shelter selection](#ten-generations-of-shelter-selection) · [Training with inherited experience](#evolving-with-inherited-experience)
 
-**All three evolved plastic lineages learned a reversed food rule and used it in a fresh grid. Their performance weakened over 33 active turns without food cues.** E127 found first-food success around 62% after changed feedback versus about 4% after continued old-rule feedback. On fresh E128 worlds, first-food success declined by **9.0 ± 3.7, 7.8 ± 3.5 and 4.7 ± 3.3 percentage points** over the empty interval. Every lineage still preferred the new food. Zero of three met the registered retention criterion. [Immediate transfer](#learning-a-changed-rule-and-using-it-alone) · [Retention results](#what-survives-33-turns-without-food-cues) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
+**All three evolved lineages learned when the safe food changed. Pausing changes to connection strengths during 33 turns without food cues helped them remember.** Back in a fresh grid, the pause improved their chance of finding food before poison by **9.4 ± 3.9, 12.1 ± 3.1 and 11.3 ± 3.1 percentage points** over allowing updates throughout. All three met the local memory criterion. Only two met the stricter criterion for retaining immediate foraging performance. We imposed the pause in the experiment. [Reversal learning](#learning-a-changed-rule-and-using-it-alone) · [Memory intervention](#when-should-a-learned-connection-keep-changing) · [Genome structure and evolution](#how-the-saved-genomes-evolved)
 
 ## What the creatures do
 
@@ -344,7 +344,25 @@ The first A0 attempt stopped on a frozen-weight integrity check. Its 11 families
 
 All three plastic lineages still preferred the new food after the interval and outperformed agents given the old-rule history. All three missed the allowable-loss criterion for both measurements. A2's estimated grid loss was 4.7 points, but its uncertainty allowed a loss above five. The fixed-weight controls lacked an immediate acquired preference from which to measure persistence. [Independent audit](results/diagnostics/E128-independent-audit.json) · [Paired estimates and decisions](results/diagnostics/E128-comparison.json)
 
-During the empty turns the creatures used energy, moved, updated their internal activity and continued learning. E128 measures the effect of that whole experience. E129 tests one possible cause by pausing only Hebbian weight changes during the interval and restoring ordinary learning afterward. [E129 protocol and stopping rule](experiments/E129_PROTOCOL.md) · [Lab record](experiments/LOG.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
+During the empty turns the creatures used energy, moved, updated their internal activity and continued learning. E128 measures the effect of that whole experience. [Lab record](experiments/LOG.md) · [E128 software verification](https://github.com/Winter-Soren/seed/actions/runs/44969036974)
+
+## When should a learned connection keep changing?
+
+E129 tested two copies of the same creature after it learned the reversed rule. During 33 empty turns, one copy continued its ordinary learning and the other paused changes to connection strengths (Hebbian updates). Both kept moving, using energy and updating their predictions. We then restored ordinary learning and measured which item each creature found first, alone in a fresh grid. Death or failure to reach either item counted as zero food successes. Each lineage contributed 128 fresh independent families, each tested with both initial food rules.
+
+| Lineage | Gain in local preference from the pause | First food after ordinary updates | First food after paused updates | Paired gain in first-food success |
+| --- | ---: | ---: | ---: | ---: |
+| A0 | +0.0501 ± 0.0083 | 57.8 ± 2.9% | 67.2 ± 3.0% | +9.4 ± 3.9 points |
+| A1 | +0.0252 ± 0.0080 | 55.1 ± 2.8% | 67.2 ± 3.0% | +12.1 ± 3.1 points |
+| A2 | +0.0324 ± 0.0075 | 56.6 ± 2.4% | 68.0 ± 3.0% | +11.3 ± 3.1 points |
+
+Local preference is the probability of moving toward the safe color minus the probability of moving toward the unsafe color when both are adjacent. Each ± is one standard error across families. The gains compare the two copies within each family. All three lineages cleared the registered local gain of 0.025 and twice its paired standard error. All three also preserved their immediate local preference within the allowed margin. The fixed-weight controls acquired little preference under the same training. [Paired estimates and decisions](results/diagnostics/E129-comparison.json)
+
+![Effect of the 33-turn update pause on nearby food preference and solo first-food success, with paired standard errors for A0, A1 and A2](results/figures/e129-update-pause-effects.png)
+
+**Solo foraging improved over continued updating in all three lineages. Only A0 and A1 also met the full transfer criterion.** For A2, first-food success was 68.4 ± 3.0% immediately and 68.0 ± 3.0% after the pause. Its paired change was −0.39 ± 2.32 points. The lower bound was −5.03 points, just below the required −5.00. The three-lineage transfer claim therefore failed. [Preregistered criteria](experiments/E129_PROTOCOL.md) · [Independent audit](results/diagnostics/E129-independent-audit.json)
+
+This closes the retention experiment. The result identifies a cost of updating connection strengths during this particular gap. Whether a creature can learn when to pause its own updates remains open. These experiments evaluated three saved genomes. They measured learning within a life and did not train new descendants. [Research comparisons](experiments/ANIMAL_LEARNING_BENCHMARKS.md) · [Software verification](https://github.com/Winter-Soren/seed/actions/runs/44973658522)
 
 ## Try it locally
 

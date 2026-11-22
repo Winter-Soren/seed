@@ -14,3 +14,9 @@ runs/*_E126-*/** -text
 results/benchmarks/E126/prefix-*.json -text
 runs/*_E127-*/** -text
 results/diagnostics/E127-*.json -text
+runs/*_E128-*/*.json* text eol=crlf
+results/diagnostics/E128-*.json text eol=crlf
+runs/*_E129-*/** -text
+runs/*_E129-benchmark/*.json* text eol=crlf
+results/diagnostics/E129-*.json -text
+results/diagnostics/E129-development-*.json text eol=crlf
