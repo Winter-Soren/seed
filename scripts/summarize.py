@@ -36,6 +36,7 @@ def main():
     reversal_endpoint_rows = []
     reversal_window_rows = []
     encounter_status_rows = []
+    retention_status_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -63,6 +64,11 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "retention-diagnostic-v1":
+            retention_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
+                a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}",
+                commit]) + " |")
+            continue
         if a.get("eval_protocol") == "encounter-diagnostic-v1":
             role = ("preserved partial; excluded" if a.get("name") == "E127-A0" else
                     "registered full-panel recovery" if a.get("name") == "E127-A0-recovery1" else
@@ -588,6 +594,87 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if retention_status_rows:
+        from scripts import run_retention_diagnostic
+        study = run_retention_diagnostic.build_comparison(ROOT)
+        out += ["## Retention after guided evidence (retention-diagnostic-v1)", "",
+            "E128 compares the same original E103 plastic and E113 fixed-weight controllers on new families. "
+            "After sixteen changed or stationary encounters, the complete living state continues for 0, 1 or "
+            "33 active turns on an empty torus. Ordinary body feedback, recurrence and lifetime updates continue; "
+            "no items appear. Discarded local probes and a fresh-body, fifty-turn grid readout use paired layouts "
+            "and randomness across histories and delays. There is no new training or brain mechanism.", "",
+            "All errors are one sample SE across independent families, after averaging twelve local placements "
+            "and both initial rules inside each family. S is the reversal-history signed food preference; C is "
+            "its paired reversal-minus-stationary contrast. G is first-food success across all assigned lives; "
+            "Y is first-food minus first-poison success, with no contact or prior death scoring zero.", "",
+            "Local retention requires S and C at both 0 and 33 turns to be at least 0.10 and strictly above "
+            "two SE. Grid retention requires positive Y above two SE at both times and a 33-turn paired G "
+            "advantage of at least 0.10 and above two SE. Each reversal-history change from 0 to 33 must also "
+            "have a lower two-SE bound strictly above -0.05. All three lineages must pass local retention; "
+            "the same three must pass local and grid criteria for the combined milestone. The one-turn "
+            "snapshot and old-food preference before reversal are descriptive. Fixed-weight controls are secondary.", "",
+            "| Run | Status | Split | Families completed/assigned | Commit |", "|---" * 5 + "|",
+            *retention_status_rows, ""]
+        if study["status"] != "complete":
+            out += ["Replicated retention decisions: **undecided**; " + study["reason"] + ".", ""]
+        else:
+            destination = ROOT / "results/diagnostics/E128-comparison.json"
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            destination.write_text(json.dumps(study, indent=2, allow_nan=False) + "\n", encoding="utf-8")
+            estimate = lambda value: f"{value['mean']:.6f} ± {value['se']:.6f} (n={value['n']})"
+            decisions, criteria, changes, primary, prior, local, grids, subgroups = [], [], [], [], [], [], [], []
+            for architecture, effects in study["replicated_gates"].items():
+                for effect, verdict in effects.items():
+                    decisions.append("| " + " | ".join([architecture, effect, f"{verdict['count']}/3",
+                        ", ".join(map(str, verdict["seeds"])) or "none", "PASS" if verdict["passed"] else "FAIL"]) + " |")
+            for panel in study["panels"]:
+                label, measures = str(panel["index"]), panel["measurements"]
+                for architecture, values in measures["architectures"].items():
+                    criteria.append("| " + " | ".join([label, architecture,
+                        "PASS" if values["local"]["passed"] else "FAIL", ", ".join(values["local"]["failed_criteria"]) or "none",
+                        "PASS" if values["grid"]["passed"] else "FAIL", ", ".join(values["grid"]["failed_criteria"]) or "none",
+                        "PASS" if values["combined_passed"] else "FAIL"]) + " |")
+                    for endpoint in ("local", "grid"):
+                        change = values[endpoint]["change_33_minus_0"]
+                        changes.append("| " + " | ".join([label, architecture, "S" if endpoint == "local" else "G",
+                            estimate(change), f"{change['lower_2se']:.6f}",
+                            "PASS" if values[endpoint]["criteria"]["retention"] else "FAIL"]) + " |")
+                    for delay in ("0", "1", "33"):
+                        choice, grid = values["local"]["by_delay"][delay], values["grid"]["by_delay"][delay]
+                        primary.append("| " + " | ".join([label, architecture, delay,
+                            estimate(choice["signed_preference"]), estimate(choice["reversal_minus_stationary"]),
+                            estimate(grid["first_food"]), estimate(grid["reversal_minus_stationary"]),
+                            estimate(grid["food_minus_poison"])]) + " |")
+                for arm, values in measures["arms"].items():
+                    prior.append("| " + " | ".join([label, arm, estimate(values["pre_old"])]) + " |")
+                    for delay, state in values["by_delay"].items():
+                        local.append("| " + " | ".join([label, arm, delay,
+                            *[estimate(state["local"][name]) for name in run_retention_diagnostic.LOCAL_FIELDS]]) + " |")
+                        grids.append("| " + " | ".join([label, arm, delay,
+                            *[estimate(state["grid"][name]) for name in run_retention_diagnostic.GRID_FIELDS]]) + " |")
+                for rule, architectures in measures["by_initial_rule"].items():
+                    for architecture, values in architectures.items():
+                        for delay, state in values["by_delay"].items():
+                            subgroups.append("| " + " | ".join([label, rule, architecture, delay,
+                                estimate(values["pre_old"]), *[estimate(state[name]) for name in ("S", "C", "G", "Y", "grid_difference")]]) + " |")
+            out += ["Independent three-panel reconstruction passed. Threshold failures leave retention "
+                    "unestablished in this assay; an absent immediate preference is not evidence of forgetting. "
+                    "The empty interval changes scene, energy and activity, so a loss cannot identify its cause.", "",
+                "| Architecture | Milestone | Qualifying lineages | Seed indices | Decision |", "|---" * 5 + "|", *decisions, "",
+                "| Seed | Architecture | Local | Failed local criteria | Grid | Failed grid criteria | Combined |",
+                "|---" * 7 + "|", *criteria, "",
+                "| Seed | Architecture | Reversal-history endpoint | 33-minus-0 change ± paired SE | Lower two-SE bound | Above -0.05 |",
+                "|---" * 6 + "|", *changes, "",
+                "| Seed | Architecture | Active turns | S ± SE | C ± paired SE | G ± SE | G history contrast ± paired SE | Y ± SE |",
+                "|---" * 8 + "|", *primary, "",
+                "| Seed | History | Old-food preference before reversal ± SE |", "|---" * 3 + "|", *prior, "",
+                "| Seed | History | Active turns | P(food) ± SE | P(poison) ± SE | Approach ± SE | Other ± SE | Signed preference ± SE |",
+                "|---" * 8 + "|", *local, "",
+                "| Seed | History | Active turns | First food ± SE | First poison ± SE | No contact ± SE | Y ± SE | Latency ± SE | Net return ± SE | Survival ± SE |",
+                "|---" * 10 + "|", *grids, "",
+                "Initial-rule breakdowns are descriptive, not extra independent replications:", "",
+                "| Seed | Initial rule | Architecture | Active turns | Old-food preference ± SE | S ± SE | C ± paired SE | G ± SE | Y ± SE | G history contrast ± paired SE |",
+                "|---" * 10 + "|", *subgroups, ""]
     if encounter_status_rows:
         from scripts import run_encounter_diagnostic
         study = run_encounter_diagnostic.build_comparison(ROOT)
