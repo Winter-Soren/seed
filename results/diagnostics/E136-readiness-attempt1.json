@@ -1,0 +1,42 @@
+{
+  "processStarted": false,
+  "studyUsedSecondsAfter": 6.6903923,
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt1.stdout",
+  "error": "A required startup memory or drive floor was not met",
+  "auditReportSha256": null,
+  "wallSeconds": 6.6903923,
+  "commit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "dailySecondsBefore": {
+    "2026-11-21": 17110.3704831,
+    "2026-11-22": 25025.72735329999
+  },
+  "childExitCode": null,
+  "runName": null,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt1.stderr",
+  "status": "stopped",
+  "priorStageSeconds": 0.0,
+  "timeZoneId": "India Standard Time",
+  "study": "E136",
+  "wallStartedAt": "2026-11-22T22:42:26.9158463+05:30",
+  "reservedSeconds": 3470.0,
+  "sourceCommit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "studyLimitSeconds": 3600.0,
+  "auditOutcome": null,
+  "attempt": 1,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:42:26.9158463+05:30",
+      "end": "2026-11-22T22:42:33.6062386+05:30",
+      "seconds": 6.6903923
+    }
+  ],
+  "mode": "readiness",
+  "stageUsedSecondsAfter": 6.6903923,
+  "stageHardLimitSeconds": 130.0,
+  "retryEligible": true,
+  "dailyLedgerSha256": "f3466fa23e580f2898b1e8f02d55304af52931542ce28aa960cbd20b18a63ab4",
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt1.guard.jsonl",
+  "studyUsedSecondsBefore": 0.0
+}

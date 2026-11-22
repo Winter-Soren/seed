@@ -1,0 +1,42 @@
+{
+  "mode": "readiness",
+  "guard": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt2.guard.jsonl",
+  "processStarted": false,
+  "error": "Could not find file 'D:\\cool-projects\\general-intelligence\\.tmp\\E136-audit-recovery.ps1'.",
+  "auditReportSha256": null,
+  "runName": null,
+  "retryScope": "Only prelaunch permission/resource/process-availability stops; source and all scientific gates fixed",
+  "commit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "auditOutcome": null,
+  "timeZoneId": "India Standard Time",
+  "dailySecondsBefore": {
+    "2026-11-22": 25032.41774559999,
+    "2026-11-21": 17110.3704831
+  },
+  "study": "E136",
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T22:48:02.1561332+05:30",
+      "end": "2026-11-22T22:48:06.0789544+05:30",
+      "seconds": 3.9228212
+    }
+  ],
+  "wallSeconds": 3.9228213,
+  "studyUsedSecondsBefore": 6.6903923,
+  "stageHardLimitSeconds": 130.0,
+  "stderr": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt2.stderr",
+  "stdout": "D:\\cool-projects\\general-intelligence\\.tmp\\E136-readiness-attempt2.stdout",
+  "sourceCommit": "2e2c5628e1bdbbc265cc4898c80bbf1417710513",
+  "studyLimitSeconds": 3600.0,
+  "attempt": 2,
+  "studyUsedSecondsAfter": 10.6132136,
+  "dailyLedgerSha256": "1a8c70824aad240a38155a0716497e6b74baa8d2099c2c3e1de8b6535dddc98f",
+  "priorStageSeconds": 6.6903923,
+  "retryEligible": false,
+  "wallStartedAt": "2026-11-22T22:48:02.1561332+05:30",
+  "stageUsedSecondsAfter": 10.6132136,
+  "status": "stopped",
+  "childExitCode": null,
+  "reservedSeconds": 3470.0
+}
