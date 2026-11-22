@@ -1,0 +1,200 @@
+{
+  "study": "E134",
+  "kind": "development-only complete local admission",
+  "status": "passed",
+  "sourceCommit": "836e34faa8352663df1ae2813d930926fa22cd5f",
+  "registrationCommit": "d3dfa8ece6899222fceaf3d1312f755f2ee77e60",
+  "createdAt": "2026-11-22T21:42:55.2240271+05:30",
+  "pins": {
+    ".tmp/E134-development-forecast.ps1": "44746a705c1f75b38c6a65c6e61eae1a368468694f4e097206ab17a870ce3886",
+    ".tmp/E134-readiness-attempt1.result.json": "4d3a72d94751362d5da4024e057ba6a1b26dba20dbbf72549e6569f0c4796804",
+    ".tmp/E134-readiness-attempt2.result.json": "66fc47c2b69395dbb762c720a577966d556624e9f342aefabd8fb49285a46d42",
+    ".tmp/E134-readiness-attempt3.result.json": "e0c8991bcb23c11d972fa4f9c56c606189470a4c7537a89adaf4132be397dfbd",
+    ".tmp/E134-benchmark-attempt1.result.json": "f5bc92b7bc903986ac9ca874a9cda9f339bd220565f779a106934d6a96b709fb",
+    ".tmp/E134-benchmark-eval-attempt1.result.json": "a9390944159cc0b3d0c65c14eb030ffaf96ece037ce1e57b9ec90d6afc12f81f",
+    ".tmp/E134-audit-development-attempt1.result.json": "0bdbb9f65c339404b897d341e9a5d43b9031c3945904d6be33c8bdb5bdfe0859",
+    ".tmp/E134-audit-development-attempt1.audit.json": "f10262194a8a319e3f46f5f7428c85e6432f947b825c64ab69085ace1ff2f913",
+    ".tmp/E134-readiness-proof.json": "0f146b9eae7a6dd10b629a013e6baf3dbb6873fd262a7f719020071f0519cb60",
+    "runs/20261122-214125_E134-benchmark/status.json": "afc79a005986cd45aec6b4c12f2ed17db199a73a866542d971239e480c31fe0e",
+    "runs/20261122-214158_E134-benchmark-eval/status.json": "8364938cd15cf54609028fe406e505ef39360c324ee6961d4d7327c472d1d32b"
+  },
+  "checks": {
+    "trainingSlot": true,
+    "evaluationSlot": true,
+    "auditSlot": true,
+    "measuredStudy": true,
+    "allHardSlots": true,
+    "dailyBalance": true,
+    "freeC": true,
+    "protectedD": true,
+    "availableCommit": true
+  },
+  "development": {
+    "trainingRun": "runs/20261122-214125_E134-benchmark",
+    "evaluationRun": "runs/20261122-214158_E134-benchmark-eval",
+    "trainingGuardSeconds": 39.8463875,
+    "evaluationGuardSeconds": 22.7958421,
+    "attemptWallSeconds": [
+      20.71899999998277,
+      1.0
+    ],
+    "familyWallSeconds": [
+      9.812000000034459,
+      2.4369999999762513,
+      0.6880000000237487,
+      0.5309999999590218
+    ],
+    "trainingSetupSeconds": 0.21899999998277053,
+    "evaluationSetupSeconds": 0.7809999999590218,
+    "timingCoverage": "Four static pop16 training cells, each compiled in attempt 1. Separate cold evaluation uses pre8 and pre16 chamber shapes, post16, gap16 and gap32, and one probe and solo executable. First two registered development families warm all these lengths; last two cover the fully warm schedule.",
+    "scientificBehaviorNotReadForAdmission": true
+  },
+  "readiness": {
+    "fixtureTests": 9,
+    "freshSyntheticGroups": 7,
+    "freshAuditorProcess": true
+  },
+  "trainingForecast": {
+    "formula": "guarded_nonattempt + first_attempt + 9*1.5*second_attempt",
+    "nonattemptSeconds": 18.127387500017228,
+    "seconds": 52.3463875,
+    "threeLineagesSeconds": 157.0391625,
+    "hardSlotSeconds": 450,
+    "cleanupSeconds": 30
+  },
+  "evaluationForecast": {
+    "formula": "guarded_nonfamily + sum(cold_families) + (128-cold_count)*1.5*max(fully_warm_families)",
+    "developmentRows": [
+      [
+        8,
+        16,
+        0
+      ],
+      [
+        16,
+        32,
+        0
+      ],
+      [
+        8,
+        32,
+        1
+      ],
+      [
+        16,
+        16,
+        1
+      ]
+    ],
+    "components": [
+      [
+        "chamber8",
+        "chamber16",
+        "gap16",
+        "common"
+      ],
+      [
+        "chamber16",
+        "gap32",
+        "common"
+      ],
+      [
+        "chamber8",
+        "chamber16",
+        "gap32",
+        "common"
+      ],
+      [
+        "chamber16",
+        "gap16",
+        "common"
+      ]
+    ],
+    "coldIndices": [
+      0,
+      1
+    ],
+    "fullyWarmIndices": [
+      2,
+      3
+    ],
+    "nonfamilySeconds": 9.32784210000652,
+    "coldSeconds": 12.24900000001071,
+    "maximumWarmSeconds": 0.6880000000237487,
+    "seconds": 151.60884210450575,
+    "threeLineagesSeconds": 454.82652631351726,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30
+  },
+  "auditForecast": {
+    "timing": {
+      "training_attempt_wall_seconds": [
+        1.4850000000442378,
+        0.014999999955762178
+      ],
+      "family_wall_seconds": [
+        1.2660000000032596,
+        0.5779999999795109,
+        0.5470000000204891,
+        0.29599999997299165
+      ],
+      "elapsed_seconds": 9.889999999955762,
+      "setup_and_summary_seconds": 5.702999999979511
+    },
+    "externalOverheadSeconds": 10.394400500044238,
+    "trainingAttempts": 32,
+    "families": 388,
+    "administrativeRunCosts": 8,
+    "coldTrainingAttempts": 1,
+    "coldFamilies": 3,
+    "warmFamilyLengthScale": 1.2,
+    "formula": "external + 8*setup_and_summary + first_attempt + 31*1.5*second_attempt + sum(first_3_families) + 385*1.5*(96/80)*fourth_family",
+    "seconds": 265.719900479154,
+    "hardSlotSeconds": 300,
+    "cleanupSeconds": 30
+  },
+  "budget": {
+    "knownStudySecondsBeforeCosting": 132.5753192,
+    "newHostedCiSeconds": 0,
+    "localOnly": true,
+    "operatingMarginBeforeCostingSeconds": 315.0,
+    "reportingReserveSeconds": 75,
+    "costingChargedFromOperatingMargin": true,
+    "measuredScheduleWithMarginSeconds": 1400.1609084926713,
+    "allFutureHardSlotsAndKnownSeconds": 3072.5753192,
+    "studyLimitSeconds": 3600,
+    "hardMarginSeconds": 527.4246807999998,
+    "localDate": "2026-11-22",
+    "dailyUsedBeforeCostingSeconds": 23762.1928243,
+    "dailyLimitSeconds": 28800,
+    "projectedDayAllHardSlotsSeconds": 26702.1928243
+  },
+  "storage": {
+    "observedMaxSampleBytes": 135047,
+    "observedMaxCheckpointBytes": 2802,
+    "observedMaxFamilyBytes": 189159,
+    "observedTrainingMetadataBytes": 7126,
+    "observedEvaluationMetadataBytes": 8673,
+    "futureSingleCopyBytes": 81038412.0,
+    "futureAllowanceBytes": 244835865.0,
+    "formula": "2 copies *1.5 allowance *[3*(10*max_sample+11*max_checkpoint+5*train_metadata+128*max_family+32*eval_metadata)+194*audit_bytes]+1.5*existing_development_bytes+one_max_atomic_archive",
+    "localGitCopyIncluded": true,
+    "freeCBytes": 25894535168,
+    "freeDBytes": 46187388928,
+    "projectedDFreeBytes": 45942553063.0,
+    "minimumDFreeBytes": 10737418240
+  },
+  "memory": {
+    "source": "cim",
+    "availablePhysicalBytes": 5580791808,
+    "availableCommitBytes": 11466817536.0,
+    "commitLimitBytes": 53056770048,
+    "physicalStartupFloorWaived": true
+  },
+  "limitations": [
+    "Only the registered two training attempts and four cold-process evaluation families inform admission. No final assignment or scientific effect is read.",
+    "All cold costs are charged; two fully warm families support the remaining family forecast.",
+    "The factor1.5 is a scheduling allowance, not a statistical confidence interval.",
+    "No hosted work, uploads or publication. Forecast wall is charged from the remaining315-second operating allocation."
+  ]
+}
