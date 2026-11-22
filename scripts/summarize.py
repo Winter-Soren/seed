@@ -42,6 +42,7 @@ def main():
     exploration_status_rows = []
     offer_status_rows = []
     contact_gate_status_rows = []
+    replay_selection_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -69,6 +70,11 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
+        if a.get("eval_protocol") == "replay-selection-v1":
+            replay_selection_rows.append("| " + " | ".join([d.name, cfg["mode"], s.get("status", "no summary"),
+                f"{s.get('completed_attempts', '?')}/{cfg['expected_attempts']}",
+                f"{s.get('completed_families', '?')}/{cfg['expected_families']}", commit]) + " |")
+            continue
         if a.get("eval_protocol") == "contact-gate-v1":
             contact_gate_status_rows.append("| " + " | ".join([d.name, s.get("status", "no summary"),
                 a.get("condition_split", ""), f"{s.get('completed_families', '?')}/{cfg.get('expected_families', '?')}", commit]) + " |")
@@ -620,6 +626,16 @@ def main():
            "For C (`--no-plastic`), `final_learning` re-enables updates and is diagnostic; "
            "`final_frozen` is the control score. * = run from uncommitted code.", "",
            head, *rows, ""]
+    if replay_selection_rows:
+        out += ["## Selection on independent choice after matched replay (replay-selection-v1)", "",
+            "E134 selects the native genome on expected signed choice after matched experience. "
+            "Each endpoint is frozen before separate evaluation against its own E103 parent. "
+            "See the [protocol](../experiments/E134_PROTOCOL.md) for the feedback ablation and decision rules.", "",
+            "| Run | Mode | Status | ES attempts completed/assigned | Families completed/assigned | Commit |",
+            "|---" * 6 + "|", *replay_selection_rows, ""]
+        audit = ROOT / "results/diagnostics/E134-independent-audit.json"
+        if audit.is_file():
+            out += ["[Independent held-out reconstruction and gate decisions](diagnostics/E134-independent-audit.json).", ""]
     if contact_gate_status_rows:
         from scripts import run_contact_gate
         study = run_contact_gate.build_comparison(ROOT)
