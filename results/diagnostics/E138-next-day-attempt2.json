@@ -1,0 +1,29 @@
+{
+  "study": "E138",
+  "mode": "establish-next-day",
+  "status": "finished",
+  "processStarted": false,
+  "sourceKind": "Local prospective daily-ledger verification",
+  "localGuard": false,
+  "measured": true,
+  "wallStartedAt": "2026-11-22T18:08:51.6000231+00:00",
+  "wallSeconds": 2.8886015,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T18:08:51.6000231+00:00",
+      "end": "2026-11-22T18:08:54.4886246+00:00",
+      "seconds": 2.8886015
+    }
+  ],
+  "timeZoneId": "India Standard Time",
+  "targetLocalDate": "2026-11-23",
+  "committed": true,
+  "error": null,
+  "previousLedgerSha256": "1f9536ab4f21748b37a1fecbe99a751d50da7adce27bd8c844b08b82a71678d6",
+  "committedLedgerSha256": "4d57ba23d1980377b76aaf039862f2a33e9ecb072b0116b0e83c74864d5ccf15",
+  "verificationEvidence": ".tmp/E138-establish-2026-11-23-attempt2.verification.json",
+  "verificationSha256": "4214b9919b49405ad3fe2c95d9595ff91f14503282020ba2a25f0c96b7c895da",
+  "sourceCommit": "ba3a121621d474bf12b2536f9154a9776bafc8bf",
+  "costMustBeChargedOnceToE138": true
+}

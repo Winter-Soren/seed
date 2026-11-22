@@ -45,6 +45,7 @@ def main():
     replay_selection_rows = []
     scene_transfer_rows = []
     background_selection_rows = []
+    solo_selection_rows = []
     social_observer_rows = []
     social_belief_gates = []
     social_belief_arms = []
@@ -72,8 +73,9 @@ def main():
         s = json.loads(sum_p.read_text()) if sum_p.exists() else {"status": "no summary"}
         a = cfg["args"]
         commit = (cfg.get("git", {}).get("commit") or "")[:7] + ("*" if cfg.get("git", {}).get("dirty") else "")
-        if a.get("eval_protocol") == "background-selection-v1":
-            background_selection_rows.append("| " + " | ".join([d.name, cfg["mode"], cfg.get("view") or "—", s.get("status", "no summary"),
+        if a.get("eval_protocol") in ("background-selection-v1", "solo-selection-v1"):
+            selection_rows = solo_selection_rows if a["eval_protocol"] == "solo-selection-v1" else background_selection_rows
+            selection_rows.append("| " + " | ".join([d.name, cfg["mode"], cfg.get("view") or "—", s.get("status", "no summary"),
                 f"{s.get('completed_attempts', '?')}/{cfg['expected_attempts']}",
                 f"{s.get('completed_families', '?')}/{cfg['expected_families']}", commit]) + " |")
             continue
@@ -645,6 +647,14 @@ def main():
             "|---" * 7 + "|", *background_selection_rows, ""]
         if (ROOT / "results/diagnostics/E136-independent-audit.json").is_file():
             out += ["[Independent reconstruction and paired lineage results](diagnostics/E136-independent-audit.json).", ""]
+    if solo_selection_rows:
+        out += ["## Paired selection on first-item foraging and a focal proxy (solo-selection-v1)", "",
+            "Every candidate supplied both scores. Only the assigned objective contributed to the optimizer. "
+            "The [protocol](../experiments/E138_PROTOCOL.md) sets separate stationary and reversal decisions.", "",
+            "| Run | Mode | Objective | Status | ES attempts completed/assigned | Families completed/assigned | Commit |",
+            "|---" * 7 + "|", *solo_selection_rows, ""]
+        if (ROOT / "results/diagnostics/E138-independent-audit.json").is_file():
+            out += ["[Independent reconstruction and paired lineage results](diagnostics/E138-independent-audit.json).", ""]
     if scene_transfer_rows:
         from scripts import run_scene_transfer
         study = run_scene_transfer.build_comparison(ROOT)

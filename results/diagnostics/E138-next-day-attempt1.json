@@ -1,0 +1,29 @@
+{
+  "study": "E138",
+  "mode": "establish-next-day",
+  "status": "stopped",
+  "processStarted": false,
+  "sourceKind": "Local prospective daily-ledger verification",
+  "localGuard": false,
+  "measured": true,
+  "wallStartedAt": "2026-11-22T18:08:08.5738899+00:00",
+  "wallSeconds": 3.2150172,
+  "calendarSegments": [
+    {
+      "date": "2026-11-22",
+      "start": "2026-11-22T18:08:08.5738899+00:00",
+      "end": "2026-11-22T18:08:11.7889071+00:00",
+      "seconds": 3.2150172
+    }
+  ],
+  "timeZoneId": "India Standard Time",
+  "targetLocalDate": "2026-11-23",
+  "committed": false,
+  "error": "Exception calling \"Parse\" with \"1\" argument(s): \"String '' was not recognized as a valid DateTime.\"",
+  "previousLedgerSha256": "1f9536ab4f21748b37a1fecbe99a751d50da7adce27bd8c844b08b82a71678d6",
+  "committedLedgerSha256": null,
+  "verificationEvidence": null,
+  "verificationSha256": null,
+  "sourceCommit": "ba3a121621d474bf12b2536f9154a9776bafc8bf",
+  "costMustBeChargedOnceToE138": true
+}

@@ -36,3 +36,6 @@ runs/*_E136-*/** -text
 results/diagnostics/E136-*.json -text
 results/diagnostics/E137-*.json -text
 results/diagnostics/E137-*.jsonl -text
+runs/*_E138-*/** -text
+results/diagnostics/E138-*.json -text
+results/diagnostics/E138-*.jsonl -text
