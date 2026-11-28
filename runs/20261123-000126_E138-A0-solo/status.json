@@ -1,0 +1,27 @@
+{
+  "status": "finished",
+  "protocol": "solo-selection-v1",
+  "mode": "training",
+  "view": "solo",
+  "seed_index": 0,
+  "elapsed_seconds": 144.17199999996228,
+  "setup_seconds": 0.125,
+  "completed_attempts": 10,
+  "completed_families": 0,
+  "expected_attempts": 10,
+  "expected_families": 0,
+  "optimizer_updates": 10,
+  "attempt_wall_seconds": [
+    65.40600000001723,
+    5.48499999998603,
+    7.202999999979511,
+    8.937000000034459,
+    6.64100000000326,
+    11.764999999955762,
+    14.579000000027008,
+    9.702999999979511,
+    6.688000000023749,
+    6.655999999959022
+  ],
+  "family_wall_seconds": []
+}

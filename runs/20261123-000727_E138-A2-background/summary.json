@@ -1,0 +1,140 @@
+{
+  "status": "finished",
+  "protocol": "solo-selection-v1",
+  "mode": "training",
+  "view": "background",
+  "seed_index": 2,
+  "elapsed_seconds": 129.76600000000326,
+  "setup_seconds": 0.7660000000032596,
+  "completed_attempts": 10,
+  "completed_families": 0,
+  "expected_attempts": 10,
+  "expected_families": 0,
+  "optimizer_updates": 10,
+  "attempt_wall_seconds": [
+    62.90600000001723,
+    6.187999999965541,
+    6.9060000000172295,
+    5.9689999999827705,
+    6.217999999993481,
+    8.969000000040978,
+    6.780999999959022,
+    9.01600000000326,
+    6.203000000037719,
+    7.8439999999827705
+  ],
+  "family_wall_seconds": [],
+  "scientific_result": false,
+  "gate_status": "undecided",
+  "endpoint_sha256": "1ca166871d59c20f14850b9a49eb566c7a7e5ec22fa54c07cbeb7335244419e5",
+  "attempts": [
+    {
+      "path": "generations/attempt_0000.npz",
+      "sha256": "d05228da2cc275b7856af0ca0be2be9b03db209121569dd62fffecad68565f38",
+      "bytes": 1556
+    },
+    {
+      "path": "generations/attempt_0001.npz",
+      "sha256": "79e4f245ebe9c06257e7a5139eda50c8960a13a53763b33a41fde7e01e7f8a5a",
+      "bytes": 2815
+    },
+    {
+      "path": "generations/attempt_0002.npz",
+      "sha256": "ae76e4431f71dc49e8d51eab7ec8135ab5e355126ce752166c40b9ac45f70ea2",
+      "bytes": 2793
+    },
+    {
+      "path": "generations/attempt_0003.npz",
+      "sha256": "d7b1bcd22a00775b73ed1314a1a62e4eccd9b7b5fdfd6eba3db40ef7e210720e",
+      "bytes": 2789
+    },
+    {
+      "path": "generations/attempt_0004.npz",
+      "sha256": "7943c74dae024af4bf5ea3204e8d597c812bf6a123c2107f65210385f87f0648",
+      "bytes": 2778
+    },
+    {
+      "path": "generations/attempt_0005.npz",
+      "sha256": "411eac6a434d7b25df63fc0b19a1e1beb0fa541866bcfad51240b41d7937daa7",
+      "bytes": 2782
+    },
+    {
+      "path": "generations/attempt_0006.npz",
+      "sha256": "d60f0790a5fd7ef8cb347b36d9f5f43c60a1f91b5a91e5e8abfdf347ac395d9d",
+      "bytes": 2784
+    },
+    {
+      "path": "generations/attempt_0007.npz",
+      "sha256": "56e03a9b688c4997ae6be21ae26a90d77b4f9fa505ab46e3825a80c5d1286995",
+      "bytes": 2791
+    },
+    {
+      "path": "generations/attempt_0008.npz",
+      "sha256": "69078d065a85a58fdbde7dca98bc481d482ed6d93fd5cd37a1a5a7fb44dc3ebc",
+      "bytes": 2782
+    },
+    {
+      "path": "generations/attempt_0009.npz",
+      "sha256": "265e54fb2ca71c181b4bd980c10af3c401fa4865cabc026c07f9fc849efd668f",
+      "bytes": 2778
+    },
+    {
+      "path": "generations/attempt_0010.npz",
+      "sha256": "34defc4c745f70c2bc44b1baf061747045ee2b9a7933d866631d2a091bc7fec6",
+      "bytes": 2777
+    }
+  ],
+  "samples": [
+    {
+      "path": "generations/samples_0001.npz",
+      "sha256": "5fbefc77968363f8c0f97786de17c0d8b187c5e712bce26db84c827fb2fdee1b",
+      "bytes": 395324
+    },
+    {
+      "path": "generations/samples_0002.npz",
+      "sha256": "a8cbb820dab228cc5995abb8c0642194c8a5f7297b11d7d0002cf2ac60cbe385",
+      "bytes": 397801
+    },
+    {
+      "path": "generations/samples_0003.npz",
+      "sha256": "7a9cce43a1a227cbe9eac409dedaca0098d6cd98bedf32b832f26561fed2b5af",
+      "bytes": 395169
+    },
+    {
+      "path": "generations/samples_0004.npz",
+      "sha256": "af1d3e470a81778ee7b2f8c4b7c7bd691d075c1c8c21238a7b67a8611a507f0c",
+      "bytes": 396061
+    },
+    {
+      "path": "generations/samples_0005.npz",
+      "sha256": "243330e89efdb68c0b2952a359fddb91304a4fda9fbdaa64a12a9dc8ebb303df",
+      "bytes": 395746
+    },
+    {
+      "path": "generations/samples_0006.npz",
+      "sha256": "599b168596005885d06fab26377d22c1529656ff036feb9e9610ada421699dc8",
+      "bytes": 394631
+    },
+    {
+      "path": "generations/samples_0007.npz",
+      "sha256": "24e5cbe5aba63e9fe889ca96eaea385f540301638e10218f53f11186e9b2640d",
+      "bytes": 391520
+    },
+    {
+      "path": "generations/samples_0008.npz",
+      "sha256": "758554e9279171a321f6872099d729f01707720f65cadfd2e3056d2434ee1832",
+      "bytes": 393041
+    },
+    {
+      "path": "generations/samples_0009.npz",
+      "sha256": "adc9df54b47038c14997a465fd12d2993ec6ad3eefe7aa0d4e1c7e3f9dd865b8",
+      "bytes": 390304
+    },
+    {
+      "path": "generations/samples_0010.npz",
+      "sha256": "ecf0419dd2e2497a83f7bba5927d76d73a04976a1b8cc6d7ce8967408ec6b918",
+      "bytes": 390325
+    }
+  ],
+  "raw_files": []
+}
